@@ -1,0 +1,6 @@
+# IDE
+.idea/
+*.iml
+
+# Build directories
+node_modules/
