@@ -11,6 +11,12 @@ thanks to the [statically.io](https://statically.io/) service
 - local: [demo](./demo) 
 
 
+If you need BPMN examples, you can use resources 
+- from the [BPMN Model Interchange Working Group (BPMN MIWG)](http://www.omgwiki.org/bpmn-miwg)
+  - https://github.com/bpmn-miwg/bpmn-miwg-test-suite
+  - https://github.com/bpmn-miwg/bpmn-miwg-demos
+- [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
+
 # Powered by
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
