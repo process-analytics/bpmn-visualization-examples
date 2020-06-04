@@ -1,11 +1,11 @@
 # BPMN Diagram examples to test `bpmn-visualization` rendering
 
-Generally created with demo.bpmn.io (todo url)
+Here is a list of BPMN files to demonstrate the detection and rendering capabilities of `bpmn-visualization`
 
-provide the big picture
-notice that the render is provide for example (generally with bpmn-js) and not be exactly in sync with the content of
- the bpmn file
-Feel free to create a PR
+Each BPMN file has a image (SVG or PNG) companion file to let you get an overview of the expected rendering. Notice that
+the image may not be up to date with the BPMN file, so the final display may differ a little.  
+
+Feel free to create a PR to update the image if the discrepancies are too large.
 
 [Sequence flows](./all_sequence_flow_types__bpmnio.bpmn)
-![](./all_sequence_flow_types__bpmnio.svg)
+![sequence flows](./all_sequence_flow_types__bpmnio.svg)
