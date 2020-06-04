@@ -7,5 +7,5 @@ the image may not be up to date with the BPMN file, so the final display may dif
 
 Feel free to create a PR to update the image if the discrepancies are too large.
 
-[Sequence flows](./all_sequence_flow_types__bpmnio.bpmn)
+[Sequence flows](all_sequence_flow_types.bpmn)
 ![sequence flows](./all_sequence_flow_types__bpmnio.svg)
