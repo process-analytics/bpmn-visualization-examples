@@ -167,7 +167,7 @@
       <dc:Font name="Ubuntu" size="9" isBold="true" isItalic="true" isUnderline="true" isStrikeThrough="false" />
     </bpmndi:BPMNLabelStyle>
     <bpmndi:BPMNLabelStyle id="BPMNLabelStyle_2">
-      <dc:Font name="Segoe UI" size="14" isBold="false" isItalic="true" isUnderline="true" isStrikeThrough="false" />
+      <dc:Font name="Segoe UI" size="14" isBold="false" isItalic="true" isUnderline="false" isStrikeThrough="true" />
     </bpmndi:BPMNLabelStyle>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
