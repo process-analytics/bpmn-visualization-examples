@@ -19,3 +19,9 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 
 [Tasks](all_task_types.bpmn)
 ![tasks](all_task_types__bpmnio.svg)
+
+
+## Labels
+
+[Edge Labels](label_edges.bpmn)
+![edge labels](label_edges__bpmnio.svg)
