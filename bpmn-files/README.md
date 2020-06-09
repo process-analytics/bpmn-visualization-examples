@@ -11,6 +11,9 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 [Events](all_event_types.bpmn)
 ![events](all_event_types__bpmn.io.svg)
 
+[Boundary Events](./all_event_boundaries.bpmn)
+![boundary events](./all_event_boundaries__bpmn.io.svg)
+
 [Gateways](all_gateway_types.bpmn)
 ![gateways](all_gateway_types__bpmn.io.svg)
 
