@@ -19,3 +19,9 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 
 [Tasks](all_task_types.bpmn)
 ![tasks](all_task_types__bpmnio.svg)
+
+
+## Labels
+
+[Sequence flows Labels](label_sequence_flows.bpmn)
+![Sequence flows labels](label_sequence_flows__bpmnio.svg)
