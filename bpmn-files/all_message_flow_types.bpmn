@@ -4,9 +4,10 @@
   <bpmn:collaboration id="Collaboration_03mvh2s">
     <bpmn:participant id="Participant_00n9kka" processRef="Process_1fnihdu" />
     <bpmn:participant id="Participant_1lrbc9r" processRef="Process_102hob4" />
-    <bpmn:messageFlow id="Flow_1w5abau" sourceRef="Participant_1lrbc9r" targetRef="StartEvent_10a4zcg" />
-    <bpmn:messageFlow id="Flow_1d9kjgg" sourceRef="Activity_1djz14b" targetRef="Activity_1onkki6" />
-    <bpmn:messageFlow id="Flow_15ehhm9" name="With message" sourceRef="Event_0y8ppw6" targetRef="Event_0am4wej" messageRef="Message_1" />
+    <bpmn:messageFlow id="Flow_1w5abau" name="No messageVisibleKind" sourceRef="Participant_1lrbc9r" targetRef="StartEvent_10a4zcg" messageRef="Message_1"/>
+    <bpmn:messageFlow id="Flow_1d9kjgg" name="messageVisibleKind=&#34;&#34;" sourceRef="Activity_1djz14b" targetRef="Activity_1onkki6" messageRef="Message_1"/>
+    <bpmn:messageFlow id="Flow_15ehhm9" name="messageVisibleKind=&#34;initiating&#34;" sourceRef="Event_0y8ppw6" targetRef="Event_0am4wej" messageRef="Message_1" />
+    <bpmn:messageFlow id="Flow_0kpzoh7" name="messageVisibleKind=&#34;non_initiating&#34;" sourceRef="Event_0yrwzg7" targetRef="Participant_00n9kka" messageRef="Message_1"/>
   </bpmn:collaboration>
   <bpmn:process id="Process_1fnihdu" isExecutable="false">
     <bpmn:startEvent id="StartEvent_10a4zcg">
@@ -26,12 +27,18 @@
   <bpmn:process id="Process_102hob4">
     <bpmn:task id="Activity_1onkki6">
       <bpmn:incoming>Flow_18nrrmo</bpmn:incoming>
+      <bpmn:outgoing>Flow_0k3b0rp</bpmn:outgoing>
     </bpmn:task>
     <bpmn:startEvent id="Event_0am4wej">
       <bpmn:outgoing>Flow_18nrrmo</bpmn:outgoing>
       <bpmn:messageEventDefinition id="MessageEventDefinition_0qzwlou" />
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_18nrrmo" sourceRef="Event_0am4wej" targetRef="Activity_1onkki6" />
+    <bpmn:sequenceFlow id="Flow_0k3b0rp" sourceRef="Activity_1onkki6" targetRef="Event_0yrwzg7" />
+    <bpmn:endEvent id="Event_0yrwzg7">
+      <bpmn:incoming>Flow_0k3b0rp</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0glbplg" />
+    </bpmn:endEvent>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_03mvh2s">
@@ -62,25 +69,45 @@
         <di:waypoint x="378" y="630" />
         <di:waypoint x="490" y="630" />
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0k3b0rp_di" bpmnElement="Flow_0k3b0rp">
+        <di:waypoint x="590" y="630" />
+        <di:waypoint x="652" y="630" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_1onkki6_di" bpmnElement="Activity_1onkki6">
         <dc:Bounds x="490" y="590" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_1yp3bjd_di" bpmnElement="Event_0am4wej">
         <dc:Bounds x="342" y="612" width="36" height="36" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0ysy95y_di" bpmnElement="Event_0yrwzg7">
+        <dc:Bounds x="652" y="612" width="36" height="36" />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Flow_1w5abau_di" bpmnElement="Flow_1w5abau">
         <di:waypoint x="224" y="500" />
         <di:waypoint x="224" y="198" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="127" y="377" width="85" height="40" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1d9kjgg_di" bpmnElement="Flow_1d9kjgg">
+      <bpmndi:BPMNEdge id="Flow_1d9kjgg_di" bpmnElement="Flow_1d9kjgg" messageVisibleKind="">
         <di:waypoint x="540" y="220" />
         <di:waypoint x="540" y="590" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="546" y="402" width="87" height="27" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_15ehhm9_di" bpmnElement="Flow_15ehhm9">
+      <bpmndi:BPMNEdge id="Flow_15ehhm9_di" bpmnElement="Flow_15ehhm9" messageVisibleKind="initiating">
         <di:waypoint x="360" y="198" />
         <di:waypoint x="360" y="612" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="375" y="383" width="70" height="14" />
+          <dc:Bounds x="377" y="383" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0kpzoh7_di" bpmnElement="Flow_0kpzoh7" messageVisibleKind="non-initiating">
+        <di:waypoint x="670" y="612" />
+        <di:waypoint x="670" y="311" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="687" y="436" width="85" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
