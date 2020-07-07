@@ -8,23 +8,37 @@ the image may not be up to date with the BPMN file, so the final display may dif
 Feel free to create a PR to update the image if the discrepancies are too large.
 
 
+[Activities](all_activity_types.bpmn)
+![activities](./all_activity_types__bpmnio.svg)
+
+
 [Events](all_event_types.bpmn)
-![events](all_event_types__bpmn.io.svg)
+![events](./all_event_types__bpmn.io.svg)
 
 [Boundary Events](./all_event_boundaries.bpmn)
 ![boundary events](./all_event_boundaries__bpmn.io.svg)
 
-[Gateways](all_gateway_types.bpmn)
-![gateways](all_gateway_types__bpmn.io.svg)
 
-[Sequence flows](all_sequence_flow_types.bpmn)
+[Gateways](all_gateway_types.bpmn)
+![gateways](./all_gateway_types__bpmn.io.svg)
+
+
+## Flows
+
+[Sequence Flows](all_sequence_flow_types.bpmn)
 ![sequence flows](./all_sequence_flow_types__bpmnio.svg)
 
-[Tasks](all_task_types.bpmn)
-![tasks](all_task_types__bpmnio.svg)
+[Message Flows](all_message_flow_types.bpmn)
+![message flows](./all_message_flow_types.svg)
 
 
 ## Labels
 
 [Sequence flows Labels](label_sequence_flows.bpmn)
-![Sequence flows labels](label_sequence_flows__bpmnio.svg)
+![Sequence flows labels](./label_sequence_flows__bpmnio.svg)
+
+
+## BPMN artifacts
+
+[Text Annotations](text_annotations__bpmnio.bpmn)
+![text annotations](./text_annotations__bpmnio.svg)
