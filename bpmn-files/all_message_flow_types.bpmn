@@ -128,7 +128,7 @@
           <dc:Bounds x="377" y="383" width="85" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_non_initiating_messageVisibleKind_di" bpmnElement="Flow_non_initiating_messageVisibleKind" messageVisibleKind="non-initiating">
+      <bpmndi:BPMNEdge id="Flow_non_initiating_messageVisibleKind_di" bpmnElement="Flow_non_initiating_messageVisibleKind" messageVisibleKind="non_initiating">
         <di:waypoint x="670" y="612" />
         <di:waypoint x="670" y="311" />
         <bpmndi:BPMNLabel>
