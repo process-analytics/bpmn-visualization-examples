@@ -46,49 +46,32 @@ Multiline and
 Actually nothing</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:textAnnotation id="TextAnnotation_05ohhil">
-      <bpmn:text>Start Event Annotation</bpmn:text>
+      <bpmn:text>Start Event Annotation (Association Both)</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_1k4w4ly" sourceRef="StartEvent_1obe7ge" targetRef="TextAnnotation_05ohhil" />
+    <bpmn:association id="Association_1k4w4ly" associationDirection="Both" sourceRef="StartEvent_1obe7ge" targetRef="TextAnnotation_05ohhil" />
     <bpmn:textAnnotation id="TextAnnotation_1t3sa82">
-      <bpmn:text>GW Annotation</bpmn:text>
+      <bpmn:text>GW Annotation (Association One)</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_0yloi1l" sourceRef="Gateway_19dxmh2" targetRef="TextAnnotation_1t3sa82" />
+    <bpmn:association id="Association_0yloi1l" associationDirection="One" sourceRef="Gateway_19dxmh2" targetRef="TextAnnotation_1t3sa82" />
     <bpmn:textAnnotation id="TextAnnotation_1jf02lc">
-      <bpmn:text>Task Annotation below task</bpmn:text>
+      <bpmn:text>Task Annotation below task (Association None)</bpmn:text>
     </bpmn:textAnnotation>
-    <bpmn:association id="Association_1xsjlah" sourceRef="Activity_1b1myeg" targetRef="TextAnnotation_1jf02lc" />
+    <bpmn:association id="Association_1xsjlah" associationDirection="None" sourceRef="Activity_1b1myeg" targetRef="TextAnnotation_1jf02lc" />
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0nc7o5o">
-      <bpmndi:BPMNShape id="TextAnnotation_04bdgwe_di" bpmnElement="TextAnnotation_04bdgwe">
-        <dc:Bounds x="430" y="160" width="100" height="30" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_05ohhil_di" bpmnElement="TextAnnotation_05ohhil">
-        <dc:Bounds x="280" y="180" width="100" height="40" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1t3sa82_di" bpmnElement="TextAnnotation_1t3sa82">
-        <dc:Bounds x="540" y="170" width="100" height="30" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_1jf02lc_di" bpmnElement="TextAnnotation_1jf02lc">
-        <dc:Bounds x="540" y="460" width="100" height="40" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="TextAnnotation_034zo0u_di" bpmnElement="TextAnnotation_034zo0u">
-        <dc:Bounds x="180" y="80" width="270" height="54" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Flow_1tyrs92_di" bpmnElement="Flow_1tyrs92">
-        <di:waypoint x="218" y="280" />
-        <di:waypoint x="330" y="280" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="240" y="262" width="71" height="14" />
-        </bpmndi:BPMNLabel>
+      <bpmndi:BPMNEdge id="Flow_0o12zfb_di" bpmnElement="Flow_0o12zfb">
+        <di:waypoint x="795" y="280" />
+        <di:waypoint x="852" y="280" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1xbr1ob_di" bpmnElement="Flow_1xbr1ob">
-        <di:waypoint x="430" y="280" />
-        <di:waypoint x="485" y="280" />
+      <bpmndi:BPMNEdge id="Flow_0yzm54b_di" bpmnElement="Flow_0yzm54b">
+        <di:waypoint x="690" y="280" />
+        <di:waypoint x="745" y="280" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_11llvzn_di" bpmnElement="Flow_11llvzn">
-        <di:waypoint x="535" y="280" />
-        <di:waypoint x="590" y="280" />
+      <bpmndi:BPMNEdge id="Flow_1sm2mxx_di" bpmnElement="Flow_1sm2mxx">
+        <di:waypoint x="690" y="390" />
+        <di:waypoint x="770" y="390" />
+        <di:waypoint x="770" y="305" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0lepywh_di" bpmnElement="Flow_0lepywh">
         <di:waypoint x="510" y="305" />
@@ -98,19 +81,27 @@ Actually nothing</bpmn:text>
           <dc:Bounds x="494" y="345" width="63" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1sm2mxx_di" bpmnElement="Flow_1sm2mxx">
-        <di:waypoint x="690" y="390" />
-        <di:waypoint x="770" y="390" />
-        <di:waypoint x="770" y="305" />
+      <bpmndi:BPMNEdge id="Flow_11llvzn_di" bpmnElement="Flow_11llvzn">
+        <di:waypoint x="535" y="280" />
+        <di:waypoint x="590" y="280" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0yzm54b_di" bpmnElement="Flow_0yzm54b">
-        <di:waypoint x="690" y="280" />
-        <di:waypoint x="745" y="280" />
+      <bpmndi:BPMNEdge id="Flow_1xbr1ob_di" bpmnElement="Flow_1xbr1ob">
+        <di:waypoint x="430" y="280" />
+        <di:waypoint x="485" y="280" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0o12zfb_di" bpmnElement="Flow_0o12zfb">
-        <di:waypoint x="795" y="280" />
-        <di:waypoint x="852" y="280" />
+      <bpmndi:BPMNEdge id="Flow_1tyrs92_di" bpmnElement="Flow_1tyrs92">
+        <di:waypoint x="218" y="280" />
+        <di:waypoint x="330" y="280" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="240" y="262" width="71" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1obe7ge">
+        <dc:Bounds x="182" y="262" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="175" y="305" width="51" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Gateway_19dxmh2_di" bpmnElement="Gateway_19dxmh2" isMarkerVisible="true">
         <dc:Bounds x="485" y="255" width="50" height="50" />
       </bpmndi:BPMNShape>
@@ -126,14 +117,23 @@ Actually nothing</bpmn:text>
       <bpmndi:BPMNShape id="Activity_0w6jspq_di" bpmnElement="Activity_1cgl5iw">
         <dc:Bounds x="590" y="240" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1obe7ge">
-        <dc:Bounds x="182" y="262" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="175" y="305" width="51" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_07ukzs4_di" bpmnElement="Activity_1b1myeg">
         <dc:Bounds x="590" y="350" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_04bdgwe_di" bpmnElement="TextAnnotation_04bdgwe">
+        <dc:Bounds x="430" y="160" width="100" height="30" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_034zo0u_di" bpmnElement="TextAnnotation_034zo0u">
+        <dc:Bounds x="180" y="80" width="270" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_05ohhil_di" bpmnElement="TextAnnotation_05ohhil">
+        <dc:Bounds x="280" y="180" width="123" height="54" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1t3sa82_di" bpmnElement="TextAnnotation_1t3sa82">
+        <dc:Bounds x="540" y="170" width="127" height="40" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="TextAnnotation_1jf02lc_di" bpmnElement="TextAnnotation_1jf02lc">
+        <dc:Bounds x="540" y="460" width="145" height="52" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Association_16ysqsl_di" bpmnElement="Association_16ysqsl">
         <di:waypoint x="418" y="240" />
@@ -141,11 +141,11 @@ Actually nothing</bpmn:text>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1k4w4ly_di" bpmnElement="Association_1k4w4ly">
         <di:waypoint x="215" y="270" />
-        <di:waypoint x="292" y="220" />
+        <di:waypoint x="280" y="228" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_0yloi1l_di" bpmnElement="Association_0yloi1l">
         <di:waypoint x="521" y="266" />
-        <di:waypoint x="577" y="200" />
+        <di:waypoint x="569" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Association_1xsjlah_di" bpmnElement="Association_1xsjlah">
         <di:waypoint x="616" y="430" />
