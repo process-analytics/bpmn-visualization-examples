@@ -19,9 +19,17 @@ If you need BPMN examples, you can use resources
 
 ## Examples
 
+All examples are available live, see [index.html](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
 
 ### Extensibility
+
+**DISCLAIMER: extension points are currently very experimental and are subject to changes**
+
 - [custom user task icon](./examples/custom-user-task-icon/README.md): use your own icon
+- [custom colors](examples/custom-colors/README.md):
+  - change default fill and stroke colors
+  - change default font color
+  - use specific colors depending on the BPMN element types
 
 
 # Powered by
