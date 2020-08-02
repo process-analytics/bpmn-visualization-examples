@@ -1,4 +1,4 @@
-# Custom user task icon
+# Custom colors
 
 **DISCLAIMER: this extension point is very experimental and is subject to changes**
 
