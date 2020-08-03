@@ -17,6 +17,13 @@ If you need BPMN examples, you can use resources
   - https://github.com/bpmn-miwg/bpmn-miwg-demos
 - [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
 
+## Examples
+
+
+### Extensibility
+- [custom user task icon](./examples/custom-user-task-icon/README.md): use your own icon
+
+
 # Powered by
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
