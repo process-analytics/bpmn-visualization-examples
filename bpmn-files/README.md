@@ -12,8 +12,11 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 ![activities](./all_activity_types__bpmnio.svg)
 
 
-[Events](all_event_types.bpmn)
-![events](./all_event_types__bpmn.io.svg)
+[Events with event definition declared in Event](all_event_types.bpmn)
+![events with event definition declared in event](./all_event_types__bpmn.io.svg)
+
+[Events with event definition declared in Definitions](all_event_types_on_top.bpmn)
+![events with event definition declared in definitions](./all_event_types_on_top__bpmn.io.svg)
 
 [Boundary Events](./all_event_boundaries.bpmn)
 ![boundary events](./all_event_boundaries__bpmn.io.svg)
