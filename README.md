@@ -31,7 +31,6 @@ All examples are available live, see [index.html](https://cdn.statically.io/gh/p
   - change default font color
   - use specific colors depending on the BPMN element types
 
-
 # Powered by
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
