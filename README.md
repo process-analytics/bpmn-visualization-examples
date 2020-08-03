@@ -1,6 +1,6 @@
 # bpmn-visualization examples
 
-This repository contains examples showing how to use [bpmn-visualization-js](https://github.com/process-analytics/bpmn-visualization-js).
+This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
 ## Demo
 
@@ -21,10 +21,15 @@ If you need BPMN examples, you can use resources
 
 All examples are available live, see [index.html](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
 
+### Usage
+
+- [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
+
 ### Extensibility
 
 **DISCLAIMER: extension points are currently very experimental and are subject to changes**
 
+- [custom user task icon](./examples/custom-user-task-icon/README.md) use your own icon
 - [custom colors](examples/custom-colors/README.md):
   - change default fill and stroke colors
   - change default font color
@@ -32,10 +37,9 @@ All examples are available live, see [index.html](https://cdn.statically.io/gh/p
 - [custom fonts](examples/custom-fonts/README.md):
   - change default font
   - use specific fonts depending on the BPMN element types
-- [custom user task icon](./examples/custom-user-task-icon/README.md) use your own icon
 
 # Powered by
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
 
-**[statically.io](https://statically.io)** (demo environment)
+**[statically.io](https://statically.io)** (demo environment and live examples)
