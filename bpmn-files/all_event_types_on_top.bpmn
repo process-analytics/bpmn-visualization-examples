@@ -281,7 +281,7 @@
        <bpmn:timerEventDefinition />
       <bpmn:eventDefinitionRef>MessageEventDefinition_id</bpmn:eventDefinitionRef>
     </bpmn:startEvent>
-    <bpmn:startEvent id="Event_05y8lgm" name="parallel multiple starton event &#38; top" parallelMultiple="true">
+    <bpmn:startEvent id="Event_05y8lgm" name="parallel multiple start on event &#38; top" parallelMultiple="true">
       <bpmn:outgoing>Flow_13rm28m</bpmn:outgoing>
       <bpmn:eventDefinitionRef>ConditionalEventDefinition_id</bpmn:eventDefinitionRef>
       <bpmn:timerEventDefinition />
