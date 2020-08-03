@@ -39,9 +39,9 @@
       <bpmn:timerEventDefinition id="multiple_TimerEventDefinition_a36t4s0" />
       <bpmn:messageEventDefinition id="multiple_MessageEventDefinition_ab7mw6v" />
     </bpmn:startEvent>
-    <bpmn:startEvent id="Event_1krab8a" name="parallel multiple start">
+    <bpmn:startEvent id="Event_1krab8a" name="parallel multiple start" parallelMultiple="true">
       <bpmn:outgoing>Flow_02lyg7o</bpmn:outgoing>
-      <bpmn:timerEventDefinition id="paralle_Multiple_TimerEventDefinition_b36t4s0" parallelMultiple="true" />
+      <bpmn:timerEventDefinition id="paralle_Multiple_TimerEventDefinition_b36t4s0"/>
       <bpmn:conditionalEventDefinition id="paralle_MultipleConditionalEventDefinition_bjy59wg">
         <bpmn:condition xsi:type="bpmn:tFormalExpression" />
       </bpmn:conditionalEventDefinition>
