@@ -29,14 +29,9 @@ All examples are available live, see [index.html](https://cdn.statically.io/gh/p
 
 **DISCLAIMER: extension points are currently very experimental and are subject to changes**
 
-- [custom user task icon](./examples/custom-user-task-icon/README.md) use your own icon
-- [custom colors](examples/custom-colors/README.md):
-  - change default fill and stroke colors
-  - change default font color
-  - use specific colors depending on the BPMN element types
-- [custom fonts](examples/custom-fonts/README.md):
-  - change default font
-  - use specific fonts depending on the BPMN element types
+- [custom user task icon](./examples/custom-user-task-icon/README.md) - use your own icon
+- [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 
 # Powered by
 

@@ -11,3 +11,4 @@ Content
 - override default fill and stroke colors: update the `StyleConfigurator` method prototypes
 - override default font color: update the `StyleConstant` default values
 - different fill and stroke colors for `event`, `gateway` and `task`: extend the lib class entry point
+- specific font color for ` user task`: extend the lib class entry point
