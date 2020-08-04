@@ -1,4 +1,42 @@
-const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
+const bpmn = bpmnDiagram();
+bpmnVisu.load(bpmn);
+
+// demonstrate how to hard code the color for a specific icon
+const userTaskIconColor = 'orange';
+
+// adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
+// use mxgraph svg2xml to generate the xml stencil and port it to code
+IconPainter.paintWomanIcon = function({ c, ratioFromParent, shape: { x, y, w, h }, icon }) {
+    this.updateCanvasStyle(c, Object.assign(Object.assign({}, icon), { isFilled: true }));
+    // icon coordinates fill a 12x13 rectangle
+    const canvas = MxCanvasUtil.getConfiguredCanvas(c, w, h, 13, ratioFromParent);
+    MxCanvasUtil.translateToStartingIconPosition(c, x, y, w, h, 20);
+
+    c.setFillColor(userTaskIconColor);
+
+    canvas.begin();
+    canvas.moveTo(12, 13);
+    canvas.arcTo(1, 1, 0, 0, 1, 11, 14);
+    canvas.lineTo(1, 14);
+    canvas.arcTo(1, 1, 0, 0, 1, 0, 13);
+    canvas.lineTo(0, 12);
+    canvas.curveTo(0, 9.37, 4, 8, 4, 8);
+    canvas.curveTo(4, 8, 4.23, 8, 4, 8);
+    canvas.curveTo(3.16, 6.38, 3.06, 5.41, 3, 3);
+    canvas.curveTo(3.17, 0.59, 4.87, 0, 6, 0);
+    canvas.curveTo(7.13, 0, 8.83, 0.59, 9, 3);
+    canvas.curveTo(8.94, 5.41, 8.84, 6.38, 8, 8);
+    canvas.curveTo(8, 8, 12, 9.37, 12, 12);
+    canvas.lineTo(12, 13);
+    canvas.close();
+    canvas.fill();
+};
+
+const bpmnVisuAlternate = new BpmnVisu(window.document.getElementById('graphAlternate'));
+bpmnVisuAlternate.load(bpmn);
+
+function bpmnDiagram() {
+    return `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_12nbmjq" targetNamespace="http://example.bpmn.com/schema/bpmn">
   <bpmn:collaboration id="Collaboration_1cajy2f">
     <bpmn:participant id="Participant_0zyusbn" name="Pool" processRef="Process_1duwsyj" />
@@ -72,39 +110,4 @@ const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>`;
-
-bpmnVisu.load(bpmn);
-
-// demonstrate how to hard code the color for a specific icon
-const userTaskIconColor = 'orange';
-
-// adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
-// use mxgraph svg2xml to generate the xml stencil and port it to code
-IconPainter.paintWomanIcon = function({ c, ratioFromParent, shape: { x, y, w, h }, icon }) {
-    this.updateCanvasStyle(c, Object.assign(Object.assign({}, icon), { isFilled: true }));
-    // icon coordinates fill a 12x13 rectangle
-    const canvas = MxCanvasUtil.getConfiguredCanvas(c, w, h, 13, ratioFromParent);
-    MxCanvasUtil.translateToStartingIconPosition(c, x, y, w, h, 20);
-
-    c.setFillColor(userTaskIconColor);
-
-    canvas.begin();
-    canvas.moveTo(12, 13);
-    canvas.arcTo(1, 1, 0, 0, 1, 11, 14);
-    canvas.lineTo(1, 14);
-    canvas.arcTo(1, 1, 0, 0, 1, 0, 13);
-    canvas.lineTo(0, 12);
-    canvas.curveTo(0, 9.37, 4, 8, 4, 8);
-    canvas.curveTo(4, 8, 4.23, 8, 4, 8);
-    canvas.curveTo(3.16, 6.38, 3.06, 5.41, 3, 3);
-    canvas.curveTo(3.17, 0.59, 4.87, 0, 6, 0);
-    canvas.curveTo(7.13, 0, 8.83, 0.59, 9, 3);
-    canvas.curveTo(8.94, 5.41, 8.84, 6.38, 8, 8);
-    canvas.curveTo(8, 8, 12, 9.37, 12, 12);
-    canvas.lineTo(12, 13);
-    canvas.close();
-    canvas.fill();
-};
-
-const bpmnVisuAlternate = new BpmnVisu(window.document.getElementById('graphAlternate'));
-bpmnVisuAlternate.load(bpmn);
+}

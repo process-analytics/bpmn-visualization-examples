@@ -1,4 +1,69 @@
-const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
+const bpmn = bpmnDiagram();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// default colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bpmnVisu.load(bpmn);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default font
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const originalDefaultFontFamily = StyleConstant.DEFAULT_FONT_FAMILY;
+const originalDefaultFontSize = StyleConstant.DEFAULT_FONT_SIZE;
+StyleConstant.DEFAULT_FONT_SIZE = '12';
+StyleConstant.DEFAULT_FONT_FAMILY = 'Courier New,serif';
+
+const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
+StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+    originalConfigureCommonDefaultStyle(style);
+    style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
+}
+
+const bpmnVisualizationCustomDefaultFont = new BpmnVisu(window.document.getElementById('graphCustomDefaultFont'));
+bpmnVisualizationCustomDefaultFont.load(bpmn);
+
+// restore StyleConstant defaults
+StyleConstant.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
+StyleConstant.DEFAULT_FONT_SIZE = originalDefaultFontSize;
+// restore StyleConfigurator defaults
+StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom font depending on BPMN elements
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class BpmnVisualizationCustomFonts extends BpmnVisu {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+
+        const userTaskStyle = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
+        userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
+        userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
+
+        const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
+        poolStyle[mxConstants.STYLE_FONTFAMILY] = 'MS Gothic,Courier New,serif';
+        poolStyle[mxConstants.STYLE_FONTSIZE] = '20';
+        poolStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD;
+    }
+
+}
+
+const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('graphCustomFonts');
+bpmnVisualizationCustomFonts.load(bpmn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BPMN
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function bpmnDiagram() {
+    return `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_12nbmjq" targetNamespace="http://example.bpmn.com/schema/bpmn">
   <bpmn:collaboration id="Collaboration_03068dc">
     <bpmn:participant id="Participant_0nuvj8r" name="Pool 1" processRef="Process_0vbjbkf" />
@@ -217,62 +282,4 @@ const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>`;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// default colors
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnVisu.load(bpmn);
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default font
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalDefaultFontFamily = StyleConstant.DEFAULT_FONT_FAMILY;
-const originalDefaultFontSize = StyleConstant.DEFAULT_FONT_SIZE;
-StyleConstant.DEFAULT_FONT_SIZE = '12';
-StyleConstant.DEFAULT_FONT_FAMILY = 'Courier New,serif';
-
-const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
-
-const bpmnVisualizationCustomDefaultFont = new BpmnVisu(window.document.getElementById('graphCustomDefaultFont'));
-bpmnVisualizationCustomDefaultFont.load(bpmn);
-
-// restore StyleConstant defaults
-StyleConstant.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
-StyleConstant.DEFAULT_FONT_SIZE = originalDefaultFontSize;
-// restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom font depending on BPMN elements
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomFonts extends BpmnVisu {
-
-    constructor(containerId) {
-        super(window.document.getElementById(containerId));
-        this.configureStyle();
-    }
-
-    configureStyle() {
-        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
-
-        const userTaskStyle = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
-        userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
-        userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
-
-        const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        poolStyle[mxConstants.STYLE_FONTFAMILY] = 'MS Gothic,Courier New,serif';
-        poolStyle[mxConstants.STYLE_FONTSIZE] = '20';
-        poolStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD;
-    }
-
-}
-
-const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('graphCustomFonts');
-bpmnVisualizationCustomFonts.load(bpmn);
