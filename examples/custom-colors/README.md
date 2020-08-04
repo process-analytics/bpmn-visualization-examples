@@ -1,6 +1,7 @@
 # Custom colors
 
-**DISCLAIMER: this extension point is very experimental and is subject to changes**
+**DISCLAIMER: this extension point is very experimental and is subject to changes**.  
+In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example provided for `bpmn-visualization@0.1.5`, [index.html](./index.html) or [live](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-colors/index.html)
 

@@ -27,7 +27,10 @@ All examples are available live, see [index.html](https://cdn.statically.io/gh/p
 
 ### Extensibility
 
-**DISCLAIMER: extension points are currently very experimental and are subject to changes**
+**DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
+They are mainly hacks to let you see what will be later available in a more integrated way. Extensibility features will
+be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
+
 
 - [custom user task icon](./examples/custom-user-task-icon/README.md) - use your own icon
 - [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
