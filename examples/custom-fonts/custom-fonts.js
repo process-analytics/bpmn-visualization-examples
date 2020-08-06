@@ -3,16 +3,18 @@ const bpmn = bpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnVisu.load(bpmn);
+// const bpmnVisualization = new BpmnVisualization(window.document.getElementById('graph'));
+bpmnVisualization.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default font
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalDefaultFontFamily = StyleConstant.DEFAULT_FONT_FAMILY;
-const originalDefaultFontSize = StyleConstant.DEFAULT_FONT_SIZE;
-StyleConstant.DEFAULT_FONT_SIZE = '12';
-StyleConstant.DEFAULT_FONT_FAMILY = 'Courier New,serif';
+
+const originalDefaultFontFamily = StyleDefault.DEFAULT_FONT_FAMILY;
+const originalDefaultFontSize = StyleDefault.DEFAULT_FONT_SIZE;
+StyleDefault.DEFAULT_FONT_SIZE = '12';
+StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
 const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
 StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
@@ -20,12 +22,11 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 
-const bpmnVisualizationCustomDefaultFont = new BpmnVisu(window.document.getElementById('graphCustomDefaultFont'));
+const bpmnVisualizationCustomDefaultFont = new BpmnVisualization(window.document.getElementById('graphCustomDefaultFont'));
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
-// restore StyleConstant defaults
-StyleConstant.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
-StyleConstant.DEFAULT_FONT_SIZE = originalDefaultFontSize;
+StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
+StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
 // restore StyleConfigurator defaults
 StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 
@@ -33,7 +34,7 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommo
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom font depending on BPMN elements
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomFonts extends BpmnVisu {
+class BpmnVisualizationCustomFonts extends BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
