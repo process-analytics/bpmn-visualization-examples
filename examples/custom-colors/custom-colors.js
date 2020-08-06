@@ -3,18 +3,19 @@ const bpmn = bpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnVisu.load(bpmn);
+bpmnVisualization.load(bpmn);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default font color
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalDefaultFontColor = StyleConstant.DEFAULT_FONT_COLOR;
-StyleConstant.DEFAULT_FONT_COLOR = 'Cyan';
-const bpmnVisualizationCustomDefaultFontColor = new BpmnVisu(window.document.getElementById('graphCustomFontColor'));
+const originalDefaultFontColor = StyleDefault.DEFAULT_FONT_COLOR;
+StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
+const bpmnVisualizationCustomDefaultFontColor = new BpmnVisualization(window.document.getElementById('graphCustomFontColor'));
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
 // restore StyleConstant defaults
-StyleConstant.DEFAULT_FONT_COLOR = originalDefaultFontColor;
+StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -32,16 +33,21 @@ StyleConfigurator.prototype.configureStyles = function () {
     originalConfigureStyles.apply(this);
     [ShapeBpmnElementKind.LANE, ShapeBpmnElementKind.POOL].forEach(kind => {
         const style = this.graph.getStylesheet().styles[kind];
-        style[mxConstants.STYLE_FILLCOLOR] = StyleConstant.DEFAULT_FILL_COLOR;
+        style[mxConstants.STYLE_FILLCOLOR] = StyleDefault.DEFAULT_FILL_COLOR;
     });
 }
-const bpmnVisualizationCustomDefaultColor = new BpmnVisu(window.document.getElementById('graphCustomDefaultColors'));
+const bpmnVisualizationCustomDefaultColor = new BpmnVisualization(window.document.getElementById('graphCustomDefaultColors'));
 bpmnVisualizationCustomDefaultColor.load(bpmn);
+
+// restore StyleConfigurator defaults
+StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom fill and stroke colors depending on BPMN elements
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomColors extends BpmnVisu {
+class BpmnVisualizationCustomColors extends BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
@@ -79,18 +85,14 @@ class BpmnVisualizationCustomColors extends BpmnVisu {
 
 }
 
-// restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
-
-
 const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCustomColors');
 bpmnVisualizationCustomColors.load(bpmn);
+
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom font color for User Task
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomColorUserTask extends BpmnVisu {
+class BpmnVisualizationCustomColorUserTask extends BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
