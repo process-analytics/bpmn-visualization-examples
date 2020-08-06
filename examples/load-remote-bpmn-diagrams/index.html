@@ -52,21 +52,18 @@ limitations under the License.
 </div>
 
 <!-- load global settings -->
-<script src="../../demo/0.1.5/static/js/configureMxGraphGlobals.js"></script>
+<script src="../../demo/0.1.6/static/js/configureMxGraphGlobals.js"></script>
 <!-- load mxGraph client library -->
 <script src="../../demo/0.1.6/static/js/mxClient.min.js"></script>
 <!-- load bpmn-visualization library -->
-<script src="../../demo/0.1.5/index.es.js"></script>
+<script src="../../demo/0.1.7-preview/index.es.js"></script>
 
 <script>
     function log(message, ...optionalParams) {
-        _log('[DEMO]', message, ...optionalParams);
-    }
-    function _log(header, message, ...optionalParams) {
-        console.info(header + ' ' + message, ...optionalParams);
+        console.info('[DEMO] ' + message, ...optionalParams);
     }
     function loadBpmn(bpmn){
-        bpmnVisu.load(bpmn);
+        bpmnVisualization.load(bpmn);
     }
 
     function statusFetching(url) {
