@@ -1,39 +1,52 @@
 const bpmn = bpmnDiagram();
-bpmnVisu.load(bpmn);
+
+
+bpmnVisualization.load(bpmn);
 
 // demonstrate how to hard code the color for a specific icon
 const userTaskIconColor = 'orange';
 
-// adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
-// use mxgraph svg2xml to generate the xml stencil and port it to code
-IconPainter.paintWomanIcon = function({ c, ratioFromParent, shape: { x, y, w, h }, icon }) {
-    this.updateCanvasStyle(c, Object.assign(Object.assign({}, icon), { isFilled: true }));
-    // icon coordinates fill a 12x13 rectangle
-    const canvas = MxCanvasUtil.getConfiguredCanvas(c, w, h, 13, ratioFromParent);
-    MxCanvasUtil.translateToStartingIconPosition(c, x, y, w, h, 20);
+class CustomIconPainter extends IconPainter {
+    // adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
+    // use mxgraph svg2xml to generate the xml stencil and port it to code
+    paintWomanIcon({ c, ratioFromParent, shape: { x, y, w, h }, icon }) {
+        const canvas = new BpmnCanvas({
+            mxCanvas: c,
+            shapeConfiguration: { x, y, w, h },
+            iconConfiguration: {
+                originalSize: { height: 13, width: 12 },
+                ratioFromShape: ratioFromParent,
+                style: { ...icon, isFilled: true },
+            },
+        });
+        canvas.setIconOriginPosition(20);
 
-    c.setFillColor(userTaskIconColor);
+        // this way of doing subject to change in the future
+        c.setFillColor(userTaskIconColor);
 
-    canvas.begin();
-    canvas.moveTo(12, 13);
-    canvas.arcTo(1, 1, 0, 0, 1, 11, 14);
-    canvas.lineTo(1, 14);
-    canvas.arcTo(1, 1, 0, 0, 1, 0, 13);
-    canvas.lineTo(0, 12);
-    canvas.curveTo(0, 9.37, 4, 8, 4, 8);
-    canvas.curveTo(4, 8, 4.23, 8, 4, 8);
-    canvas.curveTo(3.16, 6.38, 3.06, 5.41, 3, 3);
-    canvas.curveTo(3.17, 0.59, 4.87, 0, 6, 0);
-    canvas.curveTo(7.13, 0, 8.83, 0.59, 9, 3);
-    canvas.curveTo(8.94, 5.41, 8.84, 6.38, 8, 8);
-    canvas.curveTo(8, 8, 12, 9.37, 12, 12);
-    canvas.lineTo(12, 13);
-    canvas.close();
-    canvas.fill();
-};
+        canvas.begin();
+        canvas.moveTo(12, 13);
+        canvas.arcTo(1, 1, 0, 0, 1, 11, 14);
+        canvas.lineTo(1, 14);
+        canvas.arcTo(1, 1, 0, 0, 1, 0, 13);
+        canvas.lineTo(0, 12);
+        canvas.curveTo(0, 9.37, 4, 8, 4, 8);
+        canvas.curveTo(4, 8, 4.23, 8, 4, 8);
+        canvas.curveTo(3.16, 6.38, 3.06, 5.41, 3, 3);
+        canvas.curveTo(3.17, 0.59, 4.87, 0, 6, 0);
+        canvas.curveTo(7.13, 0, 8.83, 0.59, 9, 3);
+        canvas.curveTo(8.94, 5.41, 8.84, 6.38, 8, 8);
+        canvas.curveTo(8, 8, 12, 9.37, 12, 12);
+        canvas.lineTo(12, 13);
+        canvas.close();
+        canvas.fill();
+    };
+}
 
-const bpmnVisuAlternate = new BpmnVisu(window.document.getElementById('graphAlternate'));
-bpmnVisuAlternate.load(bpmn);
+IconPainterProvider.set(new CustomIconPainter());
+
+const bpmnVisualizationCustomerUserTask = new BpmnVisualization(window.document.getElementById('graphCustomerUserTask'));
+bpmnVisualizationCustomerUserTask.load(bpmn);
 
 function bpmnDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
