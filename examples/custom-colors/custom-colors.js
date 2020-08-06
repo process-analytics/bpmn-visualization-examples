@@ -90,34 +90,6 @@ bpmnVisualizationCustomColors.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom font color for User Task
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomColorUserTask extends BpmnVisualization {
-
-    constructor(containerId) {
-        super(window.document.getElementById(containerId));
-        this.configureStyle();
-    }
-
-    configureStyle() {
-        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
-        const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
-        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
-        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-        style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-   }
-}
-
-const bpmnVisualizationCustomFontColorUserTask = new BpmnVisualizationCustomColorUserTask('graphCustomFontColorUserTask');
-bpmnVisualizationCustomFontColorUserTask.load(bpmn);
-
-// restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom fill and stroke colors specific to Event elements
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 class BpmnVisualizationCustomEventColors extends BpmnVisualization {
@@ -152,6 +124,35 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
 const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
 bpmnVisualizationEventCustomColors.load(bpmn);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom colors for User Task
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+        const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
+        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+        style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
+        style[mxConstants.STYLE_STROKECOLOR] = 'Red';
+   }
+}
+
+const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('graphCustomColorsUserTask');
+bpmnVisualizationCustomColorsUserTask.load(bpmn);
+
+// restore StyleConfigurator defaults
+StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
