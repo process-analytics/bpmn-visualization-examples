@@ -1,4 +1,126 @@
-const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
+const bpmn = bpmnDiagram();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// default colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+bpmnVisu.load(bpmn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default font color
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const originalDefaultFontColor = StyleConstant.DEFAULT_FONT_COLOR;
+StyleConstant.DEFAULT_FONT_COLOR = 'Cyan';
+const bpmnVisualizationCustomDefaultFontColor = new BpmnVisu(window.document.getElementById('graphCustomFontColor'));
+bpmnVisualizationCustomDefaultFontColor.load(bpmn);
+
+// restore StyleConstant defaults
+StyleConstant.DEFAULT_FONT_COLOR = originalDefaultFontColor;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default fill and stroke colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
+StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+    originalConfigureCommonDefaultStyle(style);
+    style[mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
+    style[mxConstants.STYLE_STROKECOLOR] = 'Orange';
+}
+// hack to ensure that the pool and lane label area fill color are kept untouched
+const originalConfigureStyles = StyleConfigurator.prototype.configureStyles;
+StyleConfigurator.prototype.configureStyles = function () {
+    originalConfigureStyles.apply(this);
+    [ShapeBpmnElementKind.LANE, ShapeBpmnElementKind.POOL].forEach(kind => {
+        const style = this.graph.getStylesheet().styles[kind];
+        style[mxConstants.STYLE_FILLCOLOR] = StyleConstant.DEFAULT_FILL_COLOR;
+    });
+}
+const bpmnVisualizationCustomDefaultColor = new BpmnVisu(window.document.getElementById('graphCustomDefaultColors'));
+bpmnVisualizationCustomDefaultColor.load(bpmn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom fill and stroke colors depending on BPMN elements
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class BpmnVisualizationCustomColors extends BpmnVisu {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+
+        ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
+            const style = styleSheet.styles[kind];
+            style[mxConstants.STYLE_FILLCOLOR] = 'Pink';
+            style[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
+        });
+
+        ShapeUtil.taskKinds().forEach(kind => {
+            const style = styleSheet.styles[kind];
+            style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+            style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+            style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
+            style[mxConstants.STYLE_STROKECOLOR] = 'DarkBlue';
+        });
+
+        ShapeUtil.gatewayKinds().forEach(kind => {
+            const style = styleSheet.styles[kind];
+            style[mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
+            style[mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
+        });
+
+        const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
+        poolStyle[mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
+        poolStyle[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_SOUTH;
+        poolStyle[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+    }
+
+}
+
+// restore StyleConfigurator defaults
+StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
+
+
+const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCustomColors');
+bpmnVisualizationCustomColors.load(bpmn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom font color for User Task
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class BpmnVisualizationCustomColorUserTask extends BpmnVisu {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+        const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+        style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
+        style[mxConstants.STYLE_STROKECOLOR] = '#2b992a';
+   }
+}
+
+const bpmnVisualizationCustomFontColorUserTask = new BpmnVisualizationCustomColorUserTask('graphCustomFontColorUserTask');
+bpmnVisualizationCustomFontColorUserTask.load(bpmn);
+
+// restore StyleConfigurator defaults
+StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BPMN
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function bpmnDiagram() {
+    return  `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_12nbmjq" targetNamespace="http://example.bpmn.com/schema/bpmn">
   <bpmn:collaboration id="Collaboration_03068dc">
     <bpmn:participant id="Participant_0nuvj8r" name="Pool 1" processRef="Process_0vbjbkf" />
@@ -257,118 +379,4 @@ const bpmn = `<?xml version="1.0" encoding="UTF-8"?>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>`;
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// default colors
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnVisu.load(bpmn);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default font color
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalDefaultFontColor = StyleConstant.DEFAULT_FONT_COLOR;
-StyleConstant.DEFAULT_FONT_COLOR = 'Cyan';
-const bpmnVisualizationCustomDefaultFontColor = new BpmnVisu(window.document.getElementById('graphCustomFontColor'));
-bpmnVisualizationCustomDefaultFontColor.load(bpmn);
-
-// restore StyleConstant defaults
-StyleConstant.DEFAULT_FONT_COLOR = originalDefaultFontColor;
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default fill and stroke colors
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[mxConstants.STYLE_STROKECOLOR] = 'Orange';
 }
-// hack to ensure that the pool and lane label area fill color are kept untouched
-const originalConfigureStyles = StyleConfigurator.prototype.configureStyles;
-StyleConfigurator.prototype.configureStyles = function () {
-    originalConfigureStyles.apply(this);
-    [ShapeBpmnElementKind.LANE, ShapeBpmnElementKind.POOL].forEach(kind => {
-        const style = this.graph.getStylesheet().styles[kind];
-        style[mxConstants.STYLE_FILLCOLOR] = StyleConstant.DEFAULT_FILL_COLOR;
-    });
-}
-const bpmnVisualizationCustomDefaultColor = new BpmnVisu(window.document.getElementById('graphCustomDefaultColors'));
-bpmnVisualizationCustomDefaultColor.load(bpmn);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom fill and stroke colors depending on BPMN elements
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomColors extends BpmnVisu {
-
-    constructor(containerId) {
-        super(window.document.getElementById(containerId));
-        this.configureStyle();
-    }
-
-    configureStyle() {
-        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
-
-        ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
-            const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_FILLCOLOR] = 'Pink';
-            style[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
-        });
-
-        ShapeUtil.taskKinds().forEach(kind => {
-            const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
-            style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-            style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-            style[mxConstants.STYLE_STROKECOLOR] = 'DarkBlue';
-        });
-
-        ShapeUtil.gatewayKinds().forEach(kind => {
-            const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
-            style[mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
-        });
-
-        const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        poolStyle[mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
-        poolStyle[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_SOUTH;
-        poolStyle[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-    }
-
-}
-
-// restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
-
-
-const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCustomColors');
-bpmnVisualizationCustomColors.load(bpmn);
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom font color for User Task
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomColorUserTask extends BpmnVisu {
-
-    constructor(containerId) {
-        super(window.document.getElementById(containerId));
-        this.configureStyle();
-    }
-
-    configureStyle() {
-        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
-        const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
-        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
-        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-        style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-        style[mxConstants.STYLE_STROKECOLOR] = '#2b992a';
-   }
-}
-
-const bpmnVisualizationCustomFontColorUserTask = new BpmnVisualizationCustomColorUserTask('graphCustomFontColorUserTask');
-bpmnVisualizationCustomFontColorUserTask.load(bpmn);
-
-// restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
