@@ -137,7 +137,6 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
         [ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
             const intermediateEventStyle = styleSheet.styles[kind];
             intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
-            // intermediateEventStyle[mxConstants.STYLE_FILLCOLOR] = '#7325c1';
         })
 
         const boundaryEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_BOUNDARY];
