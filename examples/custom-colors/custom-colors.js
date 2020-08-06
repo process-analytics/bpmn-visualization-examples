@@ -118,6 +118,41 @@ StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom fill and stroke colors specific to Event elements
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+class BpmnVisualizationCustomEventColors extends BpmnVisualization {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+
+        const startEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
+        startEventStyle[mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
+        startEventStyle[mxConstants.STYLE_STROKECOLOR] = '#8dc125';
+
+        [ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
+            const intermediateEventStyle = styleSheet.styles[kind];
+            intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
+            // intermediateEventStyle[mxConstants.STYLE_FILLCOLOR] = '#7325c1';
+        })
+
+
+        const endEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_END];
+        endEventStyle[mxConstants.STYLE_FILLCOLOR] = 'Pink';
+        endEventStyle[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
+    }
+
+}
+
+const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
+bpmnVisualizationEventCustomColors.load(bpmn);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BPMN
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function bpmnDiagram() {
