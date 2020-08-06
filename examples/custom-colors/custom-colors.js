@@ -106,7 +106,6 @@ class BpmnVisualizationCustomColorUserTask extends BpmnVisualization {
         style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
         style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
         style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-        style[mxConstants.STYLE_STROKECOLOR] = '#2b992a';
    }
 }
 
