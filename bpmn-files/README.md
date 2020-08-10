@@ -11,6 +11,8 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 [Activities](all_activity_types.bpmn)
 ![activities](./all_activity_types__bpmnio.svg)
 
+[Sub Processes](subprocesses.bpmn)
+![sub processes](./subprocesses__bpmnio.svg)
 
 [Events with event definition declared in Event](all_event_types.bpmn)
 ![events with event definition declared in event](./all_event_types__bpmn.io.svg)
