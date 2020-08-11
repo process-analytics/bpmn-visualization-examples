@@ -47,3 +47,6 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 
 [Text Annotations](text_annotations__bpmnio.bpmn)
 ![text annotations](./text_annotations__bpmnio.svg)
+
+[BPMN Artifacts](bpmn_artifacts.bpmn)
+![bpmn artifacts](./bpmn_artifacts__bpmnio.svg)
