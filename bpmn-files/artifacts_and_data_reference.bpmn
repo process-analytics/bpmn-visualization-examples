@@ -50,6 +50,9 @@
       <bpmn:dataOutputAssociation>
         <bpmn:targetRef>DataObjectReference_1549xs9</bpmn:targetRef>
       </bpmn:dataOutputAssociation>
+      <bpmn:dataOutputAssociation id="DataOutputAssociation_04pjgr8">
+        <bpmn:targetRef>DataObjectReference_1549xs9</bpmn:targetRef>
+      </bpmn:dataOutputAssociation>
     </bpmn:task>
     <bpmn:sequenceFlow id="Flow_13j7ap3" sourceRef="StartEvent_1" targetRef="Activity_1pc1cln" />
     <bpmn:task id="Activity_04jlk0c" name="Process">
@@ -85,8 +88,8 @@
     <bpmn:association id="Association_16ysqsl" sourceRef="Activity_00ulbc6" targetRef="TextAnnotation_04bdgwe" />
     <bpmn:textAnnotation id="TextAnnotation_034zo0u">
       <bpmn:text>Some not associated Text Annotation
-Multiline and
-Actually nothing</bpmn:text>
+        Multiline and
+        Actually nothing</bpmn:text>
     </bpmn:textAnnotation>
     <bpmn:textAnnotation id="TextAnnotation_05ohhil">
       <bpmn:text>Start Event Annotation (Association Both)</bpmn:text>
@@ -232,6 +235,11 @@ Actually nothing</bpmn:text>
       <bpmndi:BPMNShape id="TextAnnotation_1jf02lc_di" bpmnElement="TextAnnotation_1jf02lc">
         <dc:Bounds x="600" y="460" width="145" height="52" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="DataOutputAssociation_04pjgr8_di" bpmnElement="DataOutputAssociation_04pjgr8">
+        <di:waypoint x="225" y="820" />
+        <di:waypoint x="290" y="670" />
+        <di:waypoint x="352" y="655" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Group_1sg6m2r_di" bpmnElement="Group_1sg6m2r">
         <dc:Bounds x="635" y="755" width="330" height="210" />
         <bpmndi:BPMNLabel>
