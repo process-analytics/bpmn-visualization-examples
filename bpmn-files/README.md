@@ -14,6 +14,9 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 [Sub Processes](subprocesses.bpmn)
 ![sub processes](./subprocesses__bpmnio.svg)
 
+[Event and Transaction Sub Processes](subprocesses_event_and_transaction.bpmn)
+![event and transaction sub processes](./subprocesses_event_and_transaction__bpmnio.svg)
+
 [Events with event definition declared in Event](all_event_types.bpmn)
 ![events with event definition declared in event](./all_event_types__bpmn.io.svg)
 
