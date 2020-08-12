@@ -27,6 +27,9 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 [Gateways](all_gateway_types.bpmn)
 ![gateways](./all_gateway_types__bpmn.io.svg)
 
+[Artifacts and Data Reference](artifacts_and_data_reference.bpmn)
+![Artifacts and Data Reference](./artifacts_and_data_reference__bpmnio.svg)
+
 
 ## Flows
 
@@ -42,11 +45,3 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 [Sequence flows Labels](label_sequence_flows.bpmn)
 ![Sequence flows labels](./label_sequence_flows__bpmnio.svg)
 
-
-## BPMN artifacts
-
-[Text Annotations](text_annotations__bpmnio.bpmn)
-![text annotations](./text_annotations__bpmnio.svg)
-
-[BPMN Artifacts](bpmn_artifacts.bpmn)
-![bpmn artifacts](./bpmn_artifacts__bpmnio.svg)
