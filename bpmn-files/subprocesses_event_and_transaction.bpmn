@@ -160,10 +160,6 @@
         <outgoing>Flow_05x0xs3</outgoing>
       </exclusiveGateway>
       <sequenceFlow id="Flow_0ry36lb" sourceRef="Event_1dys7dp" targetRef="Gateway_0d15ofq" />
-      <startEvent id="Event_070v89k" name="message">
-        <outgoing>Flow_1i4xjj6</outgoing>
-        <messageEventDefinition id="MessageEventDefinition_0gka62r" />
-      </startEvent>
       <startEvent id="Event_1pblmee" name="message non-interrupting" isInterrupting="false">
         <outgoing>Flow_1ug7sri</outgoing>
         <messageEventDefinition id="MessageEventDefinition_0b0xsu9" />
@@ -255,6 +251,10 @@
       </startEvent>
       <sequenceFlow id="Flow_1ozbhmp" sourceRef="Event_0qnqge8" targetRef="Gateway_0d15ofq" />
       <sequenceFlow id="Flow_0sy4082" sourceRef="Event_1blc0bz" targetRef="Gateway_0d15ofq" />
+      <startEvent id="Event_070v89k" name="error">
+        <outgoing>Flow_1i4xjj6</outgoing>
+        <errorEventDefinition id="ErrorEventDefinition_06a2yp5" />
+      </startEvent>
     </subProcess>
   </process>
   <process id="Process_1v747r4">
@@ -600,12 +600,6 @@
       <bpmndi:BPMNShape id="Gateway_0d15ofq_di" bpmnElement="Gateway_0d15ofq" isMarkerVisible="true">
         <dc:Bounds x="425" y="345" width="50" height="50" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_0ynmc7e_di" bpmnElement="Event_070v89k">
-        <dc:Bounds x="272" y="202" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="268" y="245" width="45" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0pgys59_di" bpmnElement="Event_1pblmee">
         <dc:Bounds x="272" y="272" width="36" height="36" />
         <bpmndi:BPMNLabel>
@@ -638,6 +632,12 @@
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1xxxfhk_di" bpmnElement="Activity_00dq2bg">
         <dc:Bounds x="543" y="330" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0e23fne_di" bpmnElement="Event_070v89k">
+        <dc:Bounds x="272" y="202" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="279" y="245" width="24" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1iaso4p_di" bpmnElement="Activity_1iaso4p" isExpanded="true">
         <dc:Bounds x="730" y="195" width="440" height="350" />
