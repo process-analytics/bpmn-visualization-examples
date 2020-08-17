@@ -8,6 +8,10 @@ the image may not be up to date with the BPMN file, so the final display may dif
 Feel free to create a PR to update the image if the discrepancies are too large.
 
 
+[Pools](pools.bpmn)
+![pools](./pools__bpmn-visualization-0.2.0-dev.png)
+
+
 [Activities](all_activity_types.bpmn)
 ![activities](./all_activity_types__bpmnio.svg)
 
@@ -29,6 +33,7 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 
 [Gateways](all_gateway_types.bpmn)
 ![gateways](./all_gateway_types__bpmn.io.svg)
+
 
 [Artifacts and Data Reference](artifacts_and_data_reference.bpmn)
 ![Artifacts and Data Reference](./artifacts_and_data_reference__bpmnio.svg)
