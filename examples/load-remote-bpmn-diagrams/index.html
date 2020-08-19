@@ -32,11 +32,7 @@ limitations under the License.
     </style>
 </head>
 <body>
-<!-- hack to avoid errors: the demo code requires these ids to add a listener -->
-<div id="bpmn-file"></div>
-<div id="file-selector"></div>
-<!-- DO NOT change this id, the demo code requires it -->
-<div id="graph">
+<div id="view-port">
     <h2>Load remote BPMN diagrams</h2>
 
     <label for="btn-fetch-miwg">Fetch random file from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank">miwg-test-suite</a></label>
@@ -52,13 +48,15 @@ limitations under the License.
 </div>
 
 <!-- load global settings -->
-<script src="../../demo/0.1.7/static/js/configureMxGraphGlobals.js"></script>
+<script src="../../demo/0.2.0/static/js/configureMxGraphGlobals.js"></script>
 <!-- load mxGraph client library -->
-<script src="../../demo/0.1.7/static/js/mxClient.min.js"></script>
-<!-- load bpmn-visualization library -->
-<script src="../../demo/0.1.7/index.es.js"></script>
+<script src="../../demo/0.2.0/static/js/mxClient.min.js"></script>
 
-<script>
+<script type="module">
+    import { newBpmnVisualization } from "../utils.js";
+
+    const bpmnVisualization = newBpmnVisualization('view-port');
+
     function log(message, ...optionalParams) {
         console.info('[DEMO] ' + message, ...optionalParams);
     }

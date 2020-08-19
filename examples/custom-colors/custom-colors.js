@@ -1,8 +1,12 @@
+import { BpmnVisualization, ShapeBpmnElementKind, ShapeUtil, StyleConfigurator, StyleDefault } from '../../demo/0.2.0/index.es.js';
+import { newBpmnVisualization } from "../utils.js";
+
 const bpmn = bpmnDiagram();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const bpmnVisualization = newBpmnVisualization('graphDefault');
 bpmnVisualization.load(bpmn);
 
 
@@ -11,7 +15,7 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const originalDefaultFontColor = StyleDefault.DEFAULT_FONT_COLOR;
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
-const bpmnVisualizationCustomDefaultFontColor = new BpmnVisualization(window.document.getElementById('graphCustomFontColor'));
+const bpmnVisualizationCustomDefaultFontColor = newBpmnVisualization('graphCustomFontColor');
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
 // restore StyleConstant defaults
@@ -36,7 +40,7 @@ StyleConfigurator.prototype.configureStyles = function () {
         style[mxConstants.STYLE_FILLCOLOR] = StyleDefault.DEFAULT_FILL_COLOR;
     });
 }
-const bpmnVisualizationCustomDefaultColor = new BpmnVisualization(window.document.getElementById('graphCustomDefaultColors'));
+const bpmnVisualizationCustomDefaultColor = newBpmnVisualization('graphCustomDefaultColors');
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults

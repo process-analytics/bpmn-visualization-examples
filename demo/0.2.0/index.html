@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization Demo</title>
+    <link href="./static/css/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="./static/img/favicon.ico">
+</head>
+<body>
+    <div id="file-selector" class="hidden">
+        <input type="file" id="bpmn-file" name="file"/>
+        <label for="bpmn-file" class="btn"><span>open BPMN file</span></label>
+    </div>
+    <div class="info-centered"><p>(either drop a file here)</p></div>
+    <div id="graph"></div>
+
+    <!-- load global settings -->
+    <script src="./static/js/configureMxGraphGlobals.js"></script>
+    <!-- load mxGraph client library -->
+    <script src="./static/js/mxClient.min.js"></script>
+    <!-- load bpmn-visualization library -->
+    <script src="./index.es.js" type="module"></script>
+    <!-- load demo -->
+    <script src="./static/js/demo.js" type="module"></script>
+</body>
+</html>
