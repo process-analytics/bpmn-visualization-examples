@@ -16,13 +16,11 @@ EXAMPLES_DIRECTORY="$SCRIPT_DIRECTORY/../examples"
 pushd "$EXAMPLES_DIRECTORY" > /dev/null
 
 echo "Search for files in $(pwd)"
-# lines to update start with something like "<script src="../../demo/0.1.6/"
+# lines to update contains substring like "/demo/0.1.6/"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	sed -i '' -E "s#<script src=\"../../demo/[^/]+/#<script src=\"../../demo/$NEW_VERSION/#" **/*.{html,md}
-	sed -i '' -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.js
+	sed -i '' -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
 else
-	sed -i -E "s#<script src=\"../../demo/[^/]+/#<script src=\"../../demo/$NEW_VERSION/#" **/*.{html,md}
-	sed -i -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.js
+	sed -i -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
 fi
 
 echo "Files updated"
