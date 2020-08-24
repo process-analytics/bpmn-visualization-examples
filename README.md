@@ -19,7 +19,7 @@ If you need BPMN examples, you can use resources
 
 ## Examples
 
-All examples are available in the [__ :fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
+All examples are available in the [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
 
 ### Running examples locally
 
@@ -63,4 +63,4 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
 
-**[statically.io](https://statically.io)** (demo environment and live examples)
+**[statically.io](https://statically.io)** (<kbd>demo</kbd> and <kbd>examples</kbd> live environments)
