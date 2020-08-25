@@ -13,9 +13,13 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { documentReady, handleFileSelect, startBpmnVisualization } from '../../index.es.js';
+import { documentReady, startBpmnVisualization } from '../../index.es.js';
 
-document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
-document.getElementById('file-selector').classList.remove('hidden');
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function statusFetchKO(errorMsg) {
+  const statusElt = document.getElementById('fetch-status');
+  statusElt.innerText = errorMsg;
+  statusElt.className = 'status-ko';
+}
 
-documentReady(startBpmnVisualization({ container: 'graph' }));
+documentReady(startBpmnVisualization({ container: 'viewport', statusFetchKoNotifier: statusFetchKO }));
