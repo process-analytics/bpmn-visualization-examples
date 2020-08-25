@@ -1,6 +1,9 @@
+import { IconPainter, IconPainterProvider } from "../../demo/0.2.0/index.es.js";
+import { newBpmnVisualization } from "../utils.js";
+
 const bpmn = bpmnDiagram();
 
-
+const bpmnVisualization = newBpmnVisualization('graphDefault');
 bpmnVisualization.load(bpmn);
 
 // demonstrate how to hard code the color for a specific icon
@@ -9,19 +12,9 @@ const userTaskIconColor = 'orange';
 class CustomIconPainter extends IconPainter {
     // adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
     // use mxgraph svg2xml to generate the xml stencil and port it to code
-    paintWomanIcon({ c, ratioFromParent, shape: { x, y, w, h }, icon }) {
-        const canvas = new BpmnCanvas({
-            mxCanvas: c,
-            shapeConfiguration: { x, y, w, h },
-            iconConfiguration: {
-                originalSize: { height: 13, width: 12 },
-                ratioFromShape: ratioFromParent,
-                style: { ...icon, isFilled: true },
-            },
-        });
-        canvas.setIconOriginPosition(20);
-
-        // this way of doing subject to change in the future
+    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+        const canvas = this.newBpmnCanvas({c, ratioFromParent, setIconOrigin, shape, icon}, {height: 13, width: 12});
+        // this way of doing subject to change in the future (probably by setting the fillColor in the icon style configuration)
         c.setFillColor(userTaskIconColor);
 
         canvas.begin();
@@ -45,9 +38,13 @@ class CustomIconPainter extends IconPainter {
 
 IconPainterProvider.set(new CustomIconPainter());
 
-const bpmnVisualizationCustomerUserTask = new BpmnVisualization(window.document.getElementById('graphCustomerUserTask'));
+const bpmnVisualizationCustomerUserTask = newBpmnVisualization('graphCustomerUserTask');
 bpmnVisualizationCustomerUserTask.load(bpmn);
 
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BPMN
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 function bpmnDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_12nbmjq" targetNamespace="http://example.bpmn.com/schema/bpmn">

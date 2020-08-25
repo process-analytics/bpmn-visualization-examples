@@ -1,9 +1,12 @@
+import { BpmnVisualization, ShapeBpmnElementKind, StyleConfigurator, StyleDefault } from '../../demo/0.2.0/index.es.js';
+import { newBpmnVisualization } from "../utils.js";
+
 const bpmn = bpmnDiagram();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// const bpmnVisualization = new BpmnVisualization(window.document.getElementById('graph'));
+const bpmnVisualization = newBpmnVisualization('graphDefault');
 bpmnVisualization.load(bpmn);
 
 
@@ -22,7 +25,7 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 
-const bpmnVisualizationCustomDefaultFont = new BpmnVisualization(window.document.getElementById('graphCustomDefaultFont'));
+const bpmnVisualizationCustomDefaultFont = newBpmnVisualization('graphCustomDefaultFont');
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
 StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
