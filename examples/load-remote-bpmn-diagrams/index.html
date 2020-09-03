@@ -17,6 +17,7 @@ limitations under the License.
     <meta charset="UTF-8">
     <title>BPMN Visualization - Load remote BPMN diagrams</title>
     <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../static/css/spectre.min.css" type="text/css">
     <style>
         .status-fetching {
             color: blueviolet;
@@ -29,23 +30,49 @@ limitations under the License.
             color: red;
             font-weight: bold;
         }
+        .relative {
+            position: relative;
+        }
+        .viewport-container-absolute {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
     </style>
 </head>
 <body>
-<div id="view-port">
-    <h2>Load remote BPMN diagrams</h2>
 
-    <label for="btn-fetch-miwg">Fetch random file from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank">miwg-test-suite</a></label>
-    <button id="btn-fetch-miwg" title="Fetch from miwg-test-suite">
-        <!-- https://icons.getbootstrap.com/icons/arrow-clockwise/ -->
-        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
-            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
-        </svg>
-    </button>
-    <div id="fetch-status"></div>
+<header class="navbar bg-dark p-2">
+    <section class="navbar-section ml-2">
+        <span class="h3 text-primary">BPMN Visualization Examples</span>
+    </section>
+    <section class="navbar-section">
+        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+        <a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-primary">GitHub</a>
+    </section>
+</header>
+<section class="container col-10 flex-centered mt-2">
+        <section class="col-12 mt-2 relative">
+            <div class="viewport-container-absolute">
+                <div id="view-port">
+                    <h2>Load remote BPMN diagrams</h2>
 
-</div>
+                    <label for="btn-fetch-miwg">Fetch random file from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a></label>
+                    <button id="btn-fetch-miwg" title="Fetch from miwg-test-suite">
+                        <!-- https://icons.getbootstrap.com/icons/arrow-clockwise/ -->
+                        <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                            <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
+                            <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
+                        </svg>
+                    </button>
+                    <div id="fetch-status"></div>
+
+                </div>
+            </div>
+        </section>
+</section>
 
 <!-- load global settings -->
 <script src="../../demo/0.2.0/static/js/configureMxGraphGlobals.js"></script>
