@@ -4,3 +4,12 @@
 img.logo {
     max-height: 40px;
 }
+div.card {
+    min-height: 390px;
+}
+.mt-40 {
+    margin-top: 4rem;
+}
+.icon-in-the-middle:before, .icon-in-the-middle:after {
+    top: 40%;
+}
