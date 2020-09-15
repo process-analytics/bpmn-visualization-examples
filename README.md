@@ -2,6 +2,8 @@
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](CODE_OF_CONDUCT.md)
+
 ## Demo
 
 This example let you load a BPMN file to see how the lib renders it. Various versions of the lib are available. 
