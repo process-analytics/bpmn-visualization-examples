@@ -17,14 +17,42 @@ limitations under the License.
     <meta charset="UTF-8">
     <title>BPMN Visualization - Custom User Task Icon</title>
     <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
 </head>
 <body>
-<div id="graphDefault">
-    <h2>Default User Task icon</h2>
-</div>
-<div id="graphCustomerUserTask">
-    <h2>Custom User Task icon</h2>
-</div>
+
+<header class="navbar bg-dark p-2">
+    <section class="navbar-section ml-2">
+        <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
+        <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+    </section>
+    <section class="navbar-section">
+        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+        <div class="dropdown mr-2">
+            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+            </a>
+            <ul class="menu">
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+</header>
+<section class="container col-10 flex-centered mt-2">
+        <section class="col-12 mt-2">
+
+            <div id="graphDefault" class="mt-40">
+                <h2>Default User Task icon</h2>
+            </div>
+            <div id="graphCustomerUserTask" class="mt-40 mb-2">
+                <h2>Custom User Task icon</h2>
+            </div>
+
+        </section>
+</section>
 
 <!-- load global settings -->
 <script src="../../demo/0.3.0/static/js/configureMxGraphGlobals.js"></script>
