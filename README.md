@@ -48,6 +48,9 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
+### Basic `bpmn-visualization` usage 
+If you never integrated BPMN Visualization in your application, see the basic [tutorial](https://github.com/process-analytics/bpmn-visualization-js/blob/master/README.md#%EF%B8%8F-usage)
+
 ### `bpmn-visualization` usage examples
 
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
