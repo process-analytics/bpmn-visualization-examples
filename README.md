@@ -1,6 +1,6 @@
 <h1 align="center">BPMN Visualization Examples</h1> <br>
 <p align="center">
-   <img src="logo.png">
+   <img src="examples_home.png">
 </p>
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](CONTRIBUTING.md)
