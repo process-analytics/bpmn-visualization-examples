@@ -1,6 +1,6 @@
 <h1 align="center">BPMN Visualization Examples</h1> <br>
 <p align="center">
-   <img src="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/logo.png">
+   <img src="logo.png">
 </p>
 
 [![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](CONTRIBUTING.md)
