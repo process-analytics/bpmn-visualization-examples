@@ -1,12 +1,16 @@
-# bpmn-visualization examples
+<h1 align="center">BPMN Visualization Examples</h1> <br>
+<p align="center">
+   <img src="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/logo.png">
+</p>
 
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](CONTRIBUTING.md)
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md)
 [![License](https://img.shields.io/github/license/process-analytics/bpmn-visualization-examples?color=blue)](LICENSE)
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
 
-## Demo
+## 🎮 Demo
 
 This example let you load a BPMN file to see how the lib renders it. Various versions of the lib are available. 
 
@@ -19,7 +23,7 @@ If you need BPMN examples, you can use resources
   - https://github.com/bpmn-miwg/bpmn-miwg-demos
 - [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
 
-## Examples
+## 🔭 Examples
 
 All examples are available in the [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
 
@@ -44,8 +48,6 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
-
-
 ### `bpmn-visualization` usage examples
 
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
@@ -56,12 +58,27 @@ Go to the repository root and use one the following solutions
 They are mainly hacks to let you see what will be later available in a more integrated way. Extensibility features will
 be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
-
 - [custom user task icon](./examples/custom-user-task-icon/README.md) - use your own icon
 - [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 
-# Powered by
+## 🔧 Contributing
+
+To contribute to `bpmn-visualization-examples`, fork and clone this repository locally and commit your code on a separate branch. \
+Please add a screenshot of the new rendering when you open a pull-request.
+
+You can find more detail in our [Contributing guide](CONTRIBUTING.md#Build). Participation in this open source project is subject to a [Code of Conduct](CODE_OF_CONDUCT.md).
+
+:sparkles: A BIG thanks to all our contributors :slightly_smiling_face:
+
+
+## 📃 License
+
+`bpmn-visualization-examples` is released under the [Apache 2.0](LICENSE) license. \
+Copyright &copy; 2020, Bonitasoft S.A.
+
+
+## ⚡ Powered by
 
 [![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
 
