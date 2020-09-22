@@ -1,11 +1,20 @@
 <h1 align="center">BPMN Visualization Examples</h1> <br>
 <p align="center">
-   <img src="examples_home.png">
+    <p align="center">
+        <img src="examples_home.png">
+    </p>
+    <p align="center">
+        <a href="CONTRIBUTING.md">
+            <img alt="PRs Welcome" src="https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square"> 
+        </a> 
+        <a href="https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md">
+            <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg"> 
+        </a> 
+        <a href="LICENSE">
+            <img alt="License" src="https://img.shields.io/github/license/process-analytics/bpmn-visualization-js?color=blue"> 
+        </a> 
+    </p>
 </p>
-
-[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square)](CONTRIBUTING.md)
-[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md)
-[![License](https://img.shields.io/github/license/process-analytics/bpmn-visualization-examples?color=blue)](LICENSE)
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
