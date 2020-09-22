@@ -73,6 +73,21 @@ limitations under the License.
                 <span>Fetch random file </span><span class="icon icon-refresh mb-1"></span>
             </button>
             from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a>
+            or select one
+            <div class="dropdown mr-2">
+                <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                    file <span class="icon icon-caret icon-in-the-middle"></span>
+                </a>
+                <!-- TODO fill the list dynamically -->
+                <ul class="menu">
+                    <li><a href="#" class="mr-2 btn btn-link">A.1.0</a></li>
+                    <li><a href="#" class="mr-2 btn btn-link">A.2.0</a></li>
+                    <li><a href="#" class="mr-2 btn btn-link">A.2.1</a></li>
+                    <li><a href="#" class="mr-2 btn btn-link">C.1.0</a></li>
+                    <li><a href="#" class="mr-2 btn btn-link">C.1.1</a></li>
+                    <li><a href="#" class="mr-2 btn btn-link">C.2.0</a></li>
+                </ul>
+            </div>
             <div id="fetch-status"></div>
         </section>
 </section>
@@ -147,6 +162,8 @@ limitations under the License.
         });
     }
 
+    // TODO use this file to fill the dropdown use to load a dedicated file
+    // TODO remove the do not exist file and add it to an array only used for random fetch
     const miwgFileNames = ['A.1.0.bpmn', 'A.2.0.bpmn', 'A.2.1.bpmn',
         'B.1.0.bpmn', 'B.2.0.bpmn',
         'C.1.0.bpmn', 'C.1.1.bpmn', 'C.2.0.bpmn', 'C.3.0.bpmn', 'C.4.0.bpmn',
