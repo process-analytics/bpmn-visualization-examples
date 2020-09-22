@@ -63,7 +63,7 @@ const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCu
 ```
 
 - different fill and stroke colors for `events`: extend the lib class entry point
-````javascript
+```javascript
 class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
     constructor(containerId) {
@@ -76,23 +76,31 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
         const startEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
         startEventStyle[mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
-        startEventStyle[mxConstants.STYLE_STROKECOLOR] = '#8dc125';
 
         [ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
             const intermediateEventStyle = styleSheet.styles[kind];
             intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
         })
-
-        const boundaryEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_BOUNDARY];
-        boundaryEventStyle[mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
-        boundaryEventStyle[mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
-
-        const endEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_END];
-        endEventStyle[mxConstants.STYLE_FILLCOLOR] = 'Pink';
-        endEventStyle[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
     }
 }
 
 const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
-````
+```
 - specific font color for ` user task`: extend the lib class entry point
+```javascript
+class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+        const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+   }
+}
+
+const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('graphCustomColorsUserTask');
+```
