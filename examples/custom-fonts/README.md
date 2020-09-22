@@ -12,7 +12,7 @@ Javascript example
 Override the BPMN element fonts using various ways. `mxGraph` knowledge is required to handle style changes.
 See https://process-analytics.github.io/bpmn-visualization-js/#bpmn-support-howto-elements-rendering for more information.
 
-Content
+Content:
 - override default font: update the `StyleConstant` default values and update the `StyleConfigurator` method prototypes
 - different fonts for `event`, `gateway` and `task`: extend the lib class entry point
 
