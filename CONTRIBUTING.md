@@ -2,21 +2,21 @@
 
 You are here to help on `bpmn-visualization-examples`? Awesome, feel welcome and read the following guidelines in order to know how to contribute, to ask questions and to make `bpmn-visualization` such a great tool.
 
-All members of our community are expected to follow our [Code of Conduct](CODE_OF_CONDUCT.md). Please make sure you are welcoming and friendly in all of our spaces.
+All members of our community are expected to follow our [Code of Conduct](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md). Please make sure you are welcoming and friendly in all of our spaces.
 
 ## Contributions 
 
 There are many ways to contribute:
 
 - update the [BPMN files](./bpmn-files) used for our test 
-- submitting bug reports and [new examples](./examples)in the [Github Issues](https://github.com/process-analytics/bpmn-visualization-js/issues/new)
+- submitting bug reports and [new examples](./examples)in the [Github Issues](https://github.com/process-analytics/bpmn-visualization-examples/issues/new)
 - [improving](CONTRIBUTING.md#code-and-documentation-changes) the README
 
 ## Code and documentation changes guidelines
 
 For all contributions, please respect the following guidelines:
 
-1. If you've noticed a bug or have a feature request, let us know in the [GitHub Issue tracker](https://github.com/process-analytics/bpmn-visualization-js/issues/new )! So we can confirm the bug or approve your feature, and provide feedback, before starting to code :slightly_smiling_face:
+1. If you've noticed a bug or have a feature request, let us know in the [GitHub Issue tracker](https://github.com/process-analytics/bpmn-visualization-examples/issues/new )! So we can confirm the bug or approve your feature, and provide feedback, before starting to code :slightly_smiling_face:
 
 2. Do the changes in your own [fork](CONTRIBUTING.md#fork--create-a-branch) of the code
 
@@ -33,7 +33,7 @@ For all contributions, please respect the following guidelines:
 
 ### Fork & create a branch
 
-[Fork bpmn-visualization](https://help.github.com/articles/fork-a-repo) and create a branch with a descriptive name. 
+[Fork bpmn-visualization-examples](https://help.github.com/articles/fork-a-repo) and create a branch with a descriptive name. 
 
 A good branch name would be (where issue #25 is the ticket you're working on): **25-annotations_to_tasks**
 
@@ -59,11 +59,11 @@ The most important part is the title of the Pull Request, because:
 
 ### Open a Pull Request
 
-At this point, you should switch back to your master branch and make sure it's up to date with `bpmn-visualization-exapmles`
+At this point, you should switch back to your master branch and make sure it's up to date with `bpmn-visualization-examples`
 `master` branch:
 
 ```sh
-git remote add upstream git@github.com:process-analytics/bpmn-visualization-js.git
+git remote add upstream git@github.com:process-analytics/bpmn-visualization-examples.git
 git checkout master
 git pull upstream master
 ```
