@@ -22,15 +22,9 @@ limitations under the License.
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
     <style>
         .status-fetching {
-            color: blueviolet;
+            color: #5755d9;
             font-style: italic;
-        }
-        .status-ok {
-            color: #2ecc71;
-        }
-        .status-ko {
-            color: red;
-            font-weight: bold;
+            padding: .4rem;
         }
         .relative {
             position: relative;
@@ -46,6 +40,9 @@ limitations under the License.
             overflow-x: auto;
             overflow-y: hidden;
             padding-bottom: 100px;
+        }
+        #fetch-status {
+            margin: 10px 0;
         }
     </style>
 </head>
@@ -72,14 +69,10 @@ limitations under the License.
 <section class="container col-10 flex-centered mt-2">
         <section class="col-12 mt-2 relative">
             <h2>Load remote BPMN diagrams</h2>
-            <label for="btn-fetch-miwg">Fetch random file from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a></label>
-            <button id="btn-fetch-miwg" title="Fetch from miwg-test-suite">
-                <!-- https://icons.getbootstrap.com/icons/arrow-clockwise/ -->
-                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-arrow-clockwise" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
-                    <path fill-rule="evenodd" d="M3.17 6.706a5 5 0 0 1 7.103-3.16.5.5 0 1 0 .454-.892A6 6 0 1 0 13.455 5.5a.5.5 0 0 0-.91.417 5 5 0 1 1-9.375.789z"/>
-                    <path fill-rule="evenodd" d="M8.147.146a.5.5 0 0 1 .707 0l2.5 2.5a.5.5 0 0 1 0 .708l-2.5 2.5a.5.5 0 1 1-.707-.708L10.293 3 8.147.854a.5.5 0 0 1 0-.708z"/>
-                </svg>
+            <button id="btn-fetch-miwg" title="Fetch from miwg-test-suite" class="btn btn-primary has-icon-right">
+                <span>Fetch random file </span><span class="icon icon-refresh mb-1"></span>
             </button>
+            from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a>
             <div id="fetch-status"></div>
         </section>
 </section>
@@ -115,13 +108,13 @@ limitations under the License.
     function statusFetched(url, duration) {
         const statusElt = document.getElementById('fetch-status');
         statusElt.innerText = `Fetch OK (${duration} ms): ${url}`;
-        statusElt.className = 'status-ok';
+        statusElt.className = 'toast toast-success';
     }
 
     function statusFetchKO(url, error) {
         const statusElt = document.getElementById('fetch-status');
         statusElt.innerText = `Unable to fetch ${url}. ${error}`;
-        statusElt.className = 'status-ko';
+        statusElt.className = 'toast toast-error';
     }
 
     function fetchBpmnContent(url) {
