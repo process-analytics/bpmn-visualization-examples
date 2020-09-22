@@ -79,7 +79,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 To contribute to `bpmn-visualization-examples`, fork and clone this repository locally and commit your code on a separate branch. \
 Please add a screenshot of the new rendering when you open a pull-request.
 
-You can find more detail in our [Contributing guide](CONTRIBUTING.md#Build). Participation in this open source project is subject to a [Code of Conduct](CODE_OF_CONDUCT.md).
+You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participation in this open source project is subject to a [Code of Conduct](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md).
 
 :sparkles: A BIG thanks to all our contributors :slightly_smiling_face:
 
