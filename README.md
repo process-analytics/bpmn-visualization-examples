@@ -1,7 +1,9 @@
 <h1 align="center">BPMN Visualization Examples</h1> <br>
 <p align="center">
     <p align="center">
-        <img src="examples_home.png">
+        <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html">
+            <img src="examples_home.png">
+        </a> 
     </p>
     <p align="center">
         <a href="CONTRIBUTING.md">
