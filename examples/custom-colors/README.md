@@ -86,6 +86,7 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
 const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
 ```
+
 - specific font color for ` user task`: extend the lib class entry point
 ```javascript
 class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
