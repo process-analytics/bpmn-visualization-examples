@@ -1,0 +1,153 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_14mbaax" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="7.2.0">
+  <bpmn:process id="process_1" isExecutable="false">
+    <bpmn:startEvent id="start_event" name="Hacktober FEST starts the October, 1st">
+      <bpmn:outgoing>sequence_flow_1</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:sequenceFlow id="sequence_flow_1" sourceRef="start_event" targetRef="exclusive_gateway_1" />
+    <bpmn:exclusiveGateway id="exclusive_gateway_1" name="Already registered on Hacktober FEST website ?" default="sequence_flow_2">
+      <bpmn:incoming>sequence_flow_1</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_2</bpmn:outgoing>
+      <bpmn:outgoing>sequence_flow_4</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:userTask id="user_task_1" name="Register on https://hacktoberfest.&#10;digitalocean.com/">
+      <bpmn:incoming>sequence_flow_2</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_3</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="sequence_flow_2" name="No" sourceRef="exclusive_gateway_1" targetRef="user_task_1" />
+    <bpmn:sequenceFlow id="sequence_flow_3" sourceRef="user_task_1" targetRef="exclusive_gateway_2" />
+    <bpmn:exclusiveGateway id="exclusive_gateway_2">
+      <bpmn:incoming>sequence_flow_3</bpmn:incoming>
+      <bpmn:incoming>sequence_flow_4</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_5</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="sequence_flow_4" name="Yes" sourceRef="exclusive_gateway_1" targetRef="exclusive_gateway_2" >
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"/>
+    </bpmn:sequenceFlow>
+    <bpmn:userTask id="user_task_2" name="Find a issue labeled &#39;hacktoberfest&#39;">
+      <bpmn:incoming>sequence_flow_5</bpmn:incoming>
+      <bpmn:incoming>sequence_flow_8</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_6</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="sequence_flow_5" sourceRef="exclusive_gateway_2" targetRef="user_task_2" />
+    <bpmn:userTask id="user_task_3" name="Contribute to BPMN Visualization">
+      <bpmn:incoming>sequence_flow_6</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_7</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="sequence_flow_6" sourceRef="user_task_2" targetRef="user_task_3" />
+    <bpmn:sequenceFlow id="sequence_flow_7" sourceRef="user_task_3" targetRef="exclusive_gateway_3" />
+    <bpmn:exclusiveGateway id="exclusive_gateway_3" name="Is it your your 5th contribution?" default="sequence_flow_8">
+      <bpmn:incoming>sequence_flow_7</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_8</bpmn:outgoing>
+      <bpmn:outgoing>sequence_flow_9</bpmn:outgoing>
+    </bpmn:exclusiveGateway>
+    <bpmn:sequenceFlow id="sequence_flow_8" name="No" sourceRef="exclusive_gateway_3" targetRef="user_task_2" />
+    <bpmn:userTask id="user_task_4" name="Win a limited edition T-shirt">
+      <bpmn:incoming>sequence_flow_9</bpmn:incoming>
+      <bpmn:outgoing>sequence_flow_10</bpmn:outgoing>
+    </bpmn:userTask>
+    <bpmn:sequenceFlow id="sequence_flow_9" name="Yes" sourceRef="exclusive_gateway_3" targetRef="user_task_4" >
+      <bpmn:conditionExpression xsi:type="bpmn:tFormalExpression"/>
+    </bpmn:sequenceFlow>
+    <bpmn:endEvent id="end_event">
+      <bpmn:incoming>sequence_flow_10</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="sequence_flow_10" sourceRef="user_task_4" targetRef="end_event" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="process_1">
+      <bpmndi:BPMNEdge id="edge_sequence_flow_4" bpmnElement="sequence_flow_4">
+        <di:waypoint x="385" y="210" />
+        <di:waypoint x="615" y="210" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="491" y="223" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_3" bpmnElement="sequence_flow_3">
+        <di:waypoint x="553" y="124" />
+        <di:waypoint x="640" y="124" />
+        <di:waypoint x="640" y="185" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_2" bpmnElement="sequence_flow_2">
+        <di:waypoint x="360" y="185" />
+        <di:waypoint x="360" y="124" />
+        <di:waypoint x="443" y="124" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="332" y="152" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_1" bpmnElement="sequence_flow_1">
+        <di:waypoint x="218" y="210" />
+        <di:waypoint x="335" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_5" bpmnElement="sequence_flow_5">
+        <di:waypoint x="665" y="210" />
+        <di:waypoint x="740" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_8" bpmnElement="sequence_flow_8">
+        <di:waypoint x="1140" y="235" />
+        <di:waypoint x="1140" y="310" />
+        <di:waypoint x="790" y="310" />
+        <di:waypoint x="790" y="250" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1112" y="273" width="15" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_6" bpmnElement="sequence_flow_6">
+        <di:waypoint x="840" y="210" />
+        <di:waypoint x="940" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_7" bpmnElement="sequence_flow_7">
+        <di:waypoint x="1040" y="210" />
+        <di:waypoint x="1115" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_9" bpmnElement="sequence_flow_9">
+        <di:waypoint x="1165" y="210" />
+        <di:waypoint x="1260" y="210" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1204" y="223" width="18" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_10" bpmnElement="sequence_flow_10">
+        <di:waypoint x="1360" y="210" />
+        <di:waypoint x="1432" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="shape_start_event" bpmnElement="start_event">
+        <dc:Bounds x="182" y="192" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="145" y="235" width="105" height="30" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_exclusive_gateway_1" bpmnElement="exclusive_gateway_1" isMarkerVisible="true">
+        <dc:Bounds x="335" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="310" y="242" width="100" height="45" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_exclusive_gateway_2" bpmnElement="exclusive_gateway_2" isMarkerVisible="true">
+        <dc:Bounds x="615" y="185" width="50" height="50" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_user_task_2" bpmnElement="user_task_2">
+        <dc:Bounds x="740" y="170" width="120" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_user_task_3" bpmnElement="user_task_3">
+        <dc:Bounds x="940" y="170" width="120" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_exclusive_gateway_3" bpmnElement="exclusive_gateway_3" isMarkerVisible="true">
+        <dc:Bounds x="1115" y="185" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="1097" y="148" width="85" height="27" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_user_task_4" bpmnElement="user_task_4">
+        <dc:Bounds x="1260" y="170" width="100" height="70" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_end_event" bpmnElement="end_event">
+        <dc:Bounds x="1432" y="192" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_user_task_1" bpmnElement="user_task_1">
+        <dc:Bounds x="443" y="84" width="120" height="70" />
+      </bpmndi:BPMNShape>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>
