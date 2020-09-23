@@ -99,11 +99,11 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_6" bpmnElement="sequence_flow_6">
-        <di:waypoint x="830" y="210" />
-        <di:waypoint x="900" y="210" />
+        <di:waypoint x="831" y="210" />
+        <di:waypoint x="899" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_7" bpmnElement="sequence_flow_7">
-        <di:waypoint x="1020" y="210" />
+        <di:waypoint x="1021" y="210" />
         <di:waypoint x="1085" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_9" bpmnElement="sequence_flow_9">
@@ -114,11 +114,11 @@
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_10" bpmnElement="sequence_flow_10">
-        <di:waypoint x="1322" y="210" />
+        <di:waypoint x="1323" y="210" />
         <di:waypoint x="1395" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_11" bpmnElement="sequence_flow_11">
-        <di:waypoint x="1545" y="210" />
+        <di:waypoint x="1546" y="210" />
         <di:waypoint x="1602" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="shape_start_event" bpmnElement="start_event">
