@@ -1,11 +1,114 @@
-<?xml version="1.0" encoding="UTF-8"?>
+import {
+    BpmnVisualization,
+    IconPainter, IconPainterProvider,
+    ShapeBpmnElementKind,
+    ShapeUtil,
+    StyleConfigurator,
+    StyleDefault
+} from '../../demo/0.3.0/index.es.js';
+import { newBpmnVisualization } from "../utils.js";
+
+const bpmn = bpmnDiagram();
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// default colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const bpmnVisualization = newBpmnVisualization('graphDefault');
+bpmnVisualization.load(bpmn);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom fill and stroke colors depending on BPMN elements
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+const bleuArchiClair = '#F1F7FA';
+const bleuClair = '#93C2DB';
+const bleuMilieu = '#183d5d';
+const bleuFonce = '#072540';
+
+const roseClair = '#FF8AE2';
+let roseFonce = '#9C4668';
+
+
+StyleDefault.DEFAULT_STROKE_COLOR = bleuFonce;
+StyleDefault.DEFAULT_FONT_COLOR = bleuMilieu;
+StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
+
+class BpmnVisualizationHacktoberfest extends BpmnVisualization {
+
+    constructor(containerId) {
+        super(window.document.getElementById(containerId));
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+
+        // START EVENT
+        let style = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
+        style[mxConstants.STYLE_STROKECOLOR] = roseClair;
+
+        // END EVENT
+        style = styleSheet.styles[ShapeBpmnElementKind.EVENT_END];
+        style[mxConstants.STYLE_STROKECOLOR] = roseFonce;
+        style[mxConstants.STYLE_FILLCOLOR] = roseClair;
+        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
+        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+
+        // EXCLUSIVE GATEWAY
+        style = styleSheet.styles[ShapeBpmnElementKind.CALL_ACTIVITY];
+        style[mxConstants.STYLE_FILLCOLOR] = bleuArchiClair;
+
+        // USER TASK
+        style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        style[mxConstants.STYLE_FILLCOLOR] = bleuArchiClair;
+
+        // CALL ACTIVITY
+        style = styleSheet.styles[ShapeBpmnElementKind.CALL_ACTIVITY];
+        style[mxConstants.STYLE_FILLCOLOR] = bleuMilieu;
+        style[mxConstants.STYLE_FONTCOLOR] = bleuClair;
+    }
+
+}
+
+class CustomIconPainter extends IconPainter {
+    // EXCLUSIVE GATEWAY
+    paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+        icon.strokeColor = bleuClair;
+        c.setStrokeColor(bleuMilieu);
+        super.paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    };
+
+    // USER TASK
+    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+        icon.strokeColor = bleuMilieu;
+        super.paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    };
+
+    // CALL ACTIVTY
+    paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+        c.setStrokeColor(bleuArchiClair);
+        super.paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    };
+}
+
+IconPainterProvider.set(new CustomIconPainter());
+
+
+const bpmnVisualizationHacktoberfest = new BpmnVisualizationHacktoberfest('graphHacktoberfest');
+bpmnVisualizationHacktoberfest.load(bpmn);
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// BPMN
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function bpmnDiagram() {
+    return  `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_14mbaax" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="7.3.0">
   <bpmn:process id="process_1" isExecutable="false">
-    <bpmn:startEvent id="start_event" name="Hacktober FEST starts the October, 1st">
+    <bpmn:startEvent id="start_event" name="Hacktoberfest starts the October, 1st">
       <bpmn:outgoing>sequence_flow_1</bpmn:outgoing>
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="sequence_flow_1" sourceRef="start_event" targetRef="exclusive_gateway_1" />
-    <bpmn:exclusiveGateway id="exclusive_gateway_1" name="Already registered on Hacktober FEST website ?" default="sequence_flow_2">
+    <bpmn:exclusiveGateway id="exclusive_gateway_1" name="Already registered on Hacktoberfest website ?" default="sequence_flow_2">
       <bpmn:incoming>sequence_flow_1</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_2</bpmn:outgoing>
       <bpmn:outgoing>sequence_flow_4</bpmn:outgoing>
@@ -55,7 +158,7 @@
       <bpmn:outgoing>sequence_flow_11</bpmn:outgoing>
     </bpmn:userTask>
     <bpmn:sequenceFlow id="sequence_flow_11" sourceRef="user_task_5" targetRef="end_event" />
-    <bpmn:endEvent id="end_event" name="Hacktober FEST finishes the October, 31st">
+    <bpmn:endEvent id="end_event" name="Hacktoberfest finishes the October, 31st">
       <bpmn:incoming>sequence_flow_11</bpmn:incoming>
     </bpmn:endEvent>
   </bpmn:process>
@@ -178,3 +281,5 @@
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>
+`;
+}
