@@ -8,7 +8,7 @@ All members of our community are expected to follow our [Code of Conduct](https:
 
 There are many ways to contribute:
 
-- update the [BPMN files](./bpmn-files) used for our test 
+- updating the [BPMN diagrams](./bpmn-files) used to test `bpmn-visualization` and demonstrate its rendering capacities
 - submitting bug reports and [new examples](./examples)in the [Github Issues](https://github.com/process-analytics/bpmn-visualization-examples/issues/new)
 - [improving](CONTRIBUTING.md#code-and-documentation-changes) the README
 
