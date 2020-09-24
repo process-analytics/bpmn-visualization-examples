@@ -75,6 +75,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [custom user task icon](./examples/custom-user-task-icon/README.md) - use your own icon
 - [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
+- [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 ## 🔧 Contributing
 
