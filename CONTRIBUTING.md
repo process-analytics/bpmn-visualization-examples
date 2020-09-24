@@ -44,11 +44,14 @@ git checkout -b 25-annotations_to_tasks
 ### IDE configuration
 To know how to configure your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/ide-configuration.md)
 
-
 ### Adding new example
-Make the examples use the latest version of the lib.
-Do not forget to update file /demo/index.html with the Latest Release information.
-Tests that the examples work with the new lib version.
+- Create a new folder in [examples](examples)
+- Create a index.html file in your new folder, See how it was done for [custom-user-task-icon](examples/custom-user-task-icon/index.html)
+- Make the examples use the latest version of the lib
+- When your are satisfied by your work, add a screenshot of your example render in [examples/static/img](examples/static/img)
+- Add a new `div` for your example in [examples/index.html](examples/index.html). See how it was done for the previous examples.
+- Create a README in your new folder
+- Update the [README](README.md#bpmn-visualization-extensibility-examples)
 
 ### Commit in the Pull Request
 There is no convention for the commit message in the Pull Request.
