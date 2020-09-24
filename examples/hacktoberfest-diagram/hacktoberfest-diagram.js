@@ -18,26 +18,22 @@ bpmnVisualization.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom font + custom fill and stroke colors depending on BPMN elements for Light Hacktoberfest visualization
+// custom font + custom fill and stroke colors depending on BPMN elements for Hacktoberfest Light theme
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bleuArchiClair = '#F1F7FA';
-const bleuClair = '#93C2DB';
-const bleuMilieu = '#183d5d';
-const bleuFonce = '#072540';
+const blueSuperLight = '#F1F7FA';
+const blueLight = '#93C2DB';
+const blueMedium = '#183d5d';
+const blueDark = '#072540';
 
-const roseClair = '#FF8AE2';
-let roseFonce = '#9C4668';
+const pinkSuperLight = '#ffe9fa';
+const pinkLight = '#FF8AE2';
+const pinkDark = '#9C4668';
 
-
-// opacité 0.16
-
-// opacité 0.24
-
-StyleDefault.DEFAULT_STROKE_COLOR = bleuFonce;
-StyleDefault.DEFAULT_FONT_COLOR = bleuMilieu;
+StyleDefault.DEFAULT_STROKE_COLOR = blueDark;
+StyleDefault.DEFAULT_FONT_COLOR = blueMedium;
 StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
 
-class BpmnVisualizationLightHacktoberfest extends BpmnVisualization {
+class BpmnVisualizationHacktoberfestLightTheme extends BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
@@ -49,79 +45,75 @@ class BpmnVisualizationLightHacktoberfest extends BpmnVisualization {
 
         // START EVENT
         let style = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
-        style[mxConstants.STYLE_STROKECOLOR] = roseClair;
+        style[mxConstants.STYLE_STROKECOLOR] = pinkLight;
 
         // END EVENT
         style = styleSheet.styles[ShapeBpmnElementKind.EVENT_END];
-        style[mxConstants.STYLE_STROKECOLOR] = roseFonce;
-        style[mxConstants.STYLE_FILLCOLOR] = roseClair;
+        style[mxConstants.STYLE_STROKECOLOR] = pinkDark;
+        style[mxConstants.STYLE_FILLCOLOR] = pinkLight;
         style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
         style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
 
         // USER TASK
         style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FILLCOLOR] = bleuArchiClair;
+        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
 
         // CALL ACTIVITY
         style = styleSheet.styles[ShapeBpmnElementKind.CALL_ACTIVITY];
-        style[mxConstants.STYLE_FILLCOLOR] = bleuMilieu;
-        style[mxConstants.STYLE_FONTCOLOR] = bleuClair;
+        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
+        style[mxConstants.STYLE_FONTCOLOR] = blueLight;
 
         // POOL
         style = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        style[mxConstants.STYLE_FILLCOLOR] = bleuArchiClair;
+        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
         style[mxConstants.STYLE_FONTSIZE] = 16;
     }
 
 }
 
-class LightHacktoberfestIconPainter extends IconPainter {
+class HacktoberfestLightThemeIconPainter extends IconPainter {
     // START TIMER
     paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(roseFonce);
+        c.setStrokeColor(pinkDark);
         super.paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // EXCLUSIVE GATEWAY
     paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = bleuClair;
-        c.setStrokeColor(bleuMilieu);
+        icon.strokeColor = blueLight;
+        c.setStrokeColor(blueMedium);
         super.paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // USER TASK
     paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = bleuMilieu;
+        icon.strokeColor = blueMedium;
         super.paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // CALL ACTIVITY
     paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(bleuArchiClair);
+        c.setStrokeColor(blueSuperLight);
         super.paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 }
 
-IconPainterProvider.set(new LightHacktoberfestIconPainter());
+IconPainterProvider.set(new HacktoberfestLightThemeIconPainter());
 
 
-const bpmnVisualizationLightHacktoberfest = new BpmnVisualizationLightHacktoberfest('graphLightHacktoberfest');
-bpmnVisualizationLightHacktoberfest.load(bpmn);
+const bpmnVisualizationHacktoberfestLightTheme = new BpmnVisualizationHacktoberfestLightTheme('graphHacktoberfestLightTheme');
+bpmnVisualizationHacktoberfestLightTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom font + custom fill and stroke colors depending on BPMN elements for Dark Hacktoberfest visualization
+// custom font + custom fill and stroke colors depending on BPMN elements for Hacktoberfest Dark theme
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-// opacité 0.16
-
-// opacité 0.24
-
-StyleDefault.DEFAULT_FILL_COLOR = bleuFonce;
-StyleDefault.DEFAULT_STROKE_COLOR = bleuClair;
-StyleDefault.DEFAULT_FONT_COLOR = bleuArchiClair;
+StyleDefault.DEFAULT_FILL_COLOR = blueDark;
+StyleDefault.DEFAULT_STROKE_COLOR = blueLight;
+StyleDefault.DEFAULT_FONT_COLOR = blueSuperLight;
 StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
 
-class BpmnVisualizationDarkHacktoberfest extends BpmnVisualization {
+class BpmnVisualizationHacktoberfestDarkTheme extends BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
@@ -133,72 +125,68 @@ class BpmnVisualizationDarkHacktoberfest extends BpmnVisualization {
 
         // START EVENT
         let style = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
-        style[mxConstants.STYLE_STROKECOLOR] = roseClair;
-        style[mxConstants.STYLE_FILLCOLOR] = '#ffe9fa';
-       // style[mxConstants.STYLE_FILL_OPACITY] = 75;
+        style[mxConstants.STYLE_STROKECOLOR] = pinkLight;
+        style[mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
 
         // END EVENT
         style = styleSheet.styles[ShapeBpmnElementKind.EVENT_END];
-        style[mxConstants.STYLE_STROKECOLOR] = roseFonce;
-        style[mxConstants.STYLE_FILLCOLOR] = '#ffe9fa';
-        // style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
-        // style[mxConstants.STYLE_GRADIENTCOLOR] = '#ffdef7';
+        style[mxConstants.STYLE_STROKECOLOR] = pinkDark;
+        style[mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
 
         // EXCLUSIVE GATEWAY
         style = styleSheet.styles[ShapeBpmnElementKind.GATEWAY_EXCLUSIVE];
-        style[mxConstants.STYLE_FILLCOLOR] = bleuMilieu;
+        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
 
         // USER TASK
         style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
         style[mxConstants.STYLE_FILLCOLOR] = '#355571';
-       // style[mxConstants.STYLE_FILL_OPACITY] = 84;
 
         // CALL ACTIVITY
         style = styleSheet.styles[ShapeBpmnElementKind.CALL_ACTIVITY];
-        style[mxConstants.STYLE_FILLCOLOR] = bleuArchiClair;
-        style[mxConstants.STYLE_FONTCOLOR] = bleuMilieu;
+        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
+        style[mxConstants.STYLE_FONTCOLOR] = blueMedium;
 
         // POOL
         style = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        style[mxConstants.STYLE_SWIMLANE_FILLCOLOR] = bleuFonce;
-        style[mxConstants.STYLE_FILLCOLOR] = bleuMilieu;
+        style[mxConstants.STYLE_SWIMLANE_FILLCOLOR] = blueDark;
+        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
         style[mxConstants.STYLE_FONTSIZE] = 16;
     }
 
 }
 
-class DarkHacktoberfestIconPainter extends IconPainter {
+class HacktoberfestDarkThemeIconPainter extends IconPainter {
     // START TIMER
     paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(roseFonce);
+        c.setStrokeColor(pinkDark);
         super.paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // EXCLUSIVE GATEWAY
     paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = bleuArchiClair;
+        icon.strokeColor = blueSuperLight;
         super.paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // USER TASK
     paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = bleuArchiClair;
+        icon.strokeColor = blueSuperLight;
         super.paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // CALL ACTIVITY
     paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(bleuFonce);
+        c.setStrokeColor(blueDark);
         super.paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 }
 
-IconPainterProvider.set(new DarkHacktoberfestIconPainter());
+IconPainterProvider.set(new HacktoberfestDarkThemeIconPainter());
 
 
-const bpmnVisualizationDarkHacktoberfest = new BpmnVisualizationDarkHacktoberfest('graphDarkHacktoberfest');
-bpmnVisualizationDarkHacktoberfest.graph.getDefaultParent().setStyle(`${mxConstants.STYLE_FILLCOLOR} = ${bleuFonce}`) ;
-bpmnVisualizationDarkHacktoberfest.load(bpmn);
+const bpmnVisualizationHacktoberfestDarkTheme = new BpmnVisualizationHacktoberfestDarkTheme('graphHacktoberfestDarkTheme');
+bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
+bpmnVisualizationHacktoberfestDarkTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BPMN
