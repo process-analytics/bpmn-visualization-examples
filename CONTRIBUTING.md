@@ -42,7 +42,7 @@ git checkout -b 25-annotations_to_tasks
 ```
 
 ### IDE configuration
-To know how configurate your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/ide-configuration.md)
+To know how to configure your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/ide-configuration.md)
 
 
 ### Adding new example
