@@ -2,13 +2,13 @@ import {
     BpmnVisualization,
     IconPainter, IconPainterProvider,
     ShapeBpmnElementKind,
-    ShapeUtil,
-    StyleConfigurator,
     StyleDefault
 } from '../../demo/0.3.0/index.es.js';
 import { newBpmnVisualization } from "../utils.js";
 
-const bpmn = bpmnDiagram();
+
+let inputProjectName = document.getElementById('input-project-name');
+let bpmn = bpmnDiagram(inputProjectName.value);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
@@ -189,9 +189,31 @@ bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${mxC
 bpmnVisualizationHacktoberfestDarkTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// Update cells with new project name
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+function updateCellLabel(bpmnVisualization, cellId, value) {
+    const cell = bpmnVisualization.graph.model.getCell(cellId);
+    bpmnVisualization.graph.model.setValue(cell, value);
+}
+
+function updateCellsLabel(cellId, value) {
+    updateCellLabel(bpmnVisualization, cellId, value);
+    updateCellLabel(bpmnVisualizationHacktoberfestLightTheme, cellId, value);
+    updateCellLabel(bpmnVisualizationHacktoberfestDarkTheme, cellId, value);
+}
+
+inputProjectName.oninput = function(event) {
+    let projectName = event.target.value;
+    bpmn = bpmnDiagram(projectName);
+
+    updateCellsLabel("call_activity", `Contribute to ${projectName} 🔧`);
+    updateCellsLabel( "user_task_5", `Tweet how it was fun to contribute to ${projectName} 😃`);
+};
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // BPMN
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-function bpmnDiagram() {
+function bpmnDiagram(projectName) {
     return  `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_14mbaax" targetNamespace="http://bpmn.io/schema/bpmn" exporter="bpmn-js (https://demo.bpmn.io)" exporterVersion="7.3.0">
   <bpmn:collaboration id="collaboration_1">
@@ -221,7 +243,7 @@ function bpmnDiagram() {
       <bpmn:incoming>sequence_flow_8</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_6</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:callActivity id="call_activity" name="Contribute to BPMN Visualization 🔧">
+    <bpmn:callActivity id="call_activity" name="Contribute to ${projectName} 🔧">
       <bpmn:incoming>sequence_flow_6</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_7</bpmn:outgoing>
     </bpmn:callActivity>
@@ -234,7 +256,7 @@ function bpmnDiagram() {
       <bpmn:incoming>sequence_flow_9</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_10</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:userTask id="user_task_5" name="Tweet how it was fun to contribute to BPMN Visualization 😃">
+    <bpmn:userTask id="user_task_5" name="Tweet how it was fun to contribute to ${projectName} 😃">
       <bpmn:incoming>sequence_flow_10</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_11</bpmn:outgoing>
     </bpmn:userTask>
