@@ -18,6 +18,7 @@ See https://process-analytics.github.io/bpmn-visualization-js/#bpmn-support-howt
 Content:
 - override the `StyleConstant` default values, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
 - extend the lib class entry point, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
+- override the default `IconPainter`, like [Custom User Task icon](../custom-user-task-icon/README.md)
 - update the label value of a cell 
 :warning: If you try to reload each graph, all the style configuration is overrided (even if you try to save/restore the configuration)
 ```javascript
