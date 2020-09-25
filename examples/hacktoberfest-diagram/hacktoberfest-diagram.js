@@ -204,7 +204,6 @@ function updateCellsLabel(cellId, value) {
 
 inputProjectName.oninput = function(event) {
     let projectName = event.target.value;
-    bpmn = bpmnDiagram(projectName);
 
     updateCellsLabel("call_activity", `Contribute to ${projectName} 🔧`);
     updateCellsLabel( "user_task_5", `Tweet how it was fun to contribute to ${projectName} 😃`);
