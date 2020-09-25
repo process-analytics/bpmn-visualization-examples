@@ -247,7 +247,7 @@ function bpmnDiagram(projectName) {
       <bpmn:incoming>sequence_flow_6</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_7</bpmn:outgoing>
     </bpmn:callActivity>
-    <bpmn:exclusiveGateway id="exclusive_gateway_3" name="Is it your your 5th contribution?" default="sequence_flow_8">
+    <bpmn:exclusiveGateway id="exclusive_gateway_3" name="Is it your your 4th contribution?" default="sequence_flow_8">
       <bpmn:incoming>sequence_flow_7</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_8</bpmn:outgoing>
       <bpmn:outgoing>sequence_flow_9</bpmn:outgoing>
