@@ -78,14 +78,7 @@ limitations under the License.
                 <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
                     file <span class="icon icon-caret icon-in-the-middle"></span>
                 </a>
-                <!-- TODO fill the list dynamically -->
                 <ul class="menu" id="dropdown-fetch-miwg">
-                    <li><a href="#" class="mr-2 btn btn-link">A.1.0</a></li>
-                    <li><a href="#" class="mr-2 btn btn-link">A.2.0</a></li>
-                    <li><a href="#" class="mr-2 btn btn-link">A.2.1</a></li>
-                    <li><a href="#" class="mr-2 btn btn-link">C.1.0</a></li>
-                    <li><a href="#" class="mr-2 btn btn-link">C.1.1</a></li>
-                    <li><a href="#" class="mr-2 btn btn-link">C.2.0</a></li>
                 </ul>
             </div>
             <div id="fetch-status"></div>
@@ -168,7 +161,6 @@ limitations under the License.
         loadBpmnFromUrl(url);
     }
 
-    // TODO use this file to fill the dropdown use to load a dedicated file
     const miwgFileNames = ['A.1.0', 'A.2.0', 'A.2.1',
         'B.1.0', 'B.2.0',
         'C.1.0', 'C.1.1', 'C.2.0', 'C.3.0', 'C.4.0',
@@ -180,6 +172,10 @@ limitations under the License.
         loadMiwgFile(fileName);
     };
 
+    // Drop down list
+    document.querySelector('#dropdown-fetch-miwg').innerHTML = miwgFileNames.map(fileName => {
+         return `<li><a href="#" class="mr-2 btn btn-link">${fileName}</a></li>`
+    }).join('\n');
 
     document.querySelectorAll('#dropdown-fetch-miwg li a')
         .forEach(function (anchor)  {
