@@ -79,7 +79,7 @@ limitations under the License.
                     file <span class="icon icon-caret icon-in-the-middle"></span>
                 </a>
                 <!-- TODO fill the list dynamically -->
-                <ul class="menu">
+                <ul class="menu" id="dropdown-fetch-miwg">
                     <li><a href="#" class="mr-2 btn btn-link">A.1.0</a></li>
                     <li><a href="#" class="mr-2 btn btn-link">A.2.0</a></li>
                     <li><a href="#" class="mr-2 btn btn-link">A.2.1</a></li>
@@ -162,6 +162,12 @@ limitations under the License.
         });
     }
 
+    function loadMiwgFile(fileName) {
+        log('Ready to fetch MIWG file %s', fileName);
+        const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${fileName}.bpmn`;
+        loadBpmnFromUrl(url);
+    }
+
     // TODO use this file to fill the dropdown use to load a dedicated file
     const miwgFileNames = ['A.1.0', 'A.2.0', 'A.2.1',
         'B.1.0', 'B.2.0',
@@ -171,10 +177,22 @@ limitations under the License.
     const randomMiwgFileNames = [...miwgFileNames, 'do-not-exist'];
     document.getElementById('btn-fetch-miwg').onclick = function() {
         const fileName = randomMiwgFileNames[Math.floor(Math.random() * randomMiwgFileNames.length)];
-        log('Ready to fetch MIWG file %s', fileName);
-        const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${fileName}.bpmn`;
-        loadBpmnFromUrl(url);
+        loadMiwgFile(fileName);
     };
+
+
+    document.querySelectorAll('#dropdown-fetch-miwg li a')
+        .forEach(function (anchor)  {
+            anchor.onclick = function () {
+                // get li value
+                const miwgFileName = anchor.parentElement.innerText;
+                console.log(`miwgFileName: ${miwgFileName}`);
+
+                loadMiwgFile(miwgFileName);
+                // TODO click, don't follow link and close the dropdown
+                return false;
+            };
+        });
 </script>
 </body>
 </html>
