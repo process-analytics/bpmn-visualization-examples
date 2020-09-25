@@ -8,6 +8,29 @@ Javascript example
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-user-task-icon/index.html)
 - to run locally, see the [explanations in the repository README](../../README.md#running-examples-locally)
 
-Override the `IconPainter` static method related to the icon of the BPMN element and paint the icon using the mxGraph
-API. See https://process-analytics.github.io/bpmn-visualization-js/#bpmn-support-howto-elements-rendering for more
-information.
+## ♻️ BPMN Visualization Usage
+You can find all the content of the example in [index.html](index.html) and [custom-user-task-icon.js](custom-user-task-icon.js).
+
+Before loading the BPMN content with BPMN Visualization:
+- Create a new class extending `IconPainter` and override the method painting the user icon (using the mxGraph API):
+```javascript
+class CustomIconPainter extends IconPainter {
+    // adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
+    // use mxgraph svg2xml to generate the xml stencil and port it to code
+    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+        const canvas = this.newBpmnCanvas({c, ratioFromParent, setIconOrigin, shape, icon}, {height: 13, width: 12});
+        // this way of doing subject to change in the future (probably by setting the fillColor in the icon style configuration)
+        c.setFillColor(userTaskIconColor);
+
+        ...
+
+        canvas.fill();
+    };
+}
+```
+See https://process-analytics.github.io/bpmn-visualization-js/#bpmn-support-howto-elements-rendering for more information.
+
+- Override the default `IconPainter`:
+```javascript
+IconPainterProvider.set(new CustomIconPainter());
+```
