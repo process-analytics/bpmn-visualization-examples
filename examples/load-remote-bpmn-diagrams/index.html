@@ -44,6 +44,13 @@ limitations under the License.
         #fetch-status {
             margin: 10px 0;
         }
+        #dropdown-fetch-miwg li {
+            margin-top: 0;
+        }
+
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -75,7 +82,7 @@ limitations under the License.
             from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a>
             or select a specific
             <div class="dropdown dropdown-right mr-2">
-                <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                <a id="dropdown-toggle-fetch-miwg" href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
                     file <span class="icon icon-caret icon-in-the-middle"></span>
                 </a>
                 <!-- TODO reduce interline + externalize style -->
@@ -180,21 +187,26 @@ limitations under the License.
 
     // Drop down list
     document.querySelector('#dropdown-fetch-miwg').innerHTML = miwgFileNames.map(fileName => {
-         return `<li><a href="#" class="mr-2 btn btn-link">${fileName}</a></li>`
+         return `<li><a href="#" class="btn btn-link">${fileName}</a></li>`
     }).join('\n');
 
     document.querySelectorAll('#dropdown-fetch-miwg li a')
         .forEach(function (anchor)  {
-            anchor.onclick = function () {
+            anchor.onclick = function (e) {
+                e.preventDefault();
                 // get li value
                 const miwgFileName = anchor.parentElement.innerText;
-                console.log(`miwgFileName: ${miwgFileName}`);
-
                 loadMiwgFile(miwgFileName);
-                // TODO click, don't follow link and close the dropdown
+
+                document.getElementById('dropdown-fetch-miwg').classList.add('hidden');
+
                 return false;
             };
         });
+
+    document.getElementById('dropdown-toggle-fetch-miwg').onclick = function (){
+        document.getElementById('dropdown-fetch-miwg').classList.remove('hidden');
+    }
 </script>
 </body>
 </html>
