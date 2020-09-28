@@ -47,7 +47,10 @@ limitations under the License.
         #dropdown-fetch-miwg li {
             margin-top: 0;
         }
-
+        #dropdown-fetch-miwg {
+            min-width: 90px;
+            max-height: 195px;
+        }
         .hidden {
             display: none !important;
         }
@@ -85,8 +88,7 @@ limitations under the License.
                 <a id="dropdown-toggle-fetch-miwg" href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
                     file <span class="icon icon-caret icon-in-the-middle"></span>
                 </a>
-                <!-- TODO reduce interline + externalize style -->
-                <ul class="menu" id="dropdown-fetch-miwg" style="min-width: 90px;">
+                <ul class="menu" id="dropdown-fetch-miwg">
                 </ul>
             </div>
             <div id="fetch-status"></div>
