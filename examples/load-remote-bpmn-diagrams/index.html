@@ -44,6 +44,16 @@ limitations under the License.
         #fetch-status {
             margin: 10px 0;
         }
+        #dropdown-fetch-miwg li {
+            margin-top: 0;
+        }
+        #dropdown-fetch-miwg {
+            min-width: 90px;
+            max-height: 195px;
+        }
+        .hidden {
+            display: none !important;
+        }
     </style>
 </head>
 <body>
@@ -73,6 +83,14 @@ limitations under the License.
                 <span>Fetch random file </span><span class="icon icon-refresh mb-1"></span>
             </button>
             from <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">miwg-test-suite</a>
+            or select a specific
+            <div class="dropdown dropdown-right mr-2">
+                <a id="dropdown-toggle-fetch-miwg" href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                    file <span class="icon icon-caret icon-in-the-middle"></span>
+                </a>
+                <ul class="menu" id="dropdown-fetch-miwg">
+                </ul>
+            </div>
             <div id="fetch-status"></div>
         </section>
 </section>
@@ -147,17 +165,50 @@ limitations under the License.
         });
     }
 
-    const miwgFileNames = ['A.1.0.bpmn', 'A.2.0.bpmn', 'A.2.1.bpmn',
-        'B.1.0.bpmn', 'B.2.0.bpmn',
-        'C.1.0.bpmn', 'C.1.1.bpmn', 'C.2.0.bpmn', 'C.3.0.bpmn', 'C.4.0.bpmn',
-        'C.5.0.bpmn', 'C.6.0.bpmn',
-        'do-not-exist.bpmn'];
-    document.getElementById('btn-fetch-miwg').onclick = function() {
-        const fileName = miwgFileNames[Math.floor(Math.random() * miwgFileNames.length)];
+    function loadMiwgFile(fileName) {
         log('Ready to fetch MIWG file %s', fileName);
-        const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${fileName}`;
+        const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${fileName}.bpmn`;
         loadBpmnFromUrl(url);
+    }
+
+    const miwgFileNames = [
+        'A.1.0',
+        'A.2.0', 'A.2.1',
+        'A.3.0',
+        'A.4.0', 'A.4.1',
+        'B.1.0', 'B.2.0',
+        'C.1.0', 'C.1.1', 'C.2.0', 'C.3.0', 'C.4.0',
+        'C.5.0', 'C.6.0',
+    ];
+
+    const randomMiwgFileNames = [...miwgFileNames, 'do-not-exist'];
+    document.getElementById('btn-fetch-miwg').onclick = function() {
+        const fileName = randomMiwgFileNames[Math.floor(Math.random() * randomMiwgFileNames.length)];
+        loadMiwgFile(fileName);
     };
+
+    // Drop down list
+    document.querySelector('#dropdown-fetch-miwg').innerHTML = miwgFileNames.map(fileName => {
+         return `<li><a href="#" class="btn btn-link">${fileName}</a></li>`
+    }).join('\n');
+
+    document.querySelectorAll('#dropdown-fetch-miwg li a')
+        .forEach(function (anchor)  {
+            anchor.onclick = function (e) {
+                e.preventDefault();
+                // get li value
+                const miwgFileName = anchor.parentElement.innerText;
+                loadMiwgFile(miwgFileName);
+
+                document.getElementById('dropdown-fetch-miwg').classList.add('hidden');
+
+                return false;
+            };
+        });
+
+    document.getElementById('dropdown-toggle-fetch-miwg').onclick = function (){
+        document.getElementById('dropdown-fetch-miwg').classList.remove('hidden');
+    }
 </script>
 </body>
 </html>
