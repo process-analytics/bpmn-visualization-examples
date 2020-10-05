@@ -34,6 +34,6 @@
   },
   "dependencies": {
     "mxgraph": "4.1.0",
-    "bpmn-visualization": "git+https://github.com/process-analytics/bpmn-visualization-js.git#594-provide-esm-bundle_2"
+    "bpmn-visualization": "git+https://github.com/process-analytics/bpmn-visualization-js.git"
   }
 }
