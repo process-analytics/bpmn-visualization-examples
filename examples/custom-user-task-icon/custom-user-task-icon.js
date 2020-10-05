@@ -1,4 +1,4 @@
-import { IconPainter, IconPainterProvider } from "../../demo/0.3.0/index.es.js";
+import { IconPainter, IconPainterProvider } from "../../demo/0.4.0/index.es.js";
 import { newBpmnVisualization } from "../utils.js";
 
 const bpmn = bpmnDiagram();

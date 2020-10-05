@@ -3,7 +3,7 @@ import {
     IconPainter, IconPainterProvider,
     ShapeBpmnElementKind,
     StyleDefault
-} from '../../demo/0.3.0/index.es.js';
+} from '../../demo/0.4.0/index.es.js';
 import { newBpmnVisualization } from "../utils.js";
 
 
