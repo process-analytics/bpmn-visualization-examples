@@ -80,7 +80,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 
 ### `bpmn-visualization` _package_ usage examples in Projects
 
-- [typescript + rollup](examples/bpmn-visualization-ts-rollup/README.md)
+- [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md)
 
 ## 🔧 Contributing
 
