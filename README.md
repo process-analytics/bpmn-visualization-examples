@@ -62,7 +62,7 @@ Go to the repository root and use one the following solutions
 ### Basic `bpmn-visualization` usage 
 If you never integrated BPMN Visualization in your application, see the basic [tutorial](https://github.com/process-analytics/bpmn-visualization-js/blob/master/README.md#%EF%B8%8F-usage)
 
-### `bpmn-visualization` usage examples
+### `bpmn-visualization` usage examples in Browsers
 
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
 
@@ -76,6 +76,11 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+
+
+### `bpmn-visualization` _package_ usage examples in Projects
+
+- [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
 
 ## 🔧 Contributing
 

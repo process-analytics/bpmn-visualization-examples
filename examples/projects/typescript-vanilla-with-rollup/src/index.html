@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization Typescript Integration</title>
+    <link href="static/css/main.css" rel="stylesheet">
+    <link rel="shortcut icon" href="static/img/favicon.ico">
+</head>
+<body>
+    <header class="info-centered">
+        <h2>BPMN Visualization Typescript Integration</h2>
+    </header>
+    <section>
+        <!-- container used to display the BPMN diagram -->
+        <div id="bpmn-viewport"></div>
+    </section>
+
+    <!-- load global settings for mxGraph -->
+    <script src="static/js/configureMxGraphGlobals.js"></script>
+    <!-- load mxGraph client library -->
+    <script src="./static/js/mxClient.min.js"></script>
+    <!-- load demo -->
+    <script src="index.esm.js" type="module"></script>
+</body>
+</html>
