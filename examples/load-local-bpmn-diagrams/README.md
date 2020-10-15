@@ -5,3 +5,5 @@ Javascript example
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
+
+You can use BPMN diagrams available in this repository in the [bpmn-files](../../bpmn-files) folder.
