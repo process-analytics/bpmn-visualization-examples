@@ -63,7 +63,7 @@ Go to the repository root and use one the following solutions
 
 ### examples in Browsers
 
-- [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in a HTML page
+- [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 - [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md)
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
 
