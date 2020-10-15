@@ -15,11 +15,8 @@ or any other location:
 
 ### Use the library
 
-
-Initialize `BPMN Visualization` and then load the BPMN Diagram. \
+Initialize `BPMN Visualization` and then load a BPMN Diagram. \
 The library is bundled as an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) style script and binds itself to the global `bpmnvisu` variable.
-
-
 
 ```javascript
 // initialize BPMN Visualization
