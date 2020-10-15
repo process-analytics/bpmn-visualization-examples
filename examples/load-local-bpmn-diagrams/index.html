@@ -1,0 +1,124 @@
+<!--
+Copyright 2020 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization - Load remote BPMN diagrams</title>
+    <link rel="shortcut icon" href="../favicon.ico">
+    <link rel="stylesheet" href="../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+    <style>
+        /*.status-fetching {*/
+        /*    color: #5755d9;*/
+        /*    font-style: italic;*/
+        /*    padding: .4rem;*/
+        /*}*/
+        .relative {
+            position: relative;
+        }
+        .bpmn-viewport-container-absolute {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+        }
+        #bpmn-viewport {
+            overflow-x: auto;
+            overflow-y: hidden;
+            padding-bottom: 100px;
+        }
+        /*#fetch-status {*/
+        /*    margin: 10px 0;*/
+        /*}*/
+        /*#dropdown-fetch-miwg li {*/
+        /*    margin-top: 0;*/
+        /*}*/
+        /*#dropdown-fetch-miwg {*/
+        /*    min-width: 90px;*/
+        /*    max-height: 195px;*/
+        /*}*/
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+
+<header class="navbar bg-dark p-2">
+    <section class="navbar-section ml-2">
+        <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
+        <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+    </section>
+    <section class="navbar-section">
+        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+        <div class="dropdown mr-2">
+            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+            </a>
+            <ul class="menu">
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+</header>
+<section class="container col-10 flex-centered mt-2">
+        <section class="col-12 mt-2 relative">
+            <h2>Load local BPMN diagrams</h2>
+            <button id="btn-open-file-old" title="Fetch from miwg-test-suite" class="btn btn-primary has-icon-right">
+                <span>Choose a local file </span><span class="icon icon-refresh mb-1"></span>
+            </button>
+
+<!--            btn-open-file-->
+            <div id="file-selector">
+                <input type="file" id="bpmn-file" name="file"/>
+                <label for="bpmn-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span class="icon icon-refresh mb-1"></span></label>
+                <div id="loading-info" class="hidden">
+                    <b>Last loaded file:</b> <span id="loaded-file-name"></span>
+                </div>
+            </div>
+        </section>
+</section>
+<section class="col-12 mt-2 relative">
+    <div class="bpmn-viewport-container-absolute">
+        <div id="bpmn-viewport" class="mb-2"></div>
+    </div>
+</section>
+
+<!-- load bpmn-visualization -->
+<script src="https://unpkg.com/bpmn-visualization@0.4.0/dist/bpmn-visualization.js"></script>
+<script>
+    document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
+
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
+
+
+    function handleFileSelect(evt) {
+        const file = evt.target.files[0];
+        const reader = new FileReader();
+        reader.onload = () => {
+            console.info(file);
+            bpmnVisualization.load(reader.result);
+            document.getElementById('loading-info').classList.remove('hidden');
+            // TODO we probably don't need it, just select span child
+            document.getElementById('loaded-file-name').innerHTML = `<code>${file.name}</code>`;
+        };
+        reader.readAsText(file);
+    }
+</script>
+</body>
+</html>
