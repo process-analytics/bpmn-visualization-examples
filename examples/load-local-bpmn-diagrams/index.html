@@ -79,17 +79,13 @@ limitations under the License.
 <section class="container col-10 flex-centered mt-2">
         <section class="col-12 mt-2 relative">
             <h2>Load local BPMN diagrams</h2>
-            <button id="btn-open-file-old" title="Fetch from miwg-test-suite" class="btn btn-primary has-icon-right">
-                <span>Choose a local file </span><span class="icon icon-refresh mb-1"></span>
-            </button>
-
-<!--            btn-open-file-->
             <div id="file-selector">
-                <input type="file" id="bpmn-file" name="file"/>
-                <label for="bpmn-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span class="icon icon-refresh mb-1"></span></label>
-                <div id="loading-info" class="hidden">
-                    <b>Last loaded file:</b> <span id="loaded-file-name"></span>
-                </div>
+                <input type="file" id="btn-open-file" name="btn-open-file" class="hidden"/>
+                <label for="btn-open-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span class="icon icon-upload mb-1"></span></label>
+            </div>
+<!--            TODO position at the right of the button-->
+            <div id="loading-info" class="hidden">
+                <b>Last loaded file:</b> <span id="loaded-file-name"></span>
             </div>
         </section>
 </section>
@@ -102,10 +98,9 @@ limitations under the License.
 <!-- load bpmn-visualization -->
 <script src="https://unpkg.com/bpmn-visualization@0.4.0/dist/bpmn-visualization.js"></script>
 <script>
-    document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
+    document.getElementById('btn-open-file').addEventListener('change', handleFileSelect, false);
 
     const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
-
 
     function handleFileSelect(evt) {
         const file = evt.target.files[0];
