@@ -40,7 +40,7 @@ All examples are available in the [__:fast_forward: live environment__](https://
 
 ### Running examples locally
 
-The examples currently load ES Modules, so you cannot open html page directly from your local disk
+Some examples currently load ES Modules, so you cannot open html page directly from your local disk
 
 For instance, on Chrome, the Console would display the following errors 
 > Access to script at 'file:///...../bpmn-visualization-examples/examples/utils.js' from origin 'null' has been
@@ -60,13 +60,14 @@ Go to the repository root and use one the following solutions
 
 
 ### Basic `bpmn-visualization` usage 
-If you never integrated BPMN Visualization in your application, see the basic [tutorial](https://github.com/process-analytics/bpmn-visualization-js/blob/master/README.md#%EF%B8%8F-usage)
 
-### `bpmn-visualization` usage examples in Browsers
+### examples in Browsers
 
+- [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md)
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
 
-### `bpmn-visualization` extensibility examples
+### extensibility examples
 
 **DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
 They are mainly hacks to let you see what will be later available in a more integrated way. Extensibility features will
