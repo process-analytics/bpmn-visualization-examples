@@ -20,9 +20,11 @@ echo "Search for files in $(pwd)"
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	sed -i '' -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
 	sed -i '' -E "s/\/bpmn-visualization@[0-9].[0-9].[0-9]/\/bpmn-visualization@$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
+	sed -i '' -E "s/\"bpmn-visualization\": \"[0-9].[0-9].[0-9]\"/\"bpmn-visualization\": \"$NEW_VERSION\"/#" **/**/package.json
 else
 	sed -i -E "s/\/demo\/[0-9].[0-9].[0-9]/\/demo\/$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
 	sed -i -E "s/\/bpmn-visualization@[0-9].[0-9].[0-9]/\/bpmn-visualization@$NEW_VERSION/#" **/*.{html,md,js} *.{html,js}
+	sed -i -E "s/\"bpmn-visualization\": \"[0-9].[0-9].[0-9]\"/\"bpmn-visualization\": \"$NEW_VERSION\"/#" **/**/package.json
 fi
 
 echo "Files updated"
