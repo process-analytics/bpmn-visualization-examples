@@ -43,10 +43,10 @@ div.card {
 .back-to-top-wrapper {
 /*// uncomment to visualize "track"*/
 /*// outline: 1px solid red;*/
-    position: sticky;
+    position: absolute;
     top: 100vh;
     right: 0.25rem;
-    bottom: -5em;
+    bottom: -80em;
     width: 3em;
     pointer-events: none;
 }
@@ -56,12 +56,13 @@ div.card {
 /*position: fixed;*/
 /*// preferred positioning, requires prefixing for most support, and not supported on Safari*/
 /*// @link https://caniuse.com/#search=position%3A%20sticky*/
-    position: sticky;
     position: -webkit-sticky;
+    position: sticky;
 /*// reinstate clicks*/
 pointer-events: all;
 /*// achieves desired positioning within the viewport*/
 /*// relative to the top of the viewport once `sticky` takes over, or always if `fixed` fallback is used*/
+/*top: 200px;*/
 top: calc(100vh - 5rem);
 
 /*// basic styling*/
