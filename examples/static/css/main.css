@@ -17,4 +17,5 @@ div.card {
     position: -webkit-sticky;
     position: sticky;
     top: -1px;
+    z-index: 100; /* ensure the BPMN Diagrams are under the navbar when scrolling */
 }
