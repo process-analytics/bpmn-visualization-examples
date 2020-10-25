@@ -64,9 +64,11 @@ Go to the repository root and use one the following solutions
 ### examples in Browsers
 
 - [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md)
-- [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md)
-- [BPMN Diagram navigation](examples/diagram-navigation/README.md)
+- [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
+- [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
+- [BPMN Diagram navigation](examples/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
+- [BPMN Diagram fit variants](examples/diagram-fit-variants/README.md) - change the zoom level to make the diagram fit
+the viewport horizontally or vertically
 
 ### extensibility examples
 
