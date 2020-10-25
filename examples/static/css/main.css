@@ -13,3 +13,8 @@ div.card {
 .icon-in-the-middle:before, .icon-in-the-middle:after {
     top: 40%;
 }
+.navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+}
