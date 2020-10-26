@@ -45,7 +45,7 @@ div.card {
 /*// outline: 1px solid red;*/
     position: absolute;
     top: 100vh;
-    right: 0.25rem;
+    right: 0.75rem;
     bottom: -80em;
     width: 3em;
     pointer-events: none;
@@ -67,14 +67,14 @@ top: calc(100vh - 5rem);
 
 /*// basic styling*/
 display: inline-block;
-    text-decoration: none;
+    text-decoration: none; !important; /* TODO make it work to not see the underline*/
     font-size: 2rem;
     line-height: 3rem;
     text-align: center;
     width: 3rem;
     height: 3rem;
     border-radius: 50%;
-    padding: 0.25rem;
+    /*padding: 0.25rem;*/
 
 /*// "pretty" styles, including states*/
 /*border: 1px solid $color;*/
@@ -82,13 +82,8 @@ border: 1px solid #254568;
     /*background-color: scale-color($color, $lightness: 85%);*/
     transition: transform 80ms ease-in;
 
-/*&:hover,*/
-/*&:focus {*/
-/*     transform: scale(1.1);*/
-/* }*/
-
-/*&:focus {*/
-/*     outline: none;*/
-/*     box-shadow: 0 0 0 3px scale-color($color, $lightness: 35%);*/
-/* }*/
 }
+
+.back-to-top-link:hover, .back-to-top-link:focus {
+     transform: scale(1.1);
+ }
