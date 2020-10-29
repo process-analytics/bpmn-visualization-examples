@@ -20,6 +20,73 @@ limitations under the License.
     <link rel="stylesheet" href="static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/main.css" type="text/css">
+    <style>
+        :root {
+            /*// How far of a scroll travel within <main> prior to the*/
+            /*// link appearing*/
+            /*$scrollLength: 100vh;*/
+            --scrollLength: 100vh;
+            /*--header-height: 80px;*/
+            /*--sticky-pos: 10px;*/
+        }
+
+        .title-always-displayed {
+
+        }
+
+
+        /*$color: #254568;*/
+        /*$main-width: 50rem;*/
+
+        .back-to-top-wrapper {
+            /*// uncomment to visualize "track"*/
+            /*// outline: 1px solid red;*/
+            position: absolute;
+            /*top: 100vh;*/
+            top: val();
+            right: 0.75rem;
+            bottom: -80em;
+            width: 3em;
+            pointer-events: none;
+        }
+
+        .back-to-top-link {
+            /*// `fixed` is fallback*/
+            /*position: fixed;*/
+            /*// preferred positioning, requires prefixing for most support, and not supported on Safari*/
+            /*// @link https://caniuse.com/#search=position%3A%20sticky*/
+            position: -webkit-sticky;
+            position: sticky;
+            /*// reinstate clicks*/
+            pointer-events: all;
+            /*// achieves desired positioning within the viewport*/
+            /*// relative to the top of the viewport once `sticky` takes over, or always if `fixed` fallback is used*/
+            /*top: 200px;*/
+            top: calc(100vh - 5rem);
+
+            /*// basic styling*/
+            display: inline-block;
+            text-decoration: none; !important; /* TODO make it work to not see the underline*/
+            font-size: 2rem;
+            line-height: 3rem;
+            text-align: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+            /*padding: 0.25rem;*/
+
+            /*// "pretty" styles, including states*/
+            /*border: 1px solid $color;*/
+            border: 1px solid #254568;
+            /*background-color: scale-color($color, $lightness: 85%);*/
+            transition: transform 80ms ease-in;
+
+        }
+
+        .back-to-top-link:hover, .back-to-top-link:focus {
+            transform: scale(1.1);
+        }
+    </style>
 </head>
 <body>
 <a id="top"></a>
@@ -59,7 +126,7 @@ limitations under the License.
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2 id="usage">Usage</h2>
+            <h2 id="usage" style="position: sticky; top: 80px; background-color: yellow">Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
                     <div class="card bg-dark p-2">
