@@ -67,6 +67,7 @@ Go to the repository root and use one the following solutions
 - [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
 - [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
 - [BPMN Diagram navigation](examples/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
+- [BPMN Diagram fit on load](examples/diagram-fit-on-load/README.md) - fit the BPMN diagram in the viewport on load
 - [BPMN Diagram fit variants](examples/diagram-fit-variants/README.md) - change the zoom level to make the diagram fit
 the viewport horizontally or vertically
 
