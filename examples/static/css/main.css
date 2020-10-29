@@ -1,5 +1,9 @@
-html {
-    scroll-behavior: smooth;
+/* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
+@media screen and (prefers-reduced-motion: no-preference) {
+    html,
+    body {
+        scroll-behavior: smooth;
+    }
 }
 .lib-name-text {
     text-shadow: 1px 1px black;
