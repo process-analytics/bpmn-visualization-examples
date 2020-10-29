@@ -30,8 +30,11 @@ limitations under the License.
             /*--sticky-pos: 10px;*/
         }
 
-        .title-always-displayed {
-
+        h2 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: 80px;
+            background-color: yellow
         }
 
 
@@ -63,6 +66,7 @@ limitations under the License.
             /*// achieves desired positioning within the viewport*/
             /*// relative to the top of the viewport once `sticky` takes over, or always if `fixed` fallback is used*/
             /*top: 200px;*/
+            /* TODO ensure the button stay on bottom when reaching the end of the page (we don't have footer) */
             top: calc(100vh - 5rem);
 
             /*// basic styling*/
@@ -127,7 +131,7 @@ limitations under the License.
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2 id="usage" style="position: sticky; top: 80px; background-color: yellow">Usage</h2>
+            <h2 id="usage">Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
                     <div class="card bg-dark p-2">
