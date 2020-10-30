@@ -35,16 +35,15 @@ limitations under the License.
         #controls {
             margin-top: 1em;
         }
-        #dropdown-fit-border {
+        #dropdown-fit-margin {
             min-width: 60px;
             max-height: 200px;
         }
-        .menu li {
+        .custom-dropdown li {
             margin-top: 0;
-            /*margin-bottom: 0;*/
             text-align: right;
         }
-        #fit-border-value {
+        #fit-margin-value {
             float: left;
             padding-top: 0.3em;
         }
@@ -97,14 +96,14 @@ limitations under the License.
 
                         <div class="col-3" style="float: left">
                             <div class="dropdown dropdown-right mr-2" style="float: left">
-                                <a id="toggle-dropdown-fit-border" href="#" class="btn dropdown-toggle" tabindex="0">
-                                    Fit border <span class="icon icon-caret icon-in-the-middle"></span>
+                                <a id="toggle-dropdown-fit-margin" href="#" class="btn dropdown-toggle" tabindex="0" title="Margin between the diagram and the viewport">
+                                    Fit margin <span class="icon icon-caret icon-in-the-middle"></span>
                                 </a>
-                                <ul class="menu" id="dropdown-fit-border">
+                                <ul class="menu custom-dropdown" id="dropdown-fit-margin">
                                 </ul>
                             </div>
                             <div id="loading-info">
-                            <span id="fit-border-value"></span>
+                            <span id="fit-margin-value"></span>
                             </div>
                         </div>
 
@@ -113,7 +112,7 @@ limitations under the License.
                                 <a id="toggle-dropdown-diagram-choice" href="#" class="btn btn-primary dropdown-toggle" tabindex="0" style="background: black">
                                     Select a BPMN Diagram <span class="icon icon-caret icon-in-the-middle"></span>
                                 </a>
-                                <ul class="menu" id="dropdown-diagram-choice">
+                                <ul class="menu custom-dropdown" id="dropdown-diagram-choice">
                                     <li><a href="#" class="btn btn-link">horizontal diagram</a></li>
                                     <li><a href="#" class="btn btn-link">vertical diagram</a></li>
                                 </ul>
@@ -129,9 +128,9 @@ limitations under the License.
     <script src="https://unpkg.com/bpmn-visualization@0.5.0/dist/bpmn-visualization.js"></script>
     <script>
         let fitType = undefined;
-        let fitBorder = 10;
-        const fitBorderValueElt = document.getElementById('fit-border-value');
-        fitBorderValueElt.innerHTML = `<code>${fitBorder}</code>`;
+        let fitMargin = 10;
+        const fitMarginValueElt = document.getElementById('fit-margin-value');
+        fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
 
         const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
         loadDiagram();
@@ -179,31 +178,31 @@ limitations under the License.
                     break;
             }
 
-            bpmnVisualization.graph.fit(fitBorder, false, 0, true, ignoreWidth, ignoreHeight);
+            bpmnVisualization.graph.fit(fitMargin, false, 0, true, ignoreWidth, ignoreHeight);
         }
 
-        // 'Fit Border' dropdown list
-        const fitBorderValues = [0, 5, 10, 20, 50];
-        const dropdownFitBorderElt = document.querySelector('#dropdown-fit-border');
-        dropdownFitBorderElt.innerHTML = fitBorderValues.map(fitBorder => {
-            return `<li><a href="#" class="btn btn-link">${fitBorder}</a></li>`
+        // 'Fit Margin' dropdown list
+        const fitMarginValues = [0, 5, 10, 20, 50];
+        const dropdownFitMarginElt = document.querySelector('#dropdown-fit-margin');
+        dropdownFitMarginElt.innerHTML = fitMarginValues.map(fitMargin => {
+            return `<li><a href="#" class="btn btn-link">${fitMargin}</a></li>`
         }).join('\n');
 
-        dropdownFitBorderElt.querySelectorAll('li a')
+        dropdownFitMarginElt.querySelectorAll('li a')
             .forEach(function (anchor)  {
                 anchor.onclick = function (e) {
                     e.preventDefault();
                     // get li value
-                    fitBorder = anchor.parentElement.innerText;
-                    fitBorderValueElt.innerHTML = `<code>${fitBorder}</code>`;
-                    dropdownFitBorderElt.classList.add('hidden');
+                    fitMargin = anchor.parentElement.innerText;
+                    fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
+                    dropdownFitMarginElt.classList.add('hidden');
                     performFit();
 
                     return false;
                 };
             });
-        document.getElementById('toggle-dropdown-fit-border').onclick = function (){
-            dropdownFitBorderElt.classList.remove('hidden');
+        document.getElementById('toggle-dropdown-fit-margin').onclick = function (){
+            dropdownFitMarginElt.classList.remove('hidden');
         }
 
         // 'BPMN Diagram' dropdown list
