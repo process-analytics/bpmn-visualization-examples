@@ -3,7 +3,7 @@ import {
     IconPainter, IconPainterProvider,
     ShapeBpmnElementKind,
     StyleDefault
-} from '../../demo/0.5.0/index.es.js';
+} from '../../demo/0.5.1-alpha/index.es.js';
 import { newBpmnVisualization } from "../utils.js";
 
 
@@ -86,9 +86,9 @@ class HacktoberfestLightThemeIconPainter extends IconPainter {
     };
 
     // USER TASK
-    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+    paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
         icon.strokeColor = blueMedium;
-        super.paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+        super.paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // CALL ACTIVITY
@@ -169,9 +169,9 @@ class HacktoberfestDarkThemeIconPainter extends IconPainter {
     };
 
     // USER TASK
-    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+    paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
         icon.strokeColor = blueSuperLight;
-        super.paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+        super.paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
     };
 
     // CALL ACTIVITY

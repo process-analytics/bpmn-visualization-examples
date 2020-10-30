@@ -1,4 +1,4 @@
-import { IconPainter, IconPainterProvider } from "../../demo/0.5.0/index.es.js";
+import { IconPainter, IconPainterProvider } from "../../demo/0.5.1-alpha/index.es.js";
 import { newBpmnVisualization } from "../utils.js";
 
 const bpmn = bpmnDiagram();
@@ -12,7 +12,7 @@ const userTaskIconColor = 'orange';
 class CustomIconPainter extends IconPainter {
     // adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
     // use mxgraph svg2xml to generate the xml stencil and port it to code
-    paintUserIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
+    paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
         const canvas = this.newBpmnCanvas({c, ratioFromParent, setIconOrigin, shape, icon}, {height: 13, width: 12});
         // this way of doing subject to change in the future (probably by setting the fillColor in the icon style configuration)
         c.setFillColor(userTaskIconColor);
