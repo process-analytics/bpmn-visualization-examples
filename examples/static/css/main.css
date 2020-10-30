@@ -26,3 +26,68 @@ div.card {
     top: 0;
     z-index: 100; /* ensure the BPMN Diagrams are under the navbar when scrolling */
 }
+/* Add a pseudo-element inside the target element */
+/*h2:target::before {*/
+/*    font: 70% sans-serif;*/
+/*    content: "►";*/
+/*    color: limegreen;*/
+/*    margin-right: .25em;*/
+/*}*/
+
+/*// How far of a scroll travel within <main> prior to the*/
+/*// link appearing*/
+/*$scrollLength: 100vh;*/
+/*$color: #254568;*/
+/*$main-width: 50rem;*/
+
+.back-to-top-wrapper {
+/*// uncomment to visualize "track"*/
+/*// outline: 1px solid red;*/
+    position: sticky;
+    top: 100vh;
+    right: 0.25rem;
+    bottom: -5em;
+    width: 3em;
+    pointer-events: none;
+}
+
+.back-to-top-link {
+/*// `fixed` is fallback*/
+/*position: fixed;*/
+/*// preferred positioning, requires prefixing for most support, and not supported on Safari*/
+/*// @link https://caniuse.com/#search=position%3A%20sticky*/
+    position: sticky;
+    position: -webkit-sticky;
+/*// reinstate clicks*/
+pointer-events: all;
+/*// achieves desired positioning within the viewport*/
+/*// relative to the top of the viewport once `sticky` takes over, or always if `fixed` fallback is used*/
+top: calc(100vh - 5rem);
+
+/*// basic styling*/
+display: inline-block;
+    text-decoration: none;
+    font-size: 2rem;
+    line-height: 3rem;
+    text-align: center;
+    width: 3rem;
+    height: 3rem;
+    border-radius: 50%;
+    padding: 0.25rem;
+
+/*// "pretty" styles, including states*/
+/*border: 1px solid $color;*/
+border: 1px solid #254568;
+    /*background-color: scale-color($color, $lightness: 85%);*/
+    transition: transform 80ms ease-in;
+
+/*&:hover,*/
+/*&:focus {*/
+/*     transform: scale(1.1);*/
+/* }*/
+
+/*&:focus {*/
+/*     outline: none;*/
+/*     box-shadow: 0 0 0 3px scale-color($color, $lightness: 35%);*/
+/* }*/
+}
