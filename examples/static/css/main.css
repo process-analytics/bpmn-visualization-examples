@@ -1,3 +1,10 @@
+/* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
+@media screen and (prefers-reduced-motion: no-preference) {
+    html,
+    body {
+        scroll-behavior: smooth;
+    }
+}
 .lib-name-text {
     text-shadow: 1px 1px black;
 }
@@ -12,4 +19,10 @@ div.card {
 }
 .icon-in-the-middle:before, .icon-in-the-middle:after {
     top: 40%;
+}
+.navbar {
+    position: -webkit-sticky;
+    position: sticky;
+    top: -1px;
+    z-index: 100; /* ensure the BPMN Diagrams are under the navbar when scrolling */
 }
