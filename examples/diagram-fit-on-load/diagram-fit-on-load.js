@@ -1,9 +1,3 @@
-// To uncomment when the release of the 0.5.1 is done
-// import {newBpmnVisualization} from "../utils.js";
-
-// To delete when the release of the 0.5.1 is done
-import {BpmnVisualization, FitType} from "../../demo/0.5.1-alpha/index.es.js";
-
 function getBpmnDiagramHorizontal() {
     return `<?xml version="1.0" encoding="UTF-8"?>
         <bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_1jzeku5" targetNamespace="http://example.com/schema/bpmn">
@@ -236,7 +230,7 @@ function getSelectedFitType() {
 
     for (let i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
-            return FitType[radios[i].value];
+            return bpmnvisu.FitType[radios[i].value];
         }
     }
 }
@@ -247,11 +241,7 @@ function loadDiagram(bpmnVisualization, diagramName) {
     bpmnVisualization.load(diagram, { fitType });
 }
 
-// To uncomment when the release of the 0.5.1 is done
-// const bpmnVisualization = newBpmnVisualization('graph-container');
-
-// To delete when the release of the 0.5.1 is done
-const bpmnVisualization = new BpmnVisualization(window.document.getElementById('graph-container'))
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('graph-container'))
 
 // 'BPMN Diagram' dropdown list
 const dropdownDiagramChoiceElt = document.querySelector('#dropdown-diagram-choice');
