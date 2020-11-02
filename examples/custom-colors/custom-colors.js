@@ -1,4 +1,4 @@
-import { BpmnVisualization, ShapeBpmnElementKind, ShapeUtil, StyleConfigurator, StyleDefault } from '../../demo/0.6.0-alpha/index.es.js';
+import { BpmnVisualization, ShapeBpmnElementKind, ShapeUtil, StyleConfigurator, StyleDefault } from '../../demo/0.6.0/index.es.js';
 import { newBpmnVisualization } from "../utils.js";
 
 const bpmn = bpmnDiagram();
