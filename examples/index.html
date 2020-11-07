@@ -99,10 +99,9 @@ limitations under the License.
             top: -50px;
         }
 
-        /*TODO apply this when clicking on h2 elements*/
-        /*.hidden {*/
-        /*    display: none;*/
-        /*}*/
+        .hidden {
+            display: none;
+        }
     </style>
 </head>
 <body>
@@ -144,9 +143,9 @@ limitations under the License.
 
         <section class="col-12 mt-2 mb-2">
             <a id="usage" class="anchor-from-summary"></a>
-            <h2>
+            <h2 id="usage-h2">
                 <span class="col-10">Usage</span>
-                <span class="col-2 icon icon-in-the-middle icon-caret"></span>
+                <span id="usage-icon" class="col-2 icon icon-in-the-middle icon-arrow-down"></span>
             </h2>
             <div id="usage-content" class="columns">
                 <div class="col-4 p-2">
@@ -324,3 +323,22 @@ limitations under the License.
 
 </body>
 </html>
+
+<script>
+    const elementById = document.getElementById('usage-h2');
+    elementById.onclick = function () {
+        // get the columns div
+        const columnsElt = document.getElementById('usage-content');
+        const iconsElt = document.getElementById('usage-icon');
+        // toggle hidden
+        if (columnsElt.classList.contains('hidden')) {
+            columnsElt.classList.remove('hidden');
+            iconsElt.classList.remove('icon-arrow-right');
+            iconsElt.classList.add('icon-arrow-down')
+        } else {
+            columnsElt.classList.add('hidden');
+            iconsElt.classList.remove('icon-arrow-down');
+            iconsElt.classList.add('icon-arrow-right')
+        }
+    };
+</script>
