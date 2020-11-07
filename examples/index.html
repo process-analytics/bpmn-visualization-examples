@@ -24,16 +24,17 @@ limitations under the License.
         :root {
             /* How far of a scroll travel to the back-to-top link appearing */
             --scrollLength: 100vh;
-            /*--header-height: 80px;*/
-            /*--sticky-pos: 10px;*/
+            /* TODO find why 56px is the value to stick to the nav bar, if possible use relative value
+             * we should find how to get the real navbar height that can change on small screen
+             */
+            --navbar-height: 56px;
         }
 
         /* see https://ebidel.github.io/demos/sticky-position-event.html and https://developers.google.com/web/updates/2017/09/sticky-headers */
         h2 {
             position: -webkit-sticky;
             position: sticky;
-            /* TODO find why 58px is the value to stick to the nav bar, if possible use relative value*/
-            top: 58px;
+            top: var(--navbar-height);
             padding: 10px;
 
             /*background-color: white;*/
@@ -70,7 +71,7 @@ limitations under the License.
             /* achieves desired positioning within the viewport */
             top: calc(var(--scrollLength) - 5rem);
 
-            /*// basic styling*/
+            /*  basic styling */
             display: inline-block;
             font-size: 2rem;
             line-height: 3rem;
@@ -78,7 +79,6 @@ limitations under the License.
             width: 3rem;
             height: 3rem;
             border-radius: 50%;
-            /*padding: 0.25rem;*/
 
             /* "pretty" styles, including states */
             border: 1px solid #254568;
