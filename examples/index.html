@@ -22,9 +22,7 @@ limitations under the License.
     <link rel="stylesheet" href="static/css/main.css" type="text/css">
     <style>
         :root {
-            /*// How far of a scroll travel within <main> prior to the*/
-            /*// link appearing*/
-            /*$scrollLength: 100vh;*/
+            /* How far of a scroll travel to the back-to-top link appearing */
             --scrollLength: 100vh;
             /*--header-height: 80px;*/
             /*--sticky-pos: 10px;*/
@@ -53,16 +51,11 @@ limitations under the License.
         }
 
 
-        /*$color: #254568;*/
-        /*$main-width: 50rem;*/
-
         .back-to-top-wrapper {
-            /*// uncomment to visualize "track"*/
-            /*// outline: 1px solid red;*/
+            /* uncomment to visualize "track"*/
+            /* outline: 1px solid red;*/
             position: absolute;
-            top: 100vh;
-            /* TODO use the root constant
-            top: val();*/
+            top: var(--scrollLength);
             right: 0.75rem;
             bottom: -88em; /* TODO this will need to be changed if more rows are added */
             width: 3em;
@@ -70,19 +63,12 @@ limitations under the License.
         }
 
         .back-to-top-link {
-            /*// `fixed` is fallback*/
-            /*position: fixed;*/
-            /*// preferred positioning, requires prefixing for most support, and not supported on Safari*/
-            /*// @link https://caniuse.com/#search=position%3A%20sticky*/
             position: -webkit-sticky;
             position: sticky;
-            /*// reinstate clicks*/
+            /* reinstate clicks */
             pointer-events: all;
-            /*// achieves desired positioning within the viewport*/
-            /*// relative to the top of the viewport once `sticky` takes over, or always if `fixed` fallback is used*/
-            /*top: 200px;*/
-            /* TODO ensure the button stay on bottom when reaching the end of the page (we don't have footer) */
-            top: calc(100vh - 5rem);
+            /* achieves desired positioning within the viewport */
+            top: calc(var(--scrollLength) - 5rem);
 
             /*// basic styling*/
             display: inline-block;
