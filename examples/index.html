@@ -39,8 +39,17 @@ limitations under the License.
             padding: 10px;
 
             /*background-color: white;*/
+            /*border-color: rgb(114, 118, 130);;*/
             background-color: rgb(236, 239, 247);
+            border-color: white;
+            border-style: solid;
+            border-width: 1px;
             border-radius: 3px;
+        }
+        h2:hover {
+            /*background-color: yellow;*/
+            border-color: #3a38d2;
+            cursor: pointer;
         }
 
 
@@ -104,6 +113,11 @@ limitations under the License.
             position: relative;
             top: -50px;
         }
+
+        /*TODO apply this when clicking on h2 elements*/
+        /*.hidden {*/
+        /*    display: none;*/
+        /*}*/
     </style>
 </head>
 <body>
@@ -145,8 +159,11 @@ limitations under the License.
 
         <section class="col-12 mt-2 mb-2">
             <a id="usage" class="anchor-from-summary"></a>
-            <h2>Usage</h2>
-            <div class="columns">
+            <h2>
+                <span class="col-10">Usage</span>
+                <span class="col-2 icon icon-in-the-middle icon-caret"></span>
+            </h2>
+            <div id="usage-content" class="columns">
                 <div class="col-4 p-2">
                     <div class="card bg-dark p-2">
                         <div class="card-image">
@@ -246,7 +263,7 @@ limitations under the License.
         <section class="col-12 mt-2 mb-2">
             <a id="extensibility"  class="anchor-from-summary"></a>
             <h2>Extensibility</h2>
-            <div class="columns">
+            <div id="extensibility-content" class="columns">
                 <div class="col-4 p-2">
                     <div class="card bg-dark p-2">
                         <div class="card-image">
