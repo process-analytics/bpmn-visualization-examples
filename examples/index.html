@@ -34,8 +34,13 @@ limitations under the License.
         h2 {
             position: -webkit-sticky;
             position: sticky;
-            top: 80px;
-            background-color: yellow
+            /* TODO find why 58px is the value to stick to the nav bar, if possible use relative value*/
+            top: 58px;
+            padding: 10px;
+
+            /*background-color: white;*/
+            background-color: rgb(236, 239, 247);
+            border-radius: 3px;
         }
 
 
@@ -86,7 +91,6 @@ limitations under the License.
             border: 1px solid #254568;
             /*background-color: scale-color($color, $lightness: 85%);*/
             transition: transform 80ms ease-in;
-
         }
 
         .back-to-top-link:hover, .back-to-top-link:focus {
@@ -241,7 +245,7 @@ limitations under the License.
 
         <section class="col-12 mt-2 mb-2">
             <a id="extensibility"  class="anchor-from-summary"></a>
-            <h2 id="extensibility2">Extensibility</h2>
+            <h2>Extensibility</h2>
             <div class="columns">
                 <div class="col-4 p-2">
                     <div class="card bg-dark p-2">
