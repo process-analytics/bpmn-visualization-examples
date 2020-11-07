@@ -92,6 +92,14 @@ limitations under the License.
         .back-to-top-link:hover, .back-to-top-link:focus {
             transform: scale(1.1);
         }
+
+        /* TODO explore alternative for anchor
+           currently dedicated 'a' element on top of h2 elements
+        */
+        .anchor-from-summary {
+            position: relative;
+            top: -50px;
+        }
     </style>
 </head>
 <body>
@@ -132,8 +140,7 @@ limitations under the License.
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <!--            TODO find a better way to do it-->
-            <a id="usage" style="position: relative; top: -50px"></a>
+            <a id="usage" class="anchor-from-summary"></a>
             <h2>Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
@@ -233,8 +240,7 @@ limitations under the License.
         </section>
 
         <section class="col-12 mt-2 mb-2">
-<!--            TODO find a better way to do it-->
-            <a id="extensibility" style="position: relative; top: -50px"></a>
+            <a id="extensibility"  class="anchor-from-summary"></a>
             <h2 id="extensibility2">Extensibility</h2>
             <div class="columns">
                 <div class="col-4 p-2">
