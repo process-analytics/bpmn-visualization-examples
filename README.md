@@ -59,9 +59,9 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
-### Basic `bpmn-visualization` usage 
+### `bpmn-visualization` usage in browsers 
 
-### examples in Browsers
+### basic examples
 
 - [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 - [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
@@ -83,7 +83,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
-### `bpmn-visualization` _package_ usage examples in Projects
+### `bpmn-visualization` usage in projects
 
 - [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
 
