@@ -2,7 +2,7 @@
 <p align="center">
     <p align="center">
         <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html">
-            <img src="examples_home.png">
+            <img src="examples_home.png" alt="examples home">
         </a> 
     </p>
     <p align="center">
@@ -20,6 +20,24 @@
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
+ref to live env
+
+Give a try to the [__:fast_forward: demo live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html)
+or test it [locally](./demo).
+
+All examples are available in the [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
+
+Give a try to the [__⏩ demo live environment__][demo-live-environment].
+The demo let you load a BPMN file to see how `bpmn-visualization` renders it. Various versions of the lib are available. 
+
+If you need BPMN examples, you can use resources from 
+- the [BPMN Model Interchange Working Group (BPMN MIWG)](http://www.omgwiki.org/bpmn-miwg)
+  - https://github.com/bpmn-miwg/bpmn-miwg-test-suite
+  - https://github.com/bpmn-miwg/bpmn-miwg-demos
+- [bpmn-visualization BPMN test diagrams](https://github.com/process-analytics/bpmn-visualization-examples/blob/master/bpmn-files/README.md)
+
+
+
 
 ## 🎮 Demo
 
@@ -28,11 +46,6 @@ This example let you load a BPMN file to see how the lib renders it. Various ver
 Give a try to the [__:fast_forward: demo live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html)
 or test it [locally](./demo).
 
-If you need BPMN examples, you can use resources 
-- from the [BPMN Model Interchange Working Group (BPMN MIWG)](http://www.omgwiki.org/bpmn-miwg)
-  - https://github.com/bpmn-miwg/bpmn-miwg-test-suite
-  - https://github.com/bpmn-miwg/bpmn-miwg-demos
-- [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
 
 ## 🔭 Examples
 
