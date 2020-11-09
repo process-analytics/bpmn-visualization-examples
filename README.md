@@ -27,7 +27,7 @@ Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/proces
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
 You will find both
-- a `demo` that shows several features of `bpmn-visualization` at the same time. The source of the demo is available in the
+- a `demo` that shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
 [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
 - the examples described in more details below in this page. They demonstrate how to use a single feature.
 
