@@ -26,8 +26,10 @@ This repository contains examples showing how to use [bpmn-visualization](https:
 Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
-**TODO both demo and examples**
-
+You will find both
+- a `demo` that activate several features of `bpmn-visualization` at the same time. The source of the demo is available in the
+[bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- the examples described in more details below in this page. They demonstrate how to use a single feature.
 
 
 ## 🔭 Examples
