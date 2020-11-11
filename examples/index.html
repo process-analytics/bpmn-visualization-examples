@@ -92,6 +92,18 @@ limitations under the License.
             top: -50px;
         }
 
+        /* TODO make it better after changing card background*/
+        .card:hover {
+            /*background-color: yellow;*/
+            /*border-color: #3a38d2;*/
+            border-color: #4b48d6;
+            cursor: pointer;
+        }
+        .card-subtitle {
+            font-style: italic;
+            margin-top: 15px;
+        }
+
     </style>
 </head>
 <body>
@@ -136,13 +148,13 @@ limitations under the License.
             <h2 class="bg-dark">Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Getting Started</div>
-                            <div class="card-subtitle text-gray">know how to use <i>bpmn-visualization</i> in the Browser</div>
+                            <div class="card-subtitle">know how to use <i>bpmn-visualization</i> in the Browser</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -152,13 +164,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_use_local_diagram.png" class="img-responsive" alt="locally loaded diagrams">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Load local BPMN diagrams</div>
-                            <div class="card-subtitle text-gray">load BPMN diagrams from your device</div>
+                            <div class="card-subtitle">load BPMN diagrams from your device</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -168,13 +180,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_use_remote_diagram.png" class="img-responsive" alt="remotely loaded diagrams">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Load remote BPMN diagrams</div>
-                            <div class="card-subtitle text-gray">load BPMN diagrams hosted remotely</div>
+                            <div class="card-subtitle">load BPMN diagrams hosted remotely</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -184,13 +196,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_diagram_navigation.png" class="img-responsive" alt="navigate within the diagram">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Diagram Navigation</div>
-                            <div class="card-subtitle text-gray">zoom and move the diagram</div>
+                            <div class="card-subtitle">zoom and move the diagram</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -199,13 +211,13 @@ limitations under the License.
                     </div>
                 </div>
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_diagram_fit-on-load.png" class="img-responsive" alt="fit the diagram">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Diagram Fit On Load</div>
-                            <div class="card-subtitle text-gray">fit the diagram whole/horizontally/vertically/center on load</div>
+                            <div class="card-subtitle">fit the diagram whole/horizontally/vertically/center on load</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -214,13 +226,13 @@ limitations under the License.
                     </div>
                 </div>
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_diagram_fit_variants.png" class="img-responsive" alt="navigate within the diagram">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Diagram Fit Variants</div>
-                            <div class="card-subtitle text-gray">fit the diagram horizontally or vertically</div>
+                            <div class="card-subtitle">fit the diagram horizontally or vertically</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -236,13 +248,13 @@ limitations under the License.
             <h2 class="bg-dark">Extensibility</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_custom_colors.png" class="img-responsive" alt="custom colors">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Custom colors</div>
-                            <div class="card-subtitle text-gray">change default fill and stroke colors, font color, use specific colors depending on the BPMN element</div>
+                            <div class="card-subtitle">change default fill and stroke colors, font color, use specific colors depending on the BPMN element</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -252,13 +264,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_custom_fonts.png" class="img-responsive" alt="custom fonts">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Custom fonts</div>
-                            <div class="card-subtitle text-gray">change default font, font color, use specific font depending on the BPMN element</div>
+                            <div class="card-subtitle">change default font, font color, use specific font depending on the BPMN element</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -268,13 +280,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_custom_user_icon.png" class="img-responsive" alt="custom icon">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Custom user task icon</div>
-                            <div class="card-subtitle text-gray">use your own icon for the task</div>
+                            <div class="card-subtitle">use your own icon for the task</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
@@ -284,13 +296,13 @@ limitations under the License.
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
+                    <div class="card p-2">
                         <div class="card-image">
                             <img src="static/img/preview_hacktoberfest_diagram.png" class="img-responsive" alt="hacktoberfest themes">
                         </div>
                         <div class="card-header">
                             <div class="card-title h5">Hacktoberfest themes</div>
-                            <div class="card-subtitle text-gray">Special Hacktoberfest diagram with Hacktoberfest colors</div>
+                            <div class="card-subtitle">Special Hacktoberfest diagram with Hacktoberfest colors</div>
                         </div>
                         <div class="card-body"></div>
                         <div class="card-footer">
