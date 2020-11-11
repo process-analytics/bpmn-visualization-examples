@@ -105,18 +105,18 @@ limitations under the License.
             font-style: italic;
         }
 
-        /*!* TODO restrict this to anchor in cards *!*/
-        a.active, a:active, a:focus, a:hover {
-            text-decoration: none !important;
-            color: red!important;
-            border: none;
+        /* TODO restrict this to anchor in cards */
+        a.customCard {
+            color: inherit;
+            outline: 0 none !important;
         }
-        /*a:visited {*/
-        /*    color: inherit;*/
-        /*}*/
-
-
-
+        a.customCard.active,
+        a.customCard:active, a.customCard:focus, a.customCard:hover {
+            text-decoration: none !important;
+            color: red!important; /*TODO remove only used to ensure this only apply to card anchor */
+            /*border: none;*/
+            border-color: chartreuse;
+        }
     </style>
 </head>
 <body>
@@ -161,8 +161,9 @@ limitations under the License.
             <h2 class="bg-dark">Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <a href="./01-getting-started/index.html" target="_blank" style="color: inherit; display: block">
                         <div class="card p-2">
+                    <a href="./01-getting-started/index.html" target="_blank" class="customCard" tabindex="0">
+<!--   tabindex="-1"                                 /*TODO temp non focusable to avoid glitch*/-->
 
                             <div class="card-image">
                                 <img src="static/img/preview_01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
@@ -173,8 +174,8 @@ limitations under the License.
                             </div>
                             <div class="card-body">Know how to use <code>bpmn-visualization</code> in the Browser.</div>
                             <div class="card-footer"></div>
-                        </div>
                     </a>
+                        </div>
                 </div>
 
                 <div class="col-4 p-2">
