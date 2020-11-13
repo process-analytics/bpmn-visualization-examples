@@ -61,8 +61,8 @@ const bpmnFileContent = `<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XML
 </bpmn:definitions>`;
 
 export default function initialize() {
-  // instantiate the BpmnVisualization, pass the container HTMLElement - present in index.html(<div id="graph"></div>)
-  let bpmnVisualization = new BpmnVisualization(window.document.getElementById('bpmn-viewport'));
+  // instantiate the BpmnVisualization, pass the container HTMLElement - present in index.html
+  let bpmnVisualization = new BpmnVisualization(window.document.getElementById('bpmn-container'));
   // load the BPMN diagram defined above
   bpmnVisualization.load(bpmnFileContent);
 }
