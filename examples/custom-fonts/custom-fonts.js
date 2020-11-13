@@ -1,12 +1,9 @@
-import { BpmnVisualization, ShapeBpmnElementKind, StyleConfigurator, StyleDefault } from '../../demo/0.6.0/index.es.js';
-import { newBpmnVisualization } from "../utils.js";
-
 const bpmn = bpmnDiagram();
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
 bpmnVisualization.load(bpmn);
 
 
@@ -14,30 +11,30 @@ bpmnVisualization.load(bpmn);
 // custom default font
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const originalDefaultFontFamily = StyleDefault.DEFAULT_FONT_FAMILY;
-const originalDefaultFontSize = StyleDefault.DEFAULT_FONT_SIZE;
-StyleDefault.DEFAULT_FONT_SIZE = '12';
-StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
+const originalDefaultFontFamily = bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY;
+const originalDefaultFontSize = bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
+bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
+bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
-const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 
-const bpmnVisualizationCustomDefaultFont = newBpmnVisualization('bpmn-container-custom-default-font');
+const bpmnVisualizationCustomDefaultFont = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-default-font'));
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
-StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
-StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
+bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
+bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
 // restore StyleConfigurator defaults
-StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom font depending on BPMN elements
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-class BpmnVisualizationCustomFonts extends BpmnVisualization {
+class BpmnVisualizationCustomFonts extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
         super(window.document.getElementById(containerId));
@@ -47,12 +44,12 @@ class BpmnVisualizationCustomFonts extends BpmnVisualization {
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
-        const userTaskStyle = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+        const userTaskStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
         userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
         userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
         userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
 
-        const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
+        const poolStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
         poolStyle[mxConstants.STYLE_FONTFAMILY] = 'MS Gothic,Courier New,serif';
         poolStyle[mxConstants.STYLE_FONTSIZE] = '20';
         poolStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD;

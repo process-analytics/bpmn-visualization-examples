@@ -100,15 +100,11 @@ limitations under the License.
     </div>
 </section>
 
-<!-- load global settings -->
-<script src="../../demo/0.6.0/static/js/configureMxGraphGlobals.js"></script>
-<!-- load mxGraph client library -->
-<script src="../../demo/0.6.0/static/js/mxClient.min.js"></script>
+<!-- load bpmn-visualization -->
+<script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
 
-<script type="module">
-    import { newBpmnVisualization } from "../utils.js";
-
-    const bpmnVisualization = newBpmnVisualization('bpmn-container');
+<script>
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'));
 
     function log(message, ...optionalParams) {
         console.info('[DEMO] ' + message, ...optionalParams);

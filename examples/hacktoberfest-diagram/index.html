@@ -22,13 +22,6 @@ limitations under the License.
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
 </head>
 <body>
-    <!-- load global settings -->
-    <script src="../../demo/0.6.0/static/js/configureMxGraphGlobals.js"></script>
-    <!-- load mxGraph client library -->
-    <script src="../../demo/0.6.0/static/js/mxClient.min.js"></script>
-    <!-- load the example -->
-    <script src="./hacktoberfest-diagram.js" type="module"></script>
-
     <header class="navbar bg-dark p-2">
         <section class="navbar-section ml-2">
             <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
@@ -73,5 +66,10 @@ limitations under the License.
             </div>
         </section>
     </section>
+
+    <!-- load bpmn-visualization -->
+    <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
+    <!-- load the example -->
+    <script src="./hacktoberfest-diagram.js"></script>
 </body>
 </html>

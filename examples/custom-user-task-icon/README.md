@@ -6,7 +6,7 @@ subclassing `IconPainter`.
 
 Javascript example
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-user-task-icon/index.html)
-- to run locally, see the [explanations in the repository README](../../README.md#running-examples-locally)
+- to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ BPMN Visualization Usage
 You can find all the content of the example in [index.html](index.html) and [custom-user-task-icon.js](custom-user-task-icon.js).
