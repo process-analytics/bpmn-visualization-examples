@@ -29,14 +29,14 @@ limitations under the License.
         .relative {
             position: relative;
         }
-        .viewport-container-absolute {
+        .bpmn-container-absolute {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
         }
-        #view-port {
+        #bpmn-container {
             overflow-x: auto;
             overflow-y: hidden;
             padding-bottom: 100px;
@@ -95,8 +95,8 @@ limitations under the License.
         </section>
 </section>
 <section class="col-12 mt-2 relative">
-    <div class="viewport-container-absolute">
-        <div id="view-port" class="mb-2"></div>
+    <div class="bpmn-container-absolute">
+        <div id="bpmn-container" class="mb-2"></div>
     </div>
 </section>
 
@@ -108,7 +108,7 @@ limitations under the License.
 <script type="module">
     import { newBpmnVisualization } from "../utils.js";
 
-    const bpmnVisualization = newBpmnVisualization('view-port');
+    const bpmnVisualization = newBpmnVisualization('bpmn-container');
 
     function log(message, ...optionalParams) {
         console.info('[DEMO] ' + message, ...optionalParams);

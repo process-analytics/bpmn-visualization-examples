@@ -37,7 +37,7 @@ Javascript example
 - Then, we load the content of this file in the BPMN Visualization library.
 ```javascript
         fetchBpmnContent(url).then(bpmn => {
-            const bpmnVisualization = new BpmnVisualization(window.document.getElementById('view-port'));
+            const bpmnVisualization = new BpmnVisualization(window.document.getElementById('bpmn-container'));
             bpmnVisualization.load(bpmn);
             console.log('Bpmn loaded from url <%s>', url);
         });
