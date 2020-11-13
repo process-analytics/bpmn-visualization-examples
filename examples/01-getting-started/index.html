@@ -43,7 +43,7 @@ limitations under the License.
 </header>
 <section class="container col-10 flex-centered mt-2">
     <section class="col-12 mt-2">
-        <div id="bpmn-viewport" class="col-12 mb-2">
+        <div id="bpmn-container" class="col-12 mb-2">
             <h2>Getting Started</h2>
         </div>
     </section>
@@ -54,7 +54,7 @@ limitations under the License.
 <!-- if you prefer jsdlivr, comment unpkg and uncomment the following line -->
 <!--<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.6.0/dist/bpmn-visualization.min.js"></script>-->
 <script>
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
     bpmnVisualization.load(bpmnDiagram());
 
     function bpmnDiagram() {

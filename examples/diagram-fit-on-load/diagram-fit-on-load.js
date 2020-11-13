@@ -243,7 +243,7 @@ function loadDiagram(bpmnVisualization, diagramName) {
     bpmnVisualization.load(diagram, { fitType });
 }
 
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('graph-container'))
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'))
 
 // 'BPMN Diagram' dropdown list
 const dropdownDiagramChoiceElt = document.querySelector('#dropdown-diagram-choice');

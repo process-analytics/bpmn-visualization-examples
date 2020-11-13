@@ -3,7 +3,7 @@ import { newBpmnVisualization } from "../utils.js";
 
 const bpmn = bpmnDiagram();
 
-const bpmnVisualization = newBpmnVisualization('graphDefault');
+const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
 bpmnVisualization.load(bpmn);
 
 // demonstrate how to hard code the color for a specific icon
@@ -38,7 +38,7 @@ class CustomIconPainter extends IconPainter {
 
 IconPainterProvider.set(new CustomIconPainter());
 
-const bpmnVisualizationCustomerUserTask = newBpmnVisualization('graphCustomerUserTask');
+const bpmnVisualizationCustomerUserTask = newBpmnVisualization('bpmn-container-custom-user-task');
 bpmnVisualizationCustomerUserTask.load(bpmn);
 
 

@@ -24,14 +24,14 @@ limitations under the License.
         .relative {
             position: relative;
         }
-        .bpmn-viewport-container-absolute {
+        .bpmn-container-absolute {
             position: absolute;
             top: 0;
             left: 0;
             right: 0;
             bottom: 0;
         }
-        #bpmn-viewport {
+        #bpmn-container {
             overflow-x: auto;
             overflow-y: hidden;
             padding-bottom: 100px;
@@ -82,8 +82,8 @@ limitations under the License.
         </section>
 </section>
 <section class="col-12 mt-2 relative">
-    <div class="bpmn-viewport-container-absolute">
-        <div id="bpmn-viewport" class="mb-2"></div>
+    <div class="bpmn-container-absolute">
+        <div id="bpmn-container" class="mb-2"></div>
     </div>
 </section>
 
@@ -92,7 +92,7 @@ limitations under the License.
 <script>
     document.getElementById('btn-open-file').addEventListener('change', handleFileSelect, false);
 
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
 
     function handleFileSelect(evt) {
         evt.stopPropagation();

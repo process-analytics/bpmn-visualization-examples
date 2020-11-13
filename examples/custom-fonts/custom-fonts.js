@@ -6,7 +6,7 @@ const bpmn = bpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = newBpmnVisualization('graphDefault');
+const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
 bpmnVisualization.load(bpmn);
 
 
@@ -25,7 +25,7 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 
-const bpmnVisualizationCustomDefaultFont = newBpmnVisualization('graphCustomDefaultFont');
+const bpmnVisualizationCustomDefaultFont = newBpmnVisualization('bpmn-container-custom-default-font');
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
 StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
@@ -60,7 +60,7 @@ class BpmnVisualizationCustomFonts extends BpmnVisualization {
 
 }
 
-const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('graphCustomFonts');
+const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('bpmn-container-custom-fonts');
 bpmnVisualizationCustomFonts.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

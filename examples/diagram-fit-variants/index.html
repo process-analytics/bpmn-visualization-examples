@@ -21,7 +21,7 @@ limitations under the License.
     <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
     <style>
-        .bpmn-viewport {
+        #bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
             /* width is relative to the window size */
             height: 500px;
@@ -119,7 +119,7 @@ limitations under the License.
                             </div>
                         </div>
                     </div>
-                    <div id="bpmn-viewport" class="bpmn-viewport col-8" style="float: left"></div>
+                    <div id="bpmn-container" class="col-8" style="float: left"></div>
                 </div>
             </section>
     </section>
@@ -132,7 +132,7 @@ limitations under the License.
         const fitMarginValueElt = document.getElementById('fit-margin-value');
         fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
 
-        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
         loadDiagram();
 
         function loadDiagram(diagramName) {
