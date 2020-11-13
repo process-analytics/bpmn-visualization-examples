@@ -1,15 +1,10 @@
-// TODO duplicated with the esm utils function + to move in a utils shared script
-function newBpmnVisualization(containerId) {
-    return new bpmnvisu.BpmnVisualization(window.document.getElementById(containerId));
-}
-
 let inputProjectName = document.getElementById('input-project-name');
 let bpmn = bpmnDiagram(inputProjectName.value);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
 bpmnVisualization.load(bpmn);
 
 
