@@ -12,7 +12,7 @@ Javascript example
 Override the BPMN element fonts using various ways. `mxGraph` knowledge is required to handle style changes.
 See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/bpmn-support-how-to.md) for more details.
 
-:warning: In order to avoid to have to many content in the README, we simplify it. You can find all the content of the example in [custom-font.js](custom-font.js).
+:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [custom-font.js](custom-font.js).
 
 
 Content:
@@ -54,4 +54,3 @@ const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('bpmn-cont
 ```
 
 **Note**: for example about font colors, see the [custom-colors example](../custom-colors/README.md).
-
