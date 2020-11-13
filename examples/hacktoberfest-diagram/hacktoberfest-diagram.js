@@ -13,7 +13,7 @@ let bpmn = bpmnDiagram(inputProjectName.value);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = newBpmnVisualization('graphDefault');
+const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
 bpmnVisualization.load(bpmn);
 
 
@@ -101,7 +101,7 @@ class HacktoberfestLightThemeIconPainter extends IconPainter {
 IconPainterProvider.set(new HacktoberfestLightThemeIconPainter());
 
 
-const bpmnVisualizationHacktoberfestLightTheme = new BpmnVisualizationHacktoberfestLightTheme('graphHacktoberfestLightTheme');
+const bpmnVisualizationHacktoberfestLightTheme = new BpmnVisualizationHacktoberfestLightTheme('bpmn-container-hacktoberfest-light-theme');
 bpmnVisualizationHacktoberfestLightTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -184,7 +184,7 @@ class HacktoberfestDarkThemeIconPainter extends IconPainter {
 IconPainterProvider.set(new HacktoberfestDarkThemeIconPainter());
 
 
-const bpmnVisualizationHacktoberfestDarkTheme = new BpmnVisualizationHacktoberfestDarkTheme('graphHacktoberfestDarkTheme');
+const bpmnVisualizationHacktoberfestDarkTheme = new BpmnVisualizationHacktoberfestDarkTheme('bpmn-container-hacktoberfest-dark-theme');
 bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
 bpmnVisualizationHacktoberfestDarkTheme.load(bpmn);
 
