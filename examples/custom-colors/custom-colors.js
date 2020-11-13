@@ -6,7 +6,7 @@ const bpmn = bpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = newBpmnVisualization('graphDefault');
+const bpmnVisualization = newBpmnVisualization('bpmn-container-default');
 bpmnVisualization.load(bpmn);
 
 
@@ -15,7 +15,7 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const originalDefaultFontColor = StyleDefault.DEFAULT_FONT_COLOR;
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
-const bpmnVisualizationCustomDefaultFontColor = newBpmnVisualization('graphCustomFontColor');
+const bpmnVisualizationCustomDefaultFontColor = newBpmnVisualization('bpmn-container-custom-font-color');
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
 // restore StyleConstant defaults
@@ -40,7 +40,7 @@ StyleConfigurator.prototype.configureStyles = function () {
         style[mxConstants.STYLE_FILLCOLOR] = StyleDefault.DEFAULT_FILL_COLOR;
     });
 }
-const bpmnVisualizationCustomDefaultColor = newBpmnVisualization('graphCustomDefaultColors');
+const bpmnVisualizationCustomDefaultColor = newBpmnVisualization('bpmn-container-custom-default-colors');
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults
@@ -89,7 +89,7 @@ class BpmnVisualizationCustomColors extends BpmnVisualization {
 
 }
 
-const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCustomColors');
+const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('bpmn-container-custom-colors');
 bpmnVisualizationCustomColors.load(bpmn);
 
 
@@ -126,7 +126,7 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
 }
 
-const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
+const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('bpmn-container-custom-colors');
 bpmnVisualizationEventCustomColors.load(bpmn);
 
 
@@ -151,7 +151,7 @@ class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
    }
 }
 
-const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('graphCustomColorsUserTask');
+const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('bpmn-container-custom-colors-user-task');
 bpmnVisualizationCustomColorsUserTask.load(bpmn);
 
 // restore StyleConfigurator defaults
