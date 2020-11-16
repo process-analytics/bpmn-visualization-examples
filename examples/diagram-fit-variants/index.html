@@ -128,10 +128,11 @@ limitations under the License.
     </section>
 
     <!-- load bpmn-visualization -->
-    <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
-    <script>
-        import {FitType} from "../../demo/0.6.0/index.es";
+    <!-- To uncomment on 0.7.0 release -->
+<!--    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>-->
+    <script src="../../demo/0.7.0/bpmn-visualization.js"></script>
 
+    <script>
         let fitType = undefined;
         let fitMargin = 10;
         const fitMarginValueElt = document.getElementById('fit-margin-value');
@@ -151,19 +152,19 @@ limitations under the License.
 
         document.getElementById('btn-zoom-actual').onclick = function() {
             fitType = undefined;
-            bpmnVisualization.fit({type: FitType.None});
+            bpmnVisualization.fit({type: bpmnvisu.FitType.None});
         };
         document.getElementById('btn-fit-horizontally').onclick = function() {
-            bpmnVisualization.fit({type: FitType.Horizontal});
+            bpmnVisualization.fit({type: bpmnvisu.FitType.Horizontal});
         };
         document.getElementById('btn-fit-vertically').onclick = function() {
-            bpmnVisualization.fit({type: FitType.Vertical});
+            bpmnVisualization.fit({type: bpmnvisu.FitType.Vertical});
         };
         document.getElementById('btn-fit-all').onclick = function() {
-            bpmnVisualization.fit({type: FitType.HorizontalVertical});
+            bpmnVisualization.fit({type: bpmnvisu.FitType.HorizontalVertical});
         };
         document.getElementById('btn-fit-center').onclick = function() {
-            bpmnVisualization.fit({type: FitType.Center});
+            bpmnVisualization.fit({type: bpmnvisu.FitType.Center});
         };
 
         // 'Fit Margin' dropdown list
