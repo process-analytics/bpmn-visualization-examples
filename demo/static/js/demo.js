@@ -13,57 +13,101 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import { documentReady, handleFileSelect, startBpmnVisualization, FitType, updateFitType } from '../../index.es.js';
+import { documentReady, handleFileSelect, startBpmnVisualization, FitType, fit, log, updateLoadOptions, getCurrentLoadOptions } from '../../index.es.js';
+
+let fitOnLoad = true;
+let fitOptions = {};
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function updateFitTypeSelection(event) {
-  updateFitType(event);
+function configureBpmnViewport() {
+  const viewport = document.getElementById('graph');
 
-  if (event.target.value === 'None') {
-    resetClass(container);
+  const useFixedSize = !(fitOptions.type && FitType[fitOptions.type] === 'None'); // !== 'None'
+  if (useFixedSize) {
+    viewport.classList.add('fixed-size');
   } else {
-    setFixedSizeClass(container);
+    viewport.classList.remove('fixed-size');
   }
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function setFixedSizeClass(htmlElementId) {
-  const htmlElement = document.getElementById(htmlElementId);
-  htmlElement.classList.add('fixed-size');
+function configureFitOnLoadCheckBox() {
+  const fitOnLoadElt = document.getElementById('fitOnLoad');
+  fitOnLoadElt.onchange = event => {
+    fitOnLoad = event.target.checked;
+    log('Fit on load updated!', fitOnLoad);
+    updateLoadOptions(fitOnLoad ? fitOptions : {});
+  };
+  fitOnLoadElt.checked = fitOnLoad;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function resetClass(htmlElementId) {
-  const htmlElement = document.getElementById(htmlElementId);
-  htmlElement.classList.remove('fixed-size');
+function updateFitConfig(config) {
+  log('Updating fit config', config);
+
+  fitOptions.margin = config.margin || fitOptions.margin;
+  if (config.type) {
+    fitOptions.type = FitType[config.type];
+  }
+  log('Fit config updated!', fitOptions);
+
+  if (fitOnLoad) {
+    updateLoadOptions(fitOptions);
+  }
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
-function startDemo() {
+function configureFitTypeSelect() {
+  const fitTypeSelectedElt = document.getElementById('fitType-selected');
+  fitTypeSelectedElt.onchange = event => {
+    updateFitConfig({ type: event.target.value });
+    configureBpmnViewport();
+    fit(fitOptions);
+  };
+
+  if (fitOptions.type) {
+    fitTypeSelectedElt.value = FitType[fitOptions.type];
+  } else {
+    updateFitConfig({ type: fitTypeSelectedElt.value });
+  }
+
+  configureBpmnViewport();
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function configureFitMarginInput() {
+  const fitMarginElt = document.getElementById('fit-margin');
+  fitMarginElt.onchange = event => updateFitConfig({ margin: event.target.value });
+
+  if (fitOptions.margin) {
+    fitMarginElt.value = fitOptions.margin;
+  } else {
+    updateFitConfig({ margin: fitMarginElt.value });
+  }
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function configureControlPanel() {
   const parameters = new URLSearchParams(window.location.search);
-
-  // Update the selected option at the initialization
-  const fitTypeSelected = document.getElementById('fitType-selected');
-  fitTypeSelected.addEventListener('change', updateFitTypeSelection, false);
-
-  const parameterFitType = parameters.get('fitType');
-  if (parameterFitType) {
-    fitTypeSelected.value = parameterFitType;
-  }
-
-  if (fitTypeSelected.value !== 'None') {
-    setFixedSizeClass('graph');
-  }
-
-  startBpmnVisualization({ container: 'graph', loadOptions: { fitType: FitType[fitTypeSelected.value] } });
-  document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
-
-  // Update control panel
   if (parameters.get('hideControls') === 'true') {
     const classList = document.getElementById('controls').classList;
     classList.remove('controls');
     classList.add('hidden');
   }
+}
+
+// eslint-disable-next-line @typescript-eslint/explicit-function-return-type
+function startDemo() {
+  startBpmnVisualization({ container: 'graph' });
+
+  // Configure custom html elements
+  document.getElementById('bpmn-file').addEventListener('change', handleFileSelect, false);
+
+  fitOptions = getCurrentLoadOptions().fit;
+  configureFitTypeSelect();
+  configureFitMarginInput();
+  configureFitOnLoadCheckBox();
+  configureControlPanel();
 }
 
 // Start
