@@ -2,7 +2,7 @@
 <p align="center">
     <p align="center">
         <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html">
-            <img src="examples_home.png">
+            <img src="examples_home.png" alt="examples overview">
         </a> 
     </p>
     <p align="center">
@@ -21,22 +21,18 @@
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
 
-## 🎮 Demo
+## 🎮 Live Environment
 
-This example let you load a BPMN file to see how the lib renders it. Various versions of the lib are available. 
+Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
+to quickly have an overview of the `bpmn-visualization` capabilities.
 
-Give a try to the [__:fast_forward: demo live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html)
-or test it [locally](./demo).
+You will find both
+- a `demo` that shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
+[bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- the examples described in more details below in this page. They demonstrate how to use a single feature.
 
-If you need BPMN examples, you can use resources 
-- from the [BPMN Model Interchange Working Group (BPMN MIWG)](http://www.omgwiki.org/bpmn-miwg)
-  - https://github.com/bpmn-miwg/bpmn-miwg-test-suite
-  - https://github.com/bpmn-miwg/bpmn-miwg-demos
-- [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
 
 ## 🔭 Examples
-
-All examples are available in the [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
 
 ### Running examples locally
 
@@ -86,6 +82,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 ### `bpmn-visualization` usage in projects
 
 - [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
+
 
 ## 🔧 Contributing
 
