@@ -168,11 +168,8 @@ limitations under the License.
 
 
         function performFit(type) {
-            if (type) {
+            if (type !== undefined) {
                 fitType = type;
-            }
-            if (!fitType) {
-                return;
             }
             bpmnVisualization.fit({type: fitType, margin: fitMargin});
         }
