@@ -171,10 +171,10 @@ limitations under the License.
             if (type) {
                 fitType = type;
             }
-            if (!fitType) {
+            if (type === undefined) {
                 return;
             }
-            bpmnVisualization.fit({type: fitType, margin: fitMargin});
+            bpmnVisualization.fit({type: type, margin: fitMargin});
         }
 
         // 'Fit Margin' dropdown list
