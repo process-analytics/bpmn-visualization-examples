@@ -92,6 +92,9 @@ limitations under the License.
                             <button id="btn-fit-all" title="Fit both horizontally and vertically" class="btn btn-primary has-icon-right">
                                 <span class="icon icon-apps mb-1"></span>
                             </button>
+                            <button id="btn-fit-center" title="Fit center" class="btn btn-primary has-icon-right">
+                                <span class="icon icon-location mb-1"></span>
+                            </button>
                         </div>
 
                         <div class="col-3" style="float: left">
@@ -127,6 +130,8 @@ limitations under the License.
     <!-- load bpmn-visualization -->
     <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
     <script>
+        import {FitType} from "../../demo/0.6.0/index.es";
+
         let fitType = undefined;
         let fitMargin = 10;
         const fitMarginValueElt = document.getElementById('fit-margin-value');
@@ -144,42 +149,22 @@ limitations under the License.
             }
         }
 
-        // TODO use the lib methods when available, see https://github.com/process-analytics/bpmn-visualization-js/issues/738
         document.getElementById('btn-zoom-actual').onclick = function() {
             fitType = undefined;
-            bpmnVisualization.graph.zoomActual();
+            bpmnVisualization.fit({type: FitType.None});
         };
         document.getElementById('btn-fit-horizontally').onclick = function() {
-            performFit('horizontal');
+            bpmnVisualization.fit({type: FitType.Horizontal});
         };
         document.getElementById('btn-fit-vertically').onclick = function() {
-            performFit('vertical');
+            bpmnVisualization.fit({type: FitType.Vertical});
         };
         document.getElementById('btn-fit-all').onclick = function() {
-            performFit('all');
+            bpmnVisualization.fit({type: FitType.HorizontalVertical});
         };
-
-        function performFit(type) {
-            if (type) {
-                fitType = type;
-            }
-            if (!fitType) {
-                return;
-            }
-
-            let ignoreWidth = false,
-                ignoreHeight = false;
-            switch (fitType) {
-                case 'horizontal':
-                    ignoreHeight = true;
-                    break;
-                case 'vertical':
-                    ignoreWidth = true;
-                    break;
-            }
-
-            bpmnVisualization.graph.fit(fitMargin, false, 0, true, ignoreWidth, ignoreHeight);
-        }
+        document.getElementById('btn-fit-center').onclick = function() {
+            bpmnVisualization.fit({type: FitType.Center});
+        };
 
         // 'Fit Margin' dropdown list
         const fitMarginValues = [0, 5, 10, 20, 50];
