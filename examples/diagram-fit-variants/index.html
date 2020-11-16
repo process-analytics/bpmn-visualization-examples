@@ -80,7 +80,7 @@ limitations under the License.
 
                     <div id="controls">
                         <div id="btn-group-fit" class="col-2" style="float: left">
-                            <button id="btn-zoom-actual" title="Reset to initial loading dimensions" class="btn btn-primary has-icon-right">
+                            <button id="btn-fit-none" title="Reset to initial loading dimensions" class="btn btn-primary has-icon-right">
                                 <span class="icon icon-refresh mb-1"></span>
                             </button>
                             <button id="btn-fit-horizontally" title="Fit horizontally" class="btn btn-primary has-icon-right">
@@ -150,7 +150,7 @@ limitations under the License.
             }
         }
 
-        document.getElementById('btn-zoom-actual').onclick = function() {
+        document.getElementById('btn-fit-none').onclick = function() {
             performFit(bpmnvisu.FitType.None);
         };
         document.getElementById('btn-fit-horizontally').onclick = function() {
