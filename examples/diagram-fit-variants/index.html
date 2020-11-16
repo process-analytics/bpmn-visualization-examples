@@ -80,7 +80,7 @@ limitations under the License.
 
                     <div id="controls">
                         <div id="btn-group-fit" class="col-2" style="float: left">
-                            <button id="btn-zoom-actual" title="Reset to initial loading dimensions" class="btn btn-primary has-icon-right">
+                            <button id="btn-fit-none" title="Reset to initial loading dimensions" class="btn btn-primary has-icon-right">
                                 <span class="icon icon-refresh mb-1"></span>
                             </button>
                             <button id="btn-fit-horizontally" title="Fit horizontally" class="btn btn-primary has-icon-right">
@@ -91,6 +91,9 @@ limitations under the License.
                             </button>
                             <button id="btn-fit-all" title="Fit both horizontally and vertically" class="btn btn-primary has-icon-right">
                                 <span class="icon icon-apps mb-1"></span>
+                            </button>
+                            <button id="btn-fit-center" title="Fit center" class="btn btn-primary has-icon-right">
+                                <span class="icon icon-location mb-1"></span>
                             </button>
                         </div>
 
@@ -125,9 +128,12 @@ limitations under the License.
     </section>
 
     <!-- load bpmn-visualization -->
-    <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
+    <!-- To uncomment on 0.7.0 release -->
+<!--    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>-->
+    <script src="../../demo/0.7.0/bpmn-visualization.js"></script>
+
     <script>
-        let fitType = undefined;
+        let fitType = bpmnvisu.FitType.None;
         let fitMargin = 10;
         const fitMarginValueElt = document.getElementById('fit-margin-value');
         fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
@@ -144,41 +150,28 @@ limitations under the License.
             }
         }
 
-        // TODO use the lib methods when available, see https://github.com/process-analytics/bpmn-visualization-js/issues/738
-        document.getElementById('btn-zoom-actual').onclick = function() {
-            fitType = undefined;
-            bpmnVisualization.graph.zoomActual();
+        document.getElementById('btn-fit-none').onclick = function() {
+            performFit(bpmnvisu.FitType.None);
         };
         document.getElementById('btn-fit-horizontally').onclick = function() {
-            performFit('horizontal');
+            performFit(bpmnvisu.FitType.Horizontal);
         };
         document.getElementById('btn-fit-vertically').onclick = function() {
-            performFit('vertical');
+            performFit(bpmnvisu.FitType.Vertical);
         };
         document.getElementById('btn-fit-all').onclick = function() {
-            performFit('all');
+            performFit(bpmnvisu.FitType.HorizontalVertical);
+        };
+        document.getElementById('btn-fit-center').onclick = function() {
+            performFit(bpmnvisu.FitType.Center);
         };
 
+
         function performFit(type) {
-            if (type) {
+            if (type !== undefined) {
                 fitType = type;
             }
-            if (!fitType) {
-                return;
-            }
-
-            let ignoreWidth = false,
-                ignoreHeight = false;
-            switch (fitType) {
-                case 'horizontal':
-                    ignoreHeight = true;
-                    break;
-                case 'vertical':
-                    ignoreWidth = true;
-                    break;
-            }
-
-            bpmnVisualization.graph.fit(fitMargin, false, 0, true, ignoreWidth, ignoreHeight);
+            bpmnVisualization.fit({type: fitType, margin: fitMargin});
         }
 
         // 'Fit Margin' dropdown list
