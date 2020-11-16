@@ -75,8 +75,9 @@ limitations under the License.
             </section>
     </section>
 
-    <!-- load bpmn-visualization -->
-    <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
+    <!-- To uncomment on 0.7.0 release -->
+    <!--    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>-->
+    <script src="../../demo/0.7.0/bpmn-visualization.js"></script>
     <script>
         const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container-default'));
         bpmnVisualization.load(bpmnDiagram());
@@ -85,8 +86,7 @@ limitations under the License.
         bpmnVisualizationNavigation.load(bpmnDiagram());
 
         document.getElementById('btn-reset').onclick = function() {
-            // TODO use the lib method when available, see https://github.com/process-analytics/bpmn-visualization-js/issues/738
-            bpmnVisualizationNavigation.graph.zoomActual();
+            bpmnVisualization.fit({type: bpmnvisu.FitType.None});
         };
 
         function bpmnDiagram() {

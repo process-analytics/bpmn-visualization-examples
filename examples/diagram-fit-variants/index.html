@@ -133,7 +133,7 @@ limitations under the License.
     <script src="../../demo/0.7.0/bpmn-visualization.js"></script>
 
     <script>
-        let fitType = undefined;
+        let fitType = bpmnvisu.FitType.None;
         let fitMargin = 10;
         const fitMarginValueElt = document.getElementById('fit-margin-value');
         fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
@@ -151,21 +151,31 @@ limitations under the License.
         }
 
         document.getElementById('btn-zoom-actual').onclick = function() {
-            fitType = undefined;
-            bpmnVisualization.fit({type: bpmnvisu.FitType.None});
+            performFit(bpmnvisu.FitType.None);
         };
         document.getElementById('btn-fit-horizontally').onclick = function() {
-            bpmnVisualization.fit({type: bpmnvisu.FitType.Horizontal});
+            performFit(bpmnvisu.FitType.Horizontal);
         };
         document.getElementById('btn-fit-vertically').onclick = function() {
-            bpmnVisualization.fit({type: bpmnvisu.FitType.Vertical});
+            performFit(bpmnvisu.FitType.Vertical);
         };
         document.getElementById('btn-fit-all').onclick = function() {
-            bpmnVisualization.fit({type: bpmnvisu.FitType.HorizontalVertical});
+            performFit(bpmnvisu.FitType.HorizontalVertical);
         };
         document.getElementById('btn-fit-center').onclick = function() {
-            bpmnVisualization.fit({type: bpmnvisu.FitType.Center});
+            performFit(bpmnvisu.FitType.Center);
         };
+
+
+        function performFit(type) {
+            if (type) {
+                fitType = type;
+            }
+            if (!fitType) {
+                return;
+            }
+            bpmnVisualization.fit({type: fitType, margin: fitMargin});
+        }
 
         // 'Fit Margin' dropdown list
         const fitMarginValues = [0, 5, 10, 20, 50];
