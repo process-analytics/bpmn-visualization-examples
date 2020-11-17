@@ -11,7 +11,7 @@ When instantiating `BpmnVisualization`, pass an additional option to active mous
 ```javascript
 const bpmnVisualizationNavigation = 
 new bpmnvisu.BpmnVisualization(
-    document.getElementById('bpmn-viewport-navigation'),
+    document.getElementById('bpmn-container'),
     { mouseNavigationSupport: true } // allow to navigate the diagram with the mouse
 );
 bpmnVisualizationNavigation.load(bpmnDiagram());

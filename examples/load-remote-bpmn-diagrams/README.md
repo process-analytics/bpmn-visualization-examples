@@ -2,7 +2,7 @@
 
 Javascript example
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/load-remote-bpmn-diagrams/index.html)
-- to run locally, see the [explanations in the repository README](../../README.md#running-examples-locally)
+- to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ BPMN Visualization Usage
 :warning: In order to make the code understandable in the README, we simplify it. You can find all the content of the example in [index.html](index.html).
@@ -37,7 +37,7 @@ Javascript example
 - Then, we load the content of this file in the BPMN Visualization library.
 ```javascript
         fetchBpmnContent(url).then(bpmn => {
-            const bpmnVisualization = new BpmnVisualization(window.document.getElementById('view-port'));
+            const bpmnVisualization = new BpmnVisualization(window.document.getElementById('bpmn-container'));
             bpmnVisualization.load(bpmn);
             console.log('Bpmn loaded from url <%s>', url);
         });

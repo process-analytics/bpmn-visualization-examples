@@ -21,7 +21,7 @@ limitations under the License.
     <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
     <style>
-        .bpmn-viewport {
+        .bpmn-container {
             /* use absolute values for width and height to ensure that the diagram is not fully displayed when the page is opened. */
             width: 800px;
             height: 300px;
@@ -58,7 +58,7 @@ limitations under the License.
                 <div class="col-12 mb-2">
                     <h2>Default (no navigation)</h2>
                     The diagram is too large and does not fit within the viewport.
-                    <div id="bpmn-viewport-default" class="bpmn-viewport"></div>
+                    <div id="bpmn-container-default" class="bpmn-container"></div>
                 </div>
                 <div class="col-12 mt-40 mb-2">
                     <h2>With Diagram Navigation enabled</h2>
@@ -70,23 +70,21 @@ limitations under the License.
                     <button id="btn-reset" title="Reset Zoom and Panning" class="btn btn-primary has-icon-right">
                         <span>Reset </span><span class="icon icon-refresh mb-1"></span>
                     </button>
-                    <div id="bpmn-viewport-navigation" class="bpmn-viewport"></div>
+                    <div id="bpmn-container-navigation" class="bpmn-container"></div>
                 </div>
             </section>
     </section>
 
-    <!-- load bpmn-visualization -->
-    <script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
+    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
     <script>
-        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport-default'));
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container-default'));
         bpmnVisualization.load(bpmnDiagram());
 
-        const bpmnVisualizationNavigation = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport-navigation'), { mouseNavigationSupport: true });
+        const bpmnVisualizationNavigation = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container-navigation'), { mouseNavigationSupport: true });
         bpmnVisualizationNavigation.load(bpmnDiagram());
 
         document.getElementById('btn-reset').onclick = function() {
-            // TODO use the lib method when available, see https://github.com/process-analytics/bpmn-visualization-js/issues/738
-            bpmnVisualizationNavigation.graph.zoomActual();
+            bpmnVisualizationNavigation.fit({type: bpmnvisu.FitType.None});
         };
 
         function bpmnDiagram() {

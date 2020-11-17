@@ -10,7 +10,7 @@ Javascript example to demonstrate how to integrate `bpmn-visualization` in an ht
 Load the browser bundle from [unpkg](https://unpkg.com/browse/bpmn-visualization), [jsdelivr](https://www.jsdelivr.com/package/npm/bpmn-visualization),
 or any other location:
 ```html
-<script src="https://unpkg.com/bpmn-visualization@0.6.0/dist/bpmn-visualization.js"></script>
+<script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
 ```
 
 ### Use the library
@@ -18,9 +18,11 @@ or any other location:
 Initialize `BPMN Visualization` and then load a BPMN Diagram. \
 The library is bundled as an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) style script and binds itself to the global `bpmnvisu` variable.
 
+In the following, the HTML page defined a div identified by the `bpmn-container` id, where the BPMN diagram is rendered. 
+
 ```javascript
 // initialize BPMN Visualization
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-viewport'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
 // load the BPMN diagram
 bpmnVisualization.load(bpmnDiagram());
 ```

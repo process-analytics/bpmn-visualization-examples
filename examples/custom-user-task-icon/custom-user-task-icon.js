@@ -1,15 +1,12 @@
-import { IconPainter, IconPainterProvider } from "../../demo/0.6.0/index.es.js";
-import { newBpmnVisualization } from "../utils.js";
-
 const bpmn = bpmnDiagram();
 
-const bpmnVisualization = newBpmnVisualization('graphDefault');
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
 bpmnVisualization.load(bpmn);
 
 // demonstrate how to hard code the color for a specific icon
 const userTaskIconColor = 'orange';
 
-class CustomIconPainter extends IconPainter {
+class CustomIconPainter extends bpmnvisu.IconPainter {
     // adapted from https://github.com/primer/octicons/blob/638c6683c96ec4b357576c7897be8f19c933c052/icons/person.svg
     // use mxgraph svg2xml to generate the xml stencil and port it to code
     paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
@@ -36,9 +33,9 @@ class CustomIconPainter extends IconPainter {
     };
 }
 
-IconPainterProvider.set(new CustomIconPainter());
+bpmnvisu.IconPainterProvider.set(new CustomIconPainter());
 
-const bpmnVisualizationCustomerUserTask = newBpmnVisualization('graphCustomerUserTask');
+const bpmnVisualizationCustomerUserTask = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-user-task'));
 bpmnVisualizationCustomerUserTask.load(bpmn);
 
 

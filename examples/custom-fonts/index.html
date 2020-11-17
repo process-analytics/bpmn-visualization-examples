@@ -44,14 +44,14 @@ limitations under the License.
 <section class="container col-10 flex-centered mt-2">
         <section class="col-12 mt-2">
 
-            <div id="graphDefault" class="mb-2">
+            <div id="bpmn-container-default" class="mb-2">
                 <h2>Default font</h2>
             </div>
-            <div id="graphCustomDefaultFont" class="mt-40">
+            <div id="bpmn-container-custom-default-font" class="mt-40">
                 <h2>Custom default font</h2>
                 Larger size, italic, 'Courier New,serif'
             </div>
-            <div id="graphCustomFonts" class="mt-40 mb-2">
+            <div id="bpmn-container-custom-fonts" class="mt-40 mb-2">
                 <h2>Custom BPMN element fonts</h2>
                 Custom fonts for Pool and User Task
             </div>
@@ -59,12 +59,9 @@ limitations under the License.
         </section>
 </section>
 
-<!-- load global settings -->
-<script src="../../demo/0.6.0/static/js/configureMxGraphGlobals.js"></script>
-<!-- load mxGraph client library -->
-<script src="../../demo/0.6.0/static/js/mxClient.min.js"></script>
+<!-- load bpmn-visualization -->
+<script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
 <!-- load the example -->
-<script src="./custom-fonts.js" type="module"></script>
-
+<script src="./custom-fonts.js"></script>
 </body>
 </html>

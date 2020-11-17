@@ -22,13 +22,6 @@ limitations under the License.
     <link rel="stylesheet" href="../static/css/main.css" type="text/css">
 </head>
 <body>
-    <!-- load global settings -->
-    <script src="../../demo/0.6.0/static/js/configureMxGraphGlobals.js"></script>
-    <!-- load mxGraph client library -->
-    <script src="../../demo/0.6.0/static/js/mxClient.min.js"></script>
-    <!-- load the example -->
-    <script src="./hacktoberfest-diagram.js" type="module"></script>
-
     <header class="navbar bg-dark p-2">
         <section class="navbar-section ml-2">
             <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
@@ -62,16 +55,21 @@ limitations under the License.
                 <input id="input-project-name" type="text" value="BPMN Visualization">
             </div>
             <br>
-            <div id="graphDefault" class="col-12 mb-2">
+            <div id="bpmn-container-default" class="col-12 mb-2">
                 <h2>Default render</h2>
             </div>
-            <div id="graphHacktoberfestLightTheme" class="col-12 mt-40 mb-2">
+            <div id="bpmn-container-hacktoberfest-light-theme" class="col-12 mt-40 mb-2">
                 <h2>Light Hacktoberfest Theme</h2>
             </div>
-            <div id="graphHacktoberfestDarkTheme" class="col-12 mt-40 mb-2">
+            <div id="bpmn-container-hacktoberfest-dark-theme" class="col-12 mt-40 mb-2">
                 <h2>Dark Hacktoberfest Theme</h2>
             </div>
         </section>
     </section>
+
+    <!-- load bpmn-visualization -->
+    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
+    <!-- load the example -->
+    <script src="./hacktoberfest-diagram.js"></script>
 </body>
 </html>

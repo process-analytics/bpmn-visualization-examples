@@ -2,7 +2,7 @@
 <p align="center">
     <p align="center">
         <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html">
-            <img src="examples_home.png">
+            <img src="examples_home.png" alt="examples overview">
         </a> 
     </p>
     <p align="center">
@@ -21,36 +21,32 @@
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
 
-## 🎮 Demo
+## 🎮 Live Environment
 
-This example let you load a BPMN file to see how the lib renders it. Various versions of the lib are available. 
+Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
+to quickly have an overview of the `bpmn-visualization` capabilities.
 
-Give a try to the [__:fast_forward: demo live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/index.html)
-or test it [locally](./demo).
+You will find both
+- a `demo` that shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
+[bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- the examples described in more details below in this page. They demonstrate how to use a single feature.
 
-If you need BPMN examples, you can use resources 
-- from the [BPMN Model Interchange Working Group (BPMN MIWG)](http://www.omgwiki.org/bpmn-miwg)
-  - https://github.com/bpmn-miwg/bpmn-miwg-test-suite
-  - https://github.com/bpmn-miwg/bpmn-miwg-demos
-- [files used to test](./bpmn-files/README.md) how the lib renders BPMN elements
 
 ## 🔭 Examples
 
-All examples are available in the [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html).
-
 ### Running examples locally
 
-Some examples currently load ES Modules, so you cannot open html page directly from your local disk
+Some examples may load ES Modules; in that case, you cannot open html pages directly from your local disk.
 
 For instance, on Chrome, the Console would display the following errors 
-> Access to script at 'file:///...../bpmn-visualization-examples/examples/utils.js' from origin 'null' has been
+> Access to script at 'file:///...../bpmn-visualization-examples/examples/my-file.js' from origin 'null' has been
 > blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome,
 > chrome-extension, https. index.html:1  
 > Failed to load resource: net::ERR_FAILED utils.js:1
 
-You need to run a local web server and then access the examples via the http protocol. The local web server must serve
-the whole repository, as the examples (stored in the `./exmaples` folder) require resources available in the `./demo`
-folder. 
+To access such examples, you need to run a local web server and then access the examples via the http protocol.
+We advise to make the local web server serve the whole repository, to also be able to access to the demo (resources available
+in the `./demo` folder). 
 
 Go to the repository root and use one the following solutions 
 - python2: `python -m SimpleHTTPServer 8001` and go to http://localhost:8001/examples/ 
@@ -59,9 +55,9 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
-### Basic `bpmn-visualization` usage 
+### `bpmn-visualization` usage in browsers 
 
-### examples in Browsers
+### basic examples
 
 - [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 - [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
@@ -83,9 +79,10 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
-### `bpmn-visualization` _package_ usage examples in Projects
+### `bpmn-visualization` usage in projects
 
 - [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
+
 
 ## 🔧 Contributing
 

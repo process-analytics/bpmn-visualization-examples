@@ -5,11 +5,11 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
-:warning: In order to avoid to have to many content in the README, we simplify it. You can find all the content of the example in [diagram-fit-on-load.js](diagram-fit-on-load.js).
+:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [diagram-fit-on-load.js](diagram-fit-on-load.js).
 
 1. Declare the graph container with a fixed width & a fixed height
 ```css
-.graph-container {
+.bpmn-container {
     /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
     width: 100%;
     height: 600px;
@@ -23,7 +23,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 
 2. Load BPMN content
 ```javascript
-const containerId = 'graph-container';
+const containerId = 'bpmn-container';
 const bpmnVisualization = new BpmnVisualization(window.document.getElementById(containerId));
 
 const bpmnContent = ``; // your BPMN 2.0 XML content

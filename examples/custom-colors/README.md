@@ -5,14 +5,14 @@ In particular, the way of changing the defaults will be done via configuration i
 
 Javascript example
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-colors/index.html)
-- to run locally, see the [explanations in the repository README](../../README.md#running-examples-locally)
+- to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
 ## ♻️ BPMN Visualization Usage
 Override the BPMN element styles using various ways. `mxGraph` knowledge is required to handle style changes.
-See https://process-analytics.github.io/bpmn-visualization-js/#bpmn-support-howto-elements-rendering for more information.
+See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/bpmn-support-how-to.md) for more details.
 
-:warning: In order to avoid to have to many content in the README, we simplify it. You can find all the content of the example in [custom-colors.js](custom-colors.js).
+:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [custom-colors.js](custom-colors.js).
 
 
 Content:
@@ -59,7 +59,7 @@ class BpmnVisualizationCustomColors extends BpmnVisualization {
     }
 }
 
-const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('graphCustomColors');
+const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('bpmn-container-custom-colors');
 ```
 
 - different fill and stroke colors for `events`: extend the lib class entry point
@@ -84,7 +84,7 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
     }
 }
 
-const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('graphCustomColors');
+const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('bpmn-container-custom-colors');
 ```
 
 - specific font color for ` user task`: extend the lib class entry point
@@ -103,5 +103,5 @@ class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
    }
 }
 
-const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('graphCustomColorsUserTask');
+const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('bpmn-container-custom-colors-user-task');
 ```
