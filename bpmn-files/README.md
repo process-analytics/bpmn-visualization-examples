@@ -9,7 +9,7 @@ Feel free to create a PR to update the image if the discrepancies are too large.
 
 
 [Pools](pools.bpmn)
-![pools](./pools__bpmn-visualization-0.2.0-dev.png)
+![pools](./pools__bpmn-visualization-0.3.0-dev.png)
 
 
 [Activities](all_activity_types.bpmn)
