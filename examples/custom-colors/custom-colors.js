@@ -124,7 +124,7 @@ class BpmnVisualizationCustomEventColors extends bpmnvisu.BpmnVisualization {
 }
 
 const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColors('bpmn-container-custom-colors');
-bpmnVisualizationEventCustomColors.load(bpmn);
+// bpmnVisualizationEventCustomColors.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
