@@ -5,7 +5,15 @@ Javascript example to demonstrate how the BPMN diagram can fit the viewport.
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
+⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.html](index.html).
 
-**DISCLAIMER: Experimental**, the implementation currently relies on native `mxGraph` calls.  \
-`bpmn-visualization` will support this officially when [bpmn-visualization#738](https://github.com/process-analytics/bpmn-visualization-js/issues/738)
-will be implemented. 
+1. You need to initialize the graph container with a fixed width & a fixed height, and load the BPMN diagram, like [done here](../diagram-fit-on-load/README.md). 
+
+2. Fit the BPMN container
+```javascript
+const newFitTypeValue = 'Horizontal'; // From radio button or select
+const fitMargin = 10; // From input or other
+bpmnVisualization.fit({type: newFitTypeValue, margin: fitMargin});
+```
+
+ℹ️ `type` and `margin` are optional.
