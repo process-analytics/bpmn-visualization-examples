@@ -5,7 +5,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
-:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [diagram-fit-on-load.js](diagram-fit-on-load.js).
+⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [diagram-fit-on-load.js](diagram-fit-on-load.js).
 
 1. Declare the graph container with a fixed width & a fixed height
 ```css
@@ -28,5 +28,8 @@ const bpmnVisualization = new BpmnVisualization(window.document.getElementById(c
 
 const bpmnContent = ``; // your BPMN 2.0 XML content
 const fitTypeValue = 'Center'; // From radio button or select
-bpmnVisualization.load(bpmnContent, { fitType: FitType[fitTypeValue] });
+const fitMargin = 10; // From input or other
+bpmnVisualization.load(bpmnContent, { fit: {type: fitTypeValue, margin: fitMargin} });
 ```
+
+ℹ️ `type` and `margin` are optional.
