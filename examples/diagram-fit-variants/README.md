@@ -7,7 +7,7 @@ Javascript example to demonstrate how the BPMN diagram can fit the viewport.
 ## ♻️ Usage
 ⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.html](index.html).
 
-1. You need to initialize the graph container with a fixed width & a fixed height, and load the BPMN diagram, like [done here](../diagram-fit-on-load/README.md). 
+1. You need to initialize the BPMN container with a fixed width & a fixed height, and load the BPMN diagram, like [done here](../diagram-fit-on-load/README.md). 
 
 2. Fit the BPMN container
 ```javascript
