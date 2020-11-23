@@ -11,9 +11,7 @@ Javascript example to demonstrate how the BPMN diagram can fit the viewport.
 
 2. Fit the BPMN container
 ```javascript
-const newFitTypeValue = 'Horizontal'; // From radio button or select
-const fitMargin = 10; // From input or other
-bpmnVisualization.fit({type: newFitTypeValue, margin: fitMargin});
+bpmnVisualization.fit({ type: bpmnvisu.FitType.Horizontal, margin: 10 });
 ```
 
 ℹ️ `type` and `margin` are optional.
