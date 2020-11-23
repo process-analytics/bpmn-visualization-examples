@@ -240,6 +240,8 @@ function getSelectedFitType() {
 function loadDiagram(bpmnVisualization, diagramName) {
     const fitType = getSelectedFitType();
     const diagram = diagramName?.includes('vertical') ? getBpmnDiagramVertical() : getBpmnDiagramHorizontal();
+
+    // `type` is optional
     bpmnVisualization.load(diagram, { fit: {type: fitType} });
 }
 

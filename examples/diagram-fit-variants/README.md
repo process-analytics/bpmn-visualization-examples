@@ -14,4 +14,5 @@ Javascript example to demonstrate how the BPMN diagram can fit the viewport.
 bpmnVisualization.fit({ type: bpmnvisu.FitType.Horizontal, margin: 10 });
 ```
 
-ℹ️ `type` and `margin` are optional.
+ℹ️ `type` and `margin` are optional. 
+Moreover, `margin` is only considered when FitType is not None.

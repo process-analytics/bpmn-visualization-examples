@@ -23,13 +23,12 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 
 2. Load BPMN content
 ```javascript
-const containerId = 'bpmn-container';
-const bpmnVisualization = new BpmnVisualization(window.document.getElementById(containerId));
+const bpmnContainerElt = window.document.getElementById('bpmn-container');
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
 
 const bpmnContent = ``; // your BPMN 2.0 XML content
-const fitTypeValue = 'Center'; // From radio button or select
-const fitMargin = 10; // From input or other
-bpmnVisualization.load(bpmnContent, { fit: {type: fitTypeValue, margin: fitMargin} });
+bpmnVisualization.load(bpmnContent, { fit: {type: bpmnvisu.FitType.Center, margin: 10} });
 ```
 
 ℹ️ `type` and `margin` are optional.
+Moreover, `margin` is only considered when FitType is not None.
