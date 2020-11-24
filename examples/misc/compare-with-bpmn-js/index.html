@@ -1,0 +1,301 @@
+<!--
+Copyright 2020 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BPMN Visualization  - Comparison with bpmn-js</title>
+  <link rel="shortcut icon" href="../../favicon.ico">
+  <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+  <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+  <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+
+  <style>
+    .bpmn-container {
+      /*top: 60px;*/
+      /*bottom: 20px;*/
+
+      left: 60px;
+      right: 60px;
+      /*TODO find a way to ensure it takes the whole available height*/
+      height: 70%;
+      /*width: 80%;*/
+
+      border-style: solid;
+      border-color: #B0B0B0;
+      border-width: 1px;
+      position: absolute;
+
+      /* this ensures that the part of the diagram outside of the viewport is not displayed. */
+      overflow: hidden;
+    }
+    .hidden {
+      display: none !important;
+    }
+
+    #file-selector {
+      float: left;
+    }
+    #loading-info {
+      float: left;
+      padding-top: 0.5em;
+      margin-left: 1em;
+    }
+    #controls {
+      padding-top: 0.5em;
+    }
+  </style>
+</head>
+<body>
+
+<header class="navbar bg-dark p-2">
+  <section class="navbar-section ml-2">
+    <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
+    <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+  </section>
+  <section class="navbar-section">
+    <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+    <div class="dropdown mr-2">
+      <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+        GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+      </a>
+      <ul class="menu">
+        <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+        <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+      </ul>
+    </div>
+  </section>
+</header>
+
+
+<section class="container col-11 flex-centered mt-2">
+  <section class="col-12 mt-2 mb-2 relative">
+    <h2>Compare <code>bpmn-visualization</code> with <code>bpmn-js</code></h2>
+    Compare the two libraries on BPMN elements rendering and diagram navigation (zoom, pan).
+
+    <div style="margin-top: 25px">
+      <div id="group-file-selector" class="col-6 float-left">
+        <div id="file-selector">
+          <input type="file" id="btn-open-file" name="btn-open-file" class="hidden"/>
+          <label for="btn-open-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span
+                  class="icon icon-upload mb-1"></span></label>
+        </div>
+        <div id="loading-info" class="hidden">
+          <b>Last loaded file:</b> <span id="loaded-file-name"></span>
+        </div>
+      </div>
+
+      <div id="controls" class="col-6 float-left">
+        <div id="group-libs" class="col-9 float-left">
+          <b>Library:</b>
+          <label><input type="radio" name="bpmnLibrary" value="bpmn-visualization" checked> bpmn-visualization</label>
+          <label><input type="radio" name="bpmnLibrary" value="bpmn-js"> bpmn-js</label>
+        </div>
+
+        <div id="btn-group-fit" class="col-3 float-left">
+          <label title="Ensure that the BPMN Diagram is fully displayed within the view"><input type="checkbox" id="fitView" name="fitView"> Fit view</label>
+        </div>
+      </div>
+    </div>
+  </section>
+</section>
+
+<section class="col-11 mt-2 relative">
+  <div id="container-bpmn-visualization" class="bpmn-container"></div>
+  <div id="container-bpmn-js" class="bpmn-container hidden"></div>
+</section>
+
+
+<!-- load bpmn-js viewer distro (with pan and zoom) -->
+<script src="https://unpkg.com/bpmn-js@7.4.1/dist/bpmn-navigated-viewer.development.js"></script>
+<!-- load bpmn-visualization -->
+<script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
+
+<script>
+  const bpmnVisualizationContainerId = 'container-bpmn-visualization';
+  const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById(bpmnVisualizationContainerId), { mouseNavigationSupport: true });
+
+  const bpmnJsContainerId = 'container-bpmn-js';
+  const bpmnJsViewer = new BpmnJS({ container: `#${bpmnJsContainerId}` });
+
+  let loadedXml;
+  let fitView = false;
+
+  // Configure custom html elements
+  document.getElementById('btn-open-file').addEventListener('change', handleFileSelect, false);
+  const bpmnLibraryRadioButtons = document.getElementsByName('bpmnLibrary');
+  configureBpmnLibraryRadioButtons();
+  configureFitViewButton();
+
+
+  function loadWithBpmnVisualization(xml) {
+    logBpmnVisu('Start loading diagram');
+    bpmnVisualization.load(xml, { fit: computeBpmnVisualizationFitOptions() });
+    logBpmnVisu('Diagram loaded');
+  }
+
+  async function loadWithBpmnJs(xml) {
+    logBpmnJs('Starting import XML')
+    await bpmnJsViewer.importXML(xml);
+    logBpmnJs('Import XML done')
+    setZoomLevelBpmnJs();
+  }
+
+  function setZoomLevelBpmnJs() {
+    const canvas = bpmnJsViewer.get('canvas');
+    if (fitView) {
+      // 'auto' to zoom into mid
+      canvas.zoom('fit-viewport', 'auto');
+    } else {
+      // pass null to ensure the position of the diagram is taken from the BPMN xml
+      canvas.zoom(1, null);
+    }
+    logBpmnJs(`Zoom level set, fitView ${fitView}`);
+  }
+
+  function setZoomLevelBpmnVisualization() {
+    bpmnVisualization.fit(computeBpmnVisualizationFitOptions());
+    logBpmnVisu(`Zoom level set, fitView ${fitView}`);
+  }
+
+  function computeBpmnVisualizationFitOptions() {
+    const fitType = fitView ? bpmnvisu.FitType.Center: bpmnvisu.FitType.None;
+    return { type: fitType, margin: 10 };
+  }
+
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    const file = evt.target.files[0];
+    logMain(`New file selected for load: ${file.name}`);
+    const reader = new FileReader();
+    reader.onload = () => {
+      loadBpmn(reader.result);
+
+      document.getElementById('loading-info').classList.remove('hidden');
+      // TODO we probably don't need it, just select span child
+      document.getElementById('loaded-file-name').innerHTML = `<code>${file.name}</code>`;
+    };
+    reader.readAsText(file);
+  }
+
+  function loadBpmn(xml) {
+    const useBpmnVisualization = isUseBpmnVisualization();
+    displayBpmnContainer(useBpmnVisualization);
+
+    // effective load
+    try {
+      logMain(`Ready to load BPMN with fitView: ${fitView}`);
+      if (useBpmnVisualization) {
+        loadWithBpmnVisualization(xml);
+      } else {
+        loadWithBpmnJs(xml);
+      }
+      loadedXml = xml;
+    } catch (err) {
+      console.error('[main] Unable to load BPMN diagram', err);
+    }
+  }
+
+  function reloadAfterBpmnLibrarySwitch() {
+    logMain('BPMN Library switch detected');
+    if (!loadedXml) {
+      return;
+    }
+    logMain('Reloading the BPMN diagram');
+    loadBpmn(loadedXml);
+  }
+
+
+  function configureFitViewButton() {
+    const fitViewElt = document.getElementById('fitView');
+
+    fitView = fitViewElt.checked;
+    logMain(`Initial fitView: ${fitView}`);
+
+    fitViewElt.addEventListener('change', function(event) {
+      fitView = event.target.checked;
+      changeZoomLevel();
+    });
+  }
+
+  function changeZoomLevel() {
+    logMain('Zoom level switch detected');
+    if (!loadedXml) {
+      return;
+    }
+    logMain(`Changing zoom level with fitView: ${fitView}`);
+    if (isUseBpmnVisualization()) {
+      setZoomLevelBpmnVisualization();
+    } else {
+      setZoomLevelBpmnJs();
+    }
+  }
+
+  function configureBpmnLibraryRadioButtons() {
+    for (let i = 0, length = bpmnLibraryRadioButtons.length; i < length; i++) {
+      bpmnLibraryRadioButtons[i].addEventListener('change', reloadAfterBpmnLibrarySwitch);
+    }
+  }
+
+  function isUseBpmnVisualization() {
+    return getSelectedBpmnLibrary() === 'bpmn-visualization';
+  }
+
+  function getSelectedBpmnLibrary() {
+    let bpmnLibrary;
+    for (let i = 0, length = bpmnLibraryRadioButtons.length; i < length; i++) {
+      if (bpmnLibraryRadioButtons[i].checked) {
+        bpmnLibrary = bpmnLibraryRadioButtons[i].value;
+        break;
+      }
+    }
+    bpmnLibrary = bpmnLibrary ?? 'bpmn-visualization';
+    logMain(`Selected lib: ${bpmnLibrary}`)
+    return bpmnLibrary;
+  }
+
+
+  function displayBpmnContainer(useBpmnVisualization) {
+    const bpmnVisualizationContainerElt = document.getElementById(bpmnVisualizationContainerId);
+    const bpmnJsContainerElt = document.getElementById(bpmnJsContainerId);
+
+    if (useBpmnVisualization) {
+      bpmnVisualizationContainerElt.classList.remove('hidden');
+      bpmnJsContainerElt.classList.add('hidden');
+    } else {
+      bpmnJsContainerElt.classList.remove('hidden');
+      bpmnVisualizationContainerElt.classList.add('hidden');
+    }
+  }
+
+  function log(header, msg) {
+    console.info(`[${header}] ${msg}`);
+  }
+
+  function logBpmnJs(msg) {
+    log('bpmn-js', msg)
+  }
+
+  function logBpmnVisu(msg) {
+    log('bpmn-visualization', msg)
+  }
+
+  function logMain(msg) {
+    log('main', msg)
+  }
+</script>
+</body>
+</html>

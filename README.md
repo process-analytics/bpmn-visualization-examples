@@ -79,6 +79,10 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
+#### miscellaneous examples
+
+- [compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
+
 ### `bpmn-visualization` usage in projects
 
 - [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
