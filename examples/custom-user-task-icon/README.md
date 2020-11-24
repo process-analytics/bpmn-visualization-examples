@@ -28,7 +28,7 @@ class CustomIconPainter extends IconPainter {
     };
 }
 ```
-See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/bpmn-support-how-to.md) for more details.
+See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/bpmn-support-how-to.md) for more details.
 
 - Override the default `IconPainter`:
 ```javascript

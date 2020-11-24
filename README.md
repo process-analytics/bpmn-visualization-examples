@@ -13,7 +13,7 @@
             <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg"> 
         </a> 
         <a href="LICENSE">
-            <img alt="License" src="https://img.shields.io/github/license/process-analytics/bpmn-visualization-js?color=blue"> 
+            <img alt="License" src="https://img.shields.io/github/license/process-analytics/bpmn-visualization-examples?color=blue"> 
         </a> 
     </p>
 </p>
