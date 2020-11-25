@@ -128,7 +128,10 @@ limitations under the License.
     </section>
 
     <!-- load bpmn-visualization -->
-   <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
+    <!--  TODO Uncomment on the 0.8.0 release      -->
+    <!--  <script src="https://unpkg.com/bpmn-visualization@0.8.0/dist/bpmn-visualization.js"></script> -->
+    <!--  TODO Delete on the 0.8.0 release      -->
+    <script src="../../tmp/bpmn-visualization.js"></script>
 
     <script>
         let fitType = bpmnvisu.FitType.None;
@@ -169,6 +172,8 @@ limitations under the License.
             if (type !== undefined) {
                 fitType = type;
             }
+
+            // `type` and `margin` are optional. Moreover, `margin` is only considered when FitType is not None.
             bpmnVisualization.fit({type: fitType, margin: fitMargin});
         }
 

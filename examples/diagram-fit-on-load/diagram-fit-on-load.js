@@ -232,7 +232,7 @@ function getSelectedFitType() {
 
     for (let i = 0, length = radios.length; i < length; i++) {
         if (radios[i].checked) {
-            return bpmnvisu.FitType[radios[i].value];
+            return radios[i].value;
         }
     }
 }
@@ -240,7 +240,9 @@ function getSelectedFitType() {
 function loadDiagram(bpmnVisualization, diagramName) {
     const fitType = getSelectedFitType();
     const diagram = diagramName?.includes('vertical') ? getBpmnDiagramVertical() : getBpmnDiagramHorizontal();
-    bpmnVisualization.load(diagram, { fitType });
+
+    // `type` is optional
+    bpmnVisualization.load(diagram, { fit: {type: fitType} });
 }
 
 const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'))

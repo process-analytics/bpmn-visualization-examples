@@ -13,7 +13,7 @@
             <img alt="Contributor Covenant" src="https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg"> 
         </a> 
         <a href="LICENSE">
-            <img alt="License" src="https://img.shields.io/github/license/process-analytics/bpmn-visualization-js?color=blue"> 
+            <img alt="License" src="https://img.shields.io/github/license/process-analytics/bpmn-visualization-examples?color=blue"> 
         </a> 
     </p>
 </p>
@@ -78,6 +78,10 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
+
+#### miscellaneous examples
+
+- [compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
 
 ### `bpmn-visualization` usage in projects
 
