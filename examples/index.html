@@ -29,6 +29,9 @@ limitations under the License.
              */
             --navbar-height: 56px;
         }
+        body {
+            position: relative;
+        }
 
         /* see https://ebidel.github.io/demos/sticky-position-event.html and https://developers.google.com/web/updates/2017/09/sticky-headers */
         h2 {
@@ -51,7 +54,7 @@ limitations under the License.
             position: absolute;
             top: var(--scrollLength);
             right: 0.75rem;
-            bottom: -88em; /* TODO this will need to be changed if more rows are added, find a way to not have to do that */
+            bottom: 0;
             width: 3em;
             pointer-events: none;
         }
