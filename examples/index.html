@@ -111,6 +111,10 @@ limitations under the License.
             color: inherit;
             text-decoration: none !important;
         }
+        a.card-link:focus {
+            box-shadow: none; /* avoid dash line on the left of the card */
+            /*TODO we could improve the style here to make the whole card appears as when hover on card*/
+        }
         .card-title {
             font-weight: bold;
             font-size: 0.85rem;
