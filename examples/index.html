@@ -20,9 +20,117 @@ limitations under the License.
     <link rel="stylesheet" href="static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="static/css/main.css" type="text/css">
+    <style>
+        :root {
+            /* How far of a scroll travel to the back-to-top link appearing */
+            --scrollLength: 100vh;
+            /* TODO find why 56px is the value to stick to the nav bar, if possible use relative value
+             * we should find how to get the real navbar height that can change on small screen
+             */
+            --navbar-height: 56px;
+        }
+        body {
+            position: relative;
+        }
+
+        /* see https://ebidel.github.io/demos/sticky-position-event.html and https://developers.google.com/web/updates/2017/09/sticky-headers */
+        h2 {
+            position: -webkit-sticky;
+            position: sticky;
+            top: var(--navbar-height);
+            padding: 10px;
+
+            border-color: white;
+            border-style: solid;
+            border-width: 1px;
+            border-top-width: 15px;
+            border-bottom-width: 15px;
+            border-radius: 3px;
+        }
+
+        .back-to-top-wrapper {
+            /* uncomment to visualize "track"*/
+            /* outline: 1px solid red;*/
+            position: absolute;
+            top: var(--scrollLength);
+            right: 1rem;
+            bottom: 0;
+            width: 3em;
+            pointer-events: none;
+        }
+
+        .back-to-top-link {
+            position: -webkit-sticky;
+            position: sticky;
+            /* reinstate clicks */
+            pointer-events: all;
+            /* achieves desired positioning within the viewport */
+            top: calc(var(--scrollLength) - 5rem);
+
+            /*  basic styling */
+            display: inline-block;
+            font-size: 2rem;
+            line-height: 3rem;
+            text-align: center;
+            width: 3rem;
+            height: 3rem;
+            border-radius: 50%;
+
+            /* "pretty" styles, including states */
+            border: 1px solid #254568;
+            /* transition for scaling on hover */
+            transition: transform 150ms ease-in;
+        }
+
+        .back-to-top-link:hover, .back-to-top-link:focus {
+            transform: scale(1.1);
+            text-decoration: none;
+            box-shadow: 0 0 0 2px #303742; /*Same color as bg-dark*/
+        }
+        .back-to-top-link em {
+            color: #254568;
+            margin-top: -12px;
+        }
+        .back-to-top-link em.icon-upward::after {
+            top: 50%;
+        }
+
+        /* TODO explore alternative for anchor
+           currently dedicated 'a' element on top of h2 elements
+        */
+        .anchor-from-summary {
+            position: relative;
+            top: -50px;
+        }
+
+        .card {
+            border-color: #bebebe;
+            border-radius: 3px;
+        }
+        .card:hover {
+            background-color: #fcfafc;
+            border-color: #3a38d2;
+        }
+        .card-body {
+            font-style: italic;
+        }
+
+        a.card-link {
+            color: inherit;
+            text-decoration: none !important;
+        }
+        a.card-link:focus {
+            box-shadow: none; /* avoid dash line on the left of the card */
+            /*TODO we could improve the style here to make the whole card appears as when hover on card*/
+        }
+        .card-title {
+            font-weight: bold;
+            font-size: 0.85rem;
+        }
+    </style>
 </head>
 <body>
-
+<a id="top"></a>
 <header class="navbar bg-dark p-2">
     <section class="navbar-section ml-2">
         <img src="static/img/logo_64x64.ico" alt="logo" class="logo">
@@ -50,237 +158,256 @@ limitations under the License.
                     <span>Technical details about the examples implementation are available in the</span>
                     <a href="https://github.com/process-analytics/bpmn-visualization-examples" target="_blank" rel="noopener noreferrer">bpmn-visualization-examples</a> repository.
                 </p>
-                <p>
-                    If you need BPMN diagram files for examples loading local files, you can use resources from
+
+                <h5>Content</h5>
                 <ul>
-                <li>the BPMN Model Interchange Working Group <a href="https://www.omgwiki.org/bpmn-miwg">(BPMN MIWG)</a>, an
-                        initiative "<i>to support, facilitate, and promote the interchange of BPMN Models</i>".
+                    <li><a href="#demos">Demos</a></li>
+                    <li><a href="#usage">Usage examples</a></li>
+                    <li><a href="#extensibility">Extensibility examples</a></li>
+                    <li><a href="#miscellaneous">Miscellaneous examples</a></li>
+                </ul>
+                <br>
+
+                <h5>Getting BPMN Diagrams</h5>
+                <p>
+                    Some examples require loading local files. If you are looking for BPMN diagram files, you can use resources from
+                </p>
+                <ul>
+                    <li>the BPMN Model Interchange Working Group <a href="https://www.omgwiki.org/bpmn-miwg">(BPMN MIWG)</a>, an
+                        initiative "<em>to support, facilitate, and promote the interchange of BPMN Models</em>".
                         <ul>
                             <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">bpmn-miwg-test-suite</a></li>
                             <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-demos" target="_blank" rel="noopener noreferrer">bpmn-miwg-demos</a></li>
                         </ul>
                     </li>
-                    <li>
-                        <a href="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/bpmn-files/README.md">bpmn-visualization
-                            BPMN test diagrams</a></li>
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/bpmn-files/README.md">bpmn-visualizationBPMN test diagrams</a></li>
                 </ul>
-                </p>
             </div>
+
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2>Demos</h2>
+            <a id="demos" class="anchor-from-summary"></a>
+            <h2 class="bg-dark">Demos</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_demo_load_and_navigation.png" class="img-responsive" alt="load and navigation diagram demo">
-                        </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Load and Navigation demo</div>
-                            <div class="card-subtitle text-gray">show most of features provided by <i>bpmn-visualization</i> about
-                                BPMN rendering and diagram navigation when loading BPMN local files
+                    <a href="../demo/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Load and Navigation demo</div>
+                                <div class="card-subtitle"></div>
                             </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_demo_load_and_navigation.png" class="img-responsive" alt="load and navigation diagram demo">
+                            </div>
+                            <div class="card-body">Show most of features provided by <code>bpmn-visualization</code> about
+                                BPMN rendering and diagram navigation when loading BPMN local files.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="../demo/index.html" target="_blank" class="btn btn-primary">go to demo</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2>Usage</h2>
+            <a id="usage" class="anchor-from-summary"></a>
+            <h2 class="bg-dark">Usage</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
+                    <!-- TODO tabindex="-1" to make it temporary non focusable to avoid glitch -->
+                    <a href="./01-getting-started/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Getting Started</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
+                            </div>
+                            <div class="card-body">Know how to use <code>bpmn-visualization</code> in the Browser.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Getting Started</div>
-                            <div class="card-subtitle text-gray">know how to use <i>bpmn-visualization</i> in the Browser</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./01-getting-started/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_use_local_diagram.png" class="img-responsive" alt="locally loaded diagrams">
+                    <a href="./load-local-bpmn-diagrams/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Load local BPMN diagrams</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_use_local_diagram.png" class="img-responsive" alt="locally loaded diagrams">
+                            </div>
+                            <div class="card-body">Load BPMN diagrams from your device.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Load local BPMN diagrams</div>
-                            <div class="card-subtitle text-gray">load BPMN diagrams from your device</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./load-local-bpmn-diagrams/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_use_remote_diagram.png" class="img-responsive" alt="remotely loaded diagrams">
+                    <a href="./load-remote-bpmn-diagrams/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Load remote BPMN diagrams</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_use_remote_diagram.png" class="img-responsive" alt="remotely loaded diagrams">
+                            </div>
+                            <div class="card-body">Load BPMN diagrams hosted remotely.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Load remote BPMN diagrams</div>
-                            <div class="card-subtitle text-gray">load BPMN diagrams hosted remotely</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./load-remote-bpmn-diagrams/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_diagram_navigation.png" class="img-responsive" alt="navigate within the diagram">
+                    <a href="./diagram-navigation/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Diagram Navigation</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_diagram_navigation.png" class="img-responsive" alt="navigate within the diagram">
+                            </div>
+                            <div class="card-body">Zoom and move the diagram using the Mouse.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Diagram Navigation</div>
-                            <div class="card-subtitle text-gray">zoom and move the diagram</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./diagram-navigation/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_diagram_fit-on-load.png" class="img-responsive" alt="fit the diagram">
+                    <a href="diagram-fit-on-load/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Diagram Fit On Load</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_diagram_fit-on-load.png" class="img-responsive" alt="fit the diagram">
+                            </div>
+                            <div class="card-body">Fit the diagram whole/horizontally/vertically/center on load.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Diagram Fit On Load</div>
-                            <div class="card-subtitle text-gray">fit the diagram whole/horizontally/vertically/center on load</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="diagram-fit-on-load/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_diagram_fit_variants.png" class="img-responsive" alt="navigate within the diagram">
+                    <a href="./diagram-fit-variants/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Diagram Fit Variants</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_diagram_fit_variants.png" class="img-responsive" alt="navigate within the diagram">
+                            </div>
+                            <div class="card-body">Fit the diagram horizontally or vertically whenever you want.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Diagram Fit Variants</div>
-                            <div class="card-subtitle text-gray">fit the diagram horizontally or vertically</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./diagram-fit-variants/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2>Extensibility</h2>
+            <a id="extensibility"  class="anchor-from-summary"></a>
+            <h2 class="bg-dark">Extensibility</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_custom_colors.png" class="img-responsive" alt="custom colors">
+                    <a href="./custom-colors/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Custom colors</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_custom_colors.png" class="img-responsive" alt="custom colors">
+                            </div>
+                            <div class="card-body">Change default fill and stroke colors, font color, use specific colors depending on the BPMN element.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Custom colors</div>
-                            <div class="card-subtitle text-gray">change default fill and stroke colors, font color, use specific colors depending on the BPMN element</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./custom-colors/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_custom_fonts.png" class="img-responsive" alt="custom fonts">
+                    <a href="./custom-fonts/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Custom fonts</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_custom_fonts.png" class="img-responsive" alt="custom fonts">
+                            </div>
+                            <div class="card-body">Change default font, font color, use specific font depending on the BPMN element.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Custom fonts</div>
-                            <div class="card-subtitle text-gray">change default font, font color, use specific font depending on the BPMN element</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./custom-fonts/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_custom_user_icon.png" class="img-responsive" alt="custom icon">
+                    <a href="./custom-user-task-icon/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Custom user task icon</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_custom_user_icon.png" class="img-responsive" alt="custom icon">
+                            </div>
+                            <div class="card-body">Use your own icon in User Tasks.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Custom user task icon</div>
-                            <div class="card-subtitle text-gray">use your own icon for the task</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./custom-user-task-icon/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
 
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview_hacktoberfest_diagram.png" class="img-responsive" alt="hacktoberfest themes">
+                    <a href="./hacktoberfest-diagram/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Hacktoberfest themes</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview_hacktoberfest_diagram.png" class="img-responsive" alt="hacktoberfest themes">
+                            </div>
+                            <div class="card-body">Special Hacktoberfest diagram with Hacktoberfest colors/themes.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Hacktoberfest themes</div>
-                            <div class="card-subtitle text-gray">Special Hacktoberfest diagram with Hacktoberfest colors</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./hacktoberfest-diagram/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
 
         <section class="col-12 mt-2 mb-2">
-            <h2>Miscellaneous</h2>
+            <a id="miscellaneous"  class="anchor-from-summary"></a>
+            <h2 class="bg-dark">Miscellaneous</h2>
             <div class="columns">
                 <div class="col-4 p-2">
-                    <div class="card bg-dark p-2">
-                        <div class="card-image">
-                            <img src="static/img/preview/misc/compare_with_bpmn-js.png" class="img-responsive" alt="compare with bpmn-js">
+                    <a href="./misc/compare-with-bpmn-js/index.html" target="_blank" class="card-link">
+                        <div class="card p-2">
+                            <div class="card-header">
+                                <div class="card-title">Compare with bpmn-js</div>
+                                <div class="card-subtitle"></div>
+                            </div>
+                            <div class="card-image">
+                                <img src="static/img/preview/misc/compare_with_bpmn-js.png" class="img-responsive" alt="compare with bpmn-js">
+                            </div>
+                            <div class="card-body">Compare the libraries on BPMN elements rendering, navigation and API usage.</div>
+                            <div class="card-footer"></div>
                         </div>
-                        <div class="card-header">
-                            <div class="card-title h5">Compare with bpmn-js</div>
-                            <div class="card-subtitle text-gray">compare the libraries on BPMN elements rendering, navigation and API usage</div>
-                        </div>
-                        <div class="card-body"></div>
-                        <div class="card-footer">
-                            <a href="./misc/compare-with-bpmn-js/index.html" target="_blank" class="btn btn-primary">go to preview</a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
             </div>
         </section>
     </div>
+
 </section>
+    <!-- inspired by https://moderncss.dev/pure-css-smooth-scroll-back-to-top/ -->
+    <div class="back-to-top-wrapper float-right">
+        <a href="#top" class="back-to-top-link" aria-label="Scroll to Top"><em class="icon icon-2x icon-upward"></em></a>
+    </div>
 
 </body>
 </html>
