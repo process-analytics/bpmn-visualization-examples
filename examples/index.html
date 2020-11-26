@@ -87,6 +87,13 @@ limitations under the License.
             text-decoration: none;
             box-shadow: 0 0 0 2px #303742; /*Same color as bg-dark*/
         }
+        .back-to-top-link em {
+            color: #254568;
+            margin-top: -12px;
+        }
+        .back-to-top-link em.icon-upward::after {
+            top: 50%;
+        }
 
         /* TODO explore alternative for anchor
            currently dedicated 'a' element on top of h2 elements
@@ -167,7 +174,7 @@ limitations under the License.
                 </p>
                 <ul>
                     <li>the BPMN Model Interchange Working Group <a href="https://www.omgwiki.org/bpmn-miwg">(BPMN MIWG)</a>, an
-                        initiative "<i>to support, facilitate, and promote the interchange of BPMN Models</i>".
+                        initiative "<em>to support, facilitate, and promote the interchange of BPMN Models</em>".
                         <ul>
                             <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">bpmn-miwg-test-suite</a></li>
                             <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-demos" target="_blank" rel="noopener noreferrer">bpmn-miwg-demos</a></li>
@@ -399,7 +406,7 @@ limitations under the License.
 </section>
     <!-- inspired by https://moderncss.dev/pure-css-smooth-scroll-back-to-top/ -->
     <div class="back-to-top-wrapper float-right">
-        <a href="#top" class="back-to-top-link" aria-label="Scroll to Top">🔝</a>
+        <a href="#top" class="back-to-top-link" aria-label="Scroll to Top"><em class="icon icon-upward"></em></a>
     </div>
 
 </body>
