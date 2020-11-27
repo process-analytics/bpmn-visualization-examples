@@ -97,7 +97,7 @@ function getBpmnDiagramHorizontal() {
 
 const bpmnContainerId = 'bpmn-container';
 const bpmnContainerElt = window.document.getElementById(bpmnContainerId);
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
+const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt, { mouseNavigationSupport: true });
 const diagram = getBpmnDiagramHorizontal();
 
 bpmnVisualization.load(diagram, { fit: {type: 'Center'} });
@@ -122,17 +122,22 @@ document.getElementById('attach-popover').onclick = function () {
 
     const popoverContainer = document.createElement('div');
     popoverContainer.classList.add('hidden');
+    popoverContainer.classList.add('bpmn-popover');
+    //TODO: think about sanitizing raw HTML (or leave it for the integration but explain)
     popoverContainer.innerHTML = popoverContent.value;
     foreign.prepend(popoverContainer);
-
     shapeElt.append(foreign);
+    // setTimeout(() => {
 
-    popoverContainer.classList.add('bpmn-popover');
-    const style = `position: absolute; top: -${popoverContainer.getBoundingClientRect().height}px`;
-    popoverContainer.setAttribute('style', style)
-    console.log(popoverContainer.getBoundingClientRect());
-
-
+    popoverContainer.setAttribute('style', 'position: absolute;');
+    const boundingRect = popoverContainer.getBoundingClientRect();
+    console.log(boundingRect);
+    const popoverHeight = boundingRect.height;
+    // speech bubble indicator height is 21
+    const style = `position: absolute; top: -${popoverHeight + 21}px`;
+    console.log(style);
+    popoverContainer.setAttribute('style', style);
     popoverContainer.classList.remove('hidden');
+    // }, 100)
 
 }
