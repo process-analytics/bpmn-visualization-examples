@@ -34,8 +34,35 @@ limitations under the License.
             #controls {
                 margin-top: 1em;
             }
-            .custom-dropdown li {
-                margin-top: 0;
+            .mw-200 {
+                min-width: 200px;
+            }
+
+            /*TODO: test only*/
+            .chartreuse rect{
+                fill: chartreuse;
+            }
+            .hidden {
+                visibility: hidden;
+            }
+
+            .bpmn-popover {
+                padding: 30px;
+                border: 3px solid chartreuse;
+                border-radius: 30px;
+            }
+
+            .bpmn-popover:before {
+                content: "";
+                width: 0;
+                height: 0;
+                position: absolute;
+                border-left: 10px solid chartreuse;
+                border-right: 10px solid transparent;
+                border-top: 10px solid chartreuse;
+                border-bottom: 10px solid transparent;
+                left: 21px;
+                bottom: -21px;
             }
         </style>
     </head>
@@ -65,14 +92,21 @@ limitations under the License.
 
                 <div class="columns" style="margin-top: 2.5rem">
                     <div id="controls" class="column col-2 p-centered">
-                        <div class="m-2 p-2 border">
-                            <h5>Fit type</h5>
-                            <input id="search-id" type="text" />
-                        </div>
+                        <div class="m-2 p-2">
+                            <h5>Search for field where popover will be attached</h5>
+                            <label for="search-id">
+                                <input id="search-id" type="text" class="mw-200" value="Activity_0kn4d46"/>
+                            </label>
 
-                        <div class="" style="margin-top: 1.5rem"></div>
+                            <h5 class="mt-2">Popover content</h5>
+                            <label>
+                                <textarea id="popover-content" class="mw-200"><div><h2>Popover header</h2><p>popover body</p></div></textarea>
+                            </label>
+
+                            <button id="attach-popover" type="submit">attach popover</button>
+                        </div>
                     </div>
-                    <div id="bpmn-container" class="column col-10 col-mx-auto bpmn-container"/>
+                    <div id="bpmn-container" class="column col-10 col-mx-auto bpmn-container"></div>
                 </div>
             </div>
         </section>

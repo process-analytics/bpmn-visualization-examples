@@ -102,7 +102,37 @@ const diagram = getBpmnDiagramHorizontal();
 
 bpmnVisualization.load(diagram, { fit: {type: 'Center'} });
 
-document.getElementById('toggle-dropdown-diagram-choice').onchange = function () {
-    // dropdownDiagramChoiceElt.classList.remove('hidden');
+document.getElementById('attach-popover').onclick = function () {
+    const searchElt = document.getElementById('search-id');
+    const popoverContent = document.getElementById('popover-content');
+
+    const shapeElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(searchElt.value);
+    shapeElt.classList.add('chartreuse');
+    const rect = shapeElt.getElementsByTagName('rect')[0];
+
+    const foreign = document.createElementNS('http://www.w3.org/2000/svg',"foreignObject");
+    foreign.setAttribute('width', '100%');
+    foreign.setAttribute('height','100%');
+    foreign.setAttribute('x',  rect.getAttribute('x'));
+    foreign.setAttribute('y', rect.getAttribute('y'));
+    foreign.setAttribute('width', rect.getAttribute('width'));
+    foreign.setAttribute('height', rect.getAttribute('height'));
+    foreign.setAttribute('style', 'overflow: visible;');
+    foreign.classList.add('bpmn-popover-foreign');
+
+    const popoverContainer = document.createElement('div');
+    popoverContainer.classList.add('hidden');
+    popoverContainer.innerHTML = popoverContent.value;
+    foreign.prepend(popoverContainer);
+
+    shapeElt.append(foreign);
+
+    popoverContainer.classList.add('bpmn-popover');
+    const style = `position: absolute; top: -${popoverContainer.getBoundingClientRect().height}px`;
+    popoverContainer.setAttribute('style', style)
+    console.log(popoverContainer.getBoundingClientRect());
+
+
+    popoverContainer.classList.remove('hidden');
 
 }
