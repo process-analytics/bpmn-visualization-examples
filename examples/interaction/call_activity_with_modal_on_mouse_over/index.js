@@ -273,7 +273,7 @@ function getCalledBpmnDiagram() {
       <bpmndi:BPMNShape id="Trisotech.Visio__0_end_event_2_1" bpmnElement="end_event_2_1">
         <dc:Bounds x="834" y="97" width="32" height="32" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="819" y="132" width="60" height="30" />
+          <dc:Bounds x="825" y="132" width="50" height="30" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Trisotech.Visio__0_end_event_2_2" bpmnElement="end_event_2_2">
@@ -366,7 +366,7 @@ callActivityElt.onmouseover = () => {
     modalElt.classList.add('active');
 
     if(!secondaryBpmnDiagramIsAlreadyLoad) {
-        secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
+        secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center', margin: 10 } });
         secondaryBpmnDiagramIsAlreadyLoad = true;
     }
 }
