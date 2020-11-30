@@ -1,3 +1,4 @@
+// Inspired from 'Procurement Processes with Error Handling - Stencil Trisotech 3 pages.bpmn' of https://www.omg.org/cgi-bin/doc?dtc/10-06-02.zip
 function getMainBpmnDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <semantic:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL">
