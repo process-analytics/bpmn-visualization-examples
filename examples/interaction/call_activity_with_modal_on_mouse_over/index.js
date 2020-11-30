@@ -345,21 +345,27 @@ function getCalledBpmnDiagram() {
         `;
 }
 
-
+// Main BPMN Container
 const mainBpmnContainerElt = window.document.getElementById('main-bpmn-container');
 const mainBpmnVisualization = new bpmnvisu.BpmnVisualization(mainBpmnContainerElt);
 mainBpmnVisualization.load(getMainBpmnDiagram(), { fit: {type: 'Center'} });
 
-const calledBpmnContainerElt = window.document.getElementById('called-bpmn-container');
-const calledBpmnVisualization = new bpmnvisu.BpmnVisualization(calledBpmnContainerElt);
-calledBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
+// Secondary BPMN Container
+const secondaryBpmnContainerElt = window.document.getElementById('secondary-bpmn-container');
+const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnContainerElt);
 
+
+// Interaction
 const modalElt = document.getElementById('modal');
-// Need to activate the modal when the graph is drawn, and hide after, otherwise the elements of the graph are not visible
-modalElt.classList.remove('active');
 
-let callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+let secondaryBpmnDiagramIsAlreadyLoad = false;
+const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
 callActivityElt.onmouseover = () => {
     // Display the modal
     modalElt.classList.add('active');
+
+    if(!secondaryBpmnDiagramIsAlreadyLoad) {
+        secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
+        secondaryBpmnDiagramIsAlreadyLoad = true;
+    }
 }

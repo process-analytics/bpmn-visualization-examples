@@ -9,15 +9,15 @@ Javascript example to demonstrate how to navigate the BPMN diagram with the mous
 When after the main `BpmnVisualization` instantiating, get the HTML element corresponding to the call activity to add a listener and activate the modal.
 
 ⚠️ The secondary `BpmnVisualization` must be visible during the BPMN diagram loading, otherwise the elements of the graph are not visible.
-Maybe, there is another way to do that the options of MxGraph.
+
 
 ```javascript
-const modalElt = document.getElementById('modal');
-modalElt.classList.remove('active');
-
-let callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
 callActivityElt.onmouseover = () => {
     // Display the modal
+    const modalElt = document.getElementById('modal');
     modalElt.classList.add('active');
+
+    secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
 }
 ```
