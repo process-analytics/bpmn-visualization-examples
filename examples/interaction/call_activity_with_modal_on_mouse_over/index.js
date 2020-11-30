@@ -355,15 +355,11 @@ const calledBpmnVisualization = new bpmnvisu.BpmnVisualization(calledBpmnContain
 calledBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
 
 const modalElt = document.getElementById('modal');
+// Need to activate the modal when the graph is drawn, and hide after, otherwise the elements of the graph are not visible
 modalElt.classList.remove('active');
 
 let callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
 callActivityElt.onmouseover = () => {
+    // Display the modal
     modalElt.classList.add('active');
-
-    // For all elements of the svg of the bpmn container remove 'visibility: hidden'
-    // let graphBounds = calledBpmnVisualization.graph.getGraphBounds();
-    // let cells = calledBpmnVisualization.graph.getCells(0,0, graphBounds.width, graphBounds.height);
-    // calledBpmnVisualization.graph.setCellStyles('visibility', 'visible', cells);
-    //calledBpmnVisualization.graph.refresh();
 }
