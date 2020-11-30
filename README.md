@@ -79,6 +79,12 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
+#### interaction examples
+
+- [Open a call activity from a main BPMN Diagram](./examples/interaction/call_activity_with_modal_on_mouse_over/README.md) - interacted with a diagram to open the details of a Call Activity
+
+
+
 #### miscellaneous examples
 
 - [compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
