@@ -140,4 +140,12 @@ document.getElementById('attach-popover').onclick = function () {
     popoverContainer.classList.remove('hidden');
     // }, 100)
 
+    foreign.addEventListener('mouseenter', e => {
+        console.log('mouseenter', e);
+    });
+
+    foreign.addEventListener('mouseleave', e => {
+        console.log('mouseleave', e);
+    })
+
 }
