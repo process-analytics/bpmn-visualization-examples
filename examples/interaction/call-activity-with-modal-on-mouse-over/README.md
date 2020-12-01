@@ -10,7 +10,7 @@ After the main `BpmnVisualization` instantiation, get the HTML element correspon
 
 ⚠️  In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 ```javascript
-const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+const callActivityElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
 callActivityElt.onmouseover = () => {
     // Display the modal
     const modalElt = document.getElementById('modal');
