@@ -16,10 +16,10 @@ limitations under the License.
 <head>
     <meta charset="UTF-8">
     <title>BPMN Visualization - Diagram Navigation</title>
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../static/css/spectre.min.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
     <style>
         .bpmn-container {
             /* use absolute values for width and height to ensure that the diagram is not fully displayed when the page is opened. */
@@ -29,7 +29,7 @@ limitations under the License.
             border-style: solid;
             border-color: #B0B0B0;
             border-width: 1px;
-            /* this ensures that the part of the diagram outside of the viewport is not displayed. */
+            /* this ensures that the part of the diagram outside of the container is not displayed. */
             overflow: hidden;
         }
     </style>
@@ -37,7 +37,7 @@ limitations under the License.
 <body>
     <header class="navbar bg-dark p-2">
         <section class="navbar-section ml-2">
-            <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
+            <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
             <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
         </section>
         <section class="navbar-section">
@@ -57,7 +57,7 @@ limitations under the License.
             <section class="col-12 mt-2">
                 <div class="col-12 mb-2">
                     <h2>Default (no navigation)</h2>
-                    The diagram is too large and does not fit within the viewport.
+                    The diagram is too large and does not fit within the container.
                     <div id="bpmn-container-default" class="bpmn-container"></div>
                 </div>
                 <div class="col-12 mt-40 mb-2">
@@ -65,7 +65,7 @@ limitations under the License.
                     Diagram navigation is enabled here, you can:
                     <ul>
                         <li>zoom in/out by holding the <kbd>CTRL</kbd> key and rolling the mouse wheel.</li>
-                        <li>drag/pan the diagram by holding the mouse left button and moving the mouse to move the diagram within the viewport.</li>
+                        <li>drag/pan the diagram by holding the mouse left button and moving the mouse to move the diagram within the container.</li>
                     </ul>
                     <button id="btn-reset" title="Reset Zoom and Panning" class="btn btn-primary has-icon-right">
                         <span>Reset </span><span class="icon icon-refresh mb-1"></span>

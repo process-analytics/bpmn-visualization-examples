@@ -16,10 +16,10 @@ limitations under the License.
 <head>
     <meta charset="UTF-8">
     <title>BPMN Visualization - Diagram Navigation</title>
-    <link rel="shortcut icon" href="../favicon.ico">
-    <link rel="stylesheet" href="../static/css/spectre.min.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/icons.min.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/main.css" type="text/css">
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
     <style>
         #bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -29,7 +29,7 @@ limitations under the License.
             border-style: solid;
             border-color: #B0B0B0;
             border-width: 1px;
-            /* This ensures that the parts of the diagram outside of the viewport are not displayed. */
+            /* This ensures that the parts of the diagram outside of the container are not displayed. */
             overflow: hidden;
         }
         #controls {
@@ -55,7 +55,7 @@ limitations under the License.
 <body>
     <header class="navbar bg-dark p-2">
         <section class="navbar-section ml-2">
-            <img src="../static/img/logo_64x64.ico" alt="logo" class="logo">
+            <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
             <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
         </section>
         <section class="navbar-section">
@@ -74,9 +74,11 @@ limitations under the License.
     <section class="container col-10 flex-centered mt-2">
             <section class="col-12 mt-2">
                 <div class="col-12 mb-2">
-                    <h2>Various fit variants</h2>
-                    If the diagram is too large, it does not fit within the viewport. Use the buttons below to make the diagram
-                    fit the viewport horizontally or vertically.
+                    <h2>Various fit after load</h2>
+                    <p>
+                        If the diagram is too large, it does not fit within the container. <br>
+                        Use the buttons below so that the diagram fits the container horizontally, vertically or in the center, after load.
+                    </p>
 
                     <div id="controls">
                         <div id="btn-group-fit" class="col-2" style="float: left">
@@ -99,7 +101,7 @@ limitations under the License.
 
                         <div class="col-3" style="float: left">
                             <div class="dropdown dropdown-right mr-2" style="float: left">
-                                <a id="toggle-dropdown-fit-margin" href="#" class="btn dropdown-toggle" tabindex="0" title="Margin between the diagram and the viewport">
+                                <a id="toggle-dropdown-fit-margin" href="#" class="btn dropdown-toggle" tabindex="0" title="Margin between the diagram and the container">
                                     Fit margin <span class="icon icon-caret icon-in-the-middle"></span>
                                 </a>
                                 <ul class="menu custom-dropdown" id="dropdown-fit-margin">

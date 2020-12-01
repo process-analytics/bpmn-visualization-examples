@@ -16,7 +16,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
     border-style: solid;
     border-color: #B0B0B0;
     border-width: 1px;
-    /* This ensures that the parts of the diagram outside of the viewport are not displayed. */
+    /* This ensures that the parts of the diagram outside of the container are not displayed. */
     overflow: hidden;
 }
 ```

@@ -57,41 +57,38 @@ Go to the repository root and use one the following solutions
 
 ### `bpmn-visualization` usage in browsers 
 
-### basic examples
+### Basic examples
 
-- [getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
-- [load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
-- [BPMN Diagram navigation](examples/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
-- [BPMN Diagram fit on load](examples/diagram-fit-on-load/README.md) - fit the BPMN diagram in the viewport on load
-- [BPMN Diagram fit variants](examples/diagram-fit-variants/README.md) - change the zoom level to make the diagram fit
-the viewport horizontally or vertically
+- [Getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [Load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
+- [Load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
 
-### extensibility examples
+### Style examples
 
 **DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
-They are mainly hacks to let you see what will be later available in a more integrated way. Extensibility features will
+They are mainly hacks to let you see what will be later available in a more integrated way. Style features will
 be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
-- [custom user task icon](./examples/custom-user-task-icon/README.md) - use your own icon
-- [custom colors](examples/custom-colors/README.md) - custom defaults, specific to BPMN element types
-- [custom fonts](examples/custom-fonts/README.md) - custom defaults, specific to BPMN element types
-- [Hacktoberfest themes](examples/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+- [Custom user task icon](examples/style/custom-user-task-icon/README.md) - use your own icon
+- [custom colors](examples/style/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [Custom fonts](examples/style/custom-fonts/README.md) - custom defaults, specific to BPMN element types
+- [Hacktoberfest themes](examples/style/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
-#### interaction examples
+#### Interaction examples
 
+- [BPMN Diagram navigation](examples/interaction/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
+- [BPMN Diagram fit on load](examples/interaction/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
+- [BPMN Diagram fit after load](examples/interaction/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 - [Open a call activity from a main BPMN Diagram](./examples/interaction/call_activity_with_modal_on_mouse_over/README.md) - interacted with a diagram to open the details of a Call Activity
 
+#### Miscellaneous examples
 
-
-#### miscellaneous examples
-
-- [compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
+- [Compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
 
 ### `bpmn-visualization` usage in projects
 
-- [typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
+- [Typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
 
 
 ## 🔧 Contributing
