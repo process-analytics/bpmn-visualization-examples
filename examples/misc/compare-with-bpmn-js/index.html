@@ -37,7 +37,7 @@ limitations under the License.
       border-width: 1px;
       position: absolute;
 
-      /* this ensures that the part of the diagram outside of the viewport is not displayed. */
+      /* this ensures that the part of the diagram outside of the container is not displayed. */
       overflow: hidden;
     }
     .hidden {
@@ -156,7 +156,7 @@ limitations under the License.
     const canvas = bpmnJsViewer.get('canvas');
     if (fitView) {
       // 'auto' to zoom into mid
-      canvas.zoom('fit-viewport', 'auto');
+      canvas.zoom('fit-container', 'auto');
     } else {
       // pass null to ensure the position of the diagram is taken from the BPMN xml
       canvas.zoom(1, null);

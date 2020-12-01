@@ -40,7 +40,7 @@ function startNavigationDemo() {
     },
   };
 
-  startBpmnVisualization({ container: 'bpmn-viewport', globalOptions: options });
+  startBpmnVisualization({ container: 'bpmn-container', globalOptions: options });
 }
 
 documentReady(startNavigationDemo);
