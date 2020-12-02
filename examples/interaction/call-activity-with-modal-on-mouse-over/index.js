@@ -361,6 +361,7 @@ const modalElt = document.getElementById('modal');
 
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+callActivityElt.classList.add('c-hand');
 callActivityElt.onmouseover = () => {
     // Display the modal
     modalElt.classList.add('active');
