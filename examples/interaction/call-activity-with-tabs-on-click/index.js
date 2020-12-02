@@ -360,6 +360,7 @@ const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnC
 // Interaction
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+callActivityElt.classList.add('c-hand');
 callActivityElt.onclick = () => {
     openTab('secondary');
 }
