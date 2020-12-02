@@ -360,7 +360,11 @@ const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnC
 // Interaction
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+
+// WARNING: The class adding doesn't work with the zoom, the panning and the fit
+// TODO Need to replace by the dedicated API when it is implemented
 callActivityElt.classList.add('c-hand');
+
 callActivityElt.onclick = () => {
     openTab('secondary');
 }
