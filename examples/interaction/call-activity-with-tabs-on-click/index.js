@@ -1,4 +1,5 @@
 // Inspired from 'Procurement Processes with Error Handling - Stencil Trisotech 3 pages.bpmn' of https://www.omg.org/cgi-bin/doc?dtc/10-06-02.zip
+// Duplicated from examples/interaction/call_activity_with_modal_on_mouse_over
 function getMainBpmnDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
 <semantic:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL">
@@ -357,16 +358,35 @@ const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnC
 
 
 // Interaction
-const modalElt = document.getElementById('modal');
-
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
-callActivityElt.classList.add('c-hand');
-callActivityElt.onmouseover = () => {
-    // Display the modal
-    modalElt.classList.add('active');
 
-    if(!secondaryBpmnDiagramIsAlreadyLoad) {
+// WARNING: The class adding doesn't work with the zoom, the panning and the fit
+// TODO Need to replace by the dedicated API when it is implemented
+callActivityElt.classList.add('c-hand');
+
+callActivityElt.onclick = () => {
+    openTab('secondary');
+}
+
+
+function openTab(tabIndex) {
+    // Activate corresponding tab & Deactivate others
+    const tabItems = document.getElementsByClassName("tab-item");
+    for (let i = 0; i < tabItems.length; i++) {
+        tabItems.item(i).classList.remove('active');
+    }
+    document.getElementById(`${tabIndex}-tab`).classList.add('active');
+
+    // Display corresponding BPMN container & Hide others
+    const bpmnContainers = document.getElementsByClassName("bpmn-container");
+    for (let i = 0; i < tabItems.length; i++) {
+        bpmnContainers.item(i).classList.add('d-hide');
+    }
+    document.getElementById(`${tabIndex}-bpmn-container`).classList.remove('d-hide');
+
+    // Load secondary BPMN diagram, if it's not already done
+    if(tabIndex=='secondary' && !secondaryBpmnDiagramIsAlreadyLoad) {
         secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center', margin: 10 } });
         secondaryBpmnDiagramIsAlreadyLoad = true;
     }
