@@ -130,302 +130,301 @@ limitations under the License.
     </style>
 </head>
 <body>
-<a id="top"></a>
-<header class="navbar bg-dark p-2">
-    <section class="navbar-section ml-2">
-        <img src="static/img/logo_64x64.ico" alt="logo" class="logo">
-        <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
-    </section>
-    <section class="navbar-section">
-        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
-        <div class="dropdown mr-2 dropdown-right">
-            <span class="btn btn-primary dropdown-toggle" tabindex="0">
-                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
-            </span>
-            <ul class="menu">
-                <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
-                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
-            </ul>
+    <a id="top"></a>
+    <header class="navbar bg-dark p-2">
+        <section class="navbar-section ml-2">
+            <img src="static/img/logo_64x64.ico" alt="logo" class="logo">
+            <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+        </section>
+        <section class="navbar-section">
+            <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+            <div class="dropdown mr-2 dropdown-right">
+                <span class="btn btn-primary dropdown-toggle" tabindex="0">
+                    GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+                </span>
+                <ul class="menu">
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+    <section class="container col-10 flex-centered mt-2">
+        <div class="columns mt-2">
+            <section class="col-12 mt-2 mb-2">
+                <h3>Directly access to <span class="text-normal text-italic">bpmn-visualization</span> live examples.</h3>
+                <div>
+                    <p>
+                        <span>Technical details about the examples implementation are available in the</span>
+                        <a href="https://github.com/process-analytics/bpmn-visualization-examples" target="_blank" rel="noopener noreferrer">bpmn-visualization-examples</a> repository.
+                    </p>
+
+                    <h5>Content</h5>
+                    <ul>
+                        <li><a href="#demos">Demos</a></li>
+                        <li><a href="#usage">Usage examples</a></li>
+                        <li><a href="#style">Style examples</a></li>
+                        <li><a href="#interaction">Interaction examples</a></li>
+                        <li><a href="#miscellaneous">Miscellaneous examples</a></li>
+                    </ul>
+                    <br>
+
+                    <h5>Getting BPMN Diagrams</h5>
+                    <p>
+                        Some examples require loading local files. If you are looking for BPMN diagram files, you can use resources from
+                    </p>
+                    <ul>
+                        <li>the BPMN Model Interchange Working Group <a href="https://www.omgwiki.org/bpmn-miwg">(BPMN MIWG)</a>, an
+                            initiative "<em>to support, facilitate, and promote the interchange of BPMN Models</em>".
+                            <ul>
+                                <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">bpmn-miwg-test-suite</a></li>
+                                <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-demos" target="_blank" rel="noopener noreferrer">bpmn-miwg-demos</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/bpmn-files/README.md">bpmn-visualizationBPMN test diagrams</a></li>
+                    </ul>
+                </div>
+
+            </section>
+
+            <section class="col-12 mt-2 mb-2">
+                <a id="demos" class="anchor-from-summary"></a>
+                <h2 class="bg-dark">Demos</h2>
+                <div class="columns">
+                    <div class="col-4 p-2">
+                        <a href="../demo/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Load and Navigation demo</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/demo_load_and_navigation.png" class="img-responsive" alt="load and navigation diagram demo">
+                                </div>
+                                <div class="card-body">Show most of features provided by <code>bpmn-visualization</code> about
+                                    BPMN rendering and diagram navigation when loading BPMN local files.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-12 mt-2 mb-2">
+                <a id="usage" class="anchor-from-summary"></a>
+                <h2 class="bg-dark">Usage</h2>
+                <div class="columns">
+                    <div class="col-4 p-2">
+                        <!-- TODO tabindex="-1" to make it temporary non focusable to avoid glitch -->
+                        <a href="./01-getting-started/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Getting Started</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
+                                </div>
+                                <div class="card-body">Know how to use <code>bpmn-visualization</code> in the Browser.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-4 p-2">
+                        <a href="./load-local-bpmn-diagrams/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Load local BPMN diagrams</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/use_local_diagram.png" class="img-responsive" alt="locally loaded diagrams">
+                                </div>
+                                <div class="card-body">Load BPMN diagrams from your device.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-4 p-2">
+                        <a href="./load-remote-bpmn-diagrams/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Load remote BPMN diagrams</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/use_remote_diagram.png" class="img-responsive" alt="remotely loaded diagrams">
+                                </div>
+                                <div class="card-body">Load BPMN diagrams hosted remotely.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-12 mt-2 mb-2">
+                <a id="style" class="anchor-from-summary"></a>
+                <h2 class="bg-dark">Style</h2>
+                <div class="columns">
+                    <div class="col-4 p-2">
+                        <a href="style/custom-colors/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Custom colors</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/style/custom_colors.png" class="img-responsive" alt="custom colors">
+                                </div>
+                                <div class="card-body">Change default fill and stroke colors, font color, use specific colors depending on the BPMN element.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-4 p-2">
+                        <a href="style/custom-fonts/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Custom fonts</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/style/custom_fonts.png" class="img-responsive" alt="custom fonts">
+                                </div>
+                                <div class="card-body">Change default font, font color, use specific font depending on the BPMN element.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-4 p-2">
+                        <a href="style/custom-user-task-icon/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Custom user task icon</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/style/custom_user_icon.png" class="img-responsive" alt="custom icon">
+                                </div>
+                                <div class="card-body">Use your own icon in User Tasks.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-4 p-2">
+                        <a href="style/hacktoberfest-diagram/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Hacktoberfest themes</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/style/hacktoberfest_diagram.png" class="img-responsive" alt="hacktoberfest themes">
+                                </div>
+                                <div class="card-body">Special Hacktoberfest diagram with Hacktoberfest colors/themes.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-12 mt-2 mb-2">
+                <a id="interaction" class="anchor-from-summary"></a>
+                <h2 class="bg-dark">Interaction</h2>
+                <div class="columns">
+                    <div class="col-4 p-2">
+                        <a href="interaction/diagram-navigation/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Diagram Navigation</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/interaction/diagram_navigation.png" class="img-responsive" alt="navigate within the diagram">
+                                </div>
+                                <div class="card-body">Zoom and move the diagram using the Mouse.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-2">
+                        <a href="interaction/diagram-fit-on-load/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Diagram Fit On Load</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/interaction/diagram_fit_on_load.png" class="img-responsive" alt="fit the diagram on load">
+                                </div>
+                                <div class="card-body">Fit the diagram whole/horizontally/vertically/center on load.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-2">
+                        <a href="interaction/diagram-fit-after-load/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Diagram Fit After Load</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/interaction/diagram_fit_after_load.png" class="img-responsive" alt="fit the diagram after load">
+                                </div>
+                                <div class="card-body">Fit the diagram horizontally, vertically, in the center whenever you want.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                    <div class="col-4 p-2">
+                        <a href="./interaction/call-activity-with-modal-on-mouse-over/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Call activity with modal</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/interaction/call_activity_with_modal_on_mouse_over.png" class="img-responsive" alt="call activity with modal">
+                                </div>
+                                <div class="card-body">Open a modal on mouse over on a call activity</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
+
+            <section class="col-12 mt-2 mb-2">
+                <a id="miscellaneous"  class="anchor-from-summary"></a>
+                <h2 class="bg-dark">Miscellaneous</h2>
+                <div class="columns">
+                    <div class="col-4 p-2">
+                        <a href="./misc/compare-with-bpmn-js/index.html" target="_blank" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Compare with bpmn-js</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/misc/compare_with_bpmn-js.png" class="img-responsive" alt="compare with bpmn-js">
+                                </div>
+                                <div class="card-body">Compare the libraries on BPMN elements rendering, navigation and API usage.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+                </div>
+            </section>
         </div>
     </section>
-</header>
-<section class="container col-10 flex-centered mt-2">
-    <div class="columns mt-2">
-        <section class="col-12 mt-2 mb-2">
-            <h3>Directly access to <span class="text-normal text-italic">bpmn-visualization</span> live examples.</h3>
-            <div>
-                <p>
-                    <span>Technical details about the examples implementation are available in the</span>
-                    <a href="https://github.com/process-analytics/bpmn-visualization-examples" target="_blank" rel="noopener noreferrer">bpmn-visualization-examples</a> repository.
-                </p>
-
-                <h5>Content</h5>
-                <ul>
-                    <li><a href="#demos">Demos</a></li>
-                    <li><a href="#usage">Usage examples</a></li>
-                    <li><a href="#style">Style examples</a></li>
-                    <li><a href="#interaction">Interaction examples</a></li>
-                    <li><a href="#miscellaneous">Miscellaneous examples</a></li>
-                </ul>
-                <br>
-
-                <h5>Getting BPMN Diagrams</h5>
-                <p>
-                    Some examples require loading local files. If you are looking for BPMN diagram files, you can use resources from
-                </p>
-                <ul>
-                    <li>the BPMN Model Interchange Working Group <a href="https://www.omgwiki.org/bpmn-miwg">(BPMN MIWG)</a>, an
-                        initiative "<em>to support, facilitate, and promote the interchange of BPMN Models</em>".
-                        <ul>
-                            <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite" target="_blank" rel="noopener noreferrer">bpmn-miwg-test-suite</a></li>
-                            <li><a href="https://github.com/bpmn-miwg/bpmn-miwg-demos" target="_blank" rel="noopener noreferrer">bpmn-miwg-demos</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples/blob/master/bpmn-files/README.md">bpmn-visualizationBPMN test diagrams</a></li>
-                </ul>
-            </div>
-
-        </section>
-
-        <section class="col-12 mt-2 mb-2">
-            <a id="demos" class="anchor-from-summary"></a>
-            <h2 class="bg-dark">Demos</h2>
-            <div class="columns">
-                <div class="col-4 p-2">
-                    <a href="../demo/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Load and Navigation demo</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/demo_load_and_navigation.png" class="img-responsive" alt="load and navigation diagram demo">
-                            </div>
-                            <div class="card-body">Show most of features provided by <code>bpmn-visualization</code> about
-                                BPMN rendering and diagram navigation when loading BPMN local files.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="col-12 mt-2 mb-2">
-            <a id="usage" class="anchor-from-summary"></a>
-            <h2 class="bg-dark">Usage</h2>
-            <div class="columns">
-                <div class="col-4 p-2">
-                    <!-- TODO tabindex="-1" to make it temporary non focusable to avoid glitch -->
-                    <a href="./01-getting-started/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Getting Started</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/01_getting_started.png" class="img-responsive" alt="remotely loaded diagrams">
-                            </div>
-                            <div class="card-body">Know how to use <code>bpmn-visualization</code> in the Browser.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-4 p-2">
-                    <a href="./load-local-bpmn-diagrams/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Load local BPMN diagrams</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/use_local_diagram.png" class="img-responsive" alt="locally loaded diagrams">
-                            </div>
-                            <div class="card-body">Load BPMN diagrams from your device.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-4 p-2">
-                    <a href="./load-remote-bpmn-diagrams/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Load remote BPMN diagrams</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/use_remote_diagram.png" class="img-responsive" alt="remotely loaded diagrams">
-                            </div>
-                            <div class="card-body">Load BPMN diagrams hosted remotely.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="col-12 mt-2 mb-2">
-            <a id="style" class="anchor-from-summary"></a>
-            <h2 class="bg-dark">Style</h2>
-            <div class="columns">
-                <div class="col-4 p-2">
-                    <a href="style/custom-colors/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Custom colors</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/style/custom_colors.png" class="img-responsive" alt="custom colors">
-                            </div>
-                            <div class="card-body">Change default fill and stroke colors, font color, use specific colors depending on the BPMN element.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-4 p-2">
-                    <a href="style/custom-fonts/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Custom fonts</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/style/custom_fonts.png" class="img-responsive" alt="custom fonts">
-                            </div>
-                            <div class="card-body">Change default font, font color, use specific font depending on the BPMN element.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-4 p-2">
-                    <a href="style/custom-user-task-icon/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Custom user task icon</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/style/custom_user_icon.png" class="img-responsive" alt="custom icon">
-                            </div>
-                            <div class="card-body">Use your own icon in User Tasks.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-
-                <div class="col-4 p-2">
-                    <a href="style/hacktoberfest-diagram/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Hacktoberfest themes</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/style/hacktoberfest_diagram.png" class="img-responsive" alt="hacktoberfest themes">
-                            </div>
-                            <div class="card-body">Special Hacktoberfest diagram with Hacktoberfest colors/themes.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="col-12 mt-2 mb-2">
-            <a id="interaction" class="anchor-from-summary"></a>
-            <h2 class="bg-dark">Interaction</h2>
-            <div class="columns">
-                <div class="col-4 p-2">
-                    <a href="interaction/diagram-navigation/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Diagram Navigation</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/interaction/diagram_navigation.png" class="img-responsive" alt="navigate within the diagram">
-                            </div>
-                            <div class="card-body">Zoom and move the diagram using the Mouse.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-4 p-2">
-                    <a href="interaction/diagram-fit-on-load/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Diagram Fit On Load</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/interaction/diagram_fit_on_load.png" class="img-responsive" alt="fit the diagram on load">
-                            </div>
-                            <div class="card-body">Fit the diagram whole/horizontally/vertically/center on load.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-4 p-2">
-                    <a href="interaction/diagram-fit-after-load/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Diagram Fit After Load</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/interaction/diagram_fit_after_load.png" class="img-responsive" alt="fit the diagram after load">
-                            </div>
-                            <div class="card-body">Fit the diagram horizontally, vertically, in the center whenever you want.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-                <div class="col-4 p-2">
-                    <a href="./interaction/call_activity_with_modal_on_mouse_over/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Call activity with modal</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/interaction/call_activity_with_modal_on_mouse_over.png" class="img-responsive" alt="call activity with modal">
-                            </div>
-                            <div class="card-body">Open a modal on mouse over on a call activity</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-
-        <section class="col-12 mt-2 mb-2">
-            <a id="miscellaneous"  class="anchor-from-summary"></a>
-            <h2 class="bg-dark">Miscellaneous</h2>
-            <div class="columns">
-                <div class="col-4 p-2">
-                    <a href="./misc/compare-with-bpmn-js/index.html" target="_blank" class="card-link">
-                        <div class="card p-2">
-                            <div class="card-header">
-                                <div class="card-title">Compare with bpmn-js</div>
-                                <div class="card-subtitle"></div>
-                            </div>
-                            <div class="card-image">
-                                <img src="static/img/preview/misc/compare_with_bpmn-js.png" class="img-responsive" alt="compare with bpmn-js">
-                            </div>
-                            <div class="card-body">Compare the libraries on BPMN elements rendering, navigation and API usage.</div>
-                            <div class="card-footer"></div>
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </section>
-    </div>
-
-</section>
     <!-- inspired by https://moderncss.dev/pure-css-smooth-scroll-back-to-top/ -->
     <div class="back-to-top-wrapper float-right">
         <a href="#top" class="back-to-top-link" aria-label="Scroll to Top"><em class="icon icon-2x icon-upward"></em></a>
