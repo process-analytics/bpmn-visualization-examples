@@ -156,7 +156,7 @@ limitations under the License.
     const canvas = bpmnJsViewer.get('canvas');
     if (fitView) {
       // 'auto' to zoom into mid
-      canvas.zoom('fit-container', 'auto');
+      canvas.zoom('fit-viewport', 'auto');
     } else {
       // pass null to ensure the position of the diagram is taken from the BPMN xml
       canvas.zoom(1, null);
