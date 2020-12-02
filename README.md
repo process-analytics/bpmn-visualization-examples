@@ -81,8 +81,8 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 
 #### interaction examples
 
-- [Open a call activity from a main BPMN Diagram on a modal](./examples/interaction/call_activity_with_modal_on_mouse_over/README.md) - interacted with a diagram to open the details of a Call Activity on a modal
-- [Open a call activity from a main BPMN Diagram on a tab](./examples/interaction/call_activity_with_tabs_on_click/README.md) - interacted with a diagram to open the details of a Call Activity on a tab
+- [Open a call activity from a main BPMN Diagram on a modal](examples/interaction/call-activity-with-modal-on-mouse-over/README.md) - interacted with a diagram to open the details of a Call Activity on a modal
+- [Open a call activity from a main BPMN Diagram on a tab](examples/interaction/call-activity-with-tabs-on-click/README.md) - interacted with a diagram to open the details of a Call Activity on a tab
 
 #### miscellaneous examples
 

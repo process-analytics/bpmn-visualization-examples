@@ -1,18 +1,20 @@
-# Open a tab on event on a call activity
+# Open a modal on event on a call activity
 
-Javascript example to demonstrate how to open a new BPMN diagram in a tab.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/interaction/call_activity_with_tabs_on_click/index.html)
+Javascript example to demonstrate how to open a new BPMN diagram in a modal.
+- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/interaction/call-activity-with-modal-on-mouse-over/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
 
-After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the call activity to add a listener and activate the tab (and deactivate the others).
+After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the call activity to add a listener and activate the modal.
 
 ⚠️  In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 ```javascript
 const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
-callActivityElt.onclick = () => {
-    openTab('secondary');
+callActivityElt.onmouseover = () => {
+    // Display the modal
+    const modalElt = document.getElementById('modal');
+    modalElt.classList.add('active');
 
     secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
 }
