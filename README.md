@@ -70,19 +70,19 @@ They are mainly hacks to let you see what will be later available in a more inte
 be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
 - [Custom user task icon](examples/style/custom-user-task-icon/README.md) - use your own icon
-- [custom colors](examples/style/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [Custom colors](examples/style/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [Custom fonts](examples/style/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/style/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 
-#### Interaction examples
+### Interaction examples
 
 - [BPMN Diagram navigation](examples/interaction/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
 - [BPMN Diagram fit on load](examples/interaction/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
 - [BPMN Diagram fit after load](examples/interaction/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 - [Open a call activity from a main BPMN Diagram](./examples/interaction/call_activity_with_modal_on_mouse_over/README.md) - interacted with a diagram to open the details of a Call Activity
 
-#### Miscellaneous examples
+### Miscellaneous examples
 
 - [Compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
 
