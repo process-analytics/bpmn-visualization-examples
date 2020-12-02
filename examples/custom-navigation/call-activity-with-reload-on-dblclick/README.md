@@ -11,7 +11,7 @@ After the main `BpmnVisualization` instantiation, get the HTML element correspon
 ```javascript
 const callActivityElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
 callActivityElt.ondblclick = () => {
-    bpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
+    bpmnVisualization.load(getProcurementBpmnDiagram(), { fit: {type: 'Center'} });
 }
 ```
 

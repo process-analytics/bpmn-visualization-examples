@@ -14,7 +14,7 @@ const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlEle
 callActivityElt.onclick = () => {
     openTab('secondary');
 
-    secondaryBpmnVisualization.load(getCalledBpmnDiagram(), { fit: {type: 'Center'} });
+    secondaryBpmnVisualization.load(getProcurementBpmnDiagram(), { fit: {type: 'Center'} });
 }
 ```
 
