@@ -82,6 +82,7 @@ be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone]
 - [BPMN Diagram fit after load](examples/interaction/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 - [Open a call activity from a main BPMN Diagram on a modal](examples/interaction/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
 - [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/interaction/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
+- [Open a call activity from a main BPMN Diagram on the same container](./examples/interaction/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
 
 ### Miscellaneous examples
 
