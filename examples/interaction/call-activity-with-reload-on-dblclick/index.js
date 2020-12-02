@@ -353,7 +353,11 @@ function loadMainBpmnDiagram() {
 
     // Interaction
     const callActivityElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+
+    // WARNING: The class adding doesn't work with the zoom, the panning and the fit
+    // TODO Need to replace by the dedicated API when it is implemented
     callActivityElt.classList.add('c-hand');
+
     callActivityElt.ondblclick = () => {
         loadBpmnDiagram('secondary');
     }
