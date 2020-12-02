@@ -1,4 +1,4 @@
-# Switch tab (of the page) on event on a call activity
+# Switch tab (of the page) on click on a call activity
 
 Javascript example to demonstrate how to open a new BPMN diagram in a tab.
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/interaction/call-activity-with-tabs-on-click/index.html)
