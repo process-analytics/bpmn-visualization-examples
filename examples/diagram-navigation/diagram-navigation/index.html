@@ -1,0 +1,227 @@
+<!--
+Copyright 2020 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization - Diagram Navigation</title>
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+    <style>
+        .bpmn-container {
+            /* use absolute values for width and height to ensure that the diagram is not fully displayed when the page is opened. */
+            width: 800px;
+            height: 300px;
+            margin-top: 2em;
+            border-style: solid;
+            border-color: #B0B0B0;
+            border-width: 1px;
+            /* this ensures that the part of the diagram outside of the container is not displayed. */
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar bg-dark p-2">
+        <section class="navbar-section ml-2">
+            <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
+            <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+        </section>
+        <section class="navbar-section">
+            <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+            <div class="dropdown mr-2">
+                <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                    GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+                </a>
+                <ul class="menu">
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+    <section class="container col-10 flex-centered mt-2">
+            <section class="col-12 mt-2">
+                <div class="col-12 mb-2">
+                    <h2>Default (no navigation)</h2>
+                    The diagram is too large and does not fit within the container.
+                    <div id="bpmn-container-default" class="bpmn-container"></div>
+                </div>
+                <div class="col-12 mt-40 mb-2">
+                    <h2>With Diagram Navigation enabled</h2>
+                    Diagram navigation is enabled here, you can:
+                    <ul>
+                        <li>zoom in/out by holding the <kbd>CTRL</kbd> key and rolling the mouse wheel.</li>
+                        <li>drag/pan the diagram by holding the mouse left button and moving the mouse to move the diagram within the container.</li>
+                    </ul>
+                    <button id="btn-reset" title="Reset Zoom and Panning" class="btn btn-primary has-icon-right">
+                        <span>Reset </span><span class="icon icon-refresh mb-1"></span>
+                    </button>
+                    <div id="bpmn-container-navigation" class="bpmn-container"></div>
+                </div>
+            </section>
+    </section>
+
+    <script src="https://unpkg.com/bpmn-visualization@0.8.0/dist/bpmn-visualization.js"></script>
+    <script>
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container-default'));
+        bpmnVisualization.load(bpmnDiagram());
+
+        const bpmnVisualizationNavigation = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container-navigation'), { mouseNavigationSupport: true });
+        bpmnVisualizationNavigation.load(bpmnDiagram());
+
+        document.getElementById('btn-reset').onclick = function() {
+            bpmnVisualizationNavigation.fit({type: bpmnvisu.FitType.None});
+        };
+
+        function bpmnDiagram() {
+            return `<?xml version="1.0" encoding="UTF-8"?>
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_18cog9y" targetNamespace="http://example.com/schema/bpmn">
+  <bpmn:collaboration id="Collaboration_1eqpxip">
+    <bpmn:participant id="Participant_03jhjm9" name="Pool 1" processRef="Process_01vn1wx" />
+    <bpmn:participant id="Participant_0qu7iqv" name="Pool 2" processRef="Process_0dfjkzy" />
+    <bpmn:messageFlow id="Flow_09jqd5k" sourceRef="Event_0nrt6xs" targetRef="Event_0a428ki" />
+  </bpmn:collaboration>
+  <bpmn:process id="Process_01vn1wx" isExecutable="false">
+    <bpmn:laneSet id="LaneSet_1q051sw">
+      <bpmn:lane id="Lane_0bazksy" name="Lane 1">
+        <bpmn:flowNodeRef>StartEvent_1bfvqgx</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1bb0blk</bpmn:flowNodeRef>
+      </bpmn:lane>
+      <bpmn:lane id="Lane_01uveyz" name="Lane 2">
+        <bpmn:flowNodeRef>Activity_0lw7k5q</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Event_0nrt6xs</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1ec3lfa</bpmn:flowNodeRef>
+      </bpmn:lane>
+    </bpmn:laneSet>
+    <bpmn:sequenceFlow id="Flow_09y15qv" sourceRef="StartEvent_1bfvqgx" targetRef="Activity_1bb0blk" />
+    <bpmn:sequenceFlow id="Flow_1uzmwuw" sourceRef="Activity_0lw7k5q" targetRef="Activity_1ec3lfa" />
+    <bpmn:sequenceFlow id="Flow_05ffp42" sourceRef="Activity_1bb0blk" targetRef="Activity_0lw7k5q" />
+    <bpmn:startEvent id="StartEvent_1bfvqgx" name="start">
+      <bpmn:outgoing>Flow_09y15qv</bpmn:outgoing>
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_1bb0blk" name="Task 1">
+      <bpmn:incoming>Flow_09y15qv</bpmn:incoming>
+      <bpmn:outgoing>Flow_05ffp42</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:task id="Activity_0lw7k5q" name="Task 2">
+      <bpmn:incoming>Flow_05ffp42</bpmn:incoming>
+      <bpmn:outgoing>Flow_1uzmwuw</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0nrt6xs">
+      <bpmn:incoming>Flow_1jv48ek</bpmn:incoming>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_02c3e55" />
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_1jv48ek" sourceRef="Activity_1ec3lfa" targetRef="Event_0nrt6xs" />
+    <bpmn:task id="Activity_1ec3lfa" name="Task 3">
+      <bpmn:incoming>Flow_1uzmwuw</bpmn:incoming>
+      <bpmn:outgoing>Flow_1jv48ek</bpmn:outgoing>
+    </bpmn:task>
+  </bpmn:process>
+  <bpmn:process id="Process_0dfjkzy">
+    <bpmn:startEvent id="Event_0a428ki">
+      <bpmn:outgoing>Flow_0l3tbxg</bpmn:outgoing>
+      <bpmn:messageEventDefinition id="MessageEventDefinition_0cyh03r" />
+    </bpmn:startEvent>
+    <bpmn:task id="Activity_0ur62d4" name="Do it!">
+      <bpmn:incoming>Flow_0l3tbxg</bpmn:incoming>
+      <bpmn:outgoing>Flow_1ijpizu</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:endEvent id="Event_0lv0w8p">
+      <bpmn:incoming>Flow_1ijpizu</bpmn:incoming>
+    </bpmn:endEvent>
+    <bpmn:sequenceFlow id="Flow_0l3tbxg" sourceRef="Event_0a428ki" targetRef="Activity_0ur62d4" />
+    <bpmn:sequenceFlow id="Flow_1ijpizu" sourceRef="Activity_0ur62d4" targetRef="Event_0lv0w8p" />
+  </bpmn:process>
+  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
+    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_1eqpxip">
+      <bpmndi:BPMNShape id="Participant_03jhjm9_di" bpmnElement="Participant_03jhjm9" isHorizontal="true">
+        <dc:Bounds x="156" y="61" width="884" height="329" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_0bazksy_di" bpmnElement="Lane_0bazksy" isHorizontal="true">
+        <dc:Bounds x="186" y="61" width="854" height="160" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Lane_01uveyz_di" bpmnElement="Lane_01uveyz" isHorizontal="true">
+        <dc:Bounds x="186" y="221" width="854" height="169" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_09y15qv_di" bpmnElement="Flow_09y15qv">
+        <di:waypoint x="278" y="140" />
+        <di:waypoint x="330" y="140" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1uzmwuw_di" bpmnElement="Flow_1uzmwuw">
+        <di:waypoint x="610" y="310" />
+        <di:waypoint x="700" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_05ffp42_di" bpmnElement="Flow_05ffp42">
+        <di:waypoint x="430" y="140" />
+        <di:waypoint x="470" y="140" />
+        <di:waypoint x="470" y="310" />
+        <di:waypoint x="510" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1jv48ek_di" bpmnElement="Flow_1jv48ek">
+        <di:waypoint x="800" y="310" />
+        <di:waypoint x="882" y="310" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_1bfvqgx">
+        <dc:Bounds x="242" y="122" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="249" y="165" width="22" height="14" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1bb0blk_di" bpmnElement="Activity_1bb0blk">
+        <dc:Bounds x="330" y="100" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0lw7k5q_di" bpmnElement="Activity_0lw7k5q">
+        <dc:Bounds x="510" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_1bl10ng_di" bpmnElement="Event_0nrt6xs">
+        <dc:Bounds x="882" y="292" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1ec3lfa_di" bpmnElement="Activity_1ec3lfa">
+        <dc:Bounds x="700" y="270" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Participant_0qu7iqv_di" bpmnElement="Participant_0qu7iqv" isHorizontal="true">
+        <dc:Bounds x="156" y="500" width="370" height="170" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_0l3tbxg_di" bpmnElement="Flow_0l3tbxg">
+        <di:waypoint x="248" y="590" />
+        <di:waypoint x="300" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1ijpizu_di" bpmnElement="Flow_1ijpizu">
+        <di:waypoint x="400" y="590" />
+        <di:waypoint x="452" y="590" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNShape id="Event_14eqrjz_di" bpmnElement="Event_0a428ki">
+        <dc:Bounds x="212" y="572" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_0ur62d4_di" bpmnElement="Activity_0ur62d4">
+        <dc:Bounds x="300" y="550" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Event_0lv0w8p_di" bpmnElement="Event_0lv0w8p">
+        <dc:Bounds x="452" y="572" width="36" height="36" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_09jqd5k_di" bpmnElement="Flow_09jqd5k">
+        <di:waypoint x="904" y="327" />
+        <di:waypoint x="904" y="460" />
+        <di:waypoint x="230" y="460" />
+        <di:waypoint x="230" y="572" />
+      </bpmndi:BPMNEdge>
+    </bpmndi:BPMNPlane>
+  </bpmndi:BPMNDiagram>
+</bpmn:definitions>`;
+        }
+    </script></body>
+</html>
