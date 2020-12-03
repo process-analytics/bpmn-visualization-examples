@@ -87,6 +87,11 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/custom-navigation/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
 - [Open a call activity from a main BPMN Diagram on the same container](examples/custom-navigation/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
 
+### Custom animation examples
+
+- [Running Dashed Sequence Flow](examples/custom-animation/running-dashed-sequence-flow/README.md) - add custom running dashed animation on a Sequence Flow
+
+
 ### Miscellaneous examples
 
 - [Compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
