@@ -60,15 +60,15 @@ Go to the repository root and use one the following solutions
 ### Basic examples
 
 Display BPMN Diagram:
-- [Getting started](examples/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [Load local BPMN diagrams](examples/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
-- [Load remote BPMN diagrams](examples/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
+- [Getting started](examples/display-bpmn-diagram/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [Load local BPMN diagrams](examples/display-bpmn-diagram/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
+- [Load remote BPMN diagrams](examples/display-bpmn-diagram/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
 
 ### Diagram navigation examples
 
-- [BPMN Diagram navigation](examples/interaction/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
-- [BPMN Diagram fit on load](examples/interaction/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
-- [BPMN Diagram fit after load](examples/interaction/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
+- [BPMN Diagram navigation](examples/diagram-navigation/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
+- [BPMN Diagram fit on load](examples/diagram-navigation/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
+- [BPMN Diagram fit after load](examples/diagram-navigation/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 
 ### Custom BPMN Theme examples
 
@@ -76,16 +76,16 @@ Display BPMN Diagram:
 They are mainly hacks to let you see what will be later available in a more integrated way. \
 Custom BPMN Theme features will be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
-- [Custom user task icon](examples/style/custom-user-task-icon/README.md) - use your own icon
-- [Custom colors](examples/style/custom-colors/README.md) - custom defaults, specific to BPMN element types
-- [Custom fonts](examples/style/custom-fonts/README.md) - custom defaults, specific to BPMN element types
-- [Hacktoberfest themes](examples/style/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+- [Custom user task icon](examples/custom-bpmn-theme/custom-user-task-icon/README.md) - use your own icon
+- [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
+- [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 ### Custom navigation examples
 
-- [Open a call activity from a main BPMN Diagram on a modal](examples/interaction/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
-- [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/interaction/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
-- [Open a call activity from a main BPMN Diagram on the same container](./examples/interaction/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
+- [Open a call activity from a main BPMN Diagram on a modal](examples/custom-navigation/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
+- [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/custom-navigation/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
+- [Open a call activity from a main BPMN Diagram on the same container](examples/custom-navigation/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
 
 ### Miscellaneous examples
 

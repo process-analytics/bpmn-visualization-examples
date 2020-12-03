@@ -6,7 +6,7 @@ Javascript example
 
 ## ♻️ Usage
 
-**Tips**: you can use BPMN diagrams available in this repository in the [bpmn-files](../../bpmn-files) folder.
+**Tips**: you can use BPMN diagrams available in this repository in the [bpmn-files](../../../bpmn-files) folder.
 
 Let's assume that a `bpmnVisualization` variable has already been initialized and the `inputFileHtmlElement` variable relates
 to the input file html element.  \

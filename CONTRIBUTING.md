@@ -46,7 +46,7 @@ To know how to configure your development environment, see [IDE configuration](h
 
 ### Adding new example
 - Create a new folder in [examples](examples)
-- Create a index.html file in your new folder, See how it was done for [custom-user-task-icon](examples/style/custom-user-task-icon/index.html)
+- Create a index.html file in your new folder, See how it was done for [custom-user-task-icon](examples/custom-bpmn-theme/custom-user-task-icon/index.html)
 - Make the examples use the latest version of the lib
 - When your are satisfied by your work, add a screenshot of your example render in [examples/static/img](examples/static/img)
 - Add a new `div` for your example in [examples/index.html](examples/index.html). See how it was done for the previous examples.
