@@ -89,7 +89,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 ### Custom animation examples
 
-- [Running Dashed Sequence Flow](examples/custom-animation/running-dashed-sequence-flow/README.md) - add custom running dashed animation on a Sequence Flow
+- [Running Dashed Message Flow](examples/custom-animation/running-dashed-message-flow/README.md) - add custom running dashed animation on a Message Flow
 
 
 ### Miscellaneous examples
