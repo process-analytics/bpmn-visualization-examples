@@ -5,7 +5,7 @@ The current way of doing is a hack as there is no official way of doing it. In t
 subclassing `IconPainter`.
 
 Javascript example
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-user-task-icon/index.html)
+- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-bpmn-theme/custom-user-task-icon/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ BPMN Visualization Usage

@@ -4,7 +4,7 @@
 In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-colors/index.html)
+- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-bpmn-theme/custom-colors/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
