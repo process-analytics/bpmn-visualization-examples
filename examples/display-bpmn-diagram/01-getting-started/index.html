@@ -53,56 +53,10 @@ limitations under the License.
 <script src="https://unpkg.com/bpmn-visualization@0.8.0/dist/bpmn-visualization.js"></script>
 <!-- if you prefer jsdlivr, comment unpkg and uncomment the following line -->
 <!--<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.8.0/dist/bpmn-visualization.min.js"></script>-->
+<script src="../../bpmn-diagrams.js"></script>
 <script>
     const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
-    bpmnVisualization.load(bpmnDiagram());
-
-    function bpmnDiagram() {
-        return  `<?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_01afj0d" targetNamespace="http://example.com/schema/bpmn">
-  <bpmn:process id="Process_0yqq1lz" isExecutable="false">
-    <bpmn:startEvent id="StartEvent_08hc3xj" name="Start coding">
-      <bpmn:outgoing>Flow_1wkfbb0</bpmn:outgoing>
-    </bpmn:startEvent>
-    <bpmn:task id="Activity_1potg3p" name="Enjoy using &#39;BPMN Visualization&#39;">
-      <bpmn:incoming>Flow_1wkfbb0</bpmn:incoming>
-      <bpmn:outgoing>Flow_133a5kz</bpmn:outgoing>
-    </bpmn:task>
-    <bpmn:sequenceFlow id="Flow_1wkfbb0" sourceRef="StartEvent_08hc3xj" targetRef="Activity_1potg3p" />
-    <bpmn:endEvent id="Event_05akz22" name="See you later!">
-      <bpmn:incoming>Flow_133a5kz</bpmn:incoming>
-    </bpmn:endEvent>
-    <bpmn:sequenceFlow id="Flow_133a5kz" sourceRef="Activity_1potg3p" targetRef="Event_05akz22" />
-  </bpmn:process>
-  <bpmndi:BPMNDiagram id="BPMNDiagram_1">
-    <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Process_0yqq1lz">
-      <bpmndi:BPMNEdge id="Flow_1wkfbb0_di" bpmnElement="Flow_1wkfbb0">
-        <di:waypoint x="192" y="99" />
-        <di:waypoint x="250" y="99" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_133a5kz_di" bpmnElement="Flow_133a5kz">
-        <di:waypoint x="350" y="99" />
-        <di:waypoint x="412" y="99" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNShape id="_BPMNShape_StartEvent_2" bpmnElement="StartEvent_08hc3xj">
-        <dc:Bounds x="156" y="81" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="145" y="124" width="59" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1potg3p_di" bpmnElement="Activity_1potg3p">
-        <dc:Bounds x="250" y="59" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Event_05akz22_di" bpmnElement="Event_05akz22">
-        <dc:Bounds x="412" y="81" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="396" y="124" width="68" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-    </bpmndi:BPMNPlane>
-  </bpmndi:BPMNDiagram>
-</bpmn:definitions>`;
-    }
+    bpmnVisualization.load(getGettingStartedBpmnDiagram());
 </script>
 </body>
 </html>
