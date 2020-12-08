@@ -96,7 +96,7 @@ function getBpmnDiagramHorizontal() {
 }
 
 // Popover settings
-// The class is also used in style where CSS rules applies - it is not obligatory but serves here to differentiate the task from the other
+// The class is also used in style where CSS rules applies - it is not mandatory but serves here to differentiate the task from the other
 // .chartreuse rect{
 //   fill: chartreuse;
 // }
@@ -132,6 +132,7 @@ document.getElementById('attach-popover').onclick = function () {
   foreignObjectWrapperElt.prepend(popoverDivElt);
   shapeElt.append(foreignObjectWrapperElt);
   setPopoverStyle(popoverDivElt);
+  foreignObjectWrapperElt.setAttribute('style', 'overflow: visible;');
   disablePopoverAttachment();
 }
 
@@ -164,7 +165,6 @@ function createForeignObjectContainer(shapeElt) {
   foreignObjectElt.setAttribute('y', rectElt.getAttribute('y'));
   foreignObjectElt.setAttribute('width', rectElt.getAttribute('width'));
   foreignObjectElt.setAttribute('height', rectElt.getAttribute('height'));
-  foreignObjectElt.setAttribute('style', 'overflow: visible;');
   foreignObjectElt.classList.add('bpmn-popover-foreign');
   return foreignObjectElt;
 }
@@ -179,10 +179,6 @@ function setPopoverStyle(popoverContainer) {
   const style = `position: absolute; top: -${popoverHeight + 21}px`;
   popoverContainer.setAttribute('style', style);
   popoverContainer.classList.remove('hidden');
-}
-
-function setButtonState(btnId, disabled) {
-  document.getElementById(btnId).disabled = disabled;
 }
 
 function disablePopoverAttachment() {
