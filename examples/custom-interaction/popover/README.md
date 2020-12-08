@@ -15,5 +15,5 @@ What is important to know:
 
 
 ⚠️ It's not possible to use BPMN diagram navigation at the moment. \
-Panning and zooming causes the diagram to be redrawn(mxgraph behaviour).
+Panning and zooming causes the diagram to be redrawn.
 A new API comes later to support this case.

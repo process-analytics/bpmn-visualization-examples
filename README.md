@@ -91,6 +91,9 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 - [Running Dashed Message Flow](examples/custom-animation/running-dashed-message-flow/README.md) - add custom running dashed animation on a Message Flow
 
+### Custom interaction examples
+
+- [Add a popover on a BPMN element](examples/custom-interaction/popover/README.md) - add a popover with information to the task found by it's id
 
 ### Miscellaneous examples
 
