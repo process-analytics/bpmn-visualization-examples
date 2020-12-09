@@ -2,7 +2,7 @@
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
 const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
 
-bpmnVisualization.load(getIncidentManagementBpmnDiagram(), {fit: {type: bpmnvisu.FitType.Center}});
+bpmnVisualization.load(getIncidentManagementBpmnDiagram(), {fit: {type: bpmnvisu.FitType.Center, margin: 20}});
 
 // Custom animation
 const animatedMessageFlowElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('message_4');
