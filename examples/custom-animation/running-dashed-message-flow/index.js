@@ -1,4 +1,4 @@
-// Main BPMN Container
+// BPMN Container
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
 const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
 
