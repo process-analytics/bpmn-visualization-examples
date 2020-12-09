@@ -94,6 +94,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 ### Custom interaction examples
 
 - [Add a popover on a BPMN element](examples/custom-interaction/popover-static/README.md) - add a popover with information to the task found by it's id
+- [Apply CSS classes](examples/custom-interaction/apply-css-classes/README.md) - highlight elements and paths on demand on the BPMN diagram
 
 ### Miscellaneous examples
 
