@@ -1,0 +1,274 @@
+<!--
+Copyright 2020 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization - Apply specific CSS classes</title>
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+    <style>
+        #bpmn-container {
+            left: 60px;
+            right: 60px;
+            /*TODO find a way to ensure it takes the whole available height*/
+            /*height: 70%;*/
+            height: 600px;
+
+            margin-top: 2em;
+            border-style: solid;
+            border-color: #B0B0B0;
+            border-width: 1px;
+            /* this ensures that the part of the diagram outside of the container is not displayed. */
+            overflow: hidden;
+        }
+
+        :root {
+            --color-highlight: #2c623c;
+        }
+
+        .bpmn-activity-info > rect {
+            fill: blue !important;
+            fill-opacity: 30% !important;
+            stroke: blue;
+        }
+        .bpmn-activity-success > rect {
+            fill: green !important;
+            fill-opacity: 15% !important;
+            stroke: green;
+        }
+        .bpmn-activity-error > rect {
+            fill: red !important;
+            fill-opacity: 20% !important;
+            stroke: red;
+        }
+
+        .bpmn-gateway-warning > path:nth-child(1) {
+            fill: yellow !important;
+            fill-opacity: 30% !important;
+            stroke: orange;
+            stroke-width: 4px;
+        }
+
+        /* edge arrow */
+        .bpmn-edge-path-highlight > path:nth-child(3) {
+            fill: var(--color-highlight);
+        }
+        /* edge arrow */
+        .bpmn-edge-path-highlight > path:nth-child(3),
+        /* edge line */
+        .bpmn-edge-path-highlight > path:nth-child(2),
+        /* activity */
+        .bpmn-shape-path-highlight > rect,
+        /* gateway */
+        .bpmn-shape-path-highlight > path:nth-child(1),
+        /* event */
+        .bpmn-shape-path-highlight > ellipse {
+            filter: blur(1.5px); /* only work on Firefox */
+            stroke: var(--color-highlight);
+            stroke-width: 7px;
+        }
+        .bpmn-activity-in-progress > rect {
+            fill: var(--color-highlight) !important;
+            fill-opacity: 40% !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar bg-dark p-2">
+        <section class="navbar-section ml-2">
+            <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
+            <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+        </section>
+        <section class="navbar-section">
+            <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+            <div class="dropdown mr-2">
+                <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                    GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+                </a>
+                <ul class="menu">
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+    <section class="container col-10 flex-centered mt-2">
+        <section class="col-12 mt-2">
+            <div class="col-12 mb-2">
+                <h2>Apply css classes</h2>
+                Highlight elements and paths on demand on the <a href="https://github.com/bpmn-miwg/bpmn-miwg-test-suite/blob/master/Reference/C.1.1.bpmn" target="_blank">miwg-test-suite C.1.1</a> BPMN diagram.
+            </div>
+            <div id="controls" style="margin-top: 25px">
+                <div id="btn-group-general" class="col-2 float-left">
+                    <button id="btn-reset" title="Reset applied styles" class="bg-dark btn btn-primary has-icon-right">
+                        <span>Reset </span><span class="icon icon-refresh mb-1"></span>
+                    </button>
+                    <button id="btn-clear" title="Clear all applied styles" class="bg-dark btn btn-primary has-icon-right">
+                        <span>Clear </span><span class="icon icon-delete mb-1"></span>
+                    </button>
+                </div>
+                <div id="btn-group-styles" class="col-5 float-left">
+                    <button id="btn-info" title="Toggle info styles" class="btn btn-primary has-icon-right">
+                        <span>Info </span><span class="icon icon-message mb-1"></span>
+                    </button>
+                    <button id="btn-success" title="Add success styles" class="bg-success btn btn-primary has-icon-right">
+                        <span>Success </span><span class="icon icon-check mb-1"></span>
+                    </button>
+                    <button id="btn-warning" title="Remove warning styles" class="bg-warning btn btn-primary has-icon-right">
+                        <span>Warning </span><span class="icon icon-flag mb-1"></span>
+                    </button>
+                    <button id="btn-error" title="Add error styles" class="bg-error btn btn-primary has-icon-right">
+                        <span>Error </span><span class="icon icon-stop mb-1"></span>
+                    </button>
+                </div>
+                <div id="btn-group-paths" class="col-4 float-left">
+                    <button id="btn-path" title="Toggle path highlighting " class="btn btn-primary has-icon-right">
+                        <span>Highlight path/trace </span><span class="icon icon-message mb-1"></span>
+                    </button>
+
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <section class="col-11 mt-2 relative">
+        <div id="bpmn-container"></div>
+    </section>
+
+    <script src="https://unpkg.com/bpmn-visualization@0.8.0/dist/bpmn-visualization.js"></script>
+    <script src="../../bpmn-diagram-miwg-test-suite-c_1_1.js"></script>
+    <script>
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+        bpmnVisualization.load(getC_1_1_BpmnDiagram(), { fit: { type: bpmnvisu.FitType.Center, margin: 20 } });
+
+        const styledElements = [
+            // tasks
+            'assignApprover', 'approveInvoice', 'reviewInvoice', 'prepareBankTransfer',
+            // gateways
+            'reviewSuccessful_gw', 'invoice_approved'
+        ];
+
+        const pathEdgeElements = ['SequenceFlow_1', 'sequenceFlow_178', 'sequenceFlow_180', 'invoiceApproved'];
+        const pathShapeElements= ['StartEvent_1', 'assignApprover','approveInvoice', 'invoice_approved', 'prepareBankTransfer'];
+        const pathLastShape = 'prepareBankTransfer';
+
+
+        applyInitialStyles();
+
+        document.getElementById('btn-reset').onclick = function() {
+            clearAllStyles();
+            applyInitialStyles();
+
+            ['btn-success', 'btn-warning', 'btn-error']
+                .forEach(id => document.getElementById(id).disabled = false);
+        };
+
+        document.getElementById('btn-clear').onclick = function() {
+            clearAllStyles();
+        };
+
+        document.getElementById('btn-info').onclick = function() {
+            toggleCssClass(['assignApprover', 'prepareBankTransfer'], 'bpmn-activity-info');
+        };
+        document.getElementById('btn-success').onclick = function() {
+            addCssClass(['approveInvoice'], 'bpmn-activity-success');
+            this.disabled = true;
+        };
+        document.getElementById('btn-warning').onclick = function() {
+            removeCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'bpmn-gateway-warning');
+            this.disabled = true;
+        };
+        document.getElementById('btn-error').onclick = function() {
+            addCssClass(['reviewInvoice'], 'bpmn-activity-error');
+            this.disabled = true;
+        };
+
+        let pathStatus = 'none';
+        document.getElementById('btn-path').onclick = function() {
+            switch (pathStatus) {
+                case 'none':
+                    addHighlightPath(pathEdgeElements);
+                    pathStatus = 'step1';
+                    break;
+                case 'step1':
+                    addHighlightPath(pathShapeElements, true);
+                    addCssClass([pathLastShape], 'bpmn-activity-in-progress');
+                    pathStatus = 'step2';
+                    break;
+                case 'step2':
+                    removeHighlightPath(pathEdgeElements);
+                    pathStatus = 'step3';
+                    break;
+                case 'step3':
+                    removeHighlightPath(pathShapeElements, true);
+                    removeCssClass([pathLastShape], 'bpmn-activity-in-progress');
+                    pathStatus = 'step4';
+                    break;
+                case 'step4':
+                    addHighlightPath(pathEdgeElements);
+                    addHighlightPath(pathShapeElements, true);
+                    addCssClass([pathLastShape], 'bpmn-activity-in-progress');
+                    pathStatus = 'step5';
+                    break;
+                default:
+                    clearHighlightPath();
+            }
+        };
+
+        function applyInitialStyles() {
+            addCssClass(['assignApprover'], 'bpmn-activity-info');
+            addCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'bpmn-gateway-warning');
+        }
+
+        function clearAllStyles() {
+            removeCssClass(styledElements, 'bpmn-activity-info', 'bpmn-activity-success', 'bpmn-activity-error', 'bpmn-gateway-warning')
+            clearHighlightPath();
+        }
+
+
+        function addHighlightPath(elements, isShape) {
+            addCssClass(elements, getPathHighlightClassName(isShape));
+        }
+        function getPathHighlightClassName(isShape) {
+            return isShape ? 'bpmn-shape-path-highlight' : 'bpmn-edge-path-highlight';
+        }
+        function removeHighlightPath(elements, isShape) {
+            removeCssClass(elements, getPathHighlightClassName(isShape));
+        }
+        function clearHighlightPath() {
+            removeCssClass(pathEdgeElements.concat(pathShapeElements), 'bpmn-edge-path-highlight', 'bpmn-shape-path-highlight', 'bpmn-activity-in-progress');
+            pathStatus = 'none';
+        }
+
+        function addCssClass(elements, ...classNames) {
+            elements
+                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+                .forEach(elt => elt.classList.add(...classNames));
+        }
+        function removeCssClass(elements, ...classNames) {
+            elements
+                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+                .forEach(elt => elt.classList.remove(...classNames));
+        }
+        function toggleCssClass(elements, classNames) {
+            elements
+                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+                .forEach(elt => elt.classList.toggle(classNames));
+        }
+    </script></body>
+</html>
