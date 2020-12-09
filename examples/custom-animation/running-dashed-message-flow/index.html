@@ -33,10 +33,11 @@ limitations under the License.
                 overflow: hidden;
                 background-color: white;
             }
+            /* Need to apply the animation to the SVG element corresponding to the line of the edge.
+            Here, it's the second child, and looks like
+                "<path d="M 719.24 319.13 L 786.53 319.13" fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>"
+            in the DOM*/
             .running-dashed > path:nth-child(2) {
-                /* The corresponding SVG element for the line of the edge:
-                    <path d="M 719.24 319.13 L 786.53 319.13" fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>
-                */
                 stroke: Red;
                 stroke-dasharray: 4, 2, 1, 2;
                 animation-name: dash;

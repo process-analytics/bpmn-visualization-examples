@@ -7,11 +7,12 @@ Javascript example to demonstrate how to add custom running dashed animation on 
 ## ♻️ Usage
 
 After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the message flow to add custom CSS class for the animation.
+
+ℹ️ We need to apply the animation to the SVG element corresponding to the line of the edge. \
+In this example, it is the second path of the HTML element of the edge. \
+It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>` in the DOM.
 ````css
     .running-dashed > path:nth-child(2) {
-        /* The corresponding SVG element for the line of the edge:
-            <path d="M 719.24 319.13 L 786.53 319.13" fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>
-        */
         stroke: Red;
         stroke-dasharray: 4, 2, 1, 2;
         animation-name: dash;
