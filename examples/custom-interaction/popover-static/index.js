@@ -3,7 +3,7 @@ const popoverForeignObjectClass = 'chartreuse';
 const bpmnContainerId = 'bpmn-container';
 const bpmnContainerElt = window.document.getElementById(bpmnContainerId);
 const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
-bpmnVisualization.load(getBpmnDiagramHorizontal(), {fit: {type: 'Center', margin: 50}});
+bpmnVisualization.load(getHorizontalBpmnDiagram(), {fit: {type: 'Center', margin: 50}});
 
 const searchElt = document.getElementById('search-id');
 
