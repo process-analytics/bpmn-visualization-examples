@@ -95,11 +95,6 @@ function getBpmnDiagramHorizontal() {
         `;
 }
 
-// Popover settings
-// The class is also used in style where CSS rules applies - it is not mandatory but serves here to differentiate the task from the other
-// .chartreuse rect{
-//   fill: chartreuse;
-// }
 const popoverForeignObjectClass = 'chartreuse';
 
 const bpmnContainerId = 'bpmn-container';
