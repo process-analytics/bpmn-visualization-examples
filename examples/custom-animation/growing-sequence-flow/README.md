@@ -22,6 +22,7 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
     }
     @keyframes grow {
         from {
+            /* This value depends on the dimensions of the edge path */
             stroke-dashoffset: 150;
             stroke-dasharray: 150;
         }
