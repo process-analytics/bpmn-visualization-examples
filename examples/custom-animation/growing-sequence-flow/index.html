@@ -37,21 +37,22 @@ limitations under the License.
             Here, it's the second child, and looks like
                 "<path d="..." fill="none" stroke="black" stroke-width="1.78" stroke-miterlimit="10" pointer-events="stroke"></path>"
             in the DOM */
-            .running-dashed > path:nth-child(2) {
-                stroke: Red;
-                stroke-dasharray: 4, 2, 1, 2;
-                animation-name: dash;
-                animation-duration: 300ms;
-                animation-timing-function: linear;
+            .growing > path:nth-child(2) {
+                stroke: Chartreuse;
+                animation-name: grow;
+                animation-duration: 2s;
+                animation-timing-function: ease-in-out;
                 animation-iteration-count: infinite;
-                animation-direction: reverse;
+                animation-direction: normal;
             }
-            @keyframes dash {
+            @keyframes grow {
                 from {
-                    stroke-dashoffset: 0;
+            /* This value depends on the dimensions of the edge path */
+                    stroke-dashoffset: 150;
+                    stroke-dasharray: 150;
                 }
                 to {
-                    stroke-dashoffset: 10;
+                    stroke-dashoffset: 0;
                 }
             }
         </style>
@@ -78,8 +79,8 @@ limitations under the License.
 
         <section id="section" class="container" style="margin-top: 3rem">
             <div class="col-11 col-mx-auto">
-                <h2>Running Dashed Message Flow</h2>
-                <p>Add custom running dashed animation on a Message Flow</p>
+                <h2>Growing Sequence Flow</h2>
+                <p>Add custom growing animation on a Sequence Flow</p>
 
                 <div class="bg-gray">
                     <div id="bpmn-container" class="column col-12 col-mx-auto bpmn-container"></div>
