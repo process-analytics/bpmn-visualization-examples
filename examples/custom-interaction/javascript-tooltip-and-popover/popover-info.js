@@ -1,5 +1,6 @@
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
-// TODO enable navigation support (issue with panning)
+// TODO enable navigation support
+// There is currently an issue with popover which are wrongly updated during and after panning
 const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt, { mouseNavigationSupport: false });
 
 const diagram = getHorizontalBpmnDiagram();
