@@ -185,6 +185,6 @@ BPMN Semantic
 <b>id</b>: ${bpmnSemantic.id}<br>
 <b>name</b>: ${bpmnSemantic.name || 'N/A'}<br>
 <b>kind</b>: ${bpmnSemantic.kind}<br>
-<b>is shape</b>: ${bpmnSemantic.isShape}
+<b>style</b>: ${bpmnSemantic.isShape? 'Shape': 'Edge'}
 </div>`;
 }
