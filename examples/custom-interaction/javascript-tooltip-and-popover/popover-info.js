@@ -150,11 +150,12 @@ function addPopup(elements, isEdge) {
 function getBpmnElementInfoAsHtml(htmlElement) {
     // TODO hack, will be correctly managed with https://github.com/process-analytics/bpmn-visualization-js/issues/929
     const bpmnId = htmlElement.getAttribute('data-bpmn-id');
-    const bpmnKind = htmlElement.getAttribute('class');
+    const bpmnKind = htmlElement.getAttribute('class'); // TODO not working on clickable element (additional class for cursor)
     return `<div class="bpmn-popover">
 BPMN Element
 <hr>
 <b>bpmn id</b>: ${bpmnId}<br>
+<b>bpmn name</b>: N/A<br>
 <b>bpmn kind</b>: ${bpmnKind}
 </div>`;
 }
