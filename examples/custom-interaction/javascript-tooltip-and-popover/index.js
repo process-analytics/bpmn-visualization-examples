@@ -7,10 +7,11 @@ const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
 
 
-const userTask2Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0kn4d46');
-const manualTask3Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_1j15wcw');
-const scriptTask5Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0y3sd80');
-const sequenceFlowBetweenTask5AndEndEventElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Flow_12yysoe');
+const htmlElementRegistry = bpmnVisualization.htmlElementRegistry;
+const userTask2Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_0kn4d46');
+const manualTask3Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_1j15wcw');
+const scriptTask5Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_0y3sd80');
+const sequenceFlowBetweenTask5AndEndEventElt = htmlElementRegistry.getBpmnHtmlElement('Flow_12yysoe');
 
 
 // tippy global configuration
