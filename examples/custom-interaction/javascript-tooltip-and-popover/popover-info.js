@@ -54,59 +54,103 @@ tippy.setDefaultProps({
     // moveTransition: 'transform 0.2s ease-out',
 });
 
-// tippy configuration for popover on shape
-const elementsWithPopover = [manualTask3Elt, scriptTask5Elt];
-elementsWithPopover.forEach(elt => elt.classList.add('c-hand'));
+// popover on shapes
+addPopover([manualTask3Elt, scriptTask5Elt]);
 
-tippy(elementsWithPopover, {
-    // sticky option behaviour with this appendTo
-    // The following is only needed to manage diagram navigation
-    // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
-    // during the pan and then, an new flip after dimensions are restored
-    // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
-
-    // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
-
-    // When trigger on click
-    // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
-    // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
-    appendTo: bpmnContainerElt,
-
-    // When trigger on click
-    // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
-    // It is almost ok when trigger on mouse over/focus as even if there is still an overflow issue, the tooltip disappear right
-    // after the bpmn element is no more displayed after overflow
-    //appendTo: bpmnContainerElt.parentElement,
-
-
-    // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
-    // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
-    // enable it
-    //sticky: true,
-    // only check the "reference" rect for changes
-    sticky: 'reference',
-    // only check the "popper" rect for changes
-    // sticky: 'popper',
-
-
-    duration: 400,
-    delay: [200, 400],
-    theme: 'light-border',
-
-    trigger: 'click',
-});
-
-
-// tippy configuration for popup on edge
-addTippyPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
-
-// tippy configuration for popup on shape
-addTippyPopup([userTask2Elt]);
+// const elementsWithPopover = [manualTask3Elt, scriptTask5Elt];
+// elementsWithPopover.forEach(elt => elt.classList.add('c-hand'));
+//
+// tippy(elementsWithPopover, {
+//     // sticky option behaviour with this appendTo
+//     // The following is only needed to manage diagram navigation
+//     // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
+//     // during the pan and then, an new flip after dimensions are restored
+//     // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
+//
+//     // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
+//
+//     // When trigger on click
+//     // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
+//     // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
+//     appendTo: bpmnContainerElt,
+//
+//     // When trigger on click
+//     // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
+//     // It is almost ok when trigger on mouse over/focus as even if there is still an overflow issue, the tooltip disappear right
+//     // after the bpmn element is no more displayed after overflow
+//     //appendTo: bpmnContainerElt.parentElement,
+//
+//
+//     // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
+//     // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
+//     // enable it
+//     //sticky: true,
+//     // only check the "reference" rect for changes
+//     sticky: 'reference',
+//     // only check the "popper" rect for changes
+//     // sticky: 'popper',
+//
+//
+//     duration: 400,
+//     delay: [200, 400],
+//     theme: 'light-border',
+//
+//     trigger: 'click',
+// });
 
 
+// popup on edges
+addPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
+// popup on shapes
+addPopup([userTask2Elt]);
 
-// TODO duplicated configuration with tippy popovers, we should set tippy default configuration
-function addTippyPopup(elements, isEdge) {
+
+function addPopover(elements) {
+    // Set the cursor to mark the elements as clickable
+    // TODO don't work with diagram navigation, use new API when available (see https://github.com/process-analytics/bpmn-visualization-js/issues/942)
+    elements.forEach(elt => elt.classList.add('c-hand'));
+
+    tippy(elements, {
+        // sticky option behaviour with this appendTo
+        // The following is only needed to manage diagram navigation
+        // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
+        // during the pan and then, an new flip after dimensions are restored
+        // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
+
+        // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
+
+        // When trigger on click
+        // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
+        // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
+        appendTo: bpmnContainerElt,
+
+        // When trigger on click
+        // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
+        // It is almost ok when trigger on mouse over/focus as even if there is still an overflow issue, the tooltip disappear right
+        // after the bpmn element is no more displayed after overflow
+        //appendTo: bpmnContainerElt.parentElement,
+
+
+        // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
+        // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
+        // enable it
+        //sticky: true,
+        // only check the "reference" rect for changes
+        sticky: 'reference',
+        // only check the "popper" rect for changes
+        // sticky: 'popper',
+
+
+        duration: 400,
+        delay: [200, 400],
+        theme: 'light-border',
+
+        trigger: 'click',
+    });
+}
+
+
+function addPopup(elements, isEdge) {
     const offset = isEdge? [0, -40] : undefined;
 
     tippy(elements, {
