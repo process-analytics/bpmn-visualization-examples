@@ -15,7 +15,7 @@ limitations under the License.
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>BPMN Visualization - Diagram Navigation</title>
+        <title>BPMN Visualization - tooltip and popover attached to BPMN elements</title>
         <link rel="shortcut icon" href="../../favicon.ico">
         <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
         <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
@@ -66,12 +66,14 @@ limitations under the License.
         </header>
         <section class="container" style="margin-top: 3rem">
             <div class="col-11 col-mx-auto">
-                <h2>Custom interaction - BPMN elements hover</h2>
-                <p><b>TODO improve explanation</b>
-                    Display tooltip on hover on Task 2 and last Sequence Flow and popover on click on Task 3 and Task 5.
-                <br> selectable content on Tasks popup and popover.
-                </p>
-                <p>The tooltip support is provide by <a href="https://atomiks.github.io/tippyjs/" target="_blank">Tippy.js</a>.</p>
+                <h2>Extra information in tooltip and popover attached to BPMN elements</h2>
+                Information in the tooltip/popover are provided by the <code>bpmn-visualization</code> API and the content in Tasks tooltip/popover
+                is selectable.
+                <ul>
+                    <li>tooltip on Task 2 and last Sequence Flow</li>
+                    <li>popover on click on Task 3 and Task 5</li>
+                </ul>
+                The tooltip/popover support is provided by <a href="https://atomiks.github.io/tippyjs/" target="_blank">Tippy.js</a>.
             </div>
         </section>
 
