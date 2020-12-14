@@ -9,7 +9,7 @@ Javascript example to demonstrate how to use the same container on a double clic
 After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the call activity to add a listener to load a new BPMN Diagram in the same container on activation.
 
 ```javascript
-const callActivityElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0];
+const callActivityElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
 callActivityElt.ondblclick = () => {
     bpmnVisualization.load(getProcurementBpmnDiagram(), { fit: {type: 'Center'} });
 }
