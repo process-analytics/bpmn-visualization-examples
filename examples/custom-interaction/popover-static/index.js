@@ -10,20 +10,31 @@ const searchElt = document.getElementById('search-id');
 // Handle the availability to attach popover based on current element state
 // This example allows only one popover at a time
 document.getElementById('search-id').oninput = function (e) {
-  const shapeElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(e.target.value);
-  if (!shapeElt) {
+  const htmlElement = getHtmlElementFromDiagram(e.target.value);
+  if (!htmlElement) {
     return;
   }
-  if (shapeElt.classList.contains(popoverForeignObjectClass)) {
+  if (htmlElement.classList.contains(popoverForeignObjectClass)) {
     disablePopoverAttachment();
   } else {
     enablePopoverAttachment();
   }
 }
 
+function getHtmlElementFromDiagram(id) {
+  const bpmnElements = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(searchElt.value);
+  if (bpmnElements?.length > 0) {
+    return bpmnElements[0].htmlElement;
+  }
+  return undefined;
+}
+
 // Attach popover for an element found by id from search input
 document.getElementById('attach-popover').onclick = function () {
-  const shapeElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(searchElt.value);
+  const shapeElt = getHtmlElementFromDiagram(searchElt.value);
+  if (!shapeElt) {
+    return;
+  }
   shapeElt.classList.add(popoverForeignObjectClass);
   const foreignObjectWrapperElt = createForeignObjectContainer(shapeElt);
   const popoverDivElt = createPopoverDiv();
@@ -36,7 +47,7 @@ document.getElementById('attach-popover').onclick = function () {
 
 // Detach popover for an element found by id from search input if it exists
 document.getElementById('detach-popover').onclick = function () {
-  const shapeElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(searchElt.value);
+  const shapeElt = getHtmlElementFromDiagram(searchElt.value);
   if (!shapeElt) {
     return;
   }
