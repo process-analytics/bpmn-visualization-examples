@@ -7,11 +7,17 @@ const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
 
 
-const htmlElementRegistry = bpmnVisualization.htmlElementRegistry;
-const userTask2Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_0kn4d46');
-const manualTask3Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_1j15wcw');
-const scriptTask5Elt = htmlElementRegistry.getBpmnHtmlElement('Activity_0y3sd80');
-const sequenceFlowBetweenTask5AndEndEventElt = htmlElementRegistry.getBpmnHtmlElement('Flow_12yysoe');
+const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
+const elementsWithPopover = bpmnElementsRegistry.getElementsByIds([
+    'Activity_1j15wcw', // manual task 3
+    'Activity_0y3sd80' //script task 5
+    ])
+    .map(elt => elt.htmlElement);
+const elementsWithPopup = bpmnElementsRegistry.getElementsByIds([
+    'Activity_0kn4d46', // user task 2
+    'Flow_12yysoe' // sequence flow between 'task 5' and 'end event'
+]);
+
 
 
 // tippy global configuration
@@ -57,12 +63,13 @@ tippy.setDefaultProps({
 });
 
 // popover on shapes
-addPopover([manualTask3Elt, scriptTask5Elt]);
+// addPopover([manualTask3Elt, scriptTask5Elt]);
+addPopover(elementsWithPopover);
 
 // popup on edges
-addPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
-// popup on shapes
-addPopup([userTask2Elt]);
+// addPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
+// // popup on shapes
+// addPopup([userTask2Elt]);
 
 
 function addPopover(elements) {
