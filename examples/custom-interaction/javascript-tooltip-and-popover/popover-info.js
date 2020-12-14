@@ -16,7 +16,10 @@ const sequenceFlowBetweenTask5AndEndEventElt = bpmnVisualization.htmlElementRegi
 
 
 // tippy configuration for popover on shape
-tippy([manualTask3Elt, scriptTask5Elt], {
+const elementsWithPopover = [manualTask3Elt, scriptTask5Elt];
+elementsWithPopover.forEach(elt => elt.classList.add('c-hand'));
+
+tippy(elementsWithPopover, {
     // sticky option behaviour with this appendTo
     // The following is only needed to manage diagram navigation
     // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
