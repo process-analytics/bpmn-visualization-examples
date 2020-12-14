@@ -6,24 +6,17 @@ const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
 
 
-// user task - task 2
-const task2Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0kn4d46');
-
-// manual task - task 3
-const task3Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_1j15wcw');
-
-// script task - task 5
-const task5Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0y3sd80');
-
-// sequence flow between 'task 5' and 'end'
-const seqFlowEndElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Flow_12yysoe');
+const userTask2Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0kn4d46');
+const manualTask3Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_1j15wcw');
+const scriptTask5Elt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Activity_0y3sd80');
+const sequenceFlowBetweenTask5AndEndEventElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('Flow_12yysoe');
 
 
 // TODO tippy global configuration
 
 
 // tippy configuration for popover on shape
-tippy([task3Elt, task5Elt], {
+tippy([manualTask3Elt, scriptTask5Elt], {
     // sticky option behaviour with this appendTo
     // The following is only needed to manage diagram navigation
     // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
@@ -108,10 +101,10 @@ tippy([task3Elt, task5Elt], {
 
 
 // tippy configuration for popup on edge
-addTippyPopup([seqFlowEndElt], true);
+addTippyPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
 
 // tippy configuration for popup on shape
-addTippyPopup([task2Elt]);
+addTippyPopup([userTask2Elt]);
 
 
 
