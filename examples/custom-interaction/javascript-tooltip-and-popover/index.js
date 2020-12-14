@@ -6,13 +6,14 @@ const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt, { mou
 const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
 
+// TODO better encapsulation
+const registeredBpmnElements = new Map();
 
 const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 const elementsWithPopover = bpmnElementsRegistry.getElementsByIds([
     'Activity_1j15wcw', // manual task 3
     'Activity_0y3sd80' //script task 5
-    ])
-    .map(elt => elt.htmlElement);
+]);
 const elementsWithPopup = bpmnElementsRegistry.getElementsByIds([
     'Activity_0kn4d46', // user task 2
     'Flow_12yysoe' // sequence flow between 'task 5' and 'end event'
@@ -70,14 +71,18 @@ addPopover(elementsWithPopover);
 // addPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
 // // popup on shapes
 // addPopup([userTask2Elt]);
+addPopup(elementsWithPopup);
 
 
-function addPopover(elements) {
+function addPopover(bpmnElements) {
+    registerBpmnElements(bpmnElements);
+    const htmlElements = bpmnElements.map(elt => elt.htmlElement)
+
     // Set the cursor to mark the elements as clickable
     // TODO don't work with diagram navigation, use new API when available (see https://github.com/process-analytics/bpmn-visualization-js/issues/942)
-    elements.forEach(elt => elt.classList.add('c-hand'));
+    htmlElements.forEach(elt => elt.classList.add('c-hand'));
 
-    tippy(elements, {
+    tippy(htmlElements, {
         // sticky option behaviour with this appendTo
         // The following is only needed to manage diagram navigation
         // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
@@ -117,46 +122,66 @@ function addPopover(elements) {
 }
 
 
-function addPopup(elements, isEdge) {
-    const offset = isEdge? [0, -40] : undefined;
+function addPopup(bpmnElements) {
+    registerBpmnElements(bpmnElements);
 
-    tippy(elements, {
-        // sticky option behaviour with this appendTo
-        // The following is only needed to manage diagram navigation
-        // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
-        // during the pan and then, an new flip after dimensions are restored
-        // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
+    // const isEdge = false;
+    // const offset = isEdge? [0, -40] : undefined;
+    //
+    // const htmlElements = bpmnElements.map(elt => elt.htmlElement)
 
-        // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
+    bpmnElements.forEach(bpmnElement => {
+        const htmlElement = bpmnElement.htmlElement;
+        const isEdge = !bpmnElement.bpmnSemantic.isShape;
+        const offset = isEdge? [0, -40] : undefined; // undefined offset for tippyjs default offset
 
-        // When trigger on click
-        // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
-        // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
-        // appendTo: bpmnContainerElt,
+        tippy(htmlElement, {
+            // sticky option behaviour with this appendTo
+            // The following is only needed to manage diagram navigation
+            // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
+            // during the pan and then, an new flip after dimensions are restored
+            // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
 
-        // When trigger on click
-        // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
-        appendTo: bpmnContainerElt.parentElement,
+            // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
+
+            // When trigger on click
+            // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
+            // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
+            // appendTo: bpmnContainerElt,
+
+            // When trigger on click
+            // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
+            appendTo: bpmnContainerElt.parentElement,
 
 
-        // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
-        // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
-        // enable it
-        //sticky: true,
-        // only check the "reference" rect for changes
-        sticky: 'reference',
-        // only check the "popper" rect for changes
-        // sticky: 'popper',
+            // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
+            // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
+            // enable it
+            //sticky: true,
+            // only check the "reference" rect for changes
+            sticky: 'reference',
+            // only check the "popper" rect for changes
+            // sticky: 'popper',
 
-        arrow: false,
-        offset: offset,
-        placement: 'bottom',
+            arrow: false,
+            offset: offset,
+            placement: 'bottom',
+        });
     });
 }
 
 
+function registerBpmnElements(bpmnElements) {
+    bpmnElements.forEach(elt => registeredBpmnElements.set(elt.htmlElement, elt.bpmnSemantic));
+}
+
 
 function getBpmnElementInfoAsHtml(htmlElement) {
+    console.info('Getting registered elt for', htmlElement);
+    const bpmnSemantic = registeredBpmnElements.get(htmlElement);
+    console.info('bpmn semantic', bpmnSemantic);
+
+
     // TODO hack, will be correctly managed with https://github.com/process-analytics/bpmn-visualization-js/issues/929
     const bpmnId = htmlElement.getAttribute('data-bpmn-id');
     const bpmnKind = htmlElement.getAttribute('class'); // TODO not working on clickable element (additional class for cursor)
