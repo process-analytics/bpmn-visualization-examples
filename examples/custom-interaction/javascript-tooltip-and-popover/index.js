@@ -177,19 +177,14 @@ function registerBpmnElements(bpmnElements) {
 
 
 function getBpmnElementInfoAsHtml(htmlElement) {
-    console.info('Getting registered elt for', htmlElement);
     const bpmnSemantic = registeredBpmnElements.get(htmlElement);
-    console.info('bpmn semantic', bpmnSemantic);
 
-
-    // TODO hack, will be correctly managed with https://github.com/process-analytics/bpmn-visualization-js/issues/929
-    const bpmnId = htmlElement.getAttribute('data-bpmn-id');
-    const bpmnKind = htmlElement.getAttribute('class'); // TODO not working on clickable element (additional class for cursor)
     return `<div class="bpmn-popover">
-BPMN Element
+BPMN Semantic
 <hr>
-<b>bpmn id</b>: ${bpmnId}<br>
-<b>bpmn name</b>: N/A<br>
-<b>bpmn kind</b>: ${bpmnKind}
+<b>id</b>: ${bpmnSemantic.id}<br>
+<b>name</b>: ${bpmnSemantic.name || 'N/A'}<br>
+<b>kind</b>: ${bpmnSemantic.kind}<br>
+<b>is shape</b>: ${bpmnSemantic.isShape}
 </div>`;
 }
