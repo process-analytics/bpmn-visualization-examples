@@ -32,7 +32,7 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    const animatedMessageFlowElt = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('message_flow_id');
+    const animatedMessageFlowElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['message_flow_id'])[0];
     animatedMessageFlowElt.classList.add('running-dashed');
 ```
 
