@@ -256,19 +256,19 @@ limitations under the License.
         }
 
         function addCssClass(elements, ...classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
                 .forEach(elt => elt.classList.add(...classNames));
         }
         function removeCssClass(elements, ...classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
                 .forEach(elt => elt.classList.remove(...classNames));
         }
-        function toggleCssClass(elements, classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
-                .forEach(elt => elt.classList.toggle(classNames));
+        function toggleCssClass(elements, className) {
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
+                .forEach(elt => elt.classList.toggle(className));
         }
     </script></body>
 </html>
