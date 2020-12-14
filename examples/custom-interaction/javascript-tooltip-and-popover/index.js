@@ -6,7 +6,6 @@ const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt, { mou
 const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
 
-// TODO better encapsulation
 const registeredBpmnElements = new Map();
 
 const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
@@ -180,11 +179,11 @@ function getBpmnElementInfoAsHtml(htmlElement) {
     const bpmnSemantic = registeredBpmnElements.get(htmlElement);
 
     return `<div class="bpmn-popover">
-BPMN Semantic
+BPMN Info
 <hr>
 <b>id</b>: ${bpmnSemantic.id}<br>
 <b>name</b>: ${bpmnSemantic.name || 'N/A'}<br>
 <b>kind</b>: ${bpmnSemantic.kind}<br>
-<b>style</b>: ${bpmnSemantic.isShape? 'Shape': 'Edge'}
+<b>representation</b>: ${bpmnSemantic.isShape? 'Shape': 'Edge'}
 </div>`;
 }
