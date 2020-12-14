@@ -9,7 +9,9 @@ Javascript example to demonstrate how to apply CSS classes to elements of the BP
 ℹ️ . Apply css classes after retrieving the HTMLElement with the `bpmn-visualization` API.
 
 ```javascript
-const htmlElement = bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('prepareBankTransfer');
+const bpmnElements = bpmnVisualization.bpmnElementsRegistry.getElementsByIds('prepareBankTransfer');
+// we suppose that the elements have been found (otherwise, the returned array is empty)
+const htmlElement = bpmnElements[0].htmlElement;
 htmlElement.classList.toggle('bpmn-activity-in-progress');
 ```
 

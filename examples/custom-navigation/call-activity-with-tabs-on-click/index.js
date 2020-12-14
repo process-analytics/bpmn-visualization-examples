@@ -10,7 +10,7 @@ const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnC
 
 // Interaction
 let secondaryBpmnDiagramIsAlreadyLoad = false;
-const callActivityElt = mainBpmnVisualization.htmlElementRegistry.getBpmnHtmlElement('call_activity');
+const callActivityElt = mainBpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
 
 // WARNING: The class adding doesn't work with the zoom, the panning and the fit
 // TODO Need to replace by the dedicated API when it is implemented

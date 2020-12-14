@@ -150,7 +150,7 @@ limitations under the License.
         <div id="bpmn-container"></div>
     </section>
 
-    <script src="https://unpkg.com/bpmn-visualization@0.8.0/dist/bpmn-visualization.js"></script>
+    <script src="https://unpkg.com/bpmn-visualization@0.9.0/dist/bpmn-visualization.js"></script>
     <script src="../../bpmn-diagram-miwg-test-suite-c_1_1.js"></script>
     <script>
         const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
@@ -256,19 +256,19 @@ limitations under the License.
         }
 
         function addCssClass(elements, ...classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
                 .forEach(elt => elt.classList.add(...classNames));
         }
         function removeCssClass(elements, ...classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
                 .forEach(elt => elt.classList.remove(...classNames));
         }
-        function toggleCssClass(elements, classNames) {
-            elements
-                .map(id => bpmnVisualization.htmlElementRegistry.getBpmnHtmlElement(id))
-                .forEach(elt => elt.classList.toggle(classNames));
+        function toggleCssClass(elements, className) {
+            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
+                .map(bpmnElement => bpmnElement.htmlElement)
+                .forEach(elt => elt.classList.toggle(className));
         }
     </script></body>
 </html>
