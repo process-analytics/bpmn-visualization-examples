@@ -33,7 +33,7 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['sequence_flow_id'])[0];
+    const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['sequence_flow_id'])[0].htmlElement;
     animatedSequenceFlowElt.classList.add('growing');
 ```
 

@@ -3,7 +3,7 @@ function loadOrderFulfillmentBpmnDiagram() {
     secondaryBpmnDiagramIsLoad = false;
 
     // Interaction
-    const callActivityElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0];
+    const callActivityElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
 
     // WARNING: The class adding doesn't work with the zoom, the panning and the fit
     // TODO Need to replace by the dedicated API when it is implemented
