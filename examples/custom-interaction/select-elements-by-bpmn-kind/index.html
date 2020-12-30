@@ -1,0 +1,340 @@
+<!--
+Copyright 2020 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization - Select elements by BPMN kind</title>
+    <link rel="shortcut icon" href="../../favicon.ico">
+    <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/notyf@3.9.0/notyf.min.css" integrity="sha256-IwkvZNRC/3S26O1gWwjBINmrPZ4zYvPX4z/98OKWHkQ=" crossorigin="anonymous">
+    <style>
+        #bpmn-container {
+            left: 60px;
+            right: 60px;
+            /*TODO find a way to ensure it takes the whole available height*/
+            /*height: 70%;*/
+            height: 600px;
+
+            margin-top: 2em;
+            border-style: solid;
+            border-color: #B0B0B0;
+            border-width: 1px;
+            /* this ensures that the part of the diagram outside of the container is not displayed. */
+            overflow: hidden;
+        }
+
+        .custom-dropdown li {
+            margin-top: 0;
+            max-height: 195px;
+        }
+        #dropdown-diagram-choice {
+            min-width: 60px;
+        }
+        #dropdown-select-pool {
+            min-width: 90px;
+        }
+        #pool-selection-info {
+            padding-top: 0.5em;
+        }
+        .hidden {
+            display: none !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="navbar bg-dark p-2">
+        <section class="navbar-section ml-2">
+            <img src="../../static/img/logo_64x64.ico" alt="logo" class="logo">
+            <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+        </section>
+        <section class="navbar-section">
+            <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+            <div class="dropdown mr-2">
+                <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                    GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+                </a>
+                <ul class="menu">
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
+                    <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                </ul>
+            </div>
+        </section>
+    </header>
+    <section class="container col-10 flex-centered mt-2">
+        <section class="col-12 mt-2">
+            <div class="col-12 mb-2">
+                <h2>Select elements by BPMN kind</h2>
+                Once the BPMN diagram is loaded, detect all <code>Pools</code> and <code>End Events</code>.<br>
+                Then, use this information to select <code>Pools</code> (hide or collapse) and make <code>End Events</code> clickable
+                (as far as no <code>Pools</code> selection is done. Toast support <a href="https://github.com/caroso1222/notyf">Notyf</a>).
+            </div>
+            <div id="controls" style="margin-top: 25px" >
+                <div class="col-3 float-left">
+                    <div class="dropdown dropdown-right">
+                        <a id="dropdown-toggle-diagram-choice" href="#" class="btn btn-primary dropdown-toggle bg-dark" tabindex="0">
+                            Select a BPMN Diagram <span class="icon icon-caret icon-in-the-middle"></span>
+                        </a>
+                        <ul class="menu custom-dropdown" id="dropdown-diagram-choice">
+                        </ul>
+                    </div>
+                </div>
+
+                <div id="btn-group-pools-selection" class="hidden col-9 float-left">
+                    <div class="dropdown dropdown-right col-3 float-left">
+                        <a id="dropdown-toggle-select-pool" href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                            Pools/Participants <span class="icon icon-caret icon-in-the-middle"></span>
+                        </a>
+                        <ul class="menu custom-dropdown" id="dropdown-select-pool">
+                        </ul>
+                    </div>
+                    <div class="col-3 float-left">
+                        <div class="align-middle">
+                            <div class="radio">
+                                <label><input type="radio" name="poolSelectionMethod" value="hide" checked> Hide others</label>
+                            </div>
+                            <div class="radio">
+                                <label><input type="radio" name="poolSelectionMethod" value="collapse"> Collapse others</label>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="pool-selection-info" class="col-5 float-left hidden">
+                        <b>Last selected Pool:</b> <span id="last-selected-pool-name"></span>
+                    </div>
+                    <div id="group-pools-selection-reset" class="col-1 float-left hidden">
+                        <button id="btn-pools-selection-reset" title="Reset pool selection" class="bg-dark btn btn-primary has-icon-right">
+                            <span>Reset </span><span class="icon icon-refresh mb-1"></span>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </section>
+
+
+    <section class="col-11 mt-2 relative">
+        <div id="bpmn-container"></div>
+    </section>
+
+<!--    TODO restore this when new release is available -->
+<!--    <script src="https://unpkg.com/bpmn-visualization@0.9.0/dist/bpmn-visualization.js"></script>-->
+    <script src="../../__tmp/bpmn-visualization@5be173e4.js"></script>
+    <script src="../../static/js/bpmn-diagram-miwg-test-suite-a_4_1.js"></script>
+    <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_1_0.js"></script>
+    <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_1_1.js"></script>
+    <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_2_0.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/notyf@3.9.0/notyf.min.js" integrity="sha256-94ygrajpwhaqxLOwPjuOZSUlCJ/KdtFefKg+Iu3WCAk=" crossorigin="anonymous"></script>
+    <script>
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+        const diagrams = new Map([
+            ['A.4.1', getA_4_1_BpmnDiagram], // vertical diagram
+            ['C.1.0', getC_1_0_BpmnDiagram],
+            ['C.1.1', getC_1_1_BpmnDiagram], // no pool
+            ['C.2.0', getC_2_0_BpmnDiagram],
+        ]);
+        let lastLoadedDiagram;
+        let lastSelectedPool;
+
+        const notyf = configureToast();
+        configureBpmnDiagramsDropdown();
+        configurePoolSelectionButtons();
+        loadDiagram('C.2.0');
+
+
+        function loadDiagram(diagramName) {
+            console.info('Loading diagram', diagramName);
+            const diagram = diagrams.get(diagramName).call();
+            bpmnVisualization.load(diagram, { fit: { type: bpmnvisu.FitType.Center, margin: 20 } });
+            console.info('Diagram loaded');
+            lastLoadedDiagram = diagramName;
+            lastSelectedPool = '';
+
+            registerBpmnElements();
+        }
+
+        function configureBpmnDiagramsDropdown() {
+            document.getElementById('dropdown-diagram-choice').innerHTML = [...diagrams].map(([diagramName, ]) => {
+                return `<li><a href="#" class="btn btn-link">${diagramName}</a></li>`
+            }).join('\n');
+
+            document.getElementById('dropdown-diagram-choice').querySelectorAll('li a')
+                .forEach(function (anchor)  {
+                    anchor.onclick = function (e) {
+                        e.preventDefault();
+
+                        hide('dropdown-diagram-choice');
+                        const diagramName = anchor.parentElement.innerText;
+                        loadDiagram(diagramName)
+
+                        return false;
+                    };
+                });
+            // TODO duplicated with configurePoolSelectionDropdown
+            document.getElementById('dropdown-toggle-diagram-choice').onclick = function () {
+                show('dropdown-diagram-choice');
+            }
+        }
+
+
+        function registerBpmnElements() {
+            console.info('Registering Bpmn Elements...');
+
+            const bpmnElements = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([bpmnvisu.ShapeBpmnElementKind.EVENT_END, bpmnvisu.ShapeBpmnElementKind.POOL]);
+            console.info('Found Bpmn Elements:', bpmnElements.length);
+
+            bpmnElements
+                .filter(elt => elt.bpmnSemantic.kind !== bpmnvisu.ShapeBpmnElementKind.POOL)
+                .forEach(elt => {
+                        const bpmnSemantic = elt.bpmnSemantic;
+                        elt.htmlElement.addEventListener('click', function (event) {
+                            const name = linearizeName(bpmnSemantic);
+                            const toastMsg = name ? `<b>name</b>: ${name}` : `<b>id</b>: ${bpmnSemantic.id}`
+                            toast(toastMsg);
+                        });
+                    }
+                );
+            console.info('Non Pools registered');
+
+            const pools = bpmnElements
+                .map(elt => elt.bpmnSemantic)
+                .filter(bpmnSemantic => bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.POOL);
+            configurePoolsSelection(pools);
+            console.info('All Bpmn Elements registered');
+        }
+
+        // Some BPMN element names have break line, so remove them
+        function linearizeName(bpmnSemantic) {
+            return bpmnSemantic.name
+                // replace all 3 types of line breaks with a space
+                ?.replace(/(\r\n|\n|\r)/gm,' ')
+                // replace all double white spaces with single spaces
+                .replace(/\s+/g," ");
+        }
+
+        // argument: array of pools bpmn semantic
+        function configurePoolsSelection(pools) {
+            hide('btn-group-pools-selection');
+            hide('pool-selection-info');
+            hide('group-pools-selection-reset');
+
+            console.info('Detected pools:', pools.length);
+            if (!pools.length) {
+                return;
+            }
+
+            // Drop down list
+            document.querySelector('#dropdown-select-pool').innerHTML = pools.map(pool => {
+                return `<li><a href="#" class="btn btn-link" data-bpmn-id="${pool.id}">${linearizeName(pool)}</a></li>`
+            }).join('\n');
+
+            document.querySelectorAll('#dropdown-select-pool li a')
+                .forEach(function (anchor)  {
+                    anchor.onclick = function (e) {
+                        e.preventDefault();
+
+                        changePoolsVisibility(pools, anchor.getAttribute('data-bpmn-id'));
+
+                        const lastSelectedPool = anchor.parentElement.innerText;
+                        document.getElementById('last-selected-pool-name').innerHTML = `<code>${lastSelectedPool}</code>`;
+                        show('pool-selection-info');
+                        show('group-pools-selection-reset');
+
+                        hide('dropdown-select-pool');
+                        return false;
+                    };
+                });
+
+            show('btn-group-pools-selection');
+        }
+
+        function changePoolsVisibility(pools, poolIdToHighlight) {
+            console.info('Updating model, pool to highlight:', poolIdToHighlight);
+            const model = bpmnVisualization.graph.getModel();
+
+            const poolSelectionMethod = getRadioGroupValue('poolSelectionMethod');
+            console.info('Selection method:', poolSelectionMethod);
+            const hideOthers = poolSelectionMethod === 'hide';
+            const modelChangeFunction = hideOthers ?
+                // only keep a single visible pool
+                (cell => {
+                    model.setVisible(cell, cell.id === poolIdToHighlight);
+                    model.setCollapsed(cell, false);
+                }) :
+                // collapse other pools
+                (cell => {
+                    model.setCollapsed(cell, cell.id !== poolIdToHighlight)
+                    model.setVisible(cell, true);
+                });
+
+            model.beginUpdate();
+            try {
+                pools.map(pool => model.getCell(pool.id))
+                    .forEach(modelChangeFunction);
+            } finally {
+                model.endUpdate();
+            }
+
+            console.info('Model updated');
+        }
+
+        function configurePoolSelectionButtons() {
+            document.getElementById('dropdown-toggle-select-pool').onclick = function (){
+                show('dropdown-select-pool');
+            }
+
+            document.getElementById('btn-pools-selection-reset').onclick = function (){
+                loadDiagram(lastLoadedDiagram);
+            }
+        }
+
+        function show(elementId) {
+            document.getElementById(elementId).classList.remove('hidden');
+        }
+        function hide(elementId) {
+            document.getElementById(elementId).classList.add('hidden');
+        }
+
+        // TODO extract in helper to avoid duplication with diagram-fit-on-load getSelectedFitType
+        function getRadioGroupValue(elementId) {
+            const radios = document.getElementsByName(elementId);
+            for (let i = 0, length = radios.length; i < length; i++) {
+                if (radios[i].checked) {
+                    return radios[i].value;
+                }
+            }
+        }
+
+        function configureToast() {
+            return new Notyf({
+                position: {
+                    x: 'right',
+                    y: 'top',
+                },
+                types: [
+                    {
+                        type: 'success',
+                        duration: 2500,
+                    }
+                ]
+            });
+        }
+
+        function toast(htmlMessage) {
+            notyf.success(htmlMessage);
+        }
+
+    </script></body>
+</html>
