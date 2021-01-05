@@ -20,6 +20,8 @@ the following applies at least to `kie-editors-standalone@0.8.1`
 
 ## Implementation notes
 
+This example has been created by following https://blog.kie.org/2020/10/bpmn-and-dmn-standalone-editors.html#comment-8
+
 To avoid side effects between the 2 libraries, each of them is using a dedicated div to display and interact with the BPMN
 diagram (this is similar to what it is implemented in the [bpmn-js comparison example](../compare-with-bpmn-js/README.md). \
 The div are located exactly at the same place on the HTML page and only one is displayed at a given time.
