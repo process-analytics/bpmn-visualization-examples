@@ -20,7 +20,7 @@ const bpmnElements = bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
 ```
 
 The returned array contains elements for both BPMN kinds.
-If you want to process the BPMN Kinds differently, you can filter the array as in the following if you first
+If you want to process the BPMN kinds differently, you can filter the array as in the following if you first
 want to manage `End Events`. 
 
 ```javascript
@@ -51,6 +51,6 @@ const pools = bpmnElements
 
 This example displays toast on `End Events` click thanks to [Notyf](https://github.com/caroso1222/notyf).
 
-It also allows hiding or collapsing `Pools`. The `bpmn-visualization` API is used to retrieve to the `Pool` ids but the `Pool`
-display if then fully managed by custom mxGraph code. \
+It also allows hiding or collapsing `Pools`. The `bpmn-visualization` API is used to retrieve the `Pool` ids, but the `Pool`
+display is then fully managed by custom mxGraph code. \
 `bpmn-visualization` may directly provide such capabilities in the future: see [#592](https://github.com/process-analytics/bpmn-visualization-js/issues/592) for instance.
