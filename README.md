@@ -101,6 +101,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 ### Miscellaneous examples
 
 - [Compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
+- [Compare `bpmn-visualization` with `kie-editors-standalone`](./examples/misc/compare-with-kie-editors-standalone/README.md) - compare the libraries on BPMN elements rendering and API usage
 
 ### `bpmn-visualization` usage in projects
 

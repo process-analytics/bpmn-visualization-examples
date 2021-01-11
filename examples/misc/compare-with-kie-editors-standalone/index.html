@@ -15,7 +15,7 @@ limitations under the License.
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>BPMN Visualization  - Comparison with bpmn-js</title>
+  <title>BPMN Visualization  - Comparison with kie-editors-standalone</title>
   <link rel="shortcut icon" href="../../favicon.ico">
   <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
@@ -49,10 +49,9 @@ limitations under the License.
     }
     #loading-info {
       float: left;
-      padding-top: 0.5em;
       margin-left: 1em;
     }
-    #controls {
+    .labels {
       padding-top: 0.5em;
     }
   </style>
@@ -81,8 +80,8 @@ limitations under the License.
 
 <section class="container col-11 flex-centered mt-2">
   <section class="col-12 mt-2 mb-2 relative">
-    <h2>Compare <code>bpmn-visualization</code> with <code>bpmn-js</code></h2>
-    Compare the two libraries on BPMN elements rendering and diagram navigation (zoom, pan).
+    <h2>Compare <code>bpmn-visualization</code> with <code>kie-editors-standalone</code></h2>
+    Compare the two libraries on BPMN elements rendering.
 
     <div style="margin-top: 25px">
       <div id="group-file-selector" class="col-6 float-left">
@@ -91,20 +90,22 @@ limitations under the License.
           <label for="btn-open-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span
                   class="icon icon-upload mb-1"></span></label>
         </div>
-        <div id="loading-info" class="hidden">
+        <div id="loading-info" class="hidden labels">
           <b>Last loaded file:</b> <span></span>
         </div>
       </div>
 
       <div id="controls" class="col-6 float-left">
-        <div id="group-libs" class="col-9 float-left">
+        <div id="group-libs" class="col-9 float-left labels">
           <b>Library:</b>
           <label><input type="radio" name="bpmnLibrary" value="bpmn-visualization" checked> bpmn-visualization</label>
-          <label><input type="radio" name="bpmnLibrary" value="bpmn-js"> bpmn-js</label>
+          <label><input type="radio" name="bpmnLibrary" value="kie-bpmn"> kie-bpmn</label>
         </div>
 
         <div id="btn-group-fit" class="col-3 float-left">
-          <label title="Ensure that the BPMN Diagram is fully displayed within the view"><input type="checkbox" id="fitView" name="fitView"> Fit view</label>
+          <button id="btn-fit-view" title="Ensure that the BPMN Diagram is fully displayed within the view" class="bg-dark btn btn-primary has-icon-right" disabled>
+            <span>Fit View </span><span class="icon icon-apps mb-1"></span>
+          </button>
         </div>
       </div>
     </div>
@@ -113,12 +114,13 @@ limitations under the License.
 
 <section class="col-11 mt-2 relative">
   <div id="container-bpmn-visualization" class="bpmn-container"></div>
-  <div id="container-bpmn-js" class="bpmn-container hidden"></div>
+  <div id="container-kie-editors-standalone" class="bpmn-container hidden"></div>
 </section>
 
 
-<!-- load bpmn-js viewer distro (with pan and zoom) -->
-<script src="https://cdn.jsdelivr.net/npm/bpmn-js@8.0.0/dist/bpmn-navigated-viewer.development.js" integrity="sha256-jekX8LQFqELwZ4+20YvA3OAGIQk1YmWfksmAPBhi48c=" crossorigin="anonymous"></script>
+<script src="../../static/js/dom-helper.js"></script>
+<!-- load bpmn kie-editors-standalone -->
+<script src="https://cdn.jsdelivr.net/npm/@kogito-tooling/kie-editors-standalone@0.8.1/dist/bpmn/index.js" integrity="sha256-zQouSvQPpMHn0SS9CkEFj0vkPh+Q0rGBc0SInk+pCVs=" crossorigin="anonymous"></script>
 <!-- load bpmn-visualization -->
 <script src="https://unpkg.com/bpmn-visualization@0.9.0/dist/bpmn-visualization.js"></script>
 
@@ -126,13 +128,17 @@ limitations under the License.
   const bpmnVisualizationContainerId = 'container-bpmn-visualization';
   const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById(bpmnVisualizationContainerId), { mouseNavigationSupport: true });
 
-  const bpmnJsContainerId = 'container-bpmn-js';
-  const bpmnJsViewer = new BpmnJS({ container: `#${bpmnJsContainerId}` });
+  const kieBpmnEditorContainerId = 'container-kie-editors-standalone';
+  const kieBpmnEditor = BpmnEditor.open({
+    container: document.getElementById(kieBpmnEditorContainerId),
+    readOnly: false // in 0.7.2-alpha3 and 0.8.1, this is not working as explained in https://blog.kie.org/2020/10/bpmn-and-dmn-standalone-editors.html
+  });
+  kieBpmnEditor.subscribeToContentChanges((isDirty) => { logKieBpmn(`Content change detected, isDirty?${isDirty}`)})
 
   let loadedXml;
-  let fitView = false;
+  let fitView = true;
   let isBpmnVisualizationAlreadyLoaded = false;
-  let isBpmnJsAlreadyLoaded = false;
+  let isKieBpmnAlreadyLoaded = false;
 
   // Configure custom html elements
   document.getElementById('btn-open-file').addEventListener('change', handleFileSelect, false);
@@ -152,28 +158,30 @@ limitations under the License.
     isBpmnVisualizationAlreadyLoaded = true;
   }
 
-  async function loadWithBpmnJs(xml) {
-    if (isBpmnJsAlreadyLoaded) {
-      logBpmnJs('Diagram already loaded, skipping new load');
+  async function loadWithKieBpmn(xml) {
+    if (isKieBpmnAlreadyLoaded) {
+      logKieBpmn('Diagram already loaded, skipping new load');
       return;
     }
-    logBpmnJs('Starting import XML')
-    await bpmnJsViewer.importXML(xml);
-    logBpmnJs('Import XML done')
-    setZoomLevelBpmnJs();
-    isBpmnJsAlreadyLoaded = true;
+    logKieBpmn('Starting setting content')
+    // TODO clarify if setContent returns a promise
+    // The introduction article and 0.8.1 readme states it returns 'void', but the abstract class TypeScript definition
+    // declares a Promise
+    // Using promise doesn't change anything, the load is fully asynchronous. We may have to register event listener
+    // see https://github.com/kiegroup/kogito-tooling/blob/e151ccdac6ae526e81dc5e0ec302f02c922b00ea/packages/editor/src/api/Editor.ts#L36
+    // kieBpmnEditor.setContent(xml)
+    //         .then(value => logKieBpmn('Content set'))
+    //         .then(value => setZoomLevelKieBpmn())
+    //         .catch(reason => console.error('[KIE]', reason));
+    kieBpmnEditor.setContent(xml);
+    logKieBpmn('Content set');
+    setZoomLevelKieBpmn();
+    isKieBpmnAlreadyLoaded = true;
   }
 
-  function setZoomLevelBpmnJs() {
-    const canvas = bpmnJsViewer.get('canvas');
-    if (fitView) {
-      // 'auto' to zoom into mid
-      canvas.zoom('fit-viewport', 'auto');
-    } else {
-      // pass null to ensure the position of the diagram is taken from the BPMN xml
-      canvas.zoom(1, null);
-    }
-    logBpmnJs(`Zoom level set, fitView ${fitView}`);
+  function setZoomLevelKieBpmn() {
+    // TODO see if we have something for kie-editors-standalone
+    logKieBpmn('no zoom settings for now');
   }
 
   function setZoomLevelBpmnVisualization() {
@@ -195,7 +203,7 @@ limitations under the License.
     const reader = new FileReader();
     reader.onload = () => {
       isBpmnVisualizationAlreadyLoaded = false;
-      isBpmnJsAlreadyLoaded = false;
+      isKieBpmnAlreadyLoaded = false;
       loadBpmn(reader.result);
 
       document.getElementById('loading-info').classList.remove('hidden');
@@ -214,7 +222,7 @@ limitations under the License.
       if (useBpmnVisualization) {
         loadWithBpmnVisualization(xml);
       } else {
-        loadWithBpmnJs(xml);
+        loadWithKieBpmn(xml);
       }
       loadedXml = xml;
     } catch (err) {
@@ -233,13 +241,7 @@ limitations under the License.
 
 
   function configureFitViewButton() {
-    const fitViewElt = document.getElementById('fitView');
-
-    fitView = fitViewElt.checked;
-    logMain(`Initial fitView: ${fitView}`);
-
-    fitViewElt.addEventListener('change', function(event) {
-      fitView = event.target.checked;
+    document.getElementById('btn-fit-view').addEventListener('click', function(event) {
       changeZoomLevel();
     });
   }
@@ -253,7 +255,7 @@ limitations under the License.
     if (isUseBpmnVisualization()) {
       setZoomLevelBpmnVisualization();
     } else {
-      setZoomLevelBpmnJs();
+      setZoomLevelKieBpmn();
     }
   }
 
@@ -283,23 +285,24 @@ limitations under the License.
 
   function displayBpmnContainer(useBpmnVisualization) {
     const bpmnVisualizationContainerElt = document.getElementById(bpmnVisualizationContainerId);
-    const bpmnJsContainerElt = document.getElementById(bpmnJsContainerId);
+    const kieBpmnContainerElt = document.getElementById(kieBpmnEditorContainerId);
 
     if (useBpmnVisualization) {
       bpmnVisualizationContainerElt.classList.remove('hidden');
-      bpmnJsContainerElt.classList.add('hidden');
+      kieBpmnContainerElt.classList.add('hidden');
     } else {
-      bpmnJsContainerElt.classList.remove('hidden');
+      kieBpmnContainerElt.classList.remove('hidden');
       bpmnVisualizationContainerElt.classList.add('hidden');
     }
+    setButtonState('btn-fit-view', !useBpmnVisualization);
   }
 
   function log(header, msg) {
     console.info(`[${header}] ${msg}`);
   }
 
-  function logBpmnJs(msg) {
-    log('bpmn-js', msg)
+  function logKieBpmn(msg) {
+    log('kie-editors-standalone', msg)
   }
 
   function logBpmnVisu(msg) {
