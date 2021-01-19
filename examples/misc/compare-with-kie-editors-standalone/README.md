@@ -2,7 +2,7 @@
 
 Javascript example
 - [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/misc/compare-with-kie-editors-standalone/index.html)
-- to run locally, run a web server to open the [index.html](index.html) the page. See the [explanations in the repository README](../../../README.md#running-examples-locally)
+- to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
 ## Overview
