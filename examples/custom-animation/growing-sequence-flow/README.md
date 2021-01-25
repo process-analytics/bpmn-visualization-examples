@@ -16,15 +16,14 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
         stroke: Chartreuse;
         animation-name: grow;
         animation-duration: 2s;
-        animation-timing-function: ease-in-out;
+        animation-timing-function: ease-in;
         animation-iteration-count: infinite;
         animation-direction: normal;
     }
     @keyframes grow {
         from {
-            /* This value depends on the dimensions of the edge path */
-            stroke-dashoffset: 150;
-            stroke-dasharray: 150;
+            stroke-dashoffset: 100%;
+            stroke-dasharray: 100%;
         }
         to {
             stroke-dashoffset: 0;
@@ -33,9 +32,5 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['sequence_flow_id'])[0].htmlElement;
-    animatedSequenceFlowElt.classList.add('growing');
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(['sequence_flow_id'], 'growing');
 ```
-
-⚠️ It's not possible to manipulate the class of the HTML element with the zoom, the panning and the fit features, because it recalculated and is overidden by them. \
-A new API comes later to support this case, and simplify the customization of the edges.

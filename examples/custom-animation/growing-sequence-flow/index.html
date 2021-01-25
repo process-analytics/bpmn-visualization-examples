@@ -41,15 +41,14 @@ limitations under the License.
                 stroke: Chartreuse;
                 animation-name: grow;
                 animation-duration: 2s;
-                animation-timing-function: ease-in-out;
+                animation-timing-function: ease-in;
                 animation-iteration-count: infinite;
                 animation-direction: normal;
             }
             @keyframes grow {
                 from {
-            /* This value depends on the dimensions of the edge path */
-                    stroke-dashoffset: 150;
-                    stroke-dasharray: 150;
+                    stroke-dashoffset: 100%;
+                    stroke-dasharray: 100%;
                 }
                 to {
                     stroke-dashoffset: 0;
@@ -89,7 +88,7 @@ limitations under the License.
         </section>
 
         <!-- load bpmn-visualization -->
-        <script src="https://unpkg.com/bpmn-visualization@0.10.0/dist/bpmn-visualization.js"></script>
+        <script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.js"></script>
         <script src="../../static/js/bpmn-diagrams.js"></script>
         <script src="./index.js"></script>
     </body>
