@@ -14,10 +14,6 @@ const modalElt = document.getElementById('modal');
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
 
-// WARNING: The class adding doesn't work with the zoom, the panning and the fit
-// TODO Need to replace by the dedicated API when it is implemented
-callActivityElt.classList.add('c-hand');
-
 callActivityElt.onmouseover = () => {
     // Display the modal
     modalElt.classList.add('active');
