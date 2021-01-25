@@ -136,7 +136,7 @@ limitations under the License.
     <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_2_0.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/notyf@3.9.0/notyf.min.js" integrity="sha256-94ygrajpwhaqxLOwPjuOZSUlCJ/KdtFefKg+Iu3WCAk=" crossorigin="anonymous"></script>
     <script>
-        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
         const diagrams = new Map([
             ['A.4.1', getA_4_1_BpmnDiagram], // vertical diagram
             ['C.1.0', getC_1_0_BpmnDiagram],

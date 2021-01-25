@@ -3,7 +3,7 @@ const bpmn = getCustomColorsBpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-default' });
 bpmnVisualization.load(bpmn);
 
 
@@ -12,7 +12,7 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const originalDefaultFontColor = bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR;
 bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
-const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-font-color'));
+const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-font-color' });
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
 // restore StyleConstant defaults
@@ -37,7 +37,7 @@ bpmnvisu.StyleConfigurator.prototype.configureStyles = function () {
         style[mxConstants.STYLE_FILLCOLOR] = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
     });
 }
-const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-default-colors'));
+const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults
@@ -51,7 +51,7 @@ bpmnvisu.StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
 class BpmnVisualizationCustomColors extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
@@ -96,7 +96,7 @@ bpmnVisualizationCustomColors.load(bpmn);
 class BpmnVisualizationCustomEventColors extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
@@ -133,7 +133,7 @@ bpmnVisualizationEventCustomColors.load(bpmn);
 class BpmnVisualizationCustomColorsUserTask extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 

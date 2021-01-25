@@ -92,7 +92,7 @@ limitations under the License.
 <script>
     document.getElementById('btn-open-file').addEventListener('change', handleFileSelect, false);
 
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 
     function handleFileSelect(evt) {
         evt.stopPropagation();

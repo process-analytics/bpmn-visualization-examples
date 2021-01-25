@@ -139,7 +139,7 @@ limitations under the License.
         const fitMarginValueElt = document.getElementById('fit-margin-value');
         fitMarginValueElt.innerHTML = `<code>${fitMargin}</code>`;
 
-        const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
         loadDiagram();
 
         function loadDiagram(diagramName) {

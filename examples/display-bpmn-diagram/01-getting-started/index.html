@@ -55,7 +55,7 @@ limitations under the License.
 <!--<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.11.0/dist/bpmn-visualization.min.js"></script>-->
 <script src="../../static/js/bpmn-diagrams.js"></script>
 <script>
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
     bpmnVisualization.load(getGettingStartedBpmnDiagram());
 </script>
 </body>

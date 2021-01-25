@@ -24,7 +24,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 2. Load BPMN content
 ```javascript
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt });
 
 const bpmnContent = ``; // your BPMN 2.0 XML content
 bpmnVisualization.load(bpmnContent, { fit: {type: bpmnvisu.FitType.Center, margin: 10} });

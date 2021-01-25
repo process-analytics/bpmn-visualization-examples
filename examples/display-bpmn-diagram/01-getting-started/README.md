@@ -22,7 +22,7 @@ In the following, the HTML page defined a div identified by the `bpmn-container`
 
 ```javascript
 // initialize BPMN Visualization
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 // load the BPMN diagram
 bpmnVisualization.load(bpmnDiagram());
 ```

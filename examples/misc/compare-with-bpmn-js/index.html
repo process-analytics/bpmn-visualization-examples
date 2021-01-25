@@ -124,7 +124,7 @@ limitations under the License.
 
 <script>
   const bpmnVisualizationContainerId = 'container-bpmn-visualization';
-  const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById(bpmnVisualizationContainerId), { mouseNavigationSupport: true });
+  const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnVisualizationContainerId, navigation: { enabled: true } });
 
   const bpmnJsContainerId = 'container-bpmn-js';
   const bpmnJsViewer = new BpmnJS({ container: `#${bpmnJsContainerId}` });

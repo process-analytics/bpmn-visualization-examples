@@ -104,7 +104,7 @@ limitations under the License.
 <script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.js"></script>
 
 <script>
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 
     function log(message, ...optionalParams) {
         console.info('[DEMO] ' + message, ...optionalParams);
