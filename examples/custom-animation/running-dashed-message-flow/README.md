@@ -32,8 +32,7 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    const animatedMessageFlowElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['message_flow_id'])[0].htmlElement;
-    animatedMessageFlowElt.classList.add('running-dashed');
+    const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.addCssClasses(['message_4'], 'running-dashed');
 ```
 
 ⚠️ It's not possible to manipulate the class of the HTML element with the zoom, the panning and the fit features, because it recalculated and is overidden by them. \
