@@ -5,4 +5,4 @@ const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-cont
 bpmnVisualization.load(getIncidentManagementBpmnDiagram(), {fit: {type: bpmnvisu.FitType.Center, margin: 20}});
 
 // Apply custom animation class
-const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.addCssClasses(['message_4'], 'running-dashed');
+bpmnVisualization.bpmnElementsRegistry.addCssClasses(['message_4'], 'running-dashed');

@@ -32,5 +32,5 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    const animatedSequenceFlowElt = bpmnVisualization.bpmnElementsRegistry.addCssClasses(['message_4'], 'running-dashed');
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(['message_4'], 'running-dashed');
 ```
