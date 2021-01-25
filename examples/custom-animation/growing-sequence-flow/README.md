@@ -32,5 +32,5 @@ It looks like `<path d="..." fill="none" stroke="black" stroke-width="1.78" stro
 ````
 
 ```javascript
-    bpmnVisualization.bpmnElementsRegistry.addCssClasses(['flow_5'], 'growing');
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(['sequence_flow_id'], 'growing');
 ```
