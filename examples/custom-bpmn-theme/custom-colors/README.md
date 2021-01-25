@@ -36,7 +36,7 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
 class BpmnVisualizationCustomColors extends BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
@@ -67,7 +67,7 @@ const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('bpmn-co
 class BpmnVisualizationCustomEventColors extends BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
@@ -92,7 +92,7 @@ const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColor
 class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
