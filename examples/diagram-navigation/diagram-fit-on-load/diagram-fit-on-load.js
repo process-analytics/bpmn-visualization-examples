@@ -16,7 +16,7 @@ function loadDiagram(bpmnVisualization, diagramName) {
     bpmnVisualization.load(diagram, { fit: {type: fitType} });
 }
 
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'))
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' })
 
 // 'BPMN Diagram' dropdown list
 const dropdownDiagramChoiceElt = document.querySelector('#dropdown-diagram-choice');

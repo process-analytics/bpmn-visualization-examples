@@ -120,11 +120,11 @@ limitations under the License.
 <!-- load bpmn-js viewer distro (with pan and zoom) -->
 <script src="https://cdn.jsdelivr.net/npm/bpmn-js@8.0.0/dist/bpmn-navigated-viewer.development.js" integrity="sha256-jekX8LQFqELwZ4+20YvA3OAGIQk1YmWfksmAPBhi48c=" crossorigin="anonymous"></script>
 <!-- load bpmn-visualization -->
-<script src="https://unpkg.com/bpmn-visualization@0.10.0/dist/bpmn-visualization.js"></script>
+<script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.js"></script>
 
 <script>
   const bpmnVisualizationContainerId = 'container-bpmn-visualization';
-  const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById(bpmnVisualizationContainerId), { mouseNavigationSupport: true });
+  const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnVisualizationContainerId, navigation: { enabled: true } });
 
   const bpmnJsContainerId = 'container-bpmn-js';
   const bpmnJsViewer = new BpmnJS({ container: `#${bpmnJsContainerId}` });

@@ -50,12 +50,12 @@ limitations under the License.
 </section>
 
 <!-- load bpmn-visualization -->
-<script src="https://unpkg.com/bpmn-visualization@0.10.0/dist/bpmn-visualization.js"></script>
+<script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.js"></script>
 <!-- if you prefer jsdlivr, comment unpkg and uncomment the following line -->
-<!--<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.10.0/dist/bpmn-visualization.min.js"></script>-->
+<!--<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.11.0/dist/bpmn-visualization.min.js"></script>-->
 <script src="../../static/js/bpmn-diagrams.js"></script>
 <script>
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization(document.getElementById('bpmn-container'));
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
     bpmnVisualization.load(getGettingStartedBpmnDiagram());
 </script>
 </body>

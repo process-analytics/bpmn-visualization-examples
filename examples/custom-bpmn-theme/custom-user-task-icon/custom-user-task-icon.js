@@ -1,6 +1,6 @@
 const bpmn = getCustomUserTaskIconBpmnDiagram();
 
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-default' });
 bpmnVisualization.load(bpmn);
 
 // demonstrate how to hard code the color for a specific icon
@@ -35,5 +35,5 @@ class CustomIconPainter extends bpmnvisu.IconPainter {
 
 bpmnvisu.IconPainterProvider.set(new CustomIconPainter());
 
-const bpmnVisualizationCustomerUserTask = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-user-task'));
+const bpmnVisualizationCustomerUserTask = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-user-task' });
 bpmnVisualizationCustomerUserTask.load(bpmn);

@@ -1,11 +1,11 @@
 // Main BPMN Container
 const mainBpmnContainerElt = window.document.getElementById('main-bpmn-container');
-const mainBpmnVisualization = new bpmnvisu.BpmnVisualization(mainBpmnContainerElt);
+const mainBpmnVisualization = new bpmnvisu.BpmnVisualization({ container: mainBpmnContainerElt });
 mainBpmnVisualization.load(getOrderFulfillmentBpmnDiagram(), { fit: {type: 'Center'} });
 
 // Secondary BPMN Container
 const secondaryBpmnContainerElt = window.document.getElementById('secondary-bpmn-container');
-const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization(secondaryBpmnContainerElt);
+const secondaryBpmnVisualization = new bpmnvisu.BpmnVisualization({ container: secondaryBpmnContainerElt });
 
 
 // Interaction

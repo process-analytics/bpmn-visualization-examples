@@ -36,7 +36,7 @@ StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
 class BpmnVisualizationCustomFonts extends BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 

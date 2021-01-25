@@ -3,7 +3,7 @@ const bpmn = getCustomFontsBpmnDiagram();
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-default' });
 bpmnVisualization.load(bpmn);
 
 
@@ -22,7 +22,7 @@ bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (sty
     style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 
-const bpmnVisualizationCustomDefaultFont = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-custom-default-font'));
+const bpmnVisualizationCustomDefaultFont = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-font' });
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
@@ -37,7 +37,7 @@ bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfi
 class BpmnVisualizationCustomFonts extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 

@@ -4,7 +4,7 @@ let bpmn = getHacktoberfestBpmnDiagram(inputProjectName.value);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // default colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container-default'));
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-default' });
 bpmnVisualization.load(bpmn);
 
 
@@ -27,7 +27,7 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
 class BpmnVisualizationHacktoberfestLightTheme extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 
@@ -107,7 +107,7 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
 class BpmnVisualizationHacktoberfestDarkTheme extends bpmnvisu.BpmnVisualization {
 
     constructor(containerId) {
-        super(window.document.getElementById(containerId));
+        super({ container: containerId });
         this.configureStyle();
     }
 

@@ -39,5 +39,5 @@ let secondaryBpmnDiagramIsLoad;
 
 // Main BPMN Container
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
-const bpmnVisualization = new bpmnvisu.BpmnVisualization(bpmnContainerElt);
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt });
 loadOrderFulfillmentBpmnDiagram();
