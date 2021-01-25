@@ -13,6 +13,9 @@ const modalElt = document.getElementById('modal');
 
 let secondaryBpmnDiagramIsAlreadyLoad = false;
 const callActivityElt = mainBpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
+// in normal situation, the modal shows up on mouseover. But if there are issues with the modal loading, having a dedicated
+// mouse cursor will may help user knowing something should be working on the call activity element.
+mainBpmnVisualization.bpmnElementsRegistry.addCssClasses(['call_activity'], 'c-hand');
 
 callActivityElt.onmouseover = () => {
     // Display the modal
