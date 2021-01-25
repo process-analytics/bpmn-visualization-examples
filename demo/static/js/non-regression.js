@@ -22,4 +22,4 @@ function statusFetchKO(errorMsg) {
   statusElt.className = 'status-ko';
 }
 
-documentReady(() => startBpmnVisualization({ container: 'bpmn-container', statusFetchKoNotifier: statusFetchKO }));
+documentReady(() => startBpmnVisualization({ globalOptions: { container: 'bpmn-container' }, statusFetchKoNotifier: statusFetchKO }));
