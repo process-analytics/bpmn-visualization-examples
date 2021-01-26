@@ -4,14 +4,10 @@ function loadOrderFulfillmentBpmnDiagram() {
 
     // Interaction
     const callActivityElt = bpmnVisualization.bpmnElementsRegistry.getElementsByIds(['call_activity'])[0].htmlElement;
-
-    // WARNING: The class adding doesn't work with the zoom, the panning and the fit
-    // TODO Need to replace by the dedicated API when it is implemented
-    callActivityElt.classList.add('c-hand');
-
     callActivityElt.ondblclick = () => {
         loadBpmnDiagram('secondary');
     }
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(['call_activity'], 'c-hand');
 }
 
 function loadBpmnDiagram(tabIndex) {
@@ -39,5 +35,5 @@ let secondaryBpmnDiagramIsLoad;
 
 // Main BPMN Container
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt });
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt, navigation: { enabled: true } });
 loadOrderFulfillmentBpmnDiagram();

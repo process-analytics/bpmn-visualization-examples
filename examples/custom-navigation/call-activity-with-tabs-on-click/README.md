@@ -19,6 +19,3 @@ callActivityElt.onclick = () => {
 ```
 
 ⚠️ The secondary `BPMN container` (in charge of displaying the Call Activity) must be visible during the BPMN diagram loading, otherwise, some BPMN elements won't be displayed.
-
-⚠️ It's not possible to manipulate the class of the HTML element with the zoom, the panning and the fit features, because it recalculated and is overidden by them. \
-A new API comes later to support this case.
