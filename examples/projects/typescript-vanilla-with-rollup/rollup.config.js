@@ -41,7 +41,6 @@ if (devMode) {
   const copyTargets = [];
   copyTargets.push({ src: 'src/*.html', dest: 'dist/' });
   copyTargets.push({ src: 'src/static', dest: 'dist' });
-  copyTargets.push({ src: 'node_modules/mxgraph/javascript/mxClient.min.js', dest: 'dist/static/js/' });
   let copyPlugin;
   if (devLiveReloadMode) {
     copyPlugin = copyWatch({
@@ -73,7 +72,7 @@ export default [
       {
         file: pkg.module,
         format: 'es',
-        sourcemap: false,
+        sourcemap: true,
       },
     ],
     plugins: plugins,

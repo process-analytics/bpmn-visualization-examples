@@ -33,7 +33,6 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "bpmn-visualization": "0.11.0",
-    "mxgraph": "4.1.0"
+    "bpmn-visualization": "0.11.0"
   }
 }
