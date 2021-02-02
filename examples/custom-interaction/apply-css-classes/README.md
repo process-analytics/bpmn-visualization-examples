@@ -9,14 +9,13 @@ Javascript example to demonstrate how to apply CSS classes to elements of the BP
 ℹ️ . Apply css classes after retrieving the HTMLElement with the `bpmn-visualization` API.
 
 ```javascript
-const bpmnElements = bpmnVisualization.bpmnElementsRegistry.getElementsByIds('prepareBankTransfer');
-// we suppose that the elements have been found (otherwise, the returned array is empty)
-const htmlElement = bpmnElements[0].htmlElement;
-htmlElement.classList.toggle('bpmn-activity-in-progress');
+// add css classes
+bpmnVisualization.bpmnElementsRegistry.addCssClasses('prepareBankTransfer', 'bpmn-activity-in-progress');
+// remove css classes
+bpmnVisualization.bpmnElementsRegistry.removeCssClasses(['reviewSuccessful_gw', 'invoice_approved'], ['bpmn-gateway-warning', 'bpmn-activity-info']);
+// toggle css classes
+bpmnVisualization.bpmnElementsRegistry.toggleCssClasses('prepareBankTransfer', 'bpmn-activity-in-progress');
 ```
-
-⚠️ It's not possible to manipulate the class of the HTML element with the zoom, the panning and the fit features, because it recalculated and is overridden by them. \
-A new API comes later to support this case, and simplify the customization of the Bpmn elements.
 
 ⚠️ Highlighting path currently requires to identify all elements by their ids: `bpmn-visualization` will provide some API
 to simplify this in the future, see [bpmn-visualization #930](https://github.com/process-analytics/bpmn-visualization-js/issues/930)

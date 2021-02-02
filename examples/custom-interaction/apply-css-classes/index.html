@@ -150,10 +150,10 @@ limitations under the License.
         <div id="bpmn-container"></div>
     </section>
 
-    <script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.min.js"></script>
+    <script src="https://unpkg.com/bpmn-visualization@0.12.0-0/dist/bpmn-visualization.min.js"></script>
     <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_1_1.js"></script>
     <script>
-        const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
+        const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container', navigation: { enabled: true} });
         bpmnVisualization.load(getC_1_1_BpmnDiagram(), { fit: { type: bpmnvisu.FitType.Center, margin: 20 } });
 
         const styledElements = [
@@ -256,19 +256,13 @@ limitations under the License.
         }
 
         function addCssClass(elements, ...classNames) {
-            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
-                .map(bpmnElement => bpmnElement.htmlElement)
-                .forEach(elt => elt.classList.add(...classNames));
+            bpmnVisualization.bpmnElementsRegistry.addCssClasses(elements, classNames);
         }
         function removeCssClass(elements, ...classNames) {
-            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
-                .map(bpmnElement => bpmnElement.htmlElement)
-                .forEach(elt => elt.classList.remove(...classNames));
+            bpmnVisualization.bpmnElementsRegistry.removeCssClasses(elements, classNames);
         }
-        function toggleCssClass(elements, className) {
-            bpmnVisualization.bpmnElementsRegistry.getElementsByIds(elements)
-                .map(bpmnElement => bpmnElement.htmlElement)
-                .forEach(elt => elt.classList.toggle(className));
+        function toggleCssClass(elements, classNames) {
+            bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(elements, classNames);
         }
     </script></body>
 </html>
