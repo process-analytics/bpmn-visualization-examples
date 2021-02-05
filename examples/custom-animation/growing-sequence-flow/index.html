@@ -78,7 +78,7 @@ limitations under the License.
 
         <section id="section" class="container" style="margin-top: 3rem">
             <div class="col-11 col-mx-auto">
-                <h2>Growing Sequence Flow</h2>
+                <h2 id="title_with_link_to_gh_source">Growing Sequence Flow <a href="#" title="See the source code on GitHub" style="text-decoration: none;">💥</a></h2>
                 <p>Add custom growing animation on a Sequence Flow</p>
 
                 <div class="bg-gray">
@@ -100,12 +100,26 @@ limitations under the License.
                 const finalPath = part.substring(0, indexLastSlash);
 
                 const githubHref = `https://github.com/process-analytics/bpmn-visualization-examples/tree/${finalPath}`;
-                console.info(`Computed href for the github source: ${githubHref}`);
+                //console.info(`Computed href for the github source: ${githubHref}`);
 
                 // TODO query selectors to avoid having to set an element id
                 const exampleLinkElt = document.getElementById('example_link');
                 exampleLinkElt.setAttribute('href', githubHref);
                 console.info('href changed!', exampleLinkElt.getAttribute('href'));
+
+                const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
+                titleWithGhLinkElt.setAttribute('href', githubHref);
+                console.info('href changed in title!', titleWithGhLinkElt.getAttribute('href'));
+            }
+            // TEST for local dev only
+            else {
+                const exampleLinkElt = document.getElementById('example_link');
+                exampleLinkElt.setAttribute('href', '#changedByJS');
+                console.info('href changed!', exampleLinkElt.getAttribute('href'));
+
+                const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
+                titleWithGhLinkElt.setAttribute('href', '#changedByJS');
+                console.info('href changed in title!', titleWithGhLinkElt.getAttribute('href'));
             }
         </script>
 
