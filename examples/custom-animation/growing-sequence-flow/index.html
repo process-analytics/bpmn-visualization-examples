@@ -63,16 +63,20 @@ limitations under the License.
                 <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
             </section>
             <section class="navbar-section">
+                <a href="#fake" title="View the source code on GitHub" class="mr-2" style="text-decoration: none"><img src="../../static/img/GitHub-Mark-Light-32px.png" alt="github logo"></a>
                 <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
-                <div class="dropdown mr-2">
-                    <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
-                        GitHub <span class="icon icon-caret icon-in-the-middle"></span>
-                    </a>
-                    <ul class="menu">
-                        <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
-                        <li><a id="example_link" href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
-                    </ul>
-                </div>
+<!--                <a href="#" class="mr-2"><img src="https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.svg" alt="npm logo"></a>-->
+                <a href="#" class="mr-2"><img src="https://raw.githubusercontent.com/npm/logos/master/npm%20logo/npm-logo-red.png" alt="npm logo" height="32" width="32"></a>
+
+<!--                <div class="dropdown mr-2">-->
+<!--                    <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">-->
+<!--                        GitHub <span class="icon icon-caret icon-in-the-middle"></span>-->
+<!--                    </a>-->
+<!--                    <ul class="menu">-->
+<!--                        <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>-->
+<!--                        <li><a id="example_link" href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>-->
+<!--                    </ul>-->
+<!--                </div>-->
             </section>
         </header>
 
@@ -103,9 +107,9 @@ limitations under the License.
                 //console.info(`Computed href for the github source: ${githubHref}`);
 
                 // TODO query selectors to avoid having to set an element id
-                const exampleLinkElt = document.getElementById('example_link');
-                exampleLinkElt.setAttribute('href', githubHref);
-                console.info('href changed in menu!', exampleLinkElt.getAttribute('href'));
+                // const exampleLinkElt = document.getElementById('example_link');
+                // exampleLinkElt.setAttribute('href', githubHref);
+                // console.info('href changed in menu!', exampleLinkElt.getAttribute('href'));
 
                 // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
                 // titleWithGhLinkElt.setAttribute('href', githubHref);
@@ -116,9 +120,9 @@ limitations under the License.
             }
             // TEST for local dev only
             else {
-                const exampleLinkElt = document.getElementById('example_link');
-                exampleLinkElt.setAttribute('href', '#changedByJS');
-                console.info('DEV href changed!', exampleLinkElt.getAttribute('href'));
+                // const exampleLinkElt = document.getElementById('example_link');
+                // exampleLinkElt.setAttribute('href', '#changedByJS');
+                // console.info('DEV href changed!', exampleLinkElt.getAttribute('href'));
 
                 // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
                 // titleWithGhLinkElt.setAttribute('href', '#changedByJS');
