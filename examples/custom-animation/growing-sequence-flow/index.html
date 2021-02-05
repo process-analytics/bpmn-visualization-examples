@@ -70,7 +70,7 @@ limitations under the License.
                     </a>
                     <ul class="menu">
                         <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
-                        <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                        <li><a id="example_link" href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
                     </ul>
                 </div>
             </section>
@@ -86,6 +86,29 @@ limitations under the License.
                 </div>
             </div>
         </section>
+
+        <script>
+            // we want to transform
+            // https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/173d6e7db380f74e61c98c43460d1642852e9d37/examples/custom-navigation/call-activity-with-modal-on-mouse-over/index.html
+            // into
+            // https://github.com/process-analytics/bpmn-visualization-examples/tree/173d6e7db380f74e61c98c43460d1642852e9d37/examples/custom-navigation/call-activity-with-modal-on-mouse-over
+            if (window.location.hostname === 'cdn.statically.io') {
+                // get the part after the 4th slash
+                const part = window.location.pathname.split('/').slice(4).join('/');
+                // and remove the file part
+                const indexLastSlash = part.lastIndexOf('/');
+                const finalPath = part.substring(0, indexLastSlash);
+
+                const githubHref = `https://github.com/process-analytics/bpmn-visualization-examples/tree/${finalPath}`;
+                console.info(`Computed href for the github source: ${githubHref}`);
+
+                // TODO query selectors to avoid having to set an element id
+                const exampleLinkElt = document.getElementById('example_link');
+                exampleLinkElt.setAttribute('href', githubHref);
+                console.info('href changed!', exampleLinkElt.getAttribute('href'));
+            }
+        </script>
+
 
         <!-- load bpmn-visualization -->
         <script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.min.js"></script>
