@@ -78,7 +78,7 @@ limitations under the License.
 
         <section id="section" class="container" style="margin-top: 3rem">
             <div class="col-11 col-mx-auto">
-                <h2 id="title_with_link_to_gh_source">Growing Sequence Flow <a href="#" title="See the source code on GitHub" style="text-decoration: none"><img src="https://github.githubassets.com/favicons/favicon.png" alt="github logo"></a></h2>
+                <h2>Growing Sequence Flow</h2>
                 <p>Add custom growing animation on a Sequence Flow</p>
 
                 <div class="bg-gray">
@@ -105,11 +105,14 @@ limitations under the License.
                 // TODO query selectors to avoid having to set an element id
                 const exampleLinkElt = document.getElementById('example_link');
                 exampleLinkElt.setAttribute('href', githubHref);
-                console.info('href changed!', exampleLinkElt.getAttribute('href'));
+                console.info('href changed in menu!', exampleLinkElt.getAttribute('href'));
 
-                const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
-                titleWithGhLinkElt.setAttribute('href', githubHref);
-                console.info('href changed in title!', titleWithGhLinkElt.getAttribute('href'));
+                // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
+                // titleWithGhLinkElt.setAttribute('href', githubHref);
+                // console.info('href changed in title!', titleWithGhLinkElt.getAttribute('href'));
+                const titleWithGhLinkElt = document.querySelector('section h2');
+                titleWithGhLinkElt.innerHTML = `${titleWithGhLinkElt.innerHTML} <a href="${githubHref}" title="See the source code on GitHub" style="text-decoration: none"><img src="https://github.githubassets.com/favicons/favicon.png" alt="github logo"></a>`;
+                console.info('Title updated with link to GH sources!');
             }
             // TEST for local dev only
             else {
@@ -117,10 +120,15 @@ limitations under the License.
                 exampleLinkElt.setAttribute('href', '#changedByJS');
                 console.info('DEV href changed!', exampleLinkElt.getAttribute('href'));
 
-                const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
-                titleWithGhLinkElt.setAttribute('href', '#changedByJS');
-                console.info('DEV href changed in title!', titleWithGhLinkElt.getAttribute('href'));
+                // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
+                // titleWithGhLinkElt.setAttribute('href', '#changedByJS');
+                // console.info('DEV href changed in title!', titleWithGhLinkElt.getAttribute('href'));
                 // titleWithGhLinkElt.style.display = "none";
+
+                const titleWithGhLinkElt = document.querySelector('section h2');
+                const githubHref = '#changedByJS';
+                titleWithGhLinkElt.innerHTML = `${titleWithGhLinkElt.innerHTML} <a href="${githubHref}" title="See the source code on GitHub" style="text-decoration: none"><img src="https://github.githubassets.com/favicons/favicon.png" alt="github logo"></a>`;
+                console.info('DEV title updated!');
             }
         </script>
 
