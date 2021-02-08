@@ -25,8 +25,8 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle;
 bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[mxConstants.STYLE_STROKECOLOR] = 'Orange';
+    style[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
+    style[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'Orange';
 }
 // hack to ensure that the pool and lane label area fill color are kept untouched
 const originalConfigureStyles = bpmnvisu.StyleConfigurator.prototype.configureStyles;
@@ -34,7 +34,7 @@ bpmnvisu.StyleConfigurator.prototype.configureStyles = function () {
     originalConfigureStyles.apply(this);
     [bpmnvisu.ShapeBpmnElementKind.LANE, bpmnvisu.ShapeBpmnElementKind.POOL].forEach(kind => {
         const style = this.graph.getStylesheet().styles[kind];
-        style[mxConstants.STYLE_FILLCOLOR] = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
+        style[mxgraph.mxConstants.STYLE_FILLCOLOR] = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
     });
 }
 const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
@@ -60,28 +60,28 @@ class BpmnVisualizationCustomColors extends bpmnvisu.BpmnVisualization {
 
         bpmnvisu.ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_FILLCOLOR] = 'Pink';
-            style[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
+            style[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'Pink';
+            style[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
         });
 
         bpmnvisu.ShapeUtil.taskKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
-            style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-            style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-            style[mxConstants.STYLE_STROKECOLOR] = 'DarkBlue';
+            style[mxgraph.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+            style[mxgraph.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+            style[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'Lavender';
+            style[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'DarkBlue';
         });
 
         bpmnvisu.ShapeUtil.gatewayKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
-            style[mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
+            style[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
+            style[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
         });
 
         const poolStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        poolStyle[mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
-        poolStyle[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_SOUTH;
-        poolStyle[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+        poolStyle[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
+        poolStyle[mxgraph.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_SOUTH;
+        poolStyle[mxgraph.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
     }
 
 }
@@ -104,21 +104,21 @@ class BpmnVisualizationCustomEventColors extends bpmnvisu.BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const startEventStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START];
-        startEventStyle[mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
-        startEventStyle[mxConstants.STYLE_STROKECOLOR] = '#8dc125';
+        startEventStyle[mxgraph.mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
+        startEventStyle[mxgraph.mxConstants.STYLE_STROKECOLOR] = '#8dc125';
 
         [bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
             const intermediateEventStyle = styleSheet.styles[kind];
-            intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
+            intermediateEventStyle[mxgraph.mxConstants.STYLE_STROKECOLOR] = '#7307df';
         })
 
         const boundaryEventStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY];
-        boundaryEventStyle[mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
-        boundaryEventStyle[mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
+        boundaryEventStyle[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'LightGoldenrodYellow';
+        boundaryEventStyle[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'DarkOrange';
 
         const endEventStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END];
-        endEventStyle[mxConstants.STYLE_FILLCOLOR] = 'Pink';
-        endEventStyle[mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
+        endEventStyle[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'Pink';
+        endEventStyle[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'FireBrick';
     }
 
 }
@@ -140,11 +140,11 @@ class BpmnVisualizationCustomColorsUserTask extends bpmnvisu.BpmnVisualization {
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
         const style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
-        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
-        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
-        style[mxConstants.STYLE_FILLCOLOR] = 'Lavender';
-        style[mxConstants.STYLE_STROKECOLOR] = 'Red';
+        style[mxgraph.mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+        style[mxgraph.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
+        style[mxgraph.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+        style[mxgraph.mxConstants.STYLE_FILLCOLOR] = 'Lavender';
+        style[mxgraph.mxConstants.STYLE_STROKECOLOR] = 'Red';
    }
 }
 
