@@ -66,7 +66,7 @@ class BpmnVisualizationCustomColors extends bpmnvisu.BpmnVisualization {
 
         bpmnvisu.ShapeUtil.taskKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+            style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_EAST;
             style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
             style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'Lavender';
             style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'DarkBlue';
@@ -80,7 +80,7 @@ class BpmnVisualizationCustomColors extends bpmnvisu.BpmnVisualization {
 
         const poolStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
         poolStyle[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
-        poolStyle[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_SOUTH;
+        poolStyle[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_SOUTH;
         poolStyle[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
     }
 
@@ -141,7 +141,7 @@ class BpmnVisualizationCustomColorsUserTask extends bpmnvisu.BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
         const style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
         style[bpmnvisu.mxConstants.STYLE_FONTCOLOR] = '#2b992a';
-        style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
+        style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_WEST;
         style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
         style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'Lavender';
         style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'Red';

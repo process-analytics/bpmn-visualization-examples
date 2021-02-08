@@ -50,7 +50,7 @@ class BpmnVisualizationCustomColors extends BpmnVisualization {
 
         ShapeUtil.taskKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+            style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_EAST;
             style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
         });
 

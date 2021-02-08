@@ -42,7 +42,7 @@ class BpmnVisualizationHacktoberfestLightTheme extends bpmnvisu.BpmnVisualizatio
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END];
         style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = pinkDark;
         style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = pinkLight;
-        style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
+        style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_WEST;
         style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
 
         // USER TASK
@@ -176,7 +176,7 @@ bpmnvisu.IconPainterProvider.set(new HacktoberfestDarkThemeIconPainter());
 
 
 const bpmnVisualizationHacktoberfestDarkTheme = new BpmnVisualizationHacktoberfestDarkTheme('bpmn-container-hacktoberfest-dark-theme');
-bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
+bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${bpmnvisu.mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
 bpmnVisualizationHacktoberfestDarkTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
