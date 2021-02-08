@@ -36,28 +36,28 @@ class BpmnVisualizationHacktoberfestLightTheme extends bpmnvisu.BpmnVisualizatio
 
         // START EVENT
         let style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START];
-        style[mxConstants.STYLE_STROKECOLOR] = pinkLight;
+        style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = pinkLight;
 
         // END EVENT
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END];
-        style[mxConstants.STYLE_STROKECOLOR] = pinkDark;
-        style[mxConstants.STYLE_FILLCOLOR] = pinkLight;
-        style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_WEST;
-        style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+        style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = pinkDark;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = pinkLight;
+        style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_WEST;
+        style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
 
         // USER TASK
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
 
         // CALL ACTIVITY
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY];
-        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
-        style[mxConstants.STYLE_FONTCOLOR] = blueLight;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueMedium;
+        style[bpmnvisu.mxConstants.STYLE_FONTCOLOR] = blueLight;
 
         // POOL
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
-        style[mxConstants.STYLE_FONTSIZE] = 16;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_FONTSIZE] = 16;
     }
 
 }
@@ -116,32 +116,32 @@ class BpmnVisualizationHacktoberfestDarkTheme extends bpmnvisu.BpmnVisualization
 
         // START EVENT
         let style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START];
-        style[mxConstants.STYLE_STROKECOLOR] = pinkLight;
-        style[mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = pinkLight;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
 
         // END EVENT
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END];
-        style[mxConstants.STYLE_STROKECOLOR] = pinkDark;
-        style[mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = pinkDark;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = pinkSuperLight;
 
         // EXCLUSIVE GATEWAY
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE];
-        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueMedium;
 
         // USER TASK
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FILLCOLOR] = '#355571';
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = '#355571';
 
         // CALL ACTIVITY
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY];
-        style[mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
-        style[mxConstants.STYLE_FONTCOLOR] = blueMedium;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_FONTCOLOR] = blueMedium;
 
         // POOL
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        style[mxConstants.STYLE_SWIMLANE_FILLCOLOR] = blueDark;
-        style[mxConstants.STYLE_FILLCOLOR] = blueMedium;
-        style[mxConstants.STYLE_FONTSIZE] = 16;
+        style[bpmnvisu.mxConstants.STYLE_SWIMLANE_FILLCOLOR] = blueDark;
+        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueMedium;
+        style[bpmnvisu.mxConstants.STYLE_FONTSIZE] = 16;
     }
 
 }
@@ -176,7 +176,7 @@ bpmnvisu.IconPainterProvider.set(new HacktoberfestDarkThemeIconPainter());
 
 
 const bpmnVisualizationHacktoberfestDarkTheme = new BpmnVisualizationHacktoberfestDarkTheme('bpmn-container-hacktoberfest-dark-theme');
-bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
+bpmnVisualizationHacktoberfestDarkTheme.graph.getDefaultParent().setStyle(`${bpmnvisu.mxConstants.STYLE_FILLCOLOR} = ${blueDark}`) ;
 bpmnVisualizationHacktoberfestDarkTheme.load(bpmn);
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

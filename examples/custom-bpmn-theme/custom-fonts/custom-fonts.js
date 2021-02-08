@@ -19,7 +19,7 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle;
 bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
+    style[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_ITALIC;
 }
 
 const bpmnVisualizationCustomDefaultFont = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-font' });
@@ -45,14 +45,14 @@ class BpmnVisualizationCustomFonts extends bpmnvisu.BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const userTaskStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
-        userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
-        userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
-        userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
+        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
+        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTSIZE] = '14';
+        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_BOLD + bpmnvisu.mxConstants.FONT_ITALIC;
 
         const poolStyle = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        poolStyle[mxConstants.STYLE_FONTFAMILY] = 'MS Gothic,Courier New,serif';
-        poolStyle[mxConstants.STYLE_FONTSIZE] = '20';
-        poolStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD;
+        poolStyle[bpmnvisu.mxConstants.STYLE_FONTFAMILY] = 'MS Gothic,Courier New,serif';
+        poolStyle[bpmnvisu.mxConstants.STYLE_FONTSIZE] = '20';
+        poolStyle[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_BOLD;
     }
 
 }

@@ -14,7 +14,7 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 
 :warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [hacktoberfest-diagram.js](hacktoberfest-diagram.js).
 
-
+Â
 Content:
 - override the `StyleConstant` default values, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
 - extend the lib class entry point, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
