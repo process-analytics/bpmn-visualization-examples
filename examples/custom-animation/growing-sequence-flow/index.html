@@ -70,7 +70,7 @@ limitations under the License.
                     </a>
                     <ul class="menu">
                         <li><a href="https://github.com/process-analytics/bpmn-visualization-js" class="mr-2 btn btn-link">Library</a></li>
-                        <li><a id="example_link" href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
+                        <li><a href="https://github.com/process-analytics/bpmn-visualization-examples" class="mr-2 btn btn-link">Examples</a></li>
                     </ul>
                 </div>
             </section>
@@ -98,40 +98,20 @@ limitations under the License.
                 // and remove the file part
                 const indexLastSlash = part.lastIndexOf('/');
                 const finalPath = part.substring(0, indexLastSlash);
-
                 const githubHref = `https://github.com/process-analytics/bpmn-visualization-examples/tree/${finalPath}`;
-                //console.info(`Computed href for the github source: ${githubHref}`);
 
-                // TODO query selectors to avoid having to set an element id
-                const exampleLinkElt = document.getElementById('example_link');
-                exampleLinkElt.setAttribute('href', githubHref);
-                console.info('href changed in menu!', exampleLinkElt.getAttribute('href'));
-
-                // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
-                // titleWithGhLinkElt.setAttribute('href', githubHref);
-                // console.info('href changed in title!', titleWithGhLinkElt.getAttribute('href'));
                 const titleWithGhLinkElt = document.querySelector('section h2');
                 titleWithGhLinkElt.innerHTML = `${titleWithGhLinkElt.innerHTML} <a href="${githubHref}" title="View the source code on GitHub" style="text-decoration: none"><img src="https://github.githubassets.com/favicons/favicon.png" alt="github logo"></a>`;
                 console.info('Title updated with link to GH sources!');
             }
             // TEST for local dev only
             else {
-                const exampleLinkElt = document.getElementById('example_link');
-                exampleLinkElt.setAttribute('href', '#changedByJS');
-                console.info('DEV href changed!', exampleLinkElt.getAttribute('href'));
-
-                // const titleWithGhLinkElt = document.querySelector('#title_with_link_to_gh_source > a');
-                // titleWithGhLinkElt.setAttribute('href', '#changedByJS');
-                // console.info('DEV href changed in title!', titleWithGhLinkElt.getAttribute('href'));
-                // titleWithGhLinkElt.style.display = "none";
-
                 const titleWithGhLinkElt = document.querySelector('section h2');
                 const githubHref = '#changedByJS';
                 titleWithGhLinkElt.innerHTML = `${titleWithGhLinkElt.innerHTML} <a href="${githubHref}" title="View the source code on GitHub" style="text-decoration: none"><img src="https://github.githubassets.com/favicons/favicon.png" alt="github logo"></a>`;
                 console.info('DEV title updated!');
             }
         </script>
-
 
         <!-- load bpmn-visualization -->
         <script src="https://unpkg.com/bpmn-visualization@0.11.0/dist/bpmn-visualization.min.js"></script>
