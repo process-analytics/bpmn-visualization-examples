@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <title>BPMN Visualization - Diagram Rendering</title>
-  <link rel="shortcut icon" href="static/img/favicon.ico">
+  <link rel="shortcut icon" href="./static/img/favicon.ico">
 
   <style>
     .hidden {
@@ -35,7 +35,7 @@
     }
     button {
       border-radius: 4px;
-      padding: 0px;
+      padding: 0;
       width:28px;
       height:28px;
       background-color: #f9dfe8;
@@ -174,11 +174,7 @@
     <div id="bpmn-container"></div>
   </div>
 
-  <!-- load global settings -->
-  <script src="static/js/configureMxGraphGlobals.js"></script>
-  <!-- load mxGraph client library -->
-  <script src="static/js/mxClient.min.js"></script>
   <!-- load app -->
-  <script src="static/js/rendering-diagram.js" type="module"></script>
+  <script src="./static/js/rendering-diagram.js" type="module"></script>
 </body>
 </html>
