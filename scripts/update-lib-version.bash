@@ -16,13 +16,18 @@ EXAMPLES_DIRECTORY="$SCRIPT_DIRECTORY/../examples"
 pushd "$EXAMPLES_DIRECTORY" > /dev/null
 
 echo "Search for files in $(pwd)"
+
+rexep_npm="s/\"bpmn-visualization\": \"[0-9]+.[0-9]+.[0-9]+(-.*)?\"/\"bpmn-visualization\": \"$NEW_VERSION\"/#"
+  # TODO optional group to manage pre-releases
+rexep_others="s/\/bpmn-visualization@[0-9]+.[0-9]+.[0-9]+/\/bpmn-visualization@$NEW_VERSION/#"
+
 # lines to update contains substring like "bpmn-visualization@x.y.z"
 if [[ "$OSTYPE" == "darwin"* ]]; then
-	sed -i '' -E "s/\/bpmn-visualization@[0-9]+.[0-9]+.[0-9]+/\/bpmn-visualization@$NEW_VERSION/" **/**/*.{html,md,js}
-	sed -i '' -E "s/\"bpmn-visualization\": \"[0-9]+.[0-9]+.[0-9]+\"/\"bpmn-visualization\": \"$NEW_VERSION\"/" **/**/package.json
+	sed -i '' -E "${rexep_others}" **/**/*.{html,md,js}
+	sed -i '' -E "${rexep_npm}" **/**/package.json
 else
-	sed -i -E "s/\/bpmn-visualization@[0-9]+.[0-9]+.[0-9]+/\/bpmn-visualization@$NEW_VERSION/#" **/**/*.{html,md,js} *.{html,js}
-	sed -i -E "s/\"bpmn-visualization\": \"[0-9]+.[0-9]+.[0-9]+\"/\"bpmn-visualization\": \"$NEW_VERSION\"/#" **/**/package.json
+	sed -i -E "${rexep_others}" **/**/*.{html,md,js}
+	sed -i -E "${rexep_npm}" **/**/package.json
 fi
 
 echo "Files updated"
