@@ -25,8 +25,8 @@ if [[ "$OSTYPE" == "darwin"* ]]; then
 	sed -i '' -E "${rexep_others}" **/**/*.{html,md,js}
 	sed -i '' -E "${rexep_npm}" **/**/package.json
 else
-	sed -i -E "${rexep_others}" **/**/*.{html,md,js}
-	sed -i -E "${rexep_npm}" **/**/package.json
+	sed -i -E "${rexep_others}#" **/**/*.{html,md,js}
+	sed -i -E "${rexep_npm}#" **/**/package.json
 fi
 
 echo "Files updated"
