@@ -17,9 +17,9 @@ pushd "$EXAMPLES_DIRECTORY" > /dev/null
 
 echo "Search for files in $(pwd)"
 
-rexep_npm="s/\"bpmn-visualization\": \".*\"/\"bpmn-visualization\": \"$NEW_VERSION\"/#"
+rexep_npm="s/\"bpmn-visualization\": \".*\"/\"bpmn-visualization\": \"$NEW_VERSION\"/"
 # lines to update contains substring like "bpmn-visualization@x.y.z"
-rexep_others="s/\/bpmn-visualization@.*\/dist/\/bpmn-visualization@$NEW_VERSION\/dist/#"
+rexep_others="s/\/bpmn-visualization@.*\/dist/\/bpmn-visualization@$NEW_VERSION\/dist/"
 
 if [[ "$OSTYPE" == "darwin"* ]]; then
 	sed -i '' -E "${rexep_others}" **/**/*.{html,md,js}
