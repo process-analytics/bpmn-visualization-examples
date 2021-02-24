@@ -7,7 +7,6 @@
     </bpmn:startEvent>
     <bpmn:sequenceFlow id="Flow_1aq8ej3" sourceRef="start_event_id" targetRef="Gateway_1t9f59o" />
     <bpmn:parallelGateway id="Gateway_0r6h83u">
-      <bpmn:incoming>Flow_0lccb4g</bpmn:incoming>
       <bpmn:incoming>Flow_0pkd2vr</bpmn:incoming>
       <bpmn:outgoing>Flow_1ozpodx</bpmn:outgoing>
       <bpmn:outgoing>Flow_0ut9p6f</bpmn:outgoing>
@@ -49,7 +48,6 @@
     </bpmn:endEvent>
     <bpmn:task id="task_id" name="Task">
       <bpmn:incoming>Flow_1ozpodx</bpmn:incoming>
-      <bpmn:outgoing>Flow_0lccb4g</bpmn:outgoing>
       <bpmn:outgoing>Flow_0y2ppzn</bpmn:outgoing>
     </bpmn:task>
     <bpmn:sendTask id="send_task_id" name="Send Task">
@@ -177,7 +175,6 @@
     <bpmn:sequenceFlow id="Flow_17nvosb" sourceRef="Gateway_0r6h83u" targetRef="collapsed_call_activity_calling_process_id" />
     <bpmn:sequenceFlow id="Flow_15kj2y2" sourceRef="Gateway_0r6h83u" targetRef="collapsed_embedded_sub_process_id" />
     <bpmn:sequenceFlow id="Flow_0iwhb4e" sourceRef="Gateway_0r6h83u" targetRef="expanded_embedded_sub_process_id" />
-    <bpmn:sequenceFlow id="Flow_0lccb4g" sourceRef="task_id" targetRef="Gateway_0r6h83u" />
     <bpmn:sequenceFlow id="Flow_1iy9q7n" sourceRef="send_task_id" targetRef="Gateway_0tgcm04" />
     <bpmn:sequenceFlow id="Flow_00osnj3" sourceRef="non_instantiating_receive_task_id" targetRef="Gateway_0tgcm04" />
     <bpmn:sequenceFlow id="Flow_0hiku5m" sourceRef="user_task_id" targetRef="Gateway_0tgcm04" />
@@ -630,11 +627,6 @@
         <di:waypoint x="940" y="220" />
         <di:waypoint x="1130" y="220" />
         <di:waypoint x="1130" y="595" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0lccb4g_di" bpmnElement="Flow_0lccb4g">
-        <di:waypoint x="840" y="120" />
-        <di:waypoint x="620" y="120" />
-        <di:waypoint x="620" y="595" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0iwhb4e_di" bpmnElement="Flow_0iwhb4e">
         <di:waypoint x="620" y="645" />
