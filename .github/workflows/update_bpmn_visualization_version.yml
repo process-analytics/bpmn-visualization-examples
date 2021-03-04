@@ -1,0 +1,61 @@
+name: Update BPMN Visualization version
+on:
+  repository_dispatch:
+    types: [update_bpmn_visualization_version]
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version'
+        required: true
+      build_demo_repo:
+        description: 'The repository where the demo artifact is stored'
+        default: "process-analytics/bpmn-visualization-js"
+      build_demo_workflow_id:
+        description: 'The workflow identifier or file name where the demo artifact is stored'
+        default: "upload-demo-archive.yml"
+      artifact_name:
+        description: 'The demo artifact name'
+        default: "demo_"
+        required: true
+
+jobs:
+  updateVersion:
+    runs-on: ubuntu-20.04
+    env:
+      VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
+      ARTIFACT_NAME: ${{ github.event.client_payload.artifact_name || github.event.inputs.artifact_name }}
+      BUILD_DEMO_WORKFLOW_ID: ${{ github.event.client_payload.build_demo_workflow_id || github.event.inputs.build_demo_workflow_id }}
+      BUILD_DEMO_REPO: ${{ github.event.client_payload.build_demo_repo || github.event.inputs.build_demo_repo }}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Update examples
+        run: ./scripts/update-lib-version.bash ${{ env.VERSION }}
+      - name: Delete old Demo
+        run: rm -rf demo
+      - name: Download Demo ${{ env.VERSION }}
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          repo: ${{ env.BUILD_DEMO_REPO }}
+          workflow: ${{ env.BUILD_DEMO_WORKFLOW_ID }}
+          workflow_conclusion: success
+          name: ${{ env.ARTIFACT_NAME }}
+          path: demo
+      - name: Create Pull Request
+        uses: peter-evans/create-pull-request@v3
+        with:
+          token: ${{ secrets.GH_RELEASE_TOKEN }}
+          commit-message: "[INFRA] Update BPMN Visualization version to ${{ env.VERSION }}"
+          committer: "process-analytics-bot <62586190+process-analytics-bot@users.noreply.github.com>"
+          author: "process-analytics-bot <62586190+process-analytics-bot@users.noreply.github.com>"
+          branch: "infra/update_bpmn_visualization_to_${{ env.VERSION }}"
+          delete-branch: true
+          base: "master"
+          title: "[INFRA] Update BPMN Visualization version to ${{ env.VERSION }}"
+          body: "https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/infra/update_bpmn_visualization_to_${{ env.VERSION }}/examples/index.html"
+          labels: "enhancement"
+          reviewers:
+            - "aibcmars"
+            - "csouchet"
+            - "tbouffard"
+          draft: true
