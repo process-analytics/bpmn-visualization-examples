@@ -121,7 +121,7 @@ limitations under the License.
 <script src="../../static/js/link-to-sources.js"></script>
 <script src="../../static/js/dom-helper.js"></script>
 <!-- load bpmn kie-editors-standalone -->
-<script src="https://cdn.jsdelivr.net/npm/@kogito-tooling/kie-editors-standalone@0.8.1/dist/bpmn/index.js" integrity="sha256-zQouSvQPpMHn0SS9CkEFj0vkPh+Q0rGBc0SInk+pCVs=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/@kogito-tooling/kie-editors-standalone@0.8.3/dist/bpmn/index.js" integrity="sha256-Ax1DKGo7EIqUAs3tDXOSxI6MB1exbbEMTL6VHFHHAwo=" crossorigin="anonymous"></script>
 <!-- load bpmn-visualization -->
 <script src="https://unpkg.com/bpmn-visualization@0.12.2/dist/bpmn-visualization.min.js"></script>
 
@@ -133,7 +133,7 @@ limitations under the License.
   const kieBpmnEditor = BpmnEditor.open({
     container: document.getElementById(kieBpmnEditorContainerId),
     readOnly: false, // in 0.7.2-alpha3 and 0.8.1, this is not working as explained in https://blog.kie.org/2020/10/bpmn-and-dmn-standalone-editors.html
-    origin: '*', // let use the editor directly from local file i.e. without served by http server
+    // origin: '*', // let use the editor directly from local file i.e. without served by http server
   });
   kieBpmnEditor.subscribeToContentChanges((isDirty) => { logKieBpmn(`Content change detected, isDirty?${isDirty}`)})
 
