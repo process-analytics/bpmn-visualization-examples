@@ -1,7 +1,7 @@
 # Attach tooltip and popover to BPMN elements
 
 Javascript example to demonstrate how to identify HtmlElement related to BPMN diagram elements and retrieve BPMN information.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/javascript-tooltip-and-popover/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/javascript-tooltip-and-popover/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
