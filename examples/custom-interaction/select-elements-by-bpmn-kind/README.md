@@ -2,7 +2,7 @@
 
 
 Javascript example to demonstrate how to select elements by BPMN kind and register custom behaviour on found elements
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/select-elements-by-bpmn-kind/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/select-elements-by-bpmn-kind/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage

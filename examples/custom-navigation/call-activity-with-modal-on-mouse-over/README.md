@@ -1,7 +1,7 @@
 # Open a modal on event on a call activity
 
 Javascript example to demonstrate how to open a new BPMN diagram in a modal.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-navigation/call-activity-with-modal-on-mouse-over/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-navigation/call-activity-with-modal-on-mouse-over/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage

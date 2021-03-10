@@ -1,7 +1,7 @@
 # BPMN Diagram navigation
 
 Javascript example to demonstrate how to navigate the BPMN diagram with the mouse.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/diagram-navigation/diagram-navigation/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/diagram-navigation/diagram-navigation/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage

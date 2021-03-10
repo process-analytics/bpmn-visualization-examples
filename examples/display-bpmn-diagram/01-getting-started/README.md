@@ -1,21 +1,21 @@
 # Getting Started
 
 Javascript example to demonstrate how to integrate `bpmn-visualization` in an html page.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/display-bpmn-diagram/01-getting-started/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/display-bpmn-diagram/01-getting-started/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
 
 ### Load the library
-Load the browser bundle from [unpkg](https://unpkg.com/browse/bpmn-visualization), [jsdelivr](https://www.jsdelivr.com/package/npm/bpmn-visualization),
+Load the browser bundle from [jsdelivr](https://www.jsdelivr.com/package/npm/bpmn-visualization), [unpkg](https://unpkg.com/browse/bpmn-visualization)
 or any other location:
 ```html
-<script src="https://unpkg.com/bpmn-visualization@0.12.2/dist/bpmn-visualization.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.12.2/dist/bpmn-visualization.min.js"></script>
 ```
 
 💡 During the development step, you can use the non-minified version:
 ```html
-<script src="https://unpkg.com/bpmn-visualization@0.12.2/dist/bpmn-visualization.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.12.2/dist/bpmn-visualization.js"></script>
 ```
 
 ### Use the library

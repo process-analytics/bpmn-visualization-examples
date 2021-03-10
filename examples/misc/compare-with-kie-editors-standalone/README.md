@@ -1,7 +1,7 @@
 # Compare bpmn-visualization and kie-editors-standalone when loading Local BPMN Diagrams
 
 Javascript example
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/misc/compare-with-kie-editors-standalone/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/misc/compare-with-kie-editors-standalone/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 

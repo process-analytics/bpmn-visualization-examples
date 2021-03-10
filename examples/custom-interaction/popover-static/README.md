@@ -1,7 +1,7 @@
 # Add a popover with information to the task found by it's id
 
 Javascript example to demonstrate how to open a new BPMN diagram in a tab.
-- [__:fast_forward: live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/popover/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/popover/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
