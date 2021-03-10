@@ -133,7 +133,6 @@ limitations under the License.
   const kieBpmnEditor = BpmnEditor.open({
     container: document.getElementById(kieBpmnEditorContainerId),
     readOnly: false, // in 0.7.2-alpha3 and 0.8.1, this is not working as explained in https://blog.kie.org/2020/10/bpmn-and-dmn-standalone-editors.html
-    // origin: '*', // let use the editor directly from local file i.e. without served by http server
   });
   kieBpmnEditor.subscribeToContentChanges((isDirty) => { logKieBpmn(`Content change detected, isDirty?${isDirty}`)})
 
