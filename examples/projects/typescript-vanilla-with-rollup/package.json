@@ -33,6 +33,6 @@
     "typescript": "^3.9.7"
   },
   "dependencies": {
-    "bpmn-visualization": "0.12.2"
+    "bpmn-visualization": "0.13.0"
   }
 }
