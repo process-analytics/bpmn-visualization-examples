@@ -6,7 +6,7 @@ Javascript example to demonstrate how to add and remove overlays on BPMN element
 
 ## ♻️ Usage
 
-After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the BPMN element to add or remove overlays.
+First create a `bpmnVisualization` instance prior being able to add or remove overlays to BPMN elements.
 
 ### Add one overlay
 
