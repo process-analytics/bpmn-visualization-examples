@@ -70,6 +70,9 @@ Display BPMN Diagram:
 - [BPMN Diagram fit on load](examples/diagram-navigation/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
 - [BPMN Diagram fit after load](examples/diagram-navigation/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 
+### Overlay examples
+- [Add default overlays and remove all overlays](examples/overlays/add-remove/README.md) - add default overlays and remove all overlays on BPMN elements
+
 ### Custom BPMN Theme examples
 
 **DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
