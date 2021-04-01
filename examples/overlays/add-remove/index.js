@@ -6,6 +6,9 @@ const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 bpmnVisualization.load(getIncidentManagementBpmnDiagram());
 
 
+configureAddOverlaysOnEdge('start', '1');
+configureAddOverlaysOnEdge('middle', '234567');
+configureAddOverlaysOnEdge('end', '89');
 configureAddOverlaysOnShape('top-left', '123');
 configureAddOverlaysOnShape('top-center', '4');
 configureAddOverlaysOnShape('top-right', '56789');
@@ -27,12 +30,29 @@ function configureAddOverlaysOnShape(position, label) {
     };
 }
 
+function configureAddOverlaysOnEdge(position, label) {
+    document.getElementById(`btn-${position}`).onclick = () => {
+        // Add overlays
+        bpmnElementsRegistry.addOverlays('message_4', { position, label });
+        bpmnElementsRegistry.addOverlays('message_6', { position, label });
+        bpmnElementsRegistry.addOverlays('flow_4', { position, label });
+        bpmnElementsRegistry.addOverlays('flow_5', { position, label });
+    };
+}
+
 function configureRemoveAllOverlays() {
     document.getElementById('btn-reset').onclick = () => {
         // Remove all overlays
+        // Shape
         bpmnElementsRegistry.removeAllOverlays('exclusive_gateway');
         bpmnElementsRegistry.removeAllOverlays('manual_task_2');
         bpmnElementsRegistry.removeAllOverlays('end_event');
+
+        // Edge
+        bpmnElementsRegistry.removeAllOverlays('message_4');
+        bpmnElementsRegistry.removeAllOverlays('message_6');
+        bpmnElementsRegistry.removeAllOverlays('flow_4');
+        bpmnElementsRegistry.removeAllOverlays('flow_5');
     };
 }
 
