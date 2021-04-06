@@ -20,9 +20,21 @@ configureAddOverlaysOnShape('middle-right', '86');
 
 configureRemoveAllOverlays();
 
+function setupOverlaysConfiguration() {
+    console.log(document.getElementById('font-color').value);
+    console.log(document.getElementById('font-size').value);
 
+    console.log(document.getElementById('fill-color').value);
+    console.log(document.getElementById('fill-opacity').value);
+
+    console.log(document.getElementById('stroke-color').value);
+    console.log(document.getElementById('stroke-width').value);
+    console.log(document.getElementById('stroke-pattern').value);
+}
 function configureAddOverlaysOnShape(position, label) {
     document.getElementById(`btn-${position}`).onclick = () => {
+        // TODO: just to log options chosen - will be removed when actual functionality is added
+        setupOverlaysConfiguration();
         // Add overlays
         bpmnElementsRegistry.addOverlays('exclusive_gateway', { position, label });
         bpmnElementsRegistry.addOverlays('manual_task_2', { position, label });
@@ -32,6 +44,8 @@ function configureAddOverlaysOnShape(position, label) {
 
 function configureAddOverlaysOnEdge(position, label) {
     document.getElementById(`btn-${position}`).onclick = () => {
+        // TODO: just to log options chosen - will be removed when actual functionality is added
+        setupOverlaysConfiguration();
         // Add overlays
         bpmnElementsRegistry.addOverlays('message_4', { position, label });
         bpmnElementsRegistry.addOverlays('message_6', { position, label });

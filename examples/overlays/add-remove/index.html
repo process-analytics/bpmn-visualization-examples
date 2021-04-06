@@ -45,6 +45,9 @@ limitations under the License.
                 height: 36px;
                 margin-top: 2em;
             }
+            #btn-group-overlay-config input {
+                max-width: 50px;
+            }
         </style>
     </head>
     <body>
@@ -241,6 +244,33 @@ limitations under the License.
                                     </g>
                                 </svg>
                             </button>
+                        </div>
+                        <div id="btn-group-overlay-config" class="col-12 mb-2" style="float: left">
+                            <div class="col-3" style="float: left">
+                                <p class="mb-0">Font settings:</p>
+                                <input type="color" id="font-color" name="font-color" value="#e66465">
+                                <label for="font-color">font color</label>
+                                <input type="number" id="font-size" name="font-size" value="16">
+                                <label for="font-size">font size</label>
+                            </div>
+                            <div class="col-3" style="float: left">
+                                <p class="mb-0">Fill settings:</p>
+                                <input type="color" id="fill-color" name="fill-color" value="#456465">
+                                <label for="fill-color">fill color</label>
+                                <input type="number" id="fill-opacity" name="fill-opacity" value="1">
+                                <label for="fill-opacity">fill opacity</label>
+                            </div>
+                            <div class="col-3" style="float: left">
+                                <p class="mb-0">Stroke settings:</p>
+                                <input type="color" id="stroke-color" name="stroke-color" value="#216465">
+                                <label for="stroke-color">stroke color</label>
+                                <br />
+                                <input type="number" id="stroke-width" name="stroke-width" value="2">
+                                <label for="stroke-width">stroke width</label>
+                                <br />
+                                <input type="text" id="stroke-pattern" name="stroke-pattern" value="solid">
+                                <label for="stroke-pattern">stroke pattern</label>
+                            </div>
                         </div>
                     </div>
                     <div class="bg-gray">
