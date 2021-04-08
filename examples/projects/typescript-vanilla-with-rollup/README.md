@@ -1,4 +1,4 @@
-# Integrate `bpmn-visualization` in a vanilla rollup Typescript 
+# Integrate `bpmn-visualization` in a vanilla rollup TypeScript 
 
 To run locally:
 
