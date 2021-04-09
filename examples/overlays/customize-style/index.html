@@ -45,6 +45,66 @@ limitations under the License.
                 height: 36px;
                 margin-top: 2em;
             }
+
+            .modal-window {
+                position: fixed;
+                background-color: rgba(255, 255, 255, 0.75);
+                top: 0;
+                right: 0;
+                bottom: 0;
+                left: 0;
+                z-index: 999;
+                visibility: hidden;
+                opacity: 0;
+                pointer-events: none;
+                transition: all 0.3s;
+            }
+
+            .modal-window:target {
+                visibility: visible;
+                opacity: 1;
+                pointer-events: auto;
+            }
+
+            .modal-window > div {
+                min-width: 600px;
+                position: absolute;
+                top: 50%;
+                left: 50%;
+                transform: translate(-50%, -50%);
+                padding: 2em;
+                background: white;
+                border-radius: 1rem;
+                border: 5px solid hotpink;
+            }
+
+            .modal-window h1 {
+                font-size: 150%;
+                margin: 0 0 15px;
+            }
+
+            .modal-close {
+                color: #aaa;
+                line-height: 50px;
+                font-size: 80%;
+                position: absolute;
+                right: 0;
+                text-align: center;
+                top: 0;
+                width: 70px;
+                text-decoration: none!important;
+            }
+
+            .modal-close:hover {
+                color: black;
+            }
+            #btn-group-overlay-config input {
+                max-width: 50px;
+            }
+            .row {
+                margin-bottom: 5px;
+                min-width: 200px;
+            }
         </style>
     </head>
     <body>
@@ -241,6 +301,7 @@ limitations under the License.
                                     </g>
                                 </svg>
                             </button>
+                            <a class="btn" href="#open-modal">⚙</a>
                         </div>
                     </div>
                     <div class="bg-gray">
@@ -248,6 +309,55 @@ limitations under the License.
                     </div>
                 </div>
             </section>
+            <div id="open-modal" class="modal-window">
+                <div>
+                    <h1>Settings for overlays:</h1>
+                    <a href="#" title="Close" class="modal-close">x</a>
+                    <div>
+                        <div id="btn-group-overlay-config" class="col-12 mb-2" style="float: left">
+                            <div class="col-4" style="float: left">
+                                <p class="mb-0">Font settings:</p>
+                                <div class="row">
+                                    <input type="color" id="font-color" name="font-color" value="#ff69b4">
+                                    <label for="font-color">font color</label>
+                                </div>
+                                <div class="row">
+                                    <input type="number" id="font-size" name="font-size" value="16">
+                                    <label for="font-size">font size</label>
+                                </div>
+                            </div>
+                            <div class="col-4" style="float: left">
+                                <p class="mb-0">Fill settings:</p>
+                                <div class="row">
+                                    <input type="color" id="fill-color" name="fill-color" value="#fff">
+                                    <label for="fill-color">fill color</label>
+                                </div>
+                                <div class="row">
+                                    <input type="number" id="fill-opacity" name="fill-opacity" value="1">
+                                    <label for="fill-opacity">fill opacity</label>
+                                </div>
+                            </div>
+                            <div class="col-4" style="float: left">
+                                <p class="mb-0">Stroke settings:</p>
+                                <div class="row">
+                                    <input type="color" id="stroke-color" name="stroke-color" value="#ff69b4">
+                                    <label for="stroke-color">stroke color</label>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <input type="number" id="stroke-width" name="stroke-width" value="2">
+                                    <label for="stroke-width">stroke width</label>
+                                </div>
+                                <br />
+                                <div class="row">
+                                    <input type="text" id="stroke-pattern" name="stroke-pattern" value="solid">
+                                    <label for="stroke-pattern">stroke pattern</label>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
         </section>
 
         <script src="../../static/js/link-to-sources.js"></script>
