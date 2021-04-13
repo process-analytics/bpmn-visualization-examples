@@ -109,7 +109,8 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 ### `bpmn-visualization` usage in projects
 
-- [Typescript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a Vanilla Typescript rollup project
+- [JavaScript + webpack](examples/projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript webpack project
+- [TypeScript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript rollup project
 
 
 ## 🔧 Contributing
