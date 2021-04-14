@@ -1,82 +1,49 @@
+// Initialize the panel of Overlay settings
+var fontColorElt = document.getElementById('font-color');
+var fontSizeElt = document.getElementById('font-size');
+var fillColorElt = document.getElementById('fill-color');
+var strokeColorElt = document.getElementById('stroke-color');
+
+var style = {
+    font: {
+        color: fontColorElt.value,
+        size: fontSizeElt.value,
+    },
+    fill: {
+        color: fillColorElt.value,
+    },
+    stroke: {
+        color: strokeColorElt.value,
+    }
+};
+
+fontColorElt.onchange = (event) => style.font.color = event.target.value;
+fontSizeElt.onchange = (event) => style.font.size = event.target.value;
+fillColorElt.onchange = (event) => style.fill.color = event.target.value;
+strokeColorElt.onchange = (event) => style.stroke.color = event.target.value;
+
 // Initialize BpmnVisualization
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'bpmn-container', navigation: {enabled: true}});
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container', navigation: { enabled: true } });
 const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 
 // Load BPMN diagram
-bpmnVisualization.load(getIncidentManagementBpmnDiagram());
+bpmnVisualization.load(getGettingStartedBpmnDiagram(), { fit: { type: 'Center' } });
 
+document.getElementById('btn-set-overlay').onclick = () => {
+    // Add overlays
+    // Shape
+    bpmnElementsRegistry.addOverlays('Activity_1potg3p', { position: 'bottom-right', label: 'NaN', style });
 
-configureAddOverlaysOnEdge('start', '1');
-configureAddOverlaysOnEdge('middle', '234567');
-configureAddOverlaysOnEdge('end', '89');
-configureAddOverlaysOnShape('top-left', '123');
-configureAddOverlaysOnShape('top-center', '4');
-configureAddOverlaysOnShape('top-right', '56789');
-configureAddOverlaysOnShape('bottom-left', '752');
-configureAddOverlaysOnShape('bottom-center', '98478465');
-configureAddOverlaysOnShape('bottom-right', '9');
-configureAddOverlaysOnShape('middle-left', '3');
-configureAddOverlaysOnShape('middle-right', '86');
+    // Edge
+    bpmnElementsRegistry.addOverlays('Flow_1wkfbb0', { position: 'middle', label: '763', style });
+};
 
-configureRemoveAllOverlays();
+document.getElementById('btn-reset').onclick = () => {
+    // Remove all overlays
+    // Shape
+    bpmnElementsRegistry.removeAllOverlays('Activity_1potg3p');
 
-function getOverlaysConfiguration() {
-    return {
-        style: {
-            font: {
-                color: document.getElementById('font-color').value,
-                size: document.getElementById('font-size').value,
-            },
-            fill: {
-                color: document.getElementById('fill-color').value,
-                opacity: document.getElementById('fill-opacity').value,
-            },
-            stroke: {
-                color: document.getElementById('stroke-color').value,
-                pattern: document.getElementById('stroke-pattern').value,
-                width: document.getElementById('stroke-width').value,
-            }
-        },
-    };
-}
-function configureAddOverlaysOnShape(position, label) {
-    document.getElementById(`btn-${position}`).onclick = () => {
-        // Add overlays
-        bpmnElementsRegistry.addOverlays('exclusive_gateway', { position, label, ...getOverlaysConfiguration() });
-        bpmnElementsRegistry.addOverlays('manual_task_2', { position, label, ...getOverlaysConfiguration() });
-        bpmnElementsRegistry.addOverlays('end_event', { position, label, ...getOverlaysConfiguration() });
-    };
-}
+    // Edge
+    bpmnElementsRegistry.removeAllOverlays('Flow_1wkfbb0');
+};
 
-function configureAddOverlaysOnEdge(position, label) {
-    document.getElementById(`btn-${position}`).onclick = () => {
-        // Add overlays
-        bpmnElementsRegistry.addOverlays('message_4', { position, label, ...getOverlaysConfiguration() });
-        bpmnElementsRegistry.addOverlays('message_6', { position, label, ...getOverlaysConfiguration() });
-        bpmnElementsRegistry.addOverlays('flow_4', { position, label, ...getOverlaysConfiguration() });
-        bpmnElementsRegistry.addOverlays('flow_5', { position, label, ...getOverlaysConfiguration() });
-    };
-}
-
-function configureRemoveAllOverlays() {
-    document.getElementById('btn-reset').onclick = () => {
-        // Remove all overlays
-        // Shape
-        bpmnElementsRegistry.removeAllOverlays('exclusive_gateway');
-        bpmnElementsRegistry.removeAllOverlays('manual_task_2');
-        bpmnElementsRegistry.removeAllOverlays('end_event');
-
-        // Edge
-        bpmnElementsRegistry.removeAllOverlays('message_4');
-        bpmnElementsRegistry.removeAllOverlays('message_6');
-        bpmnElementsRegistry.removeAllOverlays('flow_4');
-        bpmnElementsRegistry.removeAllOverlays('flow_5');
-    };
-}
-
-
-document.getElementById('open-modal').onclick = (e) => {
-    if(e.target.attributes && e.target.attributes.id && e.target.getAttribute('id') === 'open-modal'){
-        e.target.querySelector('a').click();
-    }
-}

@@ -25,8 +25,6 @@ limitations under the License.
                 /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
                 /* width is relative to the window size */
                 height: 650px;
-                width: 100%;
-                margin-top: 1.5em;
                 border-style: solid;
                 border-color: #B0B0B0;
                 border-width: 1px;
@@ -41,63 +39,6 @@ limitations under the License.
                 margin-right: 5px;
             }
 
-            #controls {
-                height: 36px;
-                margin-top: 2em;
-            }
-
-            .modal-window {
-                position: fixed;
-                background-color: rgba(255, 255, 255, 0.75);
-                top: 0;
-                right: 0;
-                bottom: 0;
-                left: 0;
-                z-index: 999;
-                visibility: hidden;
-                opacity: 0;
-                pointer-events: none;
-                transition: all 0.3s;
-            }
-
-            .modal-window:target {
-                visibility: visible;
-                opacity: 1;
-                pointer-events: auto;
-            }
-
-            .modal-window > div {
-                min-width: 600px;
-                position: absolute;
-                top: 50%;
-                left: 50%;
-                transform: translate(-50%, -50%);
-                padding: 2em;
-                background: white;
-                border-radius: 1rem;
-                border: 5px solid hotpink;
-            }
-
-            .modal-window h1 {
-                font-size: 150%;
-                margin: 0 0 15px;
-            }
-
-            .modal-close {
-                color: #aaa;
-                line-height: 50px;
-                font-size: 80%;
-                position: absolute;
-                right: 0;
-                text-align: center;
-                top: 0;
-                width: 70px;
-                text-decoration: none!important;
-            }
-
-            .modal-close:hover {
-                color: black;
-            }
             #btn-group-overlay-config input {
                 max-width: 50px;
             }
@@ -129,13 +70,14 @@ limitations under the License.
             </section>
         </header>
 
-        <section class="container col-10 flex-centered mt-2">
-            <section class="col-12 mt-2">
-                <div class="col-11 col-mx-auto">
-                    <h2>Add stylized overlays</h2>
+        <section class="container col-10" style="margin-top: 3rem">
+            <div class="col-11 col-mx-auto">
+                <h2>Add stylized overlays</h2>
 
-                    <div id="controls">
-                        <div id="btn-group-overlay" class="col-12" style="float: left">
+                <div class="columns" style="margin-top: 2.5rem">
+                    <div id="controls" class="column col-2 p-centered">
+                        <div id="btn-group-overlay">
+                            <h4>Actions</h4>
                             <button id="btn-reset" type="button" class="btn btn-primary has-icon-right" title="Remove all the overlays of the selected BPMN element">
                                 <span class="icon icon-refresh mb-1"></span>
                             </button>
@@ -155,44 +97,44 @@ limitations under the License.
                                 </svg>
                             </button>
                         </div>
-                        <div>
-                            <h3>Overlay settings:</h3>
-                            <div>
-                                <div id="btn-group-overlay-config" class="col-12 mb-2" style="float: left">
-                                    <div class="col-4" style="float: left">
-                                        <p class="mb-0">Font:</p>
-                                        <div class="row">
-                                            <input type="color" id="font-color" name="font-color" value="#ff69b4">
-                                            <label for="font-color">font color</label>
-                                        </div>
-                                        <div class="row">
-                                            <input type="number" id="font-size" name="font-size" value="16">
-                                            <label for="font-size">font size</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4" style="float: left">
-                                        <p class="mb-0">Fill:</p>
-                                        <div class="row">
-                                            <input type="color" id="fill-color" name="fill-color" value="#E6E6FA">
-                                            <label for="fill-color">fill color</label>
-                                        </div>
-                                    </div>
-                                    <div class="col-4" style="float: left">
-                                        <p class="mb-0">Stroke:</p>
-                                        <div class="row">
-                                            <input type="color" id="stroke-color" name="stroke-color" value="#8B008B">
-                                            <label for="stroke-color">stroke color</label>
-                                        </div>
-                                    </div>
+                        <div id="btn-group-overlay-config" style="margin-top: 1.5rem">
+                            <h4>Overlay settings</h4>
+                            <div class="ml-2">
+                                <p class="mb-0">
+                                <h5>Font</h5>
+                                <div class="row">
+                                    <input type="color" id="font-color" name="font-color" value="#8B008B">
+                                    <label for="font-color">font color</label>
                                 </div>
+                                <div class="row">
+                                    <input type="number" id="font-size" name="font-size" value="16">
+                                    <label for="font-size">font size</label>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="ml-2">
+                                <p class="mb-0">
+                                <h5>Fill</h5>
+                                <div class="row">
+                                    <input type="color" id="fill-color" name="fill-color" value="#778899">
+                                    <label for="fill-color">fill color</label>
+                                </div>
+                                </p>
+                            </div>
+                            <div class="ml-2">
+                                <p class="mb-0">
+                                <h5>Stroke</h5>
+                                <div class="row">
+                                    <input type="color" id="stroke-color" name="stroke-color" value="#7FFFD4">
+                                    <label for="stroke-color">stroke color</label>
+                                </div>
+                                </p>
                             </div>
                         </div>
                     </div>
-                    <div class="bg-gray">
-                        <div id="bpmn-container" class="column col-12 col-mx-auto bpmn-container"></div>
-                    </div>
+                    <div id="bpmn-container" class="column col-10 col-mx-auto bpmn-container"></div>
                 </div>
-            </section>
+            </div>
         </section>
 
         <script src="../../static/js/link-to-sources.js"></script>
