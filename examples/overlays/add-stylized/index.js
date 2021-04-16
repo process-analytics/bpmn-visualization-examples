@@ -44,7 +44,7 @@ document.getElementById('btn-set-overlay').onclick = () => {
 
     // Add overlays
     // Shape
-    bpmnElementsRegistry.addOverlays('Activity_1potg3p', { position: 'bottom-right', label: 'NaN', style });
+    bpmnElementsRegistry.addOverlays('Activity_1potg3p', { position: 'bottom-right', label: 'OK 👌', style });
 
     // Edge
     bpmnElementsRegistry.addOverlays('Flow_1wkfbb0', { position: 'middle', label: '763', style });
