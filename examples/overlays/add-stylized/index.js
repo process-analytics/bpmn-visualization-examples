@@ -1,3 +1,13 @@
+function removeAllOverlays(){
+    // Remove all overlays
+    // Shape
+    bpmnElementsRegistry.removeAllOverlays('Activity_1potg3p');
+
+    // Edge
+    bpmnElementsRegistry.removeAllOverlays('Flow_1wkfbb0');
+}
+
+
 // Initialize the panel of Overlay settings
 var fontColorElt = document.getElementById('font-color');
 var fontSizeElt = document.getElementById('font-size');
@@ -30,6 +40,8 @@ const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 bpmnVisualization.load(getGettingStartedBpmnDiagram(), { fit: { type: 'Center' } });
 
 document.getElementById('btn-set-overlay').onclick = () => {
+    removeAllOverlays();
+
     // Add overlays
     // Shape
     bpmnElementsRegistry.addOverlays('Activity_1potg3p', { position: 'bottom-right', label: 'NaN', style });
@@ -39,11 +51,7 @@ document.getElementById('btn-set-overlay').onclick = () => {
 };
 
 document.getElementById('btn-reset').onclick = () => {
-    // Remove all overlays
-    // Shape
-    bpmnElementsRegistry.removeAllOverlays('Activity_1potg3p');
-
-    // Edge
-    bpmnElementsRegistry.removeAllOverlays('Flow_1wkfbb0');
+    removeAllOverlays();
+    bpmnVisualization.fit({ type: 'Center' });
 };
 
