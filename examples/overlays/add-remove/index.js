@@ -20,7 +20,6 @@ configureAddOverlaysOnShape('middle-right', '86');
 
 configureRemoveAllOverlays();
 
-
 function configureAddOverlaysOnShape(position, label) {
     document.getElementById(`btn-${position}`).onclick = () => {
         // Add overlays

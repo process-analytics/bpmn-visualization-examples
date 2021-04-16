@@ -72,6 +72,7 @@ Display BPMN Diagram:
 
 ### Overlay examples
 - [Add default overlays and remove all overlays](examples/overlays/add-remove/README.md) - add default overlays and remove all overlays on BPMN elements
+- [Add stylized overlays](examples/overlays/add-stylized/README.md) - add stylized overlays on BPMN elements
 
 ### Custom BPMN Theme examples
 
