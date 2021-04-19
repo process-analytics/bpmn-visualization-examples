@@ -23,10 +23,11 @@ import {
   startBpmnVisualization,
   updateLoadOptions,
   ShapeUtil,
-  addOverlay,
+  addOverlays,
+  removeAllOverlays,
 } from '../../index.es.js';
 
-let lastBpmnIdsWithExtraCssClasses = [];
+let lastIdentifiedBpmnIds = [];
 let lastCssClassName = '';
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -42,17 +43,21 @@ function updateSelectedBPMNElements(textArea, bpmnKind) {
   textArea.value += [textHeader, lines].join('\n') + '\n';
   textArea.scrollTop = textArea.scrollHeight;
 
-  // CSS classes update
-  removeCssClasses(lastBpmnIdsWithExtraCssClasses, lastCssClassName);
-  const bpmnIds = elementsByKinds.map(elt => elt.bpmnSemantic.id);
-  lastCssClassName = getCustomCssClassName(bpmnKind);
-  addCssClasses(bpmnIds, lastCssClassName);
-  lastBpmnIdsWithExtraCssClasses = bpmnIds;
+  // newly identified elements and values
+  const newlyIdentifiedBpmnIds = elementsByKinds.map(elt => elt.bpmnSemantic.id);
+  const newlyCssClassName = getCustomCssClassName(bpmnKind);
 
-  // Overlay update
-  bpmnIds.forEach(id => {
-    addOverlay(id, getOverlay(bpmnKind));
-  });
+  // CSS classes update
+  removeCssClasses(lastIdentifiedBpmnIds, lastCssClassName);
+  addCssClasses(newlyIdentifiedBpmnIds, newlyCssClassName);
+
+  // Overlays update
+  lastIdentifiedBpmnIds.forEach(id => removeAllOverlays(id));
+  newlyIdentifiedBpmnIds.forEach(id => addOverlays(id, getOverlay(bpmnKind)));
+
+  // keep track of newly identified elements and values
+  lastIdentifiedBpmnIds = newlyIdentifiedBpmnIds;
+  lastCssClassName = newlyCssClassName;
 }
 
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
@@ -63,10 +68,13 @@ function configureControls() {
   selectedKindElt.onchange = event => updateSelectedBPMNElements(textArea, event.target.value);
   document.addEventListener('diagramLoaded', () => updateSelectedBPMNElements(textArea, selectedKindElt.value), false);
 
-  document.getElementById('bpmn-kinds-textarea-clean-btn').onclick = function () {
+  document.getElementById('clear-btn').onclick = function () {
     textArea.value = '';
-    removeCssClasses(lastBpmnIdsWithExtraCssClasses, lastCssClassName);
-    lastBpmnIdsWithExtraCssClasses = [];
+    removeCssClasses(lastIdentifiedBpmnIds, lastCssClassName);
+    lastIdentifiedBpmnIds.forEach(id => removeAllOverlays(id));
+
+    // reset identified elements and values
+    lastIdentifiedBpmnIds = [];
     lastCssClassName = '';
   };
 }
@@ -90,15 +98,45 @@ function getCustomCssClassName(bpmnKind) {
 // eslint-disable-next-line @typescript-eslint/explicit-function-return-type
 function getOverlay(bpmnKind) {
   if (ShapeUtil.isActivity(bpmnKind)) {
-    return { position: 'top-left', label: '30' };
+    return {
+      position: 'top-left',
+      label: '30',
+      style: {
+        font: {
+          color: 'Chartreuse',
+          size: 30,
+        },
+        fill: {
+          color: 'DimGray',
+        },
+      },
+    };
   } else if (bpmnKind.includes('Gateway')) {
-    return { position: 'top-right', label: '3' };
+    return {
+      position: 'top-right',
+      label: '3',
+      style: {
+        stroke: {
+          color: 'HotPink',
+          width: 4,
+        },
+      },
+    };
   } else if (bpmnKind.includes('Event')) {
     return { position: 'bottom-left', label: '15' };
   } else if (bpmnKind.includes('lane')) {
     return { position: 'bottom-right', label: '100' };
   } else if (bpmnKind.includes('Flow')) {
-    return { position: 'middle', label: '999999' };
+    return {
+      position: 'middle',
+      label: '999999',
+      style: {
+        fill: {
+          color: 'PaleTurquoise',
+          opacity: 25,
+        },
+      },
+    };
   }
   return { position: 'top-left', label: '40' };
 }
