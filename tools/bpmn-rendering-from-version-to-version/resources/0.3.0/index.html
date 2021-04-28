@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bpmn-visualization 0.3.0</title>
+    <link href="../static/css/main.css" rel="stylesheet">
+</head>
+<body>
+<div id="bpmn-container" class="bpmn-container"></div>
+
+<!-- load global settings -->
+<script src="../static/mxgraph/configureMxGraphGlobals.js"></script>
+<!-- load mxGraph client library -->
+<script src="../static/mxgraph/mxClient.min.js"></script>
+
+<script src="../static/loader.js"></script>
+<script type="module">
+  import { BpmnVisualization } from './index.es.js';
+
+  const bpmnVisualization = new BpmnVisualization(window.document.getElementById('bpmn-container'))
+  loadBpmn(bpmnVisualization);
+</script>
+</body>
+</html>

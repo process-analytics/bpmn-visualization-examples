@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bpmn-visualization 0.7.0</title>
+    <link href="../static/css/main.css" rel="stylesheet">
+</head>
+<body>
+    <div id="bpmn-container" class="bpmn-container"></div>
+
+    <!-- load bpmn-visualization -->
+    <script src="https://unpkg.com/bpmn-visualization@0.7.0/dist/bpmn-visualization.js"></script>
+    <script src="../static/loader.js"></script>
+<script>
+  const bpmnVisualization = new bpmnvisu.BpmnVisualization(window.document.getElementById('bpmn-container'))
+  loadBpmn(bpmnVisualization);
+</script>
+</body>
+</html>
