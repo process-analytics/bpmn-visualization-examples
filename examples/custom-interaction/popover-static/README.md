@@ -1,4 +1,4 @@
-# Add a popover with information to the task found by it's id
+# Add a popover with information to the task found by its id
 
 Javascript example to demonstrate how to open a new BPMN diagram in a tab.
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-interaction/popover/index.html)
@@ -15,5 +15,5 @@ What is important to know:
 
 
 ⚠️ It's not possible to use BPMN diagram navigation at the moment. \
-Panning and zooming causes the diagram to be redrawn.
+Pan and zoom causes the diagram to be redrawn.
 A new API comes later to support this case.

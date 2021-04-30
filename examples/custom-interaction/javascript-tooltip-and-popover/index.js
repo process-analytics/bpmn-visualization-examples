@@ -1,6 +1,6 @@
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
 // TODO enable navigation support
-// There is currently an issue with popover which are wrongly updated during and after panning
+// There is currently an issue with popover which are wrongly updated during and after pan
 const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt, navigation: { enabled: false } });
 
 const diagram = getHorizontalBpmnDiagram();
@@ -84,15 +84,15 @@ function addPopover(bpmnElements) {
     tippy(htmlElements, {
         // sticky option behaviour with this appendTo
         // The following is only needed to manage diagram navigation
-        // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
+        // Current issue while pan, the dimension of the popper changed while dragging which may also wrongly trigger a flip
         // during the pan and then, an new flip after dimensions are restored
-        // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
+        // for issue on pan, this may help: https://github.com/atomiks/tippyjs/issues/688
 
         // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
 
         // When trigger on click
         // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
-        // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
+        // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while pan)
         appendTo: bpmnContainerElt,
 
         // When trigger on click
@@ -137,15 +137,15 @@ function addPopup(bpmnElements) {
         tippy(htmlElement, {
             // sticky option behaviour with this appendTo
             // The following is only needed to manage diagram navigation
-            // Current issue while panning, the dimension of the popper changed while dragging which may also wrongly trigger a flip
+            // Current issue while pan, the dimension of the popper changed while dragging which may also wrongly trigger a flip
             // during the pan and then, an new flip after dimensions are restored
-            // for issue on panning, this may help: https://github.com/atomiks/tippyjs/issues/688
+            // for issue on pan, this may help: https://github.com/atomiks/tippyjs/issues/688
 
             // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
 
             // When trigger on click
             // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
-            // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while panning)
+            // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while pan)
             // appendTo: bpmnContainerElt,
 
             // When trigger on click
