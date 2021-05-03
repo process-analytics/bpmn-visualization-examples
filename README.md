@@ -85,12 +85,6 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
-### Custom navigation examples
-
-- [Open a call activity from a main BPMN Diagram on a modal](examples/custom-navigation/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
-- [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/custom-navigation/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
-- [Open a call activity from a main BPMN Diagram on the same container](examples/custom-navigation/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
-
 ### Custom animation examples
 
 - [Growing Sequence Flow](examples/custom-animation/growing-sequence-flow/README.md) - add custom growing animation on a Sequence Flow
@@ -102,6 +96,9 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Apply CSS classes](examples/custom-behavior/apply-css-classes/README.md) - highlight elements and paths on demand on the BPMN diagram
 - [Attach tooltip and popover to BPMN elements](examples/custom-behavior/javascript-tooltip-and-popover/README.md) - interact with the BPMN Diagram to display additional information
 - [Select elements by BPMN kind](examples/custom-behavior/select-elements-by-bpmn-kind/README.md) - to select elements by BPMN kind and register custom behaviour on found elements
+- [Open a call activity from a main BPMN Diagram on a modal](examples/custom-behavior/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
+- [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/custom-behavior/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
+- [Open a call activity from a main BPMN Diagram on the same container](examples/custom-behavior/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
 
 ### Miscellaneous examples
 

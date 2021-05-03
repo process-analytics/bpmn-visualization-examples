@@ -15,7 +15,7 @@ limitations under the License.
 <html lang="en">
     <head>
         <meta charset="UTF-8">
-        <title>BPMN Visualization - Diagram Navigation</title>
+        <title>BPMN Visualization - Switch tab (of the page) on click on a call activity</title>
         <link rel="shortcut icon" href="../../favicon.ico">
         <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
         <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
@@ -25,11 +25,13 @@ limitations under the License.
                 /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
                 /* width is relative to the window size */
                 height: 600px;
+                width: 100%;
                 border-style: solid;
                 border-color: #B0B0B0;
                 border-width: 1px;
                 /* This ensures that the parts of the diagram outside of the container are not displayed. */
                 overflow: hidden;
+                background-color: white;
             }
         </style>
     </head>
@@ -52,37 +54,29 @@ limitations under the License.
                 </div>
             </section>
         </header>
+
         <section id="section" class="container" style="margin-top: 3rem">
             <div class="col-11 col-mx-auto">
-                <h2>Open a modal on mouse over on a call activity</h2>
-                <p>Move your mouse on the call activity, and see what happens 😃</p>
+                <h2>Switch BPMN diagram display on click on call activity</h2>
+                <p>Click on a call activity, and see what happens 😃</p>
 
+                <ul class="tab bg-secondary">
+                    <li id="main-tab" class="tab-item active">
+                        <a href="#" onclick="openTab('main')">Order Fulfillment</a>
+                    </li>
+                    <li id="secondary-tab" class="tab-item">
+                        <a href="#" onclick="openTab('secondary')">Procurement</a>
+                    </li>
+                </ul>
                 <div id="main-bpmn-container" class="column col-12 col-mx-auto bpmn-container"></div>
+                <div id="secondary-bpmn-container" class="column col-12 col-mx-auto bpmn-container d-hide"></div>
             </div>
         </section>
-
-        <!-- The Modal -->
-        <div id="modal" class="modal">
-            <a class="modal-overlay" aria-label="Close"></a>
-            <div class="modal-container bg-dark" style="max-width: 1200px;max-height: 800px">
-                <div class="modal-header text-secondary">
-                    <a id="close-modal" class="btn btn-clear float-right" aria-label="Close"></a>
-                    <div class="modal-title h2">Procurement</div>
-                </div>
-                <div class="modal-body">
-                    <div class="content">
-                        <div id="secondary-bpmn-container" class="bpmn-container" style="background-color: white"></div>
-                    </div>
-                </div>
-                <div class="modal-footer"></div>
-            </div>
-        </div>
 
         <script src="../../static/js/link-to-sources.js"></script>
         <!-- load bpmn-visualization -->
         <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.14.0/dist/bpmn-visualization.min.js"></script>
         <script src="../../static/js/bpmn-diagrams.js"></script>
         <script src="./index.js"></script>
-        <script src="./modal.js"></script>
     </body>
 </html>
