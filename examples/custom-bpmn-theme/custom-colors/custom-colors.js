@@ -11,7 +11,7 @@ bpmnVisualization.load(bpmn);
 // custom default font color
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 const originalDefaultFontColor = bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR;
-bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
+bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'DeepPink';
 const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-font-color' });
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
