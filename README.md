@@ -71,8 +71,10 @@ Display BPMN Diagram:
 - [BPMN Diagram fit after load](examples/diagram-navigation/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
 
 ### Overlay examples
+
 - [Add default overlays and remove all overlays](examples/overlays/add-remove/README.md) - add default overlays and remove all overlays on BPMN elements
 - [Add stylized overlays](examples/overlays/add-stylized/README.md) - add stylized overlays on BPMN elements
+- [Custom overlay default style](examples/custom-bpmn-theme/custom-overlay-default-style/README.md) - custom default style for the overlays
 
 ### Custom BPMN Theme examples
 
@@ -84,7 +86,6 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
-- [Custom overlay default style](examples/custom-bpmn-theme/custom-overlay-default-style/README.md) - custom default style for the overlays
 
 ### Custom animation examples
 
