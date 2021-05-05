@@ -84,6 +84,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+- [Custom overlay default style](examples/custom-bpmn-theme/custom-overlay-default-style/README.md) - custom default style for the overlays
 
 ### Custom animation examples
 
