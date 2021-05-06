@@ -9,10 +9,7 @@ Javascript example
 
 
 ## ♻️ BPMN Visualization Usage
-Override the BPMN element styles using various ways. `mxGraph` knowledge is required to handle style changes.
-See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/bpmn-support-how-to.md) for more details.
-
-:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [custom-overlay-default-style.js](custom-overlay-default-style.js).
+:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
 
 Content:
