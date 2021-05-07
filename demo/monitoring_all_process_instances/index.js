@@ -27,7 +27,7 @@ const bpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'bpmn-conta
 const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 
 // Load BPMN diagram
-bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center'}});
+bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
 
 /*document.getElementById('btn-set-overlay').onclick = () => {
     removeAllOverlays();
