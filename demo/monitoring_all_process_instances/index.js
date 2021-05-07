@@ -54,9 +54,3 @@ document.getElementById('btn-reset').onclick = () => {
     removeAllOverlays();
     bpmnVisualization.fit({type: 'Center'});
 };
-
-const modalElt = document.getElementById('modal');
-document.getElementById('btn-open-modal').onclick = () => {
-    // Display the modal
-    modalElt.classList.add('active');
-}
