@@ -63,18 +63,21 @@ limitations under the License.
 
         <div class="col-12 pt-2">
             <div id="controls" class="col-12" style="margin-top: 1rem; margin-bottom: 2rem">
-                <div class="switch switch--horizontal switch--expanding-inner">
-                    <input id="radio-i" type="radio" name="fifth-switch" checked="checked"/>
-                    <label for="radio-i">Time</label>
-                    <input id="radio-j" type="radio" name="fifth-switch"/>
-                    <label for="radio-j">Frequency</label>
+                <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
+                    <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
+                    <label for="btn-time">Time</label>
+                    <input id="btn-frequency" type="radio" name="switch-data-type"/>
+                    <label for="btn-frequency">Frequency</label>
                     <span class="toggle-outside">
                         <span class="toggle-inside"></span>
                     </span>
                 </div>
             </div>
             <div class="bg-dark col-12 p-1">
-                <div id="bpmn-container" class="col 10 col-mx-auto bpmn-container m-1"></div>
+                <div class=" m-1">
+                    <div id="time-bpmn-container" class="col 12 bpmn-container"></div>
+                    <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                </div>
             </div>
         </div>
     </div>
