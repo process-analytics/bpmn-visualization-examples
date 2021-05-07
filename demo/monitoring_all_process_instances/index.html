@@ -20,7 +20,7 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
-    <link rel="stylesheet" href="./modal.css" type="text/css">
+    <link rel="stylesheet" href="./switch.css" type="text/css">
     <style>
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -59,10 +59,23 @@ limitations under the License.
 
 <section class="container col-10" style="margin-top: 3rem">
     <div class="col-11 col-mx-auto">
-        <h2>Monitoring of all process instances demo</h2>
+        <div class="h2">Monitoring of all process instances demo</div>
 
-        <div class="col-12 p-2 bg-gray">
-            <div id="bpmn-container" class="col 10 col-mx-auto bpmn-container m-1"></div>
+        <div class="col-12 pt-2">
+            <div id="controls" class="col-12" style="margin-top: 1rem; margin-bottom: 2rem">
+                <div class="switch switch--horizontal switch--expanding-inner">
+                    <input id="radio-i" type="radio" name="fifth-switch" checked="checked"/>
+                    <label for="radio-i">Time</label>
+                    <input id="radio-j" type="radio" name="fifth-switch"/>
+                    <label for="radio-j">Frequency</label>
+                    <span class="toggle-outside">
+                        <span class="toggle-inside"></span>
+                    </span>
+                </div>
+            </div>
+            <div class="bg-dark col-12 p-1">
+                <div id="bpmn-container" class="col 10 col-mx-auto bpmn-container m-1"></div>
+            </div>
         </div>
     </div>
 </section>
