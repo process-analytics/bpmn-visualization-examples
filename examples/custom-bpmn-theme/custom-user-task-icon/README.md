@@ -1,6 +1,6 @@
 # Custom user task icon
 
-**DISCLAIMER: this extension point is very experimental and is subject to changes.**  
+**DISCLAIMER: this extension point is very experimental and is subject to change.**  
 The current way of doing is a hack as there is no official way of doing it. In the future, this will be probably done by
 subclassing `IconPainter`.
 

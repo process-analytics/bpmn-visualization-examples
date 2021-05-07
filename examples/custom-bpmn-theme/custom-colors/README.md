@@ -1,6 +1,6 @@
 # Custom colors
 
-**DISCLAIMER: this extension point is very experimental and is subject to changes**.  
+**DISCLAIMER: this extension point is very experimental and is subject to change**.  
 In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example
