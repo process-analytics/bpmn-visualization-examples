@@ -1,0 +1,167 @@
+<!--
+Copyright 2021 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>BPMN Visualization - Monitoring of all process instances demo</title>
+    <link rel="shortcut icon" href="../../examples/favicon.ico">
+    <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
+    <link rel="stylesheet" href="./modal.css" type="text/css">
+    <style>
+        .bpmn-container {
+            /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+            /* width is relative to the window size */
+            height: 650px;
+            border-style: solid;
+            border-color: #B0B0B0;
+            border-width: 1px;
+            /* This ensures that the parts of the diagram outside of the container are not displayed. */
+            overflow: hidden;
+            background-color: white;
+        }
+
+        button {
+            width: 40px;
+            height: 40px;
+            margin-right: 5px;
+        }
+
+        #btn-group-overlay-config input {
+            max-width: 50px;
+        }
+
+        .row {
+            margin-bottom: 5px;
+            min-width: 200px;
+        }
+    </style>
+</head>
+<body>
+<header class="navbar bg-dark p-2">
+    <section class="navbar-section ml-2">
+        <img src="../../examples/static/img/logo_64x64.ico" alt="logo" class="logo">
+        <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
+    </section>
+    <section class="navbar-section">
+        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+        <div class="dropdown mr-2">
+            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+            </a>
+            <ul class="menu">
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-js"
+                       class="mr-2 btn btn-link">Library</a></li>
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples"
+                       class="mr-2 btn btn-link">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+</header>
+
+<section class="container col-10" style="margin-top: 3rem">
+    <div class="col-11 col-mx-auto">
+        <h2>Monitoring of all process instances demo</h2>
+
+        <div class="col-12 p-2">
+            <div id="controls" class="mb-2">
+                <div id="btn-group-overlay">
+                    <h4>Actions</h4>
+                    <button id="btn-reset" type="button" class="btn btn-primary has-icon-right"
+                            title="Remove all the overlays of the selected BPMN element">
+                        <span class="icon icon-refresh mb-1"></span>
+                    </button>
+                    <button id="btn-set-overlay" type="button" class="btn bg-secondary"
+                            title="Set custom overlay on edge or shape">
+                        <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink"
+                             viewBox="0 0 24 24" width="24" height="24">
+                            <defs>
+                                <path d="M22.31 12.19L1.94 12.34" id="egGzqxKdQ"></path>
+                                <path d="M8.49 12.18C8.49 10.12 10.12 8.45 12.12 8.45C14.13 8.45 15.76 10.12 15.76 12.18C15.76 14.24 14.13 15.93 12.12 15.93C10.12 15.93 8.49 14.24 8.49 12.18Z"
+                                      id="as8hBwIQ6"></path>
+                            </defs>
+                            <g>
+                                <use xlink:href="#egGzqxKdQ" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2"
+                                     stroke-opacity="1"></use>
+                                <use xlink:href="#as8hBwIQ6" opacity="1" fill="#f65bc3" fill-opacity="1"></use>
+                            </g>
+                        </svg>
+                    </button>
+                    <a id="btn-open-modal" class="btn">⚙</a>
+                </div>
+            </div>
+            <div class="bg-gray">
+                <div id="bpmn-container" class="col-mx-auto bpmn-container mt-2"></div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- The Modal -->
+<div id="modal" class="modal">
+    <a class="modal-overlay" aria-label="Close"></a>
+    <div class="modal-container bg-dark" style="max-width: 1200px;max-height: 800px">
+        <div class="modal-header text-secondary">
+            <a id="close-modal" class="btn btn-clear float-right" aria-label="Close"></a>
+            <div class="modal-title h2">Overlay settings</div>
+        </div>
+        <div class="modal-body">
+            <div class="content bg-gray text-dark p-2">
+                <div class="ml-2">
+                    <p class="mb-0">
+                    <div class="h5">Font</div>
+                    <div class="row">
+                        <label for="font-color">Color</label>
+                        <input type="color" id="font-color" name="font-color" value="#7FFFD4">
+                    </div>
+                    <div class="row">
+                        <label for="font-size">Size</label>
+                        <input type="number" id="font-size" name="font-size" value="16">
+                    </div>
+                    </p>
+                </div>
+                <div class="ml-2">
+                    <p class="mb-0">
+                    <div class="h5">Fill</div>
+                    <div class="row">
+                        <label for="fill-color">Color</label>
+                        <input type="color" id="fill-color" name="fill-color" value="#778899">
+                    </div>
+                    </p>
+                </div>
+                <div class="ml-2">
+                    <p class="mb-0">
+                    <div class="h5">Stroke</div>
+                    <div class="row">
+                        <label for="stroke-color">Color</label>
+                        <input type="color" id="stroke-color" name="stroke-color" value="#FFB6C1">
+                    </div>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="modal-footer"></div>
+    </div>
+</div>
+
+<script src="../../examples/static/js/link-to-sources.js"></script>
+<!-- load bpmn-visualization -->
+<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.14.1/dist/bpmn-visualization.min.js"></script>
+<script src="../../examples/static/js/bpmn-diagrams.js"></script>
+<script src="./index.js"></script>
+<script src="./modal.js"></script>
+</body>
+</html>
