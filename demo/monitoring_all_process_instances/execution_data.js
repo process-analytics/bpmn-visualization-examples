@@ -1,116 +1,235 @@
+function getTimeOverlayStyles(position, color) {
+    return new Map([
+        ['month', {
+            position,
+            style: {
+                fill: {color},
+                font: {color: 'White'},
+            }
+        }],
+        ['day', {
+            position,
+            style: {
+                fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
+                font: {color: 'White'},
+            }
+        }],
+        ['hour', {
+            position,
+            style: {
+                fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
+            }
+        }],
+        ['minute', {
+            position,
+            style: {
+                fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
+            }
+        }],
+        ['second', {
+            position,
+            style: {
+                fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
+            }
+        }],
+    ]);
+}
+
+function getTimeOverlay(unit, overlayStyles) {
+    const date = new Date();
+    date.setTime(Math.random() * 100000000000000);
+
+    switch (unit) {
+        case 'month':
+            return date.getMonth() === 0 ? getTimeOverlay('day', overlayStyles) : {
+                ...overlayStyles.get(unit),
+                label: `${date.getMonth()} month`,
+            };
+        case 'day':
+            return date.getDay() === 0 ? getTimeOverlay('hour', overlayStyles) : {
+                ...overlayStyles.get(unit),
+                label: `${date.getDay()} d`,
+            };
+        case 'hour':
+            return date.getHours() === 0 ? getTimeOverlay('minute', overlayStyles) : {
+                ...overlayStyles.get(unit),
+                label: `${date.getHours()} h`,
+            };
+        case 'minute':
+            return date.getMinutes() === 0 ? getTimeOverlay('second', overlayStyles) : {
+                ...overlayStyles.get(unit),
+                label: `${date.getMinutes()} min`,
+            };
+        case 'second':
+        default:
+            return {
+                ...overlayStyles.get(unit),
+                label: `${date.getSeconds()} s`,
+            };
+    }
+}
+
+function getTimeData() {
+    return new Map([...getShapeTimeData(), ...getEdgeTimeData()]);
+}
+
 function getShapeTimeData() {
+    const overlayStyles = getTimeOverlayStyles('top-right', '#008700');
+
     const map = new Map();
-    map.set('start_event', '15 s');
-    map.set('parallel_gateway_1', '15 s');
-    map.set('task_1', getTime('minute'));
-    map.set('task_2', getTime('minute'));
-    map.set('exclusive_gateway_1', getTime('minute'));
-    map.set('task_3', getTime('minute'));
-    map.set('task_4', getTime('day'));
-    map.set('task_5', getTime('hour'));
-    map.set('inclusive_gateway_1', getTime('second'));
-    map.set('task_6', getTime('hour'));
-    map.set('task_7', getTime('month'));
-    map.set('inclusive_gateway_2', getTime('day'));
-    map.set('exclusive_gateway_2', getTime('day'));
-    map.set('parallel_gateway_2', getTime('day'));
-    map.set('task_8', getTime('hour'));
-    map.set('end_event', '15 s');
+    map.set('start_event', getTimeOverlay('second', overlayStyles));
+    map.set('parallel_gateway_1', getTimeOverlay('second', overlayStyles));
+    map.set('task_1', getTimeOverlay('minute', overlayStyles));
+    map.set('task_2', getTimeOverlay('minute', overlayStyles));
+    map.set('exclusive_gateway_1', getTimeOverlay('minute', overlayStyles));
+    map.set('task_3', getTimeOverlay('minute', overlayStyles));
+    map.set('task_4', getTimeOverlay('day', overlayStyles));
+    map.set('task_5', getTimeOverlay('hour', overlayStyles));
+    map.set('inclusive_gateway_1', getTimeOverlay('second', overlayStyles));
+    map.set('task_6', getTimeOverlay('hour', overlayStyles));
+    map.set('task_7', getTimeOverlay('month', overlayStyles));
+    map.set('inclusive_gateway_2', getTimeOverlay('day', overlayStyles));
+    map.set('exclusive_gateway_2', getTimeOverlay('day', overlayStyles));
+    map.set('parallel_gateway_2', getTimeOverlay('day', overlayStyles));
+    map.set('task_8', getTimeOverlay('hour', overlayStyles));
+    map.set('end_event', getTimeOverlay('second', overlayStyles));
     return map;
 }
 
 function getEdgeTimeData() {
+    const overlayStyles = getTimeOverlayStyles('middle', '#c61700');
+
     const map = new Map();
-    map.set('sequence_flow_1', '15 s');
-    map.set('sequence_flow_2', '15 s');
-    map.set('sequence_flow_18', '15 s');
-    map.set('sequence_flow_3', getTime('second'));
-    map.set('sequence_flow_4', getTime('second'));
-    map.set('sequence_flow_12', getTime('second'));
-    map.set('sequence_flow_13', getTime('second'));
-    map.set('sequence_flow_5', getTime('second'));
-    map.set('sequence_flow_6', getTime('second'));
-    map.set('sequence_flow_8', getTime('second'));
-    map.set('sequence_flow_7', getTime('second'));
-    map.set('sequence_flow_10', getTime('second'));
-    map.set('sequence_flow_9', getTime('second'));
-    map.set('sequence_flow_11', getTime('second'));
-    map.set('sequence_flow_14', getTime('second'));
-    map.set('sequence_flow_15', getTime('second'));
-    map.set('sequence_flow_16', getTime('second'));
-    map.set('sequence_flow_17', '15 s');
+    map.set('sequence_flow_1', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_2', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_18', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_3', getTimeOverlay('minute', overlayStyles));
+    map.set('sequence_flow_4', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_12', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_13', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_5', getTimeOverlay('minute', overlayStyles));
+    map.set('sequence_flow_6', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_8', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_7', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_10', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_9', getTimeOverlay('minute', overlayStyles));
+    map.set('sequence_flow_11', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_14', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_15', getTimeOverlay('minute', overlayStyles));
+    map.set('sequence_flow_16', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_17', getTimeOverlay('second', overlayStyles));
     return map;
 }
 
-function getTime(unit){
-    const date = new Date();
-    date.setTime(Math.random()*100000000000000);
-    switch (unit) {
-        case 'month':
-            return date.getMonth() === 0 ? getTime('day') : `${date.getMonth()} month`;
-        case 'day':
-            return date.getDay() === 0 ? getTime('hour') :`${date.getDay()} d`;
-        case 'hour':
-            return date.getHours() === 0 ? getTime('minute') :`${date.getHours()} h`;
-        case 'minute':
-            return date.getMinutes() === 0 ? getTime('second') :`${date.getMinutes()} min`;
-        case 'second':
-        default:
-            return `${date.getSeconds()} s`;
-    }
+
+function getFrequencyOverlayStyles(position, color) {
+    return new Map([
+        ['random', {
+            position,
+            style: {
+                fill: { color },
+                font: { color: 'White' },
+            }
+        }],
+        ['fivePerCent', {
+            position,
+            style: {
+                fill: { color: `rgba(${new Values(color).tint(21).rgb})` },
+                font: { color: 'White' },
+            }
+        }],
+        ['ninetyFivePerCent', {
+            position,
+            style: {
+                fill: { color: `rgba(${new Values(color).tint(42).rgb})` },
+            }
+        }],
+        ['thirtyPerCent', {
+            position,
+            style: {
+                fill: { color: `rgba(${new Values(color).tint(63).rgb})` },
+            }
+        }],
+        ['otherPerCent', {
+            position,
+            style: {
+                fill: { color: `rgba(${new Values(color).tint(84).rgb})` },
+            }
+        }],
+    ]);
+}
+
+function getFrequencyOverlay(label, overlayStyles, type) {
+    return {
+        ...overlayStyles.get(type),
+        label: String(label),
+    };
 }
 
 function getFrequencyData() {
-    const random = Math.floor(Math.random()*1000);
+    const shapeOverlayStyles = getFrequencyOverlayStyles('top-right', '#0083af');
+    const edgeOverlayStyles = getFrequencyOverlayStyles('middle', '#6d00af');
 
     const shapeMap = new Map();
     const edgeMap = new Map();
-    shapeMap.set('start_event', String(random));
-    edgeMap.set('sequence_flow_1', String(random));
-    shapeMap.set('parallel_gateway_1', String(random));
-    edgeMap.set('sequence_flow_2', String(random));
-    shapeMap.set('task_1', String(random));
-    edgeMap.set('sequence_flow_18', String(random));
-    shapeMap.set('task_2', String(random));
-    edgeMap.set('sequence_flow_3', String(random));
-    shapeMap.set('exclusive_gateway_1', String(random));
 
-    let fivePerCent = random*5/100;
-    edgeMap.set('sequence_flow_4', String(fivePerCent));
-    shapeMap.set('task_3', String(fivePerCent));
-    edgeMap.set('sequence_flow_12', String(fivePerCent));
-    shapeMap.set('task_4', String(fivePerCent));
-    edgeMap.set('sequence_flow_13', String(fivePerCent));
+    const random = Math.floor(Math.random() * 1000);
+    const randomShapeOverlay = getFrequencyOverlay(random, shapeOverlayStyles, 'random');
+    const randomEdgeOverlay = getFrequencyOverlay(random, edgeOverlayStyles, 'random');
+    shapeMap.set('start_event', randomShapeOverlay);
+    edgeMap.set('sequence_flow_1', randomEdgeOverlay);
+    shapeMap.set('parallel_gateway_1', randomShapeOverlay);
+    edgeMap.set('sequence_flow_2', randomEdgeOverlay);
+    shapeMap.set('task_1', randomShapeOverlay);
+    edgeMap.set('sequence_flow_18', randomEdgeOverlay);
+    shapeMap.set('task_2', randomShapeOverlay);
+    edgeMap.set('sequence_flow_3', randomEdgeOverlay);
+    shapeMap.set('exclusive_gateway_1', randomShapeOverlay);
 
-    let ninetyFivePerCent = random-fivePerCent;
-    edgeMap.set('sequence_flow_5', String(ninetyFivePerCent));
-    shapeMap.set('task_5', String(ninetyFivePerCent));
-    edgeMap.set('sequence_flow_6', String(ninetyFivePerCent));
-    shapeMap.set('inclusive_gateway_1', String(ninetyFivePerCent));
+    const fivePerCent = random * 5 / 100;
+    const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
+    const fivePerCentEdgeOverlay = getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent');
+    edgeMap.set('sequence_flow_4', fivePerCentEdgeOverlay);
+    shapeMap.set('task_3', fivePerCentShapeOverlay);
+    edgeMap.set('sequence_flow_12', fivePerCentEdgeOverlay);
+    shapeMap.set('task_4', fivePerCentShapeOverlay);
+    edgeMap.set('sequence_flow_13', fivePerCentEdgeOverlay);
 
-    let thirtyPerCent = ninetyFivePerCent*30/100;
-    edgeMap.set('sequence_flow_7', String(thirtyPerCent));
-    shapeMap.set('task_7', String(thirtyPerCent));
-    edgeMap.set('sequence_flow_10', String(thirtyPerCent));
+    const ninetyFivePerCent = random - fivePerCent;
+    const ninetyFivePerCentShapeOverlay = getFrequencyOverlay(ninetyFivePerCent, shapeOverlayStyles, 'ninetyFivePerCent');
+    const ninetyFivePerCentEdgeOverlay = getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent');
+    edgeMap.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
+    shapeMap.set('task_5', ninetyFivePerCentShapeOverlay);
+    edgeMap.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
+    shapeMap.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
 
-    let otherPerCent = ninetyFivePerCent-thirtyPerCent;
-    edgeMap.set('sequence_flow_8', String(otherPerCent));
-    shapeMap.set('task_6', String(otherPerCent));
-    edgeMap.set('sequence_flow_9', String(otherPerCent));
+    const thirtyPerCent = ninetyFivePerCent * 30 / 100;
+    const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
+    const thirtyPerCentEdgeOverlay = getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent');
+    edgeMap.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
+    shapeMap.set('task_7', thirtyPerCentShapeOverlay);
+    edgeMap.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
 
-    shapeMap.set('inclusive_gateway_2', String(ninetyFivePerCent));
-    edgeMap.set('sequence_flow_11', String(ninetyFivePerCent));
+    const otherPerCent = ninetyFivePerCent - thirtyPerCent;
+    const otherPerCentShapeOverlay = getFrequencyOverlay(otherPerCent, shapeOverlayStyles, 'otherPerCent');
+    const otherPerCentEdgeOverlay = getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent');
+    edgeMap.set('sequence_flow_8', otherPerCentEdgeOverlay);
+    shapeMap.set('task_6', otherPerCentShapeOverlay);
+    edgeMap.set('sequence_flow_9', otherPerCentEdgeOverlay);
 
-    shapeMap.set('exclusive_gateway_2', String(random));
-    edgeMap.set('sequence_flow_14', String(random));
-    edgeMap.set('sequence_flow_15', String(random));
-    shapeMap.set('parallel_gateway_2', String(random));
-    edgeMap.set('sequence_flow_16', String(random));
-    shapeMap.set('task_8', String(random));
-    edgeMap.set('sequence_flow_17', String(random));
-    shapeMap.set('end_event', String(random));
+    shapeMap.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
+    edgeMap.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
 
-    return {shape: shapeMap, edge: edgeMap};
+    shapeMap.set('exclusive_gateway_2', randomShapeOverlay);
+    edgeMap.set('sequence_flow_14', randomEdgeOverlay);
+    edgeMap.set('sequence_flow_15', randomEdgeOverlay);
+    shapeMap.set('parallel_gateway_2', randomShapeOverlay);
+    edgeMap.set('sequence_flow_16', randomEdgeOverlay);
+    shapeMap.set('task_8', randomShapeOverlay);
+    edgeMap.set('sequence_flow_17', randomEdgeOverlay);
+    shapeMap.set('end_event', randomShapeOverlay);
+
+    return { shape: shapeMap, edge: edgeMap };
 }
 
 

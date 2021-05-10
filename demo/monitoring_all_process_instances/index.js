@@ -30,25 +30,9 @@ const timeBpmnElementsRegistry = timeBpmnVisualization.bpmnElementsRegistry;
 // Load BPMN diagram
 timeBpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
 
-getShapeTimeData().forEach((value, key) => {
-    timeBpmnElementsRegistry.addOverlays(key, { position: 'top-right', label: value, style: {
-            fill: {
-                color: 'HoneyDew'
-            }
-        }
-    });
+getTimeData().forEach((value, key) => {
+    timeBpmnElementsRegistry.addOverlays(key, value);
 });
-
-getEdgeTimeData().forEach((value, key) => {
-    timeBpmnElementsRegistry.addOverlays(key, { position: 'middle', label: value, style: {
-            fill: {
-                color: 'MistyRose'
-            }
-        }
-    });
-});
-
-
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'frequency-bpmn-container', navigation: {enabled: true}});
@@ -76,18 +60,10 @@ function switchDiagram(switchValue) {
         frequencyBpmnVisualization.load(getHardwareRetailerDiagram(), { fit: {type: 'Center', margin: 30 } });
         let frequencyData = getFrequencyData();
         frequencyData.shape.forEach((value, key) => {
-            frequencyBpmnElementsRegistry.addOverlays(key, { position: 'top-right', label: value, style: {
-                    fill: {
-                        color: 'LightBlue',
-                    },
-                } });
+            frequencyBpmnElementsRegistry.addOverlays(key, value);
         });
         frequencyData.edge.forEach((value, key) => {
-            frequencyBpmnElementsRegistry.addOverlays(key, { position: 'middle', label: value, style: {
-                    fill: {
-                        color: 'Gainsboro',
-                    },
-                } });
+            frequencyBpmnElementsRegistry.addOverlays(key, value);
         });
 
         frequencyBpmnDiagramIsAlreadyLoad = true;
