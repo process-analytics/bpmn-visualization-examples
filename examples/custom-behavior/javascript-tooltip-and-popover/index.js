@@ -11,13 +11,12 @@ const registeredBpmnElements = new Map();
 const bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
 const elementsWithPopover = bpmnElementsRegistry.getElementsByIds([
     'Activity_1j15wcw', // manual task 3
-    'Activity_0y3sd80' //script task 5
+    'Activity_0y3sd80', //script task 5
 ]);
 const elementsWithPopup = bpmnElementsRegistry.getElementsByIds([
     'Activity_0kn4d46', // user task 2
-    'Flow_12yysoe' // sequence flow between 'task 5' and 'end event'
+    'Flow_12yysoe', // sequence flow between 'task 5' and 'end event'
 ]);
-
 
 
 // tippy global configuration
@@ -62,25 +61,16 @@ tippy.setDefaultProps({
     // moveTransition: 'transform 0.2s ease-out',
 });
 
-// popover on shapes
-// addPopover([manualTask3Elt, scriptTask5Elt]);
 addPopover(elementsWithPopover);
-
-// popup on edges
-// addPopup([sequenceFlowBetweenTask5AndEndEventElt], true);
-// // popup on shapes
-// addPopup([userTask2Elt]);
 addPopup(elementsWithPopup);
 
 
 function addPopover(bpmnElements) {
     registerBpmnElements(bpmnElements);
-    const htmlElements = bpmnElements.map(elt => elt.htmlElement)
-
     // Set the cursor to mark the elements as clickable
-    // TODO don't work with diagram navigation, use new API when available (see https://github.com/process-analytics/bpmn-visualization-js/issues/942)
-    htmlElements.forEach(elt => elt.classList.add('c-hand'));
+    bpmnVisualization.bpmnElementsRegistry.addCssClasses(bpmnElements.map(element => element.bpmnSemantic.id), 'c-hand');
 
+    const htmlElements = bpmnElements.map(elt => elt.htmlElement)
     tippy(htmlElements, {
         // sticky option behaviour with this appendTo
         // The following is only needed to manage diagram navigation
@@ -124,43 +114,19 @@ function addPopover(bpmnElements) {
 function addPopup(bpmnElements) {
     registerBpmnElements(bpmnElements);
 
-    // const isEdge = false;
-    // const offset = isEdge? [0, -40] : undefined;
-    //
-    // const htmlElements = bpmnElements.map(elt => elt.htmlElement)
-
     bpmnElements.forEach(bpmnElement => {
         const htmlElement = bpmnElement.htmlElement;
         const isEdge = !bpmnElement.bpmnSemantic.isShape;
         const offset = isEdge? [0, -40] : undefined; // undefined offset for tippyjs default offset
 
         tippy(htmlElement, {
-            // sticky option behaviour with this appendTo
-            // The following is only needed to manage diagram navigation
-            // Current issue while pan, the dimension of the popper changed while dragging which may also wrongly trigger a flip
-            // during the pan and then, an new flip after dimensions are restored
-            // for issue on pan, this may help: https://github.com/atomiks/tippyjs/issues/688
-
-            // Notice that we cannot have the same configuration when we trigger on mouseover/focus or on click
-
-            // When trigger on click
-            // 'reference': work with zoom (do not move the popper), but disappear on pan, mainly vertical pan (translation computation issue)
-            // 'popper': do not move on zoom, move on pan but also change the dimension of the tooltip while pan)
-            // appendTo: bpmnContainerElt,
-
-            // When trigger on click
-            // when using this, no resize issue on pan, but no more flip nor overflow. We can however use sticky: 'reference' with is better
+            // work perfectly on hover with or without 'diagram navigation' enable
             appendTo: bpmnContainerElt.parentElement,
-
 
             // https://atomiks.github.io/tippyjs/v6/all-props/#sticky
             // This has a performance cost since checks are run on every animation frame. Use this only when necessary!
-            // enable it
-            //sticky: true,
             // only check the "reference" rect for changes
             sticky: 'reference',
-            // only check the "popper" rect for changes
-            // sticky: 'popper',
 
             arrow: false,
             offset: offset,
