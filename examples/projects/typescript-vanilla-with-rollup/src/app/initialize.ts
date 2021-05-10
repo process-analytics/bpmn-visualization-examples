@@ -15,8 +15,18 @@
  */
 import { BpmnVisualization } from "bpmn-visualization";
 
+export default function initialize(): void {
+  // instantiate the BpmnVisualization, pass the container HTMLElement - present in index.html
+  const bpmnVisualization = new BpmnVisualization({
+    container: "bpmn-container",
+  });
+  // load the BPMN diagram defined above
+  bpmnVisualization.load(bpmnDiagram());
+}
+
 // this is simple example of the BPMN diagram
-const bpmnFileContent = `<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0x0opj6" targetNamespace="http://example.bpmn.com/schema/bpmn">
+function bpmnDiagram(): string {
+  return `<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0x0opj6" targetNamespace="http://example.bpmn.com/schema/bpmn">
   <bpmn:process id="Process_1" isExecutable="false">
     <bpmn:startEvent id="StartEvent_1" name="Start Event 1">
       <bpmn:outgoing>Flow_1</bpmn:outgoing>
@@ -59,10 +69,4 @@ const bpmnFileContent = `<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XML
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>`;
-
-export default function initialize() {
-  // instantiate the BpmnVisualization, pass the container HTMLElement - present in index.html
-  let bpmnVisualization = new BpmnVisualization({ container: 'bpmn-container' });
-  // load the BPMN diagram defined above
-  bpmnVisualization.load(bpmnFileContent);
 }
