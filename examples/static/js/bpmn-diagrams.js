@@ -541,62 +541,62 @@ function getHardwareRetailerDiagram(){
     <semantic:process id="process_1" isExecutable="false">
         <semantic:laneSet>
             <semantic:lane id="lane_1" name="Logistics  Manager">
-                <semantic:flowNodeRef>task_1</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_7</semantic:flowNodeRef>
             </semantic:lane>
             <semantic:lane id="lane_2" name="Clerk">
                 <semantic:flowNodeRef>start_event</semantic:flowNodeRef>
                 <semantic:flowNodeRef>parallel_gateway_1</semantic:flowNodeRef>
-                <semantic:flowNodeRef>task_2</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_1</semantic:flowNodeRef>
                 <semantic:flowNodeRef>exclusive_gateway_1</semantic:flowNodeRef>
                 <semantic:flowNodeRef>task_3</semantic:flowNodeRef>
                 <semantic:flowNodeRef>task_4</semantic:flowNodeRef>
-                <semantic:flowNodeRef>task_5</semantic:flowNodeRef>
                 <semantic:flowNodeRef>task_6</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_5</semantic:flowNodeRef>
                 <semantic:flowNodeRef>inclusive_gateway_1</semantic:flowNodeRef>
                 <semantic:flowNodeRef>inclusive_gateway_2</semantic:flowNodeRef>
                 <semantic:flowNodeRef>exclusive_gateway_2</semantic:flowNodeRef>
             </semantic:lane>
             <semantic:lane id="lane_3" name="Warehouse Worker">
-                <semantic:flowNodeRef>task_7</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_2</semantic:flowNodeRef>
                 <semantic:flowNodeRef>parallel_gateway_2</semantic:flowNodeRef>
                 <semantic:flowNodeRef>task_8</semantic:flowNodeRef>
                 <semantic:flowNodeRef>end_event</semantic:flowNodeRef>
             </semantic:lane>
         </semantic:laneSet>
-        <semantic:task id="task_1" name="Take out extra insurance" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:startEvent id="start_event" name="Goods  to ship"/>
         <semantic:parallelGateway id="parallel_gateway_1" name="" gatewayDirection="Unspecified"/>
-        <semantic:task id="task_2" name="Decide if normal post or special shipment" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_1" name="Decide if normal post or special shipment" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_2" name="Package goods" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:exclusiveGateway id="exclusive_gateway_1" name="Mode of delivery" gatewayDirection="Unspecified"/>
         <semantic:task id="task_3" name="Request quotes from carriers" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:task id="task_4" name="Assign a carrier &amp; prepare paperwork" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
-        <semantic:task id="task_5" name="Fill in a Post label" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
-        <semantic:task id="task_6" name="Check if extra insurance is necessary" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_5" name="Check if extra insurance is necessary" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:inclusiveGateway id="inclusive_gateway_1" name="" gatewayDirection="Unspecified"/>
+        <semantic:task id="task_6" name="Fill in a Post label" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_7" name="Take out extra insurance" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:inclusiveGateway id="inclusive_gateway_2" name="" gatewayDirection="Unspecified"/>
         <semantic:exclusiveGateway id="exclusive_gateway_2" name="" gatewayDirection="Unspecified"/>
-        <semantic:task id="task_7" name="Package goods" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:parallelGateway id="parallel_gateway_2" name="" gatewayDirection="Unspecified"/>
         <semantic:task id="task_8" name="Add paperwork and move package to pick area" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
         <semantic:endEvent id="end_event" name="Goods available  for pick"/>
         <semantic:sequenceFlow id="sequence_flow_1" name="" sourceRef="start_event" targetRef="parallel_gateway_1"/>
-        <semantic:sequenceFlow id="sequence_flow_2" name="" sourceRef="parallel_gateway_1" targetRef="task_2"/>
-        <semantic:sequenceFlow id="sequence_flow_3" name="" sourceRef="task_2" targetRef="exclusive_gateway_1"/>
+        <semantic:sequenceFlow id="sequence_flow_2" name="" sourceRef="parallel_gateway_1" targetRef="task_1"/>
+        <semantic:sequenceFlow id="sequence_flow_3" name="" sourceRef="task_1" targetRef="exclusive_gateway_1"/>
         <semantic:sequenceFlow id="sequence_flow_4" name="Special Carrier" sourceRef="exclusive_gateway_1" targetRef="task_3"/>
-        <semantic:sequenceFlow id="sequence_flow_5" name="Normal Post" sourceRef="exclusive_gateway_1" targetRef="task_6"/>
-        <semantic:sequenceFlow id="sequence_flow_6" name="" sourceRef="task_6" targetRef="inclusive_gateway_1"/>
-        <semantic:sequenceFlow id="sequence_flow_7" name="extra insurance required" sourceRef="inclusive_gateway_1" targetRef="task_1"/>
-        <semantic:sequenceFlow id="sequence_flow_8" name="Always" sourceRef="inclusive_gateway_1" targetRef="task_5"/>
-        <semantic:sequenceFlow id="sequence_flow_9" name="" sourceRef="task_5" targetRef="inclusive_gateway_2"/>
-        <semantic:sequenceFlow id="sequence_flow_10" name="" sourceRef="task_1" targetRef="inclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_5" name="Normal Post" sourceRef="exclusive_gateway_1" targetRef="task_5"/>
+        <semantic:sequenceFlow id="sequence_flow_6" name="" sourceRef="task_5" targetRef="inclusive_gateway_1"/>
+        <semantic:sequenceFlow id="sequence_flow_7" name="extra insurance required" sourceRef="inclusive_gateway_1" targetRef="task_7"/>
+        <semantic:sequenceFlow id="sequence_flow_8" name="Always" sourceRef="inclusive_gateway_1" targetRef="task_6"/>
+        <semantic:sequenceFlow id="sequence_flow_9" name="" sourceRef="task_6" targetRef="inclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_10" name="" sourceRef="task_7" targetRef="inclusive_gateway_2"/>
         <semantic:sequenceFlow id="sequence_flow_11" name="" sourceRef="inclusive_gateway_2" targetRef="exclusive_gateway_2"/>
         <semantic:sequenceFlow id="sequence_flow_12" name="" sourceRef="task_3" targetRef="task_4"/>
         <semantic:sequenceFlow id="sequence_flow_13" name="" sourceRef="task_4" targetRef="exclusive_gateway_2"/>
         <semantic:sequenceFlow id="sequence_flow_14" name="" sourceRef="exclusive_gateway_2" targetRef="parallel_gateway_2"/>
-        <semantic:sequenceFlow id="sequence_flow_15" name="" sourceRef="task_7" targetRef="parallel_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_15" name="" sourceRef="task_2" targetRef="parallel_gateway_2"/>
         <semantic:sequenceFlow id="sequence_flow_16" name="" sourceRef="parallel_gateway_2" targetRef="task_8"/>
         <semantic:sequenceFlow id="sequence_flow_17" name="" sourceRef="task_8" targetRef="end_event"/>
-        <semantic:sequenceFlow id="sequence_flow_18" name="" sourceRef="parallel_gateway_1" targetRef="task_7"/>
+        <semantic:sequenceFlow id="sequence_flow_18" name="" sourceRef="parallel_gateway_1" targetRef="task_2"/>
         <semantic:textAnnotation id="text_annotation">
             <semantic:text>Insurance is included in carrier service</semantic:text>
         </semantic:textAnnotation>
@@ -623,7 +623,7 @@ function getHardwareRetailerDiagram(){
                 <dc:Bounds x="190" y="530" width="1540" height="210"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="shape_task_1" bpmnElement="task_1">
+            <bpmndi:BPMNShape id="shape_task_7" bpmnElement="task_7">
                 <dc:Bounds x="1058" y="122" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
@@ -637,7 +637,7 @@ function getHardwareRetailerDiagram(){
                 <dc:Bounds x="359" y="419" width="42" height="42"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="shape_task_2" bpmnElement="task_2">
+            <bpmndi:BPMNShape id="shape_task_1" bpmnElement="task_1">
                 <dc:Bounds x="468" y="406" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
@@ -655,11 +655,11 @@ function getHardwareRetailerDiagram(){
                 <dc:Bounds x="1078" y="406" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="shape_task_5" bpmnElement="task_5">
+            <bpmndi:BPMNShape id="shape_task_6" bpmnElement="task_6">
                 <dc:Bounds x="1018" y="287" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="shape_task_6" bpmnElement="task_6">
+            <bpmndi:BPMNShape id="shape_task_5" bpmnElement="task_5">
                 <dc:Bounds x="728" y="287" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
@@ -675,7 +675,7 @@ function getHardwareRetailerDiagram(){
                 <dc:Bounds x="1259" y="419" width="42" height="42"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
-            <bpmndi:BPMNShape id="shape_task_7" bpmnElement="task_7">
+            <bpmndi:BPMNShape id="shape_task_2" bpmnElement="task_2">
                 <dc:Bounds x="598" y="596" width="83" height="68"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>

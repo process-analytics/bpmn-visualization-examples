@@ -30,11 +30,30 @@ const timeBpmnElementsRegistry = timeBpmnVisualization.bpmnElementsRegistry;
 // Load BPMN diagram
 timeBpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
 
+getShapeTimeData().forEach((value, key) => {
+    timeBpmnElementsRegistry.addOverlays(key, { position: 'top-right', label: value, style: {
+            fill: {
+                color: 'HoneyDew'
+            }
+        }
+    });
+});
+
+getEdgeTimeData().forEach((value, key) => {
+    timeBpmnElementsRegistry.addOverlays(key, { position: 'middle', label: value, style: {
+            fill: {
+                color: 'MistyRose'
+            }
+        }
+    });
+});
+
 
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'frequency-bpmn-container', navigation: {enabled: true}});
 const frequencyBpmnElementsRegistry = frequencyBpmnVisualization.bpmnElementsRegistry;
+document.getElementById('btn-time').checked = true;
 
 
 
@@ -55,6 +74,22 @@ function switchDiagram(switchValue) {
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
         frequencyBpmnVisualization.load(getHardwareRetailerDiagram(), { fit: {type: 'Center', margin: 30 } });
+        let frequencyData = getFrequencyData();
+        frequencyData.shape.forEach((value, key) => {
+            frequencyBpmnElementsRegistry.addOverlays(key, { position: 'top-right', label: value, style: {
+                    fill: {
+                        color: 'LightBlue',
+                    },
+                } });
+        });
+        frequencyData.edge.forEach((value, key) => {
+            frequencyBpmnElementsRegistry.addOverlays(key, { position: 'middle', label: value, style: {
+                    fill: {
+                        color: 'Gainsboro',
+                    },
+                } });
+        });
+
         frequencyBpmnDiagramIsAlreadyLoad = true;
     }
 }
