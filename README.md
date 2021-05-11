@@ -78,7 +78,7 @@ Display BPMN Diagram:
 
 ### Custom BPMN Theme examples
 
-**DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
+**DISCLAIMER: extension points are currently very experimental and are subject to change.**  
 They are mainly hacks to let you see what will be later available in a more integrated way. \
 Custom BPMN Theme features will be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
