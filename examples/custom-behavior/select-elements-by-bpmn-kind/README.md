@@ -1,7 +1,7 @@
 # Select elements by BPMN kind
 
 
-Javascript example to demonstrate how to select elements by BPMN kind and register custom behaviour on found elements
+Javascript example to demonstrate how to select elements by BPMN kind and register custom behavior on found elements
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-behavior/select-elements-by-bpmn-kind/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
