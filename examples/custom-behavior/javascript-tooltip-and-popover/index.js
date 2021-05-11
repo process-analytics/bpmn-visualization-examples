@@ -72,7 +72,7 @@ function addPopover(bpmnElements) {
 
     const htmlElements = bpmnElements.map(elt => elt.htmlElement)
     tippy(htmlElements, {
-        // sticky option behaviour with this appendTo
+        // sticky option behavior with this appendTo
         // The following is only needed to manage diagram navigation
         // Current issue while pan, the dimension of the popper changed while dragging which may also wrongly trigger a flip
         // during the pan and then, an new flip after dimensions are restored

@@ -78,7 +78,7 @@ Display BPMN Diagram:
 
 ### Custom BPMN Theme examples
 
-**DISCLAIMER: extension points are currently very experimental and are subject to changes.**  
+**DISCLAIMER: extension points are currently very experimental and are subject to change.**  
 They are mainly hacks to let you see what will be later available in a more integrated way. \
 Custom BPMN Theme features will be progressively added to `bpmn-visualization`. See the [`Extensions` Milestone](https://github.com/process-analytics/bpmn-visualization-js/milestone/13).
 
@@ -87,20 +87,17 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 - [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
-### Custom animation examples
-
-- [Growing Sequence Flow](examples/custom-animation/growing-sequence-flow/README.md) - add custom growing animation on a Sequence Flow
-- [Running Dashed Message Flow](examples/custom-animation/running-dashed-message-flow/README.md) - add custom running dashed animation on a Message Flow
-
 ### Custom behavior examples
 
 - [Add a popover on a BPMN element](examples/custom-behavior/popover-static/README.md) - add a popover with information to the task found by its id
 - [Apply CSS classes](examples/custom-behavior/apply-css-classes/README.md) - highlight elements and paths on demand on the BPMN diagram
 - [Attach tooltip and popover to BPMN elements](examples/custom-behavior/javascript-tooltip-and-popover/README.md) - interact with the BPMN Diagram to display additional information
-- [Select elements by BPMN kind](examples/custom-behavior/select-elements-by-bpmn-kind/README.md) - to select elements by BPMN kind and register custom behaviour on found elements
+- [Select elements by BPMN kind](examples/custom-behavior/select-elements-by-bpmn-kind/README.md) - to select elements by BPMN kind and register custom behavior on found elements
 - [Open a call activity from a main BPMN Diagram on a modal](examples/custom-behavior/call-activity-with-modal-on-mouse-over/README.md) - interact with a diagram to open the details of a Call Activity on a modal
 - [Open a call activity from a main BPMN Diagram on a tab (of the page)](examples/custom-behavior/call-activity-with-tabs-on-click/README.md) - interact with a diagram to open the details of a Call Activity in a tab (of the page)
 - [Open a call activity from a main BPMN Diagram on the same container](examples/custom-behavior/call-activity-with-reload-on-dblclick/README.md) - interact with a diagram to load the details of a Call Activity in the same container
+- [Growing Sequence Flow](examples/custom-behavior/growing-sequence-flow/README.md) - add custom growing animation on a Sequence Flow
+- [Running Dashed Message Flow](examples/custom-behavior/running-dashed-message-flow/README.md) - add custom running dashed animation on a Message Flow
 
 ### Miscellaneous examples
 
