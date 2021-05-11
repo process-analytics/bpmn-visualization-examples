@@ -1,28 +1,3 @@
-/*function removeAllOverlays() {
-    // Remove all overlays
-    // Shape
-    bpmnElementsRegistry.removeAllOverlays('Activity_1potg3p');
-
-    // Edge
-    bpmnElementsRegistry.removeAllOverlays('Flow_1wkfbb0');
-}*/
-
-
-
-/*var style = {
-    font: {
-        color: fontColorElt.value,
-        size: fontSizeElt.value,
-    },
-    fill: {
-        color: fillColorElt.value,
-    },
-    stroke: {
-        color: strokeColorElt.value,
-    }
-};*/
-
-
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'time-bpmn-container', navigation: {enabled: true}});
 const timeBpmnElementsRegistry = timeBpmnVisualization.bpmnElementsRegistry;
@@ -69,21 +44,3 @@ function switchDiagram(switchValue) {
         frequencyBpmnDiagramIsAlreadyLoad = true;
     }
 }
-
-
-
-/*document.getElementById('btn-set-overlay').onclick = () => {
-    removeAllOverlays();
-
-    // Add overlays
-    // Shape
-    bpmnElementsRegistry.addOverlays('Activity_1potg3p', {position: 'bottom-right', label: 'OK 👌', style});
-
-    // Edge
-    bpmnElementsRegistry.addOverlays('Flow_1wkfbb0', {position: 'middle', label: '763', style});
-};*/
-
-/*document.getElementById('btn-reset').onclick = () => {
-    removeAllOverlays();
-    bpmnVisualization.fit({type: 'Center'});
-};*/
