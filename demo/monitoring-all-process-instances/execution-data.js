@@ -1,3 +1,7 @@
+function withStrokeColorAsFillColor(overlayStyle) {
+    return {...overlayStyle, stroke: { color: overlayStyle.fill.color}};
+}
+
 function getTimeOverlayStyles(position, color) {
     return new Map([
         ['month', {
@@ -121,40 +125,39 @@ function getEdgeTimeData() {
     return map;
 }
 
-
 function getFrequencyOverlayStyles(position, color) {
     return new Map([
         ['random', {
             position,
-            style: {
+            style: withStrokeColorAsFillColor({
                 fill: { color },
                 font: { color: 'White' },
-            }
+            })
         }],
         ['fivePerCent', {
             position,
-            style: {
+            style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(21).rgb})` },
                 font: { color: 'White' },
-            }
+            })
         }],
         ['ninetyFivePerCent', {
             position,
-            style: {
+            style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(42).rgb})` },
-            }
+            })
         }],
         ['thirtyPerCent', {
             position,
-            style: {
+            style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(63).rgb})` },
-            }
+            })
         }],
         ['otherPerCent', {
             position,
-            style: {
+            style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(84).rgb})` },
-            }
+            })
         }],
     ]);
 }
