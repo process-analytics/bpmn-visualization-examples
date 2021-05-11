@@ -34,10 +34,7 @@ function switchDiagram(switchValue) {
     if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
         frequencyBpmnVisualization.load(getHardwareRetailerDiagram(), { fit: {type: 'Center', margin: 30 } });
         let frequencyData = getFrequencyData();
-        frequencyData.shape.forEach((value, key) => {
-            frequencyBpmnElementsRegistry.addOverlays(key, value);
-        });
-        frequencyData.edge.forEach((value, key) => {
+        frequencyData.forEach((value, key) => {
             frequencyBpmnElementsRegistry.addOverlays(key, value);
         });
 

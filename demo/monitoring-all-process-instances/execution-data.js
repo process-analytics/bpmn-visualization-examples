@@ -170,66 +170,65 @@ function getFrequencyData() {
     const shapeOverlayStyles = getFrequencyOverlayStyles('top-right', '#0083af');
     const edgeOverlayStyles = getFrequencyOverlayStyles('middle', '#6d00af');
 
-    const shapeMap = new Map();
-    const edgeMap = new Map();
+    const map = new Map();
 
     const random = Math.floor(Math.random() * 1000);
     const randomShapeOverlay = getFrequencyOverlay(random, shapeOverlayStyles, 'random');
     const randomEdgeOverlay = getFrequencyOverlay(random, edgeOverlayStyles, 'random');
-    shapeMap.set('start_event', randomShapeOverlay);
-    edgeMap.set('sequence_flow_1', randomEdgeOverlay);
-    shapeMap.set('parallel_gateway_1', randomShapeOverlay);
-    edgeMap.set('sequence_flow_2', randomEdgeOverlay);
-    shapeMap.set('task_1', randomShapeOverlay);
-    edgeMap.set('sequence_flow_18', randomEdgeOverlay);
-    shapeMap.set('task_2', randomShapeOverlay);
-    edgeMap.set('sequence_flow_3', randomEdgeOverlay);
-    shapeMap.set('exclusive_gateway_1', randomShapeOverlay);
+    map.set('start_event', randomShapeOverlay);
+    map.set('sequence_flow_1', randomEdgeOverlay);
+    map.set('parallel_gateway_1', randomShapeOverlay);
+    map.set('sequence_flow_2', randomEdgeOverlay);
+    map.set('task_1', randomShapeOverlay);
+    map.set('sequence_flow_18', randomEdgeOverlay);
+    map.set('task_2', randomShapeOverlay);
+    map.set('sequence_flow_3', randomEdgeOverlay);
+    map.set('exclusive_gateway_1', randomShapeOverlay);
 
     const fivePerCent = random * 5 / 100;
     const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
     const fivePerCentEdgeOverlay = getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent');
-    edgeMap.set('sequence_flow_4', fivePerCentEdgeOverlay);
-    shapeMap.set('task_3', fivePerCentShapeOverlay);
-    edgeMap.set('sequence_flow_12', fivePerCentEdgeOverlay);
-    shapeMap.set('task_4', fivePerCentShapeOverlay);
-    edgeMap.set('sequence_flow_13', fivePerCentEdgeOverlay);
+    map.set('sequence_flow_4', fivePerCentEdgeOverlay);
+    map.set('task_3', fivePerCentShapeOverlay);
+    map.set('sequence_flow_12', fivePerCentEdgeOverlay);
+    map.set('task_4', fivePerCentShapeOverlay);
+    map.set('sequence_flow_13', fivePerCentEdgeOverlay);
 
     const ninetyFivePerCent = random - fivePerCent;
     const ninetyFivePerCentShapeOverlay = getFrequencyOverlay(ninetyFivePerCent, shapeOverlayStyles, 'ninetyFivePerCent');
     const ninetyFivePerCentEdgeOverlay = getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent');
-    edgeMap.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
-    shapeMap.set('task_5', ninetyFivePerCentShapeOverlay);
-    edgeMap.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
-    shapeMap.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
+    map.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
+    map.set('task_5', ninetyFivePerCentShapeOverlay);
+    map.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
+    map.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
 
     const thirtyPerCent = ninetyFivePerCent * 30 / 100;
     const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
     const thirtyPerCentEdgeOverlay = getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent');
-    edgeMap.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
-    shapeMap.set('task_7', thirtyPerCentShapeOverlay);
-    edgeMap.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
+    map.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
+    map.set('task_7', thirtyPerCentShapeOverlay);
+    map.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
 
     const otherPerCent = ninetyFivePerCent - thirtyPerCent;
     const otherPerCentShapeOverlay = getFrequencyOverlay(otherPerCent, shapeOverlayStyles, 'otherPerCent');
     const otherPerCentEdgeOverlay = getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent');
-    edgeMap.set('sequence_flow_8', otherPerCentEdgeOverlay);
-    shapeMap.set('task_6', otherPerCentShapeOverlay);
-    edgeMap.set('sequence_flow_9', otherPerCentEdgeOverlay);
+    map.set('sequence_flow_8', otherPerCentEdgeOverlay);
+    map.set('task_6', otherPerCentShapeOverlay);
+    map.set('sequence_flow_9', otherPerCentEdgeOverlay);
 
-    shapeMap.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
-    edgeMap.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
+    map.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
+    map.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
 
-    shapeMap.set('exclusive_gateway_2', randomShapeOverlay);
-    edgeMap.set('sequence_flow_14', randomEdgeOverlay);
-    edgeMap.set('sequence_flow_15', randomEdgeOverlay);
-    shapeMap.set('parallel_gateway_2', randomShapeOverlay);
-    edgeMap.set('sequence_flow_16', randomEdgeOverlay);
-    shapeMap.set('task_8', randomShapeOverlay);
-    edgeMap.set('sequence_flow_17', randomEdgeOverlay);
-    shapeMap.set('end_event', randomShapeOverlay);
+    map.set('exclusive_gateway_2', randomShapeOverlay);
+    map.set('sequence_flow_14', randomEdgeOverlay);
+    map.set('sequence_flow_15', randomEdgeOverlay);
+    map.set('parallel_gateway_2', randomShapeOverlay);
+    map.set('sequence_flow_16', randomEdgeOverlay);
+    map.set('task_8', randomShapeOverlay);
+    map.set('sequence_flow_17', randomEdgeOverlay);
+    map.set('end_event', randomShapeOverlay);
 
-    return { shape: shapeMap, edge: edgeMap };
+    return map;
 }
 
 
