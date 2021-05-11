@@ -1,28 +1,20 @@
-// Initialize BpmnVisualization for Time Data
-const timeBpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'time-bpmn-container', navigation: {enabled: true}});
-const timeBpmnElementsRegistry = timeBpmnVisualization.bpmnElementsRegistry;
-
-// Load BPMN diagram
-timeBpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
-
-getTimeData().forEach((value, key) => {
-    timeBpmnElementsRegistry.addOverlays(key, value);
-});
-
-// Initialize BpmnVisualization for Frequency Data
-const frequencyBpmnVisualization = new bpmnvisu.BpmnVisualization({container: 'frequency-bpmn-container', navigation: {enabled: true}});
-const frequencyBpmnElementsRegistry = frequencyBpmnVisualization.bpmnElementsRegistry;
-document.getElementById('btn-time').checked = true;
-
-
-
-let frequencyBpmnDiagramIsAlreadyLoad = false;
-document.getElementById('switch-panel').onclick = () => {
-    let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
-    switchDiagram(switchId==='btn-time'? 'time' : 'frequency');
+function initBpmnVisualization(container) {
+    return new bpmnvisu.BpmnVisualization({
+        container,
+        navigation: { enabled: true }
+    });
 }
 
-function switchDiagram(switchValue) {
+function loadData(bpmnVisualization, getData) {
+    // Load BPMN diagram
+    bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
+
+    getData().forEach((value, key) => {
+        bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value);
+    });
+}
+
+function switchDiagram(switchValue, frequencyBpmnVisualization, frequencyBpmnDiagramIsAlreadyLoad) {
     // Display corresponding BPMN container & Hide others
     const bpmnContainers = document.getElementsByClassName("bpmn-container");
     for (let i = 0; i < bpmnContainers.length; i++) {
@@ -32,12 +24,23 @@ function switchDiagram(switchValue) {
 
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
-        frequencyBpmnVisualization.load(getHardwareRetailerDiagram(), { fit: {type: 'Center', margin: 30 } });
-        let frequencyData = getFrequencyData();
-        frequencyData.forEach((value, key) => {
-            frequencyBpmnElementsRegistry.addOverlays(key, value);
-        });
-
+        loadData(frequencyBpmnVisualization, getFrequencyData);
         frequencyBpmnDiagramIsAlreadyLoad = true;
     }
 }
+
+document.getElementById('btn-time').checked = true;
+
+// Initialize BpmnVisualization for Time Data
+const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
+loadData(timeBpmnVisualization, getTimeData);
+
+// Initialize BpmnVisualization for Frequency Data
+const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
+let frequencyBpmnDiagramIsAlreadyLoad = false;
+
+document.getElementById('switch-panel').onclick = () => {
+    let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
+    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization, frequencyBpmnDiagramIsAlreadyLoad);
+}
+
