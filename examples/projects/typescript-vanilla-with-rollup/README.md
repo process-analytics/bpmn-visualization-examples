@@ -6,7 +6,7 @@ To run locally:
 2. `npm run start`
 3. [localhost app](http://localhost:10001)
 
-You should see a BPMN rendered in the page
+You will see the following diagram:
 
 ![BPMN diagram in the home page](docs/home.png)
 
