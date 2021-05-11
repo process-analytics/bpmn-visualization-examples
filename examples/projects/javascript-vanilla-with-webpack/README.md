@@ -8,7 +8,7 @@ To run locally:
 2. `npm run serve`
 3. [localhost app](http://localhost:8080)
 
-The page should display a BPMN diagram like in the following:
+You will see the following diagram:
 
 ![BPMN diagram in the home page](docs/home.png)
 
