@@ -188,7 +188,7 @@ function getFrequencyData() {
     map.set('sequence_flow_3', randomEdgeOverlay);
     map.set('exclusive_gateway_1', randomShapeOverlay);
 
-    const fivePerCent = random * 5 / 100;
+    const fivePerCent = Math.floor(random * 5 / 100);
     const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
     const fivePerCentEdgeOverlay = getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent');
     map.set('sequence_flow_4', fivePerCentEdgeOverlay);
@@ -205,7 +205,7 @@ function getFrequencyData() {
     map.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
     map.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
 
-    const thirtyPerCent = ninetyFivePerCent * 30 / 100;
+    const thirtyPerCent = Math.floor(ninetyFivePerCent * 30 / 100);
     const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
     const thirtyPerCentEdgeOverlay = getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent');
     map.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
