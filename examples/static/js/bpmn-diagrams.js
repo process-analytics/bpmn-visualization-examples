@@ -531,6 +531,289 @@ function getIncidentManagementBpmnDiagram(){
 // --------------------------------------------
 
 // --------------------------------------------
+// Inspired from 'triso - Hardware Retailer v2.bpmn' of https://www.omg.org/cgi-bin/doc?dtc/10-06-02.zip
+function getHardwareRetailerDiagram(){
+    return `<?xml version="1.0" encoding="ISO-8859-1" standalone="yes"?>
+<semantic:definitions xmlns:di="http://www.omg.org/spec/DD/20100524/DI"
+                      xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI"
+                      xmlns:dc="http://www.omg.org/spec/DD/20100524/DC"
+                      xmlns:semantic="http://www.omg.org/spec/BPMN/20100524/MODEL">
+    <semantic:process id="process_1" isExecutable="false">
+        <semantic:laneSet>
+            <semantic:lane id="lane_1" name="Logistics  Manager">
+                <semantic:flowNodeRef>task_7</semantic:flowNodeRef>
+            </semantic:lane>
+            <semantic:lane id="lane_2" name="Clerk">
+                <semantic:flowNodeRef>start_event</semantic:flowNodeRef>
+                <semantic:flowNodeRef>parallel_gateway_1</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_1</semantic:flowNodeRef>
+                <semantic:flowNodeRef>exclusive_gateway_1</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_3</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_4</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_6</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_5</semantic:flowNodeRef>
+                <semantic:flowNodeRef>inclusive_gateway_1</semantic:flowNodeRef>
+                <semantic:flowNodeRef>inclusive_gateway_2</semantic:flowNodeRef>
+                <semantic:flowNodeRef>exclusive_gateway_2</semantic:flowNodeRef>
+            </semantic:lane>
+            <semantic:lane id="lane_3" name="Warehouse Worker">
+                <semantic:flowNodeRef>task_2</semantic:flowNodeRef>
+                <semantic:flowNodeRef>parallel_gateway_2</semantic:flowNodeRef>
+                <semantic:flowNodeRef>task_8</semantic:flowNodeRef>
+                <semantic:flowNodeRef>end_event</semantic:flowNodeRef>
+            </semantic:lane>
+        </semantic:laneSet>
+        <semantic:startEvent id="start_event" name="Goods  to ship"/>
+        <semantic:parallelGateway id="parallel_gateway_1" name="" gatewayDirection="Unspecified"/>
+        <semantic:task id="task_1" name="Decide if normal post or special shipment" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_2" name="Package goods" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:exclusiveGateway id="exclusive_gateway_1" name="Mode of delivery" gatewayDirection="Unspecified"/>
+        <semantic:task id="task_3" name="Request quotes from carriers" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_4" name="Assign a carrier &amp; prepare paperwork" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_5" name="Check if extra insurance is necessary" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:inclusiveGateway id="inclusive_gateway_1" name="" gatewayDirection="Unspecified"/>
+        <semantic:task id="task_6" name="Fill in a Post label" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:task id="task_7" name="Take out extra insurance" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:inclusiveGateway id="inclusive_gateway_2" name="" gatewayDirection="Unspecified"/>
+        <semantic:exclusiveGateway id="exclusive_gateway_2" name="" gatewayDirection="Unspecified"/>
+        <semantic:parallelGateway id="parallel_gateway_2" name="" gatewayDirection="Unspecified"/>
+        <semantic:task id="task_8" name="Add paperwork and move package to pick area" completionQuantity="1" isForCompensation="false" startQuantity="1"/>
+        <semantic:endEvent id="end_event" name="Goods available  for pick"/>
+        <semantic:sequenceFlow id="sequence_flow_1" name="" sourceRef="start_event" targetRef="parallel_gateway_1"/>
+        <semantic:sequenceFlow id="sequence_flow_2" name="" sourceRef="parallel_gateway_1" targetRef="task_1"/>
+        <semantic:sequenceFlow id="sequence_flow_3" name="" sourceRef="task_1" targetRef="exclusive_gateway_1"/>
+        <semantic:sequenceFlow id="sequence_flow_4" name="Special Carrier" sourceRef="exclusive_gateway_1" targetRef="task_3"/>
+        <semantic:sequenceFlow id="sequence_flow_5" name="Normal Post" sourceRef="exclusive_gateway_1" targetRef="task_5"/>
+        <semantic:sequenceFlow id="sequence_flow_6" name="" sourceRef="task_5" targetRef="inclusive_gateway_1"/>
+        <semantic:sequenceFlow id="sequence_flow_7" name="extra insurance required" sourceRef="inclusive_gateway_1" targetRef="task_7"/>
+        <semantic:sequenceFlow id="sequence_flow_8" name="Always" sourceRef="inclusive_gateway_1" targetRef="task_6"/>
+        <semantic:sequenceFlow id="sequence_flow_9" name="" sourceRef="task_6" targetRef="inclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_10" name="" sourceRef="task_7" targetRef="inclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_11" name="" sourceRef="inclusive_gateway_2" targetRef="exclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_12" name="" sourceRef="task_3" targetRef="task_4"/>
+        <semantic:sequenceFlow id="sequence_flow_13" name="" sourceRef="task_4" targetRef="exclusive_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_14" name="" sourceRef="exclusive_gateway_2" targetRef="parallel_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_15" name="" sourceRef="task_2" targetRef="parallel_gateway_2"/>
+        <semantic:sequenceFlow id="sequence_flow_16" name="" sourceRef="parallel_gateway_2" targetRef="task_8"/>
+        <semantic:sequenceFlow id="sequence_flow_17" name="" sourceRef="task_8" targetRef="end_event"/>
+        <semantic:sequenceFlow id="sequence_flow_18" name="" sourceRef="parallel_gateway_1" targetRef="task_2"/>
+        <semantic:textAnnotation id="text_annotation">
+            <semantic:text>Insurance is included in carrier service</semantic:text>
+        </semantic:textAnnotation>
+        <semantic:association id="association" associationDirection="None" sourceRef="sequence_flow_4" targetRef="text_annotation"/>
+    </semantic:process>
+    <semantic:collaboration id="collaboration">
+        <semantic:participant id="participant_1" name="Hardware Retailer" processRef="process_1"/>
+    </semantic:collaboration>
+    <bpmndi:BPMNDiagram name="Untitled Diagram" documentation="" resolution="96.00000267028808">
+        <bpmndi:BPMNPlane bpmnElement="collaboration">
+            <bpmndi:BPMNShape id="shape_participant_1" bpmnElement="participant_1" isHorizontal="true">
+                <dc:Bounds x="160" y="82" width="1570" height="658"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_lane_1" bpmnElement="lane_1" isHorizontal="true">
+                <dc:Bounds x="190" y="82" width="1540" height="148"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_lane_2" bpmnElement="lane_2" isHorizontal="true">
+                <dc:Bounds x="190" y="230" width="1540" height="300"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_lane_3" bpmnElement="lane_3" isHorizontal="true">
+                <dc:Bounds x="190" y="530" width="1540" height="210"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_7" bpmnElement="task_7">
+                <dc:Bounds x="1058" y="122" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_start_event" bpmnElement="start_event">
+                <dc:Bounds x="275" y="425" width="30" height="30"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="256" y="455" width="68" height="14"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_parallel_gateway_1" bpmnElement="parallel_gateway_1">
+                <dc:Bounds x="359" y="419" width="42" height="42"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_1" bpmnElement="task_1">
+                <dc:Bounds x="468" y="406" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_exclusive_gateway_1" bpmnElement="exclusive_gateway_1" isMarkerVisible="false">
+                <dc:Bounds x="619" y="419" width="42" height="42"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="600" y="461" width="81" height="14"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_3" bpmnElement="task_3">
+                <dc:Bounds x="868" y="406" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_4" bpmnElement="task_4">
+                <dc:Bounds x="1078" y="406" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_6" bpmnElement="task_6">
+                <dc:Bounds x="1018" y="287" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_5" bpmnElement="task_5">
+                <dc:Bounds x="728" y="287" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_inclusive_gateway_1" bpmnElement="inclusive_gateway_1">
+                <dc:Bounds x="889" y="300" width="42" height="42"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_inclusive_gateway_2" bpmnElement="inclusive_gateway_2">
+                <dc:Bounds x="1179" y="300" width="42" height="42"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_exclusive_gateway_2" bpmnElement="exclusive_gateway_2" isMarkerVisible="false">
+                <dc:Bounds x="1259" y="419" width="42" height="42"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_2" bpmnElement="task_2">
+                <dc:Bounds x="598" y="596" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_parallel_gateway_2" bpmnElement="parallel_gateway_2">
+                <dc:Bounds x="1259" y="609" width="42" height="42"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_task_8" bpmnElement="task_8">
+                <dc:Bounds x="1428" y="596" width="83" height="68"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_end_event" bpmnElement="end_event">
+                <dc:Bounds x="1634" y="614" width="32" height="32"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="1611" y="646" width="79" height="27"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNShape id="shape_text_annotation" bpmnElement="text_annotation">
+                <dc:Bounds x="740" y="460" width="108" height="49" />
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNShape>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_10" bpmnElement="sequence_flow_10">
+                <di:waypoint x="1141" y="156"/>
+                <di:waypoint x="1200" y="156"/>
+                <di:waypoint x="1200" y="300"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_16" bpmnElement="sequence_flow_16">
+                <di:waypoint x="1301" y="630"/>
+                <di:waypoint x="1428" y="630"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_14" bpmnElement="sequence_flow_14">
+                <di:waypoint x="1280" y="461"/>
+                <di:waypoint x="1280" y="609"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_12" bpmnElement="sequence_flow_12">
+                <di:waypoint x="951" y="440"/>
+                <di:waypoint x="1078" y="440"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_3" bpmnElement="sequence_flow_3">
+                <di:waypoint x="551" y="440"/>
+                <di:waypoint x="619" y="440"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_8" bpmnElement="sequence_flow_8">
+                <di:waypoint x="931" y="321"/>
+                <di:waypoint x="1018" y="321"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="948" y="296" width="35" height="14"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_5" bpmnElement="sequence_flow_5">
+                <di:waypoint x="640" y="419"/>
+                <di:waypoint x="640" y="321"/>
+                <di:waypoint x="728" y="321"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="649" y="333" width="61" height="14"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_18" bpmnElement="sequence_flow_18">
+                <di:waypoint x="380" y="461"/>
+                <di:waypoint x="380" y="630"/>
+                <di:waypoint x="598" y="630"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_17" bpmnElement="sequence_flow_17">
+                <di:waypoint x="1511" y="630"/>
+                <di:waypoint x="1634" y="630"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_7" bpmnElement="sequence_flow_7">
+                <di:waypoint x="910" y="300"/>
+                <di:waypoint x="910" y="156"/>
+                <di:waypoint x="1058" y="156"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="922" y="166" width="76" height="27"/>
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_4" bpmnElement="sequence_flow_4">
+                <di:waypoint x="661" y="440"/>
+                <di:waypoint x="868" y="440"/>
+                <bpmndi:BPMNLabel>
+                    <dc:Bounds x="723" y="413" width="73" height="14" />
+                </bpmndi:BPMNLabel>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_2" bpmnElement="sequence_flow_2">
+                <di:waypoint x="401" y="440"/>
+                <di:waypoint x="468" y="440"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_15" bpmnElement="sequence_flow_15">
+                <di:waypoint x="681" y="630"/>
+                <di:waypoint x="1259" y="630"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_11" bpmnElement="sequence_flow_11">
+                <di:waypoint x="1221" y="321"/>
+                <di:waypoint x="1280" y="321"/>
+                <di:waypoint x="1280" y="419"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_13" bpmnElement="sequence_flow_13">
+                <di:waypoint x="1161" y="440"/>
+                <di:waypoint x="1259" y="440"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_1" bpmnElement="sequence_flow_1">
+                <di:waypoint x="305" y="440"/>
+                <di:waypoint x="359" y="440"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_9" bpmnElement="sequence_flow_9">
+                <di:waypoint x="1101" y="321"/>
+                <di:waypoint x="1179" y="321"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_sequence_flow_6" bpmnElement="sequence_flow_6">
+                <di:waypoint x="811" y="321"/>
+                <di:waypoint x="889" y="321"/>
+                <bpmndi:BPMNLabel/>
+            </bpmndi:BPMNEdge>
+            <bpmndi:BPMNEdge id="edge_association" bpmnElement="association">
+                <di:waypoint x="710" y="440" />
+                <di:waypoint x="710" y="488" />
+                <di:waypoint x="740" y="488" />
+                <bpmndi:BPMNLabel />
+            </bpmndi:BPMNEdge>
+        </bpmndi:BPMNPlane>
+    </bpmndi:BPMNDiagram>
+</semantic:definitions>`;
+}
+
+// --------------------------------------------
+
+// --------------------------------------------
 // Custom diagram to show fit capabilities
 function getHorizontalBpmnDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
