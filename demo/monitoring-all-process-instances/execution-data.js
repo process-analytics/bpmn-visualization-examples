@@ -102,26 +102,29 @@ function getShapeTimeData() {
 
 function getEdgeTimeData() {
     const overlayStyles = getTimeOverlayStyles('middle', '#c61700');
+    function getEdgeTimeOverlay() {
+        return getTimeOverlay('second', overlayStyles);
+    }
 
     const map = new Map();
-    map.set('sequence_flow_1', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_2', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_18', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_3', getTimeOverlay('minute', overlayStyles));
-    map.set('sequence_flow_4', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_12', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_13', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_5', getTimeOverlay('minute', overlayStyles));
-    map.set('sequence_flow_6', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_8', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_7', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_10', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_9', getTimeOverlay('minute', overlayStyles));
-    map.set('sequence_flow_11', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_14', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_15', getTimeOverlay('minute', overlayStyles));
-    map.set('sequence_flow_16', getTimeOverlay('second', overlayStyles));
-    map.set('sequence_flow_17', getTimeOverlay('second', overlayStyles));
+    map.set('sequence_flow_1', getEdgeTimeOverlay());
+    map.set('sequence_flow_2', getEdgeTimeOverlay());
+    map.set('sequence_flow_18', getEdgeTimeOverlay());
+    map.set('sequence_flow_3', getEdgeTimeOverlay());
+    map.set('sequence_flow_4', getEdgeTimeOverlay());
+    map.set('sequence_flow_12', getEdgeTimeOverlay());
+    map.set('sequence_flow_13', getEdgeTimeOverlay());
+    map.set('sequence_flow_5', getEdgeTimeOverlay());
+    map.set('sequence_flow_6', getEdgeTimeOverlay());
+    map.set('sequence_flow_8', getEdgeTimeOverlay());
+    map.set('sequence_flow_7', getEdgeTimeOverlay());
+    map.set('sequence_flow_10', getEdgeTimeOverlay());
+    map.set('sequence_flow_9', getEdgeTimeOverlay());
+    map.set('sequence_flow_11', getEdgeTimeOverlay());
+    map.set('sequence_flow_14', getEdgeTimeOverlay());
+    map.set('sequence_flow_15', getEdgeTimeOverlay());
+    map.set('sequence_flow_16', getEdgeTimeOverlay());
+    map.set('sequence_flow_17', getEdgeTimeOverlay());
     return map;
 }
 
