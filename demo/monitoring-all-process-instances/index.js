@@ -14,7 +14,8 @@ function loadData(bpmnVisualization, getData) {
     });
 }
 
-function switchDiagram(switchValue, frequencyBpmnVisualization, frequencyBpmnDiagramIsAlreadyLoad) {
+let frequencyBpmnDiagramIsAlreadyLoad = false;
+function switchDiagram(switchValue, frequencyBpmnVisualization) {
     // Display corresponding BPMN container & Hide others
     const bpmnContainers = document.getElementsByClassName("bpmn-container");
     for (let i = 0; i < bpmnContainers.length; i++) {
@@ -37,10 +38,9 @@ loadData(timeBpmnVisualization, getTimeData);
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
-let frequencyBpmnDiagramIsAlreadyLoad = false;
 
 document.getElementById('switch-panel').onclick = () => {
     let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
-    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization, frequencyBpmnDiagramIsAlreadyLoad);
+    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
 }
 
