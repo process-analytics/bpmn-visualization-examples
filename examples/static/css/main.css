@@ -17,6 +17,9 @@ div.card {
 .mt-40 {
     margin-top: 4rem;
 }
+.mb-5 {
+    margin-bottom: 1rem;
+}
 .icon-in-the-middle:before, .icon-in-the-middle:after {
     top: 40%;
 }
