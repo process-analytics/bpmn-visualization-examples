@@ -33,12 +33,6 @@ limitations under the License.
                 background-color: white;
             }
 
-            button {
-                width: 40px;
-                height: 40px;
-                margin-right: 5px;
-            }
-
             #btn-group-overlay-config input {
                 max-width: 50px;
             }
@@ -81,24 +75,13 @@ limitations under the License.
                             <button id="btn-reset" type="button" class="btn btn-primary has-icon-right" title="Remove all the overlays of the selected BPMN element">
                                 <span class="icon icon-refresh mb-1"></span>
                             </button>
-                            <button id="btn-set-overlay" type="button" class="btn bg-secondary" title="Set custom overlay on edge or shape">
-                                <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 24 24" width="24" height="24">
-                                    <defs>
-                                        <path d="M22.31 12.19L1.94 12.34" id="egGzqxKdQ"></path>
-                                        <path d="M8.49 12.18C8.49 10.12 10.12 8.45 12.12 8.45C14.13 8.45 15.76 10.12 15.76 12.18C15.76 14.24 14.13 15.93 12.12 15.93C10.12 15.93 8.49 14.24 8.49 12.18Z"
-                                              id="as8hBwIQ6"></path>
-                                    </defs>
-                                    <g>
-                                        <use xlink:href="#egGzqxKdQ" opacity="1" fill-opacity="0" stroke="#000000" stroke-width="2" stroke-opacity="1"></use>
-                                        <use xlink:href="#as8hBwIQ6" opacity="1" fill="#f65bc3" fill-opacity="1"></use>
-                                    </g>
-                                </svg>
+                            <button id="btn-set-overlay" type="button" class="ml-1 btn btn-primary bg-warning has-icon-right" title="Set custom overlay on edge or shape">
+                                <span>Apply </span><span class="icon icon-message mb-1"></span>
                             </button>
                         </div>
                         <div id="btn-group-overlay-config" style="margin-top: 1.5rem">
                             <h4>Overlay settings</h4>
-                            <div class="ml-2">
-                                <p class="mb-0">
+                            <div class="ml-2 mb-5">
                                 <h5>Font</h5>
                                 <div class="row">
                                     <input type="color" id="font-color" name="font-color" value="#7FFFD4">
@@ -108,25 +91,20 @@ limitations under the License.
                                     <input type="number" id="font-size" name="font-size" value="16">
                                     <label for="font-size">font size</label>
                                 </div>
-                                </p>
                             </div>
-                            <div class="ml-2">
-                                <p class="mb-0">
+                            <div class="ml-2 mb-5">
                                 <h5>Fill</h5>
                                 <div class="row">
                                     <input type="color" id="fill-color" name="fill-color" value="#778899">
                                     <label for="fill-color">fill color</label>
                                 </div>
-                                </p>
                             </div>
                             <div class="ml-2">
-                                <p class="mb-0">
                                 <h5>Stroke</h5>
                                 <div class="row">
                                     <input type="color" id="stroke-color" name="stroke-color" value="#FFB6C1">
                                     <label for="stroke-color">stroke color</label>
                                 </div>
-                                </p>
                             </div>
                         </div>
                     </div>

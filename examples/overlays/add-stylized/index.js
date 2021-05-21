@@ -9,12 +9,12 @@ function removeAllOverlays(){
 
 
 // Initialize the panel of Overlay settings
-var fontColorElt = document.getElementById('font-color');
-var fontSizeElt = document.getElementById('font-size');
-var fillColorElt = document.getElementById('fill-color');
-var strokeColorElt = document.getElementById('stroke-color');
+const fontColorElt = document.getElementById('font-color');
+const fontSizeElt = document.getElementById('font-size');
+const fillColorElt = document.getElementById('fill-color');
+const strokeColorElt = document.getElementById('stroke-color');
 
-var style = {
+const style = {
     font: {
         color: fontColorElt.value,
         size: fontSizeElt.value,
