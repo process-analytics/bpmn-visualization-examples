@@ -12,8 +12,8 @@ This example let you compare [bpmn-visualization](https://github.com/process-ana
 - API usage
 
 **WARN** \
-The following applies at least to `kie-editors-standalone@0.10.0`
-- The javascript bundle is very large (12 MB, more than 2.5 MB after compression), very slow to load and generates a lot of error in the console.
+The following applies at least to `kie-editors-standalone@0.9.0`
+- The javascript bundle is very large (29 MB, more than 5 MB after compression), very slow to load and generates a lot of error in the console.
 - It is unable to display most of the C.x diagrams from the miwg-test-suite (parsing errors).
 
 
