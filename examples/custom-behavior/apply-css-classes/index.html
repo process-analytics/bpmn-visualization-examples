@@ -139,7 +139,7 @@ limitations under the License.
                     <button id="btn-path" title="Toggle path highlighting " class="btn btn-primary has-icon-right">
                         <span>Highlight path/trace </span><span class="icon icon-message mb-1"></span>
                     </button>
-
+                    <label class="ml-2" title="If checked, highlight the path step by step from the start to the in-progress activity"><input type="checkbox" id="chk-path-step" name="chk-path-step"> Step-by-step highlight</label>
                 </div>
             </div>
         </section>
@@ -154,6 +154,9 @@ limitations under the License.
     <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.15.0/dist/bpmn-visualization.min.js"></script>
     <script src="../../static/js/bpmn-diagram-miwg-test-suite-c_1_1.js"></script>
     <script>
+        let usePathHighLightingStepByStep = false;
+        configurePathHighlightType();
+
         const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container', navigation: { enabled: true} });
         bpmnVisualization.load(getC_1_1_BpmnDiagram(), { fit: { type: bpmnvisu.FitType.Center, margin: 20 } });
 
@@ -165,8 +168,19 @@ limitations under the License.
         ];
 
         const pathEdgeElements = ['SequenceFlow_1', 'sequenceFlow_178', 'sequenceFlow_180', 'invoiceApproved'];
-        const pathShapeElements= ['StartEvent_1', 'assignApprover','approveInvoice', 'invoice_approved', 'prepareBankTransfer'];
         const pathLastShape = 'prepareBankTransfer';
+        const pathShapeElements= ['StartEvent_1', 'assignApprover','approveInvoice', 'invoice_approved', pathLastShape];
+        const orderedPathElements = [
+            {name: 'StartEvent_1', type: 'shape'},
+            {name: 'SequenceFlow_1', type: 'edge'},
+            {name: 'assignApprover', type: 'shape'},
+            {name: 'sequenceFlow_178', type: 'edge'},
+            {name: 'approveInvoice', type: 'shape'},
+            {name: 'sequenceFlow_180', type: 'edge'},
+            {name: 'invoice_approved', type: 'shape'},
+            {name: 'invoiceApproved', type: 'edge'},
+            {name: pathLastShape, type: 'shape'},
+          ];
 
 
         applyInitialStyles();
@@ -199,37 +213,73 @@ limitations under the License.
             this.disabled = true;
         };
 
-        let pathStatus = 'none';
+        function configurePathHighlightType() {
+          const checkPathByStepElt = document.getElementById('chk-path-step');
+
+          usePathHighLightingStepByStep = checkPathByStepElt.checked;
+          console.info(`Initial pathHighLightingStepByStep: ${usePathHighLightingStepByStep}`);
+
+          checkPathByStepElt.addEventListener('change', function(event) {
+            usePathHighLightingStepByStep = event.target.checked;
+            clearHighlightPath();
+          });
+        }
+
         document.getElementById('btn-path').onclick = function() {
-            switch (pathStatus) {
+          if (usePathHighLightingStepByStep) {
+            pathHighLightingStepByStep();
+          } else {
+            pathHighLightingByGroup();
+          }
+        };
+
+        let pathGroupStep = 'none';
+        function pathHighLightingByGroup() {
+            switch (pathGroupStep) {
                 case 'none':
                     addHighlightPath(pathEdgeElements);
-                    pathStatus = 'step1';
+                    pathGroupStep = 'step1';
                     break;
                 case 'step1':
                     addHighlightPath(pathShapeElements, true);
                     addCssClass([pathLastShape], 'bpmn-activity-in-progress');
-                    pathStatus = 'step2';
+                    pathGroupStep = 'step2';
                     break;
                 case 'step2':
                     removeHighlightPath(pathEdgeElements);
-                    pathStatus = 'step3';
+                    pathGroupStep = 'step3';
                     break;
                 case 'step3':
                     removeHighlightPath(pathShapeElements, true);
                     removeCssClass([pathLastShape], 'bpmn-activity-in-progress');
-                    pathStatus = 'step4';
+                    pathGroupStep = 'step4';
                     break;
                 case 'step4':
                     addHighlightPath(pathEdgeElements);
                     addHighlightPath(pathShapeElements, true);
                     addCssClass([pathLastShape], 'bpmn-activity-in-progress');
-                    pathStatus = 'step5';
+                    pathGroupStep = 'step5';
                     break;
                 default:
                     clearHighlightPath();
             }
-        };
+        }
+
+        let pathEltCount = 0;
+        function pathHighLightingStepByStep() {
+          if (pathEltCount >= orderedPathElements.length) {
+            clearHighlightPath();
+            return;
+          }
+
+          const pathElement = orderedPathElements[pathEltCount];
+          addHighlightPath(pathElement.name, pathElement.type === 'shape');
+          pathEltCount++;
+          // last element
+          if (pathEltCount >= orderedPathElements.length) {
+            addCssClass([pathElement.name], 'bpmn-activity-in-progress');
+          }
+        }
 
         function applyInitialStyles() {
             addCssClass(['assignApprover'], 'bpmn-activity-info');
@@ -253,7 +303,8 @@ limitations under the License.
         }
         function clearHighlightPath() {
             removeCssClass(pathEdgeElements.concat(pathShapeElements), 'bpmn-edge-path-highlight', 'bpmn-shape-path-highlight', 'bpmn-activity-in-progress');
-            pathStatus = 'none';
+            pathGroupStep = 'none';
+            pathEltCount = 0;
         }
 
         function addCssClass(elements, ...classNames) {
