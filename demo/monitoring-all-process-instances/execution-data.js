@@ -137,17 +137,18 @@ function getFrequencyOverlayStyles(position, color) {
                 font: { color: 'White' },
             })
         }],
-        ['fivePerCent', {
+        ['ninetyFivePerCent', {
             position,
             style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(21).rgb})` },
                 font: { color: 'White' },
             })
         }],
-        ['ninetyFivePerCent', {
+        ['otherPerCent', {
             position,
             style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(42).rgb})` },
+                font: { color: 'White' },
             })
         }],
         ['thirtyPerCent', {
@@ -156,7 +157,7 @@ function getFrequencyOverlayStyles(position, color) {
                 fill: { color: `rgba(${new Values(color).tint(63).rgb})` },
             })
         }],
-        ['otherPerCent', {
+        ['fivePerCent', {
             position,
             style: withStrokeColorAsFillColor({
                 fill: { color: `rgba(${new Values(color).tint(84).rgb})` },
