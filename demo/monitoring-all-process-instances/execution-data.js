@@ -46,29 +46,39 @@ function getTimeOverlay(unit, overlayStyles) {
     switch (unit) {
         case 'month':
             return date.getMonth() === 0 ? getTimeOverlay('day', overlayStyles) : {
-                ...overlayStyles.get(unit),
-                label: `${date.getMonth()} month`,
+                overlay: {
+                    ...overlayStyles.get(unit),
+                    label: `${date.getMonth()} month`,
+                },
             };
         case 'day':
             return date.getDay() === 0 ? getTimeOverlay('hour', overlayStyles) : {
-                ...overlayStyles.get(unit),
-                label: `${date.getDay()} d`,
+                overlay: {
+                    ...overlayStyles.get(unit),
+                    label: `${date.getDay()} d`,
+                },
             };
         case 'hour':
             return date.getHours() === 0 ? getTimeOverlay('minute', overlayStyles) : {
-                ...overlayStyles.get(unit),
-                label: `${date.getHours()} h`,
+                overlay: {
+                    ...overlayStyles.get(unit),
+                    label: `${date.getHours()} h`,
+                },
             };
         case 'minute':
             return date.getMinutes() === 0 ? getTimeOverlay('second', overlayStyles) : {
-                ...overlayStyles.get(unit),
-                label: `${date.getMinutes()} min`,
+                overlay: {
+                    ...overlayStyles.get(unit),
+                    label: `${date.getMinutes()} min`,
+                },
             };
         case 'second':
         default:
             return {
-                ...overlayStyles.get(unit),
-                label: `${date.getSeconds()} s`,
+                overlay: {
+                    ...overlayStyles.get(unit),
+                    label: `${date.getSeconds()} s`,
+                },
             };
     }
 }
@@ -102,29 +112,39 @@ function getShapeTimeData() {
 
 function getEdgeTimeData() {
     const overlayStyles = getTimeOverlayStyles('middle', '#c61700');
-    function getEdgeTimeOverlay() {
-        return getTimeOverlay('second', overlayStyles);
+    function getEdgeSecondOverlay() {
+        return {
+            ...getTimeOverlay('second', overlayStyles),
+            pathClass:'path-lvl1'
+        };
+    }
+    function getEdgeMinuteOverlay() {
+        return {
+            ...getTimeOverlay('minute', overlayStyles),
+            pathClass:'path-lvl2'
+        };
     }
 
+
     const map = new Map();
-    map.set('sequence_flow_1', getEdgeTimeOverlay());
-    map.set('sequence_flow_2', getEdgeTimeOverlay());
-    map.set('sequence_flow_18', getEdgeTimeOverlay());
-    map.set('sequence_flow_3', getEdgeTimeOverlay());
-    map.set('sequence_flow_4', getEdgeTimeOverlay());
-    map.set('sequence_flow_12', getEdgeTimeOverlay());
-    map.set('sequence_flow_13', getEdgeTimeOverlay());
-    map.set('sequence_flow_5', getEdgeTimeOverlay());
-    map.set('sequence_flow_6', getEdgeTimeOverlay());
-    map.set('sequence_flow_8', getEdgeTimeOverlay());
-    map.set('sequence_flow_7', getEdgeTimeOverlay());
-    map.set('sequence_flow_10', getEdgeTimeOverlay());
-    map.set('sequence_flow_9', getEdgeTimeOverlay());
-    map.set('sequence_flow_11', getEdgeTimeOverlay());
-    map.set('sequence_flow_14', getEdgeTimeOverlay());
-    map.set('sequence_flow_15', getEdgeTimeOverlay());
-    map.set('sequence_flow_16', getEdgeTimeOverlay());
-    map.set('sequence_flow_17', getEdgeTimeOverlay());
+    map.set('sequence_flow_1', getEdgeSecondOverlay());
+    map.set('sequence_flow_2', getEdgeSecondOverlay());
+    map.set('sequence_flow_18', getEdgeSecondOverlay());
+    map.set('sequence_flow_3', getEdgeMinuteOverlay());
+    map.set('sequence_flow_4', getEdgeSecondOverlay());
+    map.set('sequence_flow_12', getEdgeSecondOverlay());
+    map.set('sequence_flow_13', getEdgeSecondOverlay());
+    map.set('sequence_flow_5', getEdgeMinuteOverlay());
+    map.set('sequence_flow_6', getEdgeSecondOverlay());
+    map.set('sequence_flow_8', getEdgeSecondOverlay());
+    map.set('sequence_flow_7', getEdgeSecondOverlay());
+    map.set('sequence_flow_10', getEdgeSecondOverlay());
+    map.set('sequence_flow_9', getEdgeMinuteOverlay());
+    map.set('sequence_flow_11', getEdgeSecondOverlay());
+    map.set('sequence_flow_14', getEdgeSecondOverlay());
+    map.set('sequence_flow_15', getEdgeMinuteOverlay());
+    map.set('sequence_flow_16', getEdgeSecondOverlay());
+    map.set('sequence_flow_17', getEdgeSecondOverlay());
     return map;
 }
 
@@ -168,8 +188,10 @@ function getFrequencyOverlayStyles(position, color) {
 
 function getFrequencyOverlay(label, overlayStyles, type) {
     return {
-        ...overlayStyles.get(type),
-        label: String(label),
+        overlay: {
+            ...overlayStyles.get(type),
+            label: String(label),
+        }
     };
 }
 
@@ -181,7 +203,7 @@ function getFrequencyData() {
 
     const random = Math.floor(Math.random() * 1000);
     const randomShapeOverlay = getFrequencyOverlay(random, shapeOverlayStyles, 'random');
-    const randomEdgeOverlay = getFrequencyOverlay(random, edgeOverlayStyles, 'random');
+    const randomEdgeOverlay = { ...getFrequencyOverlay(random, edgeOverlayStyles, 'random'), pathClass:'path-lvl5' };
     map.set('start_event', randomShapeOverlay);
     map.set('sequence_flow_1', randomEdgeOverlay);
     map.set('parallel_gateway_1', randomShapeOverlay);
@@ -194,7 +216,7 @@ function getFrequencyData() {
 
     const fivePerCent = Math.floor(random * 5 / 100);
     const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
-    const fivePerCentEdgeOverlay = getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent');
+    const fivePerCentEdgeOverlay = { ...getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent'), pathClass:'path-lvl1' };
     map.set('sequence_flow_4', fivePerCentEdgeOverlay);
     map.set('task_3', fivePerCentShapeOverlay);
     map.set('sequence_flow_12', fivePerCentEdgeOverlay);
@@ -203,7 +225,7 @@ function getFrequencyData() {
 
     const ninetyFivePerCent = random - fivePerCent;
     const ninetyFivePerCentShapeOverlay = getFrequencyOverlay(ninetyFivePerCent, shapeOverlayStyles, 'ninetyFivePerCent');
-    const ninetyFivePerCentEdgeOverlay = getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent');
+    const ninetyFivePerCentEdgeOverlay = { ...getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent'), pathClass:'path-lvl4' };
     map.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
     map.set('task_5', ninetyFivePerCentShapeOverlay);
     map.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
@@ -211,14 +233,14 @@ function getFrequencyData() {
 
     const thirtyPerCent = Math.floor(ninetyFivePerCent * 30 / 100);
     const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
-    const thirtyPerCentEdgeOverlay = getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent');
+    const thirtyPerCentEdgeOverlay = { ...getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent'), pathClass:'path-lvl2' };
     map.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
     map.set('task_7', thirtyPerCentShapeOverlay);
     map.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
 
     const otherPerCent = ninetyFivePerCent - thirtyPerCent;
     const otherPerCentShapeOverlay = getFrequencyOverlay(otherPerCent, shapeOverlayStyles, 'otherPerCent');
-    const otherPerCentEdgeOverlay = getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent');
+    const otherPerCentEdgeOverlay = { ...getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent'), pathClass:'path-lvl3' };
     map.set('sequence_flow_8', otherPerCentEdgeOverlay);
     map.set('task_6', otherPerCentShapeOverlay);
     map.set('sequence_flow_9', otherPerCentEdgeOverlay);
