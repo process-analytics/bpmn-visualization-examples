@@ -34,49 +34,61 @@ limitations under the License.
             background-color: white;
         }
 
+        :root {
+            --color-lvl1: #e9e9e9;
+            --color-lvl2: #bdbdbd;
+            --color-lvl3: #a7a7a7;
+            --color-lvl4: #7a7a7a;
+            --color-lvl5: Black;
+        }
+
+        /* for 'path' classes
+            path:nth-child(2) is for edge line
+            path:nth-child(3) is for edge arrow
+        */
         .path-lvl1 > path:nth-child(2) {
-            stroke: #e9e9e9;
+            stroke: var(--color-lvl1);
             stroke-width: 2px;
         }
         .path-lvl1 > path:nth-child(3) {
-            stroke: #e9e9e9;
-            fill: #e9e9e9;
+            stroke: var(--color-lvl1);
+            fill: var(--color-lvl1);
         }
 
         .path-lvl2 > path:nth-child(2) {
-            stroke: #bdbdbd;
+            stroke: var(--color-lvl2);
             stroke-width: 4px;
         }
         .path-lvl2 > path:nth-child(3) {
-            stroke: #bdbdbd;
-            fill: #bdbdbd;
+            stroke: var(--color-lvl2);
+            fill: var(--color-lvl2);
         }
 
         .path-lvl3 > path:nth-child(2) {
-            stroke: #a7a7a7;
+            stroke: var(--color-lvl3);
             stroke-width: 6px;
         }
         .path-lvl3 > path:nth-child(3) {
-            stroke: #a7a7a7;
-            fill: #a7a7a7;
+            stroke: var(--color-lvl3);
+            fill: var(--color-lvl3);
         }
 
         .path-lvl4 > path:nth-child(2) {
-            stroke: #7a7a7a;
+            stroke: var(--color-lvl4);
             stroke-width: 8px;
         }
         .path-lvl4 > path:nth-child(3) {
-            stroke: #7a7a7a;
-            fill: #7a7a7a;
+            stroke: var(--color-lvl4);
+            fill: var(--color-lvl4);
         }
 
         .path-lvl5 > path:nth-child(2) {
-            stroke: Black;
+            stroke: var(--color-lvl5);
             stroke-width: 10px;
         }
         .path-lvl5 > path:nth-child(3) {
-            stroke: Black;
-            fill: Black;
+            stroke: var(--color-lvl5);
+            fill: var(--color-lvl5);
         }
 
     </style>
