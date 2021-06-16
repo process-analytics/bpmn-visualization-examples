@@ -597,10 +597,12 @@ function getHardwareRetailerDiagram(){
         <semantic:sequenceFlow id="sequence_flow_16" name="" sourceRef="parallel_gateway_2" targetRef="task_8"/>
         <semantic:sequenceFlow id="sequence_flow_17" name="" sourceRef="task_8" targetRef="end_event"/>
         <semantic:sequenceFlow id="sequence_flow_18" name="" sourceRef="parallel_gateway_1" targetRef="task_2"/>
+        <!-- not correctly displayed, see https://github.com/process-analytics/bpmn-visualization-js/issues/1368
         <semantic:textAnnotation id="text_annotation">
             <semantic:text>Insurance is included in carrier service</semantic:text>
         </semantic:textAnnotation>
         <semantic:association id="association" associationDirection="None" sourceRef="sequence_flow_4" targetRef="text_annotation"/>
+        -->
     </semantic:process>
     <semantic:collaboration id="collaboration">
         <semantic:participant id="participant_1" name="Hardware Retailer" processRef="process_1"/>
@@ -693,10 +695,12 @@ function getHardwareRetailerDiagram(){
                     <dc:Bounds x="1611" y="646" width="79" height="27"/>
                 </bpmndi:BPMNLabel>
             </bpmndi:BPMNShape>
+            <!-- not correctly displayed, see https://github.com/process-analytics/bpmn-visualization-js/issues/1368
             <bpmndi:BPMNShape id="shape_text_annotation" bpmnElement="text_annotation">
                 <dc:Bounds x="740" y="460" width="108" height="49" />
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNShape>
+            -->
             <bpmndi:BPMNEdge id="edge_sequence_flow_10" bpmnElement="sequence_flow_10">
                 <di:waypoint x="1141" y="156"/>
                 <di:waypoint x="1200" y="156"/>
@@ -800,12 +804,14 @@ function getHardwareRetailerDiagram(){
                 <di:waypoint x="889" y="321"/>
                 <bpmndi:BPMNLabel/>
             </bpmndi:BPMNEdge>
+            <!-- not correctly displayed, see https://github.com/process-analytics/bpmn-visualization-js/issues/1368
             <bpmndi:BPMNEdge id="edge_association" bpmnElement="association">
                 <di:waypoint x="710" y="440" />
                 <di:waypoint x="710" y="488" />
                 <di:waypoint x="740" y="488" />
                 <bpmndi:BPMNLabel />
             </bpmndi:BPMNEdge>
+            -->
         </bpmndi:BPMNPlane>
     </bpmndi:BPMNDiagram>
 </semantic:definitions>`;
