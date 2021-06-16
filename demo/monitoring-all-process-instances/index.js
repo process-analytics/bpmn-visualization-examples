@@ -10,7 +10,10 @@ function loadData(bpmnVisualization, getData) {
     bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
 
     getData().forEach((value, key) => {
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value);
+        bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
+        if(value.pathClass) {
+            bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
+        }
     });
 }
 
