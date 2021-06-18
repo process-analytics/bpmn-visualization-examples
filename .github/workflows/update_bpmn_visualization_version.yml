@@ -54,7 +54,5 @@ jobs:
           title: "[INFRA] Update BPMN Visualization version to ${{ env.VERSION }}"
           body: "https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/infra/update_bpmn_visualization_to_${{ env.VERSION }}/examples/index.html"
           labels: "enhancement"
-          reviewers: |
-            csouchet
-            tbouffard
+          team-reviewers: js-lib-collaborators
           draft: true
