@@ -55,7 +55,6 @@ jobs:
           body: "https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/infra/update_bpmn_visualization_to_${{ env.VERSION }}/examples/index.html"
           labels: "enhancement"
           reviewers: |
-            aibcmars
             csouchet
             tbouffard
           draft: true
