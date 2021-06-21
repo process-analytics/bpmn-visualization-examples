@@ -12,7 +12,7 @@ class CustomIconPainter extends bpmnvisu.IconPainter {
     paintPersonIcon(paintParameter) {
         const canvas = this.newBpmnCanvas(paintParameter, {height: 13, width: 12});
         // this way of doing subject to change in the future (probably by setting the fillColor in the icon style configuration)
-        c.setFillColor(userTaskIconColor);
+        paintParameter.c.setFillColor(userTaskIconColor);
 
         canvas.begin();
         canvas.moveTo(12, 13);
