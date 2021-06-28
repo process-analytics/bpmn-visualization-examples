@@ -25,7 +25,7 @@ Content:
 
   - update the `StyleConfigurator` method prototypes
 ```javascript
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_ITALIC;
 }
