@@ -21,7 +21,7 @@ Content:
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 ```
 
-- override default fill and stroke colors: update the `StyleConfigurator` method prototypes
+- override default fill and stroke colors: update the `StyleConfigurator` method
 ```javascript
 const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
 StyleConfigurator.configureCommonDefaultStyle = function (style) {

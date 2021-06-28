@@ -23,7 +23,7 @@ Content:
   StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 ```
 
-  - update the `StyleConfigurator` method prototypes
+  - update the `StyleConfigurator` method
 ```javascript
 StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
