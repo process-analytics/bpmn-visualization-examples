@@ -16,8 +16,8 @@ const originalDefaultFontSize = bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
 bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
-const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_ITALIC;
 }
@@ -28,7 +28,7 @@ bpmnVisualizationCustomDefaultFont.load(bpmn);
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
 bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
 // restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

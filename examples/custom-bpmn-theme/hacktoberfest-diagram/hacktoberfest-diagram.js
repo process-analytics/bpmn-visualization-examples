@@ -64,28 +64,28 @@ class BpmnVisualizationHacktoberfestLightTheme extends bpmnvisu.BpmnVisualizatio
 
 class HacktoberfestLightThemeIconPainter extends bpmnvisu.IconPainter {
     // START TIMER
-    paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(pinkDark);
-        super.paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintClockIcon(parameter) {
+        parameter.canvas.setStrokeColor(pinkDark);
+        super.paintClockIcon(parameter);
     };
 
     // EXCLUSIVE GATEWAY
-    paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = blueLight;
-        c.setStrokeColor(blueMedium);
-        super.paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintXCrossIcon(parameter) {
+        parameter.iconStyleConfig.strokeColor = blueLight;
+        parameter.canvas.setStrokeColor(blueMedium);
+        super.paintXCrossIcon(parameter);
     };
 
     // USER TASK
-    paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = blueMedium;
-        super.paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintPersonIcon(parameter) {
+        parameter.iconStyleConfig.strokeColor = blueMedium;
+        super.paintPersonIcon(parameter);
     };
 
     // CALL ACTIVITY
-    paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(blueSuperLight);
-        super.paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintExpandIcon(parameter) {
+        parameter.canvas.setStrokeColor(blueSuperLight);
+        super.paintExpandIcon(parameter);
     };
 }
 
@@ -148,27 +148,27 @@ class BpmnVisualizationHacktoberfestDarkTheme extends bpmnvisu.BpmnVisualization
 
 class HacktoberfestDarkThemeIconPainter extends bpmnvisu.IconPainter {
     // START TIMER
-    paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(pinkDark);
-        super.paintClockIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintClockIcon(parameter) {
+        parameter.canvas.setStrokeColor(pinkDark);
+        super.paintClockIcon(parameter);
     };
 
     // EXCLUSIVE GATEWAY
-    paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = blueSuperLight;
-        super.paintXCrossIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintXCrossIcon(parameter) {
+        parameter.iconStyleConfig.strokeColor = blueSuperLight;
+        super.paintXCrossIcon(parameter);
     };
 
     // USER TASK
-    paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        icon.strokeColor = blueSuperLight;
-        super.paintPersonIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintPersonIcon(parameter) {
+        parameter.iconStyleConfig.strokeColor = blueSuperLight;
+        super.paintPersonIcon(parameter);
     };
 
     // CALL ACTIVITY
-    paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon }) {
-        c.setStrokeColor(blueDark);
-        super.paintExpandIcon({ c, ratioFromParent, setIconOrigin, shape, icon });
+    paintExpandIcon(parameter) {
+        parameter.canvas.setStrokeColor(blueDark);
+        super.paintExpandIcon(parameter);
     };
 }
 

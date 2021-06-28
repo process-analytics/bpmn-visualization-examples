@@ -23,9 +23,9 @@ Content:
   StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 ```
 
-  - update the `StyleConfigurator` method prototypes
+  - update the `StyleConfigurator` method
 ```javascript
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_ITALIC;
 }

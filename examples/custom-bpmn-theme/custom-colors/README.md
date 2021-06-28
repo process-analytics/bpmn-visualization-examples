@@ -21,10 +21,10 @@ Content:
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 ```
 
-- override default fill and stroke colors: update the `StyleConfigurator` method prototypes
+- override default fill and stroke colors: update the `StyleConfigurator` method
 ```javascript
-const originalConfigureCommonDefaultStyle = StyleConfigurator.prototype.configureCommonDefaultStyle;
-StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
+StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
     style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'Orange';
