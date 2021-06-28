@@ -22,8 +22,8 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default fill and stroke colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = function (style) {
+const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
     style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
     style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'Orange';
@@ -41,7 +41,7 @@ const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ con
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 bpmnvisu.StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
 
 
@@ -152,5 +152,5 @@ const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsU
 bpmnVisualizationCustomColorsUserTask.load(bpmn);
 
 // restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.prototype.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 bpmnvisu.StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
