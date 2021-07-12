@@ -103,6 +103,7 @@ bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = blueDark;
 bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = blueLight;
 bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = blueSuperLight;
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
+bpmnvisu.StyleDefault.POOL_LABEL_FILL_COLOR = blueMedium;
 
 class BpmnVisualizationHacktoberfestDarkTheme extends bpmnvisu.BpmnVisualization {
 
@@ -140,7 +141,6 @@ class BpmnVisualizationHacktoberfestDarkTheme extends bpmnvisu.BpmnVisualization
         // POOL
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
         style[bpmnvisu.mxConstants.STYLE_SWIMLANE_FILLCOLOR] = blueDark;
-        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueMedium;
         style[bpmnvisu.mxConstants.STYLE_FONTSIZE] = 16;
     }
 
