@@ -5,7 +5,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
-⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [diagram-fit-on-load.js](diagram-fit-on-load.js).
+⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
 1. Declare the BPMN container with a fixed width & a fixed height
 ```css
