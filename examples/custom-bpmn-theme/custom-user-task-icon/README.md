@@ -9,7 +9,7 @@ Javascript example
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ BPMN Visualization Usage
-You can find all the content of the example in [index.html](index.html) and [custom-user-task-icon.js](custom-user-task-icon.js).
+You can find all the content of the example in [index.html](index.html) and [index.js](index.js).
 
 Before loading the BPMN content with BPMN Visualization:
 - Create a new class extending `IconPainter` and override the method painting the user icon (using the mxGraph API):
