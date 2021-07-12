@@ -28,21 +28,12 @@ bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
     style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
     style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'Orange';
 }
-// hack to ensure that the pool and lane label area fill color are kept untouched
-const originalConfigureStyles = bpmnvisu.StyleConfigurator.prototype.configureStyles;
-bpmnvisu.StyleConfigurator.prototype.configureStyles = function () {
-    originalConfigureStyles.apply(this);
-    [bpmnvisu.ShapeBpmnElementKind.LANE, bpmnvisu.ShapeBpmnElementKind.POOL].forEach(kind => {
-        const style = this.graph.getStylesheet().styles[kind];
-        style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
-    });
-}
+
 const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults
 bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -150,7 +141,3 @@ class BpmnVisualizationCustomColorsUserTask extends bpmnvisu.BpmnVisualization {
 
 const bpmnVisualizationCustomColorsUserTask = new BpmnVisualizationCustomColorsUserTask('bpmn-container-custom-colors-user-task');
 bpmnVisualizationCustomColorsUserTask.load(bpmn);
-
-// restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.prototype.configureStyles = originalConfigureStyles;
