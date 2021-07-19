@@ -26,21 +26,32 @@ function switchDiagram(switchValue, frequencyBpmnVisualization) {
     }
     document.getElementById(`${switchValue}-bpmn-container`).classList.remove('d-hide');
 
-    // Display corresponding Shape legend & Hide other
-    document.getElementById("time-shape-legend").classList.add('d-hide');
-    document.getElementById("frequency-shape-legend").classList.add('d-hide');
-    document.getElementById(`${switchValue}-shape-legend`).classList.remove('d-hide');
-
-    // Display corresponding Edge legend & Hide other
-    document.getElementById("time-edge-legend").classList.add('d-hide');
-    document.getElementById("frequency-edge-legend").classList.add('d-hide');
-    document.getElementById(`${switchValue}-edge-legend`).classList.remove('d-hide');
-
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
-        loadData(frequencyBpmnVisualization, getFrequencyData);
-        frequencyBpmnDiagramIsAlreadyLoad = true;
+        // Hide corresponding Shape legends
+        document.getElementById("time-shape-legend").classList.add('d-hide');
+        // Hide corresponding Edge legends
+        document.getElementById("time-edge-legend").classList.add('d-hide');
+        document.getElementById("time-edge-path-legend").classList.add('d-hide');
+
+        if(!frequencyBpmnDiagramIsAlreadyLoad) {
+            loadData(frequencyBpmnVisualization, getFrequencyData);
+            frequencyBpmnDiagramIsAlreadyLoad = true;
+        }
+    } else if(switchValue!=='frequency' && frequencyBpmnDiagramIsAlreadyLoad) {
+        // Hide corresponding Shape legends
+        document.getElementById("frequency-shape-legend").classList.add('d-hide');
+        // Hide corresponding Edge legends
+        document.getElementById("frequency-edge-legend").classList.add('d-hide');
+        document.getElementById("frequency-edge-path-legend").classList.add('d-hide');
     }
+
+    // Display corresponding Shape legend
+    document.getElementById(`${switchValue}-shape-legend`).classList.remove('d-hide');
+
+    // Display corresponding Edge legends
+    document.getElementById(`${switchValue}-edge-legend`).classList.remove('d-hide');
+    document.getElementById(`${switchValue}-edge-path-legend`).classList.remove('d-hide');
 }
 
 document.getElementById('btn-time').checked = true;
@@ -56,4 +67,8 @@ document.getElementById('switch-panel').onclick = () => {
     let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
     switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    updateTimeLegends();
+})
 

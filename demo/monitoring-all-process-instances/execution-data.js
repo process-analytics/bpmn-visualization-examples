@@ -1,27 +1,33 @@
+const shapeTimeOverlayStyles = getTimeOverlayStyles('top-right', '#008700');
+const edgeTimeOverlayStyles = getTimeOverlayStyles('middle', '#c61700');
+
 function withStrokeColorAsFillColor(overlayStyle) {
     return {...overlayStyle, stroke: {color: overlayStyle.fill.color}};
 }
 
-function updateTimeTitleLegends(guideYElement, overlayStyles) {
-    document.addEventListener('DOMContentLoaded', function () {
-        let titles = Array.from(overlayStyles.keys());
-        let ticks = guideYElement.children;
-        for (let i = 0; i < ticks.length - 1; i++) {
-            ticks[i].firstElementChild.innerText = `1 ${titles[ticks.length - 2 - i]}`;
-        }
-        ticks[ticks.length - 1].firstElementChild.innerText = '1 year';
-    })
+function updateTimeTitleLegend(legendType, overlayStyles) {
+    let titles = Array.from(overlayStyles.keys());
+    let ticks = document.getElementById(`${legendType}-guide-y`).children;
+    console.log( document.getElementById(`${legendType}-guide-y`).children);
+    for (let i = 0; i < ticks.length - 1; i++) {
+        ticks[i].firstElementChild.innerText = `1 ${titles[ticks.length - 2 - i]}`;
+    }
+    ticks[ticks.length - 1].firstElementChild.innerText = '1 year';
 }
 
-function createEdgePathLegendElement(chartId, overlayStyles) {
-    let chartElement = createChartElement(chartId);
-    let guideYElement = createGuideYElement(chartElement);
-    createBarElement(chartElement, "250", "var(--color-lvl1)", "8px");
-    createBarElement(chartElement, "200", "var(--color-lvl2)", "16px");
-    createBarElement(chartElement, "150", "var(--color-lvl3)", "24px");
-    createBarElement(chartElement, "100", "var(--color-lvl4)", "32px");
-    createBarElement(chartElement, "50", "var(--color-lvl5)");
-    updateTimeTitleLegends(guideYElement, overlayStyles);
+function updateTimeLegend(legendType, overlayStyles) {
+    document.getElementById(`${legendType}-250`).style.backgroundColor = overlayStyles.get('second').style.fill.color;
+    document.getElementById(`${legendType}-200`).style.backgroundColor = overlayStyles.get('minute').style.fill.color;
+    document.getElementById(`${legendType}-150`).style.backgroundColor = overlayStyles.get('hour').style.fill.color;
+    document.getElementById(`${legendType}-100`).style.backgroundColor = overlayStyles.get('day').style.fill.color;
+    document.getElementById(`${legendType}-50`).style.backgroundColor = overlayStyles.get('month').style.fill.color;
+    updateTimeTitleLegend(legendType, overlayStyles);
+}
+
+function updateTimeLegends() {
+    updateTimeLegend("shape-legend", shapeTimeOverlayStyles);
+    updateTimeLegend("edge-legend", edgeTimeOverlayStyles);
+    updateTimeTitleLegend("edge-path-legend", edgeTimeOverlayStyles);
 }
 
 function getTimeOverlayStyles(position, color) {
@@ -109,70 +115,41 @@ function getTimeData() {
     return new Map([...getShapeTimeData(), ...getEdgeTimeData()]);
 }
 
-function createTimeOverlayLegendElement(chartId, overlayStyles) {
-    let chartElement = createChartElement(chartId);
-    let guideYElement = createGuideYElement(chartElement);
-    createBarElement(chartElement, "250", overlayStyles.get('second').style.fill.color);
-    createBarElement(chartElement, "200", overlayStyles.get('minute').style.fill.color);
-    createBarElement(chartElement, "150", overlayStyles.get('hour').style.fill.color);
-    createBarElement(chartElement, "100", overlayStyles.get('day').style.fill.color);
-    createBarElement(chartElement, "50", overlayStyles.get('month').style.fill.color);
-    updateTimeTitleLegends(guideYElement, overlayStyles);
-}
-
 function getShapeTimeData() {
-    const overlayStyles = getTimeOverlayStyles('top-right', '#008700');
-    createTimeOverlayLegendElement("time-shape-legend", overlayStyles);
-
     const map = new Map();
-    map.set('start_event', getTimeOverlay('second', overlayStyles));
-    map.set('parallel_gateway_1', getTimeOverlay('second', overlayStyles));
-    map.set('task_1', getTimeOverlay('minute', overlayStyles));
-    map.set('task_2', getTimeOverlay('minute', overlayStyles));
-    map.set('exclusive_gateway_1', getTimeOverlay('minute', overlayStyles));
-    map.set('task_3', getTimeOverlay('minute', overlayStyles));
-    map.set('task_4', getTimeOverlay('day', overlayStyles));
-    map.set('task_5', getTimeOverlay('hour', overlayStyles));
-    map.set('inclusive_gateway_1', getTimeOverlay('second', overlayStyles));
-    map.set('task_6', getTimeOverlay('hour', overlayStyles));
-    map.set('task_7', getTimeOverlay('month', overlayStyles));
-    map.set('inclusive_gateway_2', getTimeOverlay('day', overlayStyles));
-    map.set('exclusive_gateway_2', getTimeOverlay('day', overlayStyles));
-    map.set('parallel_gateway_2', getTimeOverlay('day', overlayStyles));
-    map.set('task_8', getTimeOverlay('hour', overlayStyles));
-    map.set('end_event', getTimeOverlay('second', overlayStyles));
+    map.set('start_event', getTimeOverlay('second', shapeTimeOverlayStyles));
+    map.set('parallel_gateway_1', getTimeOverlay('second', shapeTimeOverlayStyles));
+    map.set('task_1', getTimeOverlay('minute', shapeTimeOverlayStyles));
+    map.set('task_2', getTimeOverlay('minute', shapeTimeOverlayStyles));
+    map.set('exclusive_gateway_1', getTimeOverlay('minute', shapeTimeOverlayStyles));
+    map.set('task_3', getTimeOverlay('minute', shapeTimeOverlayStyles));
+    map.set('task_4', getTimeOverlay('day', shapeTimeOverlayStyles));
+    map.set('task_5', getTimeOverlay('hour', shapeTimeOverlayStyles));
+    map.set('inclusive_gateway_1', getTimeOverlay('second', shapeTimeOverlayStyles));
+    map.set('task_6', getTimeOverlay('hour', shapeTimeOverlayStyles));
+    map.set('task_7', getTimeOverlay('month', shapeTimeOverlayStyles));
+    map.set('inclusive_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
+    map.set('exclusive_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
+    map.set('parallel_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
+    map.set('task_8', getTimeOverlay('hour', shapeTimeOverlayStyles));
+    map.set('end_event', getTimeOverlay('second', shapeTimeOverlayStyles));
     return map;
 }
 
 function getEdgeTimeData() {
-    const overlayStyles = getTimeOverlayStyles('middle', '#c61700');
-    createTimeOverlayLegendElement("time-edge-legend", overlayStyles);
-    createEdgePathLegendElement("edge-path-legend", overlayStyles);
-
     function getEdgeSecondOverlay() {
         return {
-            ...getTimeOverlay('second', overlayStyles),
+            ...getTimeOverlay('second', edgeTimeOverlayStyles),
             pathClass: 'path-lvl1'
         };
     }
 
     function getEdgeMinuteOverlay() {
         return {
-            ...getTimeOverlay('minute', overlayStyles),
+            ...getTimeOverlay('minute', edgeTimeOverlayStyles),
             pathClass: 'path-lvl2'
         };
     }
-
-    /*
-        <chart id="time-edge-legend" scale-y-linear="0 250">
-            <guide-y ticks="0 50 100 150 200 250"></guide-y>
-            <bar id="time-edge-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
-            <bar id="time-edge-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
-            <bar id="time-edge-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
-            <bar id="time-edge-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
-            <bar id="time-edge-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
-        </chart>*/
-
 
     const map = new Map();
     map.set('sequence_flow_1', getEdgeSecondOverlay());
@@ -243,30 +220,20 @@ function getFrequencyOverlay(label, overlayStyles, type) {
     };
 }
 
+/*function createFrequencyOverlayLegendElement(chartId, overlayStyles) {
+    let chartElement = createChartElement(chartId);
+    let guideYElement = createGuideYElement(chartElement);
+    createBarElement(chartElement, "250", overlayStyles.get('random').style.fill.color);
+    createBarElement(chartElement, "200", overlayStyles.get('ninetyFivePerCent').style.fill.color);
+    createBarElement(chartElement, "150", overlayStyles.get('otherPerCent').style.fill.color);
+    createBarElement(chartElement, "100", overlayStyles.get('thirtyPerCent').style.fill.color);
+    createBarElement(chartElement, "50", overlayStyles.get('fivePerCent').style.fill.color);
+    //updateFrequencyTitleLegends(guideYElement, overlayStyles);
+}*/
+
 function getFrequencyData() {
     const shapeOverlayStyles = getFrequencyOverlayStyles('top-right', '#0083af');
     const edgeOverlayStyles = getFrequencyOverlayStyles('middle', '#6d00af');
-
-    document.getElementById("frequency-shape-legend");
-    document.getElementById("frequency-edge-legend");
-
-
-    /*    <chart id="frequency-shape-legend" scale-y-linear="0 250" className="d-hide">
-            <guide-y ticks="0 50 100 150 200 250"></guide-y>
-            <bar id="frequency-shape-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
-            <bar id="frequency-shape-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
-            <bar id="frequency-shape-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
-            <bar id="frequency-shape-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
-            <bar id="frequency-shape-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
-        </chart>
-        <chart id="frequency-edge-legend" scale-y-linear="0 250" className="d-hide">
-            <guide-y ticks="0 50 100 150 200 250"></guide-y>
-            <bar id="frequency-edge-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
-            <bar id="frequency-edge-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
-            <bar id="frequency-edge-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
-            <bar id="frequency-edge-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
-            <bar id="frequency-edge-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
-        </chart>*/
 
     const map = new Map();
 
