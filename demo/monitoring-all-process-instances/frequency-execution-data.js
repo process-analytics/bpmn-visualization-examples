@@ -79,7 +79,7 @@ function getFrequencyOverlay(label, overlayStyles, type, pathClass) {
         }
     };
     if (pathClass) {
-        overlay.overlay.pathClass = pathClass;
+        overlay.pathClass = pathClass;
         edgeFrequencyLegendStyles.set(label, overlay.overlay.style.fill.color);
     } else {
         shapeFrequencyLegendStyles.set(label, overlay.overlay.style.fill.color);
