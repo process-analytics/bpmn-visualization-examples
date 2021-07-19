@@ -26,6 +26,16 @@ function switchDiagram(switchValue, frequencyBpmnVisualization) {
     }
     document.getElementById(`${switchValue}-bpmn-container`).classList.remove('d-hide');
 
+    // Display corresponding Shape legend & Hide other
+    document.getElementById("time-shape-legend").classList.add('d-hide');
+    document.getElementById("frequency-shape-legend").classList.add('d-hide');
+    document.getElementById(`${switchValue}-shape-legend`).classList.remove('d-hide');
+
+    // Display corresponding Edge legend & Hide other
+    document.getElementById("time-edge-legend").classList.add('d-hide');
+    document.getElementById("frequency-edge-legend").classList.add('d-hide');
+    document.getElementById(`${switchValue}-edge-legend`).classList.remove('d-hide');
+
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
         loadData(frequencyBpmnVisualization, getFrequencyData);

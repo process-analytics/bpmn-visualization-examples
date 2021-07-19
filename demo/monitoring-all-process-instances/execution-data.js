@@ -1,5 +1,27 @@
 function withStrokeColorAsFillColor(overlayStyle) {
-    return {...overlayStyle, stroke: { color: overlayStyle.fill.color}};
+    return {...overlayStyle, stroke: {color: overlayStyle.fill.color}};
+}
+
+function updateTimeTitleLegends(guideYElement, overlayStyles) {
+    document.addEventListener('DOMContentLoaded', function () {
+        let titles = Array.from(overlayStyles.keys());
+        let ticks = guideYElement.children;
+        for (let i = 0; i < ticks.length - 1; i++) {
+            ticks[i].firstElementChild.innerText = `1 ${titles[ticks.length - 2 - i]}`;
+        }
+        ticks[ticks.length - 1].firstElementChild.innerText = '1 year';
+    })
+}
+
+function createEdgePathLegendElement(chartId, overlayStyles) {
+    let chartElement = createChartElement(chartId);
+    let guideYElement = createGuideYElement(chartElement);
+    createBarElement(chartElement, "250", "var(--color-lvl1)", "8px");
+    createBarElement(chartElement, "200", "var(--color-lvl2)", "16px");
+    createBarElement(chartElement, "150", "var(--color-lvl3)", "24px");
+    createBarElement(chartElement, "100", "var(--color-lvl4)", "32px");
+    createBarElement(chartElement, "50", "var(--color-lvl5)");
+    updateTimeTitleLegends(guideYElement, overlayStyles);
 }
 
 function getTimeOverlayStyles(position, color) {
@@ -87,8 +109,20 @@ function getTimeData() {
     return new Map([...getShapeTimeData(), ...getEdgeTimeData()]);
 }
 
+function createTimeOverlayLegendElement(chartId, overlayStyles) {
+    let chartElement = createChartElement(chartId);
+    let guideYElement = createGuideYElement(chartElement);
+    createBarElement(chartElement, "250", overlayStyles.get('second').style.fill.color);
+    createBarElement(chartElement, "200", overlayStyles.get('minute').style.fill.color);
+    createBarElement(chartElement, "150", overlayStyles.get('hour').style.fill.color);
+    createBarElement(chartElement, "100", overlayStyles.get('day').style.fill.color);
+    createBarElement(chartElement, "50", overlayStyles.get('month').style.fill.color);
+    updateTimeTitleLegends(guideYElement, overlayStyles);
+}
+
 function getShapeTimeData() {
     const overlayStyles = getTimeOverlayStyles('top-right', '#008700');
+    createTimeOverlayLegendElement("time-shape-legend", overlayStyles);
 
     const map = new Map();
     map.set('start_event', getTimeOverlay('second', overlayStyles));
@@ -112,18 +146,32 @@ function getShapeTimeData() {
 
 function getEdgeTimeData() {
     const overlayStyles = getTimeOverlayStyles('middle', '#c61700');
+    createTimeOverlayLegendElement("time-edge-legend", overlayStyles);
+    createEdgePathLegendElement("edge-path-legend", overlayStyles);
+
     function getEdgeSecondOverlay() {
         return {
             ...getTimeOverlay('second', overlayStyles),
-            pathClass:'path-lvl1'
+            pathClass: 'path-lvl1'
         };
     }
+
     function getEdgeMinuteOverlay() {
         return {
             ...getTimeOverlay('minute', overlayStyles),
-            pathClass:'path-lvl2'
+            pathClass: 'path-lvl2'
         };
     }
+
+    /*
+        <chart id="time-edge-legend" scale-y-linear="0 250">
+            <guide-y ticks="0 50 100 150 200 250"></guide-y>
+            <bar id="time-edge-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
+            <bar id="time-edge-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
+            <bar id="time-edge-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
+            <bar id="time-edge-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
+            <bar id="time-edge-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
+        </chart>*/
 
 
     const map = new Map();
@@ -153,34 +201,34 @@ function getFrequencyOverlayStyles(position, color) {
         ['random', {
             position,
             style: withStrokeColorAsFillColor({
-                fill: { color },
-                font: { color: 'White' },
+                fill: {color},
+                font: {color: 'White'},
             })
         }],
         ['ninetyFivePerCent', {
             position,
             style: withStrokeColorAsFillColor({
-                fill: { color: `rgba(${new Values(color).tint(21).rgb})` },
-                font: { color: 'White' },
+                fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
+                font: {color: 'White'},
             })
         }],
         ['otherPerCent', {
             position,
             style: withStrokeColorAsFillColor({
-                fill: { color: `rgba(${new Values(color).tint(42).rgb})` },
-                font: { color: 'White' },
+                fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
+                font: {color: 'White'},
             })
         }],
         ['thirtyPerCent', {
             position,
             style: withStrokeColorAsFillColor({
-                fill: { color: `rgba(${new Values(color).tint(63).rgb})` },
+                fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
             })
         }],
         ['fivePerCent', {
             position,
             style: withStrokeColorAsFillColor({
-                fill: { color: `rgba(${new Values(color).tint(84).rgb})` },
+                fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
             })
         }],
     ]);
@@ -199,11 +247,32 @@ function getFrequencyData() {
     const shapeOverlayStyles = getFrequencyOverlayStyles('top-right', '#0083af');
     const edgeOverlayStyles = getFrequencyOverlayStyles('middle', '#6d00af');
 
+    document.getElementById("frequency-shape-legend");
+    document.getElementById("frequency-edge-legend");
+
+
+    /*    <chart id="frequency-shape-legend" scale-y-linear="0 250" className="d-hide">
+            <guide-y ticks="0 50 100 150 200 250"></guide-y>
+            <bar id="frequency-shape-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
+            <bar id="frequency-shape-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
+            <bar id="frequency-shape-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
+            <bar id="frequency-shape-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
+            <bar id="frequency-shape-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
+        </chart>
+        <chart id="frequency-edge-legend" scale-y-linear="0 250" className="d-hide">
+            <guide-y ticks="0 50 100 150 200 250"></guide-y>
+            <bar id="frequency-edge-legend-lv1" literal-length="250" style="background-color: var(--color-lvl1)"></bar>
+            <bar id="frequency-edge-legend-lv2" literal-length="200" style="background-color: var(--color-lvl2)"></bar>
+            <bar id="frequency-edge-legend-lv3" literal-length="150" style="background-color: var(--color-lvl3)"></bar>
+            <bar id="frequency-edge-legend-lv4" literal-length="100" style="background-color: var(--color-lvl4)"></bar>
+            <bar id="frequency-edge-legend-lv5" literal-length="50" style="background-color: var(--color-lvl5)"></bar>
+        </chart>*/
+
     const map = new Map();
 
     const random = Math.floor(Math.random() * 1000);
     const randomShapeOverlay = getFrequencyOverlay(random, shapeOverlayStyles, 'random');
-    const randomEdgeOverlay = { ...getFrequencyOverlay(random, edgeOverlayStyles, 'random'), pathClass:'path-lvl5' };
+    const randomEdgeOverlay = {...getFrequencyOverlay(random, edgeOverlayStyles, 'random'), pathClass: 'path-lvl5'};
     map.set('start_event', randomShapeOverlay);
     map.set('sequence_flow_1', randomEdgeOverlay);
     map.set('parallel_gateway_1', randomShapeOverlay);
@@ -216,7 +285,7 @@ function getFrequencyData() {
 
     const fivePerCent = Math.floor(random * 5 / 100);
     const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
-    const fivePerCentEdgeOverlay = { ...getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent'), pathClass:'path-lvl1' };
+    const fivePerCentEdgeOverlay = {...getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent'), pathClass: 'path-lvl1'};
     map.set('sequence_flow_4', fivePerCentEdgeOverlay);
     map.set('task_3', fivePerCentShapeOverlay);
     map.set('sequence_flow_12', fivePerCentEdgeOverlay);
@@ -225,7 +294,7 @@ function getFrequencyData() {
 
     const ninetyFivePerCent = random - fivePerCent;
     const ninetyFivePerCentShapeOverlay = getFrequencyOverlay(ninetyFivePerCent, shapeOverlayStyles, 'ninetyFivePerCent');
-    const ninetyFivePerCentEdgeOverlay = { ...getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent'), pathClass:'path-lvl4' };
+    const ninetyFivePerCentEdgeOverlay = {...getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent'), pathClass: 'path-lvl4'};
     map.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
     map.set('task_5', ninetyFivePerCentShapeOverlay);
     map.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
@@ -233,14 +302,14 @@ function getFrequencyData() {
 
     const thirtyPerCent = Math.floor(ninetyFivePerCent * 30 / 100);
     const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
-    const thirtyPerCentEdgeOverlay = { ...getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent'), pathClass:'path-lvl2' };
+    const thirtyPerCentEdgeOverlay = {...getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent'), pathClass: 'path-lvl2'};
     map.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
     map.set('task_7', thirtyPerCentShapeOverlay);
     map.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
 
     const otherPerCent = ninetyFivePerCent - thirtyPerCent;
     const otherPerCentShapeOverlay = getFrequencyOverlay(otherPerCent, shapeOverlayStyles, 'otherPerCent');
-    const otherPerCentEdgeOverlay = { ...getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent'), pathClass:'path-lvl3' };
+    const otherPerCentEdgeOverlay = {...getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent'), pathClass: 'path-lvl3'};
     map.set('sequence_flow_8', otherPerCentEdgeOverlay);
     map.set('task_6', otherPerCentShapeOverlay);
     map.set('sequence_flow_9', otherPerCentEdgeOverlay);

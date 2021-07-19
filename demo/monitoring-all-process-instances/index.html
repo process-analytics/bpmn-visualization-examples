@@ -34,6 +34,10 @@ limitations under the License.
             background-color: white;
         }
 
+        #btn-group-overlay-config input {
+            max-width: 50px;
+        }
+
         :root {
             --color-lvl1: #e9e9e9;
             --color-lvl2: #bdbdbd;
@@ -50,6 +54,7 @@ limitations under the License.
             stroke: var(--color-lvl1);
             stroke-width: 2px;
         }
+
         .path-lvl1 > path:nth-child(3) {
             stroke: var(--color-lvl1);
             fill: var(--color-lvl1);
@@ -59,6 +64,7 @@ limitations under the License.
             stroke: var(--color-lvl2);
             stroke-width: 4px;
         }
+
         .path-lvl2 > path:nth-child(3) {
             stroke: var(--color-lvl2);
             fill: var(--color-lvl2);
@@ -68,6 +74,7 @@ limitations under the License.
             stroke: var(--color-lvl3);
             stroke-width: 6px;
         }
+
         .path-lvl3 > path:nth-child(3) {
             stroke: var(--color-lvl3);
             fill: var(--color-lvl3);
@@ -77,6 +84,7 @@ limitations under the License.
             stroke: var(--color-lvl4);
             stroke-width: 8px;
         }
+
         .path-lvl4 > path:nth-child(3) {
             stroke: var(--color-lvl4);
             fill: var(--color-lvl4);
@@ -86,11 +94,45 @@ limitations under the License.
             stroke: var(--color-lvl5);
             stroke-width: 10px;
         }
+
         .path-lvl5 > path:nth-child(3) {
             stroke: var(--color-lvl5);
             fill: var(--color-lvl5);
         }
 
+        #legend chart {
+            width: 40px;
+            height: 150px;
+            margin-bottom: 3rem;
+            margin-left: 0px;
+        }
+
+        #legend chart.color {
+            margin-bottom: 0;
+        }
+
+        #legend guide-y .tick {
+            border-bottom-width: 2px;
+            border-bottom-color: black;
+        }
+
+        #legend guide-y .tick .label {
+            width: 70px;
+        }
+
+        #legend guide-y.left {
+            border-right: none;
+        }
+
+        #legend guide-y.left .tick .label {
+            background: none;
+        }
+
+        #legend bar {
+            position: absolute;
+            margin: 0;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -117,39 +159,46 @@ limitations under the License.
 
 <section class="container col-10 flex-centered mt-2">
     <section class="col-12 mt-2">
-    <div class="col-11 col-mx-auto">
-        <h2>Monitoring of all process instances demo</h2>
-        <p>Demonstrate how you can add execution time and frequency on BPMN elements.
-        </p>
+        <div class="col-11 col-mx-auto">
+            <h2>Monitoring of all process instances demo</h2>
+            <p>Demonstrate how you can add execution time and frequency on BPMN elements.
+            </p>
 
-        <div class="col-12 pt-2">
-            <div id="controls" class="col-12" style="margin-bottom: 1rem">
-                <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
-                    <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
-                    <label for="btn-time">Time</label>
-                    <input id="btn-frequency" type="radio" name="switch-data-type"/>
-                    <label for="btn-frequency">Frequency</label>
-                    <span class="toggle-outside">
+            <div class="col-12 pt-2">
+                <div id="controls" class="col-12" style="margin-bottom: 1rem">
+                    <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
+                        <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
+                        <label for="btn-time">Time</label>
+                        <input id="btn-frequency" type="radio" name="switch-data-type"/>
+                        <label for="btn-frequency">Frequency</label>
+                        <span class="toggle-outside">
                         <span class="toggle-inside"></span>
                     </span>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-dark col-12 p-1">
-                <div class=" m-1">
-                    <div id="time-bpmn-container" class="col 12 bpmn-container"></div>
-                    <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                <div class="columns" class="mt-1">
+                    <div id="legend" class="column col-2" style="margin-top: 2%">
+                    </div>
+                    <div class="column col-10 col-mx-auto">
+                        <div class="bg-dark p-1">
+                            <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
+                            <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 </section>
 
 <script src="../../examples/static/js/link-to-sources.js"></script>
 <!-- load bpmn-visualization -->
 <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.17.1/dist/bpmn-visualization.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo="
+        crossorigin="anonymous"></script>
+<script src="https://variancecharts.com/cdn/variance-noncommercial-standalone-6d26aa2.min.js" charset="UTF-8"></script>
 <script src="../../examples/static/js/bpmn-diagrams.js"></script>
+<script src="./legend.js"></script>
 <script src="./execution-data.js"></script>
 <script src="./index.js"></script>
 </body>
