@@ -27,7 +27,7 @@ function switchDiagram(switchValue, frequencyBpmnVisualization) {
     document.getElementById(`${switchValue}-bpmn-container`).classList.remove('d-hide');
 
     // Load BPMN diagram for Frequency Data, if it's not already done
-    if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
+    if(switchValue==='frequency') {
         if(!frequencyBpmnDiagramIsAlreadyLoad) {
             loadData(frequencyBpmnVisualization, getFrequencyData);
             frequencyBpmnDiagramIsAlreadyLoad = true;
