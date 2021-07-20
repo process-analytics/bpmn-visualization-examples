@@ -25,7 +25,7 @@ limitations under the License.
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
             /* width is relative to the window size */
-            height: 650px;
+            height: 550px;
             border-style: solid;
             border-color: #B0B0B0;
             border-width: 1px;
@@ -102,7 +102,7 @@ limitations under the License.
 
         #legend chart {
             width: 40px;
-            height: 150px;
+            height: 130px;
             margin-bottom: 3rem;
             margin-left: 0px;
         }
@@ -176,6 +176,8 @@ limitations under the License.
                     </span>
                     </div>
                 </div>
+                <h3 id="time-title" style="margin-top: 2rem; margin-bottom: 2rem;">Average run time for each item</h3>
+                <h3 id="frequency-title" class="d-hide" style="margin-top: 2rem; margin-bottom: 2rem;">Total number of executions of each item</h3>
                 <div class="columns" class="mt-1">
                     <div id="legend" class="column col-1" style="margin-top: 2%">
                         <chart id="shape-legend" scale-y-linear="0 250">
