@@ -25,13 +25,17 @@ limitations under the License.
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
             /* width is relative to the window size */
-            height: 650px;
+            height: 550px;
             border-style: solid;
             border-color: #B0B0B0;
             border-width: 1px;
             /* This ensures that the parts of the diagram outside of the container are not displayed. */
             overflow: hidden;
             background-color: white;
+        }
+
+        #btn-group-overlay-config input {
+            max-width: 50px;
         }
 
         :root {
@@ -50,6 +54,7 @@ limitations under the License.
             stroke: var(--color-lvl1);
             stroke-width: 2px;
         }
+
         .path-lvl1 > path:nth-child(3) {
             stroke: var(--color-lvl1);
             fill: var(--color-lvl1);
@@ -59,6 +64,7 @@ limitations under the License.
             stroke: var(--color-lvl2);
             stroke-width: 4px;
         }
+
         .path-lvl2 > path:nth-child(3) {
             stroke: var(--color-lvl2);
             fill: var(--color-lvl2);
@@ -68,6 +74,7 @@ limitations under the License.
             stroke: var(--color-lvl3);
             stroke-width: 6px;
         }
+
         .path-lvl3 > path:nth-child(3) {
             stroke: var(--color-lvl3);
             fill: var(--color-lvl3);
@@ -77,6 +84,7 @@ limitations under the License.
             stroke: var(--color-lvl4);
             stroke-width: 8px;
         }
+
         .path-lvl4 > path:nth-child(3) {
             stroke: var(--color-lvl4);
             fill: var(--color-lvl4);
@@ -86,11 +94,45 @@ limitations under the License.
             stroke: var(--color-lvl5);
             stroke-width: 10px;
         }
+
         .path-lvl5 > path:nth-child(3) {
             stroke: var(--color-lvl5);
             fill: var(--color-lvl5);
         }
 
+        #legend chart {
+            width: 40px;
+            height: 130px;
+            margin-bottom: 3rem;
+            margin-left: 0px;
+        }
+
+        #legend chart.color {
+            margin-bottom: 0;
+        }
+
+        #legend guide-y .tick {
+            border-bottom-width: 2px;
+            border-bottom-color: black;
+        }
+
+        #legend guide-y .tick .label {
+            width: 70px;
+        }
+
+        #legend guide-y.left {
+            border-right: none;
+        }
+
+        #legend guide-y.left .tick .label {
+            background: none;
+        }
+
+        #legend bar {
+            position: absolute;
+            margin: 0;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -117,40 +159,73 @@ limitations under the License.
 
 <section class="container col-10 flex-centered mt-2">
     <section class="col-12 mt-2">
-    <div class="col-11 col-mx-auto">
-        <h2>Monitoring of all process instances demo</h2>
-        <p>Demonstrate how you can add execution time and frequency on BPMN elements.
-        </p>
+        <div class="col-11 col-mx-auto">
+            <h2>Monitoring of all process instances demo</h2>
+            <p>Demonstrate how you can add execution time and frequency on BPMN elements.
+            </p>
 
-        <div class="col-12 pt-2">
-            <div id="controls" class="col-12" style="margin-bottom: 1rem">
-                <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
-                    <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
-                    <label for="btn-time">Time</label>
-                    <input id="btn-frequency" type="radio" name="switch-data-type"/>
-                    <label for="btn-frequency">Frequency</label>
-                    <span class="toggle-outside">
+            <div class="col-12 pt-2">
+                <div id="controls" class="col-12" style="margin-bottom: 1rem">
+                    <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
+                        <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
+                        <label for="btn-time">Time</label>
+                        <input id="btn-frequency" type="radio" name="switch-data-type"/>
+                        <label for="btn-frequency">Frequency</label>
+                        <span class="toggle-outside">
                         <span class="toggle-inside"></span>
                     </span>
+                    </div>
                 </div>
-            </div>
-            <div class="bg-dark col-12 p-1">
-                <div class=" m-1">
-                    <div id="time-bpmn-container" class="col 12 bpmn-container"></div>
-                    <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                <h3 id="time-title" style="margin-top: 2rem; margin-bottom: 2rem;">Average run time for each item</h3>
+                <h3 id="frequency-title" class="d-hide" style="margin-top: 2rem; margin-bottom: 2rem;">Total number of executions of each item</h3>
+                <div class="columns" class="mt-1">
+                    <div id="legend" class="column col-1" style="margin-top: 2%">
+                        <chart id="shape-legend" scale-y-linear="0 250">
+                            <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar id="shape-legend-250" literal-length="250"></bar>
+                            <bar id="shape-legend-200" literal-length="200"></bar>
+                            <bar id="shape-legend-150" literal-length="150"></bar>
+                            <bar id="shape-legend-100" literal-length="100"></bar>
+                            <bar id="shape-legend-50" literal-length="50"></bar>
+                        </chart>
+                        <chart id="edge-legend" scale-y-linear="0 250">
+                            <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar id="edge-legend-250" literal-length="250"></bar>
+                            <bar id="edge-legend-200" literal-length="200"></bar>
+                            <bar id="edge-legend-150" literal-length="150"></bar>
+                            <bar id="edge-legend-100" literal-length="100"></bar>
+                            <bar id="edge-legend-50" literal-length="50"></bar>
+                        </chart>
+                        <chart id="edge-path-legend" scale-y-linear="0 250">
+                            <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
+                            <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
+                            <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
+                            <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
+                            <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
+                        </chart>
+                    </div>
+                    <div class="column col-11 col-mx-auto">
+                        <div class="bg-dark p-1">
+                            <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
+                            <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
     </section>
 </section>
 
 <script src="../../examples/static/js/link-to-sources.js"></script>
 <!-- load bpmn-visualization -->
 <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.17.1/dist/bpmn-visualization.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo=" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo="
+        crossorigin="anonymous"></script>
+<script src="https://variancecharts.com/cdn/variance-noncommercial-standalone-6d26aa2.min.js" charset="UTF-8"></script>
 <script src="../../examples/static/js/bpmn-diagrams.js"></script>
-<script src="./execution-data.js"></script>
+<script src="./time-execution-data.js"></script>
+<script src="./frequency-execution-data.js"></script>
 <script src="./index.js"></script>
 </body>
 </html>

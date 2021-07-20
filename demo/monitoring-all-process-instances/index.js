@@ -18,18 +18,29 @@ function loadData(bpmnVisualization, getData) {
 }
 
 let frequencyBpmnDiagramIsAlreadyLoad = false;
-function switchDiagram(switchValue, frequencyBpmnVisualization) {
+
+function displayElementAndHideOthers(switchValue, subId) {
     // Display corresponding BPMN container & Hide others
-    const bpmnContainers = document.getElementsByClassName("bpmn-container");
+    const bpmnContainers = document.querySelectorAll(`[id*="${subId}"]`);
     for (let i = 0; i < bpmnContainers.length; i++) {
         bpmnContainers.item(i).classList.add('d-hide');
     }
-    document.getElementById(`${switchValue}-bpmn-container`).classList.remove('d-hide');
+    document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
+}
+
+function switchDiagram(switchValue, frequencyBpmnVisualization) {
+    displayElementAndHideOthers(switchValue, "bpmn-container");
+    displayElementAndHideOthers(switchValue, "title");
 
     // Load BPMN diagram for Frequency Data, if it's not already done
-    if(switchValue==='frequency' && !frequencyBpmnDiagramIsAlreadyLoad) {
-        loadData(frequencyBpmnVisualization, getFrequencyData);
-        frequencyBpmnDiagramIsAlreadyLoad = true;
+    if(switchValue==='frequency') {
+        if(!frequencyBpmnDiagramIsAlreadyLoad) {
+            loadData(frequencyBpmnVisualization, getFrequencyData);
+            frequencyBpmnDiagramIsAlreadyLoad = true;
+        }
+        updateFrequencyLegends();
+    } else if(switchValue!=='frequency') {
+        updateTimeLegends();
     }
 }
 
@@ -46,4 +57,8 @@ document.getElementById('switch-panel').onclick = () => {
     let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
     switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
 }
+
+document.addEventListener('DOMContentLoaded', function () {
+    updateTimeLegends();
+})
 
