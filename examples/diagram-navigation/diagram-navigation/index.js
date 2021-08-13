@@ -3,6 +3,11 @@ bpmnVisualization.load(getNavigationBpmnDiagram());
 
 document.getElementById('btn-reset').onclick = function() {
   bpmnVisualization.fit({type: bpmnvisu.FitType.None});
+
+  if(displayScrollBars){
+    // reset scrollbars position
+    document.getElementById('bpmn-container').scrollTo(0, 0);
+  }
 };
 
 function resetZoomLevel() {
