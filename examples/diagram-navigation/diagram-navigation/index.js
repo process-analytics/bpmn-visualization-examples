@@ -1,8 +1,22 @@
-console.info('je suis la')
-
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container', navigation: { enabled: true } });
+const bpmnContainer = document.getElementById('bpmn-container');
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainer, navigation: { enabled: true } });
 bpmnVisualization.load(getNavigationBpmnDiagram());
 
-document.getElementById('btn-reset').onclick = function() {
-  bpmnVisualization.fit({type: bpmnvisu.FitType.None});
+let displayScrollBars = false;
+document.getElementById('btn-reset').onclick = function () {
+  bpmnVisualization.fit({ type: bpmnvisu.FitType.None });
+
+  // reset scrollbars position
+  displayScrollBars && bpmnContainer.scrollTo(0, 0);
 };
+
+document.getElementById('btn-toggle-scrollbars').onclick = function () {
+  displayScrollBars = !displayScrollBars;
+
+  bpmnContainer.style.overflow = displayScrollBars ? 'auto' : 'hidden';
+
+  // ensure that all diagram positions are recomputed (mainly for no scrollbars)
+  bpmnVisualization.load(getNavigationBpmnDiagram());
+};
+
+
