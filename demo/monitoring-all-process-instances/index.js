@@ -5,18 +5,41 @@ function initBpmnVisualization(container) {
     });
 }
 
-function loadData(bpmnVisualization, getData) {
+// TODO pass the data and not the function to get them
+function loadData(bpmnVisualization, data) {
     // Load BPMN diagram
     bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
 
-    getData().forEach((value, key) => {
-        bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
+    data.forEach((value, key) => {
+        // bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
         if(value.pathClass) {
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
         }
     });
 }
 
+// for removal of css, we have only toggle api that requires to keep the map and loop over it
+function toggleCssClasses(bpmnVisualization, data) {
+    // TODO filter non set pathClass
+    data.forEach((value, key) => {
+        if(value.pathClass) {
+            bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
+        }
+    });
+}
+
+// The following would also need to trigger recompute the whole view
+//   removeAllClassNames(bpmnElementIds?: string[]): void {
+//     // TODO return true on change
+//     // diff between the number of elements in map before and after (as we do for update classnames of an element)
+//     if (!bpmnElementIds) {
+//       // clean the map
+//     }
+//     // string param --> string[]
+//     bpmnElementIds.forEach(id => this.classNamesByBPMNId.delete(id));
+//   }
+
+let currentDiagram = 'time';
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 
 function displayElementAndHideOthers(switchValue, subId) {
@@ -28,6 +51,7 @@ function displayElementAndHideOthers(switchValue, subId) {
     document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
 }
 
+const frequencyData = getFrequencyData();
 function switchDiagram(switchValue, frequencyBpmnVisualization) {
     displayElementAndHideOthers(switchValue, "bpmn-container");
     displayElementAndHideOthers(switchValue, "title");
@@ -35,20 +59,24 @@ function switchDiagram(switchValue, frequencyBpmnVisualization) {
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency') {
         if(!frequencyBpmnDiagramIsAlreadyLoad) {
-            loadData(frequencyBpmnVisualization, getFrequencyData);
+            // TODO add function initialize
+            loadData(frequencyBpmnVisualization, frequencyData);
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
         updateFrequencyLegends();
     } else if(switchValue!=='frequency') {
         updateTimeLegends();
     }
+    currentDiagram = switchValue;
+    console.info('Switched to %s', currentDiagram)
 }
 
 document.getElementById('btn-time').checked = true;
 
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
-loadData(timeBpmnVisualization, getTimeData);
+const timeData = getTimeData();
+loadData(timeBpmnVisualization, timeData);
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
