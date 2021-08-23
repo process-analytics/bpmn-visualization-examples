@@ -5,7 +5,6 @@ function initBpmnVisualization(container) {
     });
 }
 
-// TODO pass the data and not the function to get them
 function loadData(bpmnVisualization, data) {
     // Load BPMN diagram
     bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
@@ -51,15 +50,24 @@ function displayElementAndHideOthers(switchValue, subId) {
     document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
 }
 
+document.getElementById('btn-time').checked = true;
+
+// Initialize BpmnVisualization for Time Data
+const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
+const timeData = getTimeData();
+loadData(timeBpmnVisualization, timeData);
+
+// Initialize BpmnVisualization for Frequency Data
+const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
+
 const frequencyData = getFrequencyData();
-function switchDiagram(switchValue, frequencyBpmnVisualization) {
+function switchDiagram(switchValue) {
     displayElementAndHideOthers(switchValue, "bpmn-container");
     displayElementAndHideOthers(switchValue, "title");
 
     // Load BPMN diagram for Frequency Data, if it's not already done
     if(switchValue==='frequency') {
         if(!frequencyBpmnDiagramIsAlreadyLoad) {
-            // TODO add function initialize
             loadData(frequencyBpmnVisualization, frequencyData);
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
@@ -71,22 +79,14 @@ function switchDiagram(switchValue, frequencyBpmnVisualization) {
     console.info('Switched to %s', currentDiagram)
 }
 
-document.getElementById('btn-time').checked = true;
-
-// Initialize BpmnVisualization for Time Data
-const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
-const timeData = getTimeData();
-loadData(timeBpmnVisualization, timeData);
-
-// Initialize BpmnVisualization for Frequency Data
-const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
-
 document.getElementById('switch-panel').onclick = () => {
     let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
-    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
+    switchDiagram(switchId==='btn-time'? 'time' : 'frequency');
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
+// toggle highlight paths
+// detect the current diagram and
