@@ -80,17 +80,26 @@ document.getElementById('btn-toggle-paths').onclick = () => {
     console.info('Paths toggled');
 }
 
+let overlaysTimeDisplayed = true;
+let overlaysFrequencyDisplayed = true;
 document.getElementById('btn-toggle-overlays').onclick = () => {
     console.info('Toggling overlays for', currentDiagram);
     // TODO duplicate check with paths
-    // const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
-    // const data = currentDiagram === 'time'? timeData: frequencyData;
-    //
-    // data.forEach((value, key) => {
-    //     if(value.pathClass) {
-    //         bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
-    //     }
-    // });
+    const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
+    const data = currentDiagram === 'time'? timeData: frequencyData;
 
+    const overlaysDisplayed = currentDiagram === 'time' ? overlaysTimeDisplayed : overlaysFrequencyDisplayed;
+    const addOverlays = !overlaysDisplayed;
+    console.info('Add overlays?', addOverlays);
+
+    data.forEach((value, key) => {
+        addOverlays ?
+            bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay)
+            : bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(key);
+    });
+
+    currentDiagram === 'time' ?
+        overlaysTimeDisplayed = !overlaysTimeDisplayed
+        : overlaysFrequencyDisplayed = !overlaysFrequencyDisplayed;
     console.info('Overlays toggled');
 }
