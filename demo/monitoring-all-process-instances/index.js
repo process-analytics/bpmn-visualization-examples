@@ -17,27 +17,6 @@ function loadData(bpmnVisualization, data) {
     });
 }
 
-// for removal of css, we have only toggle api that requires to keep the map and loop over it
-function toggleCssClasses(bpmnVisualization, data) {
-    // TODO filter non set pathClass
-    data.forEach((value, key) => {
-        if(value.pathClass) {
-            bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
-        }
-    });
-}
-
-// The following would also need to trigger recompute the whole view
-//   removeAllClassNames(bpmnElementIds?: string[]): void {
-//     // TODO return true on change
-//     // diff between the number of elements in map before and after (as we do for update classnames of an element)
-//     if (!bpmnElementIds) {
-//       // clean the map
-//     }
-//     // string param --> string[]
-//     bpmnElementIds.forEach(id => this.classNamesByBPMNId.delete(id));
-//   }
-
 let currentDiagram = 'time';
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 
@@ -92,6 +71,35 @@ document.getElementById('btn-toggle-paths').onclick = () => {
     console.info('Toggling paths for', currentDiagram);
     const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
     const data = currentDiagram === 'time'? timeData: frequencyData;
-    toggleCssClasses(bpmnVisualization, data);
+
+    // TODO filter non set pathClass
+    data.forEach((value, key) => {
+        if(value.pathClass) {
+            bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
+        }
+    });
+
     console.info('paths toggled');
 }
+
+// for removal of css, we have only toggle api that requires to keep the map and loop over it
+// function toggleCssClasses(bpmnVisualization, data) {
+//     // TODO filter non set pathClass
+//     data.forEach((value, key) => {
+//         if(value.pathClass) {
+//             bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
+//         }
+//     });
+// }
+
+// The following would also need to trigger recompute the whole view
+//   removeAllClassNames(bpmnElementIds?: string[]): void {
+//     // TODO return true on change
+//     // diff between the number of elements in map before and after (as we do for update classnames of an element)
+//     if (!bpmnElementIds) {
+//       // clean the map
+//     }
+//     // string param --> string[]
+//     bpmnElementIds.forEach(id => this.classNamesByBPMNId.delete(id));
+//   }
+
