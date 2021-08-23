@@ -88,5 +88,10 @@ document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
-// toggle highlight paths
-// detect the current diagram and
+document.getElementById('btn-toggle-paths').onclick = () => {
+    console.info('Toggling paths for', currentDiagram);
+    const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
+    const data = currentDiagram === 'time'? timeData: frequencyData;
+    toggleCssClasses(bpmnVisualization, data);
+    console.info('paths toggled');
+}
