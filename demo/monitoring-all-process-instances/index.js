@@ -10,15 +10,12 @@ function loadData(bpmnVisualization, data) {
     bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
 
     data.forEach((value, key) => {
-        // bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
+        bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
         if(value.pathClass) {
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
         }
     });
 }
-
-let currentDiagram = 'time';
-let frequencyBpmnDiagramIsAlreadyLoad = false;
 
 function displayElementAndHideOthers(switchValue, subId) {
     // Display corresponding BPMN container & Hide others
@@ -38,8 +35,10 @@ loadData(timeBpmnVisualization, timeData);
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
-
 const frequencyData = getFrequencyData();
+let frequencyBpmnDiagramIsAlreadyLoad = false;
+
+let currentDiagram = 'time';
 function switchDiagram(switchValue) {
     displayElementAndHideOthers(switchValue, "bpmn-container");
     displayElementAndHideOthers(switchValue, "title");
@@ -78,5 +77,20 @@ document.getElementById('btn-toggle-paths').onclick = () => {
         }
     });
 
-    console.info('paths toggled');
+    console.info('Paths toggled');
+}
+
+document.getElementById('btn-toggle-overlays').onclick = () => {
+    console.info('Toggling overlays for', currentDiagram);
+    // TODO duplicate check with paths
+    // const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
+    // const data = currentDiagram === 'time'? timeData: frequencyData;
+    //
+    // data.forEach((value, key) => {
+    //     if(value.pathClass) {
+    //         bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
+    //     }
+    // });
+
+    console.info('Overlays toggled');
 }
