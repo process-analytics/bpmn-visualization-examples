@@ -101,9 +101,14 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 ### Miscellaneous examples
 
+#### Playgrounds in live IDE
+- [CodeSandbox Template](https://codesandbox.io/s/bpmn-visualization-sandbox-hpvq8) - Play with the `bpmn-visualization` API. Use the template to demonstrate missing features or bugs.
+- [Play with the `bpmn-visualization` API in Codepen](https://codepen.io/process-analytics/pen/YzQzROg) - Experiment `bpmn-visualization` integration and API usage live in your browser
+
+#### Compare with other libs
 - [Compare `bpmn-visualization` with `bpmn-js`](./examples/misc/compare-with-bpmn-js/README.md) - compare the libraries on BPMN elements rendering, navigation and API usage
 - [Compare `bpmn-visualization` with `kie-editors-standalone`](./examples/misc/compare-with-kie-editors-standalone/README.md) - compare the libraries on BPMN elements rendering and API usage
-- [Play with the `bpmn-visualization` API in Codepen](https://codepen.io/process-analytics/pen/YzQzROg) - Experiment `bpmn-visualization` integration and API usage live in your browser
+
 
 ### `bpmn-visualization` usage in projects
 
