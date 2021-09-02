@@ -26,7 +26,7 @@ function displayElementAndHideOthers(switchValue, subId) {
     document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
 }
 
-document.getElementById('btn-time').checked = true;
+document.getElementById('time-tab').classList.add('active');
 
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
@@ -40,6 +40,13 @@ let frequencyBpmnDiagramIsAlreadyLoad = false;
 
 let currentDiagram = 'time';
 function switchDiagram(switchValue) {
+    // Activate corresponding tab & Deactivate others
+    const tabItems = document.getElementsByClassName("tab-item");
+    for (let i = 0; i < tabItems.length; i++) {
+        tabItems.item(i).classList.remove('active');
+    }
+    document.getElementById(`${switchValue}-tab`).classList.add('active');
+
     displayElementAndHideOthers(switchValue, "bpmn-container");
     displayElementAndHideOthers(switchValue, "title");
 
@@ -55,11 +62,6 @@ function switchDiagram(switchValue) {
     }
     currentDiagram = switchValue;
     console.info('Switched to %s', currentDiagram)
-}
-
-document.getElementById('switch-panel').onclick = () => {
-    let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
-    switchDiagram(switchId==='btn-time'? 'time' : 'frequency');
 }
 
 document.addEventListener('DOMContentLoaded', function () {

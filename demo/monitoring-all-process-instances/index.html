@@ -20,7 +20,6 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
-    <link rel="stylesheet" href="./switch.css" type="text/css">
     <style>
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -36,8 +35,8 @@ limitations under the License.
         }
 
         .title-use-case {
-            margin-top: 1rem;
-            margin-bottom: 1.5rem
+            padding-top: 1rem;
+            padding-bottom: 1.5rem
         }
 
         /* Path */
@@ -177,61 +176,57 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="pt-2 pb-2">
-                <div id="switch-panel" class="switch switch--horizontal switch--expanding-inner">
-                    <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
-                    <label for="btn-time">Time</label>
-                    <input id="btn-frequency" type="radio" name="switch-data-type"/>
-                    <label for="btn-frequency">Frequency</label>
-                    <span class="toggle-outside">
-                        <span class="toggle-inside"></span>
-                    </span>
-                </div>
-                <div id="toggle-btn-group" class="switch">
-                    <button id="btn-toggle-overlays" title="Toggle Overlays" class="btn btn-secondary has-icon-right">
-                        <span>Overlays </span><span class="icon icon-flag mb-1"></span>
-                    </button>
-                    <button id="btn-toggle-paths" title="Toggle paths highlight" class="btn btn-secondary has-icon-right">
-                        <span>Paths </span><span class="icon icon-apps mb-1"></span>
-                    </button>
-                </div>
-            </div>
-            <div class="bg-gray"
-                 style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem; padding-bottom: .8rem">
-                <div class="text-center" style="padding-top: 1rem; padding-bottom: 1rem">
-                    <h4 id="time-title">Average run time</h4>
-                    <h4 id="frequency-title" class="d-hide">Number of execution</h4>
-                </div>
-                <div class="columns" class="mt-1">
-                    <div id="legend" class="column col-auto">
-                        <chart id="shape-legend" scale-y-linear="0 250">
-                            <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                            <bar id="shape-legend-250" literal-length="250"></bar>
-                            <bar id="shape-legend-200" literal-length="200"></bar>
-                            <bar id="shape-legend-150" literal-length="150"></bar>
-                            <bar id="shape-legend-100" literal-length="100"></bar>
-                            <bar id="shape-legend-50" literal-length="50"></bar>
-                        </chart>
-                        <chart id="edge-legend" scale-y-linear="0 250">
-                            <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                            <bar id="edge-legend-250" literal-length="250"></bar>
-                            <bar id="edge-legend-200" literal-length="200"></bar>
-                            <bar id="edge-legend-150" literal-length="150"></bar>
-                            <bar id="edge-legend-100" literal-length="100"></bar>
-                            <bar id="edge-legend-50" literal-length="50"></bar>
-                        </chart>
-                        <chart id="edge-path-legend" scale-y-linear="0 250">
-                            <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                            <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
-                            <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
-                            <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
-                            <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
-                            <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
-                        </chart>
-                    </div>
-                    <div class="column col-10 col-mx-auto">
-                        <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
-                        <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+            <div class="bg-gray" style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
+                <ul class="tab tab-block" style="font-weight: bold; font-size: 1rem">
+                    <li id="time-tab" class="tab-item active">
+                        <a href="#" onclick="switchDiagram('time')">Time</a>
+                    </li>
+                    <li id="frequency-tab" class="tab-item">
+                        <a href="#" onclick="switchDiagram('frequency')">Frequency</a>
+                    </li>
+                </ul>
+                <div class="bg-dark" style="padding-bottom: 1rem; padding-left: 1rem">
+                    <h5 id="time-title" class="title-use-case">Average run time for each item</h5>
+                    <h5 id="frequency-title" class="d-hide title-use-case">Total number of executions of each item</h5>
+                    <div class="columns" class="mt-1">
+                        <div id="legend" class="column col-auto" style="margin: auto; width: 150px">
+                            <chart id="shape-legend" style="margin-bottom: 2.5rem" scale-y-linear="0 250">
+                                <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                                <bar id="shape-legend-250" literal-length="250"></bar>
+                                <bar id="shape-legend-200" literal-length="200"></bar>
+                                <bar id="shape-legend-150" literal-length="150"></bar>
+                                <bar id="shape-legend-100" literal-length="100"></bar>
+                                <bar id="shape-legend-50" literal-length="50"></bar>
+                            </chart>
+                            <chart id="edge-legend" style="margin-bottom: 2.5rem" scale-y-linear="0 250">
+                                <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                                <bar id="edge-legend-250" literal-length="250"></bar>
+                                <bar id="edge-legend-200" literal-length="200"></bar>
+                                <bar id="edge-legend-150" literal-length="150"></bar>
+                                <bar id="edge-legend-100" literal-length="100"></bar>
+                                <bar id="edge-legend-50" literal-length="50"></bar>
+                            </chart>
+                            <chart id="edge-path-legend" scale-y-linear="0 250">
+                                <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                                <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
+                                <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
+                                <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
+                                <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
+                                <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
+                            </chart>
+                        </div>
+                        <div class="column col-9 col-mx-auto">
+                            <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
+                            <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                        </div>
+                        <div id="controls" class="column col-1" style="margin: auto">
+                            <button id="btn-toggle-overlays" title="Toggle Overlays" class="btn btn-secondary has-icon-right">
+                                <span>Overlays </span><span class="icon icon-flag mb-1"></span>
+                            </button>
+                            <button id="btn-toggle-paths" title="Toggle paths highlight" class="btn btn-secondary has-icon-right mt-2">
+                                <span>Paths </span><span class="icon icon-apps mb-1"></span>
+                            </button>
+                        </div>
                     </div>
                 </div>
             </div>
