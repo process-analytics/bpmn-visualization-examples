@@ -1,17 +1,17 @@
 function initBpmnVisualization(container) {
     return new bpmnvisu.BpmnVisualization({
         container,
-        navigation: { enabled: true }
+        navigation: {enabled: true}
     });
 }
 
 function loadData(bpmnVisualization, data) {
     // Load BPMN diagram
-    bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
+    bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
 
     data.forEach((value, key) => {
         bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
-        if(value.pathClass) {
+        if (value.pathClass) {
             bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
         }
     });
@@ -26,8 +26,6 @@ function displayElementAndHideOthers(switchValue, subId) {
     document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
 }
 
-document.getElementById('time-tab').classList.add('active');
-
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
 const timeData = getTimeData();
@@ -39,25 +37,30 @@ const frequencyData = getFrequencyData();
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 
 let currentDiagram = 'time';
-function switchDiagram(switchValue) {
-    // Activate corresponding tab & Deactivate others
-    const tabItems = document.getElementsByClassName("tab-item");
-    for (let i = 0; i < tabItems.length; i++) {
-        tabItems.item(i).classList.remove('active');
-    }
-    document.getElementById(`${switchValue}-tab`).classList.add('active');
 
+let switchPanelElt = document.getElementById('switch-panel');
+switchPanelElt.onclick = () => {
+    const switchValue = currentDiagram === 'frequency' ? 'time' : 'frequency';
+
+    // Switch slider bar
+    switchPanelElt.classList.remove(switchValue === 'frequency' ? 'time' : 'frequency');
+    switchPanelElt.classList.add(switchValue);
+
+    switchDiagram(switchValue);
+}
+
+function switchDiagram(switchValue) {
     displayElementAndHideOthers(switchValue, "bpmn-container");
     displayElementAndHideOthers(switchValue, "title");
 
     // Load BPMN diagram for Frequency Data, if it's not already done
-    if(switchValue==='frequency') {
-        if(!frequencyBpmnDiagramIsAlreadyLoad) {
+    if (switchValue === 'frequency') {
+        if (!frequencyBpmnDiagramIsAlreadyLoad) {
             loadData(frequencyBpmnVisualization, frequencyData);
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
         updateFrequencyLegends();
-    } else if(switchValue!=='frequency') {
+    } else if (switchValue !== 'frequency') {
         updateTimeLegends();
     }
     currentDiagram = switchValue;
@@ -70,11 +73,11 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.getElementById('btn-toggle-paths').onclick = () => {
     console.info('Toggling paths for', currentDiagram);
-    const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
-    const data = currentDiagram === 'time'? timeData: frequencyData;
+    const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
+    const data = currentDiagram === 'time' ? timeData : frequencyData;
 
     data.forEach((value, key) => {
-        if(value.pathClass) {
+        if (value.pathClass) {
             bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(key, value.pathClass);
         }
     });
@@ -87,8 +90,8 @@ let overlaysFrequencyDisplayed = true;
 document.getElementById('btn-toggle-overlays').onclick = () => {
     console.info('Toggling overlays for', currentDiagram);
     // TODO duplicate check with paths
-    const bpmnVisualization = currentDiagram === 'time'? timeBpmnVisualization: frequencyBpmnVisualization;
-    const data = currentDiagram === 'time'? timeData: frequencyData;
+    const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
+    const data = currentDiagram === 'time' ? timeData : frequencyData;
 
     const overlaysDisplayed = currentDiagram === 'time' ? overlaysTimeDisplayed : overlaysFrequencyDisplayed;
     const addOverlays = !overlaysDisplayed;

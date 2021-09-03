@@ -30,6 +30,14 @@ limitations under the License.
             background-color: white;
         }
 
+        .frequency .bar-slider .bar-item {
+            width: 100%;
+        }
+
+        .time .bar-slider .bar-item {
+            width: 0%;
+        }
+
         /* Path */
         :root {
             --color-lvl1: #e9e9e9;
@@ -168,58 +176,61 @@ limitations under the License.
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
             <div id="controls" class="bg-secondary" style="margin: auto; border-radius: .5rem">
-                <button id="btn-toggle-overlays" title="Toggle Overlays" class="btn btn-secondary has-icon-right">
+                <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time">
+                    <label>Time</label>
+                    <div class="bar bar-slider ml-2 mr-2" style="max-width: 30px">
+                        <div class="bar-item bg-dark" role="progressbar">
+                            <button class="bar-slider-btn btn" role="slider"></button>
+                        </div>
+                        <div class="bar-item bg-dark" role="progressbar">
+                            <button class="bar-slider-btn btn" role="slider"></button>
+                        </div>
+                    </div>
+                    <label>Frequency</label>
+                </div>
+                <button id="btn-toggle-overlays" title="Toggle Overlays" class="col-1 col-mx-auto btn btn-secondary has-icon-right">
                     <span>Overlays </span><span class="icon icon-flag mb-1"></span>
                 </button>
-                <button id="btn-toggle-paths" title="Toggle paths highlight" class="btn btn-secondary has-icon-right">
+                <button id="btn-toggle-paths" title="Toggle paths highlight" class="col-1 col-mx-auto btn btn-secondary has-icon-right">
                     <span>Paths </span><span class="icon icon-apps mb-1"></span>
                 </button>
             </div>
-            <div class="" style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
-                <ul class="tab tab-block" style="font-weight: bold; font-size: 1rem">
-                    <li id="time-tab" class="tab-item active">
-                        <a href="#" onclick="switchDiagram('time')">Time</a>
-                    </li>
-                    <li id="frequency-tab" class="tab-item">
-                        <a href="#" onclick="switchDiagram('frequency')">Frequency</a>
-                    </li>
-                </ul>
-                <div class="bg-gray" style="padding-bottom: 1rem; padding-left: 1rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem">
-                    <div class="text-center" style="padding-top: 1rem; padding-bottom: 1rem">
-                        <h4 id="time-title">Average run time</h4>
-                        <h4 id="frequency-title" class="d-hide">Number of execution</h4>
+            <div class="bg-gray"
+                 style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
+                <div class="text-center" style="padding-top: 1rem; padding-bottom: 1rem">
+                    <h4 id="time-title">Average run time</h4>
+                    <h4 id="frequency-title" class="d-hide">Number of execution</h4>
+                </div>
+                <div class="columns" class="mt-1">
+                    <div id="legend" class="column col-auto">
+                        <chart id="shape-legend" scale-y-linear="0 250">
+                            <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar id="shape-legend-250" literal-length="250"></bar>
+                            <bar id="shape-legend-200" literal-length="200"></bar>
+                            <bar id="shape-legend-150" literal-length="150"></bar>
+                            <bar id="shape-legend-100" literal-length="100"></bar>
+                            <bar id="shape-legend-50" literal-length="50"></bar>
+                        </chart>
+                        <chart id="edge-legend" scale-y-linear="0 250">
+                            <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar id="edge-legend-250" literal-length="250"></bar>
+                            <bar id="edge-legend-200" literal-length="200"></bar>
+                            <bar id="edge-legend-150" literal-length="150"></bar>
+                            <bar id="edge-legend-100" literal-length="100"></bar>
+                            <bar id="edge-legend-50" literal-length="50"></bar>
+                        </chart>
+                        <chart id="edge-path-legend" scale-y-linear="0 250">
+                            <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                            <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
+                            <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
+                            <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
+                            <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
+                            <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
+                        </chart>
                     </div>
-                    <div class="columns" class="mt-1">
-                        <div id="legend" class="column col-auto">
-                            <chart id="shape-legend" scale-y-linear="0 250">
-                                <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar id="shape-legend-250" literal-length="250"></bar>
-                                <bar id="shape-legend-200" literal-length="200"></bar>
-                                <bar id="shape-legend-150" literal-length="150"></bar>
-                                <bar id="shape-legend-100" literal-length="100"></bar>
-                                <bar id="shape-legend-50" literal-length="50"></bar>
-                            </chart>
-                            <chart id="edge-legend" scale-y-linear="0 250">
-                                <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar id="edge-legend-250" literal-length="250"></bar>
-                                <bar id="edge-legend-200" literal-length="200"></bar>
-                                <bar id="edge-legend-150" literal-length="150"></bar>
-                                <bar id="edge-legend-100" literal-length="100"></bar>
-                                <bar id="edge-legend-50" literal-length="50"></bar>
-                            </chart>
-                            <chart id="edge-path-legend" scale-y-linear="0 250">
-                                <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
-                                <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
-                                <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
-                                <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
-                                <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
-                            </chart>
-                        </div>
-                        <div class="column col-10 col-mx-auto">
-                            <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
-                            <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
-                        </div>
+                    <div class="column col-10 col-mx-auto">
+                        <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
+                        <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
                     </div>
                 </div>
             </div>
