@@ -20,6 +20,7 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
+    <link rel="stylesheet" href="./switch.css" type="text/css">
     <style>
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -30,11 +31,16 @@ limitations under the License.
             background-color: white;
         }
 
-        .frequency .bar-slider .bar-item {
+        /* Customization bar slider */
+        .overlays .bar-slider .bar-item {
             width: 100%;
         }
 
-        .time .bar-slider .bar-item {
+        .both .bar-slider .bar-item {
+            width: 50%;
+        }
+
+        .paths .bar-slider .bar-item {
             width: 0%;
         }
 
@@ -175,28 +181,32 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="bg-secondary" style="margin: auto; border-radius: .5rem">
-                <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time">
-                    <label>Time</label>
-                    <div class="bar bar-slider ml-2 mr-2" style="max-width: 30px">
-                        <div class="bar-item bg-dark" role="progressbar">
+            <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
+                <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time switch switch--horizontal switch--expanding-inner">
+                        <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
+                        <label for="btn-time">Time</label>
+                        <input id="btn-frequency" type="radio" name="switch-data-type"/>
+                        <label for="btn-frequency">Frequency</label>
+                        <span class="toggle-outside">
+                        <span class="toggle-inside"></span>
+                    </span>
+                </div>
+                <div id="customization-panel" class="col-3 col-mx-auto d-inline-flex both">
+                    <label>Overlays</label>
+                    <label>Both</label>
+                    <div class="bar bar-slider bg-dark ml-2 mr-2" style="max-width: 30px">
+                        <div class="bar-item" role="progressbar">
                             <button class="bar-slider-btn btn" role="slider"></button>
                         </div>
-                        <div class="bar-item bg-dark" role="progressbar">
+                        <div class="bar-item" role="progressbar">
                             <button class="bar-slider-btn btn" role="slider"></button>
                         </div>
                     </div>
-                    <label>Frequency</label>
+                    <label>Paths</label>
                 </div>
-                <button id="btn-toggle-overlays" title="Toggle Overlays" class="col-1 col-mx-auto btn btn-secondary has-icon-right">
-                    <span>Overlays </span><span class="icon icon-flag mb-1"></span>
-                </button>
-                <button id="btn-toggle-paths" title="Toggle paths highlight" class="col-1 col-mx-auto btn btn-secondary has-icon-right">
-                    <span>Paths </span><span class="icon icon-apps mb-1"></span>
-                </button>
             </div>
             <div class="bg-gray"
-                 style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
+                 style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem; padding-bottom: .8rem">
                 <div class="text-center" style="padding-top: 1rem; padding-bottom: 1rem">
                     <h4 id="time-title">Average run time</h4>
                     <h4 id="frequency-title" class="d-hide">Number of execution</h4>

@@ -1,13 +1,13 @@
 function initBpmnVisualization(container) {
     return new bpmnvisu.BpmnVisualization({
         container,
-        navigation: {enabled: true}
+        navigation: { enabled: true }
     });
 }
 
 function loadData(bpmnVisualization, data) {
     // Load BPMN diagram
-    bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
+    bpmnVisualization.load(getHardwareRetailerDiagram(), { fit: { type: 'Center', margin: 30 } });
 
     data.forEach((value, key) => {
         bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
@@ -30,23 +30,17 @@ function displayElementAndHideOthers(switchValue, subId) {
 const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
 const timeData = getTimeData();
 loadData(timeBpmnVisualization, timeData);
+document.getElementById('btn-time').checked = true;
+let currentDiagram = 'time';
 
 // Initialize BpmnVisualization for Frequency Data
 const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
 const frequencyData = getFrequencyData();
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 
-let currentDiagram = 'time';
-
-let switchPanelElt = document.getElementById('switch-panel');
-switchPanelElt.onclick = () => {
-    const switchValue = currentDiagram === 'frequency' ? 'time' : 'frequency';
-
-    // Switch slider bar
-    switchPanelElt.classList.remove(switchValue === 'frequency' ? 'time' : 'frequency');
-    switchPanelElt.classList.add(switchValue);
-
-    switchDiagram(switchValue);
+document.getElementById('switch-panel').onclick = () => {
+    let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
+    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
 }
 
 function switchDiagram(switchValue) {
