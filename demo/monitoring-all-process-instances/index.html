@@ -35,7 +35,7 @@ limitations under the License.
         }
 
         .title-use-case {
-            padding-top: 1rem;
+            padding-top: 1.5rem;
             padding-bottom: 1.5rem
         }
 
@@ -176,7 +176,7 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div class="bg-gray" style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
+            <div class="" style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
                 <ul class="tab tab-block" style="font-weight: bold; font-size: 1rem">
                     <li id="time-tab" class="tab-item active">
                         <a href="#" onclick="switchDiagram('time')">Time</a>
@@ -185,9 +185,11 @@ limitations under the License.
                         <a href="#" onclick="switchDiagram('frequency')">Frequency</a>
                     </li>
                 </ul>
-                <div class="bg-dark" style="padding-bottom: 1rem; padding-left: 1rem">
-                    <h5 id="time-title" class="title-use-case">Average run time for each item</h5>
-                    <h5 id="frequency-title" class="d-hide title-use-case">Total number of executions of each item</h5>
+                <div class="bg-gray" style="padding-bottom: 1rem; padding-left: 1rem; border-bottom-right-radius: .5rem; border-bottom-left-radius: .5rem">
+                    <div class="text-center">
+                        <h4 id="time-title" class="title-use-case">Average run time</h4>
+                        <h4 id="frequency-title" class="d-hide title-use-case">Number of execution</h4>
+                    </div>
                     <div class="columns" class="mt-1">
                         <div id="legend" class="column col-auto">
                             <chart id="shape-legend" scale-y-linear="0 250">
