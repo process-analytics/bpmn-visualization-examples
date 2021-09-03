@@ -176,6 +176,14 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
+            <div id="controls" class="bg-secondary" style="margin: auto; border-radius: .5rem">
+                <button id="btn-toggle-overlays" title="Toggle Overlays" class="btn btn-secondary has-icon-right">
+                    <span>Overlays </span><span class="icon icon-flag mb-1"></span>
+                </button>
+                <button id="btn-toggle-paths" title="Toggle paths highlight" class="btn btn-secondary has-icon-right">
+                    <span>Paths </span><span class="icon icon-apps mb-1"></span>
+                </button>
+            </div>
             <div class="" style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem">
                 <ul class="tab tab-block" style="font-weight: bold; font-size: 1rem">
                     <li id="time-tab" class="tab-item active">
@@ -217,17 +225,9 @@ limitations under the License.
                                 <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
                             </chart>
                         </div>
-                        <div class="column col-9 col-mx-auto">
+                        <div class="column col-10 col-mx-auto">
                             <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
                             <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
-                        </div>
-                        <div id="controls" class="column col-1" style="margin: auto">
-                            <button id="btn-toggle-overlays" title="Toggle Overlays" class="btn btn-secondary has-icon-right">
-                                <span>Overlays </span><span class="icon icon-flag mb-1"></span>
-                            </button>
-                            <button id="btn-toggle-paths" title="Toggle paths highlight" class="btn btn-secondary has-icon-right mt-2">
-                                <span>Paths </span><span class="icon icon-apps mb-1"></span>
-                            </button>
                         </div>
                     </div>
                 </div>
