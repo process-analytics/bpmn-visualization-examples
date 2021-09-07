@@ -65,6 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
+/*
 document.getElementById('btn-toggle-paths').onclick = () => {
     console.info('Toggling paths for', currentDiagram);
     const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
@@ -102,3 +103,4 @@ document.getElementById('btn-toggle-overlays').onclick = () => {
         : overlaysFrequencyDisplayed = !overlaysFrequencyDisplayed;
     console.info('Overlays toggled');
 }
+*/

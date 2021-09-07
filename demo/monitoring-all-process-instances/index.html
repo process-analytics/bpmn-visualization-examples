@@ -183,26 +183,31 @@ limitations under the License.
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
             <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
                 <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time switch switch--horizontal switch--expanding-inner">
+                    <label for="btn-time">Time</label>
+                    <label for="btn-frequency">Frequency</label>
+
+                    <span class="toggle-outside">
                         <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
-                        <label for="btn-time">Time</label>
                         <input id="btn-frequency" type="radio" name="switch-data-type"/>
-                        <label for="btn-frequency">Frequency</label>
-                        <span class="toggle-outside">
                         <span class="toggle-inside"></span>
                     </span>
                 </div>
-                <div id="customization-panel" class="col-3 col-mx-auto d-inline-flex both">
-                    <label>Overlays</label>
-                    <label>Both</label>
-                    <div class="bar bar-slider bg-dark ml-2 mr-2" style="max-width: 30px">
-                        <div class="bar-item" role="progressbar">
-                            <button class="bar-slider-btn btn" role="slider"></button>
+                <div id="customization-panel" class="col-3 col-mx-auto">
+                    <div style="display: flex; flex-direction: column">
+                        <div>
+                            <label>Overlays</label>
+                            <label>Both</label>
+                            <label>Paths</label>
                         </div>
-                        <div class="bar-item" role="progressbar">
-                            <button class="bar-slider-btn btn" role="slider"></button>
+                        <div class="bar bar-slider ml-2 mr-2" style="max-width: 100px">
+                            <div class="bar-item" role="progressbar">
+                                <button class="bar-slider-btn btn" role="slider"></button>
+                            </div>
+                            <div class="bar-item" role="progressbar">
+                                <button class="bar-slider-btn btn" role="slider"></button>
+                            </div>
                         </div>
                     </div>
-                    <label>Paths</label>
                 </div>
             </div>
             <div class="bg-gray"

@@ -1,16 +1,15 @@
 /* main styles */
 .switch {
-    width: 14rem;
-    height: 1.55rem;
-    position: relative;
-    margin: 0 auto;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /*    flex-direction: column;*/
 }
 .switch input {
-    position: absolute;
-    top: 0;
-    z-index: 2;
+    width: 20px;
+    height: 20px;
+    align-items: center;
     opacity: 0;
-    cursor: pointer;
 }
 .switch input:checked {
     z-index: 1;
@@ -22,12 +21,32 @@
 .switch input:not(:checked) + label:hover {
     opacity: 0.5;
 }
+.switch input:checked ~ .toggle-outside .toggle-inside {
+    left: 0.25rem;
+    background: #f1f1fc;
+    border: 1px solid rgba(0,0,0,0.2);
+}
+.switch .toggle-outside > input ~ .toggle-outside > inputinput:checked ~ .toggle-outside .toggle-inside {
+    left: 1.92rem;
+    background: #2ecc71;
+}
+
 .switch label {
     color: Black;
     opacity: 0.33;
     transition: opacity 0.25s ease;
     cursor: pointer;
+    display: inline-block;
+    width: 3rem;
+    height: 100%;
+    margin: 0;
+    text-align: center;
 }
+.switch label:last-of-type {
+    margin-left: 3.75rem;
+    width: 6rem;
+}
+
 .switch .toggle-outside {
     height: 90%;
     border-radius: 2rem;
@@ -35,49 +54,19 @@
     padding: 0.25rem;
     overflow: hidden;
     transition: 0.25s ease all;
+    background: #5755d9;
+    width: 3.05rem;
+    left: 3.05rem;
 }
 .switch .toggle-inside {
     border-radius: 5rem;
     background: #4a4a4a;
     position: absolute;
     transition: 0.25s ease all;
-}
-.switch--horizontal input {
-    height: 1.55rem;
-    width: 3.05rem;
-    left: 3.05rem;
-    margin: 0;
-}
-.switch--horizontal label {
-    display: inline-block;
-    width: 3rem;
-    height: 100%;
-    margin: 0;
-    text-align: center;
-}
-.switch--horizontal label:last-of-type {
-    margin-left: 3.75rem;
-    width: 6rem;
-}
-.switch--horizontal .toggle-outside {
-    background: #5755d9;
-    position: absolute;
-    width: 3.05rem;
-    left: 3.05rem;
-}
-.switch--horizontal .toggle-inside {
     height: .8rem;
     width: .8rem;
 }
-.switch--horizontal input:checked ~ .toggle-outside .toggle-inside {
-    left: 0.25rem;
-    background: #f1f1fc;
-    border: 1px solid rgba(0,0,0,0.2);
-}
-.switch--horizontal input ~ input:checked ~ .toggle-outside .toggle-inside {
-    left: 1.92rem;
-    background: #2ecc71;
-}
+
 .switch--expanding-inner input:checked + label:hover ~ .toggle-outside .toggle-inside {
     height: .8rem;
     width: .8rem;
@@ -87,4 +76,66 @@
 }
 .switch--expanding-inner.switch--horizontal input:hover ~ input:checked ~ .toggle-outside .toggle-inside {
     left: 1.42rem;
+}
+
+.theme-toggle {
+    border-radius: 20px;
+    padding: 0 3px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    /* position: relative; */
+}
+
+.theme-toggle > input {
+    margin: 0.3em;
+}
+
+.custom-radio-btn {
+    width: 20px;
+    height: 20px;
+    /* border: 2px solid #fff; */
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.custom-radio-btn .checkmark {
+    width: calc(100% - 6px);
+    height: calc(100% - 6px);
+    border-radius: 50%;
+    display: inline-block;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.custom-radio-btn input {
+    display: none;
+}
+
+.custom-radio-btn input:checked + .checkmark {
+    opacity: 1;
+}
+
+.checkmark {
+    cursor: pointer;
+}
+
+
+.theme-number {
+    position: absolute;
+    bottom: 50px;
+    right: 0;
+}
+
+.theme-number ol {
+    display: flex;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+}
+
+ol li {
+    padding: 6px;
 }
