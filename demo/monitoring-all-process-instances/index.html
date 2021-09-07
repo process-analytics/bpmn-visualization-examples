@@ -21,6 +21,8 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
     <link rel="stylesheet" href="./switch.css" type="text/css">
+    <link rel="stylesheet" href="./path.css" type="text/css">
+    <link rel="stylesheet" href="./legend.css" type="text/css">
     <style>
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -31,122 +33,23 @@ limitations under the License.
             background-color: white;
         }
 
-        /* Customization bar slider */
-        .overlays .bar-slider .bar-item {
-            width: 100%;
+        #controls {
+            border-radius: .5rem;
         }
 
-        .both .bar-slider .bar-item {
-            width: 50%;
+        #use-case-panel {
+            border-style: solid;
+            border-color: #303742;
+            border-width: thick;
+            border-radius: .5rem;
+            margin-top: 1rem;
+            margin-bottom: 1rem;
+            padding-bottom: .8rem;
         }
 
-        .paths .bar-slider .bar-item {
-            width: 0%;
-        }
-
-        /* Path */
-        :root {
-            --color-lvl1: #e9e9e9;
-            --color-lvl2: #bdbdbd;
-            --color-lvl3: #a7a7a7;
-            --color-lvl4: #7a7a7a;
-            --color-lvl5: Black;
-        }
-
-        /* for 'path' classes
-            path:nth-child(2) is for edge line
-            path:nth-child(3) is for edge arrow
-        */
-        .path-lvl1 > path:nth-child(2) {
-            stroke: var(--color-lvl1);
-            stroke-width: 2px;
-        }
-
-        .path-lvl1 > path:nth-child(3) {
-            stroke: var(--color-lvl1);
-            fill: var(--color-lvl1);
-        }
-
-        .path-lvl2 > path:nth-child(2) {
-            stroke: var(--color-lvl2);
-            stroke-width: 4px;
-        }
-
-        .path-lvl2 > path:nth-child(3) {
-            stroke: var(--color-lvl2);
-            fill: var(--color-lvl2);
-        }
-
-        .path-lvl3 > path:nth-child(2) {
-            stroke: var(--color-lvl3);
-            stroke-width: 6px;
-        }
-
-        .path-lvl3 > path:nth-child(3) {
-            stroke: var(--color-lvl3);
-            fill: var(--color-lvl3);
-        }
-
-        .path-lvl4 > path:nth-child(2) {
-            stroke: var(--color-lvl4);
-            stroke-width: 8px;
-        }
-
-        .path-lvl4 > path:nth-child(3) {
-            stroke: var(--color-lvl4);
-            fill: var(--color-lvl4);
-        }
-
-        .path-lvl5 > path:nth-child(2) {
-            stroke: var(--color-lvl5);
-            stroke-width: 10px;
-        }
-
-        .path-lvl5 > path:nth-child(3) {
-            stroke: var(--color-lvl5);
-            fill: var(--color-lvl5);
-        }
-
-        /* Legends */
-        #legend {
-            margin: auto;
-            width: 150px;
-        }
-
-        #legend chart {
-            width: 40px;
-            height: 130px;
-            margin-bottom: 2.5rem;
-            margin-right: 0;
-        }
-
-        #legend chart.color {
-            margin-bottom: 0;
-        }
-
-        #legend guide-y .tick {
-            border-bottom-width: 2px;
-            border-bottom-color: inherit;
-        }
-
-        #legend guide-y .tick .label {
-            width: 80px;
-            color: inherit;
-        }
-
-        #legend guide-y.left {
-            border-right: none;
-        }
-
-        #legend guide-y.left .tick .label {
-            background: none;
-            color: inherit;
-        }
-
-        #legend bar {
-            position: absolute;
-            margin: 0;
-            border: none;
+        #use-case-panel h4 {
+            padding-top: 1rem;
+            padding-bottom: 1rem;
         }
     </style>
 </head>
@@ -181,7 +84,7 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
+            <div id="controls" class="bg-secondary pt-2 pb-2">
                 <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time switch switch--horizontal switch--expanding-inner">
                     <label for="btn-time">Time</label>
                     <label for="btn-frequency">Frequency</label>
@@ -210,15 +113,14 @@ limitations under the License.
                     </div>
                 </div>
             </div>
-            <div class="bg-gray"
-                 style="border-style: solid; border-color:#303742; border-width: thick; border-radius: .5rem; margin-top: 1rem; margin-bottom: 1rem; padding-bottom: .8rem">
-                <div class="text-center" style="padding-top: 1rem; padding-bottom: 1rem">
+            <div id="use-case-panel" class="bg-gray">
+                <div class="text-center">
                     <h4 id="time-title">Average run time</h4>
                     <h4 id="frequency-title" class="d-hide">Number of execution</h4>
                 </div>
-                <div class="columns" class="mt-1">
-                    <div id="legend" class="column col-auto">
-                        <chart id="shape-legend" scale-y-linear="0 250">
+                <div class="columns">
+                    <div id="legend" class="column col-auto col-mx-auto">
+                        <chart id="shape-legend" scale-y-linear="0 250" style="margin-bottom: 2.5rem;">
                             <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
                             <bar id="shape-legend-250" literal-length="250"></bar>
                             <bar id="shape-legend-200" literal-length="200"></bar>
@@ -226,7 +128,7 @@ limitations under the License.
                             <bar id="shape-legend-100" literal-length="100"></bar>
                             <bar id="shape-legend-50" literal-length="50"></bar>
                         </chart>
-                        <chart id="edge-legend" scale-y-linear="0 250">
+                        <chart id="edge-legend" scale-y-linear="0 250" style="margin-bottom: 2.5rem;">
                             <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
                             <bar id="edge-legend-250" literal-length="250"></bar>
                             <bar id="edge-legend-200" literal-length="200"></bar>

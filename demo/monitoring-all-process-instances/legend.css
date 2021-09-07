@@ -1,0 +1,39 @@
+#legend {
+    margin: auto;
+    width: 150px;
+}
+
+#legend chart {
+    width: 40px;
+    height: 130px;
+    margin-right: 0;
+}
+
+#legend chart.color {
+    margin-bottom: 0;
+}
+
+#legend guide-y .tick {
+    border-bottom-width: 2px;
+    border-bottom-color: inherit;
+}
+
+#legend guide-y .tick .label {
+    width: 80px;
+    color: inherit;
+}
+
+#legend guide-y.left {
+    border-right: none;
+}
+
+#legend guide-y.left .tick .label {
+    background: none;
+    color: inherit;
+}
+
+#legend bar {
+    position: absolute;
+    margin: 0;
+    border: none;
+}
