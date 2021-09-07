@@ -84,32 +84,35 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="bg-secondary pt-2 pb-2">
-                <div id="switch-panel" class="col-3 col-mx-auto d-inline-flex time switch switch--horizontal switch--expanding-inner">
-                    <label for="btn-time">Time</label>
-                    <label for="btn-frequency">Frequency</label>
-
-                    <span class="toggle-outside">
-                        <input id="btn-time" type="radio" name="switch-data-type" checked="checked"/>
-                        <input id="btn-frequency" type="radio" name="switch-data-type"/>
-                        <span class="toggle-inside"></span>
-                    </span>
+            <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
+                <div id="switch-panel" class="col-6 col-mx-auto">
+                    <h5>Use case</h5>
+                    <div class="radioGroup">
+                        <label>
+                            <input id="btn-time" type="radio" name="switch-data-type" checked>
+                            <span>Time</span>
+                        </label>
+                        <label>
+                            <input id="btn-frequency" type="radio" name="switch-data-type">
+                            <span>Frequency</span>
+                        </label>
+                    </div>
                 </div>
-                <div id="customization-panel" class="col-3 col-mx-auto">
-                    <div style="display: flex; flex-direction: column">
-                        <div>
-                            <label>Overlays</label>
-                            <label>Both</label>
-                            <label>Paths</label>
-                        </div>
-                        <div class="bar bar-slider ml-2 mr-2" style="max-width: 100px">
-                            <div class="bar-item" role="progressbar">
-                                <button class="bar-slider-btn btn" role="slider"></button>
-                            </div>
-                            <div class="bar-item" role="progressbar">
-                                <button class="bar-slider-btn btn" role="slider"></button>
-                            </div>
-                        </div>
+                <div id="customization-panel" class="col-6 col-mx-auto">
+                    <h5>Displayed information</h5>
+                    <div class="radioGroup">
+                        <label>
+                            <input type="radio" name="r2" value="1" checked>
+                            <span>Overlays</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="r2" value="2">
+                            <span>Both</span>
+                        </label>
+                        <label>
+                            <input type="radio" name="r2" value="3">
+                            <span>Paths</span>
+                        </label>
                     </div>
                 </div>
             </div>
