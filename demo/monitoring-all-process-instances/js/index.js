@@ -1,5 +1,5 @@
 function initAndLoadDiagram(container) {
-    let bpmnVisualization = new bpmnvisu.BpmnVisualization({
+    const bpmnVisualization = new bpmnvisu.BpmnVisualization({
         container,
         navigation: {enabled: true}
     });
