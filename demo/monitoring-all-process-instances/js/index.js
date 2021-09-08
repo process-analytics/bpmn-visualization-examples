@@ -8,7 +8,7 @@ function initBpmnVisualization(container) {
 function loadData(bpmnVisualization, data) {
     // Load BPMN diagram
     bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
-    updateData(bpmnVisualization, data);
+    switchData(bpmnVisualization, data);
 }
 
 function displayElementAndHideOthers(switchValue, subId) {
@@ -62,7 +62,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
-function updateData(bpmnVisualization, data) {
+function switchData(bpmnVisualization, data) {
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
 
     console.info('Setting %s data for', dataType);
@@ -102,7 +102,7 @@ function updateData(bpmnVisualization, data) {
 document.getElementById('choose-data-panel').onclick = () => {
     const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
     const data = currentDiagram === 'time' ? timeData : frequencyData;
-    updateData(bpmnVisualization, data);
+    switchData(bpmnVisualization, data);
 }
 
 
