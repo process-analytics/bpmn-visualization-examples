@@ -85,32 +85,32 @@ limitations under the License.
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
             <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
-                <div id="switch-panel" class="col-6 col-mx-auto">
+                <div id="choose-diagram-panel" class="col-6 col-mx-auto">
                     <h5>Use case</h5>
                     <div class="radioGroup">
                         <label>
-                            <input id="btn-time" type="radio" name="switch-data-type" checked>
+                            <input id="btn-time" type="radio" name="diagram-type" value="time" checked>
                             <span>Time</span>
                         </label>
                         <label>
-                            <input id="btn-frequency" type="radio" name="switch-data-type">
+                            <input id="btn-frequency" type="radio" name="diagram-type" value="frequency">
                             <span>Frequency</span>
                         </label>
                     </div>
                 </div>
-                <div id="customization-panel" class="col-6 col-mx-auto">
+                <div id="choose-data-panel" class="col-6 col-mx-auto">
                     <h5>Displayed information</h5>
                     <div class="radioGroup">
                         <label>
-                            <input type="radio" name="r2" value="1" checked>
+                            <input id="btn-overlays" type="radio" name="data-type" value="overlays" checked>
                             <span>Overlays</span>
                         </label>
                         <label>
-                            <input type="radio" name="r2" value="2">
+                            <input id="btn-both" type="radio" name="data-type" value="both">
                             <span>Both</span>
                         </label>
                         <label>
-                            <input type="radio" name="r2" value="3">
+                            <input id="btn-paths" type="radio" name="data-type" value="paths">
                             <span>Paths</span>
                         </label>
                     </div>

@@ -38,9 +38,9 @@ const frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-contain
 const frequencyData = getFrequencyData();
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 
-document.getElementById('switch-panel').onclick = () => {
-    let switchId = document.querySelector("input[type='radio'][name='switch-data-type']:checked").id;
-    switchDiagram(switchId==='btn-time'? 'time' : 'frequency', frequencyBpmnVisualization);
+document.getElementById('choose-diagram-panel').onclick = () => {
+    let diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
+    switchDiagram(diagramType, frequencyBpmnVisualization);
 }
 
 function switchDiagram(switchValue) {
@@ -65,7 +65,7 @@ document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
-/*
+
 document.getElementById('btn-toggle-paths').onclick = () => {
     console.info('Toggling paths for', currentDiagram);
     const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
@@ -103,4 +103,3 @@ document.getElementById('btn-toggle-overlays').onclick = () => {
         : overlaysFrequencyDisplayed = !overlaysFrequencyDisplayed;
     console.info('Overlays toggled');
 }
-*/
