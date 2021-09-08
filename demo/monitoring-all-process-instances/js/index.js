@@ -62,7 +62,7 @@ function switchData() {
     const bpmnVisualization = diagramType === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
     const data = diagramType === 'time' ? timeData : frequencyData;
 
-    console.info('Setting %s data for', dataType);
+    console.info('Setting %s data', dataType);
     switch (dataType) {
         case 'overlays':
             data.forEach((value, key) => {
