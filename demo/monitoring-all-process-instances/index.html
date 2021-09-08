@@ -36,6 +36,12 @@ limitations under the License.
         #controls {
             border-radius: .5rem;
         }
+        #controls > div {
+            text-align: center;
+        }
+        #controls > div > div {
+            display: inline-flex;
+        }
 
         #use-case-panel {
             border-style: solid;
@@ -84,8 +90,8 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="bg-secondary pt-2 pb-2" style="border-radius: .5rem">
-                <div id="choose-diagram-panel" class="col-6 col-mx-auto">
+            <div id="controls" class="columns bg-secondary pt-2 pb-2">
+                <div id="choose-diagram-panel" class="col-6">
                     <h5>Use case</h5>
                     <div class="radioGroup">
                         <label>
@@ -98,7 +104,7 @@ limitations under the License.
                         </label>
                     </div>
                 </div>
-                <div id="choose-data-panel" class="col-6 col-mx-auto">
+                <div id="choose-data-panel" class="col-6">
                     <h5>Displayed information</h5>
                     <div class="radioGroup">
                         <label>
