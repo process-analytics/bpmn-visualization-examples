@@ -105,6 +105,3 @@ document.getElementById('choose-data-panel').onclick = () => {
     switchData(bpmnVisualization, data);
 }
 
-
-
-
