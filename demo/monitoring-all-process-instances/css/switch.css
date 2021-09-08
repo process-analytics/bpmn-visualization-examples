@@ -1,0 +1,59 @@
+/* main styles */
+:root {
+    --primary: #5755d9;
+
+    --border: #CDD9ED;
+    --border-hover: #99A3BA;
+    --text-color: #6C7486;
+    --text-color-headline: #3F4656;
+
+    --shadow: rgba(22, 30, 50, .04);
+}
+
+.radioGroup {
+    --color: var(--primary);
+    --border-width: 2px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.radioGroup label {
+    cursor: pointer;
+}
+
+.radioGroup label input {
+    display: none;
+}
+
+.radioGroup label input + span {
+    display: block;
+    position: relative;
+    padding: 7px 20px;
+    border: var(--border-width) solid var(--border);
+    transition: background .3s ease, border-color .3s ease;
+}
+
+.radioGroup label input:checked + span {
+    z-index: 2;
+    background: var(--color);
+    border-color: var(--color);
+    color: #fff;
+}
+
+.radioGroup label:hover input + span {
+    z-index: 1;
+    border-color: var(--color);
+}
+
+.radioGroup label:first-child input + span {
+    border-radius: 6px 0 0 6px;
+}
+
+.radioGroup label:last-child input + span {
+    border-radius: 0 6px 6px 0;
+}
+
+.radioGroup label:not(:first-child) {
+    margin-left: calc(var(--border-width) * -1);
+}
