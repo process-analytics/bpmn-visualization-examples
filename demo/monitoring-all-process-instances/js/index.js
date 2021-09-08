@@ -1,14 +1,10 @@
-function initBpmnVisualization(container) {
-    return new bpmnvisu.BpmnVisualization({
+function initAndLoadDiagram(container) {
+    let bpmnVisualization = new bpmnvisu.BpmnVisualization({
         container,
         navigation: {enabled: true}
     });
-}
-
-function loadData(bpmnVisualization, data) {
-    // Load BPMN diagram
     bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
-    switchData(bpmnVisualization, data);
+    return bpmnVisualization;
 }
 
 function displayElementAndHideOthers(switchValue, subId) {
@@ -21,13 +17,12 @@ function displayElementAndHideOthers(switchValue, subId) {
 }
 
 document.getElementById('btn-time').checked = true;
-let currentDiagram = 'time';
 document.getElementById('btn-both').checked = true;
 
 // Initialize BpmnVisualization for Time Data
-const timeBpmnVisualization = initBpmnVisualization('time-bpmn-container');
+const timeBpmnVisualization = initAndLoadDiagram('time-bpmn-container');
 const timeData = getTimeData();
-loadData(timeBpmnVisualization, timeData);
+switchData(timeBpmnVisualization, timeData);
 
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 let frequencyBpmnVisualization;
@@ -36,6 +31,7 @@ let frequencyData;
 document.getElementById('choose-diagram-panel').onclick = () => {
     const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
     switchDiagram(diagramType);
+    switchData();
 }
 
 function switchDiagram(switchValue) {
@@ -45,25 +41,26 @@ function switchDiagram(switchValue) {
     // Load BPMN diagram for Frequency Data, if it's not already done
     if (switchValue === 'frequency') {
         if (!frequencyBpmnDiagramIsAlreadyLoad) {
-            frequencyBpmnVisualization = initBpmnVisualization('frequency-bpmn-container');
+            frequencyBpmnVisualization = initAndLoadDiagram('frequency-bpmn-container');
             frequencyData = getFrequencyData();
-            loadData(frequencyBpmnVisualization, frequencyData);
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
         updateFrequencyLegends();
-    } else if (switchValue !== 'frequency') {
+    } else {
         updateTimeLegends();
     }
-    currentDiagram = switchValue;
-    console.info('Switched to %s', currentDiagram)
+    console.info('Switched to %s', switchValue)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
     updateTimeLegends();
 })
 
-function switchData(bpmnVisualization, data) {
+function switchData() {
+    const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
+    const bpmnVisualization = diagramType === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
+    const data = diagramType === 'time' ? timeData : frequencyData;
 
     console.info('Setting %s data for', dataType);
     switch (dataType) {
@@ -100,8 +97,6 @@ function switchData(bpmnVisualization, data) {
 }
 
 document.getElementById('choose-data-panel').onclick = () => {
-    const bpmnVisualization = currentDiagram === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
-    const data = currentDiagram === 'time' ? timeData : frequencyData;
-    switchData(bpmnVisualization, data);
+    switchData();
 }
 
