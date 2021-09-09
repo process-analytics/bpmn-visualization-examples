@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     timeUseCase.display(dataType);
 })
 
-document.getElementById('choose-use-case-panel').onclick = () => {
+document.getElementById('choose-use-case-panel').onchange = () => {
     const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
 
@@ -19,7 +19,7 @@ document.getElementById('choose-use-case-panel').onclick = () => {
     useCase.display(dataType);
 }
 
-document.getElementById('choose-data-panel').onclick = () => {
+document.getElementById('choose-data-panel').onchange = () => {
     const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
 
