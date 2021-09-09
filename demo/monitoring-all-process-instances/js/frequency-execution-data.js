@@ -91,73 +91,69 @@ class FrequencyExecutionData {
     }
 
     #buildShapeData() {
-        const overlays = new Map();
+        const data = new Map();
 
-        const randomShapeOverlay = this.#buildData(this.#titles[5], this.#shapeOverlayStyles);
-        overlays.set('start_event', randomShapeOverlay);
-        overlays.set('parallel_gateway_1', randomShapeOverlay);
-        overlays.set('task_1', randomShapeOverlay);
-        overlays.set('task_2', randomShapeOverlay);
-        overlays.set('exclusive_gateway_1', randomShapeOverlay);
+        const randomShapeData = this.#buildData(this.#titles[5], this.#shapeOverlayStyles);
+        data.set('start_event', randomShapeData);
+        data.set('parallel_gateway_1', randomShapeData);
+        data.set('task_1', randomShapeData);
+        data.set('task_2', randomShapeData);
+        data.set('exclusive_gateway_1', randomShapeData);
+        data.set('exclusive_gateway_2', randomShapeData);
+        data.set('parallel_gateway_2', randomShapeData);
+        data.set('task_8', randomShapeData);
+        data.set('end_event', randomShapeData);
 
-        const fivePerCentShapeOverlay = this.#buildData(this.#titles[1], this.#shapeOverlayStyles);
-        overlays.set('task_3', fivePerCentShapeOverlay);
-        overlays.set('task_4', fivePerCentShapeOverlay);
+        const fivePerCentShapeData = this.#buildData(this.#titles[1], this.#shapeOverlayStyles);
+        data.set('task_3', fivePerCentShapeData);
+        data.set('task_4', fivePerCentShapeData);
 
-        const ninetyFivePerCentShapeOverlay = this.#buildData(this.#titles[4], this.#shapeOverlayStyles);
-        overlays.set('task_5', ninetyFivePerCentShapeOverlay);
-        overlays.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
+        const ninetyFivePerCentShapeData = this.#buildData(this.#titles[4], this.#shapeOverlayStyles);
+        data.set('task_5', ninetyFivePerCentShapeData);
+        data.set('inclusive_gateway_1', ninetyFivePerCentShapeData);
+        data.set('inclusive_gateway_2', ninetyFivePerCentShapeData);
 
-        const thirtyPerCentShapeOverlay = this.#buildData(this.#titles[2], this.#shapeOverlayStyles);
-        overlays.set('task_7', thirtyPerCentShapeOverlay);
+        const thirtyPerCentShapeData = this.#buildData(this.#titles[2], this.#shapeOverlayStyles);
+        data.set('task_7', thirtyPerCentShapeData);
 
-        const otherPerCentShapeOverlay = this.#buildData(this.#titles[3], this.#shapeOverlayStyles);
-        overlays.set('task_6', otherPerCentShapeOverlay);
+        const otherPerCentShapeData = this.#buildData(this.#titles[3], this.#shapeOverlayStyles);
+        data.set('task_6', otherPerCentShapeData);
 
-        overlays.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
-
-        overlays.set('exclusive_gateway_2', randomShapeOverlay);
-        overlays.set('parallel_gateway_2', randomShapeOverlay);
-        overlays.set('task_8', randomShapeOverlay);
-        overlays.set('end_event', randomShapeOverlay);
-
-        return overlays;
+        return data;
     }
 
     #buildEdgeData() {
-        const overlays = new Map();
+        const data = new Map();
 
-        const randomEdgeOverlay = this.#buildData(this.#titles[5], this.#edgeOverlayStyles, 'path-lvl5');
-        overlays.set('sequence_flow_1', randomEdgeOverlay);
-        overlays.set('sequence_flow_2', randomEdgeOverlay);
-        overlays.set('sequence_flow_18', randomEdgeOverlay);
-        overlays.set('sequence_flow_3', randomEdgeOverlay);
+        const randomEdgeData = this.#buildData(this.#titles[5], this.#edgeOverlayStyles, 'path-lvl5');
+        data.set('sequence_flow_1', randomEdgeData);
+        data.set('sequence_flow_2', randomEdgeData);
+        data.set('sequence_flow_18', randomEdgeData);
+        data.set('sequence_flow_3', randomEdgeData);
+        data.set('sequence_flow_14', randomEdgeData);
+        data.set('sequence_flow_15', randomEdgeData);
+        data.set('sequence_flow_16', randomEdgeData);
+        data.set('sequence_flow_17', randomEdgeData);
 
-        const fivePerCentEdgeOverlay = this.#buildData(this.#titles[1], this.#edgeOverlayStyles, 'path-lvl1');
-        overlays.set('sequence_flow_4', fivePerCentEdgeOverlay);
-        overlays.set('sequence_flow_12', fivePerCentEdgeOverlay);
-        overlays.set('sequence_flow_13', fivePerCentEdgeOverlay);
+        const fivePerCentEdgeData = this.#buildData(this.#titles[1], this.#edgeOverlayStyles, 'path-lvl1');
+        data.set('sequence_flow_4', fivePerCentEdgeData);
+        data.set('sequence_flow_12', fivePerCentEdgeData);
+        data.set('sequence_flow_13', fivePerCentEdgeData);
 
-        const ninetyFivePerCentEdgeOverlay = this.#buildData(this.#titles[4], this.#edgeOverlayStyles, 'path-lvl4');
-        overlays.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
-        overlays.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
+        const ninetyFivePerCentEdgeData = this.#buildData(this.#titles[4], this.#edgeOverlayStyles, 'path-lvl4');
+        data.set('sequence_flow_5', ninetyFivePerCentEdgeData);
+        data.set('sequence_flow_6', ninetyFivePerCentEdgeData);
+        data.set('sequence_flow_11', ninetyFivePerCentEdgeData);
 
-        const thirtyPerCentEdgeOverlay = this.#buildData(this.#titles[2], this.#edgeOverlayStyles, 'path-lvl2');
-        overlays.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
-        overlays.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
+        const thirtyPerCentEdgeData = this.#buildData(this.#titles[2], this.#edgeOverlayStyles, 'path-lvl2');
+        data.set('sequence_flow_7', thirtyPerCentEdgeData);
+        data.set('sequence_flow_10', thirtyPerCentEdgeData);
 
-        const otherPerCentEdgeOverlay = this.#buildData(this.#titles[3], this.#edgeOverlayStyles, 'path-lvl3');
-        overlays.set('sequence_flow_8', otherPerCentEdgeOverlay);
-        overlays.set('sequence_flow_9', otherPerCentEdgeOverlay);
+        const otherPerCentEdgeData = this.#buildData(this.#titles[3], this.#edgeOverlayStyles, 'path-lvl3');
+        data.set('sequence_flow_8', otherPerCentEdgeData);
+        data.set('sequence_flow_9', otherPerCentEdgeData);
 
-        overlays.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
-
-        overlays.set('sequence_flow_14', randomEdgeOverlay);
-        overlays.set('sequence_flow_15', randomEdgeOverlay);
-        overlays.set('sequence_flow_16', randomEdgeOverlay);
-        overlays.set('sequence_flow_17', randomEdgeOverlay);
-
-        return overlays;
+        return data;
     }
 
     #buildData(label, overlayStyles, pathClass) {
