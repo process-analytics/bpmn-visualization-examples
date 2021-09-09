@@ -21,8 +21,8 @@ document.getElementById('btn-both').checked = true;
 
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initAndLoadDiagram('time-bpmn-container');
-const timeData = buildTimeDatas();
-switchData(timeBpmnVisualization, timeData);
+const timeExecutionData = new TimeExecutionData();
+switchData();
 
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 let frequencyBpmnVisualization;
@@ -47,20 +47,20 @@ function switchDiagram(switchValue) {
         }
         frequencyExecutionData.updateLegends();
     } else {
-        updateTimeLegends();
+        timeExecutionData.updateLegends();
     }
     console.info('Switched to %s', switchValue)
 }
 
 document.addEventListener('DOMContentLoaded', function () {
-    updateTimeLegends();
+    timeExecutionData.updateLegends();
 })
 
 function switchData() {
     const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
     const bpmnVisualization = diagramType === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
-    const data = diagramType === 'time' ? timeData : frequencyExecutionData.data;
+    const data = diagramType === 'time' ? timeExecutionData.data : frequencyExecutionData.data;
 
     console.info('Setting %s data', dataType);
     switch (dataType) {
