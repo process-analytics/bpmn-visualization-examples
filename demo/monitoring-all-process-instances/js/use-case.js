@@ -2,17 +2,23 @@ class UseCase {
     #type;
     #bpmnVisualization;
     #executionData;
+    #alreadyLoad = false;
 
     constructor(type, executionData) {
         this.#type = type;
         this.#executionData = executionData;
 
         this.#bpmnVisualization = new bpmnvisu.BpmnVisualization({container: `${type}-bpmn-container`, navigation: {enabled: true}});
-        this.#bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
     }
 
     display(dataType) {
         this.#displayPanel();
+
+        if(!this.#alreadyLoad) {
+            this.#bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
+            this.#alreadyLoad  = true;
+        }
+
         this.displayData(dataType);
     }
 
