@@ -1,38 +1,10 @@
-class FrequencyExecutionData {
-    #titles;
-    #shapeOverlayStyles;
-    #edgeOverlayStyles;
-    #shapeData;
-    #edgeData;
-    #shapeLegend;
-    #edgeLegend;
-    #edgePathLegend;
+class FrequencyExecutionData extends ExecutionData {
 
     constructor() {
-        this.#titles = this.#buildTitles();
-
-        this.#shapeOverlayStyles = this.#buildOverlayStyles('top-right', '#0083af');
-        this.#edgeOverlayStyles = this.#buildOverlayStyles('middle', '#6d00af');
-
-        this.#shapeData = this.#buildShapeData();
-        this.#edgeData = this.#buildEdgeData();
-
-        this.#shapeLegend = new Legend("shape-legend", {colors: this.#buildLegendColors(this.#shapeOverlayStyles), titles: this.#titles});
-        this.#edgeLegend = new Legend("edge-legend", {colors: this.#buildLegendColors(this.#edgeOverlayStyles), titles: this.#titles});
-        this.#edgePathLegend = new Legend("edge-path-legend", {titles: this.#titles});
+        super('#0083af', '#6d00af');
     }
 
-    get data() {
-        return new Map([...this.#shapeData, ...this.#edgeData]);
-    }
-
-    updateLegends() {
-        this.#shapeLegend.update();
-        this.#edgeLegend.update();
-        this.#edgePathLegend.update();
-    }
-
-    #buildTitles() {
+    _buildTitles() {
         const random = Math.floor(Math.random() * 1000);
         const fivePerCent = Math.floor(random * 5 / 100);
         const ninetyFivePerCent = random - fivePerCent;
@@ -48,52 +20,52 @@ class FrequencyExecutionData {
         return sortIntegerArray(titles);
     }
 
-    #buildLegendColors(styles) {
-        return Array.from(styles.values()).map(value => value.style.fill.color);
+    _buildLegendTitles() {
+        return this._titles;
     }
 
-    #buildOverlayStyles(position, color) {
-        return sortMap(new Map([
-            [this.#titles[5], {
+    _buildOverlayStyles(position, color) {
+        return new Map([
+            [this._titles[1], {
                 position,
                 style: withStrokeColorAsFillColor({
-                    fill: {color},
-                    font: {color: 'White'},
+                    fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
                 })
             }],
-            [this.#titles[4], {
+            [this._titles[2], {
                 position,
                 style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
-                    font: {color: 'White'},
+                    fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
                 })
             }],
-            [this.#titles[3], {
+            [this._titles[3], {
                 position,
                 style: withStrokeColorAsFillColor({
                     fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
                     font: {color: 'White'},
                 })
             }],
-            [this.#titles[2], {
+            [this._titles[4], {
                 position,
                 style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
+                    fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
+                    font: {color: 'White'},
                 })
             }],
-            [this.#titles[1], {
+            [this._titles[5], {
                 position,
                 style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
+                    fill: {color},
+                    font: {color: 'White'},
                 })
             }],
-        ]));
+        ]);
     }
 
-    #buildShapeData() {
+    _buildShapeData() {
         const data = new Map();
 
-        const randomShapeData = this.#buildData(this.#titles[5], this.#shapeOverlayStyles);
+        const randomShapeData = this._buildData(this._titles[5], this._shapeOverlayStyles);
         data.set('start_event', randomShapeData);
         data.set('parallel_gateway_1', randomShapeData);
         data.set('task_1', randomShapeData);
@@ -104,28 +76,28 @@ class FrequencyExecutionData {
         data.set('task_8', randomShapeData);
         data.set('end_event', randomShapeData);
 
-        const fivePerCentShapeData = this.#buildData(this.#titles[1], this.#shapeOverlayStyles);
+        const fivePerCentShapeData = this._buildData(this._titles[1], this._shapeOverlayStyles);
         data.set('task_3', fivePerCentShapeData);
         data.set('task_4', fivePerCentShapeData);
 
-        const ninetyFivePerCentShapeData = this.#buildData(this.#titles[4], this.#shapeOverlayStyles);
+        const ninetyFivePerCentShapeData = this._buildData(this._titles[4], this._shapeOverlayStyles);
         data.set('task_5', ninetyFivePerCentShapeData);
         data.set('inclusive_gateway_1', ninetyFivePerCentShapeData);
         data.set('inclusive_gateway_2', ninetyFivePerCentShapeData);
 
-        const thirtyPerCentShapeData = this.#buildData(this.#titles[2], this.#shapeOverlayStyles);
+        const thirtyPerCentShapeData = this._buildData(this._titles[2], this._shapeOverlayStyles);
         data.set('task_7', thirtyPerCentShapeData);
 
-        const otherPerCentShapeData = this.#buildData(this.#titles[3], this.#shapeOverlayStyles);
+        const otherPerCentShapeData = this._buildData(this._titles[3], this._shapeOverlayStyles);
         data.set('task_6', otherPerCentShapeData);
 
         return data;
     }
 
-    #buildEdgeData() {
+    _buildEdgeData() {
         const data = new Map();
 
-        const randomEdgeData = this.#buildData(this.#titles[5], this.#edgeOverlayStyles, 'path-lvl5');
+        const randomEdgeData = this._buildData(this._titles[5], this._edgeOverlayStyles, 'path-lvl5');
         data.set('sequence_flow_1', randomEdgeData);
         data.set('sequence_flow_2', randomEdgeData);
         data.set('sequence_flow_18', randomEdgeData);
@@ -135,28 +107,28 @@ class FrequencyExecutionData {
         data.set('sequence_flow_16', randomEdgeData);
         data.set('sequence_flow_17', randomEdgeData);
 
-        const fivePerCentEdgeData = this.#buildData(this.#titles[1], this.#edgeOverlayStyles, 'path-lvl1');
+        const fivePerCentEdgeData = this._buildData(this._titles[1], this._edgeOverlayStyles, 'path-lvl1');
         data.set('sequence_flow_4', fivePerCentEdgeData);
         data.set('sequence_flow_12', fivePerCentEdgeData);
         data.set('sequence_flow_13', fivePerCentEdgeData);
 
-        const ninetyFivePerCentEdgeData = this.#buildData(this.#titles[4], this.#edgeOverlayStyles, 'path-lvl4');
+        const ninetyFivePerCentEdgeData = this._buildData(this._titles[4], this._edgeOverlayStyles, 'path-lvl4');
         data.set('sequence_flow_5', ninetyFivePerCentEdgeData);
         data.set('sequence_flow_6', ninetyFivePerCentEdgeData);
         data.set('sequence_flow_11', ninetyFivePerCentEdgeData);
 
-        const thirtyPerCentEdgeData = this.#buildData(this.#titles[2], this.#edgeOverlayStyles, 'path-lvl2');
+        const thirtyPerCentEdgeData = this._buildData(this._titles[2], this._edgeOverlayStyles, 'path-lvl2');
         data.set('sequence_flow_7', thirtyPerCentEdgeData);
         data.set('sequence_flow_10', thirtyPerCentEdgeData);
 
-        const otherPerCentEdgeData = this.#buildData(this.#titles[3], this.#edgeOverlayStyles, 'path-lvl3');
+        const otherPerCentEdgeData = this._buildData(this._titles[3], this._edgeOverlayStyles, 'path-lvl3');
         data.set('sequence_flow_8', otherPerCentEdgeData);
         data.set('sequence_flow_9', otherPerCentEdgeData);
 
         return data;
     }
 
-    #buildData(label, overlayStyles, pathClass) {
+    _buildData(label, overlayStyles, pathClass) {
         return buildData(label, () => overlayStyles.get(label), pathClass);
     }
 
