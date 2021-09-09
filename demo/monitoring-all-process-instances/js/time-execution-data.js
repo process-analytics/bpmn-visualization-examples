@@ -17,15 +17,16 @@ class TimeExecutionData {
         this.#shapeData = this.#buildShapeData();
         this.#edgeData = this.#buildEdgeData();
 
+        let legendTitles = this.#buildLegendTitles();
         this.#shapeLegend = new Legend("shape-legend", {
             colors: this.#buildLegendColors(this.#shapeOverlayStyles),
-            titles: this.#buildLegendTitles()
+            titles: legendTitles
         });
         this.#edgeLegend = new Legend("edge-legend", {
             colors: this.#buildLegendColors(this.#edgeOverlayStyles),
-            titles: this.#buildLegendTitles()
+            titles: legendTitles
         });
-        this.#edgePathLegend = new Legend("edge-path-legend", {titles: this.#buildLegendTitles()});
+        this.#edgePathLegend = new Legend("edge-path-legend", {titles: legendTitles});
     }
 
     get data() {
@@ -135,26 +136,26 @@ class TimeExecutionData {
             return this.#buildData(this.#titles[1], this.#edgeOverlayStyles, 'path-lvl2');
         }
 
-        const overlays = new Map();
-        overlays.set('sequence_flow_1', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_2', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_18', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_3', internalBuildMinuteData.call(this));
-        overlays.set('sequence_flow_4', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_12', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_13', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_5', internalBuildMinuteData.call(this));
-        overlays.set('sequence_flow_6', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_8', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_7', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_10', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_9', internalBuildMinuteData.call(this));
-        overlays.set('sequence_flow_11', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_14', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_15', internalBuildMinuteData.call(this));
-        overlays.set('sequence_flow_16', internalBuildSecondData.call(this));
-        overlays.set('sequence_flow_17', internalBuildSecondData.call(this));
-        return overlays;
+        const data = new Map();
+        data.set('sequence_flow_1', internalBuildSecondData.call(this));
+        data.set('sequence_flow_2', internalBuildSecondData.call(this));
+        data.set('sequence_flow_18', internalBuildSecondData.call(this));
+        data.set('sequence_flow_3', internalBuildMinuteData.call(this));
+        data.set('sequence_flow_4', internalBuildSecondData.call(this));
+        data.set('sequence_flow_12', internalBuildSecondData.call(this));
+        data.set('sequence_flow_13', internalBuildSecondData.call(this));
+        data.set('sequence_flow_5', internalBuildMinuteData.call(this));
+        data.set('sequence_flow_6', internalBuildSecondData.call(this));
+        data.set('sequence_flow_8', internalBuildSecondData.call(this));
+        data.set('sequence_flow_7', internalBuildSecondData.call(this));
+        data.set('sequence_flow_10', internalBuildSecondData.call(this));
+        data.set('sequence_flow_9', internalBuildMinuteData.call(this));
+        data.set('sequence_flow_11', internalBuildSecondData.call(this));
+        data.set('sequence_flow_14', internalBuildSecondData.call(this));
+        data.set('sequence_flow_15', internalBuildMinuteData.call(this));
+        data.set('sequence_flow_16', internalBuildSecondData.call(this));
+        data.set('sequence_flow_17', internalBuildSecondData.call(this));
+        return data;
     }
 
     #buildData(unit, overlayStyles, pathClass) {
