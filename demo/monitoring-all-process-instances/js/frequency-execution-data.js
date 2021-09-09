@@ -1,179 +1,185 @@
-let shapeFrequencyLegendStyles = new Map();
-let edgeFrequencyLegendStyles = new Map();
+let shapeFreqLegend;
+let edgeFreqLegend;
+let edgePathFreqLegend;
 
-function updateFrequencyTitleLegend(legendType, titles) {
-    let ticks = document.getElementById(`${legendType}-guide-y`).children;
-    ticks[0].firstElementChild.innerText = 0;
-    for (let i = 1; i < ticks.length; i++) {
-        ticks[i].firstElementChild.innerText = titles[i - 1];
-    }
-}
 
-function getLegendTitles(legendsStyles) {
-    return Array.from(legendsStyles.keys());
-}
-
-function updateFrequencyLegend(legendType, legendsStyles) {
-    const titles = getLegendTitles(legendsStyles);
-    document.getElementById(`${legendType}-250`).style.backgroundColor = legendsStyles.get(titles[0]);
-    document.getElementById(`${legendType}-200`).style.backgroundColor = legendsStyles.get(titles[1]);
-    document.getElementById(`${legendType}-150`).style.backgroundColor = legendsStyles.get(titles[2]);
-    document.getElementById(`${legendType}-100`).style.backgroundColor = legendsStyles.get(titles[3]);
-    document.getElementById(`${legendType}-50`).style.backgroundColor = legendsStyles.get(titles[4]);
-    updateFrequencyTitleLegend(legendType, titles);
+function buildLegendColors(styles) {
+    const legendsColors = new Array();
+    styles.forEach((values) => legendsColors.push(values.style.fill.color))
+    return legendsColors;
 }
 
 function updateFrequencyLegends() {
-    updateFrequencyLegend("shape-legend", shapeFrequencyLegendStyles);
-    updateFrequencyLegend("edge-legend", edgeFrequencyLegendStyles);
-    updateFrequencyTitleLegend("edge-path-legend", getLegendTitles(edgeFrequencyLegendStyles));
+    shapeFreqLegend.update();
+    edgeFreqLegend.update();
+    edgePathFreqLegend.update();
 }
 
 function withStrokeColorAsFillColor(overlayStyle) {
     return {...overlayStyle, stroke: {color: overlayStyle.fill.color}};
 }
 
-function getFrequencyOverlayStyles(position, color) {
-    return new Map([
-        ['random', {
+function buildFrequencyOverlayStyles(titles, position, color) {
+    return sortMap(new Map([
+        [titles[5], {
             position,
             style: withStrokeColorAsFillColor({
                 fill: {color},
                 font: {color: 'White'},
             })
         }],
-        ['ninetyFivePerCent', {
+        [titles[4], {
             position,
             style: withStrokeColorAsFillColor({
                 fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
                 font: {color: 'White'},
             })
         }],
-        ['otherPerCent', {
+        [titles[3], {
             position,
             style: withStrokeColorAsFillColor({
                 fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
                 font: {color: 'White'},
             })
         }],
-        ['thirtyPerCent', {
+        [titles[2], {
             position,
             style: withStrokeColorAsFillColor({
                 fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
             })
         }],
-        ['fivePerCent', {
+        [titles[1], {
             position,
             style: withStrokeColorAsFillColor({
                 fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
             })
         }],
-    ]);
+    ]));
 }
 
-function getFrequencyOverlay(label, overlayStyles, type, pathClass) {
+function buildFrequencyOverlay(label, overlayStyles, pathClass) {
     let overlay = {
         overlay: {
-            ...overlayStyles.get(type),
+            ...overlayStyles.get(label),
             label: String(label),
         }
     };
     if (pathClass) {
         overlay.pathClass = pathClass;
-        edgeFrequencyLegendStyles.set(label, overlay.overlay.style.fill.color);
-    } else {
-        shapeFrequencyLegendStyles.set(label, overlay.overlay.style.fill.color);
     }
     return overlay;
 }
 
-function getFrequencyData() {
-    const shapeOverlayStyles = getFrequencyOverlayStyles('top-right', '#0083af');
-    const edgeOverlayStyles = getFrequencyOverlayStyles('middle', '#6d00af');
-
-    const map = new Map();
-
+function buildFrequencyTitles() {
     const random = Math.floor(Math.random() * 1000);
-    const randomShapeOverlay = getFrequencyOverlay(random, shapeOverlayStyles, 'random');
-    const randomEdgeOverlay = getFrequencyOverlay(random, edgeOverlayStyles, 'random', 'path-lvl5');
-    map.set('start_event', randomShapeOverlay);
-    map.set('sequence_flow_1', randomEdgeOverlay);
-    map.set('parallel_gateway_1', randomShapeOverlay);
-    map.set('sequence_flow_2', randomEdgeOverlay);
-    map.set('task_1', randomShapeOverlay);
-    map.set('sequence_flow_18', randomEdgeOverlay);
-    map.set('task_2', randomShapeOverlay);
-    map.set('sequence_flow_3', randomEdgeOverlay);
-    map.set('exclusive_gateway_1', randomShapeOverlay);
-
     const fivePerCent = Math.floor(random * 5 / 100);
-    const fivePerCentShapeOverlay = getFrequencyOverlay(fivePerCent, shapeOverlayStyles, 'fivePerCent');
-    const fivePerCentEdgeOverlay = getFrequencyOverlay(fivePerCent, edgeOverlayStyles, 'fivePerCent', 'path-lvl1');
-    map.set('sequence_flow_4', fivePerCentEdgeOverlay);
-    map.set('task_3', fivePerCentShapeOverlay);
-    map.set('sequence_flow_12', fivePerCentEdgeOverlay);
-    map.set('task_4', fivePerCentShapeOverlay);
-    map.set('sequence_flow_13', fivePerCentEdgeOverlay);
-
     const ninetyFivePerCent = random - fivePerCent;
-    const ninetyFivePerCentShapeOverlay = getFrequencyOverlay(ninetyFivePerCent, shapeOverlayStyles, 'ninetyFivePerCent');
-    const ninetyFivePerCentEdgeOverlay = getFrequencyOverlay(ninetyFivePerCent, edgeOverlayStyles, 'ninetyFivePerCent', 'path-lvl4');
-    map.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
-    map.set('task_5', ninetyFivePerCentShapeOverlay);
-    map.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
-    map.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
-
     const thirtyPerCent = Math.floor(ninetyFivePerCent * 30 / 100);
-    const thirtyPerCentShapeOverlay = getFrequencyOverlay(thirtyPerCent, shapeOverlayStyles, 'thirtyPerCent');
-    const thirtyPerCentEdgeOverlay = getFrequencyOverlay(thirtyPerCent, edgeOverlayStyles, 'thirtyPerCent', 'path-lvl2');
-    map.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
-    map.set('task_7', thirtyPerCentShapeOverlay);
-    map.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
 
-    const otherPerCent = ninetyFivePerCent - thirtyPerCent;
-    const otherPerCentShapeOverlay = getFrequencyOverlay(otherPerCent, shapeOverlayStyles, 'otherPerCent');
-    const otherPerCentEdgeOverlay = getFrequencyOverlay(otherPerCent, edgeOverlayStyles, 'otherPerCent', 'path-lvl3');
-    map.set('sequence_flow_8', otherPerCentEdgeOverlay);
-    map.set('task_6', otherPerCentShapeOverlay);
-    map.set('sequence_flow_9', otherPerCentEdgeOverlay);
+    const titles = new Array(6);
+    titles[0] = 0;
+    titles[1] = random;
+    titles[2] = fivePerCent;
+    titles[3] = ninetyFivePerCent;
+    titles[4] = thirtyPerCent;
+    titles[5] = ninetyFivePerCent - thirtyPerCent;
+    return sortIntegerArray(titles);
+}
 
-    map.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
-    map.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
-
-    map.set('exclusive_gateway_2', randomShapeOverlay);
-    map.set('sequence_flow_14', randomEdgeOverlay);
-    map.set('sequence_flow_15', randomEdgeOverlay);
-    map.set('parallel_gateway_2', randomShapeOverlay);
-    map.set('sequence_flow_16', randomEdgeOverlay);
-    map.set('task_8', randomShapeOverlay);
-    map.set('sequence_flow_17', randomEdgeOverlay);
-    map.set('end_event', randomShapeOverlay);
-
-
-    const sortKeys = (legendsStyles) => {
-        return Array.from(legendsStyles.keys()).sort((a, b) => {
-            if (parseInt(a) < parseInt(b)) {
-                return -1;
-            }
-            if (parseInt(a) > parseInt(b)) {
-                return 1;
-            }
-            return 0;
-        });
-    };
-    const sortMap = (legendsStyles) => {
-        const sortedMap = new Map();
-        const sortedKeys = sortKeys(legendsStyles);
-        for (const sortedKey of sortedKeys) {
-            sortedMap.set(sortedKey, legendsStyles.get(sortedKey));
+function sortIntegerArray(array) {
+    return array.sort((a, b) => {
+        if (parseInt(a) < parseInt(b)) {
+            return -1;
         }
-        return sortedMap;
-    };
+        if (parseInt(a) > parseInt(b)) {
+            return 1;
+        }
+        return 0;
+    });
+}
 
-    shapeFrequencyLegendStyles = sortMap(shapeFrequencyLegendStyles);
-    edgeFrequencyLegendStyles = sortMap(edgeFrequencyLegendStyles);
+const sortKeys = (legendsStyles) => {
+    return sortIntegerArray(Array.from(legendsStyles.keys()));
+};
+const sortMap = (legendsStyles) => {
+    const sortedMap = new Map();
+    const sortedKeys = sortKeys(legendsStyles);
+    for (const sortedKey of sortedKeys) {
+        sortedMap.set(sortedKey, legendsStyles.get(sortedKey));
+    }
+    return sortedMap;
+};
 
-    return map;
+function buildFrequencyOverlays() {
+    const titles = buildFrequencyTitles();
+
+    const shapeOverlayStyles = buildFrequencyOverlayStyles(titles, 'top-right', '#0083af');
+    const edgeOverlayStyles = buildFrequencyOverlayStyles(titles, 'middle', '#6d00af');
+
+    const overlays = new Map();
+
+    const randomShapeOverlay = buildFrequencyOverlay(titles[5], shapeOverlayStyles);
+    const randomEdgeOverlay = buildFrequencyOverlay(titles[5], edgeOverlayStyles, 'path-lvl5');
+    overlays.set('start_event', randomShapeOverlay);
+    overlays.set('sequence_flow_1', randomEdgeOverlay);
+    overlays.set('parallel_gateway_1', randomShapeOverlay);
+    overlays.set('sequence_flow_2', randomEdgeOverlay);
+    overlays.set('task_1', randomShapeOverlay);
+    overlays.set('sequence_flow_18', randomEdgeOverlay);
+    overlays.set('task_2', randomShapeOverlay);
+    overlays.set('sequence_flow_3', randomEdgeOverlay);
+    overlays.set('exclusive_gateway_1', randomShapeOverlay);
+
+    const fivePerCentShapeOverlay = buildFrequencyOverlay(titles[1], shapeOverlayStyles);
+    const fivePerCentEdgeOverlay = buildFrequencyOverlay(titles[1], edgeOverlayStyles, 'path-lvl1');
+    overlays.set('sequence_flow_4', fivePerCentEdgeOverlay);
+    overlays.set('task_3', fivePerCentShapeOverlay);
+    overlays.set('sequence_flow_12', fivePerCentEdgeOverlay);
+    overlays.set('task_4', fivePerCentShapeOverlay);
+    overlays.set('sequence_flow_13', fivePerCentEdgeOverlay);
+
+    const ninetyFivePerCentShapeOverlay = buildFrequencyOverlay(titles[4], shapeOverlayStyles);
+    const ninetyFivePerCentEdgeOverlay = buildFrequencyOverlay(titles[4], edgeOverlayStyles, 'path-lvl4');
+    overlays.set('sequence_flow_5', ninetyFivePerCentEdgeOverlay);
+    overlays.set('task_5', ninetyFivePerCentShapeOverlay);
+    overlays.set('sequence_flow_6', ninetyFivePerCentEdgeOverlay);
+    overlays.set('inclusive_gateway_1', ninetyFivePerCentShapeOverlay);
+
+    const thirtyPerCentShapeOverlay = buildFrequencyOverlay(titles[2], shapeOverlayStyles);
+    const thirtyPerCentEdgeOverlay = buildFrequencyOverlay(titles[2], edgeOverlayStyles, 'path-lvl2');
+    overlays.set('sequence_flow_7', thirtyPerCentEdgeOverlay);
+    overlays.set('task_7', thirtyPerCentShapeOverlay);
+    overlays.set('sequence_flow_10', thirtyPerCentEdgeOverlay);
+
+    const otherPerCentShapeOverlay = buildFrequencyOverlay(titles[3], shapeOverlayStyles);
+    const otherPerCentEdgeOverlay = buildFrequencyOverlay(titles[3], edgeOverlayStyles, 'path-lvl3');
+    overlays.set('sequence_flow_8', otherPerCentEdgeOverlay);
+    overlays.set('task_6', otherPerCentShapeOverlay);
+    overlays.set('sequence_flow_9', otherPerCentEdgeOverlay);
+
+    overlays.set('inclusive_gateway_2', ninetyFivePerCentShapeOverlay);
+    overlays.set('sequence_flow_11', ninetyFivePerCentEdgeOverlay);
+
+    overlays.set('exclusive_gateway_2', randomShapeOverlay);
+    overlays.set('sequence_flow_14', randomEdgeOverlay);
+    overlays.set('sequence_flow_15', randomEdgeOverlay);
+    overlays.set('parallel_gateway_2', randomShapeOverlay);
+    overlays.set('sequence_flow_16', randomEdgeOverlay);
+    overlays.set('task_8', randomShapeOverlay);
+    overlays.set('sequence_flow_17', randomEdgeOverlay);
+    overlays.set('end_event', randomShapeOverlay);
+
+    function buildLegendTheme(styles) {
+        const colors = buildLegendColors(styles);
+
+        return {colors, titles};
+    }
+
+    shapeFreqLegend = new Legend("shape-legend", buildLegendTheme(shapeOverlayStyles));
+    edgeFreqLegend = new Legend("edge-legend", buildLegendTheme(edgeOverlayStyles));
+    edgePathFreqLegend = new Legend("edge-path-legend", {titles: titles});
+
+    return overlays;
 }
 
 

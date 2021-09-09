@@ -1,31 +1,38 @@
-const shapeTimeOverlayStyles = getTimeOverlayStyles('top-right', '#008700');
-const edgeTimeOverlayStyles = getTimeOverlayStyles('middle', '#c61700');
+const shapeTimeOverlayStyles = buildTimeOverlayStyles('top-right', '#008700');
+const edgeTimeOverlayStyles = buildTimeOverlayStyles('middle', '#c61700');
 
-function updateTimeTitleLegend(legendType, overlayStyles) {
-    let titles = Array.from(overlayStyles.keys());
-    let ticks = document.getElementById(`${legendType}-guide-y`).children;
-    for (let i = 0; i < ticks.length - 1; i++) {
-        ticks[i].firstElementChild.innerText = `1 ${titles[ticks.length - 2 - i]}`;
+const shapeLegend = new Legend("shape-legend", {colors: buildTimeLegendColors(shapeTimeOverlayStyles), titles: buildTimeLegendTitles(shapeTimeOverlayStyles)});
+const edgeLegend = new Legend("edge-legend", {colors: buildTimeLegendColors(edgeTimeOverlayStyles), titles: buildTimeLegendTitles(edgeTimeOverlayStyles)});
+const edgePathLegend = new Legend("edge-path-legend", {titles: buildTimeLegendTitles(edgeTimeOverlayStyles)});
+
+function buildTimeLegendTitles(overlayStyles) {
+    const titles = new Array(6);
+
+    let types = Array.from(overlayStyles.keys());
+    for (let i = 0; i < types.length; i++) {
+        titles[i] = `1 ${types[types.length - 1 - i]}`;
     }
-    ticks[ticks.length - 1].firstElementChild.innerText = '1 year';
+    titles[types.length] = '1 year';
+    return titles;
 }
 
-function updateTimeLegend(legendType, overlayStyles) {
-    document.getElementById(`${legendType}-250`).style.backgroundColor = overlayStyles.get('second').style.fill.color;
-    document.getElementById(`${legendType}-200`).style.backgroundColor = overlayStyles.get('minute').style.fill.color;
-    document.getElementById(`${legendType}-150`).style.backgroundColor = overlayStyles.get('hour').style.fill.color;
-    document.getElementById(`${legendType}-100`).style.backgroundColor = overlayStyles.get('day').style.fill.color;
-    document.getElementById(`${legendType}-50`).style.backgroundColor = overlayStyles.get('month').style.fill.color;
-    updateTimeTitleLegend(legendType, overlayStyles);
+function buildTimeLegendColors(overlayStyles) {
+    const colors = new Array(5);
+    colors[0] = overlayStyles.get('second').style.fill.color;
+    colors[1] = overlayStyles.get('minute').style.fill.color;
+    colors[2] = overlayStyles.get('hour').style.fill.color;
+    colors[3] = overlayStyles.get('day').style.fill.color;
+    colors[4] = overlayStyles.get('month').style.fill.color;
+    return colors;
 }
 
 function updateTimeLegends() {
-    updateTimeLegend("shape-legend", shapeTimeOverlayStyles);
-    updateTimeLegend("edge-legend", edgeTimeOverlayStyles);
-    updateTimeTitleLegend("edge-path-legend", edgeTimeOverlayStyles);
+    shapeLegend.update();
+    edgeLegend.update();
+    edgePathLegend.update();
 }
 
-function getTimeOverlayStyles(position, color) {
+function buildTimeOverlayStyles(position, color) {
     return new Map([
         ['month', {
             position,
@@ -62,34 +69,34 @@ function getTimeOverlayStyles(position, color) {
     ]);
 }
 
-function getTimeOverlay(unit, overlayStyles) {
+function buildTimeOverlay(unit, overlayStyles) {
     const date = new Date();
     date.setTime(Math.random() * 100000000000000);
 
     switch (unit) {
         case 'month':
-            return date.getMonth() === 0 ? getTimeOverlay('day', overlayStyles) : {
+            return date.getMonth() === 0 ? buildTimeOverlay('day', overlayStyles) : {
                 overlay: {
                     ...overlayStyles.get(unit),
                     label: `${date.getMonth()} month`,
                 },
             };
         case 'day':
-            return date.getDay() === 0 ? getTimeOverlay('hour', overlayStyles) : {
+            return date.getDay() === 0 ? buildTimeOverlay('hour', overlayStyles) : {
                 overlay: {
                     ...overlayStyles.get(unit),
                     label: `${date.getDay()} d`,
                 },
             };
         case 'hour':
-            return date.getHours() === 0 ? getTimeOverlay('minute', overlayStyles) : {
+            return date.getHours() === 0 ? buildTimeOverlay('minute', overlayStyles) : {
                 overlay: {
                     ...overlayStyles.get(unit),
                     label: `${date.getHours()} h`,
                 },
             };
         case 'minute':
-            return date.getMinutes() === 0 ? getTimeOverlay('second', overlayStyles) : {
+            return date.getMinutes() === 0 ? buildTimeOverlay('second', overlayStyles) : {
                 overlay: {
                     ...overlayStyles.get(unit),
                     label: `${date.getMinutes()} min`,
@@ -106,64 +113,64 @@ function getTimeOverlay(unit, overlayStyles) {
     }
 }
 
-function getTimeData() {
+function buildTimeOverlays() {
     return new Map([...getShapeTimeData(), ...getEdgeTimeData()]);
 }
 
 function getShapeTimeData() {
-    const map = new Map();
-    map.set('start_event', getTimeOverlay('second', shapeTimeOverlayStyles));
-    map.set('parallel_gateway_1', getTimeOverlay('second', shapeTimeOverlayStyles));
-    map.set('task_1', getTimeOverlay('minute', shapeTimeOverlayStyles));
-    map.set('task_2', getTimeOverlay('minute', shapeTimeOverlayStyles));
-    map.set('exclusive_gateway_1', getTimeOverlay('minute', shapeTimeOverlayStyles));
-    map.set('task_3', getTimeOverlay('minute', shapeTimeOverlayStyles));
-    map.set('task_4', getTimeOverlay('day', shapeTimeOverlayStyles));
-    map.set('task_5', getTimeOverlay('hour', shapeTimeOverlayStyles));
-    map.set('inclusive_gateway_1', getTimeOverlay('second', shapeTimeOverlayStyles));
-    map.set('task_6', getTimeOverlay('hour', shapeTimeOverlayStyles));
-    map.set('task_7', getTimeOverlay('month', shapeTimeOverlayStyles));
-    map.set('inclusive_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
-    map.set('exclusive_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
-    map.set('parallel_gateway_2', getTimeOverlay('day', shapeTimeOverlayStyles));
-    map.set('task_8', getTimeOverlay('hour', shapeTimeOverlayStyles));
-    map.set('end_event', getTimeOverlay('second', shapeTimeOverlayStyles));
-    return map;
+    const overlays = new Map();
+    overlays.set('start_event', buildTimeOverlay('second', shapeTimeOverlayStyles));
+    overlays.set('parallel_gateway_1', buildTimeOverlay('second', shapeTimeOverlayStyles));
+    overlays.set('task_1', buildTimeOverlay('minute', shapeTimeOverlayStyles));
+    overlays.set('task_2', buildTimeOverlay('minute', shapeTimeOverlayStyles));
+    overlays.set('exclusive_gateway_1', buildTimeOverlay('minute', shapeTimeOverlayStyles));
+    overlays.set('task_3', buildTimeOverlay('minute', shapeTimeOverlayStyles));
+    overlays.set('task_4', buildTimeOverlay('day', shapeTimeOverlayStyles));
+    overlays.set('task_5', buildTimeOverlay('hour', shapeTimeOverlayStyles));
+    overlays.set('inclusive_gateway_1', buildTimeOverlay('second', shapeTimeOverlayStyles));
+    overlays.set('task_6', buildTimeOverlay('hour', shapeTimeOverlayStyles));
+    overlays.set('task_7', buildTimeOverlay('month', shapeTimeOverlayStyles));
+    overlays.set('inclusive_gateway_2', buildTimeOverlay('day', shapeTimeOverlayStyles));
+    overlays.set('exclusive_gateway_2', buildTimeOverlay('day', shapeTimeOverlayStyles));
+    overlays.set('parallel_gateway_2', buildTimeOverlay('day', shapeTimeOverlayStyles));
+    overlays.set('task_8', buildTimeOverlay('hour', shapeTimeOverlayStyles));
+    overlays.set('end_event', buildTimeOverlay('second', shapeTimeOverlayStyles));
+    return overlays;
 }
 
 function getEdgeTimeData() {
     function getEdgeSecondOverlay() {
         return {
-            ...getTimeOverlay('second', edgeTimeOverlayStyles),
+            ...buildTimeOverlay('second', edgeTimeOverlayStyles),
             pathClass: 'path-lvl1'
         };
     }
 
     function getEdgeMinuteOverlay() {
         return {
-            ...getTimeOverlay('minute', edgeTimeOverlayStyles),
+            ...buildTimeOverlay('minute', edgeTimeOverlayStyles),
             pathClass: 'path-lvl2'
         };
     }
 
-    const map = new Map();
-    map.set('sequence_flow_1', getEdgeSecondOverlay());
-    map.set('sequence_flow_2', getEdgeSecondOverlay());
-    map.set('sequence_flow_18', getEdgeSecondOverlay());
-    map.set('sequence_flow_3', getEdgeMinuteOverlay());
-    map.set('sequence_flow_4', getEdgeSecondOverlay());
-    map.set('sequence_flow_12', getEdgeSecondOverlay());
-    map.set('sequence_flow_13', getEdgeSecondOverlay());
-    map.set('sequence_flow_5', getEdgeMinuteOverlay());
-    map.set('sequence_flow_6', getEdgeSecondOverlay());
-    map.set('sequence_flow_8', getEdgeSecondOverlay());
-    map.set('sequence_flow_7', getEdgeSecondOverlay());
-    map.set('sequence_flow_10', getEdgeSecondOverlay());
-    map.set('sequence_flow_9', getEdgeMinuteOverlay());
-    map.set('sequence_flow_11', getEdgeSecondOverlay());
-    map.set('sequence_flow_14', getEdgeSecondOverlay());
-    map.set('sequence_flow_15', getEdgeMinuteOverlay());
-    map.set('sequence_flow_16', getEdgeSecondOverlay());
-    map.set('sequence_flow_17', getEdgeSecondOverlay());
-    return map;
+    const overlays = new Map();
+    overlays.set('sequence_flow_1', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_2', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_18', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_3', getEdgeMinuteOverlay());
+    overlays.set('sequence_flow_4', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_12', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_13', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_5', getEdgeMinuteOverlay());
+    overlays.set('sequence_flow_6', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_8', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_7', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_10', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_9', getEdgeMinuteOverlay());
+    overlays.set('sequence_flow_11', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_14', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_15', getEdgeMinuteOverlay());
+    overlays.set('sequence_flow_16', getEdgeSecondOverlay());
+    overlays.set('sequence_flow_17', getEdgeSecondOverlay());
+    return overlays;
 }
