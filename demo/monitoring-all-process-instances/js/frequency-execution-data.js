@@ -86,29 +86,6 @@ function buildFrequencyTitles() {
     return sortIntegerArray(titles);
 }
 
-function sortIntegerArray(array) {
-    return array.sort((a, b) => {
-        if (parseInt(a) < parseInt(b)) {
-            return -1;
-        }
-        if (parseInt(a) > parseInt(b)) {
-            return 1;
-        }
-        return 0;
-    });
-}
-
-const sortKeys = (legendsStyles) => {
-    return sortIntegerArray(Array.from(legendsStyles.keys()));
-};
-const sortMap = (legendsStyles) => {
-    const sortedMap = new Map();
-    const sortedKeys = sortKeys(legendsStyles);
-    for (const sortedKey of sortedKeys) {
-        sortedMap.set(sortedKey, legendsStyles.get(sortedKey));
-    }
-    return sortedMap;
-};
 
 function buildFrequencyOverlays() {
     const titles = buildFrequencyTitles();
