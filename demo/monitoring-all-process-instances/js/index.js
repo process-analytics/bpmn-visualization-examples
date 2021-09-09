@@ -21,12 +21,12 @@ document.getElementById('btn-both').checked = true;
 
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initAndLoadDiagram('time-bpmn-container');
-const timeData = buildTimeOverlays();
+const timeData = buildTimeDatas();
 switchData(timeBpmnVisualization, timeData);
 
 let frequencyBpmnDiagramIsAlreadyLoad = false;
 let frequencyBpmnVisualization;
-let frequencyData;
+let frequencyExecutionData;
 
 document.getElementById('choose-diagram-panel').onclick = () => {
     const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
@@ -42,10 +42,10 @@ function switchDiagram(switchValue) {
     if (switchValue === 'frequency') {
         if (!frequencyBpmnDiagramIsAlreadyLoad) {
             frequencyBpmnVisualization = initAndLoadDiagram('frequency-bpmn-container');
-            frequencyData = buildFrequencyOverlays();
+            frequencyExecutionData = new FrequencyExecutionData();
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
-        updateFrequencyLegends();
+        frequencyExecutionData.updateLegends();
     } else {
         updateTimeLegends();
     }
@@ -60,7 +60,7 @@ function switchData() {
     const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
     const bpmnVisualization = diagramType === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
-    const data = diagramType === 'time' ? timeData : frequencyData;
+    const data = diagramType === 'time' ? timeData : frequencyExecutionData.data;
 
     console.info('Setting %s data', dataType);
     switch (dataType) {
