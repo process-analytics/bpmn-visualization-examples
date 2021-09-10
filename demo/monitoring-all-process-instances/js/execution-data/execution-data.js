@@ -4,8 +4,8 @@ class ExecutionData {
     _edgeOverlayStyles;
     #shapeData;
     #edgeData;
-    #shapeLegend;
-    #edgeLegend;
+    #shapeOverlayLegend;
+    #edgeOverlayLegend;
     #edgePathLegend;
 
     constructor(shapeColor, edgeColor) {
@@ -18,8 +18,8 @@ class ExecutionData {
         this.#edgeData = this._buildEdgeDataSets();
 
         let legendTitles = this._buildLegendTitles();
-        this.#shapeLegend = new Legend("shape-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
-        this.#edgeLegend = new Legend("edge-legend", {colors: this._buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
+        this.#shapeOverlayLegend = new Legend("shape-overlay-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
+        this.#edgeOverlayLegend = new Legend("edge-overlay-legend", {colors: this._buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
         this.#edgePathLegend = new Legend("edge-path-legend", {titles: legendTitles});
     }
 
@@ -35,9 +35,39 @@ class ExecutionData {
      * Generic implementation
      */
     updateLegends() {
-        this.#shapeLegend.update();
-        this.#edgeLegend.update();
+        this.#shapeOverlayLegend.update();
+        this.#edgeOverlayLegend.update();
         this.#edgePathLegend.update();
+    }
+
+    /**
+     * Generic implementation
+     */
+    displayOverlaysLegends() {
+        this.#shapeOverlayLegend.display();
+        this.#edgeOverlayLegend.display();
+    }
+
+    /**
+     * Generic implementation
+     */
+    displayPathLegend() {
+        this.#edgePathLegend.display();
+    }
+
+    /**
+     * Generic implementation
+     */
+    hideOverlaysLegends() {
+        this.#shapeOverlayLegend.hide();
+        this.#edgeOverlayLegend.hide();
+    }
+
+    /**
+     * Generic implementation
+     */
+    hidePathLegend() {
+        this.#edgePathLegend.hide();
     }
 
     /**

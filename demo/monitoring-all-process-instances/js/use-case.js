@@ -56,16 +56,22 @@ class UseCase {
                     if (value.pathClass) {
                         this.#bpmnVisualization.bpmnElementsRegistry.removeCssClasses(key, value.pathClass);
                     }
+                    this.#executionData.hidePathLegend();
+
                     if (value.overlay) {
                         this.#bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
                     }
+                    this.#executionData.displayOverlaysLegends();
                 };
             case 'paths':
                 return (key, value) => {
                     this.#bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(key);
+                    this.#executionData.hideOverlaysLegends();
+
                     if (value.pathClass) {
                         this.#bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
                     }
+                    this.#executionData.displayPathLegend();
                 };
             case 'both':
             default:
@@ -73,9 +79,12 @@ class UseCase {
                     if (value.pathClass) {
                         this.#bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
                     }
+                    this.#executionData.displayPathLegend();
+
                     if (value.overlay) {
                         this.#bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
                     }
+                    this.#executionData.displayOverlaysLegends();
                 };
         }
     }
