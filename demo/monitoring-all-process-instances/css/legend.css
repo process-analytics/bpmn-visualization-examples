@@ -5,8 +5,9 @@
 
 #legend chart {
     width: 40px;
-    height: 130px;
+    height: 110px;
     margin-right: 0;
+    margin-top: 15px;
 }
 
 #legend chart.color {
