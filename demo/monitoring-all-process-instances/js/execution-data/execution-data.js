@@ -14,8 +14,8 @@ class ExecutionData {
         this._shapeOverlayStyles = this._buildOverlayStyles('top-right', shapeColor);
         this._edgeOverlayStyles = this._buildOverlayStyles('middle', edgeColor);
 
-        this.#shapeData = this._buildShapeData();
-        this.#edgeData = this._buildEdgeData();
+        this.#shapeData = this._buildShapeDatas();
+        this.#edgeData = this._buildEdgeDatas();
 
         let legendTitles = this._buildLegendTitles();
         this.#shapeLegend = new Legend("shape-legend", {colors: this.#buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
@@ -70,21 +70,35 @@ class ExecutionData {
     /**
      * Implementation required
      */
-    _buildShapeData() {
+    _buildShapeDatas() {
         throw new Error('Not implemented');
+    }
+
+    /**
+     * Generic implementation
+     */
+    _buildShapeData(index) {
+        return this._buildData(index, this._shapeOverlayStyles);
     }
 
     /**
      * Implementation required
      */
-    _buildEdgeData() {
+    _buildEdgeDatas() {
         throw new Error('Not implemented');
+    }
+
+    /**
+     * Generic implementation
+     */
+    _buildEdgeData(index) {
+        return this._buildData(index, this._edgeOverlayStyles, `path-lvl${index}`);
     }
 
     /**
      * Implementation required
      */
-    _buildData(label, overlayStyles, pathClass) {
+    _buildData(index, overlayStyles, pathClass) {
         throw new Error('Not implemented');
     }
 

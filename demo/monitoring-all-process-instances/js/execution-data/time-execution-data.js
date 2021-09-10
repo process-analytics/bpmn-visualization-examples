@@ -57,83 +57,74 @@ class TimeExecutionData extends ExecutionData {
         ]);
     }
 
-    _buildShapeData() {
-        function internalBuildData(unit) {
-            return this._buildData(unit, this._shapeOverlayStyles);
-        }
-
-
+    _buildShapeDatas() {
         const data = new Map();
-        data.set('start_event', internalBuildData.call(this, this._titles[0]));
-        data.set('parallel_gateway_1', internalBuildData.call(this, this._titles[0]));
-        data.set('task_1', internalBuildData.call(this, this._titles[1]));
-        data.set('task_2', internalBuildData.call(this, this._titles[1]));
-        data.set('exclusive_gateway_1', internalBuildData.call(this, this._titles[1]));
-        data.set('task_3', internalBuildData.call(this, this._titles[1]));
-        data.set('task_4', internalBuildData.call(this, this._titles[2]));
-        data.set('task_5', internalBuildData.call(this, this._titles[3]));
-        data.set('inclusive_gateway_1', internalBuildData.call(this, this._titles[0]));
-        data.set('task_6', internalBuildData.call(this, this._titles[3]));
-        data.set('task_7', internalBuildData.call(this, this._titles[4]));
-        data.set('inclusive_gateway_2', internalBuildData.call(this, this._titles[2]));
-        data.set('exclusive_gateway_2', internalBuildData.call(this, this._titles[2]));
-        data.set('parallel_gateway_2', internalBuildData.call(this, this._titles[2]));
-        data.set('task_8', internalBuildData.call(this, this._titles[3]));
-        data.set('end_event', internalBuildData.call(this, this._titles[0]));
+        data.set('start_event', this._buildShapeData(1));
+        data.set('parallel_gateway_1', this._buildShapeData(1));
+        data.set('task_1', this._buildShapeData(2));
+        data.set('task_2', this._buildShapeData(2));
+        data.set('exclusive_gateway_1', this._buildShapeData(2));
+        data.set('task_3', this._buildShapeData(2));
+        data.set('task_4', this._buildShapeData(3));
+        data.set('task_5', this._buildShapeData(4));
+        data.set('inclusive_gateway_1', this._buildShapeData(1));
+        data.set('task_6', this._buildShapeData(4));
+        data.set('task_7', this._buildShapeData(5));
+        data.set('inclusive_gateway_2', this._buildShapeData(3));
+        data.set('exclusive_gateway_2', this._buildShapeData(3));
+        data.set('parallel_gateway_2', this._buildShapeData(3));
+        data.set('task_8', this._buildShapeData(4));
+        data.set('end_event', this._buildShapeData(1));
         return data;
     }
 
-    _buildEdgeData() {
-        function internalBuildSecondData() {
-            return this._buildData(this._titles[0], this._edgeOverlayStyles, 'path-lvl1');
-        }
-
-        function internalBuildMinuteData() {
-            return this._buildData(this._titles[1], this._edgeOverlayStyles, 'path-lvl2');
-        }
-
+    _buildEdgeDatas() {
         const data = new Map();
-        data.set('sequence_flow_1', internalBuildSecondData.call(this));
-        data.set('sequence_flow_2', internalBuildSecondData.call(this));
-        data.set('sequence_flow_18', internalBuildSecondData.call(this));
-        data.set('sequence_flow_3', internalBuildMinuteData.call(this));
-        data.set('sequence_flow_4', internalBuildSecondData.call(this));
-        data.set('sequence_flow_12', internalBuildSecondData.call(this));
-        data.set('sequence_flow_13', internalBuildSecondData.call(this));
-        data.set('sequence_flow_5', internalBuildMinuteData.call(this));
-        data.set('sequence_flow_6', internalBuildSecondData.call(this));
-        data.set('sequence_flow_8', internalBuildSecondData.call(this));
-        data.set('sequence_flow_7', internalBuildSecondData.call(this));
-        data.set('sequence_flow_10', internalBuildSecondData.call(this));
-        data.set('sequence_flow_9', internalBuildMinuteData.call(this));
-        data.set('sequence_flow_11', internalBuildSecondData.call(this));
-        data.set('sequence_flow_14', internalBuildSecondData.call(this));
-        data.set('sequence_flow_15', internalBuildMinuteData.call(this));
-        data.set('sequence_flow_16', internalBuildSecondData.call(this));
-        data.set('sequence_flow_17', internalBuildSecondData.call(this));
+        data.set('sequence_flow_1', this._buildEdgeData(1));
+        data.set('sequence_flow_2', this._buildEdgeData(1));
+        data.set('sequence_flow_18', this._buildEdgeData(1));
+        data.set('sequence_flow_3', this._buildEdgeData(2));
+        data.set('sequence_flow_4', this._buildEdgeData(1));
+        data.set('sequence_flow_12', this._buildEdgeData(1));
+        data.set('sequence_flow_13', this._buildEdgeData(1));
+        data.set('sequence_flow_5', this._buildEdgeData(2));
+        data.set('sequence_flow_6', this._buildEdgeData(1));
+        data.set('sequence_flow_8', this._buildEdgeData(1));
+        data.set('sequence_flow_7', this._buildEdgeData(1));
+        data.set('sequence_flow_10', this._buildEdgeData(1));
+        data.set('sequence_flow_9', this._buildEdgeData(2));
+        data.set('sequence_flow_11', this._buildEdgeData(1));
+        data.set('sequence_flow_14', this._buildEdgeData(1));
+        data.set('sequence_flow_15', this._buildEdgeData(2));
+        data.set('sequence_flow_16', this._buildEdgeData(1));
+        data.set('sequence_flow_17', this._buildEdgeData(1));
         return data;
     }
 
-    _buildData(unit, overlayStyles, pathClass) {
-        function buildCustomData(label, overlayStyles, pathClass) {
-            return buildData(label, () => overlayStyles.get(unit), pathClass);
+    _buildData(index, overlayStyles, pathClass) {
+        function buildCustomData(data, unit) {
+            return buildData(`${data} ${unit}`, () => overlayStyles.get(this._titles[index - 1]), pathClass);
+        }
+
+        function buildrecursiveData(data, unit) {
+            return data === 0 ? this._buildData(index - 1, overlayStyles) : buildCustomData.call(this, data, unit);
         }
 
         const date = new Date();
         date.setTime(Math.random() * 100000000000000);
 
-        switch (unit) {
-            case this._titles[4]:
-                return date.getMonth() === 0 ? this._buildData(this._titles[3], overlayStyles, pathClass) : buildCustomData(`${date.getMonth()} month`, overlayStyles, pathClass);
-            case this._titles[3]:
-                return date.getDay() === 0 ? this._buildData(this._titles[2], overlayStyles, pathClass) : buildCustomData(`${date.getDay()} d`, overlayStyles, pathClass);
-            case this._titles[2]:
-                return date.getHours() === 0 ? this._buildData(this._titles[1], overlayStyles, pathClass) : buildCustomData(`${date.getHours()} h`, overlayStyles, pathClass);
-            case this._titles[1]:
-                return date.getMinutes() === 0 ? this._buildData(this._titles[0], overlayStyles, pathClass) : buildCustomData(`${date.getMinutes()} min`, overlayStyles, pathClass);
-            case this._titles[0]:
+        switch (index) {
+            case 5:
+                return buildrecursiveData.call(this, date.getMonth(), 'month');
+            case 4:
+                return buildrecursiveData.call(this, date.getDay(), 'd');
+            case 3:
+                return buildrecursiveData.call(this, date.getHours(), 'h');
+            case 2:
+                return buildrecursiveData.call(this, date.getMinutes(), 'min');
+            case 1:
             default:
-                return buildCustomData(`${date.getSeconds()} s`, overlayStyles, pathClass);
+                return buildCustomData.call(this, date.getSeconds(), 's');
         }
     }
 
