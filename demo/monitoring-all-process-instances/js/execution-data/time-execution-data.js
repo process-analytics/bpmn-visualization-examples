@@ -1,7 +1,7 @@
 class TimeExecutionData extends ExecutionData {
 
     constructor() {
-        super('#008700', '#c61700');
+        super('#800000', '#008080');
     }
 
 
