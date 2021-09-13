@@ -66,6 +66,46 @@ class ExecutionData {
     }
 
     /**
+     * Generic implementation
+     */
+    _internalBuildOverlayStyles(startIndex, position, color) {
+        return new Map([
+            [this._titles[startIndex], {
+                position,
+                style: {
+                    fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
+                }
+            }],
+            [this._titles[startIndex + 1], {
+                position,
+                style: {
+                    fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
+                }
+            }],
+            [this._titles[startIndex + 2], {
+                position,
+                style: {
+                    fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
+                }
+            }],
+            [this._titles[startIndex + 3], {
+                position,
+                style: {
+                    fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
+                    font: {color: 'White'},
+                }
+            }],
+            [this._titles[startIndex + 4], {
+                position,
+                style: {
+                    fill: {color},
+                    font: {color: 'White'},
+                }
+            }],
+        ]);
+    }
+
+    /**
      * Implementation required
      */
     _buildOverlayStyles(position, color) {

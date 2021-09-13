@@ -25,41 +25,11 @@ class FrequencyExecutionData extends ExecutionData {
     }
 
     _buildOverlayStyles(position, color) {
-        return new Map([
-            [this._titles[1], {
-                position,
-                style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
-                })
-            }],
-            [this._titles[2], {
-                position,
-                style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
-                })
-            }],
-            [this._titles[3], {
-                position,
-                style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
-                    font: {color: 'White'},
-                })
-            }],
-            [this._titles[4], {
-                position,
-                style: withStrokeColorAsFillColor({
-                    fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
-                    font: {color: 'White'},
-                })
-            }],
-            [this._titles[5], {
-                position,
-                style: withStrokeColorAsFillColor({
-                    fill: {color},
-                    font: {color: 'White'},
-                })
-            }],
-        ]);
+        const overlayStyles = this._internalBuildOverlayStyles(1, position, color);
+        Array.from(overlayStyles.values()).forEach(overlayStyle => {
+            overlayStyle.stroke = {color: overlayStyle.style.fill.color};
+        });
+        return overlayStyles;
     }
 
     _buildShapeDatas() {

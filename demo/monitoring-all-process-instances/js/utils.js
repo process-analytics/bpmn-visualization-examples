@@ -18,10 +18,6 @@ const sortMap = (legendsStyles) => {
     return new Map(sortedKeys.map(sortedKey => [sortedKey, legendsStyles.get(sortedKey)]));
 };
 
-function withStrokeColorAsFillColor(overlayStyle) {
-    return {...overlayStyle, stroke: {color: overlayStyle.fill.color}};
-}
-
 function buildData(label, getOverlayStyles, pathClass) {
     let data = {
         overlay: {

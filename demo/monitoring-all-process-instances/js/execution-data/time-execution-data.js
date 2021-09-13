@@ -21,40 +21,7 @@ class TimeExecutionData extends ExecutionData {
     }
 
     _buildOverlayStyles(position, color) {
-        return new Map([
-            [this._titles[0], {
-                position,
-                style: {
-                    fill: {color: `rgba(${new Values(color).tint(84).rgb})`},
-                }
-            }],
-            [this._titles[1], {
-                position,
-                style: {
-                    fill: {color: `rgba(${new Values(color).tint(63).rgb})`},
-                }
-            }],
-            [this._titles[2], {
-                position,
-                style: {
-                    fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
-                }
-            }],
-            [this._titles[3], {
-                position,
-                style: {
-                    fill: {color: `rgba(${new Values(color).tint(21).rgb})`},
-                    font: {color: 'White'},
-                }
-            }],
-            [this._titles[4], {
-                position,
-                style: {
-                    fill: {color},
-                    font: {color: 'White'},
-                }
-            }],
-        ]);
+        return this._internalBuildOverlayStyles(0, position, color);
     }
 
     _buildShapeDatas() {
