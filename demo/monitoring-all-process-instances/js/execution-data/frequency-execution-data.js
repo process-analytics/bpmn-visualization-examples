@@ -67,7 +67,7 @@ class FrequencyExecutionData extends ExecutionData {
     _buildEdgeDataSets() {
         const data = new Map();
 
-        const randomEdgeData = this._buildData(5, this._edgeOverlayStyles, true);
+        const randomEdgeData = this._buildEdgeData(5, this._edgeOverlayStyles, true);
         data.set('sequence_flow_1', randomEdgeData);
         data.set('sequence_flow_2', randomEdgeData);
         data.set('sequence_flow_18', randomEdgeData);
