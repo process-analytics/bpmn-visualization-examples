@@ -3,7 +3,7 @@
 To run locally:
 
 1. `npm install`
-2. `npm run start`
+2. `npm start`
 3. [localhost app](http://localhost:10001)
 
 You will see the following diagram:
