@@ -25,6 +25,7 @@ class ExecutionData {
 
     /**
      * Generic implementation
+     *
      */
     get data() {
         return new Map([...this.#shapeData, ...this.#edgeData]);
@@ -48,6 +49,8 @@ class ExecutionData {
 
     /**
      * Implementation required
+     *
+     * @return An array of 6 values from the lowest to the highest value
      */
     _buildTitles() {
         throw new Error('Not implemented');
@@ -55,6 +58,8 @@ class ExecutionData {
 
     /**
      * Implementation required
+     *
+     * @return An array of 6 values from the lowest to the highest value
      */
     _buildLegendTitles() {
         throw new Error('Not implemented');
