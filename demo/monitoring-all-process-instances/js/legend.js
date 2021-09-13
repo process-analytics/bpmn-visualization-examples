@@ -9,22 +9,22 @@ class Legend {
 
     update() {
         if (this.#theme.colors) {
-            this.#updateLegendColor(this.#theme.colors);
+            this._updateLegendColor(this.#theme.colors);
         }
         if (this.#theme.titles) {
-            this.#updateTitle(this.#theme.titles);
+            this._updateTitle(this.#theme.titles);
         }
         console.info('%s updated', this.#id);
     }
 
-    #updateTitle(titles) {
+    _updateTitle(titles) {
         let ticks = document.getElementById(`${this.#id}-guide-y`).children;
         for (let i = 0; i < ticks.length; i++) {
             ticks[i].firstElementChild.innerText = titles[i];
         }
     }
 
-    #updateLegendColor(colors) {
+    _updateLegendColor(colors) {
         document.getElementById(`${this.#id}-250`).style.backgroundColor = colors[0];
         document.getElementById(`${this.#id}-200`).style.backgroundColor = colors[1];
         document.getElementById(`${this.#id}-150`).style.backgroundColor = colors[2];
