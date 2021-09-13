@@ -18,8 +18,8 @@ class ExecutionData {
         this.#edgeData = this._buildEdgeDatas();
 
         let legendTitles = this._buildLegendTitles();
-        this.#shapeLegend = new Legend("shape-legend", {colors: this.#buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
-        this.#edgeLegend = new Legend("edge-legend", {colors: this.#buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
+        this.#shapeLegend = new Legend("shape-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
+        this.#edgeLegend = new Legend("edge-legend", {colors: this._buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
         this.#edgePathLegend = new Legend("edge-path-legend", {titles: legendTitles});
     }
 
@@ -43,7 +43,7 @@ class ExecutionData {
     /**
      * Generic implementation
      */
-    #buildLegendColors(styles) {
+    _buildLegendColors(styles) {
         return Array.from(styles.values()).map(value => value.style.fill.color);
     }
 
