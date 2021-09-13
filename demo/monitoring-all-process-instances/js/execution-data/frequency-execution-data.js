@@ -100,7 +100,7 @@ class FrequencyExecutionData extends ExecutionData {
 
     _buildData(index, overlayStyles, pathClass) {
         const label = this._titles[index];
-        return buildData(label, () => overlayStyles.get(label), pathClass);
+        return this._internalBuildData(label, () => overlayStyles.get(label), pathClass);
     }
 
 }

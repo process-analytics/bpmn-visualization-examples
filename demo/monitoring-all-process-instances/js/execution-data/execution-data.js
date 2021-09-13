@@ -148,4 +148,19 @@ class ExecutionData {
         throw new Error('Not implemented');
     }
 
+    /**
+     * Generic implementation
+     */
+    _internalBuildData(label, getOverlayStyles, pathClass) {
+        let data = {
+            overlay: {
+                ...getOverlayStyles(),
+                label: String(label),
+            }
+        };
+        if (pathClass) {
+            data.pathClass = pathClass;
+        }
+        return data;
+    }
 }

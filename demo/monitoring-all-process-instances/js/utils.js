@@ -17,16 +17,3 @@ const sortMap = (legendsStyles) => {
     const sortedKeys = sortKeys(legendsStyles);
     return new Map(sortedKeys.map(sortedKey => [sortedKey, legendsStyles.get(sortedKey)]));
 };
-
-function buildData(label, getOverlayStyles, pathClass) {
-    let data = {
-        overlay: {
-            ...getOverlayStyles(),
-            label: String(label),
-        }
-    };
-    if (pathClass) {
-        data.pathClass = pathClass;
-    }
-    return data;
-}

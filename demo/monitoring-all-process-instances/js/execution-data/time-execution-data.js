@@ -70,7 +70,7 @@ class TimeExecutionData extends ExecutionData {
 
     _buildData(index, overlayStyles, pathClass) {
         function buildCustomData(data, unit) {
-            return buildData(`${data} ${unit}`, () => overlayStyles.get(this._titles[index - 1]), pathClass);
+            return this._internalBuildData(`${data} ${unit}`, () => overlayStyles.get(this._titles[index - 1]), pathClass);
         }
 
         function buildRecursiveData(data, unit) {
