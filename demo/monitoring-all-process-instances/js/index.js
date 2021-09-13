@@ -11,7 +11,7 @@ document.addEventListener('DOMContentLoaded', function () {
     timeUseCase.display(dataType);
 })
 
-document.getElementById('choose-use-case-panel').onclick = () => {
+updateDisplayedPanel = () => {
     const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
 
@@ -19,10 +19,6 @@ document.getElementById('choose-use-case-panel').onclick = () => {
     useCase.display(dataType);
 }
 
-document.getElementById('choose-data-panel').onclick = () => {
-    const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
-    const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
-
-    const useCase = useCaseType === 'frequency' ? frequencyUseCase : timeUseCase;
-    useCase.displayData(dataType);
-}
+// FIXME the function is called twice on click
+document.getElementById('choose-use-case-panel').onclick = updateDisplayedPanel;
+document.getElementById('choose-data-panel').onclick = updateDisplayedPanel;
