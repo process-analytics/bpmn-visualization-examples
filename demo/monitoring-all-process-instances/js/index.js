@@ -21,7 +21,7 @@ document.getElementById('btn-both').checked = true;
 
 // Initialize BpmnVisualization for Time Data
 const timeBpmnVisualization = initAndLoadDiagram('time-bpmn-container');
-const timeData = getTimeData();
+const timeData = buildTimeOverlays();
 switchData(timeBpmnVisualization, timeData);
 
 let frequencyBpmnDiagramIsAlreadyLoad = false;
@@ -42,7 +42,7 @@ function switchDiagram(switchValue) {
     if (switchValue === 'frequency') {
         if (!frequencyBpmnDiagramIsAlreadyLoad) {
             frequencyBpmnVisualization = initAndLoadDiagram('frequency-bpmn-container');
-            frequencyData = getFrequencyData();
+            frequencyData = buildFrequencyOverlays();
             frequencyBpmnDiagramIsAlreadyLoad = true;
         }
         updateFrequencyLegends();
