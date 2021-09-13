@@ -86,6 +86,7 @@ class ExecutionData {
                 position,
                 style: {
                     fill: {color: `rgba(${new Values(color).tint(42).rgb})`},
+                    font: {color: 'White'},
                 }
             }],
             [this._titles[startIndex + 3], {
