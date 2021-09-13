@@ -12,7 +12,7 @@ class UseCase {
     }
 
     display(dataType) {
-        this.#displayPanel();
+        this._displayPanel();
 
         if(!this.#alreadyLoad) {
             this.#bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
@@ -24,20 +24,20 @@ class UseCase {
 
     displayData(dataType) {
         console.info('Setting %s data', dataType);
-        let dataActionOnDisplay = this.#getDataActionOnDisplay(dataType);
+        let dataActionOnDisplay = this._getDataActionOnDisplay(dataType);
         this.#executionData.data.forEach((value, key) =>  dataActionOnDisplay(key, value));
         console.info('%s data set', dataType);
     }
 
 
-    #displayPanel() {
-        this.#displayElementAndHideOthers("bpmn-container");
-        this.#displayElementAndHideOthers("title");
+    _displayPanel() {
+        this._displayElementAndHideOthers("bpmn-container");
+        this._displayElementAndHideOthers("title");
 
         this.#executionData.updateLegends();
     }
 
-    #displayElementAndHideOthers(subId) {
+    _displayElementAndHideOthers(subId) {
         // Hide all corresponding HTML elements
         const bpmnContainers = document.querySelectorAll(`[id*="${subId}"]`);
         for (let i = 0; i < bpmnContainers.length; i++) {
@@ -49,7 +49,7 @@ class UseCase {
         console.info('%s displayed', `${this.#type}-${subId}`);
     }
 
-    #getDataActionOnDisplay(dataType) {
+    _getDataActionOnDisplay(dataType) {
         switch (dataType) {
             case 'overlays':
                 return (key, value) => {
