@@ -14,8 +14,8 @@ class ExecutionData {
         this._shapeOverlayStyles = this._buildOverlayStyles('top-right', shapeColor);
         this._edgeOverlayStyles = this._buildOverlayStyles('middle', edgeColor);
 
-        this.#shapeData = this._buildShapeDatas();
-        this.#edgeData = this._buildEdgeDatas();
+        this.#shapeData = this._buildShapeDataSets();
+        this.#edgeData = this._buildEdgeDataSets();
 
         let legendTitles = this._buildLegendTitles();
         this.#shapeLegend = new Legend("shape-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
@@ -116,7 +116,7 @@ class ExecutionData {
     /**
      * Implementation required
      */
-    _buildShapeDatas() {
+    _buildShapeDataSets() {
         throw new Error('Not implemented');
     }
 
@@ -130,7 +130,7 @@ class ExecutionData {
     /**
      * Implementation required
      */
-    _buildEdgeDatas() {
+    _buildEdgeDataSets() {
         throw new Error('Not implemented');
     }
 

@@ -32,7 +32,7 @@ class FrequencyExecutionData extends ExecutionData {
         return overlayStyles;
     }
 
-    _buildShapeDatas() {
+    _buildShapeDataSets() {
         const data = new Map();
 
         const randomShapeData = this._buildShapeData(5);
@@ -64,7 +64,7 @@ class FrequencyExecutionData extends ExecutionData {
         return data;
     }
 
-    _buildEdgeDatas() {
+    _buildEdgeDataSets() {
         const data = new Map();
 
         const randomEdgeData = this._buildData(5, this._edgeOverlayStyles, true);

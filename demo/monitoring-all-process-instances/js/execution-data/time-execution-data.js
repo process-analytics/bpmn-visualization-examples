@@ -24,7 +24,7 @@ class TimeExecutionData extends ExecutionData {
         return this._internalBuildOverlayStyles(0, position, color);
     }
 
-    _buildShapeDatas() {
+    _buildShapeDataSets() {
         const data = new Map();
         data.set('start_event', this._buildShapeData(1));
         data.set('parallel_gateway_1', this._buildShapeData(1));
@@ -45,7 +45,7 @@ class TimeExecutionData extends ExecutionData {
         return data;
     }
 
-    _buildEdgeDatas() {
+    _buildEdgeDataSets() {
         const data = new Map();
         data.set('sequence_flow_1', this._buildEdgeData(1));
         data.set('sequence_flow_2', this._buildEdgeData(1));
