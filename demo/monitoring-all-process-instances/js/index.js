@@ -1,102 +1,28 @@
-function initAndLoadDiagram(container) {
-    const bpmnVisualization = new bpmnvisu.BpmnVisualization({
-        container,
-        navigation: {enabled: true}
-    });
-    bpmnVisualization.load(getHardwareRetailerDiagram(), {fit: {type: 'Center', margin: 30}});
-    return bpmnVisualization;
-}
-
-function displayElementAndHideOthers(switchValue, subId) {
-    // Display corresponding BPMN container & Hide others
-    const bpmnContainers = document.querySelectorAll(`[id*="${subId}"]`);
-    for (let i = 0; i < bpmnContainers.length; i++) {
-        bpmnContainers.item(i).classList.add('d-hide');
-    }
-    document.getElementById(`${switchValue}-${subId}`).classList.remove('d-hide');
-}
-
 document.getElementById('btn-time').checked = true;
 document.getElementById('btn-both').checked = true;
 
-// Initialize BpmnVisualization for Time Data
-const timeBpmnVisualization = initAndLoadDiagram('time-bpmn-container');
-const timeExecutionData = new TimeExecutionData();
-switchData();
-
-let frequencyBpmnDiagramIsAlreadyLoad = false;
-let frequencyBpmnVisualization;
-let frequencyExecutionData;
-
-document.getElementById('choose-diagram-panel').onclick = () => {
-    const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
-    switchDiagram(diagramType);
-    switchData();
-}
-
-function switchDiagram(switchValue) {
-    displayElementAndHideOthers(switchValue, "bpmn-container");
-    displayElementAndHideOthers(switchValue, "title");
-
-    // Load BPMN diagram for Frequency Data, if it's not already done
-    if (switchValue === 'frequency') {
-        if (!frequencyBpmnDiagramIsAlreadyLoad) {
-            frequencyBpmnVisualization = initAndLoadDiagram('frequency-bpmn-container');
-            frequencyExecutionData = new FrequencyExecutionData();
-            frequencyBpmnDiagramIsAlreadyLoad = true;
-        }
-        frequencyExecutionData.updateLegends();
-    } else {
-        timeExecutionData.updateLegends();
-    }
-    console.info('Switched to %s', switchValue)
-}
+// Initialize UseCases
+const timeUseCase = new UseCase('time', new TimeExecutionData());
+const frequencyUseCase = new UseCase('frequency', new FrequencyExecutionData());
 
 document.addEventListener('DOMContentLoaded', function () {
-    timeExecutionData.updateLegends();
+    // Waiting for the displayed page before to load diagram & display data
+    const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
+    timeUseCase.display(dataType);
 })
 
-function switchData() {
-    const diagramType = document.querySelector("input[type='radio'][name='diagram-type']:checked").value;
+document.getElementById('choose-use-case-panel').onclick = () => {
+    const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
     const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
-    const bpmnVisualization = diagramType === 'time' ? timeBpmnVisualization : frequencyBpmnVisualization;
-    const data = diagramType === 'time' ? timeExecutionData.data : frequencyExecutionData.data;
 
-    console.info('Setting %s data', dataType);
-    switch (dataType) {
-        case 'overlays':
-            data.forEach((value, key) => {
-                if (value.pathClass) {
-                    bpmnVisualization.bpmnElementsRegistry.removeCssClasses(key, value.pathClass);
-                }
-                if (value.overlay) {
-                    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
-                }
-            });
-            break;
-        case 'paths':
-            data.forEach((value, key) => {
-                bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(key);
-                if (value.pathClass) {
-                    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
-                }
-            });
-            break;
-        case 'both':
-        default:
-            data.forEach((value, key) => {
-                if (value.pathClass) {
-                    bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
-                }
-                if (value.overlay) {
-                    bpmnVisualization.bpmnElementsRegistry.addOverlays(key, value.overlay);
-                }
-            });
-    }
-    console.info('%s data set', dataType);
+    const useCase = useCaseType === 'frequency' ? frequencyUseCase : timeUseCase;
+    useCase.display(dataType);
 }
 
 document.getElementById('choose-data-panel').onclick = () => {
-    switchData();
-}
+    const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
+    const dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
 
+    const useCase = useCaseType === 'frequency' ? frequencyUseCase : timeUseCase;
+    useCase.displayData(dataType);
+}
