@@ -73,7 +73,7 @@ class TimeExecutionData extends ExecutionData {
             return buildData(`${data} ${unit}`, () => overlayStyles.get(this._titles[index - 1]), pathClass);
         }
 
-        function buildrecursiveData(data, unit) {
+        function buildRecursiveData(data, unit) {
             return data === 0 ? this._buildData(index - 1, overlayStyles) : buildCustomData.call(this, data, unit);
         }
 
@@ -82,13 +82,13 @@ class TimeExecutionData extends ExecutionData {
 
         switch (index) {
             case 5:
-                return buildrecursiveData.call(this, date.getMonth(), 'month');
+                return buildRecursiveData.call(this, date.getMonth(), 'month');
             case 4:
-                return buildrecursiveData.call(this, date.getDay(), 'd');
+                return buildRecursiveData.call(this, date.getDay(), 'd');
             case 3:
-                return buildrecursiveData.call(this, date.getHours(), 'h');
+                return buildRecursiveData.call(this, date.getHours(), 'h');
             case 2:
-                return buildrecursiveData.call(this, date.getMinutes(), 'min');
+                return buildRecursiveData.call(this, date.getMinutes(), 'min');
             case 1:
             default:
                 return buildCustomData.call(this, date.getSeconds(), 's');
