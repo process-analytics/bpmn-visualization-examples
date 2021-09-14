@@ -2,13 +2,11 @@ const inputProjectName = document.getElementById('input-project-name');
 inputProjectName.oninput = function (event) {
     state.useCase.updateCellsLabel(event.target.value);
 };
-const projectName = inputProjectName.value;
 
 // Initialize UseCases
-
-const lightUseCase = new LightUseCase(projectName);
-const darkUseCase = new DarkUseCase(projectName);
-const defaultUseCase = new HacktoberfestUseCase('default', projectName);
+const lightUseCase = new LightUseCase(inputProjectName.value);
+const darkUseCase = new DarkUseCase(inputProjectName.value);
+const defaultUseCase = new HacktoberfestUseCase('default', inputProjectName.value);
 
 // Initialize state of radio buttons
 const state = {
@@ -39,4 +37,5 @@ document.getElementById('choose-use-case-panel').onchange = () => {
     state.useCase = getUseCase(useCaseType);
 
     state.useCase.display();
+    state.useCase.updateCellsLabel(inputProjectName.value);
 }
