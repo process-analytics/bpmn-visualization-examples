@@ -57,6 +57,7 @@ class LightBpmnVisualization extends bpmnvisu.BpmnVisualization {
         // POOL
         style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
         style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = blueSuperLight;
+        style[bpmnvisu.mxConstants.STYLE_SWIMLANE_FILLCOLOR] = 'White';
         style[bpmnvisu.mxConstants.STYLE_FONTSIZE] = 16;
     }
 }
