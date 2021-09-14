@@ -132,31 +132,31 @@ limitations under the License.
                 </div>
                 <div class="columns">
                     <div id="legend" class="column col-auto col-mx-auto">
-                        <div style="margin-bottom: 1.7rem;">
+                        <div id="shape-overlay-legend" style="margin-bottom: 1.7rem;">
                             <label>Overlay on Shape</label>
-                            <chart id="shape-legend" scale-y-linear="0 250">
-                                <guide-y id="shape-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar id="shape-legend-250" literal-length="250"></bar>
-                                <bar id="shape-legend-200" literal-length="200"></bar>
-                                <bar id="shape-legend-150" literal-length="150"></bar>
-                                <bar id="shape-legend-100" literal-length="100"></bar>
-                                <bar id="shape-legend-50" literal-length="50"></bar>
+                            <chart scale-y-linear="0 250">
+                                <guide-y id="shape-overlay-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                                <bar id="shape-overlay-legend-250" literal-length="250"></bar>
+                                <bar id="shape-overlay-legend-200" literal-length="200"></bar>
+                                <bar id="shape-overlay-legend-150" literal-length="150"></bar>
+                                <bar id="shape-overlay-legend-100" literal-length="100"></bar>
+                                <bar id="shape-overlay-legend-50" literal-length="50"></bar>
                             </chart>
                         </div>
-                        <div style="margin-bottom: 1.7rem;">
+                        <div id="edge-overlay-legend" style="margin-bottom: 1.7rem;">
                             <label>Overlay on Edge</label>
-                            <chart id="edge-legend" scale-y-linear="0 250">
-                                <guide-y id="edge-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar id="edge-legend-250" literal-length="250"></bar>
-                                <bar id="edge-legend-200" literal-length="200"></bar>
-                                <bar id="edge-legend-150" literal-length="150"></bar>
-                                <bar id="edge-legend-100" literal-length="100"></bar>
-                                <bar id="edge-legend-50" literal-length="50"></bar>
+                            <chart scale-y-linear="0 250">
+                                <guide-y id="edge-overlay-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
+                                <bar id="edge-overlay-legend-250" literal-length="250"></bar>
+                                <bar id="edge-overlay-legend-200" literal-length="200"></bar>
+                                <bar id="edge-overlay-legend-150" literal-length="150"></bar>
+                                <bar id="edge-overlay-legend-100" literal-length="100"></bar>
+                                <bar id="edge-overlay-legend-50" literal-length="50"></bar>
                             </chart>
                         </div>
-                        <div>
+                        <div id="edge-path-legend">
                             <label>Path</label>
-                            <chart id="edge-path-legend" scale-y-linear="0 250">
+                            <chart scale-y-linear="0 250">
                                 <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
                                 <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
                                 <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>

@@ -17,6 +17,14 @@ class Legend {
         console.info('%s updated', this.#id);
     }
 
+    hide(){
+        document.getElementById(this.#id).classList.add('d-hide');
+    }
+
+    display(){
+        document.getElementById(this.#id).classList.remove('d-hide');
+    }
+
     _updateTitle(titles) {
         let ticks = document.getElementById(`${this.#id}-guide-y`).children;
         for (let i = 0; i < ticks.length; i++) {
