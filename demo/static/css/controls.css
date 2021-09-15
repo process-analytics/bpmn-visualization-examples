@@ -1,7 +1,7 @@
 #controls {
     border-radius: .5rem;
 }
-#controls > div {
+#controls div {
     display: flex;
     justify-content: center;
 }
