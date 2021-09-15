@@ -20,47 +20,12 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
-    <link rel="stylesheet" href="./css/switch.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/switch.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/controls.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/use-case.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/bpmn-container.css" type="text/css">
     <link rel="stylesheet" href="./css/path.css" type="text/css">
     <link rel="stylesheet" href="./css/legend.css" type="text/css">
-    <style>
-        .bpmn-container {
-            /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
-            /* width is relative to the window size */
-            height: 550px;
-            /* This ensures that the parts of the diagram outside of the container are not displayed. */
-            overflow: hidden;
-            background-color: white;
-        }
-
-        #controls {
-            border-radius: .5rem;
-        }
-        #controls > div {
-            display: flex;
-            justify-content: center;
-        }
-        #controls h5 {
-            margin-top: auto;
-            margin-bottom: auto;
-            margin-right: 15px;
-        }
-
-        #use-case-panel {
-            border-style: solid;
-            border-color: #303742;
-            border-width: thick;
-            border-radius: .5rem;
-            margin-top: 1rem;
-            margin-bottom: 1rem;
-            padding-bottom: .8rem;
-        }
-
-        #use-case-panel h4 {
-            padding-top: 1rem;
-            padding-bottom: 1rem;
-        }
-    </style>
 </head>
 <body>
 <header class="navbar bg-dark p-2">
@@ -93,35 +58,37 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="columns bg-secondary pt-2 pb-2">
-                <div id="choose-use-case-panel" class="col-6">
-                    <h5>Use case</h5>
-                    <div class="radioGroup">
-                        <label>
-                            <input id="btn-time" type="radio" name="use-case-type" value="time" checked>
-                            <span>Time</span>
-                        </label>
-                        <label>
-                            <input id="btn-frequency" type="radio" name="use-case-type" value="frequency">
-                            <span>Frequency</span>
-                        </label>
+            <div id="controls" class="column bg-secondary pt-2 pb-2">
+                <div class="columns">
+                    <div id="choose-use-case-panel" class="col-6">
+                        <h5>Use case</h5>
+                        <div class="radioGroup">
+                            <label>
+                                <input id="btn-time" type="radio" name="use-case-type" value="time" checked>
+                                <span>Time</span>
+                            </label>
+                            <label>
+                                <input id="btn-frequency" type="radio" name="use-case-type" value="frequency">
+                                <span>Frequency</span>
+                            </label>
+                        </div>
                     </div>
-                </div>
-                <div id="choose-data-panel" class="col-6">
-                    <h5>Displayed information</h5>
-                    <div class="radioGroup">
-                        <label>
-                            <input id="btn-overlays" type="radio" name="data-type" value="overlays" checked>
-                            <span>Overlays</span>
-                        </label>
-                        <label>
-                            <input id="btn-both" type="radio" name="data-type" value="both">
-                            <span>Both</span>
-                        </label>
-                        <label>
-                            <input id="btn-paths" type="radio" name="data-type" value="paths">
-                            <span>Paths</span>
-                        </label>
+                    <div id="choose-data-panel" class="col-6">
+                        <h5>Displayed information</h5>
+                        <div class="radioGroup">
+                            <label>
+                                <input id="btn-overlays" type="radio" name="data-type" value="overlays" checked>
+                                <span>Overlays</span>
+                            </label>
+                            <label>
+                                <input id="btn-both" type="radio" name="data-type" value="both">
+                                <span>Both</span>
+                            </label>
+                            <label>
+                                <input id="btn-paths" type="radio" name="data-type" value="paths">
+                                <span>Paths</span>
+                            </label>
+                        </div>
                     </div>
                 </div>
             </div>

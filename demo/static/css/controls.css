@@ -1,0 +1,12 @@
+#controls {
+    border-radius: .5rem;
+}
+#controls > div {
+    display: flex;
+    justify-content: center;
+}
+#controls h5 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+}
