@@ -27,9 +27,15 @@ Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/proces
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
 You will find both
-- a `demo` that shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
-[bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- several demo.
 - the examples described in more details below in this page. They demonstrate how to use a single feature.
+
+## 👁️‍🗨️ Demo
+
+- [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
+  [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+- [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
 
 
 ## 🔭 Examples
@@ -85,7 +91,6 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Custom user task icon](examples/custom-bpmn-theme/custom-user-task-icon/README.md) - use your own icon
 - [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
-- [Hacktoberfest themes](examples/custom-bpmn-theme/hacktoberfest-diagram/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 
 ### Custom behavior examples
 
