@@ -1,10 +1,10 @@
-# Hacktoberfest diagram
+# Hacktoberfest custom themes
 
 **DISCLAIMER: this extension point is very experimental and is subject to change**.  
 In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example
-- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-bpmn-theme/hacktoberfest-diagram/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/demo/hacktoberfest-custom-themes/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
@@ -15,9 +15,9 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 :warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
 Content:
-- override the `StyleConstant` default values, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
-- extend the lib class entry point, like [Custom fonts](../custom-fonts/README.md) & [Custom colors](../custom-colors/README.md)
-- override the default `IconPainter`, like [Custom User Task icon](../custom-user-task-icon/README.md)
+- override the `StyleConstant` default values, like [Custom fonts](../../examples/custom-bpmn-theme/custom-fonts/README.md) & [Custom colors](../../examples/custom-bpmn-theme/custom-colors/README.md)
+- extend the lib class entry point, like [Custom fonts](../../examples/custom-bpmn-theme/custom-fonts/README.md) & [Custom colors](../../examples/custom-bpmn-theme/custom-colors/README.md)
+- override the default `IconPainter`, like [Custom User Task icon](../../examples/custom-bpmn-theme/custom-user-task-icon/README.md)
 - update the label value of a cell 
 :warning: If you try to reload each graph, all the style configuration is overridden (even if you try to save/restore the configuration)
 ```javascript
