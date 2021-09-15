@@ -1,15 +1,3 @@
-/* main styles */
-:root {
-    --primary: #5755d9;
-
-    --border: #CDD9ED;
-    --border-hover: #99A3BA;
-    --text-color: #6C7486;
-    --text-color-headline: #3F4656;
-
-    --shadow: rgba(22, 30, 50, .04);
-}
-
 .radioGroup {
     --color: var(--primary);
     --border-width: 2px;

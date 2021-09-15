@@ -1,3 +1,15 @@
+/* main styles */
+:root {
+    --primary: #5755d9;
+
+    --border: #CDD9ED;
+    --border-hover: #99A3BA;
+    --text-color: #6C7486;
+    --text-color-headline: #3F4656;
+
+    --shadow: rgba(22, 30, 50, .04);
+}
+
 /* Smooth scrolling IF user doesn't have a preference due to motion sensitivities */
 @media screen and (prefers-reduced-motion: no-preference) {
     html,

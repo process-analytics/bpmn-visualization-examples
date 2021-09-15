@@ -1,11 +1,11 @@
 // Initialize UseCases
-const timeUseCase = new UseCase('time', new TimeExecutionData());
-const frequencyUseCase = new UseCase('frequency', new FrequencyExecutionData());
+const timeUseCase = new MonitoringUseCase('time', getHardwareRetailerDiagram, new TimeExecutionData());
+const frequencyUseCase = new MonitoringUseCase('frequency', getHardwareRetailerDiagram, new FrequencyExecutionData());
 
 // Initialize state of radio buttons
 const state = {
-    useCase : timeUseCase,
-    dataType : 'both'
+    useCase: timeUseCase,
+    dataType: 'both'
 }
 document.getElementById('btn-time').checked = true;
 document.getElementById(`btn-${state.dataType}`).checked = true;
