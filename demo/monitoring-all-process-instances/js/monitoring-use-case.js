@@ -1,4 +1,4 @@
-class MonitoringUseCase extends UseCase{
+class MonitoringUseCase extends UseCase {
     #executionData;
 
     constructor(type, getDiagram, executionData) {
