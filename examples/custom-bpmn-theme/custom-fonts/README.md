@@ -27,7 +27,7 @@ Content:
 ```javascript
 StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_ITALIC;
+    style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
 }
 ```
 
@@ -44,9 +44,9 @@ class BpmnVisualizationCustomFonts extends BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const userTaskStyle = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
-        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTSIZE] = '14';
-        userTaskStyle[bpmnvisu.mxConstants.STYLE_FONTSTYLE] = bpmnvisu.mxConstants.FONT_BOLD + bpmnvisu.mxConstants.FONT_ITALIC;
+        userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
+        userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
+        userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
     }
 }
 

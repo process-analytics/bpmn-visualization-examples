@@ -26,8 +26,8 @@ StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
 StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = 'Orange';
+    style[mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
+    style[mxConstants.STYLE_STROKECOLOR] = 'Orange';
 }
 ```
 
@@ -45,17 +45,17 @@ class BpmnVisualizationCustomColors extends BpmnVisualization {
 
         ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'Pink';
+            style[mxConstants.STYLE_FILLCOLOR] = 'Pink';
         });
 
         ShapeUtil.taskKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[bpmnvisu.mxConstants.STYLE_GRADIENT_DIRECTION] = bpmnvisu.mxConstants.DIRECTION_EAST;
-            style[bpmnvisu.mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+            style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
+            style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
         });
 
         const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        poolStyle[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
+        poolStyle[mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
     }
 }
 
@@ -75,11 +75,11 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const startEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
-        startEventStyle[bpmnvisu.mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
+        startEventStyle[mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
 
         [ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
             const intermediateEventStyle = styleSheet.styles[kind];
-            intermediateEventStyle[bpmnvisu.mxConstants.STYLE_STROKECOLOR] = '#7307df';
+            intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
         })
     }
 }
@@ -99,7 +99,7 @@ class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
         const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        style[bpmnvisu.mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
    }
 }
 
