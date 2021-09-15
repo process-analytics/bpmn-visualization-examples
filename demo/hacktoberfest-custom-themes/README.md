@@ -1,6 +1,6 @@
 # Hacktoberfest custom themes
 
-**DISCLAIMER: this extension point is very experimental and is subject to change**.  
+**DISCLAIMER: this demo uses extension points that are very experimental and are subject to change**.  
 In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example
