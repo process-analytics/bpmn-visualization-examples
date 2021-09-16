@@ -5,10 +5,18 @@ inputProjectName.oninput = function (event) {
     getUseCase().updateCellsLabel(state.projectName);
 };
 
+const selectThemeYear = document.getElementById('theme-year-select');
+selectThemeYear.oninput = function (event) {
+    state.themeYear = event.target.value;
+
+    getUseCase().display();
+};
+
 // Initialize state
 const state = {
     projectName: inputProjectName.value,
     useCaseType: 'dark',
+    themeYear: selectThemeYear.value
 }
 
 // Update state of radio buttons
@@ -35,9 +43,9 @@ document.addEventListener('DOMContentLoaded', function () {
 function getUseCase() {
     switch (state.useCaseType) {
         case 'light':
-            return useCases.light.get("2020");
+            return useCases.light.get(state.themeYear);
         case 'dark':
-            return useCases.dark.get("2020");
+            return useCases.dark.get(state.themeYear);
         case 'default':
         default:
             return useCases.default;
