@@ -31,7 +31,7 @@ You will find both
 - examples: demonstrate how to use a single feature.
 
 
-## Running examples locally
+## 🖥️ Running examples locally
 
 Some examples and demos may load ES Modules; in that case, you cannot open html pages directly from your local disk.
 
