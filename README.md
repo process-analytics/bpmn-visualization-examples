@@ -27,8 +27,8 @@ Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/proces
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
 You will find both
-- several demos.
-- the examples described in more details below in this page. They demonstrate how to use a single feature.
+- demos: show what you can do with bpmn-visualization in various use cases, in dedicated user oriented situations
+- examples: demonstrate how to use a single feature.
 
 
 ## Running examples locally
