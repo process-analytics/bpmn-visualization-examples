@@ -61,14 +61,14 @@ limitations under the License.
         <div class="column col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
             <div id="controls" class="column bg-secondary pt-2 pb-2">
                 <div class="columns">
-                    <div class="column col-6">
+                    <div class="column col-4">
                         <div>
                             <h5>Project name</h5>
                             <input id="project-name-input" type="text" value="BPMN Visualization">
                         </div>
                     </div>
-                    <div id="choose-use-case-panel" class="column col-6">
-                        <h5>Render</h5>
+                    <div id="choose-use-case-panel" class="column col-4">
+                        <h5>Theme</h5>
                         <div class="radioGroup">
                             <label>
                                 <input id="btn-light" type="radio" name="use-case-type" value="light">
@@ -84,17 +84,30 @@ limitations under the License.
                             </label>
                         </div>
                     </div>
+                    <div id="choose-theme-year-panel" class="column col-4">
+                        <h5>Theme Year</h5>
+                        <div class="form-group">
+                            <select id="theme-year-select" class="form-select">
+                                <option>2020</option>
+                                <option selected>2021</option>
+                            </select>
+                        </div>
+                    </div>
                 </div>
             </div>
             <div id="use-case-panel" class="column bg-gray">
                 <div class="column col-12 text-center">
                     <h4 id="2020-light-title" class="d-hide">Light Hacktoberfest 2020 Theme</h4>
                     <h4 id="2020-dark-title">Dark Hacktoberfest 2020 Theme</h4>
+                    <h4 id="2021-light-title" class="d-hide">Light Hacktoberfest 2021 Theme</h4>
+                    <h4 id="2021-dark-title">Dark Hacktoberfest 2021 Theme</h4>
                     <h4 id="default-title" class="d-hide">Default Theme</h4>
                 </div>
                 <div class="column col-12">
                     <div id="2020-light-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
                     <div id="2020-dark-bpmn-container" class="column col-12 bpmn-container" style="background-color:inherit"></div>
+                    <div id="2021-light-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
+                    <div id="2021-dark-bpmn-container" class="column col-12 bpmn-container" style="background-color:inherit"></div>
                     <div id="default-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
                 </div>
             </div>
