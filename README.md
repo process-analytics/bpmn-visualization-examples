@@ -27,22 +27,13 @@ Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/proces
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
 You will find both
-- several demo.
+- several demos.
 - the examples described in more details below in this page. They demonstrate how to use a single feature.
 
-## 👁️‍🗨️ Demo
 
-- [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
-  [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
-- [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
-- [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
+## Running examples locally
 
-
-## 🔭 Examples
-
-### Running examples locally
-
-Some examples may load ES Modules; in that case, you cannot open html pages directly from your local disk.
+Some examples and demos may load ES Modules; in that case, you cannot open html pages directly from your local disk.
 
 For instance, on Chrome, the Console would display the following errors 
 > Access to script at 'file:///...../bpmn-visualization-examples/examples/my-file.js' from origin 'null' has been
@@ -60,6 +51,16 @@ Go to the repository root and use one the following solutions
 - nodejs/npm: `npx http-server --port 8003  -o ./examples` and your default web browser opens http://localhost:8003/examples/ 
 - .... your own lovely web server
 
+
+## 👁️‍🗨️ Demo
+
+- [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
+  [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+- [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
+- [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
+
+
+## 🔭 Examples
 
 ### `bpmn-visualization` usage in browsers 
 
