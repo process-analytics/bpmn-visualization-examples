@@ -52,7 +52,7 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
-## 👁️‍🗨️ Demo
+## 👁️‍🗨️ Demos
 
 - [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
   [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
