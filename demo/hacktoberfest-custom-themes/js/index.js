@@ -1,41 +1,53 @@
-const inputProjectName = document.getElementById('input-project-name');
+const inputProjectName = document.getElementById('project-name-input');
 inputProjectName.oninput = function (event) {
-    state.useCase.updateCellsLabel(event.target.value);
+    state.projectName = event.target.value;
+
+    getUseCase().updateCellsLabel(state.projectName);
 };
 
-// Initialize UseCases
-const lightUseCase = new LightUseCase(inputProjectName.value);
-const darkUseCase = new DarkUseCase(inputProjectName.value);
-const defaultUseCase = new HacktoberfestUseCase('default', inputProjectName.value);
-
-// Initialize state of radio buttons
+// Initialize state
 const state = {
-    useCase: darkUseCase,
+    projectName: inputProjectName.value,
+    useCaseType: 'dark',
 }
-document.getElementById('btn-dark').checked = true;
 
-document.addEventListener('DOMContentLoaded', function () {
-    // Waiting for the displayed page before to load diagram & display data
-    state.useCase.display();
+// Update state of radio buttons
+document.getElementById(`btn-${state.useCaseType}`).checked = true;
+
+// Initialize UseCases
+const useCases = {
+    light: new Map(),
+    dark: new Map(),
+    default: new HacktoberfestUseCase('default', state.projectName)
+};
+Array.from(themes.keys()).forEach(year => {
+    useCases.light.set(year, new LightUseCase(state.projectName, year));
+    useCases.dark.set(year, new DarkUseCase(state.projectName, year));
 })
 
 
-function getUseCase(useCaseType) {
-    switch (useCaseType) {
+document.addEventListener('DOMContentLoaded', function () {
+    // Waiting for the displayed page before to load diagram & display data
+    getUseCase().display();
+})
+
+
+function getUseCase() {
+    switch (state.useCaseType) {
         case 'light':
-            return lightUseCase;
+            return useCases.light.get("2020");
         case 'dark':
-            return darkUseCase;
+            return useCases.dark.get("2020");
         case 'default':
         default:
-            return defaultUseCase;
+            return useCases.default;
     }
 }
 
 document.getElementById('choose-use-case-panel').onchange = () => {
-    const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
-    state.useCase = getUseCase(useCaseType);
+    state.useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
 
-    state.useCase.display();
-    state.useCase.updateCellsLabel(inputProjectName.value);
+    const useCase = getUseCase();
+    useCase.display();
+    useCase.updateCellsLabel(state.projectName);
 }
