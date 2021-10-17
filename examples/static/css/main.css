@@ -41,3 +41,10 @@ div.card {
     top: 0;
     z-index: 100; /* ensure the BPMN Diagrams are under the navbar when scrolling */
 }
+.navbar a.home:link {
+    display: flex;
+    align-items: center;
+}
+.lib-name-text {
+    line-height: 100%;
+}
