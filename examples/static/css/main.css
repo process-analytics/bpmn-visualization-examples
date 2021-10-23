@@ -44,6 +44,7 @@ div.card {
 .navbar a.home:link {
     display: flex;
     align-items: center;
+    text-decoration: none;
 }
 .lib-name-text {
     line-height: 100%;
