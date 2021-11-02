@@ -13,18 +13,18 @@ Javascript example
 
 
 Content:
-- override default font: update the `StyleConstant` default [values] (https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlayfont.html)
+- override default font: update the `StyleConstant` default [values](https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlayfont.html)
 ```javascript
 StyleDefault.DEFAULT_OVERLAY_FONT_COLOR = 'Pink';
 StyleDefault.DEFAULT_OVERLAY_FONT_WIDTH = 30;
 ```
 
-- override default fill: update the `StyleConstant` default [values] (https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlayfill.html)
+- override default fill: update the `StyleConstant` default [values](https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlayfill.html)
 ```javascript
 StyleDefault.DEFAULT_OVERLAY_FILL_COLOR = 'Grey';
 ```
 
-- override default stroke: update the `StyleConstant` default [values] (https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlaystroke.html)
+- override default stroke: update the `StyleConstant` default [values](https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/overlaystroke.html)
 ```javascript
 StyleDefault.DEFAULT_OVERLAY_STROKE_COLOR = 'Cyan';
 ```
