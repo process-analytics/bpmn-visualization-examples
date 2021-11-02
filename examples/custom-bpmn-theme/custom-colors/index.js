@@ -49,7 +49,7 @@ class BpmnVisualizationCustomColors extends bpmnvisu.BpmnVisualization {
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
-        bpmnvisu.ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
+        bpmnvisu.ShapeUtil.eventKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
             style[StyleIdentifiers.STYLE_FILLCOLOR] = 'Pink';
             style[StyleIdentifiers.STYLE_STROKECOLOR] = 'FireBrick';
