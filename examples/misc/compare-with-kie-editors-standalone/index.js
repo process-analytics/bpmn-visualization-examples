@@ -5,6 +5,7 @@ const kieBpmnEditorContainerId = 'container-kie-editors-standalone';
 const kieBpmnEditor = BpmnEditor.open({
   container: document.getElementById(kieBpmnEditorContainerId),
   readOnly: true, // available as of 0.9.0 (https://blog.kie.org/2021/04/design-tools-highlights-on-kogito-and-business-central-april-2021.html)
+  onError: () => { logKieBpmn('Error occurs (probably while setting content)') }, // seems to be called only when the first error occurs, never again
 });
 kieBpmnEditor.subscribeToContentChanges((isDirty) => { logKieBpmn(`Content change detected, isDirty?${isDirty}`)})
 
@@ -37,19 +38,13 @@ async function loadWithKieBpmn(xml) {
     return;
   }
   logKieBpmn('Starting setting content')
-  // TODO clarify if setContent returns a promise
-  // The introduction article and 0.8.1 readme states it returns 'void', but the abstract class TypeScript definition
-  // declares a Promise
-  // Using promise doesn't change anything, the load is fully asynchronous. We may have to register event listener
-  // see https://github.com/kiegroup/kogito-tooling/blob/e151ccdac6ae526e81dc5e0ec302f02c922b00ea/packages/editor/src/api/Editor.ts#L36
-  // kieBpmnEditor.setContent(xml)
-  //         .then(value => logKieBpmn('Content set'))
-  //         .then(value => setZoomLevelKieBpmn())
-  //         .catch(reason => console.error('[KIE]', reason));
-  kieBpmnEditor.setContent(xml);
-  logKieBpmn('Content set');
-  setZoomLevelKieBpmn();
-  isKieBpmnAlreadyLoaded = true;
+  kieBpmnEditor.setContent("from-local-content", xml)
+      .then(() => {
+        logKieBpmn('Content set successfully!');
+        setZoomLevelKieBpmn();
+        isKieBpmnAlreadyLoaded = true;
+      })
+      .catch(() => logKieBpmn('Error while setting content'));
 }
 
 function setZoomLevelKieBpmn() {
