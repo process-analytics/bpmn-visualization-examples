@@ -81,12 +81,12 @@ limitations under the License.
                         <h5>Use case</h5>
                         <div class="radioGroup">
                             <label>
-                                <input id="btn-time" type="radio" name="use-case-type" value="time" checked>
-                                <span>Time</span>
+                                <input id="btn-late" type="radio" name="use-case-type" value="late" checked>
+                                <span>Late</span>
                             </label>
                             <label>
-                                <input id="btn-frequency" type="radio" name="use-case-type" value="frequency">
-                                <span>Frequency</span>
+                                <input id="btn-onTime" type="radio" name="use-case-type" value="onTime">
+                                <span>On Time</span>
                             </label>
                         </div>
                     </div>
@@ -111,8 +111,8 @@ limitations under the License.
             </div>
             <div id="use-case-panel" class="bg-gray">
                 <div class="text-center">
-                    <h4 id="time-title">Average run time</h4>
-                    <h4 id="frequency-title" class="d-hide">Number of execution</h4>
+                    <h4 id="late-title">Predicted Late</h4>
+                    <h4 id="onTime-title" class="d-hide">Predicted on Time</h4>
                 </div>
                 <div class="columns">
 <!--                    <div id="legend" class="column col-auto col-mx-auto">-->
@@ -151,8 +151,8 @@ limitations under the License.
 <!--                        </div>-->
 <!--                    </div>-->
                     <div class="column col-10 col-mx-auto">
-                        <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
-                        <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
+                        <div id="late-bpmn-container" class="col-12 bpmn-container"></div>
+                        <div id="onTime-bpmn-container" class="col-12 bpmn-container d-hide"></div>
                     </div>
                 </div>
             </div>

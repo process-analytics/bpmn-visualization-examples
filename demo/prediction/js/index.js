@@ -1,8 +1,8 @@
 console.info('@@PREDICTION DEMO!!!')
 
 // Initialize UseCases
-const timeUseCase = new PredictionUseCase('time');
-const frequencyUseCase = new PredictionUseCase('frequency');
+const predictedLateUseCase = new PredictionUseCase('late');
+const onTimeUseCase = new PredictionUseCase('onTime');
 
 
 // const inputProjectName = document.getElementById('project-name-input');
@@ -26,12 +26,12 @@ const frequencyUseCase = new PredictionUseCase('frequency');
 //     // themeYear: selectThemeYear.value
 // }
 const state = {
-    useCase: timeUseCase,
+    useCase: predictedLateUseCase,
     dataType: 'both'
 }
 
 // Update state of radio buttons
-document.getElementById('btn-time').checked = true;
+document.getElementById('btn-late').checked = true;
 // document.getElementById(`btn-${state.dataType}`).checked = true;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.getElementById('choose-use-case-panel').onchange = () => {
     const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
-    state.useCase = useCaseType === 'frequency' ? frequencyUseCase : timeUseCase;
+    state.useCase = useCaseType === 'onTime' ? onTimeUseCase : predictedLateUseCase;
 
     state.useCase.display(state.dataType);
 }
