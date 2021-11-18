@@ -1,4 +1,4 @@
-# Prediction demo
+# Predictions demo
 
 **WARNING** THIS IS A WORK IN PROGRESS!
 
