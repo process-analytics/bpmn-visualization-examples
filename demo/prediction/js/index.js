@@ -32,7 +32,7 @@ const state = {
 
 // Update state of radio buttons
 document.getElementById('btn-time').checked = true;
-document.getElementById(`btn-${state.dataType}`).checked = true;
+// document.getElementById(`btn-${state.dataType}`).checked = true;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Waiting for the displayed page before to load diagram & display data
@@ -46,8 +46,8 @@ document.getElementById('choose-use-case-panel').onchange = () => {
     state.useCase.display(state.dataType);
 }
 
-document.getElementById('choose-data-panel').onchange = () => {
-    state.dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
-
-    state.useCase.displayData(state.dataType);
-}
+// document.getElementById('choose-data-panel').onchange = () => {
+//     state.dataType = document.querySelector("input[type='radio'][name='data-type']:checked").value;
+//
+//     state.useCase.displayData(state.dataType);
+// }
