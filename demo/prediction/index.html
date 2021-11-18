@@ -27,18 +27,8 @@ limitations under the License.
     <script defer src="../../examples/static/js/link-to-sources.js"></script>
     <!-- load bpmn-visualization -->
     <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.20.0/dist/bpmn-visualization.min.js"></script>
-    <!--<script defer src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo="-->
-    <!--        crossorigin="anonymous"></script>-->
-    <!--<script defer src="https://variancecharts.com/cdn/variance-noncommercial-standalone-6d26aa2.min.js" charset="UTF-8"></script>-->
     <script defer src="./js/bpmn-diagram-bpmn-spec-pizza.js"></script>
     <script defer src="../static/js/use-case.js"></script>
-
-
-    <!--<script defer src="js/execution-data/utils.js"></script>-->
-    <!--<script defer src="./js/legend.js"></script>-->
-    <!--<script defer src="js/execution-data/execution-data.js"></script>-->
-    <!--<script defer src="js/execution-data/time-execution-data.js"></script>-->
-    <!--<script defer src="js/execution-data/frequency-execution-data.js"></script>-->
     <script defer src="js/prediction-use-case.js"></script>
     <script defer src="./js/index.js"></script>
 </head>
@@ -90,23 +80,6 @@ limitations under the License.
                             </label>
                         </div>
                     </div>
-<!--                    <div id="choose-data-panel" class="col-6">-->
-<!--                        <h5>Displayed information</h5>-->
-<!--                        <div class="radioGroup">-->
-<!--                            <label>-->
-<!--                                <input id="btn-overlays" type="radio" name="data-type" value="overlays" checked>-->
-<!--                                <span>Overlays</span>-->
-<!--                            </label>-->
-<!--                            <label>-->
-<!--                                <input id="btn-both" type="radio" name="data-type" value="both">-->
-<!--                                <span>Both</span>-->
-<!--                            </label>-->
-<!--                            <label>-->
-<!--                                <input id="btn-paths" type="radio" name="data-type" value="paths">-->
-<!--                                <span>Paths</span>-->
-<!--                            </label>-->
-<!--                        </div>-->
-<!--                    </div>-->
                 </div>
             </div>
             <div id="use-case-panel" class="bg-gray">
@@ -115,41 +88,6 @@ limitations under the License.
                     <h4 id="onTime-title" class="d-hide">Predicted on Time</h4>
                 </div>
                 <div class="columns">
-<!--                    <div id="legend" class="column col-auto col-mx-auto">-->
-<!--                        <div id="shape-overlay-legend" style="margin-bottom: 1.7rem;">-->
-<!--                            <label>Overlay on Shape</label>-->
-<!--                            <chart scale-y-linear="0 250">-->
-<!--                                <guide-y id="shape-overlay-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>-->
-<!--                                <bar id="shape-overlay-legend-250" literal-length="250"></bar>-->
-<!--                                <bar id="shape-overlay-legend-200" literal-length="200"></bar>-->
-<!--                                <bar id="shape-overlay-legend-150" literal-length="150"></bar>-->
-<!--                                <bar id="shape-overlay-legend-100" literal-length="100"></bar>-->
-<!--                                <bar id="shape-overlay-legend-50" literal-length="50"></bar>-->
-<!--                            </chart>-->
-<!--                        </div>-->
-<!--                        <div id="edge-overlay-legend" style="margin-bottom: 1.7rem;">-->
-<!--                            <label>Overlay on Edge</label>-->
-<!--                            <chart scale-y-linear="0 250">-->
-<!--                                <guide-y id="edge-overlay-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>-->
-<!--                                <bar id="edge-overlay-legend-250" literal-length="250"></bar>-->
-<!--                                <bar id="edge-overlay-legend-200" literal-length="200"></bar>-->
-<!--                                <bar id="edge-overlay-legend-150" literal-length="150"></bar>-->
-<!--                                <bar id="edge-overlay-legend-100" literal-length="100"></bar>-->
-<!--                                <bar id="edge-overlay-legend-50" literal-length="50"></bar>-->
-<!--                            </chart>-->
-<!--                        </div>-->
-<!--                        <div id="edge-path-legend">-->
-<!--                            <label>Path</label>-->
-<!--                            <chart scale-y-linear="0 250">-->
-<!--                                <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>-->
-<!--                                <bar literal-length="250" style="background-color:var(&#45;&#45;color-lvl1); width: 8px"></bar>-->
-<!--                                <bar literal-length="200" style="background-color:var(&#45;&#45;color-lvl2); width: 16px"></bar>-->
-<!--                                <bar literal-length="150" style="background-color:var(&#45;&#45;color-lvl3); width: 24px"></bar>-->
-<!--                                <bar literal-length="100" style="background-color:var(&#45;&#45;color-lvl4); width: 32px"></bar>-->
-<!--                                <bar literal-length="50" style="background-color:var(&#45;&#45;color-lvl5)"></bar>-->
-<!--                            </chart>-->
-<!--                        </div>-->
-<!--                    </div>-->
                     <div class="column col-10 col-mx-auto">
                         <div id="late-bpmn-container" class="col-12 bpmn-container"></div>
                         <div id="onTime-bpmn-container" class="col-12 bpmn-container d-hide"></div>
