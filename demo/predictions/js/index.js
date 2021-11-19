@@ -1,10 +1,9 @@
 // Initialize UseCases
-const predictedLateUseCase = new PredictionUseCase('late');
-const onTimeUseCase = new PredictionUseCase('onTime');
+const predictedLateUseCase = new PredicatedLateUseCase('late');
+const onTimeUseCase = new PredictedOnTimeUseCase('onTime');
 
 const state = {
     useCase: predictedLateUseCase,
-    dataType: 'both'
 }
 
 // Update state of radio buttons

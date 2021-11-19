@@ -1,0 +1,45 @@
+:root {
+    --color-path-executed: #aea3a3;;
+}
+
+    /* parallel gateway icon */
+.bpmn-parallel-gateway.state-already-executed > path:nth-child(2),
+    /* message flow arrow */
+.bpmn-message-flow.state-already-executed > path:nth-child(4),
+    /* sequence flow arrow */
+.bpmn-sequence-flow.state-already-executed > path:nth-child(3) {
+    fill: var(--color-path-executed);
+}
+
+    /* message flow start marker */
+.bpmn-message-flow.state-already-executed > ellipse,
+    /* message flow line */
+.bpmn-message-flow.state-already-executed > path:nth-child(2),
+    /* message flow arrow */
+.bpmn-message-flow.state-already-executed > path:nth-child(4),
+    /* sequence flow line */
+.bpmn-sequence-flow.state-already-executed > path:nth-child(2),
+    /* sequence flow arrow */
+.bpmn-sequence-flow.state-already-executed > path:nth-child(3),
+    /* task */
+.bpmn-task.state-already-executed > rect,
+    /* parallel gateway stroke */
+.bpmn-parallel-gateway.state-already-executed > path:nth-child(1),
+    /* parallel gateway icon */
+.bpmn-parallel-gateway.state-already-executed > path:nth-child(2),
+    /* start event icon */
+.bpmn-start-event.state-already-executed > rect:nth-child(2),
+.bpmn-start-event.state-already-executed > path:nth-child(4),
+    /* start event stroke */
+.bpmn-start-event.state-already-executed > ellipse {
+    filter: blur(2px);
+    stroke: var(--color-path-executed);
+}
+
+    /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
+     Use important to override the color set inline in the style attribute of the label div */
+.bpmn-label.state-already-executed > g div {
+    color: var(--color-path-executed) !important;
+    /*or use opacity if we want to be able to read labels*/
+    filter: blur(1px);
+}
