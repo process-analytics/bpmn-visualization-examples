@@ -17,6 +17,11 @@ const alreadyExecutedElementsPredictedLate = [
     '_6-691', // sequence flow between 'parallel gateway' and 'where is my pizza'
 ];
 
+const vendorBakeThePizzaId = '_6-463';
+const vendorWhereIsMyPizzaId = '_6-674';
+const vendorDeliverThePizzaId = '_6-514';
+const customerEvtBasedGwId = '_6-180';
+
 class PredicatedLateUseCase extends UseCase {
     _alreadyExecutedElements;
 
@@ -28,15 +33,18 @@ class PredicatedLateUseCase extends UseCase {
     display(dataType) {
         super.display(dataType);
         this._reduceVisibilityOfAlreadyExecutedElements();
+        this._highlightPredictionOnRunningElements();
     }
 
     _reduceVisibilityOfAlreadyExecutedElements() {
         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._alreadyExecutedElements, 'state-already-executed');
     }
 
-    // running elements
-    // '_6-180', // customer event based gateway
-    // '_6-463', // vendor 'Bake the pizza'
+    _highlightPredictionOnRunningElements() {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(vendorBakeThePizzaId, 'state-predicted-late');
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([vendorWhereIsMyPizzaId, customerEvtBasedGwId], 'state-running');
+    }
+
 }
 
 
@@ -46,12 +54,14 @@ class PredictedOnTimeUseCase extends PredicatedLateUseCase {
         super(type);
         this._alreadyExecutedElements = [...alreadyExecutedElementsPredictedLate, ...[
             // vendor
-            '_6-463', //'Bake the pizza'
+            vendorBakeThePizzaId, //'Bake the pizza'
             '_6-632', // sequence flow between 'Bake the pizza' and 'Deliver the pizza'
         ]];
     }
 
-    // running elements
-    // '_6-180', // customer event based gateway
-    // '_6-514', // vendor 'Deliver the pizza'
+    _highlightPredictionOnRunningElements() {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(vendorDeliverThePizzaId, 'state-predicted-on-time');
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([vendorWhereIsMyPizzaId, customerEvtBasedGwId], 'state-running');
+    }
+
 }
