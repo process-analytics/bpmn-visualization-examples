@@ -13,23 +13,17 @@
 
     /* message flow start marker */
 .bpmn-message-flow.state-already-executed > ellipse,
-    /* message flow line */
-.bpmn-message-flow.state-already-executed > path:nth-child(2),
-    /* message flow arrow */
-.bpmn-message-flow.state-already-executed > path:nth-child(4),
-    /* sequence flow line */
-.bpmn-sequence-flow.state-already-executed > path:nth-child(2),
-    /* sequence flow arrow */
-.bpmn-sequence-flow.state-already-executed > path:nth-child(3),
+    /* message flow line and arrow */
+.bpmn-message-flow.state-already-executed > path,
+    /* sequence flow line and arrow */
+.bpmn-sequence-flow.state-already-executed > path,
     /* task */
 .bpmn-task.state-already-executed > rect,
-    /* parallel gateway stroke */
-.bpmn-parallel-gateway.state-already-executed > path:nth-child(1),
-    /* parallel gateway icon */
-.bpmn-parallel-gateway.state-already-executed > path:nth-child(2),
-    /* start event icon */
-.bpmn-start-event.state-already-executed > rect:nth-child(2),
-.bpmn-start-event.state-already-executed > path:nth-child(4),
+    /* parallel gateway stroke and icon */
+.bpmn-parallel-gateway.state-already-executed > path,
+    /* message start event icon */
+.bpmn-start-event.state-already-executed > rect,
+.bpmn-start-event.state-already-executed > path,
     /* start event stroke */
 .bpmn-start-event.state-already-executed > ellipse {
     filter: blur(2px);
