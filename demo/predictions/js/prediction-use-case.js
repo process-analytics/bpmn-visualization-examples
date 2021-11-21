@@ -14,6 +14,7 @@ const alreadyExecutedElementsPredictedLate = [
     '_6-630', // sequence flow between 'order received' and 'parallel gateway'
     '_6-652', // parallel gateway
     '_6-693', // sequence flow between 'parallel gateway' and 'Bake the pizza'
+    '_6-691', // sequence flow between 'parallel gateway' and 'where is my pizza'
 ];
 
 class PredicatedLateUseCase extends UseCase {
