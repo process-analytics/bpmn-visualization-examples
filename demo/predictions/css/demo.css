@@ -1,5 +1,9 @@
 :root {
-    --color-path-executed: #aea3a3;;
+    --color-path-executed: #aea3a3;
+    --color-path-predicted-late: orange;
+    --color-state-predicted-late: orange;
+    --color-state-predicted-on-time: #a7f0a7;
+    --color-state-running: #9c9cef;
 }
 
     /* parallel gateway icon */
@@ -36,4 +40,90 @@
     color: var(--color-path-executed) !important;
     /*or use opacity if we want to be able to read labels*/
     filter: blur(1px);
+}
+
+/* ================================================================================================================== */
+/* INFO */
+/* ================================================================================================================== */
+
+/* only the surrounding path for event gateway, otherwise the diamond is darker (double fill) */
+.bpmn-event-based-gateway.state-running > path:nth-child(1),
+.bpmn-intermediate-catch-event.state-running > ellipse,
+/* envelope of the message event */
+.bpmn-intermediate-catch-event.state-running > rect {
+    fill: var(--color-state-running);
+}
+
+/*apply shadow on hover*/
+.bpmn-event-based-gateway.state-running:hover,
+.bpmn-intermediate-catch-event.state-running:hover {
+    filter: drop-shadow(0 0 0.5em rgba(0, 0, 0));
+}
+
+
+/* ================================================================================================================== */
+/* PREDICTED LATE */
+/* ================================================================================================================== */
+
+/*for filter drop-shadow: https://css-tricks.com/adding-shadows-to-svg-icons-with-css-and-svg-filters/*/
+/*for pulse animation: https://reactgo.com/css-pulse-animation/*/
+
+/* task */
+.bpmn-task.state-predicted-late > rect {
+    fill: var(--color-state-predicted-late);
+    animation: pulse-animation 2.5s infinite;
+}
+
+@keyframes pulse-animation {
+    0% {
+        fill-opacity: 100%;
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.8));
+    }
+    50% {
+        fill-opacity: 90%;
+        filter: drop-shadow(0 0 0.75em rgba(0, 0, 0));
+    }
+    100% {
+        fill-opacity: 100%;
+        filter: drop-shadow(0 0 0 rgba(0, 0, 0, 0.8));
+    }
+}
+
+
+    /* sequence flow arrow */
+.bpmn-sequence-flow.path-predicted-late > path:nth-child(3) {
+    fill: var(--color-path-predicted-late);
+}
+
+    /* sequence flow line and arrow*/
+.bpmn-sequence-flow.path-predicted-late > path,
+    /* task */
+.bpmn-task.path-predicted-late > rect,
+    /* intermediate catch event icon */
+.bpmn-intermediate-catch-event.path-predicted-late > path,
+    /* intermediate catch event stroke */
+.bpmn-intermediate-catch-event.path-predicted-late > ellipse {
+    /*filter: blur(2px);*/
+    stroke: var(--color-path-predicted-late);
+/*    todo stroke size? */
+}
+
+/* labels (the selector applies to all div, not the only one that contains text, but this is ok.
+ Use important to override the color set inline in the style attribute of the label div */
+.bpmn-label.path-predicted-late > g div {
+    color: var(--color-path-predicted-late) !important;
+    /*TODO size?*/
+}
+
+/* ================================================================================================================== */
+/* PREDICTED ON TIME */
+/* ================================================================================================================== */
+
+.bpmn-task.state-predicted-on-time > rect {
+    fill: var(--color-state-predicted-on-time);
+}
+
+/*apply shadow on hover*/
+.bpmn-task.state-predicted-on-time:hover {
+    filter: drop-shadow(0 0 0.5em rgba(0, 0, 0));
 }
