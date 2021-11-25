@@ -135,7 +135,7 @@ You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participa
 ## 📃 License
 
 `bpmn-visualization-examples` is released under the [Apache 2.0](LICENSE) license. \
-Copyright &copy; 2020, Bonitasoft S.A.
+Copyright &copy; 2020-present, Bonitasoft S.A.
 
 
 ## ⚡ Powered by
