@@ -206,7 +206,7 @@ function pizzaDiagram() {
       <bpmndi:BPMNShape id="Trisotech.Visio__6__6-202" bpmnElement="_6-202">
         <dc:Bounds x="817" y="178" width="32" height="32" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="798" y="156" width="71" height="14" />
+          <dc:Bounds x="793" y="156" width="76" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Trisotech.Visio__6__6-219" bpmnElement="_6-219">

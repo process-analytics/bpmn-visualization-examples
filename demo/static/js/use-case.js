@@ -1,14 +1,20 @@
+const defaultLoadOptions = {
+    fit: {type: 'Center', margin: 30}
+}
+
 class UseCase {
     #type;
     #getDiagram;
     #navigationEnabled;
+    #loadOptions;
     _bpmnVisualization;
     #alreadyLoad = false;
 
-    constructor(type, getDiagram, navigationEnabled) {
+    constructor(type, getDiagram, navigationEnabled, loadOptions) {
         this.#type = type;
         this.#getDiagram = getDiagram;
         this.#navigationEnabled = navigationEnabled;
+        this.#loadOptions = {...defaultLoadOptions, ...loadOptions};
     }
 
     display(dataType) {
@@ -17,7 +23,8 @@ class UseCase {
         if (!this.#alreadyLoad) {
             this._bpmnVisualization = this._initBpmnVisualization({container: `${this.#type}-bpmn-container`, navigation: {enabled: this.#navigationEnabled}});
             this._preLoadDiagram();
-            this._bpmnVisualization.load(this.#getDiagram(), {fit: {type: 'Center', margin: 30}});
+            this._bpmnVisualization.load(this.#getDiagram(), this.#loadOptions);
+            this._postLoadDiagram();
             this.#alreadyLoad = true;
         }
     }
@@ -33,6 +40,12 @@ class UseCase {
      * Generic implementation
      */
     _preLoadDiagram() {
+    }
+
+    /**
+     * Generic implementation
+     */
+    _postLoadDiagram() {
     }
 
     /**
