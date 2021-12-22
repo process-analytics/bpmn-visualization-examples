@@ -12,11 +12,12 @@ Javascript example
 Override the BPMN element styles using various ways. `mxGraph` knowledge is required to handle style changes.
 See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/bpmn-support-how-to.md) for more details.
 
-:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
+⚠️To avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
+ℹ in the following code examples, the `mxConstants` object comes from mxGraph. If it is not available, you can define constants like in [style-identifier.js](../../static/js/style-identifiers.js) 
 
 Content:
-- override default font color: update the `StyleConstant` default values
+- override default font color: update the `StyleDefault` default values
 ```javascript
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 ```
