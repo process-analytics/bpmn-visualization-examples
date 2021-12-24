@@ -14,7 +14,8 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 
 ⚠️To avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-ℹ in the following code examples, the `mxConstants` object comes from mxGraph. If it is not available, you can define constants like in [style-identifier.js](../../static/js/style-identifiers.js) 
+ℹ in the following code examples, the `mxConstants` object comes from mxGraph. If it is not available, you can use the string value instead (for reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants))
+or define constants like in [style-identifier.js](../../static/js/style-identifiers.js).
 
 Content:
 - override default font color: update the `StyleDefault` default values
