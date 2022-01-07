@@ -1067,11 +1067,11 @@ function getCustomColorsBpmnDiagram() {
       <bpmn:lane id="Lane_1dunul0" name="Lane 2">
         <bpmn:flowNodeRef>Activity_1wr0s0r</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Activity_1c0vze1</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Gateway_1hq21li</bpmn:flowNodeRef>
-        <bpmn:flowNodeRef>Activity_1isj93o</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0gj6ba4</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_1euev5d</bpmn:flowNodeRef>
         <bpmn:flowNodeRef>Event_0b04u9t</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Activity_1isj93o</bpmn:flowNodeRef>
+        <bpmn:flowNodeRef>Gateway_1hq21li</bpmn:flowNodeRef>
       </bpmn:lane>
       <bpmn:lane id="Lane_13kpaun" name="Lane 1">
         <bpmn:flowNodeRef>Activity_1sn3x37</bpmn:flowNodeRef>
@@ -1121,18 +1121,9 @@ function getCustomColorsBpmnDiagram() {
       <bpmn:incoming>Flow_0i9h5sw</bpmn:incoming>
       <bpmn:outgoing>Flow_1hvyo7b</bpmn:outgoing>
     </bpmn:serviceTask>
-    <bpmn:parallelGateway id="Gateway_1hq21li" name="gateway 2">
-      <bpmn:incoming>Flow_0sqwsrw</bpmn:incoming>
-      <bpmn:incoming>Flow_0g017tm</bpmn:incoming>
-      <bpmn:outgoing>Flow_09zytr1</bpmn:outgoing>
-    </bpmn:parallelGateway>
     <bpmn:sequenceFlow id="Flow_1hvyo7b" sourceRef="Activity_1wr0s0r" targetRef="Activity_1c0vze1" />
     <bpmn:sequenceFlow id="Flow_0sqwsrw" sourceRef="Activity_1c0vze1" targetRef="Gateway_1hq21li" />
     <bpmn:sequenceFlow id="Flow_09zytr1" sourceRef="Gateway_1hq21li" targetRef="Event_0gj6ba4" />
-    <bpmn:task id="Activity_1isj93o" name="Task 2.3">
-      <bpmn:incoming>Flow_0y3c2hb</bpmn:incoming>
-      <bpmn:outgoing>Flow_1rtnm1c</bpmn:outgoing>
-    </bpmn:task>
     <bpmn:sequenceFlow id="Flow_1rtnm1c" sourceRef="Activity_1isj93o" targetRef="Event_1euev5d" />
     <bpmn:sequenceFlow id="Flow_08z7uoy" sourceRef="Activity_0gsh2b6" targetRef="Event_1wihmdr" />
     <bpmn:sequenceFlow id="Flow_0t8djvo" sourceRef="Event_1wihmdr" targetRef="Event_1q818hp" />
@@ -1178,6 +1169,15 @@ function getCustomColorsBpmnDiagram() {
       <bpmn:incoming>Flow_0ule9dn</bpmn:incoming>
       <bpmn:outgoing>Flow_1ceafgv</bpmn:outgoing>
     </bpmn:scriptTask>
+    <bpmn:task id="Activity_1isj93o" name="Task 2.3">
+      <bpmn:incoming>Flow_0y3c2hb</bpmn:incoming>
+      <bpmn:outgoing>Flow_1rtnm1c</bpmn:outgoing>
+    </bpmn:task>
+    <bpmn:parallelGateway id="Gateway_1hq21li" name="gateway 2">
+      <bpmn:incoming>Flow_0sqwsrw</bpmn:incoming>
+      <bpmn:incoming>Flow_0g017tm</bpmn:incoming>
+      <bpmn:outgoing>Flow_09zytr1</bpmn:outgoing>
+    </bpmn:parallelGateway>
   </bpmn:process>
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="Collaboration_03068dc">
@@ -1193,19 +1193,47 @@ function getCustomColorsBpmnDiagram() {
       <bpmndi:BPMNShape id="Lane_0xke7q1_di" bpmnElement="Lane_0xke7q1" isHorizontal="true">
         <dc:Bounds x="188" y="360" width="1032" height="120" />
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNEdge id="Flow_1xebfcb_di" bpmnElement="Flow_1xebfcb">
+        <di:waypoint x="420" y="420" />
+        <di:waypoint x="500" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0pmwt6x_di" bpmnElement="Flow_0pmwt6x">
+        <di:waypoint x="270" y="420" />
+        <di:waypoint x="320" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0t8djvo_di" bpmnElement="Flow_0t8djvo">
+        <di:waypoint x="718" y="420" />
+        <di:waypoint x="822" y="420" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_08z7uoy_di" bpmnElement="Flow_08z7uoy">
+        <di:waypoint x="600" y="420" />
+        <di:waypoint x="682" y="420" />
+      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1rtnm1c_di" bpmnElement="Flow_1rtnm1c">
-        <di:waypoint x="1050" y="226" />
+        <di:waypoint x="1040" y="226" />
         <di:waypoint x="1102" y="226" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_09zytr1_di" bpmnElement="Flow_09zytr1">
+        <di:waypoint x="1015" y="304" />
+        <di:waypoint x="1102" y="304" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_0sqwsrw_di" bpmnElement="Flow_0sqwsrw">
+        <di:waypoint x="890" y="304" />
+        <di:waypoint x="965" y="304" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Flow_1hvyo7b_di" bpmnElement="Flow_1hvyo7b">
+        <di:waypoint x="750" y="304" />
+        <di:waypoint x="790" y="304" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0y3c2hb_di" bpmnElement="Flow_0y3c2hb">
         <di:waypoint x="890" y="246" />
         <di:waypoint x="890" y="226" />
-        <di:waypoint x="950" y="226" />
+        <di:waypoint x="940" y="226" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_0g017tm_di" bpmnElement="Flow_0g017tm">
         <di:waypoint x="858" y="420" />
-        <di:waypoint x="980" y="420" />
-        <di:waypoint x="980" y="329" />
+        <di:waypoint x="990" y="420" />
+        <di:waypoint x="990" y="329" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Flow_1noi0ay_di" bpmnElement="Flow_1noi0ay">
         <di:waypoint x="600" y="110" />
@@ -1244,34 +1272,6 @@ function getCustomColorsBpmnDiagram() {
         <di:waypoint x="270" y="110" />
         <di:waypoint x="312" y="110" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1hvyo7b_di" bpmnElement="Flow_1hvyo7b">
-        <di:waypoint x="750" y="304" />
-        <di:waypoint x="790" y="304" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0sqwsrw_di" bpmnElement="Flow_0sqwsrw">
-        <di:waypoint x="890" y="304" />
-        <di:waypoint x="955" y="304" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_09zytr1_di" bpmnElement="Flow_09zytr1">
-        <di:waypoint x="1005" y="304" />
-        <di:waypoint x="1102" y="304" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_08z7uoy_di" bpmnElement="Flow_08z7uoy">
-        <di:waypoint x="600" y="420" />
-        <di:waypoint x="682" y="420" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0t8djvo_di" bpmnElement="Flow_0t8djvo">
-        <di:waypoint x="718" y="420" />
-        <di:waypoint x="822" y="420" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_0pmwt6x_di" bpmnElement="Flow_0pmwt6x">
-        <di:waypoint x="270" y="420" />
-        <di:waypoint x="320" y="420" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Flow_1xebfcb_di" bpmnElement="Flow_1xebfcb">
-        <di:waypoint x="420" y="420" />
-        <di:waypoint x="500" y="420" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Activity_0ifu0xr_di" bpmnElement="Activity_1sn3x37">
         <dc:Bounds x="312" y="70" width="100" height="80" />
       </bpmndi:BPMNShape>
@@ -1304,15 +1304,6 @@ function getCustomColorsBpmnDiagram() {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_0jljuyk_di" bpmnElement="Activity_1c0vze1">
         <dc:Bounds x="790" y="264" width="100" height="80" />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Gateway_0m423t9_di" bpmnElement="Gateway_1hq21li">
-        <dc:Bounds x="955" y="279" width="50" height="50" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="914" y="329" width="51" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Activity_1isj93o_di" bpmnElement="Activity_1isj93o">
-        <dc:Bounds x="950" y="186" width="100" height="80" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_0bpyu2c_di" bpmnElement="Event_0gj6ba4">
         <dc:Bounds x="1102" y="286" width="36" height="36" />
@@ -1352,6 +1343,15 @@ function getCustomColorsBpmnDiagram() {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Activity_1ozehkd_di" bpmnElement="Activity_1s8cug0">
         <dc:Bounds x="790" y="70" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Activity_1isj93o_di" bpmnElement="Activity_1isj93o">
+        <dc:Bounds x="940" y="186" width="100" height="80" />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Gateway_0m423t9_di" bpmnElement="Gateway_1hq21li">
+        <dc:Bounds x="965" y="279" width="50" height="50" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="924" y="329" width="51" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Event_09mwmj0_di" bpmnElement="Event_0b04u9t">
         <dc:Bounds x="872" y="246" width="36" height="36" />
