@@ -24,8 +24,8 @@ function statusFetched(url, duration) {
   fetchStatusElt.className = 'toast toast-success';
 }
 
-function statusFetchKO(url, error) {
-  fetchStatusElt.innerText = `Unable to fetch ${url}. ${error}`;
+function statusFetchKO(url, duration, error) {
+  fetchStatusElt.innerText = `Unable to fetch (${duration} ms) ${url}. ${error}`;
   fetchStatusElt.className = 'toast toast-error';
 }
 
@@ -58,7 +58,7 @@ function fetchBpmnContent(url) {
     return responseBody;
   })
   .catch(error => {
-    statusFetchKO(url, error);
+    statusFetchKO(url, round(performance.now() - startTime), error);
     throw new Error(`Unable to fetch ${url}. ${error}`);
   });
 }
