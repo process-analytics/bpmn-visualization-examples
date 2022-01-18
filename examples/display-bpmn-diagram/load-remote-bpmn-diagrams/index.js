@@ -7,6 +7,11 @@ function loadBpmn(bpmn){
   bpmnVisualization.load(bpmn);
 }
 
+// at least on chromium, performance.now() returns a lot of digits. We don't care to have such a precision here, so round to only keep milliseconds
+function round(duration) {
+  return duration.toFixed(0)
+}
+
 const fetchStatusElt = document.getElementById('fetch-status');
 function statusFetching(url) {
   fetchStatusElt.innerText = 'Fetching ' + url;
@@ -49,7 +54,7 @@ function fetchBpmnContent(url) {
   })
   .then(responseBody => {
     log('BPMN content fetched');
-    statusFetched(url, performance.now() - startTime);
+    statusFetched(url, round(performance.now() - startTime));
     return responseBody;
   })
   .catch(error => {
@@ -63,11 +68,12 @@ function loadBpmnFromUrl(url) {
       .then(bpmn => {
         const startTime = performance.now();
         try {
+          log('Start loading Bpmn');
           loadBpmn(bpmn);
           log('Bpmn loaded from url <%s>', url);
-          statusLoadOK(performance.now() - startTime);
+          statusLoadOK(round(performance.now() - startTime));
         } catch (error) {
-          statusLoadKO(performance.now() - startTime, error);
+          statusLoadKO(round(performance.now() - startTime), error);
           throw new Error(`Unable to load ${url}. ${error}`);
         }
       })
