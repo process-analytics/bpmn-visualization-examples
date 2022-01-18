@@ -190,7 +190,7 @@ class UIController {
                     console.error(`[${err.libId}] Unable to load the BPMN diagram.`, err.cause);
                     // TODO remove when bpmn-visualization will stop opening an alert on error
                     if (err.libId !== 'bpmn-visualization') {
-                        window.alert(`[${err.libId}] Unable to load the BPMN diagram. \n${err.cause.message}`);
+                        window.alert(`[${err.libId}] Unable to load the BPMN diagram. \n\n${err.cause.message}`);
                     }
                 })
             ;
