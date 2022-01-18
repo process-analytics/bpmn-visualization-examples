@@ -1,7 +1,5 @@
 // the rest of the code is in '../compare-with-bpmn-js/shared.js'
 
-// TODO pass the filename to kie editor (must be available in LibraryComparator)
-
 class KieBpmnEditorLibraryComparator extends LibraryComparator {
   #kieBpmnEditor;
 
@@ -16,8 +14,8 @@ class KieBpmnEditorLibraryComparator extends LibraryComparator {
     this.#kieBpmnEditor.subscribeToContentChanges((isDirty) => { this._logOtherLib(`Content change detected, isDirty?${isDirty}`)})
   }
 
-  async _loadWithOtherLib(xml) {
-    return this.#kieBpmnEditor.setContent("from-local-content", xml);
+  async _loadWithOtherLib(xml, resourceName) {
+    return this.#kieBpmnEditor.setContent(resourceName, xml);
   }
 
   _setZoomLevelOtherLib() {
