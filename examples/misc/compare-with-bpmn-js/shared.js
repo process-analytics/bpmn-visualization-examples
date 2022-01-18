@@ -1,5 +1,6 @@
 class LibraryComparator {
     #loadedBpmnXmlContent = null;
+    #loadedResourceName;
     #isBpmnVisualizationAlreadyLoaded = false;
     _isOtherLibAlreadyLoaded = false;
     _otherLibIdentifier;
@@ -12,9 +13,13 @@ class LibraryComparator {
         this._state = state;
     }
 
-    loadNewBpmn(xml) {
+    loadNewBpmn(xml, resourceName) {
         this._resetLoadStatus();
-        return this._performLoadBpmn(xml);
+        return this._performLoadBpmn(xml, resourceName)
+            .then(() => {
+                this.#loadedBpmnXmlContent = xml;
+                this.#loadedResourceName = resourceName;
+            });
     }
 
     _resetLoadStatus() {
@@ -22,7 +27,7 @@ class LibraryComparator {
         this._isOtherLibAlreadyLoaded = false;
     }
 
-    async _performLoadBpmn(xml) {
+    async _performLoadBpmn(xml, resourceName) {
         logMain(`Ready to load BPMN with fitView: ${this._state.fitView}`);
         if (this._state.isUseBpmnVisualization) {
             if (this.#isBpmnVisualizationAlreadyLoaded) {
@@ -35,7 +40,6 @@ class LibraryComparator {
                     this.#bpmnVisualization.load(xml, {fit: this._computeBpmnVisualizationFitOptions()});
                     this._logBpmnVisualization('Diagram loaded');
                     this.#isBpmnVisualizationAlreadyLoaded = true;
-                    this.#loadedBpmnXmlContent = xml;
                     return resolve();
                 } catch (err) {
                     return reject({libId: 'bpmn-visualization', cause: err});
@@ -48,12 +52,11 @@ class LibraryComparator {
             }
             await new Promise((resolve, reject) => {
                 this._logOtherLib('Start loading diagram');
-                this._loadWithOtherLib(xml)
+                this._loadWithOtherLib(xml, resourceName)
                     .then(() => {
                         this._logOtherLib('Diagram loaded');
                         this._setZoomLevelOtherLib();
                         this._isOtherLibAlreadyLoaded = true;
-                        this.#loadedBpmnXmlContent = xml;
                         return resolve();
                     })
                     .catch(err => {
@@ -70,7 +73,7 @@ class LibraryComparator {
             logMain('No loaded BPMN content, nothing to do');
             return;
         }
-        this._performLoadBpmn(this.#loadedBpmnXmlContent);
+        this._performLoadBpmn(this.#loadedBpmnXmlContent, this.#loadedResourceName);
     }
 
     _computeBpmnVisualizationFitOptions() {
@@ -78,7 +81,7 @@ class LibraryComparator {
         return { type: fitType, margin: 10 };
     }
 
-    async _loadWithOtherLib(xml) {
+    async _loadWithOtherLib(xml, resourceName) {
         // implement in subclass
     }
 
@@ -178,13 +181,15 @@ class UIController {
         evt.preventDefault();
 
         const file = evt.target.files[0];
-        logMain(`New file selected for load: ${file.name}`);
+
+        const resourceName = file.name;
+        logMain(`New file selected for load: ${resourceName}`);
         const reader = new FileReader();
         reader.onload = () => {
-            this.#libraryComparator.loadNewBpmn(reader.result)
+            this.#libraryComparator.loadNewBpmn(reader.result, resourceName)
                 .then(() => {
                     document.getElementById('loading-info').classList.remove('hidden');
-                    document.querySelector('#loading-info > span').innerHTML = `<code>${file.name}</code>`;
+                    document.querySelector('#loading-info > span').innerHTML = `<code>${resourceName}</code>`;
                 })
                 .catch(err => {
                     console.error(`[${err.libId}] Unable to load the BPMN diagram.`, err.cause);
