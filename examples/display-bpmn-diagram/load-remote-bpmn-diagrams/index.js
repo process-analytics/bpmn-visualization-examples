@@ -7,23 +7,39 @@ function loadBpmn(bpmn){
   bpmnVisualization.load(bpmn);
 }
 
+// at least on chromium, performance.now() returns a lot of digits. We don't care to have such a precision here, so round to only keep milliseconds
+function round(duration) {
+  return duration.toFixed(0)
+}
+
+const fetchStatusElt = document.getElementById('fetch-status');
 function statusFetching(url) {
-  const statusElt = document.getElementById('fetch-status');
-  statusElt.innerText = 'Fetching ' + url;
-  statusElt.className = 'status-fetching';
+  fetchStatusElt.innerText = 'Fetching ' + url;
+  fetchStatusElt.className = 'status-fetching';
+  loadStatusElt.className = 'hidden';
 }
 
 function statusFetched(url, duration) {
-  const statusElt = document.getElementById('fetch-status');
-  statusElt.innerText = `Fetch OK (${duration} ms): ${url}`;
-  statusElt.className = 'toast toast-success';
+  fetchStatusElt.innerText = `Fetch OK (${duration} ms): ${url}`;
+  fetchStatusElt.className = 'toast toast-success';
 }
 
-function statusFetchKO(url, error) {
-  const statusElt = document.getElementById('fetch-status');
-  statusElt.innerText = `Unable to fetch ${url}. ${error}`;
-  statusElt.className = 'toast toast-error';
+function statusFetchKO(url, duration, error) {
+  fetchStatusElt.innerText = `Unable to fetch (${duration} ms) ${url}. ${error}`;
+  fetchStatusElt.className = 'toast toast-error';
 }
+
+const loadStatusElt = document.getElementById('load-status');
+function statusLoadOK(duration) {
+  loadStatusElt.innerText = `BPMN Load OK (${duration} ms)`;
+  loadStatusElt.className = 'toast toast-success';
+}
+
+function statusLoadKO(duration, error) {
+  loadStatusElt.innerText = `BPMN Load KO (${duration} ms). ${error}`;
+  loadStatusElt.className = 'toast toast-error';
+}
+
 
 function fetchBpmnContent(url) {
   log('Fetching BPMN content from url <%s>', url);
@@ -38,26 +54,36 @@ function fetchBpmnContent(url) {
   })
   .then(responseBody => {
     log('BPMN content fetched');
-    const duration = performance.now() - startTime;
-    statusFetched(url, duration);
+    statusFetched(url, round(performance.now() - startTime));
     return responseBody;
   })
   .catch(error => {
-    statusFetchKO(url, error);
+    statusFetchKO(url, round(performance.now() - startTime), error);
     throw new Error(`Unable to fetch ${url}. ${error}`);
   });
 }
 
 function loadBpmnFromUrl(url) {
-  fetchBpmnContent(url).then(bpmn => {
-    loadBpmn(bpmn);
-    log('Bpmn loaded from url <%s>', url);
-  });
+  fetchBpmnContent(url)
+      .then(bpmn => {
+        const startTime = performance.now();
+        try {
+          log('Start loading Bpmn');
+          loadBpmn(bpmn);
+          log('Bpmn loaded from url <%s>', url);
+          statusLoadOK(round(performance.now() - startTime));
+        } catch (error) {
+          statusLoadKO(round(performance.now() - startTime), error);
+          throw new Error(`Unable to load ${url}. ${error}`);
+        }
+      })
+  ;
 }
 
 function loadMiwgFile(fileName) {
-  log('Ready to fetch MIWG file %s', fileName);
-  const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${fileName}.bpmn`;
+  const file = fileName.startsWith('image-') ? `${fileName.substring('image-'.length)}.png` : `${fileName}.bpmn`;
+  log('Ready to fetch MIWG file %s', file);
+  const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${file}`;
   loadBpmnFromUrl(url);
 }
 
@@ -69,11 +95,13 @@ const miwgFileNames = [
   'B.1.0', 'B.2.0',
   'C.1.0', 'C.1.1', 'C.2.0', 'C.3.0', 'C.4.0',
   'C.5.0', 'C.6.0', 'C.7.0',
+  // extra file to get fetch error
+  'do-not-exist',
+  // extra file to get load error
+  'image-A.1.0'
 ];
-
-const randomMiwgFileNames = [...miwgFileNames, 'do-not-exist'];
 document.getElementById('btn-fetch-miwg').onclick = function() {
-  const fileName = randomMiwgFileNames[Math.floor(Math.random() * randomMiwgFileNames.length)];
+  const fileName = miwgFileNames[Math.floor(Math.random() * miwgFileNames.length)];
   loadMiwgFile(fileName);
 };
 
