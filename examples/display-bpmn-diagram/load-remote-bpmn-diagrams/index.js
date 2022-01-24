@@ -32,7 +32,7 @@ function statusFetchKO(url, duration, error) {
 const loadStatusElt = document.getElementById('load-status');
 function statusLoadOK(duration) {
   loadStatusElt.innerText = `BPMN Load OK (${duration} ms)`;
-  loadStatusElt.className = 'toast toast-primary';
+  loadStatusElt.className = 'toast toast-success';
 }
 
 function statusLoadKO(duration, error) {
