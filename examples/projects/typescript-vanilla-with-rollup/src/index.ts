@@ -1,3 +1,3 @@
-import initialize from './app/initialize'
+import initialize from "./app/initialize";
 
 initialize();
