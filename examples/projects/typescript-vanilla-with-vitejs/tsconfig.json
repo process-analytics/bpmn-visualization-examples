@@ -13,7 +13,14 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": true, // bpmn-visualization@0.21.4 definitions miss some types
+    "skipLibCheck": false,
+    "typeRoots": [
+      "node_modules/@types",
+      // The bpmn-visualization types reference "typed-mxgraph"
+      // So, install "@typed-mxgraph/typed-mxgraph" as "devDependencies" in addition to the following configuration
+      // Alternative, don't add the devDependencies and this configuration and set "skipLibCheck" to true
+      "node_modules/@typed-mxgraph"
+    ]
   },
-  "include": ["src"]
+  "include": ["src"],
 }
