@@ -1,19 +1,13 @@
 {
   "compilerOptions": {
-    "declaration": true,
-    "declarationDir": "./dist",
+    "declaration": false,
     "outDir": "./dist",
     "module": "es6",
     "target": "es6",
-    "noImplicitAny": true,
-    "strictBindCallApply": true,
-    "alwaysStrict": true,
-    "strictFunctionTypes": true,
+    "strict": true,
     "skipLibCheck": false,
-    "experimentalDecorators": true,
     "moduleResolution": "node",
     "sourceMap": true,
-    "allowSyntheticDefaultImports": true
   },
   "include": [
     "src/**/*"

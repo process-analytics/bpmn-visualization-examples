@@ -1,0 +1,43 @@
+name: Check TypeScript projects
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/check-typescript-projects.yml'
+      - 'examples/projects/typescript-vanilla-with-rollup'
+      - 'examples/projects/typescript-vanilla-with-vitejs'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/check-typescript-projects.yml'
+      - 'examples/projects/typescript-vanilla-with-rollup'
+      - 'examples/projects/typescript-vanilla-with-vitejs'
+
+jobs:
+  check:
+    runs-on: ubuntu-20.04
+    strategy:
+      # don't cancel running jobs even if one fails
+      fail-fast: false
+      matrix:
+        project: [typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+    env:
+      project_dir: ${{github.workspace}}/examples/projects/${{matrix.project}}
+    steps:
+      - uses: actions/checkout@v2
+      - name: Setup node
+        uses: actions/setup-node@v2
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        working-directory: ${{env.project_dir}}
+        run: npm install
+      # See https://github.com/process-analytics/bpmn-visualization-js/issues/1808
+      - name: Fix wrongly placed definitions
+        working-directory: ${{env.project_dir}}
+        run: cp -r ./node_modules/bpmn-visualization/dist/src/* ./node_modules/bpmn-visualization/dist
+      - name: Build project
+        working-directory: ${{env.project_dir}}
+        run: npm run build

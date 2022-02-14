@@ -1,0 +1,19 @@
+{
+  "compilerOptions": {
+    "useDefineForClassFields": true,
+    "module": "ESNext",
+    "target": "ESNext",
+    "lib": ["ESNext", "DOM"],
+    "moduleResolution": "Node",
+    "strict": true,
+    "sourceMap": true,
+    "resolveJsonModule": true,
+    "esModuleInterop": true,
+    "noEmit": true,
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "noImplicitReturns": true,
+    "skipLibCheck": true, // bpmn-visualization@0.21.4 definitions miss some types
+  },
+  "include": ["src"]
+}
