@@ -26,7 +26,6 @@ jobs:
     env:
       project_dir: ${{github.workspace}}/examples/projects/${{matrix.project}}
     steps:
-      - run: echo 'project_dir ${{ env.project_dir }}'
       - uses: actions/checkout@v2
       - name: Setup node
         uses: actions/setup-node@v2
