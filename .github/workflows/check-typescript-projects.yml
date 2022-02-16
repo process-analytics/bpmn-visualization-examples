@@ -5,15 +5,15 @@ on:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'examples/projects/typescript-vanilla-with-rollup'
-      - 'examples/projects/typescript-vanilla-with-vitejs'
+      - 'examples/projects/typescript-vanilla-with-rollup/**/*'
+      - 'examples/projects/typescript-vanilla-with-vitejs/**/*'
   pull_request:
     branches:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'examples/projects/typescript-vanilla-with-rollup'
-      - 'examples/projects/typescript-vanilla-with-vitejs'
+      - 'examples/projects/typescript-vanilla-with-rollup/**/*'
+      - 'examples/projects/typescript-vanilla-with-vitejs/**/*'
 
 jobs:
   check:
