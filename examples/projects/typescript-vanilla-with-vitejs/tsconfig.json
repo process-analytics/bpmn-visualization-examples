@@ -13,7 +13,8 @@
     "noUnusedLocals": true,
     "noUnusedParameters": true,
     "noImplicitReturns": true,
-    "skipLibCheck": false,
+    // bpmn-visualization@0.21.5 will fix definitions (some types are missing in previous version). Then, we will be able to set it to "false"
+    "skipLibCheck": true,
     "typeRoots": [
       "node_modules/@types",
       // The bpmn-visualization types reference "typed-mxgraph"
