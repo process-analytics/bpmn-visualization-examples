@@ -34,10 +34,6 @@ jobs:
       - name: Install dependencies
         working-directory: ${{env.project_dir}}
         run: npm install
-      # See https://github.com/process-analytics/bpmn-visualization-js/issues/1808
-      - name: Fix wrongly placed definitions
-        working-directory: ${{env.project_dir}}
-        run: cp -r ./node_modules/bpmn-visualization/dist/src/* ./node_modules/bpmn-visualization/dist
       - name: Build project
         working-directory: ${{env.project_dir}}
         run: npm run build
