@@ -20,12 +20,6 @@
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
-## 🚸 Prerequisites
-
-Some examples are provided for direct use in the web browser. I you want to integrate their related code in a project, adaptations may be required.
-In particular, TypeScript users should read the paragraph about the [TypeScript support in the bpmn-visualization README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support) and check the [examples projects](#projects) in this repository. 
-
-
 ## 🎮 Live Environment
 
 Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html)
@@ -55,6 +49,12 @@ Go to the repository root and use one the following solutions
 - python3: `python3 -m http.server 8002` and go to http://localhost:8002/examples/ 
 - nodejs/npm: `npx http-server --port 8003  -o ./examples` and your default web browser opens http://localhost:8003/examples/ 
 - .... your own lovely web server
+
+
+## 🚸 Prerequisites for reuse in projects
+
+Some examples are provided for direct use in the web browser. I you want to integrate their related code in a project, adaptations may be required.
+In particular, TypeScript users should read the paragraph about the [TypeScript support in the bpmn-visualization README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support) and check the [examples projects](#projects) in this repository. 
 
 
 ## 👁️‍🗨️ Demos
