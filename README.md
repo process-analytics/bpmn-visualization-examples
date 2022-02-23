@@ -54,7 +54,7 @@ Go to the repository root and use one the following solutions
 
 ## 🚸 Prerequisites for reuse in projects
 
-Some examples are provided for direct use in the web browser. I you want to integrate their related code in a project, adaptations may be required.
+Some examples are provided for direct use in the web browser. If you want to integrate their related code in a project, adaptations may be required.
 
 You can check the [examples projects](#projects) in this repository or the [Live IDE examples](#live_ide) to know how to bootstrap `bpmn-visualization` in a project.
 
