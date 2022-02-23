@@ -20,6 +20,11 @@
 
 This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
 
+## 🚸 Prerequisites
+
+Some examples are provided for direct use in the web browser. I you want to integrate their related code in a project, adaptations may be required.
+In particular, TypeScript users should read the paragraph about the [TypeScript support in the bpmn-visualization README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support) and check the [examples projects](#projects) in this repository. 
+
 
 ## 🎮 Live Environment
 
@@ -116,6 +121,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Compare `bpmn-visualization` with `kie-editors-standalone`](./examples/misc/compare-with-kie-editors-standalone/README.md) - compare the libraries on BPMN elements rendering and API usage
 
 
+<a id="projects"></a>
 ### `bpmn-visualization` usage in projects
 
 - [JavaScript + webpack](examples/projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript webpack project
