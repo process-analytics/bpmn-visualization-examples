@@ -14,8 +14,10 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 
 ⚠️To avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-ℹ in the following code examples, the `mxConstants` object comes from mxGraph. If it is not available, you can use the string value instead (for reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants))
-or define constants like in [style-identifier.js](../../static/js/style-identifiers.js).
+ℹ In the following code examples, the `style` keys and values constants are related to the `mxConstants` object that comes from mxGraph.
+For reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants). \
+We are using `FontStyle` and `StyleIdentifiers` here that store the constants string values. They are defined in [style-identifier.js](../../static/js/style-identifiers.js).
+But you can also use the string value directly, for instance `style['fontStyle']=...`.
 
 
 Content:
@@ -30,7 +32,7 @@ Content:
 ```javascript
 StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_ITALIC;
+    style[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
 }
 ```
 
@@ -47,9 +49,9 @@ class BpmnVisualizationCustomFonts extends BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const userTaskStyle = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        userTaskStyle[mxConstants.STYLE_FONTFAMILY] = 'Courier New,serif';
-        userTaskStyle[mxConstants.STYLE_FONTSIZE] = '14';
-        userTaskStyle[mxConstants.STYLE_FONTSTYLE] = mxConstants.FONT_BOLD + mxConstants.FONT_ITALIC;
+        userTaskStyle[StyleIdentifiers.STYLE_FONTFAMILY] = 'Courier New,serif';
+        userTaskStyle[StyleIdentifiers.STYLE_FONTSIZE] = '14';
+        userTaskStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_BOLD + FontStyle.FONT_ITALIC;
     }
 }
 
