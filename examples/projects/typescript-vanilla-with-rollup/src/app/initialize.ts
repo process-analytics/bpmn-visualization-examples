@@ -22,6 +22,11 @@ export default function initialize(): void {
   });
   // load the BPMN diagram defined above
   bpmnVisualization.load(bpmnDiagram());
+
+  // display the bpmn-visualization version in the footer
+  const footer = document.querySelector<HTMLElement>("footer")!;
+  // TODO use the new version API when available in a new bpmn-visualization release
+  footer.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
 }
 
 // this is simple example of the BPMN diagram
