@@ -116,7 +116,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 ### Miscellaneous examples
 
-<a name="live_ide"></a>
+<a id="live_ide"></a>
 #### Playgrounds in live IDE
 - [CodeSandbox Template](https://codesandbox.io/s/bpmn-visualization-sandbox-hpvq8) - Play with the `bpmn-visualization` API. Use the template to demonstrate missing features or bugs.
 - [Play with the `bpmn-visualization` API in Codepen](https://codepen.io/process-analytics/pen/YzQzROg) - Experiment `bpmn-visualization` integration and API usage live in your browser
