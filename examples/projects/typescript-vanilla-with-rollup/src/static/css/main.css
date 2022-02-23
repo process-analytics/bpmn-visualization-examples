@@ -1,6 +1,14 @@
+body {
+    font-family: monospace;
+}
 .info-centered {
     margin: 0 auto;
     width: 100%;
     text-align: center;
-    font-family: monospace;
+}
+footer {
+    position: absolute;
+    bottom: 1rem;
+    right: 1rem;
+    z-index: 1;
 }
