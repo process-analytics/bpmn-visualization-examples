@@ -20,7 +20,6 @@ limitations under the License.
   <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
-
   <style>
     .bpmn-container {
       /*top: 60px;*/
@@ -56,6 +55,13 @@ limitations under the License.
       padding-top: 0.5em;
     }
   </style>
+  <script defer src="../../static/js/link-to-sources.js"></script>
+  <!-- load bpmn-js viewer distro (with pan and zoom) -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bpmn-js@8.9.0/dist/bpmn-navigated-viewer.production.min.js" integrity="sha256-6sVdF06e3b7gVOOVyEZYtZIjq0mzMxjBSbjiOFDXdFo=" crossorigin="anonymous"></script>
+  <!-- load bpmn-visualization -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
+  <script defer src="shared.js"></script>
+  <script defer src="index.js"></script>
 </head>
 <body>
 
@@ -117,15 +123,5 @@ limitations under the License.
   <div id="container-bpmn-visualization" class="bpmn-container"></div>
   <div id="container-bpmn-js" class="bpmn-container hidden"></div>
 </section>
-
-
-<script src="../../static/js/link-to-sources.js"></script>
-<!-- load bpmn-js viewer distro (with pan and zoom) -->
-<script src="https://cdn.jsdelivr.net/npm/bpmn-js@8.9.0/dist/bpmn-navigated-viewer.production.min.js" integrity="sha256-6sVdF06e3b7gVOOVyEZYtZIjq0mzMxjBSbjiOFDXdFo=" crossorigin="anonymous"></script>
-<!-- load bpmn-visualization -->
-<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
-
-<script src="shared.js"></script>
-<script src="index.js"></script>
 </body>
 </html>
