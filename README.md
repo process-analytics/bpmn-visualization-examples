@@ -52,6 +52,15 @@ Go to the repository root and use one the following solutions
 - .... your own lovely web server
 
 
+## 🚸 Prerequisites for reuse in projects
+
+Some examples are provided for direct use in the web browser. If you want to integrate their related code in a project, adaptations may be required.
+
+You can check the [examples projects](#projects) in this repository or the [Live IDE examples](#live_ide) to know how to bootstrap `bpmn-visualization` in a project.
+
+TypeScript users should also read the paragraph about the [TypeScript support in the bpmn-visualization README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support). 
+
+
 ## 👁️‍🗨️ Demos
 
 - [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
@@ -107,6 +116,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 ### Miscellaneous examples
 
+<a id="live_ide"></a>
 #### Playgrounds in live IDE
 - [CodeSandbox Template](https://codesandbox.io/s/bpmn-visualization-sandbox-hpvq8) - Play with the `bpmn-visualization` API. Use the template to demonstrate missing features or bugs.
 - [Play with the `bpmn-visualization` API in Codepen](https://codepen.io/process-analytics/pen/YzQzROg) - Experiment `bpmn-visualization` integration and API usage live in your browser
@@ -116,6 +126,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 - [Compare `bpmn-visualization` with `kie-editors-standalone`](./examples/misc/compare-with-kie-editors-standalone/README.md) - compare the libraries on BPMN elements rendering and API usage
 
 
+<a id="projects"></a>
 ### `bpmn-visualization` usage in projects
 
 - [JavaScript + webpack](examples/projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript webpack project
