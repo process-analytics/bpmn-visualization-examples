@@ -20,7 +20,6 @@ limitations under the License.
     <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
-
     <style>
         .bpmn-container {
             /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -28,6 +27,12 @@ limitations under the License.
             height: 200px;
         }
     </style>
+    <script defer src="../../static/js/link-to-sources.js"></script>
+    <!-- load bpmn-visualization -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
+    <!-- load the example -->
+    <script defer src="../../static/js/diagram/bpmn-diagrams.js"></script>
+    <script defer src="./index.js"></script>
 </head>
 <body>
     <header class="navbar bg-dark p-2">
@@ -68,12 +73,5 @@ limitations under the License.
 
             </section>
     </section>
-
-    <script src="../../static/js/link-to-sources.js"></script>
-    <!-- load bpmn-visualization -->
-    <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
-    <!-- load the example -->
-    <script src="../../static/js/diagram/bpmn-diagrams.js"></script>
-    <script src="./index.js"></script>
 </body>
 </html>
