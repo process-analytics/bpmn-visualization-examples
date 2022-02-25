@@ -14,8 +14,10 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 
 ⚠️To avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-ℹ in the following code examples, the `mxConstants` object comes from mxGraph. If it is not available, you can use the string value instead (for reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants))
-or define constants like in [style-identifier.js](../../static/js/style-identifiers.js).
+ℹ In the following code examples, the `style` keys and values constants are related to the `mxConstants` object that comes from mxGraph.
+For reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants). \
+We are using `Directions` and `StyleIdentifiers` here that store the constants string values. They are defined in [style-identifier.js](../../static/js/style-identifiers.js).
+But you can also use the string value directly, for instance `style['fillColor']=...`.
 
 Content:
 - override default font color: update the `StyleDefault` default values
@@ -28,8 +30,8 @@ StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
 StyleConfigurator.configureCommonDefaultStyle = function (style) {
     originalConfigureCommonDefaultStyle(style);
-    style[mxConstants.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[mxConstants.STYLE_STROKECOLOR] = 'Orange';
+    style[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
 }
 ```
 
@@ -47,17 +49,17 @@ class BpmnVisualizationCustomColors extends BpmnVisualization {
 
         ShapeUtil.topLevelBpmnEventKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_FILLCOLOR] = 'Pink';
+            style[StyleIdentifiers.STYLE_FILLCOLOR] = 'Pink';
         });
 
         ShapeUtil.taskKinds().forEach(kind => {
             const style = styleSheet.styles[kind];
-            style[mxConstants.STYLE_GRADIENT_DIRECTION] = mxConstants.DIRECTION_EAST;
-            style[mxConstants.STYLE_GRADIENTCOLOR] = 'White';
+            style[StyleIdentifiers.STYLE_GRADIENT_DIRECTION] = Directions.DIRECTION_EAST;
+            style[StyleIdentifiers.STYLE_GRADIENTCOLOR] = 'White';
         });
 
         const poolStyle = styleSheet.styles[ShapeBpmnElementKind.POOL];
-        poolStyle[mxConstants.STYLE_FILLCOLOR] = 'PaleGreen';
+        poolStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'PaleGreen';
     }
 }
 
@@ -77,11 +79,11 @@ class BpmnVisualizationCustomEventColors extends BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         const startEventStyle = styleSheet.styles[ShapeBpmnElementKind.EVENT_START];
-        startEventStyle[mxConstants.STYLE_FILLCOLOR] = '#d6eea5';
+        startEventStyle[StyleIdentifiers.STYLE_FILLCOLOR] = '#d6eea5';
 
         [ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH, ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW].forEach(kind => {
             const intermediateEventStyle = styleSheet.styles[kind];
-            intermediateEventStyle[mxConstants.STYLE_STROKECOLOR] = '#7307df';
+            intermediateEventStyle[StyleIdentifiers.STYLE_STROKECOLOR] = '#7307df';
         })
     }
 }
@@ -101,7 +103,7 @@ class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
         const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
-        style[mxConstants.STYLE_FONTCOLOR] = '#2b992a';
+        style[StyleIdentifiers.STYLE_FONTCOLOR] = '#2b992a';
    }
 }
 

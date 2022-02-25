@@ -1,5 +1,5 @@
 /**
- * Substitute mxGraph mxConstants available when using the mxgraph dependency. This is not available when using the IIFE bpmn-visualization bundle.
+ * Substitute mxGraph mxConstants, see https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants
  */
 class StyleIdentifiers {
     static STYLE_FILLCOLOR = 'fillColor';
@@ -17,7 +17,7 @@ class StyleIdentifiers {
 }
 
 /**
- * Substitute mxGraph mxConstants available when using the mxgraph dependency. This is not available when using the IIFE bpmn-visualization bundle.
+ * Substitute mxGraph mxConstants, see https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants
  */
 class Directions {
     static DIRECTION_EAST = 'east';
@@ -26,7 +26,7 @@ class Directions {
 }
 
 /**
- * Substitute mxGraph mxConstants available when using the mxgraph dependency. This is not available when using the IIFE bpmn-visualization bundle.
+ * Substitute mxGraph mxConstants, see https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants
  */
 class FontStyle {
     static FONT_BOLD = 1;
