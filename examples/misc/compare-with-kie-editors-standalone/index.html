@@ -20,7 +20,6 @@ limitations under the License.
   <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
-
   <style>
     .bpmn-container {
       /*top: 60px;*/
@@ -55,6 +54,14 @@ limitations under the License.
       padding-top: 0.5em;
     }
   </style>
+  <script defer src="../../static/js/link-to-sources.js"></script>
+  <script defer src="../../static/js/dom-helper.js"></script>
+  <!-- load bpmn kie-editors-standalone -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@kogito-tooling/kie-editors-standalone@0.16.0/dist/bpmn/index.js" integrity="sha256-sWAO7AzUXClUPIr5JDK6E0JQsNHpJRKb/39oH18MZJY=" crossorigin="anonymous"></script>
+  <!-- load bpmn-visualization -->
+  <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
+  <script defer src="../compare-with-bpmn-js/shared.js"></script>
+  <script defer src="index.js"></script>
 </head>
 <body>
 
@@ -118,16 +125,5 @@ limitations under the License.
   <div id="container-bpmn-visualization" class="bpmn-container"></div>
   <div id="container-kie-editors-standalone" class="bpmn-container hidden"></div>
 </section>
-
-
-<script src="../../static/js/link-to-sources.js"></script>
-<script src="../../static/js/dom-helper.js"></script>
-<!-- load bpmn kie-editors-standalone -->
-<script src="https://cdn.jsdelivr.net/npm/@kogito-tooling/kie-editors-standalone@0.16.0/dist/bpmn/index.js" integrity="sha256-sWAO7AzUXClUPIr5JDK6E0JQsNHpJRKb/39oH18MZJY=" crossorigin="anonymous"></script>
-<!-- load bpmn-visualization -->
-<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
-
-<script src="../compare-with-bpmn-js/shared.js"></script>
-<script src="index.js"></script>
 </body>
 </html>

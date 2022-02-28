@@ -43,6 +43,16 @@ limitations under the License.
                 font-family: monospace;
             }
         </style>
+        <!-- Popover and Tooltip support -->
+        <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha256-WgfGn5Bh6xLjmgMTWKT1Z/MKACrWGCY5rIT9G9ovbmU=" crossorigin="anonymous"></script>
+        <!-- Development version -->
+        <script defer src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha256-mII5pSbIKUGuLuv63S7irex7OpIvGzxRkcXP+jOAIu4=" crossorigin="anonymous"></script>
+
+        <script defer src="../../static/js/link-to-sources.js"></script>
+        <!-- load bpmn-visualization -->
+        <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
+        <script defer src="../../static/js/diagram/bpmn-diagrams.js"></script>
+        <script defer src="index.js"></script>
     </head>
     <body>
         <header class="navbar bg-dark p-2">
@@ -81,16 +91,5 @@ limitations under the License.
         <section class="col-11 relative" style="margin-top: 2em">
             <div id="bpmn-container"></div>
         </section>
-
-        <!-- Popover and Tooltip support -->
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js" integrity="sha256-WgfGn5Bh6xLjmgMTWKT1Z/MKACrWGCY5rIT9G9ovbmU=" crossorigin="anonymous"></script>
-        <!-- Development version -->
-        <script src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/dist/tippy-bundle.umd.js" integrity="sha256-mII5pSbIKUGuLuv63S7irex7OpIvGzxRkcXP+jOAIu4=" crossorigin="anonymous"></script>
-
-        <script src="../../static/js/link-to-sources.js"></script>
-        <!-- load bpmn-visualization -->
-        <script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.21.5/dist/bpmn-visualization.min.js"></script>
-        <script src="../../static/js/diagram/bpmn-diagrams.js"></script>
-        <script src="index.js"></script>
     </body>
 </html>
