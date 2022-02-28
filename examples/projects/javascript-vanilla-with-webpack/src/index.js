@@ -15,7 +15,6 @@ const footer = document.querySelector("footer");
 // TODO use the new version API when available in a new bpmn-visualization release
 footer.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
 
-
 // simple example of BPMN diagram
 function bpmnDiagram() {
     return `<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="Definitions_0x0opj6" targetNamespace="http://example.bpmn.com/schema/bpmn">
