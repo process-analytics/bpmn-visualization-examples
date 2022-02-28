@@ -1,0 +1,117 @@
+/* ****************************************************************************************************************** */
+/* BPMN Container */
+/* ****************************************************************************************************************** */
+.bpmn-container {
+    /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+    /* width is relative to the window size */
+    height: 550px;
+    /* This ensures that the parts of the diagram outside of the container are not displayed. */
+    overflow: hidden;
+    background-color: white;
+}
+
+/* ****************************************************************************************************************** */
+/* Controls */
+/* ****************************************************************************************************************** */
+#controls {
+    border-radius: .5rem;
+}
+#controls div {
+    display: flex;
+    justify-content: center;
+}
+#controls h5 {
+    margin-top: auto;
+    margin-bottom: auto;
+    margin-right: 15px;
+    float: left;
+}
+
+#controls input[type=radio] {
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+#controls input[type=text] {
+    margin-top: auto;
+    margin-bottom: auto;
+    padding: 0.2rem 0.5rem;
+    border: none;
+    border-radius: 0.2rem;
+    transition: box-shadow 300ms;
+    text-align: center;
+}
+
+#controls input[type=text]:focus {
+    outline: none;
+    box-shadow: 0.1rem 0.2rem 0.5rem var(--primary);
+}
+
+/* ****************************************************************************************************************** */
+/* Switch */
+/* ****************************************************************************************************************** */
+.radioGroup {
+    --color: var(--primary);
+    --border-width: 2px;
+    display: flex;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+.radioGroup label {
+    cursor: pointer;
+}
+
+.radioGroup label input {
+    display: none;
+}
+
+.radioGroup label input + span {
+    display: block;
+    position: relative;
+    padding: 7px 20px;
+    border: var(--border-width) solid var(--border);
+    transition: background .3s ease, border-color .3s ease;
+}
+
+.radioGroup label input:checked + span {
+    z-index: 2;
+    background: var(--color);
+    border-color: var(--color);
+    color: #fff;
+}
+
+.radioGroup label:hover input + span {
+    z-index: 1;
+    border-color: var(--color);
+}
+
+.radioGroup label:first-child input + span {
+    border-radius: 6px 0 0 6px;
+}
+
+.radioGroup label:last-child input + span {
+    border-radius: 0 6px 6px 0;
+}
+
+.radioGroup label:not(:first-child) {
+    margin-left: calc(var(--border-width) * -1);
+}
+
+/* ****************************************************************************************************************** */
+/*  Use case panel */
+/* ****************************************************************************************************************** */
+#use-case-panel {
+    border-style: solid;
+    border-color: #303742;
+    border-width: thick;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
+}
+
+#use-case-panel h4 {
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+}
