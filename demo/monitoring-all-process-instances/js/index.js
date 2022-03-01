@@ -1,5 +1,6 @@
 // Initialize UseCases
 const timeUseCase = new MonitoringUseCase('time', getHardwareRetailerDiagram, new TimeExecutionData());
+timeUseCase.displayVersionInfoInFooter(); // call only need on one use-case as the bpmn-visualization info are the same in all use-cases
 const frequencyUseCase = new MonitoringUseCase('frequency', getHardwareRetailerDiagram, new FrequencyExecutionData());
 
 // Initialize state of radio buttons

@@ -29,6 +29,14 @@ class UseCase {
         }
     }
 
+    displayVersionInfoInFooter() {
+        const footerElt = document.querySelector('footer');
+        if (footerElt) {
+            // TODO use the new version API when available in a new bpmn-visualization release
+            footerElt.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
+        }
+    }
+
     /**
      * Generic implementation
      */
