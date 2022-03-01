@@ -1,6 +1,5 @@
 // Initialize UseCases
 const predictedLateUseCase = new PredicatedLateUseCase('late');
-predictedLateUseCase.displayVersionInfoInFooter(); // call only need on one use-case as the bpmn-visualization info are the same in all use-cases
 const onTimeUseCase = new PredictedOnTimeUseCase('onTime');
 
 const state = {

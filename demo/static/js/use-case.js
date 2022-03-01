@@ -22,6 +22,7 @@ class UseCase {
 
         if (!this.#alreadyLoad) {
             this._bpmnVisualization = this._initBpmnVisualization({container: `${this.#type}-bpmn-container`, navigation: {enabled: this.#navigationEnabled}});
+            this._displayVersionInfoInFooter(); // This is called by each use case available in the page, but this is not an issue. All use the same bpmn-visualization version
             this._preLoadDiagram();
             this._bpmnVisualization.load(this.#getDiagram(), this.#loadOptions);
             this._postLoadDiagram();
@@ -29,11 +30,13 @@ class UseCase {
         }
     }
 
-    displayVersionInfoInFooter() {
+    _displayVersionInfoInFooter() {
         const footerElt = document.querySelector('footer');
         if (footerElt) {
-            // TODO use the new version API when available in a new bpmn-visualization release
-            footerElt.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
+            const version = this._bpmnVisualization.getVersion();
+            const versionAsString = `bpmn-visualization@${version.lib}`;
+            const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
+            footerElt.innerText = `${versionAsString} with ${dependenciesAsString}`;
         }
     }
 

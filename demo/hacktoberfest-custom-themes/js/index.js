@@ -32,7 +32,6 @@ Array.from(themes.keys()).forEach(year => {
     useCases.light.set(year, new LightUseCase(state.projectName, year));
     useCases.dark.set(year, new DarkUseCase(state.projectName, year));
 })
-useCases.default.displayVersionInfoInFooter(); // call only need on one use-case as the bpmn-visualization info are the same in all use-cases
 
 
 document.addEventListener('DOMContentLoaded', function () {
