@@ -33,6 +33,7 @@ class UseCase {
     _displayVersionInfoInFooter() {
         const footerElt = document.querySelector('footer');
         if (footerElt) {
+            // Same implementation as in the demo code of bpmn-visualization
             const version = this._bpmnVisualization.getVersion();
             const versionAsString = `bpmn-visualization@${version.lib}`;
             const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
