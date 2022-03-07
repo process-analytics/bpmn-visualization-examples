@@ -12,8 +12,11 @@ bpmnVisualization.bpmnElementsRegistry.addOverlays('Activity_1', overlay);
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector("footer");
-// TODO use the new version API when available in a new bpmn-visualization release
-footer.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
+// Same implementation as in the demo code of bpmn-visualization
+const version = bpmnVisualization.getVersion();
+const versionAsString = `bpmn-visualization@${version.lib}`;
+const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
+footer.innerText = `${versionAsString} with ${dependenciesAsString}`;
 
 // simple example of BPMN diagram
 function bpmnDiagram() {
