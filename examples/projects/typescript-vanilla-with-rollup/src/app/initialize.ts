@@ -24,9 +24,14 @@ export default function initialize(): void {
   bpmnVisualization.load(bpmnDiagram());
 
   // display the bpmn-visualization version in the footer
+  // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const footer = document.querySelector<HTMLElement>("footer")!;
-  // TODO use the new version API when available in a new bpmn-visualization release
-  footer.innerHTML = `bpmn-visualization@xxx with mxGraph@$yyy`;
+  // Same implementation as in the demo code of bpmn-visualization
+  const version = bpmnVisualization.getVersion();
+  const versionAsString = `bpmn-visualization@${version.lib}`;
+  const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
+  footer.innerText = `${versionAsString} with ${dependenciesAsString}`;
+
 }
 
 // this is simple example of the BPMN diagram
