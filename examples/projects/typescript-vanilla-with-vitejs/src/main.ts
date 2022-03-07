@@ -18,7 +18,7 @@ bpmnVisualization.bpmnElementsRegistry.addCssClasses(
 );
 
 
-// TODO hack to remove when new bpmn-visualization release is available with the version API
+// TODO hack to detect mxgraph version mismatch
 const mxgraph = initialize();
 
 function initialize(): mxGraphExportObject {
@@ -33,6 +33,10 @@ function initialize(): mxGraphExportObject {
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector<HTMLElement>('footer')!;
-footer.innerHTML = `
-  bpmn-visualization@xxx with mxGraph@${mxgraph.mxClient.VERSION}
-`
+
+// Same implementation as in the demo code of bpmn-visualization
+const version = bpmnVisualization.getVersion();
+const versionAsString = `bpmn-visualization@${version.lib}`;
+const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
+// FIXME the mxgraph version described in lib is not the same as the actual one!
+footer.innerText = `${versionAsString} with ${dependenciesAsString} | raw mxGraph: ${mxgraph.mxClient.VERSION}`;
