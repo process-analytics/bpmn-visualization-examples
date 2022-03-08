@@ -33,8 +33,6 @@ function initialize(): mxGraphExportObject {
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector<HTMLElement>('footer')!;
-
-// Same implementation as in the demo code of bpmn-visualization
 const version = bpmnVisualization.getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');

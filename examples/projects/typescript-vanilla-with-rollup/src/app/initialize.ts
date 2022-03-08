@@ -26,7 +26,6 @@ export default function initialize(): void {
   // display the bpmn-visualization version in the footer
   // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
   const footer = document.querySelector<HTMLElement>("footer")!;
-  // Same implementation as in the demo code of bpmn-visualization
   const version = bpmnVisualization.getVersion();
   const versionAsString = `bpmn-visualization@${version.lib}`;
   const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
