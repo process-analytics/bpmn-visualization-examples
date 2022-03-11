@@ -22,5 +22,4 @@ const footer = document.querySelector<HTMLElement>('footer')!;
 const version = bpmnVisualization.getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
-// FIXME the mxgraph version described in lib is not the same as the actual one!
-footer.innerText = `${versionAsString} with ${dependenciesAsString} | raw mxGraph: ${mxgraph.mxClient.VERSION}`;
+footer.innerText = `${versionAsString} with ${dependenciesAsString} | direct usage of mxGraph@${mxgraph.mxClient.VERSION}`;
