@@ -89,8 +89,10 @@ limitations under the License.
             <div class="col-12 mb-2">
                 <h2>Select elements by BPMN kind</h2>
                 Once the BPMN diagram is loaded, detect all <code>Pools</code> and <code>End Events</code>.<br>
-                Then, use this information to select <code>Pools</code> (hide or collapse) and make <code>End Events</code> clickable
-                (as far as no <code>Pools</code> selection is done. Toast support <a href="https://github.com/caroso1222/notyf">Notyf</a>).
+                Then, use this information to select <code>Pools</code> (hide) and make <code>End Events</code>
+                clickable
+                (as far as no <code>Pools</code> selection is done. Toast support <a
+                    href="https://github.com/caroso1222/notyf">Notyf</a>).
             </div>
             <div id="controls" style="margin-top: 25px" >
                 <div class="col-3 float-left">
@@ -116,9 +118,11 @@ limitations under the License.
                             <div class="radio">
                                 <label><input type="radio" name="poolSelectionMethod" value="hide" checked> Hide others</label>
                             </div>
+                            <!-- Disable collapsing: see https://github.com/process-analytics/bpmn-visualization-examples/pull/306
                             <div class="radio">
                                 <label><input type="radio" name="poolSelectionMethod" value="collapse"> Collapse others</label>
                             </div>
+                            -->
                         </div>
                     </div>
                     <div id="pool-selection-info" class="col-5 float-left hidden">
