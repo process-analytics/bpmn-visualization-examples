@@ -124,7 +124,9 @@ function changePoolsVisibility(pools, poolIdToHighlight) {
   console.info('Updating model, pool to highlight:', poolIdToHighlight);
   const model = bpmnVisualization.graph.getModel();
 
-  const poolSelectionMethod = getRadioGroupValue('poolSelectionMethod');
+  // TMP disable collapsing other pools, see https://github.com/process-analytics/bpmn-visualization-examples/pull/306
+  // const poolSelectionMethod = getRadioGroupValue('poolSelectionMethod');
+  const poolSelectionMethod = 'hide';
   console.info('Selection method:', poolSelectionMethod);
   const hideOthers = poolSelectionMethod === 'hide';
   const modelChangeFunction = hideOthers ?
