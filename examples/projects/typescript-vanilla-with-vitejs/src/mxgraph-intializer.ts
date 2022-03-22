@@ -1,7 +1,8 @@
-import factory, { type mxGraphExportObject } from 'mxgraph';
+import factory, {type mxGraphExportObject} from 'mxgraph';
 
-
-// TODO hack to detect mxgraph version mismatch
+// The following is taken from bpmn-visualization
+// It demonstrates how to access to mxGraph value objects that are required to instantiate mxGraph objects or extending the mxGraph code.
+// It is not necessary if you only need to use mxGraph types.
 
 export const mxgraph = initialize();
 
