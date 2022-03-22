@@ -1,7 +1,8 @@
 {
-  "name": "vite-typescript-starter",
+  "name": "bpmn-visualization-ts-vitejs",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
@@ -11,8 +12,7 @@
     "bpmn-visualization": "0.23.0"
   },
   "devDependencies": {
-    "@typed-mxgraph/typed-mxgraph": "^1.0.4",
-    "typescript": "^4.5.5",
-    "vite": "^2.8.1"
+    "typescript": "^4.6.2",
+    "vite": "^2.8.6"
   }
 }

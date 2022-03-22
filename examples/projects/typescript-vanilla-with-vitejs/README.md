@@ -8,8 +8,11 @@ To run locally:
 2. `npm run dev`
 3. [localhost app](http://localhost:3000)
 
+You will see the following diagram:
 
+![BPMN diagram in the home page](docs/home.png)
 
+The code calling `bpmn-visualization` to render the BPMN diagram is available in [main.ts](src/main.ts).
 
-
-
+If you want to bundle the application, run `npm run build` and then run `npm run preview` to access to a preview of the
+bundle application.
