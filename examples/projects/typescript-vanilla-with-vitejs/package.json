@@ -2,6 +2,7 @@
   "name": "bpmn-visualization-ts-vitejs",
   "private": true,
   "version": "1.0.0",
+  "license": "Apache-2.0",
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",

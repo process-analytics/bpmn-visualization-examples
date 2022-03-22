@@ -1,7 +1,7 @@
 {
   "name": "bpmn-visualization-ts-rollup",
   "version": "1.0.0",
-  "description": "",
+  "license": "Apache-2.0",
   "main": "index.js",
   "module": "dist/index.esm.js",
   "scripts": {
@@ -10,8 +10,6 @@
     "start": "rollup -c --silent --environment devMode:true",
     "watch": "rollup -cw --environment devLiveReloadMode:true"
   },
-  "author": "",
-  "license": "Apache-2.0",
   "devDependencies": {
     "@rollup/plugin-json": "^4.1.0",
     "@rollup/plugin-node-resolve": "^13.0.4",
