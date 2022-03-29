@@ -5,7 +5,7 @@ Created with https://vite.new/vanilla-ts.
 To run locally:
 
 1. `npm install`
-2. `npm run dev`
+2. `npm start`
 3. [localhost app](http://localhost:3000)
 
 You will see the following diagram:

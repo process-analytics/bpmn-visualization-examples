@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "license": "Apache-2.0",
   "scripts": {
-    "dev": "vite",
+    "start": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview"
   },
