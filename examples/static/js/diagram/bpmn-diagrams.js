@@ -1662,9 +1662,9 @@ function getCustomUserTaskIconBpmnDiagram() {
 
 function getHacktoberfestBpmnDiagram(projectName) {
     return  `<?xml version="1.0" encoding="UTF-8"?>
-<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definition_1" >
+<bpmn:definitions xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" id="definition_1">
   <bpmn:collaboration id="collaboration_1">
-    <bpmn:participant id="participant_1" processRef="process_1" name="Hacktoberfest participation"/>
+    <bpmn:participant id="participant_1" name="Hacktoberfest participation" processRef="process_1" />
   </bpmn:collaboration>
   <bpmn:process id="process_1" isExecutable="false">
     <bpmn:startEvent id="start_event" name="Hacktoberfest starts on October, 1st">
@@ -1732,11 +1732,16 @@ function getHacktoberfestBpmnDiagram(projectName) {
       <bpmndi:BPMNShape id="shape_participant_1" bpmnElement="participant_1" isHorizontal="true">
         <dc:Bounds x="160" y="60" width="979" height="430" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="edge_sequence_flow_4" bpmnElement="sequence_flow_4">
-        <di:waypoint x="425" y="210" />
-        <di:waypoint x="635" y="210" />
+      <bpmndi:BPMNEdge id="edge_sequence_flow_1" bpmnElement="sequence_flow_1">
+        <di:waypoint x="268" y="210" />
+        <di:waypoint x="375" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_2" bpmnElement="sequence_flow_2">
+        <di:waypoint x="400" y="185" />
+        <di:waypoint x="400" y="119" />
+        <di:waypoint x="470" y="119" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="521" y="223" width="18" height="14" />
+          <dc:Bounds x="372" y="150" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_3" bpmnElement="sequence_flow_3">
@@ -1744,21 +1749,26 @@ function getHacktoberfestBpmnDiagram(projectName) {
         <di:waypoint x="660" y="119" />
         <di:waypoint x="660" y="185" />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_sequence_flow_2" bpmnElement="sequence_flow_2">
-        <di:waypoint x="400" y="185" />
-        <di:waypoint x="400" y="124" />
-        <di:waypoint x="480" y="124" />
+      <bpmndi:BPMNEdge id="edge_sequence_flow_4" bpmnElement="sequence_flow_4">
+        <di:waypoint x="425" y="210" />
+        <di:waypoint x="635" y="210" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="372" y="152" width="15" height="14" />
+          <dc:Bounds x="521" y="223" width="18" height="14" />
         </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_sequence_flow_1" bpmnElement="sequence_flow_1">
-        <di:waypoint x="268" y="210" />
-        <di:waypoint x="375" y="210" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_5" bpmnElement="sequence_flow_5">
         <di:waypoint x="685" y="210" />
-        <di:waypoint x="780" y="210" />
+        <di:waypoint x="785" y="210" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_6" bpmnElement="sequence_flow_6">
+        <di:waypoint x="915" y="205" />
+        <di:waypoint x="1050" y="205" />
+        <di:waypoint x="1050" y="275" />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="edge_sequence_flow_7" bpmnElement="sequence_flow_7">
+        <di:waypoint x="1050" y="345" />
+        <di:waypoint x="1050" y="410" />
+        <di:waypoint x="870" y="410" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_8" bpmnElement="sequence_flow_8">
         <di:waypoint x="845" y="385" />
@@ -1767,21 +1777,11 @@ function getHacktoberfestBpmnDiagram(projectName) {
           <dc:Bounds x="852" y="343" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_sequence_flow_6" bpmnElement="sequence_flow_6">
-        <di:waypoint x="910" y="210" />
-        <di:waypoint x="1045" y="210" />
-        <di:waypoint x="1045" y="275" />
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="edge_sequence_flow_7" bpmnElement="sequence_flow_7">
-        <di:waypoint x="1045" y="345" />
-        <di:waypoint x="1045" y="410" />
-        <di:waypoint x="860" y="410" />
-      </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_9" bpmnElement="sequence_flow_9">
-        <di:waypoint x="815" y="410" />
-        <di:waypoint x="712" y="410" />
+        <di:waypoint x="820" y="410" />
+        <di:waypoint x="715" y="410" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="760" y="388" width="18" height="14" />
+          <dc:Bounds x="764" y="388" width="18" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_10" bpmnElement="sequence_flow_10">
@@ -1803,6 +1803,9 @@ function getHacktoberfestBpmnDiagram(projectName) {
         <bpmndi:BPMNLabel>
           <dc:Bounds x="355" y="242" width="90" height="40" />
         </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_user_task_1" bpmnElement="user_task_1">
+        <dc:Bounds x="470" y="84" width="120" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_exclusive_gateway_2" bpmnElement="exclusive_gateway_2" isMarkerVisible="true">
         <dc:Bounds x="635" y="185" width="50" height="50" />
@@ -1831,19 +1834,16 @@ function getHacktoberfestBpmnDiagram(projectName) {
           <dc:Bounds x="610" y="395" width="95" height="45" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_end_event" bpmnElement="end_event">
-        <dc:Bounds x="232" y="387" width="36" height="36" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="216" y="430" width="68" height="40" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="shape_user_task_1" bpmnElement="user_task_1">
-        <dc:Bounds x="470" y="84" width="120" height="70" />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_user_task_5" bpmnElement="user_task_5">
         <dc:Bounds x="355" y="365" width="150" height="80" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="365" y="390" width="130" height="55" />
+        </bpmndi:BPMNLabel>
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="shape_end_event" bpmnElement="end_event">
+        <dc:Bounds x="232" y="387" width="36" height="36" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="216" y="430" width="68" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
