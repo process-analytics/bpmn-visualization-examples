@@ -27,7 +27,7 @@ jobs:
       BUILD_DEMO_WORKFLOW_ID: ${{ github.event.client_payload.build_demo_workflow_id || github.event.inputs.build_demo_workflow_id }}
       BUILD_DEMO_REPO: ${{ github.event.client_payload.build_demo_repo || github.event.inputs.build_demo_repo }}
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - name: Update examples
         run: ./scripts/update-lib-version.bash ${{ env.VERSION }}
       - name: Delete old Load and Navigation demo
