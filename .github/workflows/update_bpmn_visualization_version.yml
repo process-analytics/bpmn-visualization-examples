@@ -1,7 +1,7 @@
 name: Update BPMN Visualization version
 on:
   repository_dispatch:
-    types: [update_bpmn_visualization_version]
+    types: [ update_bpmn_visualization_version ]
   workflow_dispatch:
     inputs:
       version:
@@ -10,9 +10,11 @@ on:
       build_demo_repo:
         description: 'The repository where the demo artifact is stored'
         default: "process-analytics/bpmn-visualization-js"
+        required: true
       build_demo_workflow_id:
         description: 'The workflow identifier or file name where the demo artifact is stored'
         default: "upload-demo-archive-and-trigger-examples-repository-update.yml"
+        required: true
       artifact_name:
         description: 'The demo artifact name'
         default: "demo_"
@@ -35,7 +37,7 @@ jobs:
       - name: Download Load and Navigation demo ${{ env.VERSION }}
         uses: dawidd6/action-download-artifact@v2
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+          github_token: ${{ secrets.GH_RELEASE_TOKEN }}
           repo: ${{ env.BUILD_DEMO_REPO }}
           workflow: ${{ env.BUILD_DEMO_WORKFLOW_ID }}
           workflow_conclusion: success
