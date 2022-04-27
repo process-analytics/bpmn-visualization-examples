@@ -7,28 +7,19 @@
   "scripts": {
     "clean": "rimraf dist",
     "build": "rollup -c",
-    "start": "rollup -c --silent --environment devMode:true",
-    "watch": "rollup -cw --environment devLiveReloadMode:true"
+    "start": "rollup -cw --environment devMode:true"
   },
   "devDependencies": {
-    "@rollup/plugin-json": "^4.1.0",
-    "@rollup/plugin-node-resolve": "^13.0.4",
-    "@typescript-eslint/eslint-plugin": "^4.31.0",
-    "@typescript-eslint/parser": "^4.31.0",
-    "eslint": "^7.32.0",
-    "eslint-config-prettier": "^8.3.0",
-    "eslint-plugin-notice": "^0.9.10",
-    "eslint-plugin-prettier": "^4.0.0",
-    "prettier": "^2.4.0",
+    "@rollup/plugin-node-resolve": "^13.2.1",
     "rimraf": "^3.0.2",
-    "rollup": "^2.56.3",
+    "rollup": "^2.70.2",
     "rollup-plugin-commonjs": "^10.1.0",
     "rollup-plugin-copy": "^3.4.0",
     "rollup-plugin-copy-watch": "^0.0.1",
     "rollup-plugin-livereload": "^2.0.5",
     "rollup-plugin-serve": "^1.1.0",
-    "rollup-plugin-typescript2": "^0.30.0",
-    "typescript": "^4.5.5"
+    "rollup-plugin-typescript2": "^0.31.2",
+    "typescript": "^4.6.3"
   },
   "dependencies": {
     "bpmn-visualization": "0.23.1"

@@ -18,51 +18,41 @@ import livereload from "rollup-plugin-livereload";
 import copy from "rollup-plugin-copy";
 import copyWatch from "rollup-plugin-copy-watch";
 
-import typescript from "rollup-plugin-typescript2";
+import typescript from "rollup-plugin-typescript2"; // TODO check if we can use the official plugin
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
-import json from "@rollup/plugin-json";
 
-const devLiveReloadMode = process.env.devLiveReloadMode;
-const devMode = devLiveReloadMode ? true : process.env.devMode;
+const devMode = process.env.devMode ?? false;
 
 const plugins = [
-  typescript({
-    typescript: require("typescript"),
-  }),
+  typescript(),
   resolve(),
-  commonjs(),
-  json(),
+  commonjs(), // at least required to bundle mxGraph with is a CommonJS module
 ];
 
 // Copy static resources to dist
+const copyTargets = [];
+copyTargets.push({src: "src/*.html", dest: "dist/"});
+copyTargets.push({src: "src/static", dest: "dist"});
+let copyPlugin;
 if (devMode) {
-  const copyTargets = [];
-  copyTargets.push({ src: "src/*.html", dest: "dist/" });
-  copyTargets.push({ src: "src/static", dest: "dist" });
-  let copyPlugin;
-  if (devLiveReloadMode) {
-    copyPlugin = copyWatch({
-      watch: ["src/static/**", "src/*.html"],
-      targets: copyTargets,
-    });
-  } else {
-    copyPlugin = copy({
-      targets: copyTargets,
-    });
-  }
-  plugins.push(copyPlugin);
+  copyPlugin = copyWatch({
+    watch: ["src/static/**", "src/*.html"],
+    targets: copyTargets,
+  });
+} else {
+  copyPlugin = copy({
+    targets: copyTargets,
+  });
 }
+plugins.push(copyPlugin);
 
 if (devMode) {
   // Create a server for dev mode
-  plugins.push(serve({ contentBase: "dist", port: 10001 }));
-
-  if (devLiveReloadMode) {
-    // Allow to livereload on any update
-    plugins.push(livereload({ watch: "dist", verbose: true }));
-  }
+  plugins.push(serve({contentBase: "dist", port: 10001}));
+  // Allow to livereload on any update
+  plugins.push(livereload({watch: "dist", verbose: true}));
 }
 
 export default [

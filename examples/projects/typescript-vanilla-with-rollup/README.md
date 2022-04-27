@@ -12,5 +12,6 @@ You will see the following diagram:
 
 The code calling `bpmn-visualization` to render the BPMN diagram is available in [initialize.ts](src/app/initialize.ts).
 
-If you want to play with the code, run `npm run watch` (instead of `npm run start`) to make any changes in the code or
-assets available in the browser.
+The dev server runs in watch mode, so you can play with the code and see changes directly available in the browser.
+
+To build the application for reuse anywhere, run `npm run build`. The application is generated in the `dist` folder.
