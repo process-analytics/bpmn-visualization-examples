@@ -18,7 +18,7 @@ import livereload from "rollup-plugin-livereload";
 import copy from "rollup-plugin-copy";
 import copyWatch from "rollup-plugin-copy-watch";
 
-import typescript from "rollup-plugin-typescript2"; // TODO check if we can use the official plugin
+import typescript from "rollup-plugin-typescript2";
 import commonjs from "rollup-plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import pkg from "./package.json";
