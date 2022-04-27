@@ -5,15 +5,15 @@ on:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'examples/projects/typescript-vanilla-with-rollup/**/*'
-      - 'examples/projects/typescript-vanilla-with-vitejs/**/*'
+      - 'projects/typescript-vanilla-with-rollup/**/*'
+      - 'projects/typescript-vanilla-with-vitejs/**/*'
   pull_request:
     branches:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'examples/projects/typescript-vanilla-with-rollup/**/*'
-      - 'examples/projects/typescript-vanilla-with-vitejs/**/*'
+      - 'projects/typescript-vanilla-with-rollup/**/*'
+      - 'projects/typescript-vanilla-with-vitejs/**/*'
 
 jobs:
   check:
@@ -24,7 +24,7 @@ jobs:
       matrix:
         project: [typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
     env:
-      project_dir: ${{github.workspace}}/examples/projects/${{matrix.project}}
+      project_dir: ${{github.workspace}}/projects/${{matrix.project}}
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
