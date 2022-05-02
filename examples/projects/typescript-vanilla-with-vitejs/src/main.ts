@@ -2,6 +2,7 @@ import './style.css'
 // this is simple example of the BPMN diagram, loaded as string
 import diagram from './diagram.bpmn?raw'
 import { BpmnVisualization } from 'bpmn-visualization';
+// put this import after the 'BpmnVisualization' import to ensure mxGraph is correctly configured by bpmn-visualization
 import { mxgraph } from "./mxgraph-intializer";
 
 // instantiate BpmnVisualization, pass the container HTMLElement - present in index.html
