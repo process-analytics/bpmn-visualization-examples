@@ -1,7 +1,7 @@
 import factory, {type mxGraphExportObject} from 'mxgraph';
 
-// The following is needed if you need to access to mxGraph value objects that are required to instantiate mxGraph objects or extending the mxGraph code.
-// It is not necessary if you only need to directly use mxGraph in your code.
+// The following is only needed when you access to mxGraph value objects. They are necessary to instantiate or extend mxGraph objects.
+// You don't need it if you don't directly use mxGraph in your code.
 
 export const mxgraph = initialize();
 
