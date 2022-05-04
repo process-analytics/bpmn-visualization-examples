@@ -36,12 +36,10 @@ You will find both
 Some examples require loading local files. If you are looking for BPMN diagram files, you can use resources from:
 
 - the BPMN Model Interchange Working Group ([BPMN MIWG](https://www.omgwiki.org/bpmn-miwg), an initiative "_to support,
-  facilitate, and promote the interchange of BPMN Models_".
+  facilitate, and promote the interchange of BPMN Models_"
   - [bpmn-miwg-test-suite](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
   - [bpmn-miwg-demos](https://github.com/bpmn-miwg/bpmn-miwg-demos)
-- the Process Analytics project. They are designed for non regression tests, mainly to check the rendering of the
-  various BPMN elements.
-  So they are not presenting real life scenario:
+- the Process Analytics project (these diagrams are designed to check the rendering of the various BPMN elements)
   - [BPMN diagrams of the bpmn-visualization-examples repository](./bpmn-files/README.md)
   - [BPMN diagrams used in test of the bpmn-visualization repository](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
 
