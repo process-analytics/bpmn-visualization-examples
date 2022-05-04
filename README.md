@@ -31,11 +31,24 @@ You will find both
 - examples: demonstrate how to use a single feature.
 
 
+## 📖 Getting BPMN Diagrams
+
+Some examples require loading local files. If you are looking for BPMN diagram files, you can use resources from:
+
+- the BPMN Model Interchange Working Group ([BPMN MIWG](https://www.omgwiki.org/bpmn-miwg), an initiative "_to support,
+  facilitate, and promote the interchange of BPMN Models_"
+  - [bpmn-miwg-test-suite](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
+  - [bpmn-miwg-demos](https://github.com/bpmn-miwg/bpmn-miwg-demos)
+- the Process Analytics project
+  - [BPMN diagrams of the bpmn-visualization-examples repository](./bpmn-files/README.md)
+  - [BPMN diagrams used in the tests of bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
+
+
 ## 🖥️ Running examples locally
 
 Some examples and demos may load ES Modules; in that case, you cannot open html pages directly from your local disk.
 
-For instance, on Chrome, the Console would display the following errors 
+For instance, on Chrome, the Console would display the following errors
 > Access to script at 'file:///...../bpmn-visualization-examples/examples/my-file.js' from origin 'null' has been
 > blocked by CORS policy: Cross origin requests are only supported for protocol schemes: http, data, chrome,
 > chrome-extension, https. index.html:1  
@@ -127,11 +140,14 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 
 <a id="projects"></a>
-### `bpmn-visualization` usage in projects
+## `bpmn-visualization` usage in projects
 
-- [JavaScript + webpack](examples/projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript webpack project
-- [TypeScript + rollup](examples/projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript rollup project
-- [TypeScript + vite](examples/projects/typescript-vanilla-with-vitejs/README.md) - integration in a vanilla TypeScript vite project
+Show how to integrate `bpmn-visualization` in project, using various kind of build tools and bundlers:
+- [JavaScript + webpack](projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript webpack project
+- [TypeScript + rollup](projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript rollup project
+- [TypeScript + vite](projects/typescript-vanilla-with-vitejs/README.md) - integration in a vanilla TypeScript vite project
+
+Remember that some projects are also available in [live IDE](#live_ide).
 
 
 ## 🔧 Contributing
@@ -141,7 +157,7 @@ Please add a screenshot of the new rendering when you open a pull-request.
 
 You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participation in this open source project is subject to a [Code of Conduct](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md).
 
-:sparkles: A BIG thanks to all our contributors :slightly_smiling_face:
+✨ A BIG thanks to all our contributors 🙂
 
 
 ## 📃 License
