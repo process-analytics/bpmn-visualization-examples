@@ -39,9 +39,9 @@ Some examples require loading local files. If you are looking for BPMN diagram f
   facilitate, and promote the interchange of BPMN Models_"
   - [bpmn-miwg-test-suite](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
   - [bpmn-miwg-demos](https://github.com/bpmn-miwg/bpmn-miwg-demos)
-- the Process Analytics project (these diagrams are designed to check the rendering of the various BPMN elements)
+- the Process Analytics project
   - [BPMN diagrams of the bpmn-visualization-examples repository](./bpmn-files/README.md)
-  - [BPMN diagrams used in test of the bpmn-visualization repository](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
+  - [BPMN diagrams used in tests of bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
 
 
 ## 🖥️ Running examples locally
