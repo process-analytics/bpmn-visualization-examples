@@ -41,7 +41,7 @@ Some examples require loading local files. If you are looking for BPMN diagram f
   - [bpmn-miwg-demos](https://github.com/bpmn-miwg/bpmn-miwg-demos)
 - the Process Analytics project
   - [BPMN diagrams of the bpmn-visualization-examples repository](./bpmn-files/README.md)
-  - [BPMN diagrams used in tests of bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
+  - [BPMN diagrams used in the tests of bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
 
 
 ## 🖥️ Running examples locally
