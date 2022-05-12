@@ -4,7 +4,7 @@
 In particular, the way of changing the defaults will be done via configuration in the future.
 
 Javascript example
-- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-bpmn-theme/custom-overlay-default-style/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/overlays/custom-overlay-default-style/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
