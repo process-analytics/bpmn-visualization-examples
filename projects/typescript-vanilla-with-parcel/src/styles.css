@@ -1,0 +1,40 @@
+body {
+  font-family: sans-serif;
+}
+footer {
+  float: right;
+  margin-top: 0.75rem;
+  font-style: italic;
+}
+
+#bpmn-container {
+  /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+  /* width is relative to the window size */
+  height: 50vh;
+  border-style: solid;
+  border-color: #b0b0b0;
+  border-width: 1px;
+  /* This ensures that the parts of the diagram outside of the container are not displayed. */
+  overflow: hidden;
+  background-color: white;
+}
+
+.bpmn-activity-info > rect {
+  fill: blue !important;
+  fill-opacity: 30% !important;
+  stroke: blue;
+}
+.bpmn-activity-info.bpmn-label > g div {
+  color: blue !important;
+  font-weight: bold;
+}
+
+.bpmn-activity-success > rect {
+  fill: green !important;
+  fill-opacity: 15% !important;
+  stroke: green;
+}
+.bpmn-activity-success.bpmn-label > g div {
+  color: green !important;
+  font-weight: bold;
+}
