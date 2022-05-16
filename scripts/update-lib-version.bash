@@ -13,22 +13,23 @@ function replaceVersion() {
   if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ $directory == *demo ]]; then
       sed -i '' -E "${rexep_others}" **/*.{html,md,js}
+    elif  [[ $directory == *projects ]]; then
+      sed -i '' -E "${rexep_npm}" **/package.json
     else
       sed -i '' -E "${rexep_others}" **/**/*.{html,md,js}
-      sed -i '' -E "${rexep_npm}" **/**/package.json
     fi
   else
     if [[ $directory == *demo ]]; then
       sed -i -E "${rexep_others}#" **/*.{html,md,js}
+    elif [[ $directory == *projects ]]; then
+      sed -i -E "${rexep_npm}#" **/package.json
     else
       sed -i -E "${rexep_others}#" **/**/*.{html,md,js}
-      sed -i -E "${rexep_npm}#" **/**/package.json
     fi
   fi
 
   echo "Files updated"
   popd > /dev/null
-  pwd
 }
 
 
@@ -44,5 +45,6 @@ echo "Updating examples to make them use bpmn-visualization@$NEW_VERSION"
 
 SCRIPT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
-replaceVersion "$SCRIPT_DIRECTORY/../examples"
 replaceVersion "$SCRIPT_DIRECTORY/../demo"
+replaceVersion "$SCRIPT_DIRECTORY/../examples"
+replaceVersion "$SCRIPT_DIRECTORY/../projects"

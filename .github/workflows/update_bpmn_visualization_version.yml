@@ -30,7 +30,7 @@ jobs:
       BUILD_DEMO_REPO: ${{ github.event.client_payload.build_demo_repo || github.event.inputs.build_demo_repo }}
     steps:
       - uses: actions/checkout@v3
-      - name: Update examples
+      - name: Update bpmn-visualization version in all examples
         run: ./scripts/update-lib-version.bash ${{ env.VERSION }}
       - name: Delete old Load and Navigation demo
         run: rm -rf demo/load-and-navigation
