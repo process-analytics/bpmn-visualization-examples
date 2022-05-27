@@ -40,23 +40,26 @@ limitations under the License.
             --color-highlight: #2c623c;
         }
 
-        .bpmn-activity-info > rect {
+        .bpmn-type-activity.highlight-info > rect {
             fill: blue !important;
             fill-opacity: 30% !important;
             stroke: blue;
         }
-        .bpmn-activity-success > rect {
+        .bpmn-type-activity.highlight-success > rect {
             fill: green !important;
             fill-opacity: 15% !important;
             stroke: green;
         }
-        .bpmn-activity-error > rect {
+        .bpmn-type-activity.highlight-error > rect {
             fill: red !important;
             fill-opacity: 20% !important;
             stroke: red;
         }
-
-        .bpmn-gateway-warning > path:nth-child(1) {
+        .bpmn-type-activity.highlight-in-progress > rect {
+            fill: var(--color-highlight) !important;
+            fill-opacity: 40% !important;
+        }
+        .bpmn-type-gateway.highlight-warning > path:nth-child(1) {
             fill: yellow !important;
             fill-opacity: 30% !important;
             stroke: orange;
@@ -64,26 +67,22 @@ limitations under the License.
         }
 
         /* edge arrow */
-        .bpmn-edge-path-highlight > path:nth-child(3) {
+        .bpmn-sequence-flow.highlight-path > path:nth-child(3) {
             fill: var(--color-highlight);
         }
         /* edge arrow */
-        .bpmn-edge-path-highlight > path:nth-child(3),
+        .bpmn-sequence-flow.highlight-path > path:nth-child(3),
         /* edge line */
-        .bpmn-edge-path-highlight > path:nth-child(2),
+        .bpmn-sequence-flow.highlight-path > path:nth-child(2),
         /* activity */
-        .bpmn-shape-path-highlight > rect,
+        .bpmn-type-activity.highlight-path > rect,
         /* gateway */
-        .bpmn-shape-path-highlight > path:nth-child(1),
+        .bpmn-type-gateway.highlight-path > path:nth-child(1),
         /* event */
-        .bpmn-shape-path-highlight > ellipse {
-            filter: blur(1.5px); /* only work on Firefox */
+        .bpmn-type-event.highlight-path > ellipse {
+            filter: blur(1.5px); /* may not work on Safari */
             stroke: var(--color-highlight);
             stroke-width: 7px;
-        }
-        .bpmn-activity-in-progress > rect {
-            fill: var(--color-highlight) !important;
-            fill-opacity: 40% !important;
         }
     </style>
     <script defer src="../../static/js/link-to-sources.js"></script>
