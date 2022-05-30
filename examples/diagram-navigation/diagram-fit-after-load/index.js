@@ -38,7 +38,7 @@ function performFit(type) {
   }
 
   // `type` and `margin` are optional. Moreover, `margin` is only considered when FitType is not None.
-  bpmnVisualization.fit({type: fitType, margin: fitMargin});
+  bpmnVisualization.navigation.fit({type: fitType, margin: fitMargin});
 }
 
 // 'Fit Margin' dropdown list

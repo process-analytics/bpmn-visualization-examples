@@ -4,7 +4,7 @@ bpmnVisualization.load(getNavigationBpmnDiagram());
 
 let displayScrollBars = false;
 document.getElementById('btn-reset').onclick = function () {
-  bpmnVisualization.fit({ type: bpmnvisu.FitType.None });
+  bpmnVisualization.navigation.fit({ type: bpmnvisu.FitType.None });
 
   // reset scrollbars position
   displayScrollBars && bpmnContainer.scrollTo(0, 0);

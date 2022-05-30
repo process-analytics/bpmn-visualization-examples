@@ -52,6 +52,6 @@ document.getElementById('btn-set-overlay').onclick = () => {
 
 document.getElementById('btn-reset').onclick = () => {
     removeAllOverlays();
-    bpmnVisualization.fit({ type: 'Center' });
+    bpmnVisualization.navigation.fit({ type: 'Center' });
 };
 
