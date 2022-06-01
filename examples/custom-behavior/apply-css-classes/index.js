@@ -42,18 +42,18 @@ document.getElementById('btn-clear').onclick = function() {
 };
 
 document.getElementById('btn-info').onclick = function() {
-  toggleCssClass(['assignApprover', 'prepareBankTransfer'], 'bpmn-activity-info');
+  toggleCssClass(['assignApprover', 'prepareBankTransfer'], 'highlight-info');
 };
 document.getElementById('btn-success').onclick = function() {
-  addCssClass(['approveInvoice'], 'bpmn-activity-success');
+  addCssClass(['approveInvoice'], 'highlight-success');
   this.disabled = true;
 };
 document.getElementById('btn-warning').onclick = function() {
-  removeCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'bpmn-gateway-warning');
+  removeCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'highlight-warning');
   this.disabled = true;
 };
 document.getElementById('btn-error').onclick = function() {
-  addCssClass(['reviewInvoice'], 'bpmn-activity-error');
+  addCssClass(['reviewInvoice'], 'highlight-error');
   this.disabled = true;
 };
 
@@ -85,8 +85,8 @@ function pathHighLightingByGroup() {
       pathGroupStep = 'step1';
       break;
     case 'step1':
-      addHighlightPath(pathShapeElements, true);
-      addCssClass([pathLastShape], 'bpmn-activity-in-progress');
+      addHighlightPath(pathShapeElements);
+      addCssClass([pathLastShape], 'highlight-in-progress');
       pathGroupStep = 'step2';
       break;
     case 'step2':
@@ -94,14 +94,14 @@ function pathHighLightingByGroup() {
       pathGroupStep = 'step3';
       break;
     case 'step3':
-      removeHighlightPath(pathShapeElements, true);
-      removeCssClass([pathLastShape], 'bpmn-activity-in-progress');
+      removeHighlightPath(pathShapeElements);
+      removeCssClass([pathLastShape], 'highlight-in-progress');
       pathGroupStep = 'step4';
       break;
     case 'step4':
       addHighlightPath(pathEdgeElements);
-      addHighlightPath(pathShapeElements, true);
-      addCssClass([pathLastShape], 'bpmn-activity-in-progress');
+      addHighlightPath(pathShapeElements);
+      addCssClass([pathLastShape], 'highlight-in-progress');
       pathGroupStep = 'step5';
       break;
     default:
@@ -117,36 +117,36 @@ function pathHighLightingStepByStep() {
   }
 
   const pathElement = orderedPathElements[pathEltCount];
-  addHighlightPath(pathElement.name, pathElement.type === 'shape');
+  addHighlightPath(pathElement.name);
   pathEltCount++;
   // last element
   if (pathEltCount >= orderedPathElements.length) {
-    addCssClass([pathElement.name], 'bpmn-activity-in-progress');
+    addCssClass([pathElement.name], 'highlight-in-progress');
   }
 }
 
 function applyInitialStyles() {
-  addCssClass(['assignApprover'], 'bpmn-activity-info');
-  addCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'bpmn-gateway-warning');
+  addCssClass(['assignApprover'], 'highlight-info');
+  addCssClass(['reviewSuccessful_gw', 'invoice_approved'], 'highlight-warning');
 }
 
 function clearAllStyles() {
-  removeCssClass(styledElements, 'bpmn-activity-info', 'bpmn-activity-success', 'bpmn-activity-error', 'bpmn-gateway-warning')
+  removeCssClass(styledElements, 'highlight-info', 'highlight-success', 'highlight-error', 'highlight-warning')
   clearHighlightPath();
 }
 
 
-function addHighlightPath(elements, isShape) {
-  addCssClass(elements, getPathHighlightClassName(isShape));
+function addHighlightPath(elements) {
+  addCssClass(elements, getPathHighlightClassName());
 }
-function getPathHighlightClassName(isShape) {
-  return isShape ? 'bpmn-shape-path-highlight' : 'bpmn-edge-path-highlight';
+function getPathHighlightClassName() {
+  return 'highlight-path';
 }
-function removeHighlightPath(elements, isShape) {
-  removeCssClass(elements, getPathHighlightClassName(isShape));
+function removeHighlightPath(elements) {
+  removeCssClass(elements, getPathHighlightClassName());
 }
 function clearHighlightPath() {
-  removeCssClass(pathEdgeElements.concat(pathShapeElements), 'bpmn-edge-path-highlight', 'bpmn-shape-path-highlight', 'bpmn-activity-in-progress');
+  removeCssClass(pathEdgeElements.concat(pathShapeElements), getPathHighlightClassName(), 'highlight-in-progress');
   pathGroupStep = 'none';
   pathEltCount = 0;
 }
