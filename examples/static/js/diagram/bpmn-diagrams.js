@@ -406,33 +406,26 @@ function getIncidentManagementBpmnDiagram(){
   </semantic:collaboration>
   <bpmndi:BPMNDiagram id="Trisotech.Visio-_0" name="Account Manager Only" documentation="" resolution="96.00000267028808">
     <bpmndi:BPMNPlane bpmnElement="C1276277259631">
-      <bpmndi:BPMNShape id="Trisotech.Visio_participant_1" bpmnElement="participant_1" isHorizontal="true">
-        <dc:Bounds x="120" y="82" width="1000" height="108" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Trisotech.Visio_participant_2" bpmnElement="participant_2" isHorizontal="true">
         <dc:Bounds x="120" y="236" width="1000" height="194" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Trisotech.Visio_participant_3" bpmnElement="participant_3" isHorizontal="true">
-        <dc:Bounds x="120" y="478" width="1000" height="108" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_1" bpmnElement="flow_1">
-        <di:waypoint x="961" y="287" />
-        <di:waypoint x="1044" y="287" />
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_7" bpmnElement="flow_7">
+        <di:waypoint x="216" y="351" />
+        <di:waypoint x="298" y="351" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_2" bpmnElement="flow_2">
-        <di:waypoint x="826" y="351" />
-        <di:waypoint x="920" y="351" />
-        <di:waypoint x="920" y="321" />
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_6" bpmnElement="flow_6">
+        <di:waypoint x="381" y="351" />
+        <di:waypoint x="459" y="351" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_3" bpmnElement="flow_3">
-        <di:waypoint x="691" y="351" />
-        <di:waypoint x="794" y="351" />
-        <bpmndi:BPMNLabel />
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_5" bpmnElement="flow_5">
+        <di:waypoint x="501" y="351" />
+        <di:waypoint x="608" y="351" />
+        <bpmndi:BPMNLabel>
+          <dc:Bounds x="537" y="326" width="13" height="14" />
+        </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_4" bpmnElement="flow_4">
         <di:waypoint x="480" y="330" />
@@ -442,21 +435,20 @@ function getIncidentManagementBpmnDiagram(){
           <dc:Bounds x="491" y="293" width="18" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_5" bpmnElement="flow_5">
-        <di:waypoint x="501" y="351" />
-        <di:waypoint x="608" y="351" />
-        <bpmndi:BPMNLabel>
-          <dc:Bounds x="537" y="326" width="13" height="14" />
-        </bpmndi:BPMNLabel>
-      </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_6" bpmnElement="flow_6">
-        <di:waypoint x="381" y="351" />
-        <di:waypoint x="459" y="351" />
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_3" bpmnElement="flow_3">
+        <di:waypoint x="691" y="351" />
+        <di:waypoint x="794" y="351" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_7" bpmnElement="flow_7">
-        <di:waypoint x="216" y="351" />
-        <di:waypoint x="298" y="351" />
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_2" bpmnElement="flow_2">
+        <di:waypoint x="826" y="351" />
+        <di:waypoint x="920" y="351" />
+        <di:waypoint x="920" y="321" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNEdge>
+      <bpmndi:BPMNEdge id="Trisotech.Visio__0_flow_1" bpmnElement="flow_1">
+        <di:waypoint x="961" y="287" />
+        <di:waypoint x="1044" y="287" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="Trisotech.Visio__0_start_event" bpmnElement="start_event">
@@ -469,12 +461,12 @@ function getIncidentManagementBpmnDiagram(){
         <dc:Bounds x="298" y="317" width="83" height="68" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="Trisotech.Visio__0_manual_task_2" bpmnElement="manual_task_2">
-        <dc:Bounds x="608" y="317" width="83" height="68" />
-        <bpmndi:BPMNLabel />
-      </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Trisotech.Visio__0_manual_task_3" bpmnElement="manual_task_3">
         <dc:Bounds x="878" y="253" width="83" height="68" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Trisotech.Visio__0_manual_task_2" bpmnElement="manual_task_2">
+        <dc:Bounds x="608" y="317" width="83" height="68" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="Trisotech.Visio__0_intermediate_catch_event" bpmnElement="intermediate_catch_event">
@@ -493,24 +485,32 @@ function getIncidentManagementBpmnDiagram(){
           <dc:Bounds x="452" y="376" width="57" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Trisotech.Visio_participant_3" bpmnElement="participant_3" isHorizontal="true">
+        <dc:Bounds x="120" y="478" width="1000" height="108" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
+      <bpmndi:BPMNShape id="Trisotech.Visio_participant_1" bpmnElement="participant_1" isHorizontal="true">
+        <dc:Bounds x="120" y="82" width="1000" height="108" />
+        <bpmndi:BPMNLabel />
+      </bpmndi:BPMNShape>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_3" bpmnElement="message_3">
-        <di:waypoint x="353" y="191" />
-        <di:waypoint x="353" y="310" />
+        <di:waypoint x="353" y="190" />
+        <di:waypoint x="353" y="317" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_4" bpmnElement="message_4">
-        <di:waypoint x="201" y="191" />
+        <di:waypoint x="201" y="190" />
         <di:waypoint x="201" y="336" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_5" bpmnElement="message_5">
-        <di:waypoint x="325" y="316" />
-        <di:waypoint x="325" y="191" />
+        <di:waypoint x="325" y="317" />
+        <di:waypoint x="325" y="190" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_6" bpmnElement="message_6">
-        <di:waypoint x="920" y="250" />
-        <di:waypoint x="920" y="191" />
+        <di:waypoint x="920" y="253" />
+        <di:waypoint x="920" y="190" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_7" bpmnElement="message_7">
@@ -519,13 +519,14 @@ function getIncidentManagementBpmnDiagram(){
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="Trisotech.Visio__0_message_8" bpmnElement="message_8">
-        <di:waypoint x="810" y="477" />
-        <di:waypoint x="810" y="368" />
+        <di:waypoint x="810" y="478" />
+        <di:waypoint x="810" y="367" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
     </bpmndi:BPMNPlane>
   </bpmndi:BPMNDiagram>
 </semantic:definitions>
+
 `;
 }
 // --------------------------------------------

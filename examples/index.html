@@ -15,6 +15,7 @@ limitations under the License.
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no"/>
     <title>BPMN Visualization Examples</title>
     <link rel="icon" href="./favicon.png">
     <link rel="stylesheet" href="static/css/spectre.min.css" type="text/css">
@@ -24,9 +25,6 @@ limitations under the License.
         :root {
             /* How far of a scroll travel to the back-to-top link appearing */
             --scrollLength: 100vh;
-            /* TODO find why 56px is the value to stick to the nav bar, if possible use relative value
-             * we should find how to get the real navbar height that can change on small screen
-             */
             --navbar-height: 56px;
         }
         body {
@@ -77,7 +75,7 @@ limitations under the License.
             border-radius: 50%;
 
             /* "pretty" styles, including states */
-            border: 1px solid #254568;
+            border: 1px solid var(--background-color);
             /* transition for scaling on hover */
             transition: transform 150ms ease-in;
         }
@@ -85,19 +83,20 @@ limitations under the License.
         .back-to-top-link:hover, .back-to-top-link:focus {
             transform: scale(1.1);
             text-decoration: none;
-            box-shadow: 0 0 0 2px #303742; /*Same color as bg-dark*/
+            box-shadow: 0 0 0 2px var(--background-color);
+            background: var(--background-color);
+        }
+        .back-to-top-link:hover em, .back-to-top-link:focus em {
+            color: white;
         }
         .back-to-top-link em {
-            color: #254568;
+            color: var(--background-color);
             margin-top: -12px;
         }
         .back-to-top-link em.icon-upward::after {
             top: 50%;
         }
 
-        /* TODO explore alternative for anchor
-           currently dedicated 'a' element on top of h2 elements
-        */
         .anchor-from-summary {
             position: relative;
             top: -50px;
@@ -107,9 +106,11 @@ limitations under the License.
             border-color: #bebebe;
             border-radius: 3px;
         }
-        .card:hover {
+        .card:hover, a.card-link:focus .card {
             background-color: #fcfafc;
             border-color: #3a38d2;
+            border-width: .09rem;
+            box-shadow: rgba(0, 0, 0, 0.25) 0 12px 16px;
         }
         .card-body {
             font-style: italic;
@@ -121,11 +122,45 @@ limitations under the License.
         }
         a.card-link:focus {
             box-shadow: none; /* avoid dash line on the left of the card */
-            /*TODO we could improve the style here to make the whole card appears as when hover on card*/
         }
         .card-title {
             font-weight: bold;
             font-size: 0.85rem;
+        }
+
+        /* spectre config: 840px md / 600px sm / 480px xs */
+        @media (max-width: 840px) {
+            .back-to-top-wrapper {
+                right: 1.25rem;
+                width: 1rem;
+            }
+            .back-to-top-link {
+                line-height: 2rem;
+                width: 2rem;
+                height: 2rem;
+            }
+            .icon.icon-2x {
+                font-size: 24px;
+            }
+        }
+        @media (max-width: 640px) {
+            .navbar-section > .h3 {
+                font-size: 0.9rem;
+            }
+            .navbar-section .btn {
+                font-size: 0.7rem;
+            }
+            .columns h2 {
+                font-size: 1rem;
+            }
+        }
+        @media (max-width: 440px) {
+            .navbar-section > .h3 {
+                font-size: 0.8rem;
+            }
+            .navbar-section .btn {
+                font-size: 0.6rem;
+            }
         }
     </style>
 </head>
@@ -137,7 +172,7 @@ limitations under the License.
             <img src="static/img/logo_64x64_white.png" alt="logo" class="logo">
             <span class="h3 text-light ml-2 lib-name-text">BPMN Visualization Examples</span>
         </section>
-        <section class="navbar-section">
+        <section class="navbar-section" style="flex-grow: 0">
             <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
             <div class="dropdown mr-2 dropdown-right">
                 <span class="btn btn-primary dropdown-toggle" tabindex="0">
@@ -269,7 +304,6 @@ limitations under the License.
                 <h2 class="bg-dark">BPMN Rendering</h2>
                 <div class="columns">
                     <div class="col-md-12 col-4 p-2">
-                        <!-- TODO tabindex="-1" to make it temporary non focusable to avoid glitch -->
                         <a href="display-bpmn-diagram/01-getting-started/index.html" class="card-link">
                             <div class="card p-2">
                                 <div class="card-header">
@@ -438,6 +472,22 @@ limitations under the License.
                                     <img src="static/img/preview/custom-bpmn-theme/custom-colors.png" class="img-responsive" alt="custom colors">
                                 </div>
                                 <div class="card-body">Change default fill and stroke colors, font color, use specific colors depending on the BPMN element.</div>
+                                <div class="card-footer"></div>
+                            </div>
+                        </a>
+                    </div>
+
+                    <div class="col-md-12 col-4 p-2">
+                        <a href="custom-bpmn-theme/custom-edge-marker-colors/index.html" class="card-link">
+                            <div class="card p-2">
+                                <div class="card-header">
+                                    <div class="card-title">Custom Edge marker colors</div>
+                                    <div class="card-subtitle"></div>
+                                </div>
+                                <div class="card-image">
+                                    <img src="static/img/preview/custom-bpmn-theme/custom-edge-marker-colors.png" class="img-responsive" alt="custom colors">
+                                </div>
+                                <div class="card-body">Change the fill colors of the Edge start and end markers.</div>
                                 <div class="card-footer"></div>
                             </div>
                         </a>

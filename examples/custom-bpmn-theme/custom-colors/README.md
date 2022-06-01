@@ -14,7 +14,7 @@ See the [development documentation](https://github.com/process-analytics/bpmn-vi
 
 ⚠️To avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-ℹ In the following code examples, the `style` keys and values constants are related to the `mxConstants` object that comes from mxGraph.
+ℹ Generally, the `style` keys and values constants are related to the `mxConstants` object that comes from mxGraph.
 For reference, see the [mxConstants API](https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants). \
 We are using `Directions` and `StyleIdentifiers` here that store the constants string values. They are defined in [style-identifier.js](../../static/js/style-identifiers.js).
 But you can also use the string value directly, for instance `style['fillColor']=...`.
