@@ -113,11 +113,11 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 - [Custom user task icon](examples/custom-bpmn-theme/custom-user-task-icon/README.md) - use your own icon
 - [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [Custom edge marker colors](examples/custom-bpmn-theme/custom-edge-marker-colors/README.md) - custom colors for Edge start and end markers
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 
 ### Custom behavior examples
 
-- [Add a popover on a BPMN element](examples/custom-behavior/popover-static/README.md) - add a popover with information to the task found by its id
 - [Apply CSS classes](examples/custom-behavior/apply-css-classes/README.md) - highlight elements and paths on demand on the BPMN diagram
 - [Attach tooltip and popover to BPMN elements](examples/custom-behavior/javascript-tooltip-and-popover/README.md) - interact with the BPMN Diagram to display additional information
 - [Select elements by BPMN kind](examples/custom-behavior/select-elements-by-bpmn-kind/README.md) - to select elements by BPMN kind and register custom behavior on found elements
