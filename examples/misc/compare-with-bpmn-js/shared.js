@@ -100,7 +100,7 @@ class LibraryComparator {
     }
 
     _setZoomLevelBpmnVisualization() {
-        this.#bpmnVisualization.fit(this._computeBpmnVisualizationFitOptions());
+        this.#bpmnVisualization.navigation.fit(this._computeBpmnVisualizationFitOptions());
         this._logBpmnVisualization(`Zoom level set, fitView ${this._state.fitView}`);
     }
 

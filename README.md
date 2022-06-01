@@ -113,6 +113,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 - [Custom user task icon](examples/custom-bpmn-theme/custom-user-task-icon/README.md) - use your own icon
 - [Custom colors](examples/custom-bpmn-theme/custom-colors/README.md) - custom defaults, specific to BPMN element types
+- [Custom edge marker colors](examples/custom-bpmn-theme/custom-edge-marker-colors/README.md) - custom colors for Edge start and end markers
 - [Custom fonts](examples/custom-bpmn-theme/custom-fonts/README.md) - custom defaults, specific to BPMN element types
 
 ### Custom behavior examples
