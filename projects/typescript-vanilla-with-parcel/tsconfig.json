@@ -1,0 +1,25 @@
+{
+  "compilerOptions": {
+    "strict": true,
+    "module": "es6",
+    "target": "es6",
+    "esModuleInterop": true,
+    "isolatedModules": true,
+    "sourceMap": true,
+    "lib": [
+      "es6",
+      "dom"
+    ],
+    "moduleResolution": "node",
+    "noEmit": true, // tsc only used for checks, Parcel manages file generation
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@typed-mxgraph"
+    ]
+  },
+  "include": [
+    "src"
+  ],
+
+}
