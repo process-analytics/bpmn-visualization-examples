@@ -21,6 +21,7 @@ import copyWatch from "rollup-plugin-copy-watch";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import { string } from "rollup-plugin-string";
 import pkg from "./package.json";
 
 const devMode = process.env.devMode ?? false;
@@ -29,6 +30,7 @@ const plugins = [
   typescript(),
   resolve(),
   commonjs(), // at least required to bundle mxGraph with is a CommonJS module
+  string({include: "**/*.bpmn"}), // let import the BPMN diagram in the TypeScript code
 ];
 
 // Copy static resources to dist

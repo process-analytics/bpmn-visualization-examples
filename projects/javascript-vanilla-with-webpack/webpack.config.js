@@ -8,6 +8,14 @@ module.exports = {
     output: {
         path: path.resolve(__dirname, 'dist'),
     },
+    module: {
+        rules: [
+            {
+                test: /\.bpmn/,
+                type: 'asset/source',
+            }
+        ]
+    },
     devServer: {
         open: true,
         host: 'localhost',
