@@ -9,7 +9,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
-    "bpmn-visualization": "0.24.0"
+    "bpmn-visualization": "0.24.1"
   },
   "devDependencies": {
     "typescript": "~4.6.4",
