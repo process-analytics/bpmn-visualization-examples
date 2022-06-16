@@ -25,8 +25,9 @@ jobs:
       fail-fast: false
       matrix:
         project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-    env:
-      project_dir: ${{github.workspace}}/projects/${{matrix.project}}
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
     steps:
       - uses: actions/checkout@v3
       - name: Setup node
@@ -34,8 +35,6 @@ jobs:
         with:
           node-version: '16'
       - name: Install dependencies
-        working-directory: ${{env.project_dir}}
         run: npm install
       - name: Build project
-        working-directory: ${{env.project_dir}}
         run: npm run build
