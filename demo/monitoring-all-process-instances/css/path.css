@@ -12,7 +12,6 @@
 */
 .path-lvl1 > path:nth-child(2) {
     stroke: var(--color-lvl1);
-    stroke-width: 2px;
 }
 
 .path-lvl1 > path:nth-child(3) {
@@ -22,7 +21,6 @@
 
 .path-lvl2 > path:nth-child(2) {
     stroke: var(--color-lvl2);
-    stroke-width: 4px;
 }
 
 .path-lvl2 > path:nth-child(3) {
@@ -32,7 +30,6 @@
 
 .path-lvl3 > path:nth-child(2) {
     stroke: var(--color-lvl3);
-    stroke-width: 6px;
 }
 
 .path-lvl3 > path:nth-child(3) {
@@ -42,7 +39,6 @@
 
 .path-lvl4 > path:nth-child(2) {
     stroke: var(--color-lvl4);
-    stroke-width: 8px;
 }
 
 .path-lvl4 > path:nth-child(3) {
@@ -52,10 +48,17 @@
 
 .path-lvl5 > path:nth-child(2) {
     stroke: var(--color-lvl5);
-    stroke-width: 10px;
 }
 
 .path-lvl5 > path:nth-child(3) {
     stroke: var(--color-lvl5);
     fill: var(--color-lvl5);
+}
+
+.path-lvl1 > path:nth-child(2),
+.path-lvl2 > path:nth-child(2),
+.path-lvl3 > path:nth-child(2),
+.path-lvl4 > path:nth-child(2),
+.path-lvl5 > path:nth-child(2) {
+    stroke-width: 0.12vw;
 }
