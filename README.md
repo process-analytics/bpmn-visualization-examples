@@ -98,6 +98,7 @@ Display BPMN Diagram:
 - [BPMN Diagram navigation](examples/diagram-navigation/diagram-navigation/README.md) - use the mouse to zoom and move the diagram 
 - [BPMN Diagram fit on load](examples/diagram-navigation/diagram-fit-on-load/README.md) - fit the BPMN diagram in the container on load
 - [BPMN Diagram fit after load](examples/diagram-navigation/diagram-fit-after-load/README.md) - fit the BPMN diagram in the container after load
+- [Filter pools of the BPMN Diagram at load time](examples/diagram-navigation/pools-filter-on-load/README.md) - filter pools of the BPMN diagram on load
 
 ### Overlay examples
 
