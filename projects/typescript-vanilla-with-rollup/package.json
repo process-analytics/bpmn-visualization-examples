@@ -10,7 +10,7 @@
     "start": "rollup -cw --environment devMode:true"
   },
   "dependencies": {
-    "bpmn-visualization": "0.24.1"
+    "bpmn-visualization": "0.25.0"
   },
   "devDependencies": {
     "@rollup/plugin-commonjs": "~22.0.0",
