@@ -5,7 +5,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
-⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
+⚠️ To avoid having too much content in the README, we simplify it here. You can find all the content of the example in [index.js](index.js).
 
 Load the BPMN content and pass the information about the pools you want to filter
 ```javascript
