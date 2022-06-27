@@ -1,34 +1,22 @@
-# Fit BPMN Diagram on load
+# Filter Pools at load time
 
 Javascript example to demonstrate how can fit the BPMN diagram on load.
-- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/diagram-navigation/diagram-fit-on-load/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/display-bpmn-diagram/pools-filter-on-load/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
 ⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-1. Declare the BPMN container with a fixed width & a fixed height
-```css
-.bpmn-container {
-    /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
-    width: 100%;
-    height: 600px;
-    border-style: solid;
-    border-color: #B0B0B0;
-    border-width: 1px;
-    /* This ensures that the parts of the diagram outside of the container are not displayed. */
-    overflow: hidden;
-}
-```
-
-2. Load BPMN content
+Load the BPMN content and pass the information about the pools you want to filter
 ```javascript
-const bpmnContainerElt = window.document.getElementById('bpmn-container');
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt });
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 
 const bpmnContent = ``; // your BPMN 2.0 XML content
-bpmnVisualization.load(bpmnContent, { fit: {type: bpmnvisu.FitType.Center, margin: 10} });
+bpmnVisualization.load(bpmnContent, { 
+  modelFilter: {
+    pools: [{id: 'id_1'}, { name: 'pool_name_2'}],
+  }
+});
 ```
 
-ℹ️ `type` and `margin` are optional.
-Moreover, `margin` is only considered when FitType is not None.
+For more details, see the [API documentation](https://process-analytics.github.io/bpmn-visualization-js/api/interfaces/ModelFilter.html).
