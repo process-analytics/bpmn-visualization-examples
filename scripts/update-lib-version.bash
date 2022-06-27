@@ -20,7 +20,7 @@ function replaceVersion() {
     fi
   else
     if [[ $directory == *demo ]]; then
-      sed -i -E "${rexep_others}#" **/*.{html,md,js}
+      sed -i -E "${rexep_others}#" **/*.{html,md}
     elif [[ $directory == *projects ]]; then
       sed -i -E "${rexep_npm}#" **/package.json
     else
