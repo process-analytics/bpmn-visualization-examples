@@ -6,7 +6,7 @@ To run locally:
 
 1. `npm install`
 2. `npm start`
-3. [localhost app](http://localhost:3000)
+3. [localhost app](http://localhost:5173)
 
 You will see the following diagram:
 
@@ -15,4 +15,4 @@ You will see the following diagram:
 The code calling `bpmn-visualization` to render the BPMN diagram is available in [main.ts](src/main.ts).
 
 If you want to bundle the application, run `npm run build` and then run `npm run preview` to access to a preview of the
-bundle application.
+bundle application with http://localhost:4173.
