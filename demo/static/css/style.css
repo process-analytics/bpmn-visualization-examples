@@ -115,3 +115,13 @@
     padding-top: 1rem;
     padding-bottom: 1rem;
 }
+
+/* ************************************* */
+/* Footer */
+/* ************************************* */
+footer {
+    margin-bottom: 0.5rem;
+    font-size: small;
+    font-style: italic;
+}
+
