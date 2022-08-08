@@ -16,6 +16,6 @@
     "typescript": "~4.7.4"
   },
   "alias": {
-    "bpmn-visualization": "0.25.3"
+    "bpmn-visualization": "bpmn-visualization/dist/bpmn-visualization.esm.js"
   }
 }
