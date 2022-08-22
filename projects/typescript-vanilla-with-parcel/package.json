@@ -8,7 +8,7 @@
     "build": "tsc && parcel build index.html"
   },
   "dependencies": {
-    "bpmn-visualization": "0.25.2"
+    "bpmn-visualization": "0.26.0"
   },
   "devDependencies": {
     "@parcel/transformer-inline-string": "~2.7.0",
