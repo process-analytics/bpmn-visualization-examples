@@ -2,9 +2,9 @@
 changelog:
   exclude:
     labels:
-      - infra:build
-      - infra:repo
+      - chore
       - dependencies
+      - skip-changelog
   categories:
     - title: 🎉 New Features
       labels:
