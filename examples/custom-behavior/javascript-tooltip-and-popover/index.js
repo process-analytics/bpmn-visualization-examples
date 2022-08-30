@@ -1,7 +1,8 @@
+console.info('Custom code')
+
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
-// TODO enable navigation support
-// There is currently an issue with popover which are wrongly updated during and after pan
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt, navigation: { enabled: false } });
+// Navigation support: work with poc done in bpmn-visualization PR #2199
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt, navigation: { enabled: true } });
 
 const diagram = getHorizontalBpmnDiagram();
 bpmnVisualization.load(diagram, { fit: {type: 'Center', margin: 10 } });
