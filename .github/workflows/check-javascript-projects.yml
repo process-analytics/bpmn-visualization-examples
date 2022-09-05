@@ -1,0 +1,36 @@
+name: Check JavaScript projects
+on:
+  push:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/check-javascript-projects.yml'
+      - 'projects/javascript-vanilla-with-webpack/**/*'
+  pull_request:
+    branches:
+      - master
+    paths:
+      - '.github/workflows/check-javascript-projects.yml'
+      - 'projects/javascript-vanilla-with-webpack/**/*'
+
+jobs:
+  check:
+    runs-on: ubuntu-22.04
+    strategy:
+      # don't cancel running jobs even if one fails
+      fail-fast: false
+      matrix:
+        project: [javascript-vanilla-with-webpack]
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
+    steps:
+      - uses: actions/checkout@v3
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Build project
+        run: npm run build
