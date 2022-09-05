@@ -8,7 +8,7 @@
     "build": "tsc && parcel build index.html"
   },
   "dependencies": {
-    "bpmn-visualization": "0.26.0"
+    "bpmn-visualization": "0.26.1"
   },
   "devDependencies": {
     "@parcel/transformer-inline-string": "~2.7.0",
@@ -16,6 +16,6 @@
     "typescript": "~4.7.4"
   },
   "alias": {
-    "bpmn-visualization": "bpmn-visualization/dist/bpmn-visualization.esm.js"
+    "bpmn-visualization": "0.26.1"
   }
 }

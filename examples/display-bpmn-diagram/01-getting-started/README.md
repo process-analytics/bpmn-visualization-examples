@@ -10,12 +10,12 @@ Javascript example to demonstrate how to integrate `bpmn-visualization` in an ht
 Load the browser bundle from [jsdelivr](https://www.jsdelivr.com/package/npm/bpmn-visualization), [unpkg](https://unpkg.com/browse/bpmn-visualization)
 or any other location:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.26.0/dist/bpmn-visualization.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.26.1/dist/bpmn-visualization.min.js"></script>
 ```
 
 💡 During the development step, you can use the non-minified version:
 ```html
-<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.26.0/dist/bpmn-visualization.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.26.1/dist/bpmn-visualization.js"></script>
 ```
 
 ### Use the library
