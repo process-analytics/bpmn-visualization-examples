@@ -1,14 +1,18 @@
 {
   "compilerOptions": {
-    "declaration": false,
     "outDir": "./dist",
     "module": "es6",
     "target": "es6",
     "strict": true,
     "skipLibCheck": false,
     "moduleResolution": "node",
+    "noEmit": true, // tsc only used for checks, Rollup manages file generation
     "sourceMap": true,
-    "forceConsistentCasingInFileNames": true
+    "forceConsistentCasingInFileNames": true,
+    "typeRoots": [
+      "node_modules/@types",
+      "node_modules/@typed-mxgraph"
+    ],
   },
   "include": [
     "src/**/*"
