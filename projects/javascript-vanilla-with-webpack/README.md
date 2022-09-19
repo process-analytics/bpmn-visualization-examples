@@ -16,15 +16,8 @@ The code calling `bpmn-visualization` to render the BPMN diagram is available in
 Any code changes is quickly made available in the browser.
 
 
-## WARNING about the webpack configuration
+## WARNING about the webpack configuration for old bpmn-visualization versions
 
-Make sure you have defined the `mainFields` in the configuration, otherwise, `bpmn-visualization` doesn't load correctly.
-In this project, this is configured in [webpack.config.js](./webpack.config.js).
+When using bpmn-visualization@0.26.1 or older, a special configuration is required.
 
-```json
-    resolve:{
-        mainFields: ['module', 'main'],
-    },
-```
-
-See the [webpack 'resolve main fields' documentation](https://webpack.js.org/configuration/resolve/#resolvemainfields) for more details.
+See the [README of the 0.26.1 examples](https://github.com/process-analytics/bpmn-visualization-examples/blob/v0.26.1/projects/javascript-vanilla-with-webpack/README.md) for more details.
