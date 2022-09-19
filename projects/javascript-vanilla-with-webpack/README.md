@@ -18,6 +18,6 @@ Any code changes is quickly made available in the browser.
 
 ## WARNING about the webpack configuration for old bpmn-visualization versions
 
-When using bpmn-visualization@0.26.1 or older, a special configuration is required.
+When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384 ](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
 
-See the [README of the 0.26.1 examples](https://github.com/process-analytics/bpmn-visualization-examples/blob/v0.26.1/projects/javascript-vanilla-with-webpack/README.md) for more details.
+To know how to configure Webpack for such versions, see the [README of the 0.26.1 examples](https://github.com/process-analytics/bpmn-visualization-examples/blob/v0.26.1/projects/javascript-vanilla-with-webpack/README.md) for more details.
