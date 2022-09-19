@@ -15,3 +15,10 @@ You will see the following diagram:
 The code calling `bpmn-visualization` to render the BPMN diagram is available in [index.ts](src/index.ts).
 
 If you want to bundle the application, run `npm run build`.
+
+
+## WARNING about the Parcel configuration for old bpmn-visualization versions
+
+When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384 ](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
+
+For old versions, configure an alias in the package.json: https://github.com/process-analytics/bpmn-visualization-examples/blob/v0.26.1/projects/typescript-vanilla-with-parcel/package.json#L18-L20
