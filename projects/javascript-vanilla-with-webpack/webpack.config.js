@@ -25,10 +25,4 @@ module.exports = {
             template: 'index.html',
         }),
     ],
-
-    resolve:{
-        // MANDATORY, otherwise generates a non working bundle
-        // https://webpack.js.org/configuration/resolve/#resolvemainfields
-        mainFields: ['module', 'main'],
-    },
 };
