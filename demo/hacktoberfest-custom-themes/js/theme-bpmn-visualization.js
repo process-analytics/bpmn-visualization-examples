@@ -11,52 +11,45 @@ class ThemeBpmnVisualization extends bpmnvisu.BpmnVisualization {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
         // START EVENT
-        let style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START];
-        style[StyleIdentifiers.STYLE_STROKECOLOR] = this._theme.startEvent.stroke;
-        if (this._theme.startEvent.fill) {
-            style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.startEvent.fill;
-        }
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START], this._theme.startEvent);
 
         // END EVENT
-        style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END];
-        style[StyleIdentifiers.STYLE_STROKECOLOR] = this._theme.endEvent.stroke;
-        style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.endEvent.fill;
-        if (this._theme.endEvent.gradient) {
-            style[StyleIdentifiers.STYLE_GRADIENT_DIRECTION] = Directions.DIRECTION_WEST;
-            style[StyleIdentifiers.STYLE_GRADIENTCOLOR] = this._theme.endEvent.gradient;
-        }
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END], this._theme.endEvent);
 
         // USER TASK
-        style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
-        style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.userTask.fill;
-        if (this._theme.userTask.font) {
-            style[StyleIdentifiers.STYLE_FONTCOLOR] = this._theme.userTask.font;
-        }
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER], this._theme.userTask);
 
         // EXCLUSIVE GATEWAY
-        if (this._theme.exclusiveGateway.fill) {
-            style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE];
-            style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.exclusiveGateway.fill;
-        }
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE], this._theme.exclusiveGateway);
 
         // CALL ACTIVITY
-        style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY];
-        style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.callActivity.fill;
-        style[StyleIdentifiers.STYLE_FONTCOLOR] = this._theme.callActivity.font;
-        if (this._theme.callActivity.stroke) {
-            style[StyleIdentifiers.STYLE_STROKECOLOR] = this._theme.callActivity.stroke;
-        }
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY], this._theme.callActivity);
 
         // POOL
-        style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        style[StyleIdentifiers.STYLE_FILLCOLOR] = this._theme.pool.labelFill;
-        style[StyleIdentifiers.STYLE_SWIMLANE_FILLCOLOR] = this._theme.pool.swimlaneFill;
-        style[StyleIdentifiers.STYLE_FONTSIZE] = 16;
-        if (this._theme.pool.font) {
-            style[StyleIdentifiers.STYLE_FONTCOLOR] = this._theme.pool.font;
-        }
+        const style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
+        const themePool = this._theme.pool;
+        configureStyle(style, themePool);
+        style[StyleIdentifiers.STYLE_FILLCOLOR] = themePool.labelFill;
+        style[StyleIdentifiers.STYLE_SWIMLANE_FILLCOLOR] = themePool.swimlaneFill;
+        style[StyleIdentifiers.STYLE_FONTSIZE] = themePool.fontSize ?? 16;
     }
 
+}
+
+function configureStyle(style, themeElement) {
+    if (themeElement.fill) {
+        style[StyleIdentifiers.STYLE_FILLCOLOR] = themeElement.fill;
+    }
+    if (themeElement.font) {
+        style[StyleIdentifiers.STYLE_FONTCOLOR] = themeElement.font;
+    }
+    if (themeElement.gradient) {
+        style[StyleIdentifiers.STYLE_GRADIENT_DIRECTION] = themeElement.gradientDirection ?? Directions.DIRECTION_WEST;
+        style[StyleIdentifiers.STYLE_GRADIENTCOLOR] = themeElement.gradient;
+    }
+    if (themeElement.stroke) {
+        style[StyleIdentifiers.STYLE_STROKECOLOR] = themeElement.stroke;
+    }
 }
 
 class ThemeIconPainter extends bpmnvisu.IconPainter {

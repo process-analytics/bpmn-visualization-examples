@@ -18,6 +18,7 @@ const StyleIdentifiers = {
 
 const Directions = {
   DIRECTION_EAST: 'east',
+  DIRECTION_NORTH: 'north',
   DIRECTION_SOUTH: 'south',
   DIRECTION_WEST: 'west',
 }

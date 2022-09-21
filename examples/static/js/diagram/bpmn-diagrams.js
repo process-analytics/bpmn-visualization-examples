@@ -1677,7 +1677,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
       <bpmn:outgoing>sequence_flow_2</bpmn:outgoing>
       <bpmn:outgoing>sequence_flow_4</bpmn:outgoing>
     </bpmn:exclusiveGateway>
-    <bpmn:userTask id="user_task_1" name="Register on https://hacktoberfest.&#10;digitalocean.com">
+    <bpmn:userTask id="user_task_1" name="Register on https://hacktoberfest.com/">
       <bpmn:incoming>sequence_flow_2</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_3</bpmn:outgoing>
     </bpmn:userTask>
@@ -1740,13 +1740,13 @@ function getHacktoberfestBpmnDiagram(projectName) {
       <bpmndi:BPMNEdge id="edge_sequence_flow_2" bpmnElement="sequence_flow_2">
         <di:waypoint x="400" y="185" />
         <di:waypoint x="400" y="119" />
-        <di:waypoint x="470" y="119" />
+        <di:waypoint x="450" y="119" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="372" y="150" width="15" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_3" bpmnElement="sequence_flow_3">
-        <di:waypoint x="590" y="119" />
+        <di:waypoint x="600" y="119" />
         <di:waypoint x="660" y="119" />
         <di:waypoint x="660" y="185" />
       </bpmndi:BPMNEdge>
@@ -1806,7 +1806,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_user_task_1" bpmnElement="user_task_1">
-        <dc:Bounds x="470" y="84" width="120" height="70" />
+        <dc:Bounds x="450" y="84" width="150" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_exclusive_gateway_2" bpmnElement="exclusive_gateway_2" isMarkerVisible="true">
         <dc:Bounds x="635" y="185" width="50" height="50" />
@@ -1814,7 +1814,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
       <bpmndi:BPMNShape id="shape_user_task_2" bpmnElement="user_task_2">
         <dc:Bounds x="785" y="170" width="130" height="70" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="795" y="195" width="110" height="45" />
+          <dc:Bounds x="792" y="193" width="113" height="45" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_call_activity" bpmnElement="call_activity">
@@ -1997,7 +1997,7 @@ function getGettingStartedBpmnDiagram() {
     <bpmn:startEvent id="StartEvent_08hc3xj" name="Start coding">
       <bpmn:outgoing>Flow_1wkfbb0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1potg3p" name="Enjoy using &#39;BPMN Visualization&#39;">
+    <bpmn:task id="Activity_1potg3p" name="Enjoy using &#39;bpmn-visualization&#39;">
       <bpmn:incoming>Flow_1wkfbb0</bpmn:incoming>
       <bpmn:outgoing>Flow_133a5kz</bpmn:outgoing>
     </bpmn:task>
