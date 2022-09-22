@@ -3,6 +3,8 @@ import { BpmnVisualization, FitType } from "bpmn-visualization";
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "bundle-text:./diagram.bpmn";
 import "./styles.css";
+// put this import after the 'BpmnVisualization' import to ensure mxGraph is correctly configured by bpmn-visualization
+import { mxgraph } from "./mxgraph-initializer";
 
 // 'bpmn-visualization' API documentation: https://process-analytics.github.io/bpmn-visualization-js/api/index.html
 const bpmnVisualization = new BpmnVisualization({
@@ -15,7 +17,7 @@ const footer = document.querySelector("footer")!;
 const version = bpmnVisualization.getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
-footer.innerText = `${versionAsString} with ${dependenciesAsString}`;
+footer.innerText = `${versionAsString} with ${dependenciesAsString} | direct usage of mxGraph@${mxgraph.mxClient.VERSION}`;
 
 
 // Load BPMN diagram

@@ -4,7 +4,7 @@ import './style.css'
 import diagram from './diagram.bpmn?raw'
 import { BpmnVisualization } from 'bpmn-visualization';
 // put this import after the 'BpmnVisualization' import to ensure mxGraph is correctly configured by bpmn-visualization
-import { mxgraph } from "./mxgraph-intializer";
+import { mxgraph } from "./mxgraph-initializer";
 
 // instantiate BpmnVisualization, pass the container HTMLElement - present in index.html
 const bpmnVisualization = new BpmnVisualization({

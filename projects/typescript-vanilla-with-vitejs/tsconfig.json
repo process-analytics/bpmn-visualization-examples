@@ -15,10 +15,6 @@
     "noImplicitReturns": true,
     "skipLibCheck": false,
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/@typed-mxgraph"
-    ]
   },
   "include": ["src"],
 }
