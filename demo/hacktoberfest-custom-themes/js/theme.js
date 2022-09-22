@@ -191,7 +191,7 @@ themes.set("2021",
 themes.set("2022", new Map([
     ['dark', {
         default: {
-            // TODO when disabling this, the gradient of the gateway doesn't work anymore
+            // keep this to make the gateway gradient work
             fill: colors2022.primaryVoid,
             stroke: colors2022.primaryManga,
             font: colors2022.primaryManga,
@@ -224,11 +224,8 @@ themes.set("2022", new Map([
             icon: colors2022.primaryManga
         },
         pool: {
-            // labelFill: 'rgba(23, 15, 30, 0.5)',
             labelFill: colors2022.primaryVoid,
-            // TODO find a way to have gradient (introduce a fake bpmn lane if no other solution is possible)
             swimlaneFill: colors2022.primaryVoid,
-            // font: colors2021.brownLight
             fontSize: fonts2022.poolFontSize,
         }
     }],
