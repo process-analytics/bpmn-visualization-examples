@@ -21,6 +21,18 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@500&display=swap');
+
+        .hacktoberfest-2022 {
+            font-family: 'JetBrains Mono', monospace;
+        }
+
+        /* extend existing style */
+        .bpmn-container {
+            background-color: inherit;
+        }
+    </style>
     <script defer src="../../examples/static/js/link-to-sources.js"></script>
     <!-- load bpmn-visualization -->
     <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.26.2/dist/bpmn-visualization.min.js"></script>
@@ -75,7 +87,7 @@ limitations under the License.
                     <div class="column col-4">
                         <div>
                             <h5>Project name</h5>
-                            <input id="project-name-input" type="text" value="BPMN Visualization">
+                            <input id="project-name-input" type="text" value="bpmn-visualization">
                         </div>
                     </div>
                     <div id="choose-use-case-panel" class="column col-4">
@@ -100,7 +112,8 @@ limitations under the License.
                         <div class="form-group">
                             <select id="theme-year-select" class="form-select">
                                 <option>2020</option>
-                                <option selected>2021</option>
+                                <option>2021</option>
+                                <option selected>2022</option>
                             </select>
                         </div>
                     </div>
@@ -109,17 +122,22 @@ limitations under the License.
             <div id="use-case-panel" class="column bg-gray">
                 <div class="column col-12 text-center">
                     <h4 id="2020-light-title" class="d-hide">Light Hacktoberfest 2020 Theme</h4>
-                    <h4 id="2020-dark-title">Dark Hacktoberfest 2020 Theme</h4>
+                    <h4 id="2020-dark-title" class="d-hide">Dark Hacktoberfest 2020 Theme</h4>
                     <h4 id="2021-light-title" class="d-hide">Light Hacktoberfest 2021 Theme</h4>
-                    <h4 id="2021-dark-title">Dark Hacktoberfest 2021 Theme</h4>
+                    <h4 id="2021-dark-title" class="d-hide">Dark Hacktoberfest 2021 Theme</h4>
+                    <h4 id="2022-light-title" class="hacktoberfest-2022 d-hide">Light Hacktoberfest 2022 Theme</h4>
+                    <h4 id="2022-dark-title" class="hacktoberfest-2022 d-hide">Dark Hacktoberfest 2022 Theme</h4>
                     <h4 id="default-title" class="d-hide">Default Theme</h4>
                 </div>
                 <div class="column col-12">
-                    <div id="2020-light-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
-                    <div id="2020-dark-bpmn-container" class="column col-12 bpmn-container" style="background-color:inherit"></div>
-                    <div id="2021-light-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
-                    <div id="2021-dark-bpmn-container" class="column col-12 bpmn-container" style="background-color:inherit"></div>
-                    <div id="default-bpmn-container" class="column col-12 bpmn-container d-hide" style="background-color:inherit"></div>
+                    <div id="2020-light-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <div id="2020-dark-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <div id="2021-light-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <div id="2021-dark-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <div id="2022-light-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <div id="2022-dark-bpmn-container" class="column col-12 bpmn-container d-hide"></div>
+                    <!-- Only display a single container while loading. -->
+                    <div id="default-bpmn-container" class="column col-12 bpmn-container"></div>
                 </div>
             </div>
         </div>

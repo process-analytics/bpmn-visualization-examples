@@ -5,6 +5,7 @@ class ThemeUseCase extends HacktoberfestUseCase {
     // Default BPMN Visualization theme
     #originalDefaultFontColor;
     #originalDefaultFontFamily;
+    #originalDefaultFontSize;
     #originalDefaultStrokeColor;
     #originalDefaultFillColor;
     #originalPoolLabelFillColor;
@@ -21,7 +22,8 @@ class ThemeUseCase extends HacktoberfestUseCase {
         bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = this._theme.default.fill;
         bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = this._theme.default.stroke;
         bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = this._theme.default.font;
-        bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Inter, Helvetica, sans-serif';
+        bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = this._theme.default.fontFamily ?? 'Inter, Helvetica, sans-serif';
+        bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = this._theme.default.fontSize ?? bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
 
         const bpmnVisualization = this._internalBuildBpmnVisualization(options);
         this._restoreDefaultTheme();
@@ -34,6 +36,7 @@ class ThemeUseCase extends HacktoberfestUseCase {
     _saveDefaultTheme() {
         this.#originalDefaultFontColor = bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR;
         this.#originalDefaultFontFamily = bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY;
+        this.#originalDefaultFontSize = bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
         this.#originalDefaultStrokeColor = bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR;
         this.#originalDefaultFillColor = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
         this.#originalPoolLabelFillColor = bpmnvisu.StyleDefault.POOL_LABEL_FILL_COLOR;
@@ -46,6 +49,7 @@ class ThemeUseCase extends HacktoberfestUseCase {
     _restoreDefaultTheme() {
         bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = this.#originalDefaultFontColor;
         bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = this.#originalDefaultFontFamily;
+        bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = this.#originalDefaultFontSize;
         bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = this.#originalDefaultStrokeColor;
         bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = this.#originalDefaultFillColor;
         bpmnvisu.StyleDefault.POOL_LABEL_FILL_COLOR = this.#originalPoolLabelFillColor;

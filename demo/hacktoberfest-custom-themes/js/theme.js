@@ -25,6 +25,28 @@ const colors2021 = {
     orangeDark: '#B53A25',
 };
 
+// Colors are taken from the Figma official design (https://do.co/hacktoberbrand)
+const colors2022 = {
+    // Primary colors (background and font)
+    // Primary/Manga (kind of white)
+    primaryManga:'#E5E1E6',
+    // Primary/Void (kind of black)
+    primaryVoid: '#170F1E',
+
+    // Secondary colors (in the Hacktoberfest logo)
+    // Secondary/Spark (kind of yellow)
+    secondarySpark: '#FFE27D',
+    // Secondary/Surf (kind of green)
+    secondarySurf: '#64E3FF',
+    // Secondary/Psybeam (kind of purple)
+    secondaryPsybeam: '#9092FF',
+};
+const fonts2022= {
+    family: 'JetBrains Mono, monospace',
+    size: 9.5,
+    poolFontSize: 14,
+}
+
 const themes = new Map();
 themes.set("2020",
     new Map([['dark', {
@@ -165,3 +187,90 @@ themes.set("2021",
         }
     }]]));
 
+
+themes.set("2022", new Map([
+    ['dark', {
+        default: {
+            // keep this to make the gateway gradient work
+            fill: colors2022.primaryVoid,
+            stroke: colors2022.primaryManga,
+            font: colors2022.primaryManga,
+            fontFamily: fonts2022.family,
+            fontSize: fonts2022.size,
+        },
+        startEvent: {
+            fill: colors2022.primaryManga,
+            gradient: colors2022.secondaryPsybeam,
+            gradientDirection: Directions.DIRECTION_WEST,
+            stroke: colors2022.secondaryPsybeam,
+            icon: colors2022.secondaryPsybeam
+        },
+        endEvent: {
+            fill: colors2022.primaryManga,
+            gradient: colors2022.secondarySurf,
+            gradientDirection: Directions.DIRECTION_EAST,
+            stroke: colors2022.secondaryPsybeam,
+        },
+        exclusiveGateway: {
+            fill: colors2022.secondaryManga,
+            gradient: colors2022.secondarySpark,
+            gradientDirection: Directions.DIRECTION_EAST,
+            insideIcon: colors2022.secondarySpark,
+        },
+        userTask: {
+            icon: colors2022.primaryManga
+        },
+        callActivity: {
+            icon: colors2022.primaryManga
+        },
+        pool: {
+            labelFill: colors2022.primaryVoid,
+            swimlaneFill: colors2022.primaryVoid,
+            fontSize: fonts2022.poolFontSize,
+        }
+    }],
+    ['light', {
+        default: {
+            stroke: colors2022.primaryVoid,
+            font: colors2022.primaryVoid,
+            fontFamily: fonts2022.family,
+            fontSize: fonts2022.size,
+        },
+        startEvent: {
+            stroke: colors2022.primaryManga,
+            fill: colors2022.secondaryPsybeam,
+            gradient: colors2022.secondarySurf,
+            gradientDirection: Directions.DIRECTION_WEST,
+            icon: colors2022.primaryManga,
+        },
+        endEvent: {
+            fill: colors2022.secondaryPsybeam,
+            gradient: colors2022.secondarySpark,
+            stroke: colors2022.secondaryPsybeam,
+        },
+        exclusiveGateway: {
+            fill: colors2022.secondarySpark,
+            gradient: colors2022.primaryManga,
+            gradientDirection: Directions.DIRECTION_EAST,
+            insideIcon: colors2022.primaryManga
+        },
+        userTask: {
+            fill: colors2022.secondarySurf,
+            gradient: colors2022.secondaryPsybeam,
+            gradientDirection: Directions.DIRECTION_EAST,
+            icon: colors2022.primaryVoid,
+        },
+        callActivity: {
+            fill: colors2022.primaryManga,
+            gradient: colors2022.secondarySurf,
+            gradientDirection: Directions.DIRECTION_WEST,
+            icon: colors2022.primaryVoid,
+        },
+        pool: {
+            labelFill: colors2022.secondaryPsybeam,
+            gradient: colors2022.secondarySurf,
+            gradientDirection: Directions.DIRECTION_NORTH,
+            fontSize: fonts2022.poolFontSize,
+        }
+    }]
+]));
