@@ -43,7 +43,7 @@ const colors2022 = {
 };
 const fonts2022= {
     family: 'JetBrains Mono, monospace',
-    size: 9,
+    size: 9.5,
     poolFontSize: 14,
 }
 

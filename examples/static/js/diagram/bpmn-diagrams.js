@@ -1672,7 +1672,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
       <bpmn:outgoing>sequence_flow_1</bpmn:outgoing>
       <bpmn:timerEventDefinition />
     </bpmn:startEvent>
-    <bpmn:exclusiveGateway id="exclusive_gateway_1" name="Already registered on Hacktoberfest website ?" default="sequence_flow_2">
+    <bpmn:exclusiveGateway id="exclusive_gateway_1" name="Already registered on the Hacktoberfest website?" default="sequence_flow_2">
       <bpmn:incoming>sequence_flow_1</bpmn:incoming>
       <bpmn:outgoing>sequence_flow_2</bpmn:outgoing>
       <bpmn:outgoing>sequence_flow_4</bpmn:outgoing>
@@ -1746,7 +1746,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNEdge id="edge_sequence_flow_3" bpmnElement="sequence_flow_3">
-        <di:waypoint x="600" y="119" />
+        <di:waypoint x="620" y="119" />
         <di:waypoint x="660" y="119" />
         <di:waypoint x="660" y="185" />
       </bpmndi:BPMNEdge>
@@ -1806,7 +1806,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_user_task_1" bpmnElement="user_task_1">
-        <dc:Bounds x="450" y="84" width="150" height="70" />
+        <dc:Bounds x="450" y="84" width="170" height="70" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_exclusive_gateway_2" bpmnElement="exclusive_gateway_2" isMarkerVisible="true">
         <dc:Bounds x="635" y="185" width="50" height="50" />
