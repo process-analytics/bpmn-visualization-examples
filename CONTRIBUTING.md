@@ -125,9 +125,4 @@ A PR can only be merged into master by a maintainer, if all of these conditions 
 
 ### Release (maintainers only)
 
-Maintainers need to do the manual following actions **in the order described here** to push out a release (the release
-automation is a work in progress).
-
-#### Git Tag
-
-The tag is done while the [bpmn-visualization-js](https://github.com/process-analytics/bpmn-visualization-js) release.
+Releasing the examples is part of the [bpmn-visualization release process](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/maintainers.md#bpmn-visualization-examples-repository-update).
