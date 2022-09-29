@@ -75,7 +75,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install bpmn-visualization development npm package
-        if: ${{matrix.bv-npm-package}} == 'development'
+        if: ${{ matrix.bv-npm-package == 'development' }}
         # use wildcard as the file contains the version, and we don't know it
         run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
       - name: Build project
