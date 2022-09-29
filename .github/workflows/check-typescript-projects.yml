@@ -59,10 +59,10 @@ jobs:
         with:
           name: bpmn-visualization-npm-package
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
-      - name: 'Echo download path'
-        run: echo ${{steps.download.outputs.download-path}}
       - name: Display structure of downloaded files
-        run: ls -R
+        run: |
+          pwd
+          ls -R
         working-directory: ${{steps.download.outputs.download-path}}
       - uses: actions/checkout@v3
       - name: Display checkout
