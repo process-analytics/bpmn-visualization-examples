@@ -43,9 +43,7 @@ jobs:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        # TODO restore building all projects
-        project: [typescript-vanilla-with-vitejs]
-#        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
         # TODO 'release' will work when v0.27.0 is released
         bv-npm-package: ['release', 'development']
     defaults:
