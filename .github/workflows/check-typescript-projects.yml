@@ -51,8 +51,6 @@ jobs:
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
-#    env:
-#      BV_NPM_PACKAGE_PATH: ''
     steps:
       - name: Download the bpmn-visualization development npm package
         id: 'download'
@@ -60,14 +58,7 @@ jobs:
         with:
           name: bpmn-visualization-npm-package
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
-#      - name: Display structure of downloaded files
-#        run: |
-#          pwd
-#          ls -R
-#        working-directory: ${{steps.download.outputs.download-path}}
       - uses: actions/checkout@v3
-#      - name: Display checkout
-#        run: ls -lh
       - name: Setup node
         uses: actions/setup-node@v3
         with:
