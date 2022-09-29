@@ -18,7 +18,7 @@ on:
       - 'projects/typescript-vanilla-with-vitejs/**/*'
 
 jobs:
-  build_bpmn-visualization_npm_package:
+  build_bpmn-visualization_development_npm_package:
     runs-on: ubuntu-20.04
     steps:
       - uses: actions/checkout@v3
@@ -26,13 +26,6 @@ jobs:
           repository: 'process-analytics/bpmn-visualization-js'
           # TODO set to master when https://github.com/process-analytics/bpmn-visualization-js/pull/2258 is merge
           ref: 'infra/simplify_integration_in_TS_project'
-      # TODO can we use the build-setup action of bpmn-visualization here to avoid maintaining config here?
-#      - name: Setup node
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '16'
-#      - name: Install dependencies
-#        run: npm ci with extra parameters
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
@@ -43,20 +36,37 @@ jobs:
           name: bpmn-visualization-npm-package
           path: bpmn-visualization-*.tgz
 
-#  check:
-#    runs-on: ubuntu-20.04
-#    needs: 'build_bpmn-visualization_npm_package'
-#    strategy:
-#      # don't cancel running jobs even if one fails
-#      fail-fast: false
-#      matrix:
+  check:
+    runs-on: ubuntu-20.04
+    needs: 'build_bpmn-visualization_development_npm_package'
+    strategy:
+      # don't cancel running jobs even if one fails
+      fail-fast: false
+      matrix:
+        # TODO restore building all projects
+        project: [typescript-vanilla-with-vitejs]
 #        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-#        # TODO release and development
-#    defaults:
-#      run:
-#        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
-#    steps:
-#      - uses: actions/checkout@v3
+        # TODO add a matrix entry to build with both release and development version of bpmn-visualization
+    defaults:
+      run:
+        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
+#    env:
+#      BV_NPM_PACKAGE_PATH: ''
+    steps:
+      - name: Download the bpmn-visualization development npm package
+        id: 'download'
+        uses: actions/download-artifact@v3
+        with:
+          name: bpmn-visualization-npm-package
+          path: ${{github.workspace}}/../bpmn-visualization-npm-package
+      - name: 'Echo download path'
+        run: echo ${{steps.download.outputs.download-path}}
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: ${{steps.download.outputs.download-path}}
+      - uses: actions/checkout@v3
+      - name: Display checkout
+        run: ls -lh
 #      - name: Setup node
 #        uses: actions/setup-node@v3
 #        with:
