@@ -18,23 +18,50 @@ on:
       - 'projects/typescript-vanilla-with-vitejs/**/*'
 
 jobs:
-  check:
+  build_bpmn-visualization_npm_package:
     runs-on: ubuntu-20.04
-    strategy:
-      # don't cancel running jobs even if one fails
-      fail-fast: false
-      matrix:
-        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-    defaults:
-      run:
-        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
     steps:
       - uses: actions/checkout@v3
-      - name: Setup node
-        uses: actions/setup-node@v3
         with:
-          node-version: '16'
-      - name: Install dependencies
-        run: npm install
-      - name: Build project
-        run: npm run build
+          repository: 'process-analytics/bpmn-visualization-js'
+          # TODO set to master when https://github.com/process-analytics/bpmn-visualization-js/pull/2258 is merge
+          ref: 'infra/simplify_integration_in_TS_project'
+      # TODO can we use the build-setup action of bpmn-visualization here to avoid maintaining config here?
+#      - name: Setup node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '16'
+#      - name: Install dependencies
+#        run: npm ci with extra parameters
+      - name: Build Setup
+        uses: ./.github/actions/build-setup
+      - name: Build npm package
+        run: npm pack
+      - name: Upload npm package
+        uses: actions/upload-artifact@v3
+        with:
+          name: bpmn-visualization-npm-package
+          path: bpmn-visualization-*.tgz
+
+#  check:
+#    runs-on: ubuntu-20.04
+#    needs: 'build_bpmn-visualization_npm_package'
+#    strategy:
+#      # don't cancel running jobs even if one fails
+#      fail-fast: false
+#      matrix:
+#        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+#        # TODO release and development
+#    defaults:
+#      run:
+#        working-directory: ${{github.workspace}}/projects/${{matrix.project}}
+#    steps:
+#      - uses: actions/checkout@v3
+#      - name: Setup node
+#        uses: actions/setup-node@v3
+#        with:
+#          node-version: '16'
+#      - name: Install dependencies
+#        run: npm install
+#      - name: Build project
+#        run: npm run build
