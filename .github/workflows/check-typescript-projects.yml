@@ -46,7 +46,8 @@ jobs:
         # TODO restore building all projects
         project: [typescript-vanilla-with-vitejs]
 #        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-        # TODO add a matrix entry to build with both release and development version of bpmn-visualization
+        # TODO 'release' will work when v0.27.0 is released
+        bv-npm-package: ['release', 'development']
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
@@ -59,14 +60,14 @@ jobs:
         with:
           name: bpmn-visualization-npm-package
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
-      - name: Display structure of downloaded files
-        run: |
-          pwd
-          ls -R
-        working-directory: ${{steps.download.outputs.download-path}}
+#      - name: Display structure of downloaded files
+#        run: |
+#          pwd
+#          ls -R
+#        working-directory: ${{steps.download.outputs.download-path}}
       - uses: actions/checkout@v3
-      - name: Display checkout
-        run: ls -lh
+#      - name: Display checkout
+#        run: ls -lh
       - name: Setup node
         uses: actions/setup-node@v3
         with:
@@ -74,6 +75,7 @@ jobs:
       - name: Install dependencies
         run: npm install
       - name: Install bpmn-visualization development npm package
+        if: ${{matrix.bv-npm-package}} == 'development'
         # use wildcard as the file contains the version, and we don't know it
         run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
       - name: Build project
