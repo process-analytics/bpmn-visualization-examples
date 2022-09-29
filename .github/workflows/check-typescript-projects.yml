@@ -67,11 +67,14 @@ jobs:
       - uses: actions/checkout@v3
       - name: Display checkout
         run: ls -lh
-#      - name: Setup node
-#        uses: actions/setup-node@v3
-#        with:
-#          node-version: '16'
-#      - name: Install dependencies
-#        run: npm install
-#      - name: Build project
-#        run: npm run build
+      - name: Setup node
+        uses: actions/setup-node@v3
+        with:
+          node-version: '16'
+      - name: Install dependencies
+        run: npm install
+      - name: Install bpmn-visualization development npm package
+        # use wildcard as the file contains the version, and we don't know it
+        run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
+      - name: Build project
+        run: npm run build
