@@ -24,8 +24,7 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: 'process-analytics/bpmn-visualization-js'
-          # TODO set to master when https://github.com/process-analytics/bpmn-visualization-js/pull/2258 is merged
-          ref: 'infra/simplify_integration_in_TS_project'
+          ref: 'master'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
