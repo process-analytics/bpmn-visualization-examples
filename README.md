@@ -2,7 +2,7 @@
 <p align="center">
     <p align="center">
         <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html">
-            <img src="examples_home.png" alt="examples overview">
+            <img src="./examples/static/img/preview/demo/hacktoberfest-custom-themes.png" alt="examples overview">
         </a> 
     </p>
     <p align="center">
