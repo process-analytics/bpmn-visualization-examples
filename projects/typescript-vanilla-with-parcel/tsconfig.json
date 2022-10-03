@@ -13,10 +13,6 @@
     "moduleResolution": "node",
     "noEmit": true, // tsc only used for checks, Parcel manages file generation
     "forceConsistentCasingInFileNames": true,
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/@typed-mxgraph"
-    ]
   },
   "include": [
     "src"

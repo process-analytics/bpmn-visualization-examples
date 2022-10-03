@@ -18,17 +18,42 @@ on:
       - 'projects/typescript-vanilla-with-vitejs/**/*'
 
 jobs:
+  build_bpmn-visualization_development_npm_package:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: actions/checkout@v3
+        with:
+          repository: 'process-analytics/bpmn-visualization-js'
+          ref: 'master'
+      - name: Build Setup
+        uses: ./.github/actions/build-setup
+      - name: Build npm package
+        run: npm pack
+      - name: Upload npm package
+        uses: actions/upload-artifact@v3
+        with:
+          name: bpmn-visualization-npm-package
+          path: bpmn-visualization-*.tgz
+
   check:
     runs-on: ubuntu-20.04
+    needs: 'build_bpmn-visualization_development_npm_package'
     strategy:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
         project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+        bv-npm-package: ['release', 'development']
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
     steps:
+      - name: Download the bpmn-visualization development npm package
+        id: 'download'
+        uses: actions/download-artifact@v3
+        with:
+          name: bpmn-visualization-npm-package
+          path: ${{github.workspace}}/../bpmn-visualization-npm-package
       - uses: actions/checkout@v3
       - name: Setup node
         uses: actions/setup-node@v3
@@ -36,5 +61,9 @@ jobs:
           node-version: '16'
       - name: Install dependencies
         run: npm install
+      - name: Install bpmn-visualization development npm package
+        if: ${{ matrix.bv-npm-package == 'development' }}
+        # use wildcard as the file contains the version, and we don't know it
+        run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
       - name: Build project
         run: npm run build
