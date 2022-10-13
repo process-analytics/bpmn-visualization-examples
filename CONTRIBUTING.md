@@ -9,7 +9,7 @@ All members of our community are expected to follow our [Code of Conduct](https:
 There are many ways to contribute:
 
 - updating the [BPMN diagrams](./bpmn-files) used to test `bpmn-visualization` and demonstrate its rendering capacities
-- submitting bug reports and [new examples](./examples)in the [Github Issues](https://github.com/process-analytics/bpmn-visualization-examples/issues/new)
+- submitting bug reports and [new examples](./examples) in the [Github Issues](https://github.com/process-analytics/bpmn-visualization-examples/issues/new)
 - [improving](CONTRIBUTING.md#code-and-documentation-changes) the README
 
 ## Code and documentation changes guidelines
@@ -29,7 +29,7 @@ For all contributions, please respect the following guidelines:
 
 9. Be willing to accept criticism and work on improving your code. 
 
-**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on  GitHub](https://egghead.io/series/how-to-contribute-to-an-open-source-project-on-github)    
+**Working on your first Pull Request?** You can learn how from this *free* series [How to Contribute to an Open Source Project on GitHub](https://app.egghead.io/playlists/how-to-contribute-to-an-open-source-project-on-github)    
 
 ### Fork & create a branch
 
@@ -42,7 +42,7 @@ git checkout -b 25-annotations_to_tasks
 ```
 
 ### IDE configuration
-To know how to configure your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/development/ide-configuration.md)
+To know how to configure your development environment, see [IDE configuration](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/ide-configuration.md)
 
 ### Adding new example
 - Create a new folder in [examples](examples)
