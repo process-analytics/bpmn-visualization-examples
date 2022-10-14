@@ -1,4 +1,12 @@
-import { Component, ElementRef, Input, OnInit, ViewChild } from '@angular/core';
+import {
+  Component,
+  ElementRef,
+  Input,
+  OnChanges,
+  OnInit,
+  SimpleChanges,
+  ViewChild,
+} from '@angular/core';
 import { BpmnVisualization, FitType } from 'bpmn-visualization';
 
 @Component({
@@ -6,9 +14,9 @@ import { BpmnVisualization, FitType } from 'bpmn-visualization';
   templateUrl: './bpmn-visualization.component.html',
   styleUrls: ['./bpmn-visualization.component.css'],
 })
-export class BpmnVisualizationComponent implements OnInit {
+export class BpmnVisualizationComponent implements OnInit, OnChanges {
   @Input()
-  diagram?: string | null;
+  diagram!: string | null;
 
   @ViewChild('bpmnContainer', { static: true })
   private bpmnContainer: ElementRef<HTMLDivElement> | undefined;
@@ -23,8 +31,18 @@ export class BpmnVisualizationComponent implements OnInit {
       navigation: { enabled: true },
     });
 
-    this.bpmnVisualization.load(this.diagram!, {
-      fit: { type: FitType.Center },
-    });
+    this.loadDiagram(this.diagram);
+  }
+
+  ngOnChanges(changes: SimpleChanges): void {
+    this.loadDiagram(changes['diagram'].currentValue);
+  }
+
+  private loadDiagram(diagram?: string | null) {
+    if (diagram) {
+      this.bpmnVisualization?.load(diagram, {
+        fit: { type: FitType.Center },
+      });
+    }
   }
 }

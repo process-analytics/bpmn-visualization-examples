@@ -359,8 +359,20 @@
   <!-- Resources -->
   <h2>Angular integration example</h2>
 
+  <div class="card-container">
+    <button class="card card-small" (click)="loadDiagram(0)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Load Diagram 0</span>
+    </button>
+    <button class="card card-small" (click)="loadDiagram(1)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Load Diagram 1</span>
+    </button>
+  </div>
+
   <div class="resources">
-    <app-bpmn-visualization [diagram]="bpmnDiagram | async"></app-bpmn-visualization>
+    <div *ngIf="loading" class="loader"></div>
+    <app-bpmn-visualization *ngIf="bpmnDiagram" [diagram]="bpmnDiagram"></app-bpmn-visualization>
   </div>
 
   <!-- Resources -->

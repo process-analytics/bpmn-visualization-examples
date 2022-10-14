@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Observable } from 'rxjs';
 import { BpmnDiagramService } from './services/bpmn-diagram.service';
 
 @Component({
@@ -10,9 +9,20 @@ import { BpmnDiagramService } from './services/bpmn-diagram.service';
 export class AppComponent {
   title = 'bpmn-visualization-app';
 
-  bpmnDiagram: Observable<string>;
+  bpmnDiagram?: string | null;
 
-  constructor(private bpmnDiagramService: BpmnDiagramService) {
-    this.bpmnDiagram = this.bpmnDiagramService.getDiagram();
+  loading: boolean = false;
+
+  constructor(private bpmnDiagramService: BpmnDiagramService) {}
+
+  loadDiagram(diagramIdx: number) {
+    this.bpmnDiagram = null;
+    this.loading = true;
+    this.bpmnDiagramService
+      .getDiagram(diagramIdx)
+      .subscribe((diagram: string) => {
+        this.bpmnDiagram = diagram;
+        this.loading = false;
+      });
   }
 }
