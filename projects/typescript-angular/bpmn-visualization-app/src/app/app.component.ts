@@ -1,4 +1,6 @@
 import { Component } from '@angular/core';
+import { Observable } from 'rxjs';
+import { BpmnDiagramService } from './services/bpmn-diagram.service';
 
 @Component({
   selector: 'app-root',
@@ -7,4 +9,10 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'bpmn-visualization-app';
+
+  bpmnDiagram: Observable<string>;
+
+  constructor(private bpmnDiagramService: BpmnDiagramService) {
+    this.bpmnDiagram = this.bpmnDiagramService.getDiagram();
+  }
 }
