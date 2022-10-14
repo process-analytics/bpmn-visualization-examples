@@ -1,40 +1,35 @@
 # Integrate `bpmn-visualization` in an Angular 14 project
 
-**TODO change this sentence**
-Demonstrate how to integrate bpmn-visualization with an [Angular](https://angular.io/) application.
+This project shows how to integrate [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) in an [Angular](https://angular.io/) application.
 
+<!-- TODO Later add a screenshot or link to a live environment
 ![Integration Screenshot](./docs/screenshot.png)
-
+ -->
 
 ## Prerequisites
 
+The example provided here was created with the Angular 14 CLI, using node 16 and npm 8.16.
 
-TODO npx @angular/cli@14 to init + clean
+## Integrating bpmn-visualization
 
 We bootstrapped the application using the `ng` command:
 
 ```sh
-ng new bpmn-visualization-app --defaults=true
+npx @angular/cli@14 new bpmn-visualization-app --defaults=true
 cd bpmn-visualization-app
 ```
 
-Do not forget to update typeRoots for typed-mxgraph!
+The code of the bpmn-visualization component is in [bpmn.component.ts](bpmn-visualization-app/src/app/bpmn/bpmn.component.ts)
 
-https://angular.io/guide/build#configuring-commonjs-dependencies
+This is a minimal implementation showing that it is possible to use bpmn-visualization in an Angular 14 application. In particular,
+the BPMN diagrams are stored as assets of the application. A real application would instead fetch the diagrams.
 
-## Integrating bpmn-visualization
-
-See ....
-
-
-This is a minimal implementation showing that it is possible to use bpmn-visualization in an Angular 14 application.
-
-Missing for a real app --> issues
-- diagram retrieval
-- load with error management
+See the README in the [bpmn-visualization-app directory to know how to start and develop](./bpmn-visualization-app/README.md) this example.
 
 
-TODO add buttons to 
-- add/remove overlays
-- add/remove classes
-- reset fit
+### Angular warnings
+
+`bpmn-visualization` has dependencies on packages that uses the CommonJS format. By default, Angular emits warnings when
+it encounters such dependencies.
+
+To remove the warnings, see https://angular.io/guide/build#configuring-commonjs-dependencies
