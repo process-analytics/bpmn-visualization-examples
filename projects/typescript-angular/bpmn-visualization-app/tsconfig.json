@@ -22,11 +22,6 @@
       "es2020",
       "dom"
     ],
-    // for typed-mxgraph
-    "typeRoots": [
-      "node_modules/@types",
-      "node_modules/@typed-mxgraph"
-    ],
   },
   "angularCompilerOptions": {
     "enableI18nLegacyMessageIdFormat": false,
