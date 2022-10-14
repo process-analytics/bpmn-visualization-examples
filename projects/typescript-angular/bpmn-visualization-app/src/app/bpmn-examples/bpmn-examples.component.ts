@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { FitType } from 'bpmn-visualization';
 import { BpmnDiagramService } from '../services/bpmn-diagram.service';
 
 @Component({
@@ -10,6 +11,9 @@ export class BpmnExamplesComponent {
   bpmnDiagram?: string | null;
 
   loading: boolean = false;
+
+  FitType = FitType; // makes the enum available in the template
+  fitTypeValue?: FitType;
 
   constructor(private bpmnDiagramService: BpmnDiagramService) {}
 

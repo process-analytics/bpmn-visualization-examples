@@ -18,6 +18,9 @@ export class BpmnVisualizationComponent implements OnInit, OnChanges {
   @Input()
   diagram!: string | null;
 
+  @Input()
+  fitType?: FitType;
+
   @ViewChild('bpmnContainer', { static: true })
   private bpmnContainer: ElementRef<HTMLDivElement> | undefined;
 
@@ -31,17 +34,17 @@ export class BpmnVisualizationComponent implements OnInit, OnChanges {
       navigation: { enabled: true },
     });
 
-    this.loadDiagram(this.diagram);
+    this.loadDiagram();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    this.loadDiagram(changes['diagram'].currentValue);
+  ngOnChanges(_changes: SimpleChanges): void {
+    this.loadDiagram();
   }
 
-  private loadDiagram(diagram?: string | null) {
-    if (diagram) {
-      this.bpmnVisualization?.load(diagram, {
-        fit: { type: FitType.Center },
+  private loadDiagram(): void {
+    if (this.diagram) {
+      this.bpmnVisualization?.load(this.diagram, {
+        fit: { type: this.fitType },
       });
     }
   }

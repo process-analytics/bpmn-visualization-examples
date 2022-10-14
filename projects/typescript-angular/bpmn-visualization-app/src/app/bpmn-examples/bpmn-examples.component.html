@@ -13,8 +13,29 @@
     </button>
   </div>
 
+  <h3>Fit Options</h3>
+  <div class="card-container">
+    <button class="card card-small" (click)="fitTypeValue = FitType.None" tabindex="0">
+      <span>Fit None</span>
+    </button>
+    <button class="card card-small" (click)="fitTypeValue = FitType.Center" tabindex="0">
+      <span>Fit Center</span>
+    </button>
+  </div>
+  <div class="card-container">
+    <button class="card card-small" (click)="fitTypeValue = FitType.HorizontalVertical" tabindex="0">
+      <span>Fit HorizontalVertical</span>
+    </button>
+    <button class="card card-small" (click)="fitTypeValue = FitType.Horizontal" tabindex="0">
+      <span>Fit Horizontal</span>
+    </button>
+    <button class="card card-small" (click)="fitTypeValue = FitType.Vertical" tabindex="0">
+      <span>Fit Vertical</span>
+    </button>
+  </div>
+
   <div>
     <div *ngIf="loading" class="loader"></div>
-    <app-bpmn-visualization *ngIf="bpmnDiagram" [diagram]="bpmnDiagram"></app-bpmn-visualization>
+    <app-bpmn-visualization *ngIf="bpmnDiagram" [diagram]="bpmnDiagram" [fitType]="fitTypeValue"></app-bpmn-visualization>
   </div>
 </div>
