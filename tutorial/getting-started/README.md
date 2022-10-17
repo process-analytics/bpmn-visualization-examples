@@ -1,6 +1,6 @@
 # Getting started
 
-Javascript example to demonstrate some basic APIs of `bpmn-visualization` in an HTML page.
+A Javascript getting started tutorial to `bpmn-visualization` using an online monitoring scenario.
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/tutorial/getting-started/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
