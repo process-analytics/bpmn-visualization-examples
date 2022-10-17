@@ -90,7 +90,7 @@ especially when using bpmn-visualization prior version `0.27.0`.
 ### Basic examples
 
 Display BPMN Diagram:
-- [Getting started](examples/display-bpmn-diagram/01-getting-started/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [Quick start](examples/display-bpmn-diagram/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 - [Load local BPMN diagrams](examples/display-bpmn-diagram/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
 - [Load remote BPMN diagrams](examples/display-bpmn-diagram/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
 

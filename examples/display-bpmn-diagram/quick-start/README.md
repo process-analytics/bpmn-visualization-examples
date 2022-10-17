@@ -1,7 +1,7 @@
-# Getting Started
+# Quick start
 
 Javascript example to demonstrate how to integrate `bpmn-visualization` in an html page.
-- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/display-bpmn-diagram/01-getting-started/index.html)
+- [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/display-bpmn-diagram/01-quick-start/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 ## ♻️ Usage
