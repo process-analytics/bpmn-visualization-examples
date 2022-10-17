@@ -84,6 +84,7 @@ especially when using bpmn-visualization prior version `0.27.0`.
 
 ## Tutorial
 - [Quick start](tutorial/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [Getting started](tutorial/getting-started/README.md) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
 
 ## 🔭 Examples
 
