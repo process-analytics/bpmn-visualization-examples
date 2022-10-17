@@ -82,9 +82,9 @@ especially when using bpmn-visualization prior version `0.27.0`.
 - [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 - [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
 
-## Tutorial
-- [Quick start](tutorial/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [Getting started](tutorial/getting-started/README.md) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
+## Tutorials
+- [Quick start](tutorials/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
+- [Getting started](tutorials/getting-started/README.md) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
 
 ## 🔭 Examples
 
