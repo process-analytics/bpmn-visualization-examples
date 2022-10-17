@@ -5,6 +5,7 @@ on:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
+      - 'projects/typescript-angular/**/*'
       - 'projects/typescript-vanilla-with-parcel/**/*'
       - 'projects/typescript-vanilla-with-rollup/**/*'
       - 'projects/typescript-vanilla-with-vitejs/**/*'
@@ -13,6 +14,7 @@ on:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
+      - 'projects/typescript-angular/**/*'
       - 'projects/typescript-vanilla-with-parcel/**/*'
       - 'projects/typescript-vanilla-with-rollup/**/*'
       - 'projects/typescript-vanilla-with-vitejs/**/*'
@@ -42,7 +44,7 @@ jobs:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+        project: [typescript-angular/bpmn-visualization-app, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
         bv-npm-package: ['release', 'development']
     defaults:
       run:
