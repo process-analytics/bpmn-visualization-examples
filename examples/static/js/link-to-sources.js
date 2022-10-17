@@ -14,13 +14,13 @@ if (window.location.hostname === 'cdn.statically.io') {
 else if (window.location.hostname === 'localhost' || window.location.protocol.startsWith('file')) {
     logLinkToGithub('Local environment detected')
     const pathname = window.location.pathname;
-    // we keep everything after the latest occurrence of /examples/, /demo/ or /tutoriasl/
+    // we keep everything after the latest occurrence of /examples/, /demo/ or /tutorials/
     let lastIndexOfInterestingElement = pathname.lastIndexOf('/examples/');
     if (lastIndexOfInterestingElement === -1) {
         lastIndexOfInterestingElement = pathname.lastIndexOf('/demo/');
     }
     if (lastIndexOfInterestingElement === -1) {
-        lastIndexOfInterestingElement = pathname.lastIndexOf('/tutorial/');
+        lastIndexOfInterestingElement = pathname.lastIndexOf('/tutorials/');
     }
     if (lastIndexOfInterestingElement !== -1) {
         // force link to master
