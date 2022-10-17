@@ -3,7 +3,9 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  // Delay durantion (in ms) used to simulate diagram loading
+  delayDuration: 1000,
 };
 
 /*
