@@ -82,6 +82,8 @@ especially when using bpmn-visualization prior version `0.27.0`.
 - [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 - [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
 
+## Tutorial
+- [Quick start](tutorial/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 
 ## 🔭 Examples
 
@@ -90,7 +92,6 @@ especially when using bpmn-visualization prior version `0.27.0`.
 ### Basic examples
 
 Display BPMN Diagram:
-- [Quick start](examples/display-bpmn-diagram/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
 - [Load local BPMN diagrams](examples/display-bpmn-diagram/load-local-bpmn-diagrams/README.md) - load BPMN diagrams stored on your local device
 - [Load remote BPMN diagrams](examples/display-bpmn-diagram/load-remote-bpmn-diagrams/README.md) - load BPMN diagrams from the [bpmn-miwg-test-suite GitHub repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite)
 
