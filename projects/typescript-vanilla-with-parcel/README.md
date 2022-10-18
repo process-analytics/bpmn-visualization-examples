@@ -1,4 +1,4 @@
-# Integrate `bpmn-visualization` in a vanilla TypeScript project build with Parcel
+# Integrate `bpmn-visualization` in a vanilla TypeScript project built with Parcel
 
 Parcel v2 is used in this project: https://parceljs.org
 
