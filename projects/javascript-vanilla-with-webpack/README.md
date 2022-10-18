@@ -1,4 +1,4 @@
-# Integrate `bpmn-visualization` in a vanilla Webpack JavaScript project
+# Integrate `bpmn-visualization` in a vanilla JavaScript project built with Webpack
 
 ## Usage
 
