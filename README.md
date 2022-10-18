@@ -149,7 +149,7 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 
 Show how to integrate `bpmn-visualization` in project, using various kind of frameworks, build tools and bundlers:
 - [JavaScript + Webpack](projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript Webpack project
-- [TypeScript + Angular](projects/typescript-vanilla-with-parcel/README.md) - integration in a TypeScript Angular project
+- [TypeScript + Angular](projects/typescript-angular/README.md) - integration in a TypeScript Angular project
 - [TypeScript + Parcel](projects/typescript-vanilla-with-parcel/README.md) - integration in a vanilla TypeScript Parcel project
 - [TypeScript + Rollup](projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript Rollup project
 - [TypeScript + Vite](projects/typescript-vanilla-with-vitejs/README.md) - integration in a vanilla TypeScript Vite project
