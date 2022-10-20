@@ -1,4 +1,4 @@
-# Integrate `bpmn-visualization` in a vanilla TypeScript project build with Vite
+# Integrate `bpmn-visualization` in a vanilla TypeScript project built with Vite
 
 Created with https://vite.new/vanilla-ts.
 
