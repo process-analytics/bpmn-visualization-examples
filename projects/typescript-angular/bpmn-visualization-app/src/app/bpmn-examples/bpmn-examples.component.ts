@@ -8,7 +8,7 @@ import { BpmnDiagramService } from '../services/bpmn-diagram.service';
   styleUrls: ['./bpmn-examples.component.css'],
 })
 export class BpmnExamplesComponent {
-  bpmnDiagram?: string | null;
+  bpmnDiagram?: string;
 
   loading: boolean = false;
 
@@ -18,7 +18,6 @@ export class BpmnExamplesComponent {
   constructor(private bpmnDiagramService: BpmnDiagramService) {}
 
   loadDiagram(diagramIdx: number) {
-    this.bpmnDiagram = null;
     this.loading = true;
     this.bpmnDiagramService
       .getDiagram(diagramIdx)
