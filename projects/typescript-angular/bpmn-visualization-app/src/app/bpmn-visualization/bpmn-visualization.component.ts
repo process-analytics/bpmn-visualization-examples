@@ -1,13 +1,5 @@
-import {
-  Component,
-  ElementRef,
-  Input,
-  OnChanges,
-  OnInit,
-  SimpleChanges,
-  ViewChild,
-} from '@angular/core';
-import { BpmnVisualization, FitType } from 'bpmn-visualization';
+import {Component, ElementRef, Input, OnChanges, OnInit, SimpleChanges, ViewChild,} from '@angular/core';
+import {BpmnVisualization, FitType} from 'bpmn-visualization';
 
 @Component({
   selector: 'app-bpmn-visualization',
@@ -41,11 +33,16 @@ export class BpmnVisualizationComponent implements OnInit, OnChanges {
     this.loadDiagram();
   }
 
+  // TODO diagram load is called every time a changes occur
   private loadDiagram(): void {
     if (this.diagram) {
+      loadCall++;
+      console.info('@@load diagram', loadCall);
       this.bpmnVisualization?.load(this.diagram, {
-        fit: { type: this.fitType },
+        fit: { type: this.fitType, margin: this.fitType != FitType.None? 20: 0 },
       });
     }
   }
 }
+
+let loadCall = 0;
