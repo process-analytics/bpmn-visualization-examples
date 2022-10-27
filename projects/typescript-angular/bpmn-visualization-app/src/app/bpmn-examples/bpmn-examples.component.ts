@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
 import { FitType } from 'bpmn-visualization';
-import { delay } from 'rxjs';
-import { environment } from 'src/environments/environment';
 import { BpmnDiagramService } from '../services/bpmn-diagram.service';
 
 @Component({
@@ -24,8 +22,6 @@ export class BpmnExamplesComponent {
     this.loading = true;
     this.bpmnDiagramService
       .getDiagram(diagramIdx)
-      // use delay to simulate diagram loading
-      .pipe(delay(environment.delayDuration))
       .subscribe((diagram: string) => {
         this.bpmnDiagram = diagram;
         this.loading = false;

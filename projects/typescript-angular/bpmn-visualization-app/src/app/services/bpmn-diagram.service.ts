@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import { Observable, of } from 'rxjs';
+import {delay, Observable, of} from 'rxjs';
+import {environment} from "../../environments/environment";
 
+/**
+ * Simulate BPMN diagram fetch with delay (controlled by environment.delayDuration).
+ */
 @Injectable({
   providedIn: 'root',
 })
@@ -8,6 +12,12 @@ export class BpmnDiagramService {
   constructor() {}
 
   getDiagram(index: number): Observable<string> {
+    return this.getDiagramContent(index)
+    // use delay to simulate long diagram fetching
+    .pipe(delay(environment.delayDuration));
+  }
+
+  private getDiagramContent(index: number): Observable<string> {
     switch (index) {
       case 0:
         return this.getDiagramIdx0();
