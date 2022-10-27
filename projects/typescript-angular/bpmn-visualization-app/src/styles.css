@@ -33,7 +33,8 @@ a:hover {
 
 .content {
   display: flex;
-  margin: 82px auto 32px;
+  /* original margin-top was 82px*/
+  margin: 32px auto 32px;
   padding: 0 16px;
   max-width: 960px;
   flex-direction: column;
