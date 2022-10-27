@@ -24,7 +24,9 @@ jobs:
       - uses: actions/checkout@v3
         with:
           repository: 'process-analytics/bpmn-visualization-js'
-          ref: 'master'
+          # the branch of https://github.com/process-analytics/bpmn-visualization-js/pull/2326
+          # [FEAT] Downlevel the minimum supported TS version from 4.5 to 4.0
+          ref: '2252-downlevel-min-supported-ts-version'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
@@ -43,7 +45,8 @@ jobs:
       fail-fast: false
       matrix:
         project: [typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-        bv-npm-package: ['release', 'development']
+        bv-npm-package: ['development']
+#        bv-npm-package: ['release', 'development']
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
