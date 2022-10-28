@@ -4,7 +4,19 @@
   margin-bottom: 0;
 }
 
+.loader-container {
+  z-index: 2; /* on top of the component where the content will be loaded */
+  position: absolute;
+  /*TODO remove duplication with bpmn-container*/
+  height: 50vh;
+  width: 75vw;
+  display: flex;
+  background: rgba(211, 211, 211, 0.5);
+}
+
 .loader {
+  margin: auto; /* center the element */
+
   border: 16px solid #f3f3f3;
   border-top: 16px solid #3498db;
   border-radius: 50%;
