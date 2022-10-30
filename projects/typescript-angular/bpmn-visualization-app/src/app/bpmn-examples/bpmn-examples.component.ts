@@ -10,7 +10,7 @@ import { BpmnDiagramService } from '../services/bpmn-diagram.service';
 export class BpmnExamplesComponent {
   bpmnDiagram?: string;
 
-  loading: boolean = false;
+  loading = false;
 
   FitType = FitType; // makes the enum available in the template
   fitTypeValue?: FitType;
