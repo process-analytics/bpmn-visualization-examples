@@ -4,12 +4,21 @@
   margin-bottom: 0;
 }
 
+.bpmn-visualization {
+  height: 50vh;
+  width: 75vw;
+
+  border-style: solid;
+  border-color: #303742;
+  border-width: thick;
+  border-radius: .75rem;
+}
+
 .loader-container {
   z-index: 2; /* on top of the component where the content will be loaded */
   position: absolute;
-  /*TODO remove duplication with bpmn-container*/
-  height: 50vh;
-  width: 75vw;
+  height: inherit;
+  width: inherit;
   display: flex;
 }
 

@@ -1,10 +1,6 @@
 .bpmn-container {
-  height: 50vh;
-  width: 75vw;
+  /* work if the enclosing container has a fixed size */
+  height: 100%;
+  width: 100%;
   overflow: hidden;
-
-  border-style: solid;
-  border-color: #303742;
-  border-width: thick;
-  border-radius: .75rem;
 }
