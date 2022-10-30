@@ -25,6 +25,6 @@
     <div *ngIf="loading" class="loader-container">
        <div class="loader"></div>
     </div>
-    <app-bpmn-visualization [diagram]="bpmnDiagram" [fitType]="fitTypeValue"></app-bpmn-visualization>
+    <app-bpmn-visualization [ngClass]="loading? 'faded-container': ''" [diagram]="bpmnDiagram" [fitType]="fitTypeValue"></app-bpmn-visualization>
   </div>
 </div>

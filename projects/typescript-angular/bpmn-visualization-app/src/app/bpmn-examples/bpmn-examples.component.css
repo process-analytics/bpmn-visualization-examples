@@ -11,7 +11,6 @@
   height: 50vh;
   width: 75vw;
   display: flex;
-  background: rgba(211, 211, 211, 0.5);
 }
 
 .loader {
@@ -28,4 +27,8 @@
 @keyframes spin {
   0% { transform: rotate(0deg); }
   100% { transform: rotate(360deg); }
+}
+
+.faded-container {
+  opacity: 20%;
 }
