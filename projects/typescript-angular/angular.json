@@ -25,7 +25,13 @@
             "styles": [
               "src/styles.css"
             ],
-            "scripts": []
+            "scripts": [],
+            "allowedCommonJsDependencies": [
+              "fast-xml-parser",
+              "lodash.debounce",
+              "lodash.throttle",
+              "mxgraph"
+            ]
           },
           "configurations": {
             "production": {
