@@ -44,7 +44,7 @@ jobs:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        project: [typescript-angular/bpmn-visualization-app, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
+        project: [typescript-angular, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
         bv-npm-package: ['release', 'development']
     defaults:
       run:
