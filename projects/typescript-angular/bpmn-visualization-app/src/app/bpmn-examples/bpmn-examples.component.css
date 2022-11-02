@@ -4,9 +4,10 @@
   margin-bottom: 0;
 }
 
-.bpmn-visualization {
+.bpmn-visualization-viewer {
   height: 50vh;
   width: 75vw;
+  margin-top: 3rem;
 
   border-style: solid;
   border-color: #303742;
