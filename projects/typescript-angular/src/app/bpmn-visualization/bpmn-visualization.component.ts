@@ -1,5 +1,4 @@
 import {
-  type AfterContentInit,
   type AfterViewInit,
   Component,
   type ElementRef,
