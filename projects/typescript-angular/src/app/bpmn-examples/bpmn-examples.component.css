@@ -1,0 +1,44 @@
+/* Reset some properties defined globally */
+.content {
+  margin-top: 0;
+  margin-bottom: 0;
+}
+
+.bpmn-visualization-viewer {
+  height: 50vh;
+  width: 75vw;
+  margin-top: 3rem;
+
+  border-style: solid;
+  border-color: #303742;
+  border-width: thick;
+  border-radius: .75rem;
+}
+
+.loader-container {
+  z-index: 2; /* on top of the component where the content will be loaded */
+  position: absolute;
+  height: inherit;
+  width: inherit;
+  display: flex;
+}
+
+.loader {
+  margin: auto; /* center the element */
+
+  border: 16px solid #f3f3f3;
+  border-top: 16px solid #3498db;
+  border-radius: 50%;
+  width: 120px;
+  height: 120px;
+  animation: spin 2s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.faded-container {
+  opacity: 20%;
+}

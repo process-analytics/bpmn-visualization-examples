@@ -1,0 +1,30 @@
+<div class="content">
+  <h3>Load Diagrams</h3>
+  <div class="card-container">
+    <button class="card card-small" (click)="loadDiagram(0)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Load Diagram 0</span>
+    </button>
+    <button class="card card-small" (click)="loadDiagram(1)" tabindex="0">
+      <svg class="material-icons" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24"><path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/></svg>
+      <span>Load Diagram 1</span>
+    </button>
+  </div>
+
+  <h3>Fit Options</h3>
+  <div class="card-container">
+    <button class="card card-small" (click)="fitTypeValue = FitType.None" tabindex="0">
+      <span>Fit None</span>
+    </button>
+    <button class="card card-small" (click)="fitTypeValue = FitType.Center" tabindex="0">
+      <span>Fit Center</span>
+    </button>
+  </div>
+
+  <div class="bpmn-visualization-viewer">
+    <div *ngIf="loading" class="loader-container">
+       <div class="loader"></div>
+    </div>
+    <app-bpmn-visualization [ngClass]="loading? 'faded-container': ''" [diagram]="bpmnDiagram" [fitType]="fitTypeValue"></app-bpmn-visualization>
+  </div>
+</div>

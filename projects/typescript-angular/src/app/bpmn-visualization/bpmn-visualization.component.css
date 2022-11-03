@@ -1,0 +1,6 @@
+.bpmn-container {
+  /* work if the enclosing container has a fixed size */
+  height: 100%;
+  width: 100%;
+  overflow: hidden;
+}
