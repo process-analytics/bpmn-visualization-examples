@@ -7,7 +7,7 @@
 .bpmn-visualization-viewer {
   height: 50vh;
   width: 75vw;
-  margin-top: 3rem;
+  margin-top: .5rem;
 
   border-style: solid;
   border-color: #303742;
@@ -41,4 +41,17 @@
 
 .faded-container {
   opacity: 20%;
+}
+
+.controls {
+  align-self: stretch;
+  justify-content: start;
+}
+
+.notification {
+  flex-grow: 1;
+  height: 12vh;
+  /*from the .card CSS rule*/
+  margin-right: 8px;
+  margin-left: 8px;
 }

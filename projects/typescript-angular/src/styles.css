@@ -90,10 +90,18 @@ svg.material-icons:not(:last-child) {
 .card-container .card:not(.highlight-card) {
   cursor: pointer;
 }
+.card-container .card:not(.highlight-card).disabled {
+  cursor: default;
+  color: #333333ad;
+}
 
 .card-container .card:not(.highlight-card):hover {
   transform: translateY(-3px);
   box-shadow: 0 4px 17px rgba(0, 0, 0, 0.35);
+}
+.card-container .card:not(.highlight-card):hover.disabled {
+  transform: unset;
+  box-shadow: unset;
 }
 
 .card-container .card:not(.highlight-card):hover .material-icons path {
@@ -110,7 +118,7 @@ svg.material-icons:not(:last-child) {
   position: relative;
 }
 
-.card.card.highlight-card span {
+.card.highlight-card span {
   margin-left: 60px;
 }
 
