@@ -1,6 +1,10 @@
 import { Injectable } from '@angular/core';
-import {delay, Observable, of} from 'rxjs';
-import {environment} from "../../environments/environment";
+import { delay, Observable, of, scan, tap } from 'rxjs';
+import { environment } from "../../environments/environment";
+import { ActionsNotifierService } from "./actions-notifier.service";
+import { ActionStatus } from "../utils/types";
+
+let fetchCalls = 0;
 
 /**
  * Simulate BPMN diagram fetch with delay (controlled by environment.delayDuration).
@@ -9,12 +13,21 @@ import {environment} from "../../environments/environment";
   providedIn: 'root',
 })
 export class BpmnDiagramService {
-  constructor() {}
+
+  constructor(private actionsNotifierService: ActionsNotifierService) { }
 
   getDiagram(index: number): Observable<string> {
+    const action: ActionStatus = {type: 'fetch', status: 'in-progress', id: fetchCalls, subType: 'diagram'};
     return this.getDiagramContent(index)
-    // use delay to simulate long diagram fetching
-    .pipe(delay(environment.delayDuration));
+      .pipe(
+        tap(() => this.actionsNotifierService.post(action)),
+        // use delay to simulate long diagram fetching
+        delay(environment.delayDuration),
+        tap(() => {
+          this.actionsNotifierService.post({...action, status: 'done'});
+          fetchCalls++;
+        }),
+      );
   }
 
   private getDiagramContent(index: number): Observable<string> {

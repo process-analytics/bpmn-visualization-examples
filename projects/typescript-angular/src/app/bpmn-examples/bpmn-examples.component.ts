@@ -1,6 +1,8 @@
 import { Component } from '@angular/core';
 import { FitType } from 'bpmn-visualization';
 import { BpmnDiagramService } from '../services/bpmn-diagram.service';
+import { BpmnNavigationService } from "../services/bpmn-navigation.service";
+import { ActionStatus } from "../utils/types";
 
 @Component({
   selector: 'app-bpmn-examples',
@@ -15,7 +17,7 @@ export class BpmnExamplesComponent {
   FitType = FitType; // makes the enum available in the template
   fitTypeValue?: FitType;
 
-  constructor(private bpmnDiagramService: BpmnDiagramService) {}
+  constructor(private bpmnDiagramService: BpmnDiagramService, private bpmnNavigationService: BpmnNavigationService) {}
 
   loadDiagram(diagramIdx: number) {
     this.loading = true;
@@ -25,5 +27,9 @@ export class BpmnExamplesComponent {
         this.bpmnDiagram = diagram;
         this.loading = false;
       });
+  }
+
+  fitDiagram() {
+    this.bpmnNavigationService.requestDiagramFit();
   }
 }

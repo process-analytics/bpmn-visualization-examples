@@ -25,6 +25,19 @@
     <div *ngIf="loading" class="loader-container">
        <div class="loader"></div>
     </div>
-    <app-bpmn-visualization [ngClass]="loading? 'faded-container': ''" [diagram]="bpmnDiagram" [fitType]="fitTypeValue"></app-bpmn-visualization>
+    <app-bpmn-visualization [ngClass]="loading? 'faded-container': ''"
+                            [diagram]="bpmnDiagram"
+                            [fitType]="fitTypeValue">
+    </app-bpmn-visualization>
   </div>
+
+  <div class="card-container controls">
+    <div>
+      <button class="card card-small" [ngClass]="!bpmnDiagram? 'disabled': ''" [disabled]="!bpmnDiagram" (click)="fitDiagram()">Reset zoom level</button>
+    </div>
+    <div class="notification">
+      <app-notification-zone></app-notification-zone>
+    </div>
+  </div>
+
 </div>
