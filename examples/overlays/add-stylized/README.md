@@ -6,7 +6,7 @@ Javascript example to demonstrate how to add stylized overlay on BPMN elements.
 
 ## ♻️ Usage
 
-First create a `bpmnVisualization` instance prior being able to add stylized overlays to BPMN elements.
+First, create a `BpmnVisualization` instance (named `bpmnVisualization`)  prior being able to add stylized overlays to BPMN elements.
 
 ### Add stylized overlay on BPMN element
 

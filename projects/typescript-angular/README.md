@@ -1,6 +1,6 @@
 # Integrate `bpmn-visualization` in an Angular 14 project
 
-This project shows how to integrate [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) in an [Angular](https://angular.io/) application.
+This project shows how to integrate [`bpmn-visualization`](https://github.com/process-analytics/bpmn-visualization-js) in an [Angular](https://angular.io/) application.
 
 <!-- TODO Later add a screenshot or link to a live environment
 ![Integration Screenshot](./docs/screenshot.png)
@@ -18,9 +18,9 @@ We bootstrapped the application using the `ng` command:
 npx @angular/cli@14 new bpmn-visualization-app --defaults=true
 ```
 
-The code of the bpmn-visualization component is in [bpmn.component.ts](bpmn-visualization-app/src/app/bpmn/bpmn.component.ts)
+The code of the `bpmn-visualization` component is in [bpmn.component.ts](bpmn-visualization-app/src/app/bpmn/bpmn.component.ts)
 
-This is a minimal implementation showing that it is possible to use bpmn-visualization in an Angular 14 application. In particular,
+This is a minimal implementation showing that it is possible to use `bpmn-visualization` in an Angular 14 application. In particular,
 the BPMN diagrams are stored as assets of the application. A real application would instead fetch the diagrams.
 
 ### Angular warnings and errors
@@ -29,14 +29,14 @@ the BPMN diagrams are stored as assets of the application. A real application wo
 
 Be aware that integrating `bpmn-visualization` may generate build errors because of budgets threshold overrun.
 
-To configure budgets size, see https://angular.io/guide/build#configuring-size-budgets
+To configure budgets size, see https://angular.io/guide/build#configuring-size-budgets.
 
 #### CommonJS dependencies
 
 `bpmn-visualization` has dependencies on packages that uses the CommonJS format. By default, Angular emits warnings when
 it encounters such dependencies.
 
-To remove the warnings, see https://angular.io/guide/build#configuring-commonjs-dependencies
+To remove the warnings, see https://angular.io/guide/build#configuring-commonjs-dependencies.
 
 
 # Usage of this example

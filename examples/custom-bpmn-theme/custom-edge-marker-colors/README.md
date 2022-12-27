@@ -7,7 +7,7 @@ Javascript example
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
-## ♻️ BPMN Visualization Usage
+## ♻️ Usage
 `mxGraph` knowledge is required to handle style changes.
 See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/bpmn-support-how-to.md) for more details.
 

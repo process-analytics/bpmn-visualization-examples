@@ -7,7 +7,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 ## ♻️ Usage
 ⚠️ To avoid having too much content in the README, we simplify it here. You can find all the content of the example in [index.js](index.js).
 
-Load the BPMN content and pass the information about the pools you want to filter
+Load the BPMN content and pass the information about the pools you want to filter.
 ```javascript
 const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 

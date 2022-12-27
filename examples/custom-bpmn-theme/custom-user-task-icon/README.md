@@ -8,10 +8,10 @@ Javascript example
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-bpmn-theme/custom-user-task-icon/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
-## ♻️ BPMN Visualization Usage
+## ♻️ Usage
 You can find all the content of the example in [index.html](index.html) and [index.js](index.js).
 
-Before loading the BPMN content with BPMN Visualization:
+Before loading the BPMN content with the `BpmnVisualization` object:
 - Create a new class extending `IconPainter` and override the method painting the user icon (using the mxGraph API):
 ```javascript
 class CustomIconPainter extends IconPainter {

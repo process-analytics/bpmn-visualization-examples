@@ -1,7 +1,7 @@
 # Select elements by BPMN kind
 
 
-Javascript example to demonstrate how to select elements by BPMN kind and register custom behavior on found elements
+Javascript example to demonstrate how to select elements by BPMN kind and register custom behavior on found elements.
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/custom-behavior/select-elements-by-bpmn-kind/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
@@ -10,7 +10,7 @@ Javascript example to demonstrate how to select elements by BPMN kind and regist
 All BPMN diagrams used in this example are taken from the [miwg-test-suite repository](https://github.com/bpmn-miwg/bpmn-miwg-test-suite/blob/master/Reference).
 
 
-First, retrieve the BPMN elements with the `bpmn-visualization` API by passing one or several BPMN kinds \
+First, retrieve the BPMN elements with the `bpmn-visualization` API by passing one or several BPMN kinds. \
 In the following, we retrieve all `Pools` and `End Events`.
 
 ```javascript
@@ -45,12 +45,10 @@ const pools = bpmnElements
 ...
 ```
 
-
-
 ## Example implementation notes
 
 This example displays toast on `End Events` click thanks to [Notyf](https://github.com/caroso1222/notyf).
 
 It also allows hiding or collapsing `Pools`. The `bpmn-visualization` API is used to retrieve the `Pool` ids, but the `Pool`
 display is then fully managed by custom mxGraph code. \
-`bpmn-visualization` may directly provide such capabilities in the future: see [#592](https://github.com/process-analytics/bpmn-visualization-js/issues/592) for instance.
+`bpmn-visualization` may directly provide such capabilities in the future: see the [issue #592](https://github.com/process-analytics/bpmn-visualization-js/issues/592) of the bpmn-visualisation-js repository for instance.

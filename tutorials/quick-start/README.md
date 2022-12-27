@@ -1,6 +1,6 @@
 # Quick start
 
-Javascript example to demonstrate how to integrate `bpmn-visualization` in an html page.
+Javascript example to demonstrate how to integrate `bpmn-visualization` in a html page.
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/tutorials/quick-start/index.html)
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
@@ -20,13 +20,13 @@ or any other location:
 
 ### Use the library
 
-Initialize `BPMN Visualization` and then load a BPMN Diagram. \
+Initialize `bpmn-visualization` and then load a BPMN Diagram. \
 The library is bundled as an [IIFE](https://developer.mozilla.org/en-US/docs/Glossary/IIFE) style script and binds itself to the global `bpmnvisu` variable.
 
 In the following, the HTML page defined a div identified by the `bpmn-container` id, where the BPMN diagram is rendered. 
 
 ```javascript
-// initialize BPMN Visualization
+// initialize bpmn-visualization
 const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
 // load the BPMN diagram
 bpmnVisualization.load(bpmnDiagram());

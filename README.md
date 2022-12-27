@@ -72,7 +72,7 @@ Some examples are provided for direct use in the web browser. If you want to int
 You can check the [examples projects](#projects) in this repository or the [Live IDE examples](#live_ide) to know how to bootstrap `bpmn-visualization` in a project.
 
 TypeScript's users should also read the paragraph about the [TypeScript support in the `bpmn-visualization` README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support)
-especially when using bpmn-visualization prior version `0.27.0`. 
+especially when using `bpmn-visualization` prior version `0.27.0`. 
 
 
 ## 👁️‍🗨️ Demos

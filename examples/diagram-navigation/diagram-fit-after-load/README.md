@@ -9,7 +9,7 @@ Javascript example to demonstrate how can fit the BPMN diagram after load.
 
 1. You need to initialize the BPMN container with a fixed width & a fixed height, and load the BPMN diagram, like [done here](../diagram-fit-on-load/README.md). 
 
-2. Fit the BPMN container
+2. Fit the BPMN container.
 ```javascript
 bpmnVisualization.fit({ type: bpmnvisu.FitType.Horizontal, margin: 10 });
 ```

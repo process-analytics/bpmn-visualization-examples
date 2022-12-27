@@ -16,7 +16,7 @@ The code calling `bpmn-visualization` to render the BPMN diagram is available in
 Any code changes is quickly made available in the browser.
 
 
-## WARNING about the Webpack configuration for old bpmn-visualization versions
+## WARNING about the Webpack configuration for old `bpmn-visualization` versions
 
 When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384 ](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
 
