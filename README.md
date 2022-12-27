@@ -1,4 +1,4 @@
-<h1 align="center">BPMN Visualization Examples</h1> <br>
+<h1 align="center">Examples of the bpmn-visualization TypeScript library</h1> <br>
 <p align="center">
     <p align="center">
         <a href="https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html">
