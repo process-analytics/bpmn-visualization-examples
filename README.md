@@ -18,7 +18,7 @@
     </p>
 </p>
 
-This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js).
+This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) TypeScript library.
 
 
 ## 🎮 Live Environment
@@ -27,7 +27,7 @@ Give a try to the [__⏩ live environment__](https://cdn.statically.io/gh/proces
 to quickly have an overview of the `bpmn-visualization` capabilities.
 
 You will find both
-- demos: show what you can do with bpmn-visualization in various use cases, in dedicated user oriented situations
+- demos: show what you can do with `bpmn-visualization` in various use cases, in dedicated user oriented situations
 - examples: demonstrate how to use a single feature.
 
 
@@ -41,7 +41,7 @@ Some examples require loading local files. If you are looking for BPMN diagram f
   - [bpmn-miwg-demos](https://github.com/bpmn-miwg/bpmn-miwg-demos)
 - the Process Analytics project
   - [BPMN diagrams of the bpmn-visualization-examples repository](./bpmn-files/README.md)
-  - [BPMN diagrams used in the tests of bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
+  - [BPMN diagrams used in the tests of `bpmn-visualization`](https://github.com/process-analytics/bpmn-visualization-js/blob/master/test/fixtures/bpmn/)
 
 
 ## 🖥️ Running examples locally
@@ -71,17 +71,17 @@ Some examples are provided for direct use in the web browser. If you want to int
 
 You can check the [examples projects](#projects) in this repository or the [Live IDE examples](#live_ide) to know how to bootstrap `bpmn-visualization` in a project.
 
-TypeScript's users should also read the paragraph about the [TypeScript support in the bpmn-visualization README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support)
+TypeScript's users should also read the paragraph about the [TypeScript support in the `bpmn-visualization` README](https://github.com/process-analytics/bpmn-visualization-js/#-typescript-support)
 especially when using bpmn-visualization prior version `0.27.0`. 
 
 
 ## 👁️‍🗨️ Demos
 
 - [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
-  [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) repository.
+  [bpmn-visualization-js](https://github.com/process-analytics/bpmn-visualization-js) repository.
 - [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 - [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
-- [Demo for ICPM 2022](demo/icpm-2022/README.md) - show a Process Mining scenario (Conformance, Compliance and Happy path).
+- [Demo for ICPM 2022](demo/icpm-2022/README.md) - show a **Process Mining** scenario (_Conformance_, _Compliance_ and _Happy path_)
 
 
 ## Tutorials
@@ -161,7 +161,7 @@ Remember that some projects are also available in [live IDE](#live_ide).
 
 ## 🔧 Contributing
 
-To contribute to `bpmn-visualization-examples`, fork and clone this repository locally and commit your code on a separate branch. \
+To contribute to `bpmn-visualization` examples, fork and clone this repository locally and commit your code on a separate branch. \
 Please add a screenshot of the new rendering when you open a pull-request.
 
 You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participation in this open source project is subject to a [Code of Conduct](https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md).
@@ -171,7 +171,7 @@ You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participa
 
 ## 📃 License
 
-`bpmn-visualization-examples` is released under the [Apache 2.0](LICENSE) license. \
+The project of `bpmn-visualization` examples is released under the [Apache 2.0](LICENSE) license. \
 Copyright &copy; 2020-present, Bonitasoft S.A.
 
 
