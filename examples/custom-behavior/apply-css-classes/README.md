@@ -18,4 +18,4 @@ bpmnVisualization.bpmnElementsRegistry.toggleCssClasses('prepareBankTransfer', '
 ```
 
 ⚠️ Highlighting path currently requires to identify all elements by their ids: `bpmn-visualization` will provide some API
-to simplify this in the future, see the [issue #930](https://github.com/process-analytics/bpmn-visualization-js/issues/930) of the bpmn-visualization-js repository.
+to simplify this in the future, see the [issue #930](https://github.com/process-analytics/bpmn-visualization-js/issues/930) in the repository of `bpmn-visualization`.
