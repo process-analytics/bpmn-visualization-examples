@@ -34,7 +34,7 @@ Javascript example
     }
 ```
 
-- Then, we load the content of this file in the `bpmn-visualization` TypeScript library.
+- Then, we load the content of this file with the `BpmnVisualization` object.
 ```javascript
         fetchBpmnContent(url).then(bpmn => {
             const bpmnVisualization = new BpmnVisualization({ container: 'bpmn-container' });

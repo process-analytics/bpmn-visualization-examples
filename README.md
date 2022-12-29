@@ -18,7 +18,7 @@
     </p>
 </p>
 
-This repository contains examples showing how to use [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) TypeScript library.
+This repository contains examples showing how to use the [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) TypeScript library.
 
 
 ## 🎮 Live Environment
@@ -171,7 +171,7 @@ You can find more detail in our [Contributing guide](CONTRIBUTING.md). Participa
 
 ## 📃 License
 
-The project of `bpmn-visualization` examples is released under the [Apache 2.0](LICENSE) license. \
+The content of the `bpmn-visualization-examples` repository is released under the [Apache 2.0](LICENSE) license. \
 Copyright &copy; 2020-present, Bonitasoft S.A.
 
 

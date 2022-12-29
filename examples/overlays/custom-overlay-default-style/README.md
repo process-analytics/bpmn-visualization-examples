@@ -9,7 +9,7 @@ Javascript example
 
 
 ## ♻️ Usage
-:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
+⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
 
 Content:
