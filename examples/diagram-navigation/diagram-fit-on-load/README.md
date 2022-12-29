@@ -7,7 +7,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 ## ♻️ Usage
 ⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
-1. Declare the BPMN container with a fixed width & a fixed height
+1. Declare the BPMN container with a fixed width & a fixed height.
 ```css
 .bpmn-container {
     /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
@@ -21,7 +21,7 @@ Javascript example to demonstrate how can fit the BPMN diagram on load.
 }
 ```
 
-2. Load BPMN content
+2. Load BPMN content.
 ```javascript
 const bpmnContainerElt = window.document.getElementById('bpmn-container');
 const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnContainerElt });

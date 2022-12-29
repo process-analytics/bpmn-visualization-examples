@@ -6,7 +6,7 @@ Javascript example to demonstrate how to add custom growing animation on a Seque
 
 ## ♻️ Usage
 
-After the `BpmnVisualization` instantiation, get the HTML element corresponding to the sequence flow to add custom CSS class for the animation.
+After the instantiation of the `BpmnVisualization` object, get the HTML element corresponding to the sequence flow to add custom CSS class for the animation.
 
 ℹ️ We need to apply the animation to the SVG element corresponding to the line of the edge. \
 In this example, it is the second path of the HTML element of the edge. \

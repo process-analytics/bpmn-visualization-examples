@@ -6,7 +6,7 @@ Javascript example to demonstrate how to apply CSS classes to elements of the BP
 
 ## ♻️ Usage
 
-ℹ️ . Apply css classes after retrieving the HTMLElement with the `bpmn-visualization` API.
+ℹ️ Apply css classes after retrieving the HTMLElement with the `bpmn-visualization` API.
 
 ```javascript
 // add css classes
@@ -18,4 +18,4 @@ bpmnVisualization.bpmnElementsRegistry.toggleCssClasses('prepareBankTransfer', '
 ```
 
 ⚠️ Highlighting path currently requires to identify all elements by their ids: `bpmn-visualization` will provide some API
-to simplify this in the future, see [bpmn-visualization #930](https://github.com/process-analytics/bpmn-visualization-js/issues/930)
+to simplify this in the future, see the [issue #930](https://github.com/process-analytics/bpmn-visualization-js/issues/930) in the repository of `bpmn-visualization`.

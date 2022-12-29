@@ -1,4 +1,4 @@
-name: Update BPMN Visualization version
+name: Update the version of the bpmn-visualization TypeScript library
 on:
   repository_dispatch:
     types: [ update_bpmn_visualization_version ]

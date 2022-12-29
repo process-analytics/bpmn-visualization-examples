@@ -6,7 +6,7 @@ Javascript example to demonstrate how to add default overlays and remove all ove
 
 ## ♻️ Usage
 
-First create a `bpmnVisualization` instance prior being able to add default overlays and remove all overlays to BPMN elements.
+First, create a `BpmnVisualization` instance (named `bpmnVisualization`) prior being able to add default overlays and remove all overlays to BPMN elements.
 
 ### Add one default overlay
 

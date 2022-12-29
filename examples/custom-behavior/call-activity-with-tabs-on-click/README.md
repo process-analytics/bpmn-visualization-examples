@@ -6,7 +6,7 @@ Javascript example to demonstrate how to open a new BPMN diagram in a tab.
 
 ## ♻️ Usage
 
-After the main `BpmnVisualization` instantiation, get the HTML element corresponding to the call activity to add a listener and activate the tab (and deactivate the others).
+After the instantiation of the main `BpmnVisualization` object, get the HTML element corresponding to the call activity to add a listener and activate the tab (and deactivate the others).
 
 ⚠️  In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 ```javascript

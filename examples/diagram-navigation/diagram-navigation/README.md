@@ -6,7 +6,7 @@ Javascript example to demonstrate how to navigate the BPMN diagram with the mous
 
 ## ♻️ Usage
 
-When instantiating `BpmnVisualization`, pass an additional option to active mouse navigation support.
+When instantiating the `BpmnVisualization` object, pass an additional option to active mouse navigation support.
 
 ```javascript
 const bpmnVisualizationNavigation = 
@@ -21,7 +21,7 @@ bpmnVisualizationNavigation.load(bpmnDiagram());
 
 ### Scrollbars
 
-The `overflow` CSS property of the bpmn-container defines if scrollbars are used to display the BPMN diagram.
+The `overflow` CSS property of the `bpmn-container` defines if scrollbars are used to display the BPMN diagram.
 For values of `auto` or `scroll`, the scrollbars will be shown.
 
 In this example, the scrollbars appear on toggle of the `overflow` CSS property from `hidden` (use the regular panning) to `auto`. In this case, the diagram can be moved

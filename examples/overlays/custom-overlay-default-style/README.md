@@ -8,8 +8,8 @@ Javascript example
 - to run locally, open the [index.html](index.html) directly in a Web Browser
 
 
-## ♻️ BPMN Visualization Usage
-:warning: In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
+## ♻️ Usage
+⚠️ In order to avoid having to many content in the README, we simplify it. You can find all the content of the example in [index.js](index.js).
 
 
 Content:

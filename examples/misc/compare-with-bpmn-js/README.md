@@ -1,4 +1,4 @@
-# Compare bpmn-visualization and bpmn-js when loading Local BPMN Diagrams
+# Compare `bpmn-visualization` and `bpmn-js` when loading Local BPMN Diagrams
 
 Javascript example
 - [__⏩ live environment__](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/misc/compare-with-bpmn-js/index.html)
@@ -7,7 +7,7 @@ Javascript example
 
 ## Overview
 
-This example let you compare [bpmn-visualization](https://github.com/process-analytics/bpmn-visualization-js) with [bpmn-js](https://github.com/bpmn-io/bpmn-js/) on
+This example let you compare [`bpmn-visualization`](https://github.com/process-analytics/bpmn-visualization-js) with [`bpmn-js`](https://github.com/bpmn-io/bpmn-js/) on
 - BPMN elements rendering
 - navigation
 - zoom level at load time or after BPMN diagram load
