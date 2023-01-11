@@ -81,6 +81,8 @@ jobs:
 # TODO only if event is pull_request
     runs-on: ubuntu-20.04
     needs: 'build_projects'
+    permissions:
+      pull-requests: write # surge-preview: PR comments
     steps:
       - name: Download all artifacts
         uses: actions/download-artifact@v3
