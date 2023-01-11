@@ -117,14 +117,16 @@ jobs:
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          dist: build
+          # TODO empty????
+          dist: build/
           failOnError: true
 # TODO explain why we are not handling teardown here (dependencies on other jobs + schedule workflows at organization level in charge of tearing down the old surge domains)
           teardown: 'false'
           build: echo 'Already built!'
       # Fallback when it is not possible to deploy to surge.sh
       - name: Upload artifact (preview not deployed)
-        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
+        # TODO only if not deploy to surge.sh
+#        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
         uses: actions/upload-artifact@v3
         with:
           name: all-typescript-projects-${{github.sha}}
