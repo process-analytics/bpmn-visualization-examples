@@ -110,9 +110,12 @@ jobs:
           touch build/index.html
           echo "TypeScript projects for PR#${{github.event.pull_request.number}}" >> build/index.html
       - name: Display the final structure of files
-        run: ls -lhR build/
+        run: |
+          ls -lhR build/
+          echo "**********************"
+          ls -lh ./build
 # TODO Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
-# TODO rollup terser: to large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
+# TODO rollup terser: too large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
 # TODO publish to surge
       - uses: bonitasoft/actions/packages/surge-preview-tools@v2
         id: surge-preview-tools
