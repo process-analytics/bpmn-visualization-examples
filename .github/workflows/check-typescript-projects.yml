@@ -71,6 +71,7 @@ jobs:
         run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
       - name: Build project
         run: npm run build
+      # TODO only if event is pull_request
       - name: Upload project archive
         uses: actions/upload-artifact@v3
         with:
@@ -96,9 +97,13 @@ jobs:
           mkdir -p build/development build/release
           cp -R tmp/*-development build/development
           cp -R tmp/*-release build/release
-# TODO move projects directories to the final location (directories end with -release or -development)
-# TODO remove the postfix from directory names
-# TODO remove the tmp directory
+          # remove the '-development' and '-release' postfixes from directory names
+          for element in build/development/*-development; do
+            mv "$element" "${element%-development}"
+          done
+          for element in build/release/*-release; do
+            mv "$element" "${element%-release}"
+          done
 # TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
       - name: Create the home page
         run: |
