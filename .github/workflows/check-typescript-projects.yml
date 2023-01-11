@@ -74,5 +74,5 @@ jobs:
       - name: Upload project archive
         uses: actions/upload-artifact@v3
         with:
-          name: ${{matrix.project}}
+          name: ${{matrix.project}}-${{matrix.bv-npm-package}}
           path: ${{github.workspace}}/projects/${{matrix.project}}/dist
