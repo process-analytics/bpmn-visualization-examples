@@ -104,11 +104,24 @@ jobs:
           for element in build/release/*-release; do
             mv "$element" "${element%-release}"
           done
+      - name: List projects that will be referenced in the home page
+        id: list_projects
+        run: |
+#          development_elements=$(ls build/development/)
+#          release_elements=$(ls build/release/)
+          # set the outputs
+          echo "projects_development=$(ls build/development/)" >> $GITHUB_OUTPUT
+          echo "projects_release=$(ls build/release/)" >> $GITHUB_OUTPUT
 # TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
       - name: Create the home page
+        env:
+          PR_NUMBER: ${{github.event.pull_request.number}}
+          PROJECTS_DEVELOPMENT: ${{ steps.list_projects.outputs.projects_development }}
+          PROJECTS_RELEASE: ${{ steps.list_projects.outputs.projects_release }}
         run: |
           touch build/index.html
-          echo "TypeScript projects for PR#${{github.event.pull_request.number}}" >> build/index.html
+          echo "TypeScript projects for PR#${PR_NUMBER}" >> build/index.html
+#          echo "TypeScript projects for PR#${{github.event.pull_request.number}}" >> build/index.html
       - name: Display the final structure of files
         run: |
           ls -lhR build/
