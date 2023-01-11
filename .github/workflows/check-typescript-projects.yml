@@ -88,3 +88,13 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -R
         working-directory: projects
+# change the directory where the artifacts are downloaded. projects --> tmp
+# remove directories that are not related to built projects
+# create directories 'release' and 'development'
+# move built projects directory to the final location (directories end with -release or -development)
+# remove the postfix from directory names
+# create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
+# remove the tmp directory
+# ls -R of the final content
+# publish to surge
+# Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
