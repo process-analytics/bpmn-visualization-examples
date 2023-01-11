@@ -39,7 +39,7 @@ jobs:
           name: bpmn-visualization-npm-package
           path: bpmn-visualization-*.tgz
 
-  check:
+  build_projects:
     runs-on: ubuntu-20.04
     needs: 'build_bpmn-visualization_development_npm_package'
     strategy:
@@ -76,3 +76,15 @@ jobs:
         with:
           name: ${{matrix.project}}-${{matrix.bv-npm-package}}
           path: ${{github.workspace}}/projects/${{matrix.project}}/dist
+
+  publish:
+    runs-on: ubuntu-20.04
+    needs: 'build_projects'
+    steps:
+      - name: Download all artifacts
+        uses: actions/download-artifact@v3
+        with:
+          path: projects
+      - name: Display structure of downloaded files
+        run: ls -R
+        working-directory: projects
