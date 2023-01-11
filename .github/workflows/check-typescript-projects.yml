@@ -88,12 +88,18 @@ jobs:
       - name: Display structure of downloaded files
         run: ls -lhR
         working-directory: tmp
-# remove directories that are not related to built projects
-# create directories 'release' and 'development'
-# move built projects directory to the final location (directories end with -release or -development)
-# remove the postfix from directory names
-# create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
-# remove the tmp directory
-# ls -R of the final content
-# publish to surge
-# Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
+      - name: Build the final directories layout
+        run: |
+          mkdir development release
+# TODO move projects directories to the final location (directories end with -release or -development)
+# TODO remove the postfix from directory names
+# TODO remove the tmp directory
+# TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
+      - name: Create the home page
+        run: |
+          touch index.html
+          echo "TypeScript projects for PR#${{github.event.pull_request.number}}" >> index.html
+      - name: Display the final structure of files
+        run: ls -lhR
+# TODO publish to surge
+# TODO Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
