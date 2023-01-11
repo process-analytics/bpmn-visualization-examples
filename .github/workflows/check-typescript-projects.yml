@@ -122,8 +122,7 @@ jobs:
           build: echo 'Already built!'
       # Fallback when it is not possible to deploy to surge.sh
       - name: Upload artifact (preview not deployed)
-# TODO only if not deploy to surge.sh
-#        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
+        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
         uses: actions/upload-artifact@v3
         with:
           name: all-typescript-projects-${{github.sha}}
