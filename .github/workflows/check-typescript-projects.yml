@@ -91,7 +91,7 @@ jobs:
         working-directory: tmp
       - name: Build the final directories layout
         run: |
-          mkdir -R build/development build/release
+          mkdir -p build/development build/release
 # TODO move projects directories to the final location (directories end with -release or -development)
 # TODO remove the postfix from directory names
 # TODO remove the tmp directory
