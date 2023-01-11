@@ -86,7 +86,7 @@ jobs:
         with:
           path: tmp
       - name: Display structure of downloaded files
-        run: ls -R
+        run: ls -lhR
         working-directory: tmp
 # remove directories that are not related to built projects
 # create directories 'release' and 'development'
