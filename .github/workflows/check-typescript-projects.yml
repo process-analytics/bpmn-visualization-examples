@@ -84,11 +84,10 @@ jobs:
       - name: Download all artifacts
         uses: actions/download-artifact@v3
         with:
-          path: projects
+          path: tmp
       - name: Display structure of downloaded files
         run: ls -R
-        working-directory: projects
-# change the directory where the artifacts are downloaded. projects --> tmp
+        working-directory: tmp
 # remove directories that are not related to built projects
 # create directories 'release' and 'development'
 # move built projects directory to the final location (directories end with -release or -development)
