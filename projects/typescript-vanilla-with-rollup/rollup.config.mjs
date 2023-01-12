@@ -23,7 +23,9 @@ import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
 import terser from "@rollup/plugin-terser";
 import { string } from "rollup-plugin-string";
-import pkg from "./package.json";
+// generate warning when running with Node 16
+// (node:75278) ExperimentalWarning: Importing JSON modules is an experimental feature. This feature could change at any time
+import pkg from './package.json' assert { type: 'json' };
 
 const devMode = process.env.devMode ?? false;
 
