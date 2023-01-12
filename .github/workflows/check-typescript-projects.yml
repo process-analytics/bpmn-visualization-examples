@@ -71,7 +71,6 @@ jobs:
         run: npm install ${{steps.download.outputs.download-path}}/bpmn-visualization*.tgz
       - name: Build project
         run: npm run build
-      # TODO only if event is pull_request
       - name: Upload project archive
         if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v3
