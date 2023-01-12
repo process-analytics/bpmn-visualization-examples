@@ -121,40 +121,41 @@ jobs:
           PR_NUMBER: ${{github.event.pull_request.number}}
           PROJECTS_DEVELOPMENT: ${{ steps.list_projects.outputs.projects_development }}
           PROJECTS_RELEASE: ${{ steps.list_projects.outputs.projects_release }}
-        script: |
-          let {PR_NUMBER, PROJECTS_DEVELOPMENT, PROJECTS_RELEASE} = process.env;
-          //const projectsDevelopmentNames = PROJECTS_DEVELOPMENT.split(' ');
-          //const projectsReleaseNames = PROJECTS_RELEASE.split(' ');
-          let htmlContent = ```<!DOCTYPE html>
-          <html lang="en">
-          <head>
-          <meta charset="UTF-8"/>
-          <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-          <title>TypeScript projects for PR #@PR_NUMBER@</title>
-          </head>
-          <body>
-          <h1>TypeScript projects for PR #@PR_NUMBER@</h1>
-          <p>
-          Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/releases/latest" target="_blank">latest released version</a> of <code>bpmn-visualization</code>
-          <ul>
-          <!-- <li><a href="release/@name@/index.html" target="_blank">@name@</a></li> -->
-          @release_projects@
-          </ul>
-          <p>
-          Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/" target="_blank">development version</a> of <code>bpmn-visualization</code>
-          <ul>
-          <!-- <li><a href="development/@name@/index.html" target="_blank">@name@</a></li> -->
-          @development_projects@
-          </ul>
-          </body>
-          </html>
-          ```
-          htmlContent = htmlContent.replace('@PR_NUMBER@', PR_NUMBER);
-          htmlContent = htmlContent.replace('@release_projects@', PROJECTS_RELEASE.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
-          htmlContent = htmlContent.replace('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
-          console.info('htmlContent', htmlContent);
-          // TODO create the file
-          // touch build/index.html
+        with:
+          script: |
+            let {PR_NUMBER, PROJECTS_DEVELOPMENT, PROJECTS_RELEASE} = process.env;
+            //const projectsDevelopmentNames = PROJECTS_DEVELOPMENT.split(' ');
+            //const projectsReleaseNames = PROJECTS_RELEASE.split(' ');
+            let htmlContent = ```<!DOCTYPE html>
+            <html lang="en">
+            <head>
+            <meta charset="UTF-8"/>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+            <title>TypeScript projects for PR #@PR_NUMBER@</title>
+            </head>
+            <body>
+            <h1>TypeScript projects for PR #@PR_NUMBER@</h1>
+            <p>
+            Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/releases/latest" target="_blank">latest released version</a> of <code>bpmn-visualization</code>
+            <ul>
+            <!-- <li><a href="release/@name@/index.html" target="_blank">@name@</a></li> -->
+            @release_projects@
+            </ul>
+            <p>
+            Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/" target="_blank">development version</a> of <code>bpmn-visualization</code>
+            <ul>
+            <!-- <li><a href="development/@name@/index.html" target="_blank">@name@</a></li> -->
+            @development_projects@
+            </ul>
+            </body>
+            </html>
+            ```
+            htmlContent = htmlContent.replace('@PR_NUMBER@', PR_NUMBER);
+            htmlContent = htmlContent.replace('@release_projects@', PROJECTS_RELEASE.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
+            htmlContent = htmlContent.replace('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
+            console.info('htmlContent', htmlContent);
+            // TODO create the file
+            // touch build/index.html
       - name: Display the final structure of files
         run: |
           ls -lhR build/
