@@ -154,14 +154,13 @@ jobs:
             htmlContent = htmlContent.replace('@PR_NUMBER@', PR_NUMBER);
             htmlContent = htmlContent.replace('@release_projects@', PROJECTS_RELEASE.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
             htmlContent = htmlContent.replace('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
-            console.info('htmlContent', htmlContent);
-            // TODO create the file
-            // touch build/index.html
+            console.info('Generated page', htmlContent);
+            // Create the file
+            require('fs').writeFileSync('build/index.html', htmlContent);
       - name: Display the final structure of files
         run: |
           ls -lhR build
       # TODO rollup terser: too large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
-      # TODO publish to surge
       - uses: bonitasoft/actions/packages/surge-preview-tools@v2
         id: surge-preview-tools
         with:
