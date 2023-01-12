@@ -9,7 +9,7 @@ on:
       - 'projects/typescript-vanilla-with-parcel/**/*'
       - 'projects/typescript-vanilla-with-rollup/**/*'
       - 'projects/typescript-vanilla-with-vitejs/**/*'
-# TODO exclude md files
+  # TODO exclude md files
   pull_request:
     branches:
       - master
@@ -46,8 +46,8 @@ jobs:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        project: [typescript-angular, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-        bv-npm-package: ['release', 'development']
+        project: [ typescript-angular, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs ]
+        bv-npm-package: [ 'release', 'development' ]
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
@@ -108,12 +108,12 @@ jobs:
       - name: List projects that will be referenced in the home page
         id: list_projects
         run: |
-#          development_elements=$(ls build/development/)
-#          release_elements=$(ls build/release/)
+          #          development_elements=$(ls build/development/)
+          #          release_elements=$(ls build/release/)
           # set the outputs
-          echo "projects_development=$(ls build/development/)" >> $GITHUB_OUTPUT
-          echo "projects_release=$(ls build/release/)" >> $GITHUB_OUTPUT
-# TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
+               echo "projects_development=$(ls build/development/)" >> $GITHUB_OUTPUT
+               echo "projects_release=$(ls build/release/)" >> $GITHUB_OUTPUT
+      # TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
       - name: Create the home page v1
         run: |
           touch build/index0.html
@@ -163,9 +163,9 @@ jobs:
           ls -lhR build/
           echo "**********************"
           ls -lh ./build
-# TODO Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
-# TODO rollup terser: too large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
-# TODO publish to surge
+      # TODO Angular: directory build to the dist folder, remove the extra "bpmn-visualization-app" subdirectories
+      # TODO rollup terser: too large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
+      # TODO publish to surge
       - uses: bonitasoft/actions/packages/surge-preview-tools@v2
         id: surge-preview-tools
         with:
@@ -178,13 +178,13 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           dist: build
           failOnError: true
-# TODO explain why we are not handling teardown here (dependencies on other jobs + schedule workflows at organization level in charge of tearing down the old surge domains)
+          # TODO explain why we are not handling teardown here (dependencies on other jobs + schedule workflows at organization level in charge of tearing down the old surge domains)
           teardown: 'false'
           build: echo 'Already built!'
       # Fallback when it is not possible to deploy to surge.sh
       - name: Upload artifact (preview not deployed)
         # TODO only if not deploy to surge.sh
-#        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
+        #        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
         uses: actions/upload-artifact@v3
         with:
           name: all-typescript-projects-${{github.sha}}
