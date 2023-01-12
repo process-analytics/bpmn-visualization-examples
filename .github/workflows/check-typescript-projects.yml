@@ -175,8 +175,7 @@ jobs:
         with:
           surge_token: ${{ secrets.SURGE_TOKEN }}
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          # TODO empty????
-          dist: build/
+          dist: build
           failOnError: true
 # TODO explain why we are not handling teardown here (dependencies on other jobs + schedule workflows at organization level in charge of tearing down the old surge domains)
           teardown: 'false'
