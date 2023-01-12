@@ -73,13 +73,14 @@ jobs:
         run: npm run build
       # TODO only if event is pull_request
       - name: Upload project archive
+        if: github.event_name == 'pull_request'
         uses: actions/upload-artifact@v3
         with:
           name: ${{matrix.project}}-${{matrix.bv-npm-package}}
           path: ${{github.workspace}}/projects/${{matrix.project}}/dist
 
   publish_pr_preview:
-# TODO only if event is pull_request
+    if: github.event_name == 'pull_request'
     runs-on: ubuntu-20.04
     needs: 'build_projects'
     permissions:
