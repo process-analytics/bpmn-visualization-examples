@@ -21,6 +21,7 @@ import copyWatch from "rollup-plugin-copy-watch";
 import typescript from "rollup-plugin-typescript2";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
 import { string } from "rollup-plugin-string";
 import pkg from "./package.json";
 
@@ -55,6 +56,8 @@ if (devMode) {
   plugins.push(serve({contentBase: "dist", port: 10001}));
   // Allow to livereload on any update
   plugins.push(livereload({watch: "dist", verbose: true}));
+} else {
+  plugins.push(terser({ecma: 2015}));
 }
 
 export default [
