@@ -128,10 +128,8 @@ jobs:
           PROJECTS_RELEASE: ${{ steps.list_projects.outputs.projects_release }}
         with:
           script: |
-            let {PR_NUMBER, PROJECTS_DEVELOPMENT, PROJECTS_RELEASE} = process.env;
-            //const projectsDevelopmentNames = PROJECTS_DEVELOPMENT.split(' ');
-            //const projectsReleaseNames = PROJECTS_RELEASE.split(' ');
-            let htmlContent = ```<!DOCTYPE html>
+            const {PR_NUMBER, PROJECTS_DEVELOPMENT, PROJECTS_RELEASE} = process.env;
+            let htmlContent = `<!DOCTYPE html>
             <html lang="en">
             <head>
             <meta charset="UTF-8"/>
@@ -143,18 +141,16 @@ jobs:
             <p>
             Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/releases/latest" target="_blank">latest released version</a> of <code>bpmn-visualization</code>
             <ul>
-            <!-- <li><a href="release/@name@/index.html" target="_blank">@name@</a></li> -->
             @release_projects@
             </ul>
             <p>
             Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/" target="_blank">development version</a> of <code>bpmn-visualization</code>
             <ul>
-            <!-- <li><a href="development/@name@/index.html" target="_blank">@name@</a></li> -->
             @development_projects@
             </ul>
             </body>
             </html>
-            ```
+            `
             htmlContent = htmlContent.replace('@PR_NUMBER@', PR_NUMBER);
             htmlContent = htmlContent.replace('@release_projects@', PROJECTS_RELEASE.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
             htmlContent = htmlContent.replace('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
