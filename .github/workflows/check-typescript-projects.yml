@@ -146,8 +146,8 @@ jobs:
             </html>
             `
             htmlContent = htmlContent.replaceAll('@PR_NUMBER@', PR_NUMBER);
-            htmlContent = htmlContent.replaceAll('@release_projects@', PROJECTS_RELEASE.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
-            htmlContent = htmlContent.replaceAll('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
+            htmlContent = htmlContent.replaceAll('@release_projects@', PROJECTS_RELEASE.split(' ').filter(name => name.trim() !== '').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
+            htmlContent = htmlContent.replaceAll('@development_projects@', PROJECTS_DEVELOPMENT.split(' ').filter(name => name.trim() !== '').map(name => `<li><a href="release/${name}/index.html" target="_blank">${name}</a></li>`).join('\n'));
             console.info('Generated page', htmlContent);
             // Create the file
             require('fs').writeFileSync('build/index.html', htmlContent);
