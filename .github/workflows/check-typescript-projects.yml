@@ -79,7 +79,11 @@ jobs:
           name: ${{matrix.project}}-${{matrix.bv-npm-package}}
           path: ${{github.workspace}}/projects/${{matrix.project}}/dist
 
-  publish_pr_preview:
+  #TODO create an issue in bonitasoft/actions/packages/surge-preview-tools
+  # WARN: use a short job-id to ensure the surge.sh subdomain is valid i.e. up to 63 characters (the surge-preview action includes the job-id in the generated surge domain)
+  # For instance, using 'publish_pr_preview' would create the "process-analytics-bpmn-visualization-examples-publish_pr_preview-pr-438" subdomain
+  # This subdomain is 71 characters long
+  pr_preview:
     if: github.event_name == 'pull_request'
     runs-on: ubuntu-20.04
     needs: 'build_projects'
