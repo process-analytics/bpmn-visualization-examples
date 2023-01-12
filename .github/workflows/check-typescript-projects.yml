@@ -159,9 +159,7 @@ jobs:
             // touch build/index.html
       - name: Display the final structure of files
         run: |
-          ls -lhR build/
-          echo "**********************"
-          ls -lh ./build
+          ls -lhR build
       # TODO rollup terser: too large bundle: 2.7Mb (use terser plugin) + bump rollup dependencies (including migration to rollup@3)
       # TODO publish to surge
       - uses: bonitasoft/actions/packages/surge-preview-tools@v2
