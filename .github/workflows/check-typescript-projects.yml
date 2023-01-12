@@ -166,7 +166,12 @@ jobs:
           github_token: ${{ secrets.GITHUB_TOKEN }}
           dist: build
           failOnError: true
-          # TODO explain why we are not handling teardown here (dependencies on other jobs + schedule workflows at organization level in charge of tearing down the old surge domains)
+          # We are not doing teardown here.
+          # The teardown must be performed in the same job as the one which creates the domain (as the surge-action uses the job id to compute the surge domain).
+          # Here, the job is run after other jobs run. Teardown run typically on PR close, and we don't want to run the parent job on PR close.
+          # If the parent jobs don't run, this job cannot run. So we are in a dead end.
+          # In the process-analytics GitHub organization, we have a workflow that is scheduled periodically to teardown old domain.
+          # The domain created here will be removed by this scheduled run.
           teardown: 'false'
           build: echo 'Already built!'
       # Fallback when it is not possible to deploy to surge.sh
