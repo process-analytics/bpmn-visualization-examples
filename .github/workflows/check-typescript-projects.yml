@@ -9,7 +9,7 @@ on:
       - 'projects/typescript-vanilla-with-parcel/**/*'
       - 'projects/typescript-vanilla-with-rollup/**/*'
       - 'projects/typescript-vanilla-with-vitejs/**/*'
-  # TODO exclude md files
+      - '!projects/**/*.md'
   pull_request:
     branches:
       - master
@@ -19,7 +19,7 @@ on:
       - 'projects/typescript-vanilla-with-parcel/**/*'
       - 'projects/typescript-vanilla-with-rollup/**/*'
       - 'projects/typescript-vanilla-with-vitejs/**/*'
-# TODO exclude md files
+      - '!projects/**/*.md'
 
 jobs:
   build_bpmn-visualization_development_npm_package:
