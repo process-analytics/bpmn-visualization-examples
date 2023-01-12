@@ -2,7 +2,7 @@ class ThemeUseCase extends HacktoberfestUseCase {
 
     _theme;
 
-    // Default BPMN Visualization theme
+    // Default bpmn-visualization theme
     #originalDefaultFontColor;
     #originalDefaultFontFamily;
     #originalDefaultFontSize;
