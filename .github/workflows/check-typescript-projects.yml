@@ -114,11 +114,6 @@ jobs:
           # for the ls option, see https://serverfault.com/a/1095912
           echo "projects_development=$(ls -xw0 build/development/)" >> $GITHUB_OUTPUT
           echo "projects_release=$(ls -xw0 build/release/)" >> $GITHUB_OUTPUT
-      # TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
-      - name: Create the home page v1
-        run: |
-          touch build/index0.html
-          echo "TypeScript projects for PR#${{github.event.pull_request.number}}" >> build/index0.html
       - name: Create the home page
         uses: actions/github-script@v6
         env:
