@@ -108,11 +108,8 @@ jobs:
       - name: List projects that will be referenced in the home page
         id: list_projects
         run: |
-          #          development_elements=$(ls build/development/)
-          #          release_elements=$(ls build/release/)
-          # set the outputs
-               echo "projects_development=$(ls build/development/)" >> $GITHUB_OUTPUT
-               echo "projects_release=$(ls build/release/)" >> $GITHUB_OUTPUT
+          echo "projects_development=$(ls build/development/)" >> $GITHUB_OUTPUT
+          echo "projects_release=$(ls build/release/)" >> $GITHUB_OUTPUT
       # TODO create an index page and list all built projects (split list 'release' and 'development' + mention the PR number)
       - name: Create the home page v1
         run: |
