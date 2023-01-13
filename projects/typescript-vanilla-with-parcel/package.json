@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "scripts": {
     "start": "parcel index.html --open",
-    "build": "tsc && parcel build index.html"
+    "build": "tsc && parcel build --public-url ./ index.html"
   },
   "dependencies": {
     "bpmn-visualization": "0.29.1"
