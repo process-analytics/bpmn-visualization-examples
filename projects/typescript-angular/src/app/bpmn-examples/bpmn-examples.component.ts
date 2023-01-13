@@ -10,6 +10,7 @@ import { ActionStatus } from "../utils/types";
   styleUrls: ['./bpmn-examples.component.css'],
 })
 export class BpmnExamplesComponent {
+  bpmnVisualizationVersion ?: string;
   bpmnDiagram?: string;
 
   loading = false;
@@ -31,5 +32,11 @@ export class BpmnExamplesComponent {
 
   fitDiagram() {
     this.bpmnNavigationService.requestDiagramFit();
+  }
+
+  handleVersionInitialized(event: string) {
+    // TODO remove console info
+    console.info('@@handleVersionInitialized', event);
+    this.bpmnVisualizationVersion = event;
   }
 }

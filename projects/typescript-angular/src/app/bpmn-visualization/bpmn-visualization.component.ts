@@ -1,4 +1,5 @@
 import {
+  AfterContentInit,
   type AfterViewInit,
   Component,
   type ElementRef,
@@ -17,7 +18,7 @@ import { ActionsNotifierService } from "../services/actions-notifier.service";
   templateUrl: './bpmn-visualization.component.html',
   styleUrls: ['./bpmn-visualization.component.css'],
 })
-export class BpmnVisualizationComponent implements OnChanges, AfterViewInit {
+export class BpmnVisualizationComponent implements OnChanges, AfterViewInit, AfterContentInit {
   @Input() diagram?: string;
   @Input() fitType?: FitType;
 
@@ -37,7 +38,17 @@ export class BpmnVisualizationComponent implements OnChanges, AfterViewInit {
         container: this.bpmnContainer!.nativeElement,
         navigation: { enabled: true },
       });
+      // TODO fix error generated in dev mode https://angular.io/errors/NG0100
+      // this.versionInitialized.emit(this.bpmnVisualization.getVersion().lib);
     }
+  }
+
+  ngAfterContentInit(): void {
+    console.info("ngAfterContentInit")
+    // if (this.bpmnVisualization) {
+    //         this.versionInitialized.emit(this.bpmnVisualization.getVersion().lib);
+    // }
+    // this.bpmnVisualization && this.versionInitialized.emit(this.bpmnVisualization.getVersion().lib);
   }
 
   ngOnChanges(_changes: SimpleChanges): void {

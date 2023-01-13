@@ -27,13 +27,18 @@
     </div>
     <app-bpmn-visualization [ngClass]="loading? 'faded-container': ''"
                             [diagram]="bpmnDiagram"
-                            [fitType]="fitTypeValue">
+                            [fitType]="fitTypeValue"
+                            (versionInitialized)="handleVersionInitialized($event)"
+    >
     </app-bpmn-visualization>
   </div>
 
   <div class="card-container controls">
     <div>
       <button class="card card-small" [ngClass]="!bpmnDiagram? 'disabled': ''" [disabled]="!bpmnDiagram" (click)="fitDiagram()">Reset zoom level</button>
+<!--      TODO remove version for now, until the NG error is fixed-->
+<!--      {{bpmnVisualizationVersion}}-->
+<!--      <div class="card card-small"><span *ngIf="bpmnVisualizationVersion"><i>bpmn-visualization </i></span></div>-->
     </div>
     <div class="notification">
       <app-notification-zone></app-notification-zone>
