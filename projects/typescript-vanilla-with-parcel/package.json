@@ -1,7 +1,7 @@
 {
   "name": "bpmn-visualization-ts-parcel",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "Apache-2.0",
   "scripts": {
     "start": "parcel index.html --open",
