@@ -1,4 +1,4 @@
-# Integrate `bpmn-visualization` in an Angular 14 project
+# Integrate `bpmn-visualization` in an Angular 15 project
 
 This project shows how to integrate [`bpmn-visualization`](https://github.com/process-analytics/bpmn-visualization-js) in an [Angular](https://angular.io/) application.
 
@@ -9,13 +9,14 @@ This project shows how to integrate [`bpmn-visualization`](https://github.com/pr
 ## Prerequisites
 
 The example provided here was created with [Angular CLI](https://github.com/angular/angular-cli) version 14.2, using node 16 and npm 8.16.
+Then it was updated to use a more recent version of Angular.
 
 ## Integrating `bpmn-visualization`
 
 We bootstrapped the application using the `ng` command:
 
 ```sh
-npx @angular/cli@14 new bpmn-visualization-app --defaults=true
+npx @angular/cli@15 new bpmn-visualization-app --defaults=true
 ```
 
 The code of the `bpmn-visualization` component is in [bpmn.component.ts](bpmn-visualization-app/src/app/bpmn/bpmn.component.ts)
@@ -36,7 +37,9 @@ To configure budgets size, see https://angular.io/guide/build#configuring-size-b
 `bpmn-visualization` has dependencies on packages that uses the CommonJS format. By default, Angular emits warnings when
 it encounters such dependencies.
 
-To remove the warnings, see https://angular.io/guide/build#configuring-commonjs-dependencies.
+To remove the warnings, see:
+- details https://angular.io/guide/build#configuring-commonjs-dependencies
+- how this is done in this project: [angular.json](./angular.json) (search `allowedCommonJsDependencies`)
 
 
 # Usage of this example
