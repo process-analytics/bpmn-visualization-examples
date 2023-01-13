@@ -4,7 +4,7 @@
     <bpmn:startEvent id="StartEvent_08hc3xj" name="Start coding">
       <bpmn:outgoing>Flow_1wkfbb0</bpmn:outgoing>
     </bpmn:startEvent>
-    <bpmn:task id="Activity_1potg3p" name="Enjoy &#39;BPMN Visualization&#39;">
+    <bpmn:task id="Activity_1potg3p" name="Enjoy &#39;bpmn-visualization&#39;">
       <bpmn:incoming>Flow_1wkfbb0</bpmn:incoming>
       <bpmn:outgoing>Flow_133a5kz</bpmn:outgoing>
     </bpmn:task>
