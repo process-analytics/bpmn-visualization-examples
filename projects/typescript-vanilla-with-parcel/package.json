@@ -1,7 +1,7 @@
 {
   "name": "bpmn-visualization-ts-parcel",
-  "private": true,
   "version": "0.0.0",
+  "private": true,
   "license": "Apache-2.0",
   "scripts": {
     "start": "parcel index.html --open",
@@ -11,9 +11,9 @@
     "bpmn-visualization": "0.29.1"
   },
   "devDependencies": {
-    "@parcel/core": "~2.8.0",
-    "@parcel/transformer-inline-string": "~2.8.0",
-    "parcel": "~2.8.0",
+    "@parcel/core": "~2.8.2",
+    "@parcel/transformer-inline-string": "~2.8.2",
+    "parcel": "~2.8.2",
     "typescript": "~4.5.5"
   }
 }
