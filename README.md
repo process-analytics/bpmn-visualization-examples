@@ -149,6 +149,8 @@ Custom BPMN Theme features will be progressively added to `bpmn-visualization`. 
 <a id="projects"></a>
 ## `bpmn-visualization` usage in projects
 
+**Note**: these projects are tested with the Node version defined in the [.nvmrc](.nvmrc) file.
+
 Show how to integrate `bpmn-visualization` in project, using various kind of frameworks, build tools and bundlers:
 - [JavaScript + Webpack](projects/javascript-vanilla-with-webpack/README.md) - integration in a vanilla JavaScript Webpack project
 - [TypeScript + Angular](projects/typescript-angular/README.md) - integration in a TypeScript Angular project

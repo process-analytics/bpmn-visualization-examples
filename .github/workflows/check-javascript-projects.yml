@@ -5,13 +5,15 @@ on:
       - master
     paths:
       - '.github/workflows/check-javascript-projects.yml'
-      - 'projects/javascript-vanilla-with-webpack/**/*'
+      - 'projects/javascript-*/**/*'
+      - '!projects/**/*.md'
   pull_request:
     branches:
       - master
     paths:
       - '.github/workflows/check-javascript-projects.yml'
-      - 'projects/javascript-vanilla-with-webpack/**/*'
+      - 'projects/javascript-*/**/*'
+      - '!projects/**/*.md'
 
 jobs:
   check:
@@ -20,7 +22,8 @@ jobs:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        project: [javascript-vanilla-with-webpack]
+        project:
+          - javascript-vanilla-with-webpack
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
@@ -29,7 +32,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm install
       - name: Build project

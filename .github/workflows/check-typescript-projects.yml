@@ -5,30 +5,25 @@ on:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'projects/typescript-angular/**/*'
-      - 'projects/typescript-vanilla-with-parcel/**/*'
-      - 'projects/typescript-vanilla-with-rollup/**/*'
-      - 'projects/typescript-vanilla-with-vitejs/**/*'
+      - 'projects/typescript-*/**/*'
       - '!projects/**/*.md'
   pull_request:
     branches:
       - master
     paths:
       - '.github/workflows/check-typescript-projects.yml'
-      - 'projects/typescript-angular/**/*'
-      - 'projects/typescript-vanilla-with-parcel/**/*'
-      - 'projects/typescript-vanilla-with-rollup/**/*'
-      - 'projects/typescript-vanilla-with-vitejs/**/*'
+      - 'projects/typescript-*/**/*'
       - '!projects/**/*.md'
 
 jobs:
   build_bpmn-visualization_development_npm_package:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     steps:
       - uses: actions/checkout@v3
         with:
           repository: 'process-analytics/bpmn-visualization-js'
-          ref: 'master'
+          # to test a specific feature under development, uncomment the following line and use the related branch
+          # ref: 'specific_branch'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
@@ -40,14 +35,20 @@ jobs:
           path: bpmn-visualization-*.tgz
 
   build_projects:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: 'build_bpmn-visualization_development_npm_package'
     strategy:
       # don't cancel running jobs even if one fails
       fail-fast: false
       matrix:
-        project: [typescript-angular, typescript-vanilla-with-parcel, typescript-vanilla-with-rollup, typescript-vanilla-with-vitejs]
-        bv-npm-package: ['release', 'development']
+        project:
+          - typescript-angular
+          - typescript-vanilla-with-parcel
+          - typescript-vanilla-with-rollup
+          - typescript-vanilla-with-vitejs
+        bv-npm-package:
+          - development
+          - release
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
@@ -62,7 +63,7 @@ jobs:
       - name: Setup node
         uses: actions/setup-node@v3
         with:
-          node-version: '16'
+          node-version-file: '.nvmrc'
       - name: Install dependencies
         run: npm install
       - name: Install bpmn-visualization development npm package
@@ -84,7 +85,7 @@ jobs:
   # See https://github.com/bonitasoft/actions/issues/101 for more details
   pr_preview:
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-22.04
     needs: 'build_projects'
     permissions:
       pull-requests: write # surge-preview: PR comments
