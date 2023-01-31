@@ -23,7 +23,8 @@ jobs:
         with:
           repository: 'process-analytics/bpmn-visualization-js'
           # to test a specific feature under development, uncomment the following line and use the related branch
-          # ref: 'specific_branch'
+          # branch of https://github.com/process-analytics/bpmn-visualization-js/pull/2502
+          ref: '2480-export_mxgraph_context'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
@@ -42,13 +43,15 @@ jobs:
       fail-fast: false
       matrix:
         project:
-          - typescript-angular
-          - typescript-vanilla-with-parcel
-          - typescript-vanilla-with-rollup
+          # TODO restore projects
+#          - typescript-angular
+#          - typescript-vanilla-with-parcel
+#          - typescript-vanilla-with-rollup
           - typescript-vanilla-with-vitejs
         bv-npm-package:
           - development
-          - release
+          # TODO restore release when a new release exporting the "mxgraph" context is available
+#          - release
     defaults:
       run:
         working-directory: ${{github.workspace}}/projects/${{matrix.project}}
