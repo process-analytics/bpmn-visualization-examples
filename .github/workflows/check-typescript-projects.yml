@@ -103,6 +103,8 @@ jobs:
       - name: Build the final directories layout
         run: |
           mkdir -p build/development build/release
+          # TODO remove temporary
+          mkdir -p tmp/fake-release
           cp -R tmp/*-development build/development
           cp -R tmp/*-release build/release
           # remove the '-development' and '-release' postfixes from directory names
