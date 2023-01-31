@@ -45,7 +45,7 @@ jobs:
         project:
           # TODO restore projects
 #          - typescript-angular
-#          - typescript-vanilla-with-parcel
+          - typescript-vanilla-with-parcel
 #          - typescript-vanilla-with-rollup
           - typescript-vanilla-with-vitejs
         bv-npm-package:
