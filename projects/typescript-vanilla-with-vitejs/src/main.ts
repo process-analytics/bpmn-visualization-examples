@@ -2,9 +2,7 @@ import './style.css'
 // this is simple example of the BPMN diagram, loaded as string. The '?.raw' extension support is provided by Vite.
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from './diagram.bpmn?raw'
-import { BpmnVisualization } from 'bpmn-visualization';
-// put this import after the 'BpmnVisualization' import to ensure mxGraph is correctly configured by bpmn-visualization
-import { mxgraph } from "./mxgraph-initializer";
+import { mxgraph, BpmnVisualization } from 'bpmn-visualization';
 
 // instantiate BpmnVisualization, pass the container HTMLElement - present in index.html
 const bpmnVisualization = new BpmnVisualization({
