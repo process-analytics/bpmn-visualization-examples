@@ -132,10 +132,10 @@ jobs:
             <head>
             <meta charset="UTF-8"/>
             <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-            <title>TypeScript projects for PR #${PR_NUMBER}</title>
+            <title>Examples of bpmn-visualization projects for PR #${PR_NUMBER}</title>
             </head>
             <body>
-            <h1>TypeScript projects for <a href="${PR_URL}">PR #${PR_NUMBER}</a></h1>
+            <h1>Examples of <code>bpmn-visualization</code> projects for <a href="${PR_URL}">PR #${PR_NUMBER}</a></h1>
             <p>
             Projects built using the <a href="https://github.com/process-analytics/bpmn-visualization-js/releases/latest" target="_blank">latest released version</a> of <code>bpmn-visualization</code>
             <ul>
