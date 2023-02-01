@@ -23,8 +23,7 @@ jobs:
         with:
           repository: 'process-analytics/bpmn-visualization-js'
           # to test a specific feature under development, uncomment the following line and use the related branch
-          # branch of https://github.com/process-analytics/bpmn-visualization-js/pull/2502
-          ref: '2480-export_mxgraph_context'
+          # ref: 'specific_branch'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
