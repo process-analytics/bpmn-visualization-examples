@@ -121,7 +121,7 @@ jobs:
         uses: actions/github-script@v6
         env:
           PR_NUMBER: ${{github.event.pull_request.number}}
-          PR_URL: 'https://example.com' # TODO provide the right url
+          PR_URL: ${{github.server_url}}/${{github.repository}}/pull/${{github.event.pull_request.number}}
           PROJECTS_DEVELOPMENT: ${{ steps.list_projects.outputs.projects_development }}
           PROJECTS_RELEASE: ${{ steps.list_projects.outputs.projects_release }}
         with:
