@@ -1,10 +1,8 @@
-import { BpmnVisualization, FitType } from "bpmn-visualization";
+import { mxgraph, BpmnVisualization, FitType } from "bpmn-visualization";
 // BPMN diagram content conveniently retrieved with parcel (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "bundle-text:./diagram.bpmn";
 import "./styles.css";
-// put this import after the 'BpmnVisualization' import to ensure mxGraph is correctly configured by bpmn-visualization
-import { mxgraph } from "./mxgraph-initializer";
 
 // 'bpmn-visualization' API documentation: https://process-analytics.github.io/bpmn-visualization-js/api/index.html
 const bpmnVisualization = new BpmnVisualization({
