@@ -1,5 +1,7 @@
 class PathUseCase extends UseCase {
 
+    _firstSelectedShape;
+
     constructor(getDiagram) {
         super('path', getDiagram, true);
     }
@@ -7,7 +9,7 @@ class PathUseCase extends UseCase {
     display() {
         super.display();
 
-        let elementsByKinds = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+        this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
             bpmnvisu.ShapeBpmnElementKind.EVENT_END,
             bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
             bpmnvisu.ShapeBpmnElementKind.EVENT_START,
@@ -28,7 +30,10 @@ class PathUseCase extends UseCase {
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL])
             .forEach(item => item.htmlElement.onclick = () => {
-                this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
+                if(!this._firstSelectedShape) {
+                    this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
+                    this._firstSelectedShape = item.bpmnSemantic.id
+                }
             });
 
         /*        "bpmn-type-event"
