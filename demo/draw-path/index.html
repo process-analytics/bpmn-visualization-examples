@@ -68,6 +68,29 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
+            <div id="controls" class="column bg-secondary pt-2 pb-2">
+                <div class="columns">
+                    <div id="choose-use-case-panel" class="col-10" style="margin: auto">
+                        <h5>Progress</h5>
+                        <ul class="step">
+                            <li id="step1" class="step-item active">
+                                <a href="#" class="tooltip" data-tooltip="Click on an event, a gateway or an activity">Click on a shape</a>
+                            </li>
+                            <li id="step2" class="step-item">
+                                <a href="#" class="tooltip" data-tooltip="Click on a next consecutive event, gateway or activity">Click on a next shape</a>
+                            </li>
+                            <li id="step3" class="step-item">
+                                <a href="#" class="tooltip" data-tooltip="Click on Reset button or another shape">Reset</a>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto" style="margin: auto">
+                        <button id="btn-reset" type="reset" class="btn btn-error btn-action s-circle">
+                            <i class="icon icon-refresh"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
             <div id="use-case-panel">
                 <div class="columns" style="padding-left: 2rem">
                     <div id="legend" class="column col-2 col-mx-auto" style="margin: auto">
@@ -85,23 +108,6 @@ limitations under the License.
                     </div>
                 </div>
             </div>
-        </div>
-        <div class="columns col-11 col-mx-auto" style="margin-top: 1rem; margin-bottom: 1rem">
-            <div class="column col-7 col-ml-auto" style="margin-top: auto; margin-bottom: auto">
-                <ul class="step">
-                    <li id="step1" class="step-item active">
-                        <a href="#" class="tooltip" data-tooltip="Click on an event, a gateway or an activity">Click on a shape</a>
-                    </li>
-                    <li id="step2" class="step-item">
-                        <a href="#" class="tooltip" data-tooltip="Click on a next consecutive event, gateway or activity">Click on a next shape</a>
-                    </li>
-                    <li id="step3" class="step-item">
-                        <a href="#" class="tooltip" data-tooltip="Click on Reset button or another shape">Reset</a>
-                    </li>
-                </ul>
-            </div>
-
-            <button type="reset" class="btn text-error" style="border-color: #e85600">Reset</button>
         </div>
     </div>
 </section>
