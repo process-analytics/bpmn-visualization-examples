@@ -2,6 +2,9 @@ class PathUseCase extends UseCase {
 
     _firstSelectedShape;
 
+    _allShapes;
+    _allEdges;
+
     constructor(getDiagram) {
         super('path', getDiagram, true);
     }
@@ -9,7 +12,7 @@ class PathUseCase extends UseCase {
     display() {
         super.display();
 
-        this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+        this._allShapes = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
             bpmnvisu.ShapeBpmnElementKind.EVENT_END,
             bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
             bpmnvisu.ShapeBpmnElementKind.EVENT_START,
@@ -28,17 +31,21 @@ class PathUseCase extends UseCase {
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_EVENT_BASED,
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE,
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL])
-            .forEach(item => item.htmlElement.onclick = () => {
+            bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL]);
+
+        this._allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+            bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
+
+
+        this._allShapes.forEach(item => item.htmlElement.onclick = () => {
                 if(!this._firstSelectedShape) {
+                    [...this._allShapes, ... this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).forEach(shapeOrEdge => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(shapeOrEdge.bpmnSemantic.id, 'disableAll'));
+
                     this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
                     this._firstSelectedShape = item.bpmnSemantic.id
+                } else {
+
                 }
             });
-
-        /*        "bpmn-type-event"
-                "bpmn-type-gateway"
-                "bpmn-type-activity"
-        "bpmn-type-flow"*/
     }
 }

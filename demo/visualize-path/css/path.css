@@ -24,6 +24,30 @@
     cursor: pointer;
 }
 
+/* ------------------------------------------------ DISABLE EVERYTHING ------------------------------------------------ */
+/* SHAPE & EDGE */
+.disableAll.bpmn-type-activity > *,
+.disableAll.bpmn-type-event > *,
+.disableAll.bpmn-type-gateway > *,
+.disableAll.bpmn-type-flow > * {
+    stroke: Silver;
+}
+
+/* ICON */
+.disableAll.bpmn-type-gateway > path:nth-child(2), .disableAll.bpmn-type-flow > path:nth-child(3) {
+    fill: Silver;
+}
+
+/* LABEL */
+.disableAll.bpmn-type-activity > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-event > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-gateway > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-flow > g > foreignObject > div > div > div {
+    color: Silver !important;
+}
+
+/* ------------------------------------------------ HIGHLIGHT ------------------------------------------------ */
+/* SHAPE */
 .highlight.bpmn-type-activity > rect:first-child,
 .highlight.bpmn-type-event > ellipse:first-child,
 .highlight.bpmn-type-gateway > path:first-child {
@@ -31,6 +55,7 @@
     filter: drop-shadow(0 0 0.75rem LightSeaGreen);
 }
 
+/* ICON */
 .highlight.bpmn-type-gateway > :not(:first-child) {
     stroke: LightSeaGreen;
 }
@@ -38,3 +63,4 @@
 .highlight.bpmn-type-gateway > path:nth-child(2) {
     fill: LightSeaGreen;
 }
+
