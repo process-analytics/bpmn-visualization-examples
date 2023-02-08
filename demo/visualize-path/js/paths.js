@@ -8,9 +8,21 @@ class Path {
         this._edgeId = edgeId;
         this._targetId = targetId;
     }
+
+    get sourceId() {
+        return this._sourceId;
+    }
+
+    get edgeId() {
+        return this._edgeId;
+    }
+
+    get targetId() {
+        return this._targetId;
+    }
 }
 
-let paths = [
+const paths = [
     new Path('start_event', "sequence_flow_1", "parallel_gateway_1"),
     new Path('parallel_gateway_1', "sequence_flow_2", "task_1"),
     new Path('parallel_gateway_1', "sequence_flow_18", "task_2"),

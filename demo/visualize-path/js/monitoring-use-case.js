@@ -41,7 +41,14 @@ class PathUseCase extends UseCase {
                 if(!this._firstSelectedShape) {
                     [...this._allShapes, ... this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).forEach(shapeOrEdge => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(shapeOrEdge.bpmnSemantic.id, 'disableAll'));
 
+                    paths.filter(path => path.sourceId === item.bpmnSemantic.id).forEach(path => {
+                        const htmlElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(path.targetId)[0].htmlElement;
+                        htmlElement.onmouseenter = () => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                        htmlElement.onmouseleave = () => this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                    });
+
                     this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
+                    
                     this._firstSelectedShape = item.bpmnSemantic.id
                 } else {
 
