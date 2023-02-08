@@ -1,12 +1,20 @@
+
 class PathUseCase extends UseCase {
 
-    _firstSelectedShape;
+    _state;
 
     _allShapes;
     _allEdges;
 
     constructor(getDiagram) {
         super('path', getDiagram, true);
+
+        this._state =
+            {
+                firstSelectedShape:undefined,
+                secondSelectedShape:undefined,
+                edge: undefined
+            }
     }
 
     display() {
@@ -36,28 +44,42 @@ class PathUseCase extends UseCase {
         this._allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
             bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
 
-
-        this._allShapes.forEach(item => item.htmlElement.onclick = () => {
-                if(!this._firstSelectedShape) {
-                    [...this._allShapes, ... this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).forEach(shapeOrEdge => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(shapeOrEdge.bpmnSemantic.id, 'disableAll'));
-
-                    paths.filter(path => path.sourceId === item.bpmnSemantic.id).forEach(path => {
-                        const htmlElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(path.targetId)[0].htmlElement;
-                        htmlElement.onmouseenter = () => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
-                        htmlElement.onmouseleave = () => this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
-                    });
-
+        this._allShapes.forEach(item => {
+            item.htmlElement.onclick = () => {
+                if (!this._state.firstSelectedShape) {
+                    [...this._allShapes, ...this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).forEach(shapeOrEdge => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(shapeOrEdge.bpmnSemantic.id, 'disableAll'));
                     this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
-
-                    this._firstSelectedShape = item.bpmnSemantic.id
-                } else {
-                    const filteredPaths = paths.filter(path => path.sourceId === this._firstSelectedShape && path.targetId === item.bpmnSemantic.id);
+                    this._state.firstSelectedShape = item.bpmnSemantic.id;
+                } else if (!this._state.secondSelectedShape){
+                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
                     if (filteredPaths.length > 0) {
                         const path = filteredPaths[0];
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'disableAll');
+                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], ['disableAll', 'possibleNext']);
                         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'highlight');
+
+                        this._state.secondSelectedShape = item.bpmnSemantic.id;
+                        this._state.edge = path.edgeId;
                     }
                 }
-            });
+            }
+            item.htmlElement.onmouseenter = () => {
+                if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
+                    if (filteredPaths.length > 0) {
+                        const path = filteredPaths[0];
+                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                    }
+                }
+            }
+            item.htmlElement.onmouseleave = () => {
+                if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
+                    if (filteredPaths.length > 0) {
+                        const path = filteredPaths[0];
+                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                    }
+                }
+            }
+        });
     }
 }

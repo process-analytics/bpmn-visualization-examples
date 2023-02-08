@@ -43,3 +43,6 @@ const paths = [
     new Path('task_6', "sequence_flow_9", "inclusive_gateway_2")
 ];
 
+function getFilteredPaths(sourceId, targetId) {
+    return paths.filter(path => path.sourceId === sourceId && path.targetId === targetId);
+}
