@@ -6,7 +6,7 @@ fieldset {
 legend {
     font-size: 18px;
     padding: 0 10px;
-    margin-bottom: auto;
+    margin: auto;
 }
 
 .legend li:first-child::before {

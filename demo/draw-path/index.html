@@ -68,26 +68,25 @@ limitations under the License.
         </div>
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div class="text-center">
-                <h4 id="path-title"></h4>
-            </div>
-            <div id="use-case-panel" class="bg-gray">
-                <div class="columns">
-                    <div class="column col-mx-auto">
+            <div id="use-case-panel">
+                <div class="columns" style="padding-left: 2rem">
+                    <div id="legend" class="column col-2 col-mx-auto" style="margin: auto">
+                        <fieldset>
+                            <legend>Legend</legend>
+                            <ul class="legend">
+                                <li>Disabled shapes</li>
+                                <li>Selected shapes & path</li>
+                                <li>Potential paths</li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="column col-10 col-mx-auto">
                         <div id="path-bpmn-container" class="col-12 bpmn-container"></div>
                     </div>
                 </div>
             </div>
         </div>
         <div class="columns col-11 col-mx-auto" style="margin-top: 1rem; margin-bottom: 1rem">
-            <fieldset class="column col-3">
-                <legend>Legend</legend>
-                <ul class="legend">
-                    <li>Disabled shapes</li>
-                    <li>Selected shapes & path</li>
-                    <li>Potential paths</li>
-                </ul>
-            </fieldset>
             <div class="column col-7 col-ml-auto" style="margin-top: auto; margin-bottom: auto">
                 <ul class="step">
                     <li id="step1" class="step-item active">
@@ -101,6 +100,8 @@ limitations under the License.
                     </li>
                 </ul>
             </div>
+
+            <button type="reset" class="btn text-error" style="border-color: #e85600">Reset</button>
         </div>
     </div>
 </section>
