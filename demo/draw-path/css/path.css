@@ -4,6 +4,10 @@
     --color-possibleNext: MediumVioletRed;
 }
 
+#use-case-panel {
+    padding-bottom: 0;
+}
+
 .bpmn-type-event:hover, .bpmn-type-gateway:hover, .bpmn-type-activity:hover {
     cursor: pointer;
 }

@@ -1,0 +1,41 @@
+fieldset {
+    border: 1px solid#ddd;
+    padding: 5px 12px;
+}
+
+legend {
+    font-size: 18px;
+    padding: 0 10px;
+    margin-bottom: auto;
+}
+
+.legend li:first-child::before {
+    background-color: var(--color-disableAll);
+}
+.legend li:nth-child(2)::before {
+    background-color: var(--color-highlight);
+}
+.legend li:nth-child(3)::before {
+    background-color: var(--color-possibleNext);
+}
+
+.legend li::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-inline-end: .5rem;
+    border-width: 2px;
+    border-style: solid;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    border-color: #000;
+}
+
+.legend li {
+    line-height: 1rem;
+}
+.legend {
+    list-style: none;
+    font-size: 0.8rem;
+}
