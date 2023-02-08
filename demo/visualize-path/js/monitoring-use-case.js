@@ -1,26 +1,22 @@
-
 class PathUseCase extends UseCase {
 
     _state;
 
-    _allShapes;
-    _allEdges;
+    _bpmnElementIds;
 
     constructor(getDiagram) {
         super('path', getDiagram, true);
 
-        this._state =
-            {
-                firstSelectedShape:undefined,
-                secondSelectedShape:undefined,
-                edge: undefined
-            }
+        this._state = {
+            firstSelectedShape: undefined,
+            secondSelectedShape: undefined,
+        };
     }
 
     display() {
         super.display();
 
-        this._allShapes = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+        const allShapes = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
             bpmnvisu.ShapeBpmnElementKind.EVENT_END,
             bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
             bpmnvisu.ShapeBpmnElementKind.EVENT_START,
@@ -40,56 +36,74 @@ class PathUseCase extends UseCase {
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE,
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
             bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL]);
-
-        this._allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+        const allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
             bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
+        this._bpmnElementIds = [...allShapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
 
-        this._allShapes.forEach(item => {
+        allShapes.forEach(item => {
+            const currentId = item.bpmnSemantic.id;
+
             item.htmlElement.onclick = () => {
-                if(this._state.firstSelectedShape && this._state.secondSelectedShape){
-                    this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([...this._allShapes, ...this._allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
-                    this._state.firstSelectedShape = undefined;
-                    this._state.secondSelectedShape = undefined;
-                    this._state.edge = undefined;
+                if (this._state.firstSelectedShape && this._state.secondSelectedShape) {
+                    this._reset();
                 }
 
                 if (!this._state.firstSelectedShape) {
-                    this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([...this._allShapes, ...this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), ['disableAll', 'disablePointer']);
-                    this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
-                    this._state.firstSelectedShape = item.bpmnSemantic.id;
-                } else if (!this._state.secondSelectedShape){
-                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
-                    if (filteredPaths.length > 0) {
-                        const path = filteredPaths[0];
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], ['disableAll', 'possibleNext']);
-                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'highlight');
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([...this._allShapes, ...this._allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), 'disablePointer');
-
-                        this._state.secondSelectedShape = item.bpmnSemantic.id;
-                        this._state.edge = path.edgeId;
-                    }
+                    this._disableAllShapesAndEdgesExcept(currentId);
+                    this._highlight(currentId);
+                    this._state.firstSelectedShape = currentId;
+                } else {
+                    this.doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
+                        this._highlight([filteredPath.edgeId, filteredPath.targetId]);
+                        this._activatePointerOnAllShapesAndEdges();
+                        this._state.secondSelectedShape = currentId;
+                    });
                 }
-            }
+            };
             item.htmlElement.onmouseenter = () => {
-                if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
-                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
-                    if (filteredPaths.length > 0) {
-                        const path = filteredPaths[0];
-                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId],  'disablePointer');
-                    }
-                }
-            }
+                this.doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNext(filteredPath));
+            };
             item.htmlElement.onmouseleave = () => {
-                if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
-                    const filteredPaths = getFilteredPaths(this._state.firstSelectedShape, item.bpmnSemantic.id);
-                    if (filteredPaths.length > 0) {
-                        const path = filteredPaths[0];
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
-                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'disablePointer');
-                    }
-                }
-            }
+                this.doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNext(filteredPath));
+            };
         });
+    }
+
+    doActionBeforeSecondShapeSelection(possibleSecondShapeId, action) {
+        if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+            const filteredPaths =  paths.filter(path => path.sourceId === this._state.firstSelectedShape && path.targetId === possibleSecondShapeId);
+            if (filteredPaths.length > 0) {
+                action(filteredPaths[0]);
+            }
+        }
+    }
+
+    _reset() {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(this._bpmnElementIds, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
+        this._state.firstSelectedShape = undefined;
+        this._state.secondSelectedShape = undefined;
+    }
+
+    _displayPossibleNext(path) {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'disablePointer');
+    }
+
+    _nonDisplayPossibleNext(path) {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'disablePointer');
+    }
+
+    _highlight(bpmnElementIds) {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(bpmnElementIds, ['disableAll', 'possibleNext']);
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(bpmnElementIds, ['highlight', 'disablePointer']);
+    }
+
+    _disableAllShapesAndEdgesExcept(id) {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._bpmnElementIds.filter(shapeOrEdge => shapeOrEdge !== id), ['disableAll', 'disablePointer']);
+    }
+
+    _activatePointerOnAllShapesAndEdges() {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(this._bpmnElementIds, 'disablePointer');
     }
 }
