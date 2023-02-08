@@ -32,6 +32,7 @@ limitations under the License.
     <script defer src="../../examples/static/js/diagram/bpmn-diagrams.js"></script>
     <script defer src="../static/js/use-case.js"></script>
     <script defer src="./js/paths.js"></script>
+    <script defer src="./js/steps.js"></script>
     <script defer src="./js/monitoring-use-case.js"></script>
     <script defer src="./js/index.js"></script>
 </head>
@@ -78,14 +79,29 @@ limitations under the License.
                 </div>
             </div>
         </div>
-        <fieldset class="col-11 col-mx-auto">
-            <legend>Legend</legend>
-            <ul class="legend">
-                <li>Disabled shapes</li>
-                <li>Selected shapes & path</li>
-                <li>Potential paths</li>
-            </ul>
-        </fieldset>
+        <div class="columns col-11 col-mx-auto" style="margin-top: 1rem; margin-bottom: 1rem">
+            <fieldset class="column col-3">
+                <legend>Legend</legend>
+                <ul class="legend">
+                    <li>Disabled shapes</li>
+                    <li>Selected shapes & path</li>
+                    <li>Potential paths</li>
+                </ul>
+            </fieldset>
+            <div class="column col-7 col-ml-auto" style="margin-top: auto; margin-bottom: auto">
+                <ul class="step">
+                    <li id="step1" class="step-item active">
+                        <a href="#" class="tooltip" data-tooltip="Click on an event, a gateway or an activity">Click on a shape</a>
+                    </li>
+                    <li id="step2" class="step-item">
+                        <a href="#" class="tooltip" data-tooltip="Click on a next consecutive event, gateway or activity">Click on a next shape</a>
+                    </li>
+                    <li id="step3" class="step-item">
+                        <a href="#" class="tooltip" data-tooltip="Click on Reset button or another shape">Reset</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
     </div>
 </section>
 <footer class="flex-centered"></footer>

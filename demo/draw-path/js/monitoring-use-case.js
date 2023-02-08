@@ -4,6 +4,8 @@ class PathUseCase extends UseCase {
 
     _bpmnElementIds;
 
+    _steps;
+
     constructor(getDiagram) {
         super('path', getDiagram, true);
 
@@ -11,6 +13,9 @@ class PathUseCase extends UseCase {
             firstSelectedShape: undefined,
             secondSelectedShape: undefined,
         };
+
+
+        this._steps = new Steps();
     }
 
     display() {
@@ -52,11 +57,13 @@ class PathUseCase extends UseCase {
                     this._disableAllShapesAndEdgesExcept(currentId);
                     this._highlight(currentId);
                     this._state.firstSelectedShape = currentId;
+                    this._steps.goToStep2();
                 } else {
                     this.doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
                         this._highlight([filteredPath.edgeId, filteredPath.targetId]);
                         this._activatePointerOnAllShapesAndEdges();
                         this._state.secondSelectedShape = currentId;
+                        this._steps.goToStep3();
                     });
                 }
             };
@@ -82,6 +89,7 @@ class PathUseCase extends UseCase {
         this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(this._bpmnElementIds, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
         this._state.firstSelectedShape = undefined;
         this._state.secondSelectedShape = undefined;
+        this._steps.reset();
     }
 
     _displayPossibleNext(path) {
