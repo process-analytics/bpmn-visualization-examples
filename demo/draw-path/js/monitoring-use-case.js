@@ -74,6 +74,10 @@ class PathUseCase extends UseCase {
                 this.doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNext(filteredPath));
             };
         });
+
+        document.getElementById('btn-reset').onclick = () => {
+            this._reset();
+        };
     }
 
     doActionBeforeSecondShapeSelection(possibleSecondShapeId, action) {
