@@ -47,14 +47,14 @@ class PathUseCase extends UseCase {
         this._allShapes.forEach(item => {
             item.htmlElement.onclick = () => {
                 if(this._state.firstSelectedShape && this._state.secondSelectedShape){
-                    this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([...this._allShapes, ...this._allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), ['disableAll', 'possibleNext', 'highlight']);
+                    this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([...this._allShapes, ...this._allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
                     this._state.firstSelectedShape = undefined;
                     this._state.secondSelectedShape = undefined;
                     this._state.edge = undefined;
                 }
 
                 if (!this._state.firstSelectedShape) {
-                    [...this._allShapes, ...this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).forEach(shapeOrEdge => this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(shapeOrEdge.bpmnSemantic.id, 'disableAll'));
+                    this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([...this._allShapes, ...this._allEdges].filter(shapeOrEdge => shapeOrEdge !== item).map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), ['disableAll', 'disablePointer']);
                     this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
                     this._state.firstSelectedShape = item.bpmnSemantic.id;
                 } else if (!this._state.secondSelectedShape){
@@ -63,6 +63,7 @@ class PathUseCase extends UseCase {
                         const path = filteredPaths[0];
                         this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], ['disableAll', 'possibleNext']);
                         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'highlight');
+                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([...this._allShapes, ...this._allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id), 'disablePointer');
 
                         this._state.secondSelectedShape = item.bpmnSemantic.id;
                         this._state.edge = path.edgeId;
@@ -75,6 +76,7 @@ class PathUseCase extends UseCase {
                     if (filteredPaths.length > 0) {
                         const path = filteredPaths[0];
                         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId],  'disablePointer');
                     }
                 }
             }
@@ -84,6 +86,7 @@ class PathUseCase extends UseCase {
                     if (filteredPaths.length > 0) {
                         const path = filteredPaths[0];
                         this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
+                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'disablePointer');
                     }
                 }
             }
