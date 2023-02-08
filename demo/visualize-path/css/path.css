@@ -34,7 +34,8 @@
 /* SHAPE */
 .highlight.bpmn-type-activity > rect:first-child,
 .highlight.bpmn-type-event > ellipse:first-child,
-.highlight.bpmn-type-gateway > path:first-child {
+.highlight.bpmn-type-gateway > path:first-child,
+.highlight.bpmn-type-flow > * {
     stroke: var(--color-highlight);
     filter: drop-shadow(0 0 0.75rem var(--color-highlight));
 }
@@ -44,7 +45,7 @@
     stroke: var(--color-highlight);
 }
 
-.highlight.bpmn-type-gateway > path:nth-child(2) {
+.highlight.bpmn-type-gateway > path:nth-child(2), .highlight.bpmn-type-flow > path:nth-child(3) {
     fill: var(--color-highlight);
 }
 

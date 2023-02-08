@@ -48,10 +48,15 @@ class PathUseCase extends UseCase {
                     });
 
                     this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(item.bpmnSemantic.id, 'highlight');
-                    
+
                     this._firstSelectedShape = item.bpmnSemantic.id
                 } else {
-
+                    const filteredPaths = paths.filter(path => path.sourceId === this._firstSelectedShape && path.targetId === item.bpmnSemantic.id);
+                    if (filteredPaths.length > 0) {
+                        const path = filteredPaths[0];
+                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'disableAll');
+                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'highlight');
+                    }
                 }
             });
     }
