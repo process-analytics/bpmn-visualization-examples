@@ -47,14 +47,14 @@ jobs:
         uses: peter-evans/create-pull-request@v4.2.3
         with:
           token: ${{ secrets.GH_RELEASE_TOKEN }}
-          commit-message: "[INFRA] Bump bpmn-visualization to ${{ env.VERSION }}"
+          commit-message: "chore(deps): bump bpmn-visualization to ${{ env.VERSION }}"
           committer: "process-analytics-bot <62586190+process-analytics-bot@users.noreply.github.com>"
           author: "process-analytics-bot <62586190+process-analytics-bot@users.noreply.github.com>"
-          branch: "infra/update_bpmn_visualization_to_${{ env.VERSION }}"
+          branch: "chore/update_bpmn_visualization_to_${{ env.VERSION }}"
           delete-branch: true
           base: "master"
-          title: "[INFRA] Bump bpmn-visualization to ${{ env.VERSION }}"
-          body: "https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/infra/update_bpmn_visualization_to_${{ env.VERSION }}/examples/index.html"
+          title: "chore(deps): bump bpmn-visualization to ${{ env.VERSION }}"
+          body: "https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/chore/update_bpmn_visualization_to_${{ env.VERSION }}/examples/index.html"
           labels: "enhancement"
           team-reviewers: pa-collaborators
           draft: true
