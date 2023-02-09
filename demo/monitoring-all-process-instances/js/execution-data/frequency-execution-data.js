@@ -27,7 +27,8 @@ class FrequencyExecutionData extends ExecutionData {
     _buildOverlayStyles(position, color) {
         const overlayStyles = this._internalBuildOverlayStyles(1, position, color);
         Array.from(overlayStyles.values()).forEach(overlayStyle => {
-            overlayStyle.stroke = {color: overlayStyle.style.fill.color};
+            const styleDefinition = overlayStyle.style;
+            styleDefinition.stroke = {color: styleDefinition.fill.color};
         });
         return overlayStyles;
     }
