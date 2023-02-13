@@ -10,12 +10,11 @@ const detectActualUseCase = useCaseType => useCaseType === 'frequency' ? frequen
 
 // Initialize the state and the radio buttons
 const parameters = new URLSearchParams(window.location.search);
-const useCaseType = ['frequency', 'time'].includes(parameters.get('useCase')) ? parameters.get('useCase') : 'time';
 const state = {
-    useCase: detectActualUseCase(useCaseType),
+    useCase: detectActualUseCase(['frequency', 'time'].includes(parameters.get('useCase')) ? parameters.get('useCase') : 'time'),
     dataType: ['both', 'overlays', 'paths'].includes(parameters.get('dataType')) ? parameters.get('dataType') : 'both'
 }
-document.getElementById(`btn-${useCaseType}`).checked = true;
+document.getElementById(`btn-${state.useCase.type}`).checked = true;
 document.getElementById(`btn-${state.dataType}`).checked = true;
 
 document.addEventListener('DOMContentLoaded', function () {
