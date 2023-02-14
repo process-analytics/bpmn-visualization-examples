@@ -1,20 +1,22 @@
 class Steps {
 
     reset() {
+        this._goToStep(1);
+    }
+
+    goToStep2(){
+        this._goToStep(2);
+    }
+
+    goToStep3(){
+        this._goToStep(3);
+    }
+
+    _goToStep(index) {
         const stepItems = document.getElementsByClassName("step-item");
         for (let stepItem of stepItems) {
             stepItem.classList.remove('active');
         }
-        document.getElementById('step1').classList.add('active');
-    }
-
-    goToStep2(){
-        document.getElementById('step1').classList.remove('active');
-        document.getElementById('step2').classList.add('active');
-    }
-
-    goToStep3(){
-        document.getElementById('step2').classList.remove('active');
-        document.getElementById('step3').classList.add('active');
+        document.getElementById(`step${index}`).classList.add('active');
     }
 }
