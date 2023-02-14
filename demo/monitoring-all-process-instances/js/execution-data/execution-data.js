@@ -97,6 +97,10 @@ class ExecutionData {
 
     /**
      * Generic implementation
+     * @param {number} startIndex
+     * @param position {string}
+     * @param color {string}
+     * @returns {Map<string, {style: {fill: {color: string}}, position: string}>}
      */
     _internalBuildOverlayStyles(startIndex, position, color) {
         return new Map([
@@ -138,6 +142,11 @@ class ExecutionData {
 
     /**
      * Implementation required
+     *
+     * @param position {string}
+     * @param color {string}
+     * @returns {Map<string, {style: {fill: {color: string}, stroke?: {color: string}}, position: string}>}
+     * @private
      */
     _buildOverlayStyles(position, color) {
         throw new Error('Not implemented');

@@ -17,6 +17,10 @@ class UseCase {
         this.#loadOptions = {...defaultLoadOptions, ...loadOptions};
     }
 
+    get type() {
+        return this.#type;
+    }
+
     display(dataType) {
         this._displayPanel();
 

@@ -2,12 +2,19 @@
 const timeUseCase = new MonitoringUseCase('time', getHardwareRetailerDiagram, new TimeExecutionData());
 const frequencyUseCase = new MonitoringUseCase('frequency', getHardwareRetailerDiagram, new FrequencyExecutionData());
 
-// Initialize state of radio buttons
+/**
+ * @param {string} useCaseType
+ * @returns {MonitoringUseCase}
+ */
+const detectActualUseCase = useCaseType => useCaseType === 'frequency' ? frequencyUseCase : timeUseCase
+
+// Initialize the state and the radio buttons
+const parameters = new URLSearchParams(window.location.search);
 const state = {
-    useCase: timeUseCase,
-    dataType: 'both'
+    useCase: detectActualUseCase(['frequency', 'time'].includes(parameters.get('useCase')) ? parameters.get('useCase') : 'time'),
+    dataType: ['both', 'overlays', 'paths'].includes(parameters.get('dataType')) ? parameters.get('dataType') : 'both'
 }
-document.getElementById('btn-time').checked = true;
+document.getElementById(`btn-${state.useCase.type}`).checked = true;
 document.getElementById(`btn-${state.dataType}`).checked = true;
 
 document.addEventListener('DOMContentLoaded', function () {
@@ -17,7 +24,7 @@ document.addEventListener('DOMContentLoaded', function () {
 
 document.getElementById('choose-use-case-panel').onchange = () => {
     const useCaseType = document.querySelector("input[type='radio'][name='use-case-type']:checked").value;
-    state.useCase = useCaseType === 'frequency' ? frequencyUseCase : timeUseCase;
+    state.useCase = detectActualUseCase(useCaseType);
 
     state.useCase.display(state.dataType);
 }
