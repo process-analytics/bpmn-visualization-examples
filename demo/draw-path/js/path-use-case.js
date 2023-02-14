@@ -19,7 +19,7 @@ class PathUseCase extends UseCase {
 
     display() {
         super.display();
-        
+
         const allShapes = this._getAllShapes();
         const allEdges = this._getAllEdges();
         this._bpmnElementIds = [...allShapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
@@ -138,7 +138,7 @@ class PathUseCase extends UseCase {
 
     _doActionOnEdge(edgeId, action) {
         if (!this._state.secondSelectedShape) {
-            const filteredPaths = paths.filter(path => path.edgeId === edgeId);
+            const filteredPaths = paths.filter(path => (this._state.firstSelectedShape ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === edgeId);
             if (filteredPaths.length > 0) {
                 action(filteredPaths[0]);
             }
