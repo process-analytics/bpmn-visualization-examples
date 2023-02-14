@@ -8,11 +8,11 @@
     padding-bottom: 0;
 }
 
-.bpmn-type-event:hover, .bpmn-type-gateway:hover, .bpmn-type-activity:hover {
+.bpmn-type-event:hover, .bpmn-type-gateway:hover, .bpmn-type-activity:hover, .bpmn-type-flow:hover {
     cursor: pointer;
 }
 
-.disablePointer.bpmn-type-event:hover, .disablePointer.bpmn-type-gateway:hover, .disablePointer.bpmn-type-activity:hover {
+.disablePointer.bpmn-type-event:hover, .disablePointer.bpmn-type-gateway:hover, .disablePointer.bpmn-type-activity:hover, .disablePointer.bpmn-type-flow:hover {
     cursor: default;
 }
 

@@ -55,7 +55,7 @@ class PathUseCase extends UseCase {
                 }
 
                 if (item.bpmnSemantic.kind !== bpmnvisu.ShapeBpmnElementKind.EVENT_END && !this._state.firstSelectedShape) {
-                    this._disableAllShapesAndEdgesExcept(currentId);
+                    this._disableAllShapesAndEdgesExcept([currentId]);
                     this._highlight(currentId);
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
@@ -70,14 +70,79 @@ class PathUseCase extends UseCase {
                 }
             };
             item.htmlElement.onmouseenter = () => {
-                this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNext(filteredPath));
+                this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
+                    this._displayPossibleNext([filteredPath.edgeId, filteredPath.targetId]);
+                    this._activatePointerOn([filteredPath.edgeId, filteredPath.targetId]);
+                });
             };
             item.htmlElement.onmouseleave = () => {
-                this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNext(filteredPath));
+                this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
+                    this._nonDisplayPossibleNext([filteredPath.edgeId, filteredPath.targetId]);
+                    this._disablePointerOn([filteredPath.edgeId, filteredPath.targetId]);
+                });
             };
         });
-
         this._disablePointerOn(endEventIds);
+
+        allEdges.forEach(item => {
+            const currentId = item.bpmnSemantic.id;
+
+            item.htmlElement.onclick = () => {
+                if (this._state.firstSelectedShape && this._state.secondSelectedShape) {
+                    this._reset();
+                }
+
+                if (!this._state.firstSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._disableAllShapesAndEdgesExcept([filteredPaths[0].sourceId, filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                        this._highlight([filteredPaths[0].sourceId, filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                        this._activatePointerOn(this._bpmnElementIds);
+                        this._disablePointerOn(endEventIds);
+                        this._state.firstSelectedShape = filteredPaths[0].sourceId;
+                        this._state.secondSelectedShape = filteredPaths[0].targetId;
+                        this._steps.goToStep3();
+                    }
+                } else if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._highlight([filteredPaths[0].sourceId, filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                        this._activatePointerOn(this._bpmnElementIds);
+                        this._disablePointerOn(endEventIds);
+                        this._state.secondSelectedShape = currentId;
+                        this._steps.goToStep3();
+                    }
+                }
+            };
+            item.htmlElement.onmouseenter = () => {
+                if (!this._state.firstSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._displayPossibleNext([filteredPaths[0].sourceId, filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                    }
+                } else if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._displayPossibleNext([filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                        this._activatePointerOn([filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                    }
+                }
+            };
+            item.htmlElement.onmouseleave = () => {
+                if (!this._state.firstSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._nonDisplayPossibleNext([filteredPaths[0].sourceId, filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                    }
+                } else if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
+                    const filteredPaths =  paths.filter(path => path.sourceId === this._state.firstSelectedShape && path.edgeId === currentId);
+                    if (filteredPaths.length > 0) {
+                        this._nonDisplayPossibleNext([filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                        this._disablePointerOn([filteredPaths[0].edgeId, filteredPaths[0].targetId]);
+                    }
+                }
+            };
+        });
 
         document.getElementById('btn-reset').onclick = () => {
             this._reset();
@@ -101,14 +166,12 @@ class PathUseCase extends UseCase {
         this._steps.reset();
     }
 
-    _displayPossibleNext(path) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses([path.edgeId, path.targetId], 'possibleNext');
-        this._activatePointerOn([path.edgeId, path.targetId]);
+    _displayPossibleNext(ids) {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids, 'possibleNext');
     }
 
-    _nonDisplayPossibleNext(path) {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses([path.edgeId, path.targetId], 'possibleNext');
-        this._disablePointerOn([path.edgeId, path.targetId]);
+    _nonDisplayPossibleNext(ids) {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(ids, 'possibleNext');
     }
 
     _highlight(bpmnElementIds) {
@@ -116,8 +179,8 @@ class PathUseCase extends UseCase {
         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(bpmnElementIds, ['highlight', 'disablePointer']);
     }
 
-    _disableAllShapesAndEdgesExcept(id) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._bpmnElementIds.filter(shapeOrEdge => shapeOrEdge !== id), ['disableAll', 'disablePointer']);
+    _disableAllShapesAndEdgesExcept(ids) {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._bpmnElementIds.filter(shapeOrEdge => !ids.includes(shapeOrEdge)), ['disableAll', 'disablePointer']);
     }
 
     _disablePointerOn(ids) {
