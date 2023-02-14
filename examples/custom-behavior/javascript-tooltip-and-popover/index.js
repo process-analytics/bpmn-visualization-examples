@@ -140,16 +140,31 @@ function registerBpmnElements(bpmnElements) {
     bpmnElements.forEach(elt => registeredBpmnElements.set(elt.htmlElement, elt.bpmnSemantic));
 }
 
+const headerKeys = ['id', 'name', 'kind'];
 
 function getBpmnElementInfoAsHtml(htmlElement) {
     const bpmnSemantic = registeredBpmnElements.get(htmlElement);
+    // sort the non header keys in alphabetic order (following the browser locale)
+    const secondaryKeys = Object.keys(bpmnSemantic)
+      .filter(key => !headerKeys.includes(key))
+      // in the future, the sort may be done on the converted object
+      .sort((a, b) => a.localeCompare(b));
 
     return `<div class="bpmn-popover">
 BPMN Info
 <hr>
-<b>id</b>: ${bpmnSemantic.id}<br>
-<b>name</b>: ${bpmnSemantic.name || 'N/A'}<br>
-<b>kind</b>: ${bpmnSemantic.kind}<br>
-<b>representation</b>: ${bpmnSemantic.isShape? 'Shape': 'Edge'}
+${computeBpmnInfoForPopover(headerKeys, bpmnSemantic)}
+<br>
+${computeBpmnInfoForPopover(secondaryKeys, bpmnSemantic)}
 </div>`;
+}
+
+function computeBpmnInfoForPopover(keys, bpmnSemantic) {
+    return keys.map(key => getConvertedBpmnSemanticValue(key, bpmnSemantic)).map(obj => `<b>${obj.key}</b>: ${obj.value}`).join('<br>\n');
+}
+
+const bpmnSemanticConversionMap = new Map([['isShape', { transformedKey: 'representation', transformFunction: (bpmnSemantic) => bpmnSemantic.isShape? 'Shape': 'Edge'}]]);
+function getConvertedBpmnSemanticValue(key, bpmnSemantic) {
+    const convertedBpmnSemantic = bpmnSemanticConversionMap.get(key) || { transformedKey: key, transformFunction: (bpmnSemantic) =>  bpmnSemantic[key] || 'N/A'};
+    return {key: convertedBpmnSemantic.transformedKey, value: convertedBpmnSemantic.transformFunction(bpmnSemantic)}
 }
