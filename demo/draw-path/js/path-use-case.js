@@ -19,29 +19,8 @@ class PathUseCase extends UseCase {
 
     display() {
         super.display();
-
-        const allShapes = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
-            bpmnvisu.ShapeBpmnElementKind.EVENT_END,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_START,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW,
-            bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY,
-            bpmnvisu.ShapeBpmnElementKind.SUB_PROCESS,
-            bpmnvisu.ShapeBpmnElementKind.TASK,
-            bpmnvisu.ShapeBpmnElementKind.TASK_BUSINESS_RULE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_RECEIVE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_MANUAL,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SEND,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SERVICE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SCRIPT,
-            bpmnvisu.ShapeBpmnElementKind.TASK_USER,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EVENT_BASED,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL]);
-        const allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
-            bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
+        const allShapes = this._getAllShapes();
+        const allEdges = this._getAllEdges();
         this._bpmnElementIds = [...allShapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
         const endEventIds = allShapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
 
@@ -112,6 +91,34 @@ class PathUseCase extends UseCase {
             this._reset();
             this._disablePointerOn(endEventIds);
         };
+    }
+
+    _getAllShapes() {
+        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+            bpmnvisu.ShapeBpmnElementKind.EVENT_END,
+            bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
+            bpmnvisu.ShapeBpmnElementKind.EVENT_START,
+            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH,
+            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW,
+            bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY,
+            bpmnvisu.ShapeBpmnElementKind.SUB_PROCESS,
+            bpmnvisu.ShapeBpmnElementKind.TASK,
+            bpmnvisu.ShapeBpmnElementKind.TASK_BUSINESS_RULE,
+            bpmnvisu.ShapeBpmnElementKind.TASK_RECEIVE,
+            bpmnvisu.ShapeBpmnElementKind.TASK_MANUAL,
+            bpmnvisu.ShapeBpmnElementKind.TASK_SEND,
+            bpmnvisu.ShapeBpmnElementKind.TASK_SERVICE,
+            bpmnvisu.ShapeBpmnElementKind.TASK_SCRIPT,
+            bpmnvisu.ShapeBpmnElementKind.TASK_USER,
+            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EVENT_BASED,
+            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE,
+            bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
+            bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL]);
+    }
+
+    _getAllEdges() {
+        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
+            bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
     }
 
     _doActionBeforeSecondShapeSelection(possibleSecondShapeId, action) {
