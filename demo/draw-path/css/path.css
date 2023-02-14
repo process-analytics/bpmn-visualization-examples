@@ -63,12 +63,12 @@
 .possibleNext.bpmn-type-event > *,
 .possibleNext.bpmn-type-gateway > *,
 .possibleNext.bpmn-type-flow > * {
-    stroke: var(--color-possibleNext);
+    stroke: var(--color-possibleNext) !important;
 }
 
 /* ICON */
 .possibleNext.bpmn-type-gateway > path:nth-child(2), .possibleNext.bpmn-type-flow > path:nth-child(3) {
-    fill: var(--color-possibleNext);
+    fill: var(--color-possibleNext) !important;
 }
 
 /* LABEL */
