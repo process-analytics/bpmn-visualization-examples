@@ -79,8 +79,7 @@ class PathUseCase extends UseCase {
                 } else if (this._state.firstSelectedShape) {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
                         this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                        this._activatePointerOn(this._bpmnElementIds);
-                        this._disablePointerOn(endEventIds);
+                        this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
                         this._state.secondSelectedShape = currentId;
                         this._steps.goToStep3();
                     });
@@ -112,8 +111,7 @@ class PathUseCase extends UseCase {
                         this._state.firstSelectedShape = filteredPath.sourceId;
                     }
                     this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                    this._activatePointerOn(this._bpmnElementIds);
-                    this._disablePointerOn(endEventIds);
+                    this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
                     this._state.secondSelectedShape = filteredPath.targetId;
                     this._steps.goToStep3();
                 });
