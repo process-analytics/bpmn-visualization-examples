@@ -80,17 +80,12 @@ limitations under the License.
                             <li id="step2" class="step-item">
                                 <!-- According to the official documentation of Spectre.css, we should only add \n to have multiple lines on the tooltip,
                                 but it doesn't work: https://picturepan2.github.io/spectre/components/tooltips.html#tooltips-multiline
-                                The only way, to do that it's to go to the beginning of the next line, for now. -->
-                                <div class="tooltip" data-tooltip="Click on a next consecutive event,
-a next consecutive gateway
-or a next consecutive activity">Click on a next shape
+                                The workaround: https://github.com/picturepan2/spectre/issues/692#issuecomment-1310063019 -->
+                                <div class="tooltip" data-tooltip="Click on a next consecutive event,&#010a next consecutive gateway&#010or a next consecutive activity">Click on a next shape
                                 </div>
                             </li>
                             <li id="step3" class="step-item">
-                                <div class="tooltip" data-tooltip="Click on 'Refresh' button,
-another event,
-another gateway
-or another activity">Reset</div>
+                                <div class="tooltip" data-tooltip="Click on 'Refresh' button,&#010another event,&#010another gateway&#010or another activity">Reset</div>
                             </li>
                         </ul>
                     </div>
