@@ -20,12 +20,12 @@ class PathUseCase extends UseCase {
     display() {
         super.display();
 
-        const allShapes = this._getAllShapes();
+        const shapes = this._getShapes();
         const allEdges = this._getAllEdges();
-        this._bpmnElementIds = [...allShapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
-        const endEventIds = allShapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
+        this._bpmnElementIds = [...shapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
+        const endEventIds = shapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
 
-        this._configureShapeHandlers(allShapes, endEventIds);
+        this._configureShapeHandlers(shapes, endEventIds);
         this._configureEdgeHandlers(allEdges, endEventIds);
 
         document.getElementById('btn-reset').onclick = () => {
@@ -34,32 +34,23 @@ class PathUseCase extends UseCase {
         };
     }
 
-    _getAllShapes() {
-        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
-            bpmnvisu.ShapeBpmnElementKind.EVENT_END,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_BOUNDARY,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_START,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_CATCH,
-            bpmnvisu.ShapeBpmnElementKind.EVENT_INTERMEDIATE_THROW,
-            bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY,
-            bpmnvisu.ShapeBpmnElementKind.SUB_PROCESS,
-            bpmnvisu.ShapeBpmnElementKind.TASK,
-            bpmnvisu.ShapeBpmnElementKind.TASK_BUSINESS_RULE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_RECEIVE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_MANUAL,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SEND,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SERVICE,
-            bpmnvisu.ShapeBpmnElementKind.TASK_SCRIPT,
-            bpmnvisu.ShapeBpmnElementKind.TASK_USER,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EVENT_BASED,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_INCLUSIVE,
-            bpmnvisu.ShapeBpmnElementKind.GATEWAY_PARALLEL]);
+    _getShapes() {
+        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
+            Object.values(bpmnvisu.ShapeBpmnElementKind).filter(kind =>
+                kind !== bpmnvisu.ShapeBpmnElementKind.LANE &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.POOL &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GROUP &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.TEXT_ANNOTATION &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_BUSINESS_RULE &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_MANUAL &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_SCRIPT &&
+                kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_USER)
+        ) ;
     }
 
     _getAllEdges() {
-        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds([
-            bpmnvisu.FlowKind.SEQUENCE_FLOW, bpmnvisu.FlowKind.MESSAGE_FLOW, bpmnvisu.FlowKind.ASSOCIATION_FLOW]);
+        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
     }
 
     _configureShapeHandlers(allShapes, endEventIds) {
