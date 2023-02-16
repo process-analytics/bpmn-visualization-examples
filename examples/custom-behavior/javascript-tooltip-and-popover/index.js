@@ -140,7 +140,7 @@ function registerBpmnElements(bpmnElements) {
     bpmnElements.forEach(elt => registeredBpmnElements.set(elt.htmlElement, elt.bpmnSemantic));
 }
 
-const headerKeys = ['id', 'name', 'kind'];
+const headerKeys = ['id', 'name', 'kind', 'isShape'];
 
 function getBpmnElementInfoAsHtml(htmlElement) {
     const bpmnSemantic = registeredBpmnElements.get(htmlElement);
