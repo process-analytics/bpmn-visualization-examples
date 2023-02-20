@@ -80,8 +80,11 @@ class UseCase {
         }
 
         // Display corresponding HTML element
-        document.getElementById(`${this.#type}-${subId}`).classList.remove('d-hide');
-        console.info('%s displayed', `${this.#type}-${subId}`);
+        const element = document.getElementById(`${this.#type}-${subId}`);
+        if(element) {
+            element.classList.remove('d-hide');
+            console.info('%s displayed', `${this.#type}-${subId}`);
+        }
     }
 
 }

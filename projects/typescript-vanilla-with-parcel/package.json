@@ -8,7 +8,7 @@
     "build": "tsc && parcel build --public-url ./ index.html"
   },
   "dependencies": {
-    "bpmn-visualization": "0.30.0"
+    "bpmn-visualization": "0.31.0"
   },
   "devDependencies": {
     "@parcel/core": "~2.8.2",

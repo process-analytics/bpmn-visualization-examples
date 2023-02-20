@@ -1,0 +1,83 @@
+:root {
+    --color-disableAll: Silver;
+    --color-highlight: LightSeaGreen;
+    --color-possibleNext: MediumVioletRed;
+}
+
+#use-case-panel {
+    padding-bottom: 0;
+}
+
+.bpmn-type-event:hover, .bpmn-type-gateway:hover, .bpmn-type-activity:hover, .bpmn-type-flow:hover {
+    cursor: pointer;
+}
+
+.disablePointer.bpmn-type-event:hover, .disablePointer.bpmn-type-gateway:hover, .disablePointer.bpmn-type-activity:hover, .disablePointer.bpmn-type-flow:hover {
+    cursor: default;
+}
+
+/* ------------------------------------------------ DISABLE EVERYTHING ------------------------------------------------ */
+/* SHAPE & EDGE */
+.disableAll.bpmn-type-activity > *,
+.disableAll.bpmn-type-event > *,
+.disableAll.bpmn-type-gateway > *,
+.disableAll.bpmn-type-flow > * {
+    stroke: var(--color-disableAll);
+}
+
+/* ICON */
+.disableAll.bpmn-type-gateway > path:nth-child(2), .disableAll.bpmn-type-flow > path:nth-child(3) {
+    fill: var(--color-disableAll);
+}
+
+/* LABEL */
+.disableAll.bpmn-type-activity > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-event > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-gateway > g > foreignObject > div > div > div,
+.disableAll.bpmn-type-flow > g > foreignObject > div > div > div {
+    color: var(--color-disableAll) !important;
+}
+
+/* ------------------------------------------------ HIGHLIGHT ------------------------------------------------ */
+/* SHAPE */
+.highlight.bpmn-type-activity > rect:first-child,
+.highlight.bpmn-type-event > ellipse:first-child,
+.highlight.bpmn-type-gateway > path:first-child,
+.highlight.bpmn-type-flow > * {
+    stroke: var(--color-highlight);
+    filter: drop-shadow(0 0 0.75rem var(--color-highlight));
+}
+
+/* ICON */
+.highlight.bpmn-type-gateway > :not(:first-child) {
+    stroke: var(--color-highlight);
+}
+
+.highlight.bpmn-type-gateway > path:nth-child(2), .highlight.bpmn-type-flow > path:nth-child(3) {
+    fill: var(--color-highlight);
+}
+
+/* ------------------------------------------------ POSSIBLE NEXT ------------------------------------------------ */
+/* SHAPE & EDGE */
+.possibleNext.bpmn-type-activity > *,
+.possibleNext.bpmn-type-event > *,
+.possibleNext.bpmn-type-gateway > *,
+.possibleNext.bpmn-type-flow > * {
+    stroke: var(--color-possibleNext) !important;
+}
+
+/* ICON */
+.possibleNext.bpmn-type-gateway > path:nth-child(2), .possibleNext.bpmn-type-flow > path:nth-child(3) {
+    fill: var(--color-possibleNext) !important;
+}
+
+/* LABEL */
+.possibleNext.bpmn-type-activity > g > foreignObject > div > div > div,
+.possibleNext.bpmn-type-event > g > foreignObject > div > div > div,
+.possibleNext.bpmn-type-gateway > g > foreignObject > div > div > div,
+.possibleNext.bpmn-type-flow > g > foreignObject > div > div > div {
+    color: var(--color-possibleNext) !important;
+}
+
+
+

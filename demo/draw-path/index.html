@@ -1,0 +1,121 @@
+<!--
+Copyright 2023 Bonitasoft S.A.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>bpmn-visualization - Draw me a path</title>
+    <link rel="icon" type="image/svg+xml" href="../../examples/favicon.svg">
+    <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
+    <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
+    <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
+    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/path.css" type="text/css">
+    <link rel="stylesheet" href="./css/legend.css" type="text/css">
+    <link rel="stylesheet" href="./css/step.css" type="text/css">
+    <script defer src="../../examples/static/js/link-to-sources.js"></script>
+    <!-- load bpmn-visualization -->
+    <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.31.0/dist/bpmn-visualization.min.js"></script>
+    <script defer src="https://cdn.jsdelivr.net/npm/values.js@2.0.0/dist/index.umd.js" integrity="sha256-lNJnNIdh5oXecah6rOix/TxyGcOYnfkybx4Qii2uxSo="
+            crossorigin="anonymous"></script>
+    <script defer src="https://variancecharts.com/cdn/variance-noncommercial-standalone-6d26aa2.min.js" charset="UTF-8"></script>
+    <script defer src="../../examples/static/js/diagram/bpmn-diagrams.js"></script>
+    <script defer src="../static/js/use-case.js"></script>
+    <script defer src="./js/paths.js"></script>
+    <script defer src="./js/steps.js"></script>
+    <script defer src="./js/path-use-case.js"></script>
+    <script defer src="./js/index.js"></script>
+</head>
+<body>
+<header class="navbar bg-dark p-2">
+    <section class="navbar-section ml-2">
+        <a class="home" href="../../examples/index.html">
+            <img src="../../examples/static/img/logo_64x64_white.png" alt="logo" class="logo">
+            <span class="h3 text-light ml-2 lib-name-text">bpmn-visualization examples</span>
+        </a>
+    </section>
+    <section class="navbar-section">
+        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
+        <div class="dropdown mr-2">
+            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
+                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
+            </a>
+            <ul class="menu">
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-js"
+                       class="mr-2 btn btn-link">Library</a></li>
+                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples"
+                       class="mr-2 btn btn-link">Examples</a></li>
+            </ul>
+        </div>
+    </section>
+</header>
+
+<section class="container col-12 flex-centered" style="margin-top: .8rem !important">
+    <div class="col-11 col-mx-auto">
+        <div class="col-10 col-mx-auto">
+            <h2>Draw me a path</h2>
+            <p>Visualize the path between two consecutive shapes.</p>
+        </div>
+
+        <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
+            <div id="controls" class="column bg-secondary pt-2 pb-2">
+                <div class="columns">
+                    <div id="choose-use-case-panel" class="col-10" style="margin: auto">
+                        <h5>Progress</h5>
+                        <ul class="step">
+                            <li id="step1" class="step-item active">
+                                <div class="tooltip" data-tooltip="Click on an event, a gateway or an activity">Click on a shape</div>
+                            </li>
+                            <li id="step2" class="step-item">
+                                <!-- According to the official documentation of Spectre.css, we should only add \n to have multiple lines on the tooltip,
+                                but it doesn't work: https://picturepan2.github.io/spectre/components/tooltips.html#tooltips-multiline
+                                The workaround: https://github.com/picturepan2/spectre/issues/692#issuecomment-1310063019 -->
+                                <div class="tooltip" data-tooltip="Click on a next consecutive event,&#010a next consecutive gateway&#010or a next consecutive activity">Click on a next shape
+                                </div>
+                            </li>
+                            <li id="step3" class="step-item">
+                                <div class="tooltip" data-tooltip="Click on 'Refresh' button,&#010another event,&#010another gateway&#010or another activity">Reset</div>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="col-auto" style="margin: auto">
+                        <button id="btn-reset" type="reset" class="btn btn-error btn-action s-circle tooltip" data-tooltip="Refresh the diagram">
+                            <i class="icon icon-refresh"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+            <div id="use-case-panel">
+                <div class="columns" style="padding-left: 2rem">
+                    <div id="legend" class="column col-2 col-mx-auto" style="margin: auto">
+                        <fieldset>
+                            <legend>Legend</legend>
+                            <ul class="legend">
+                                <li>Disabled items</li>
+                                <li>Selected items</li>
+                                <li>Possible path</li>
+                            </ul>
+                        </fieldset>
+                    </div>
+                    <div class="column col-10 col-mx-auto">
+                        <div id="path-bpmn-container" class="col-12 bpmn-container"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<footer class="flex-centered"></footer>
+</body>
+</html>
