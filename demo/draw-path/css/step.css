@@ -1,0 +1,33 @@
+/* To override the kind of the children of a .step of SPECTRE.CSS */
+.step .step-item.active ~ .step-item div {
+    color: #bcc3ce;
+}
+.step .step-item div {
+    color: #5755d9;
+    display: inline-block;
+    padding: 20px 10px 0;
+    text-decoration: none;
+}
+
+.step .step-item.active ~ .step-item div::before {
+    background: #dadee4;
+}
+
+.step .step-item.active div::before {
+    background: #fff;
+    border: .1rem solid #5755d9;
+}
+.step .step-item div::before {
+    background: #5755d9;
+    border: .1rem solid #fff;
+    border-radius: 50%;
+    content: "";
+    display: block;
+    height: .6rem;
+    left: 50%;
+    position: absolute;
+    top: .2rem;
+    transform: translateX(-50%);
+    width: .6rem;
+    z-index: 1;
+}
