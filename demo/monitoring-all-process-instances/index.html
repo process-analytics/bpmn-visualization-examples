@@ -40,39 +40,39 @@ limitations under the License.
     <script defer src="./js/index.js"></script>
 </head>
 <body>
-<header class="navbar bg-dark p-2">
-    <section class="navbar-section ml-2">
-        <a class="home" href="../../examples/index.html">
-            <img src="../../examples/static/img/logo_64x64_white.png" alt="logo" class="logo">
-            <span class="h3 text-light ml-2 lib-name-text">bpmn-visualization examples</span>
-        </a>
-    </section>
-    <section class="navbar-section">
-        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>
-        <div class="dropdown mr-2">
-            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">
-                GitHub <span class="icon icon-caret icon-in-the-middle"></span>
-            </a>
-            <ul class="menu">
-                <li><a href="https://github.com/process-analytics/bpmn-visualization-js"
-                       class="mr-2 btn btn-link">Library</a></li>
-                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples"
-                       class="mr-2 btn btn-link">Examples</a></li>
-            </ul>
-        </div>
-    </section>
-</header>
+<!--<header class="navbar bg-dark p-2">-->
+<!--    <section class="navbar-section ml-2">-->
+<!--        <a class="home" href="../../examples/index.html">-->
+<!--            <img src="../../examples/static/img/logo_64x64_white.png" alt="logo" class="logo">-->
+<!--            <span class="h3 text-light ml-2 lib-name-text">bpmn-visualization examples</span>-->
+<!--        </a>-->
+<!--    </section>-->
+<!--    <section class="navbar-section">-->
+<!--        <a href="https://process-analytics.github.io/bpmn-visualization-js/" class="mr-2 btn btn-secondary">Docs</a>-->
+<!--        <div class="dropdown mr-2">-->
+<!--            <a href="#" class="btn btn-primary dropdown-toggle" tabindex="0">-->
+<!--                GitHub <span class="icon icon-caret icon-in-the-middle"></span>-->
+<!--            </a>-->
+<!--            <ul class="menu">-->
+<!--                <li><a href="https://github.com/process-analytics/bpmn-visualization-js"-->
+<!--                       class="mr-2 btn btn-link">Library</a></li>-->
+<!--                <li><a href="https://github.com/process-analytics/bpmn-visualization-examples"-->
+<!--                       class="mr-2 btn btn-link">Examples</a></li>-->
+<!--            </ul>-->
+<!--        </div>-->
+<!--    </section>-->
+<!--</header>-->
 
 <section class="container col-12 flex-centered" style="margin-top: .8rem !important">
     <div class="col-11 col-mx-auto">
-        <div class="col-10 col-mx-auto">
-            <h2>Monitoring of all process instances demo</h2>
-            <p>Demonstrate how you can add execution time and frequency on BPMN elements.
-            </p>
-        </div>
+<!--        <div class="col-10 col-mx-auto">-->
+<!--            <h2>Monitoring of all process instances demo</h2>-->
+<!--            <p>Demonstrate how you can add execution time and frequency on BPMN elements.-->
+<!--            </p>-->
+<!--        </div>-->
 
         <div class="col-11 col-mx-auto" style="margin-top: 2rem; margin-bottom: 1rem">
-            <div id="controls" class="column bg-secondary pt-2 pb-2">
+            <div id="controls" class="column bg-secondary pt-2 pb-2" style="display: none">
                 <div class="columns">
                     <div id="choose-use-case-panel" class="col-6">
                         <h5>Use case</h5>
@@ -106,13 +106,13 @@ limitations under the License.
                     </div>
                 </div>
             </div>
-            <div id="use-case-panel" class="bg-gray">
-                <div class="text-center">
-                    <h4 id="time-title">Average run time</h4>
-                    <h4 id="frequency-title" class="d-hide">Number of execution</h4>
-                </div>
+            <div id="use-case-panel" class="">
+<!--                <div class="text-center">-->
+<!--                    <h4 id="time-title">Average run time</h4>-->
+<!--                    <h4 id="frequency-title" class="d-hide">Number of execution</h4>-->
+<!--                </div>-->
                 <div class="columns">
-                    <div id="legend" class="column col-auto col-mx-auto">
+                    <div id="legend" class="column col-auto col-mx-auto"  style="display: none">
                         <div id="shape-overlay-legend" style="margin-bottom: 1.7rem;">
                             <label>Overlay on Shape</label>
                             <chart scale-y-linear="0 250">
@@ -156,6 +156,6 @@ limitations under the License.
         </div>
     </div>
 </section>
-<footer class="flex-centered"></footer>
+<!--<footer class="flex-centered"></footer>-->
 </body>
 </html>
