@@ -102,13 +102,13 @@
 /*  Use case panel */
 /* ****************************************************************************************************************** */
 #use-case-panel {
-    /*border-style: solid;*/
-    /*border-color: #303742;*/
-    /*border-width: thick;*/
-    /*border-radius: .5rem;*/
-    /*margin-top: 1rem;*/
-    /*margin-bottom: 1rem;*/
-    /*padding-bottom: .8rem;*/
+    border-style: solid;
+    border-color: #303742;
+    border-width: thick;
+    border-radius: .5rem;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    padding-bottom: .8rem;
 }
 
 #use-case-panel h4 {
