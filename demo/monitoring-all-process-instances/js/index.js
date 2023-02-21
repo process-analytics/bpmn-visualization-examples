@@ -14,8 +14,8 @@ const state = {
     useCase: detectActualUseCase(['frequency', 'time'].includes(parameters.get('useCase')) ? parameters.get('useCase') : 'time'),
     dataType: ['both', 'overlays', 'paths'].includes(parameters.get('dataType')) ? parameters.get('dataType') : 'both'
 }
-// document.getElementById(`btn-${state.useCase.type}`).checked = true;
-// document.getElementById(`btn-${state.dataType}`).checked = true;
+document.getElementById(`btn-${state.useCase.type}`).checked = true;
+document.getElementById(`btn-${state.dataType}`).checked = true;
 
 document.addEventListener('DOMContentLoaded', function () {
     // Waiting for the displayed page before to load diagram & display data
