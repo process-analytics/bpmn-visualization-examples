@@ -20,7 +20,7 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/spectre.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
-    <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+<!--    <link rel="stylesheet" href="../static/css/style.css" type="text/css">-->
     <link rel="stylesheet" href="./css/path.css" type="text/css">
     <link rel="stylesheet" href="./css/legend.css" type="text/css">
     <script defer src="../../examples/static/js/link-to-sources.js"></script>
@@ -38,8 +38,28 @@ limitations under the License.
     <script defer src="js/execution-data/frequency-execution-data.js"></script>
     <script defer src="js/monitoring-use-case.js"></script>
     <script defer src="./js/index.js"></script>
+    <style>
+        .bpmn-container {
+            overflow: hidden;
+            position: absolute;
+            width: auto;
+            /*inset-0*/
+            bottom: 0;
+            left: 0;
+            right: 0;
+            top: 0;
+        }
+    </style>
 </head>
-<body>
+<body style="height: 100vh; display: flex; flex-direction: column">
+<!--display: flex;-->
+<div class="" style="flex-grow: 1; position: relative;">
+    <!--    <div class="column col-10 col-mx-auto"> -->
+    <div id="time-bpmn-container" class="bpmn-container"></div>
+    <div id="frequency-bpmn-container" class="bpmn-container d-hide" style=""></div>
+</div>
+
+
 <!--<header class="navbar bg-dark p-2">-->
 <!--    <section class="navbar-section ml-2">-->
 <!--        <a class="home" href="../../examples/index.html">-->
@@ -63,8 +83,10 @@ limitations under the License.
 <!--    </section>-->
 <!--</header>-->
 
-<section class="container col-12 flex-centered" style="margin-top: .8rem !important">
-    <div class="col-11 col-mx-auto">
+<section class="col-12 flex-centered" style="">
+
+<!--<section class="container col-12 flex-centered" style="margin-top: .8rem !important">-->
+    <div class="col-11 col-mx-auto" style="display: none">
 <!--        <div class="col-10 col-mx-auto">-->
 <!--            <h2>Monitoring of all process instances demo</h2>-->
 <!--            <p>Demonstrate how you can add execution time and frequency on BPMN elements.-->
@@ -147,10 +169,10 @@ limitations under the License.
                             </chart>
                         </div>
                     </div>
-                    <div class="column col-10 col-mx-auto">
-                        <div id="time-bpmn-container" class="col-12 bpmn-container"></div>
-                        <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>
-                    </div>
+<!--                    <div class="column col-10 col-mx-auto">-->
+<!--                        <div id="time-bpmn-container" class="col-12 bpmn-container"></div>-->
+<!--                        <div id="frequency-bpmn-container" class="col-12 bpmn-container d-hide"></div>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
