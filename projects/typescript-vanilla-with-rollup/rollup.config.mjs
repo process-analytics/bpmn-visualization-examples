@@ -18,11 +18,14 @@ import livereload from "rollup-plugin-livereload";
 import copy from "rollup-plugin-copy";
 import copyWatch from "rollup-plugin-copy-watch";
 
-import typescript from "rollup-plugin-typescript2";
+import typescript from "@rollup/plugin-typescript";
 import commonjs from "@rollup/plugin-commonjs";
 import resolve from "@rollup/plugin-node-resolve";
+import terser from "@rollup/plugin-terser";
 import { string } from "rollup-plugin-string";
-import pkg from "./package.json";
+// generate warning when running with Node 16
+// (node:75278) ExperimentalWarning: Importing JSON modules is an experimental feature. This feature could change at any time
+import pkg from './package.json' assert { type: 'json' };
 
 const devMode = process.env.devMode ?? false;
 
@@ -55,6 +58,8 @@ if (devMode) {
   plugins.push(serve({contentBase: "dist", port: 10001}));
   // Allow to livereload on any update
   plugins.push(livereload({watch: "dist", verbose: true}));
+} else {
+  plugins.push(terser({ecma: 2015}));
 }
 
 export default [
