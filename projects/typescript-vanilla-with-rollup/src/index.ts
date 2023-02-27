@@ -26,7 +26,6 @@ const bpmnVisualization = new BpmnVisualization({
 bpmnVisualization.load(diagram);
 
 // display the bpmn-visualization version in the footer
-// eslint-disable-next-line @typescript-eslint/no-non-null-assertion
 const footer = document.querySelector<HTMLElement>("footer")!;
 const version = bpmnVisualization.getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
