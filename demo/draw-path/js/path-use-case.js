@@ -64,11 +64,16 @@ class PathUseCase extends UseCase {
         ) ;
     }
 
+    _isEndEvent(item) {
+        return item.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END;
+    }
+
     _configureShapeHandlers(allShapes, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
         const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
 
         allShapes.forEach(item => {
             const currentId = item.bpmnSemantic.id;
+            const filterForPath = path => path.sourceId === this._state.firstSelectedShape && path.targetId === currentId;
 
             item.htmlElement.onclick = () => {
                 if (this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
@@ -85,7 +90,7 @@ class PathUseCase extends UseCase {
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
                 } else { // Only one shape is selected
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
+                    doActionOnPath(filterForPath,(filteredPath) => {
                         this._style.highlight([filteredPath.edgeId, filteredPath.targetId]);
                         this._style.activatePointerOn(bpmnElementIdsWithoutEndEvent);
                         this._state.secondSelectedShape = currentId;
@@ -95,14 +100,14 @@ class PathUseCase extends UseCase {
             };
             item.htmlElement.onmouseenter = () => {
                 if (this._hasOnlyOneSelectedShape()) {
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                    doActionOnPath(filterForPath, (filteredPath) => this._displayPossibleNextPath(filteredPath));
                 } else if (!this._isEndEvent(item)) {
                     this._style.displayPossibleNextElements(currentId);
                 }
             };
             item.htmlElement.onmouseleave = () => {
                 if (this._hasOnlyOneSelectedShape()) {
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                    doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
                 } else if (!this._isEndEvent(item)) {
                     this._style.nonDisplayPossibleNextElements(currentId);
                 }
@@ -112,22 +117,19 @@ class PathUseCase extends UseCase {
         this._style.disablePointerOn(bpmnElementIdsOfEndEvent);
     }
 
-    _isEndEvent(item) {
-        return item.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END;
-    }
-
     _configureEdgeHandlers(allEdges, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
         const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
 
         allEdges.forEach(item => {
             const currentId = item.bpmnSemantic.id;
+            const filterForPath = path => (this._hasOnlyOneSelectedShape() ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === currentId;
 
             item.htmlElement.onclick = () => {
                 if (this._hasTwoSelectedShapes()) {
                     this._reset(allBpmnElementsIds);
                 }
 
-                this._doActionOnEdge(currentId, (filteredPath) => {
+                doActionOnPath(filterForPath, (filteredPath) => {
                     if (this._hasNoSelectedShape()) {
                         this._style.disableAllShapesAndEdgesExcept(allBpmnElementsIds, [filteredPath.sourceId]);
                         this._style.highlight(filteredPath.sourceId);
@@ -140,20 +142,12 @@ class PathUseCase extends UseCase {
                 });
             };
             item.htmlElement.onmouseenter = () => {
-                this._doActionOnEdge(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                doActionOnPath(filterForPath,(filteredPath) => this._displayPossibleNextPath(filteredPath));
             };
             item.htmlElement.onmouseleave = () => {
-                this._doActionOnEdge(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
             };
         });
-    }
-
-    _doActionBeforeSecondShapeSelection(possibleSecondShapeId, actionOnFilteredPath) {
-        doActionOnPath(path => path.sourceId === this._state.firstSelectedShape && path.targetId === possibleSecondShapeId, actionOnFilteredPath);
-    }
-
-    _doActionOnEdge(edgeId, actionOnFilteredPath) {
-        doActionOnPath(path => (this._hasOnlyOneSelectedShape() ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === edgeId, actionOnFilteredPath);
     }
 
     _hasOnlyOneSelectedShape() {
