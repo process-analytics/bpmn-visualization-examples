@@ -71,16 +71,20 @@ class PathUseCase extends UseCase {
             const currentId = item.bpmnSemantic.id;
 
             item.htmlElement.onclick = () => {
-                if (!this._isEndEvent(item) && this._hasTwoSelectedShapes()) {
+                if (this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
+                    return;
+                }
+
+                if (this._hasTwoSelectedShapes()) {
                     this._reset(allBpmnElementsIds);
                 }
 
-                if (!this._isEndEvent(item) && this._hasNoSelectedShape()) {
+                if (this._hasNoSelectedShape()) {
                     this._style.disableAllShapesAndEdgesExcept(allBpmnElementsIds, [currentId]);
                     this._style.highlight(currentId);
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
-                } else if (this._state.firstSelectedShape) {
+                } else { // Only one shape is selected
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
                         this._style.highlight([filteredPath.edgeId, filteredPath.targetId]);
                         this._style.activatePointerOn(bpmnElementIdsWithoutEndEvent);
@@ -90,14 +94,14 @@ class PathUseCase extends UseCase {
                 }
             };
             item.htmlElement.onmouseenter = () => {
-                if (!this._isEndEvent(item) && (this._hasNoSelectedShape() || this._hasTwoSelectedShapes())) {
+                if (!this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
                     this._style.displayPossibleNextElements(currentId);
                 } else {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
                 }
             };
             item.htmlElement.onmouseleave = () => {
-                if (!this._isEndEvent(item) && (this._hasNoSelectedShape() || this._hasTwoSelectedShapes())) {
+                if (!this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
                     this._style.nonDisplayPossibleNextElements(currentId);
                 } else {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
