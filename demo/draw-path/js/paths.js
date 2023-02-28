@@ -42,3 +42,10 @@ const paths = [
     new Path('task_7', "sequence_flow_10", "inclusive_gateway_2"),
     new Path('task_6', "sequence_flow_9", "inclusive_gateway_2")
 ];
+
+const doActionOnPath = (filter, actionOnFilteredPath) => {
+    const filteredPaths = paths.filter(path => filter(path));
+    if (filteredPaths.length > 0) {
+        actionOnFilteredPath(filteredPaths[0]);
+    }
+}
