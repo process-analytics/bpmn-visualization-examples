@@ -2,8 +2,6 @@ class PathUseCase extends UseCase {
 
     _state;
 
-    _bpmnElementIds;
-
     _steps;
 
     constructor(getDiagram) {
@@ -18,23 +16,38 @@ class PathUseCase extends UseCase {
     }
 
     _postLoadDiagram() {
-        const shapes = this._getShapes();
-        const allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
-        this._bpmnElementIds = [...shapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
-        const endEventIds = shapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
+        const bpmnElementsRegistry = this._bpmnVisualization.bpmnElementsRegistry;
 
-        this._configureShapeHandlers(shapes, endEventIds);
-        this._configureEdgeHandlers(allEdges, endEventIds);
+        const shapesWithoutEndEvent = this._getActivitiesGatewaysEventsWithoutEndEvents();
+        const shapesOfEndEvent = bpmnElementsRegistry.getElementsByKinds(bpmnvisu.ShapeBpmnElementKind.EVENT_END);
+        const allShapes = [...shapesWithoutEndEvent, ...shapesOfEndEvent];
+
+        const allEdges = bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
+
+        const bpmnElementIdsOfEndEvent = this._getBpmnElementIds(shapesOfEndEvent);
+        const bpmnElementIdsWithoutEndEvent = this._getBpmnElementIds([...shapesWithoutEndEvent, ...allEdges]);
+
+        this._configureShapeHandlers(allShapes, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent);
+        this._configureEdgeHandlers(allEdges, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent);
 
         document.getElementById('btn-reset').onclick = () => {
-            this._reset();
-            this._disablePointerOn(endEventIds);
+            this._reset([...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent]);
+            this._disablePointerOn(bpmnElementIdsOfEndEvent);
         };
     }
 
-    _getShapes() {
+    /**
+     * @param bpmnElements must be an array
+     * @private
+     */
+    _getBpmnElementIds(bpmnElements) {
+        return bpmnElements.map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
+    }
+
+    _getActivitiesGatewaysEventsWithoutEndEvents() {
         return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
             Object.values(bpmnvisu.ShapeBpmnElementKind).filter(kind =>
+                kind !== bpmnvisu.ShapeBpmnElementKind.EVENT_END &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.LANE &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.POOL &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.GROUP &&
@@ -47,19 +60,19 @@ class PathUseCase extends UseCase {
         ) ;
     }
 
-    _configureShapeHandlers(allShapes, endEventIds) {
-        const bpmnElementIdsWithoutEndEvent = this._bpmnElementIds.filter(id => !endEventIds.includes(id));
+    _configureShapeHandlers(allShapes, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
+        const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
 
         allShapes.forEach(item => {
             const currentId = item.bpmnSemantic.id;
 
             item.htmlElement.onclick = () => {
                 if (!this._isEndEvent(item) && this._state.firstSelectedShape && this._state.secondSelectedShape) {
-                    this._reset();
+                    this._reset(allBpmnElementsIds);
                 }
 
                 if (!this._isEndEvent(item) && !this._state.firstSelectedShape) {
-                    this._disableAllShapesAndEdgesExcept([currentId]);
+                    this._disableAllShapesAndEdgesExcept(allBpmnElementsIds, [currentId]);
                     this._highlight(currentId);
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
@@ -87,27 +100,28 @@ class PathUseCase extends UseCase {
                 }
             };
         });
-        this._disablePointerOn(endEventIds);
+
+        this._disablePointerOn(bpmnElementIdsOfEndEvent);
     }
 
     _isEndEvent(item) {
         return item.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END;
     }
 
-    _configureEdgeHandlers(allEdges, endEventIds) {
-        const bpmnElementIdsWithoutEndEvent = this._bpmnElementIds.filter(id => !endEventIds.includes(id));
+    _configureEdgeHandlers(allEdges, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
+        const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
 
         allEdges.forEach(item => {
             const currentId = item.bpmnSemantic.id;
 
             item.htmlElement.onclick = () => {
                 if (this._state.firstSelectedShape && this._state.secondSelectedShape) {
-                    this._reset();
+                    this._reset(allBpmnElementsIds);
                 }
 
                 this._doActionOnEdge(currentId, (filteredPath) => {
                     if (!this._state.firstSelectedShape) {
-                        this._disableAllShapesAndEdgesExcept([filteredPath.sourceId]);
+                        this._disableAllShapesAndEdgesExcept(allBpmnElementsIds, [filteredPath.sourceId]);
                         this._highlight(filteredPath.sourceId);
                         this._state.firstSelectedShape = filteredPath.sourceId;
                     }
@@ -144,8 +158,12 @@ class PathUseCase extends UseCase {
         }
     }
 
-    _reset() {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(this._bpmnElementIds, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
+    /**
+     * @param ids can be an array or a string
+     * @private
+     */
+    _reset(ids) {
+        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(ids, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
         this._state.firstSelectedShape = undefined;
         this._state.secondSelectedShape = undefined;
         this._steps.reset();
@@ -181,11 +199,12 @@ class PathUseCase extends UseCase {
     }
 
     /**
-     * @param ids must be an array
+     * @param allBpmnElementIds must be an array
+     * @param exceptedIds must be an array
      * @private
      */
-    _disableAllShapesAndEdgesExcept(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._bpmnElementIds.filter(shapeOrEdge => !ids.includes(shapeOrEdge)), ['disableAll', 'disablePointer']);
+    _disableAllShapesAndEdgesExcept(allBpmnElementIds, exceptedIds) {
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(allBpmnElementIds.filter(shapeOrEdge => !exceptedIds.includes(shapeOrEdge)), ['disableAll', 'disablePointer']);
     }
 
     /**
