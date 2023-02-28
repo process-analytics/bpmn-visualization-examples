@@ -149,20 +149,16 @@ class PathUseCase extends UseCase {
     }
 
     _doActionBeforeSecondShapeSelection(possibleSecondShapeId, action) {
-        if (this._hasOnlyOneSelectedShape()) {
-            const filteredPaths = paths.filter(path => path.sourceId === this._state.firstSelectedShape && path.targetId === possibleSecondShapeId);
-            if (filteredPaths.length > 0) {
-                action(filteredPaths[0]);
-            }
+        const filteredPaths = paths.filter(path => path.sourceId === this._state.firstSelectedShape && path.targetId === possibleSecondShapeId);
+        if (filteredPaths.length > 0) {
+            action(filteredPaths[0]);
         }
     }
 
     _doActionOnEdge(edgeId, action) {
-        if (!this._state.secondSelectedShape || this._hasTwoSelectedShapes()) {
-            const filteredPaths = paths.filter(path => (this._hasOnlyOneSelectedShape() ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === edgeId);
-            if (filteredPaths.length > 0) {
-                action(filteredPaths[0]);
-            }
+        const filteredPaths = paths.filter(path => (this._hasOnlyOneSelectedShape() ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === edgeId);
+        if (filteredPaths.length > 0) {
+            action(filteredPaths[0]);
         }
     }
 
