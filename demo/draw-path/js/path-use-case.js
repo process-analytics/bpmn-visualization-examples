@@ -184,10 +184,4 @@ class PathUseCase extends UseCase {
         !this._hasOnlyOneSelectedShape() ? ids.push(path.sourceId) : this._style.disablePointerOn(ids);
         this._style.nonDisplayPossibleNextElements(ids);
     }
-
-    /*    _togglePossibleNextPath(filteredPath, actionForPointer, actionForPossibleNextElements) {
-            const ids = [filteredPath.edgeId, filteredPath.targetId];
-            (!this._state.firstSelectedShape || this._hasTwoSelectedShapes()) ? ids.push(filteredPath.sourceId) : actionForPointer(ids);
-            actionForPossibleNextElements(ids);
-        }*/
 }
