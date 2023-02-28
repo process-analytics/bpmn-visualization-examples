@@ -17,11 +17,9 @@ class PathUseCase extends UseCase {
         this._steps = new Steps();
     }
 
-    display() {
-        super.display();
-
+    _postLoadDiagram() {
         const shapes = this._getShapes();
-        const allEdges = this._getAllEdges();
+        const allEdges = this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
         this._bpmnElementIds = [...shapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
         const endEventIds = shapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
 
@@ -47,10 +45,6 @@ class PathUseCase extends UseCase {
                 kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_SCRIPT &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.GLOBAL_TASK_USER)
         ) ;
-    }
-
-    _getAllEdges() {
-        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
     }
 
     _configureShapeHandlers(allShapes, endEventIds) {

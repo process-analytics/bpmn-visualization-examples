@@ -21,6 +21,11 @@ class UseCase {
         return this.#type;
     }
 
+    /**
+     * Display the panel containing the bpmn container, and load the diagram if it is not already done.
+     *
+     * @param dataType
+     */
     display(dataType) {
         this._displayPanel();
 
