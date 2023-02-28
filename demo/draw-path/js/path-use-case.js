@@ -94,17 +94,17 @@ class PathUseCase extends UseCase {
                 }
             };
             item.htmlElement.onmouseenter = () => {
-                if (!this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
-                    this._style.displayPossibleNextElements(currentId);
-                } else {
+                if (this._hasOnlyOneSelectedShape()) {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                } else if (!this._isEndEvent(item)) {
+                    this._style.displayPossibleNextElements(currentId);
                 }
             };
             item.htmlElement.onmouseleave = () => {
-                if (!this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
-                    this._style.nonDisplayPossibleNextElements(currentId);
-                } else {
+                if (this._hasOnlyOneSelectedShape()) {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                } else if (!this._isEndEvent(item)) {
+                    this._style.nonDisplayPossibleNextElements(currentId);
                 }
             };
         });
