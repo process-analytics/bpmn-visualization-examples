@@ -54,6 +54,8 @@ class PathUseCase extends UseCase {
     }
 
     _configureShapeHandlers(allShapes, endEventIds) {
+        const bpmnElementIdsWithoutEndEvent = this._bpmnElementIds.filter(id => !endEventIds.includes(id));
+
         allShapes.forEach(item => {
             const currentId = item.bpmnSemantic.id;
 
@@ -70,7 +72,7 @@ class PathUseCase extends UseCase {
                 } else if (this._state.firstSelectedShape) {
                     this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
                         this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                        this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
+                        this._activatePointerOn(bpmnElementIdsWithoutEndEvent);
                         this._state.secondSelectedShape = currentId;
                         this._steps.goToStep3();
                     });
@@ -99,6 +101,8 @@ class PathUseCase extends UseCase {
     }
 
     _configureEdgeHandlers(allEdges, endEventIds) {
+        const bpmnElementIdsWithoutEndEvent = this._bpmnElementIds.filter(id => !endEventIds.includes(id));
+
         allEdges.forEach(item => {
             const currentId = item.bpmnSemantic.id;
 
@@ -114,7 +118,7 @@ class PathUseCase extends UseCase {
                         this._state.firstSelectedShape = filteredPath.sourceId;
                     }
                     this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                    this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
+                    this._activatePointerOn(bpmnElementIdsWithoutEndEvent);
                     this._state.secondSelectedShape = filteredPath.targetId;
                     this._steps.goToStep3();
                 });
