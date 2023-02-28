@@ -175,13 +175,13 @@ class PathUseCase extends UseCase {
 
     _displayPossibleNextPath(path) {
         const ids = [path.edgeId, path.targetId];
-        (this._hasNoSelectedShape() || this._hasTwoSelectedShapes()) ? ids.push(path.sourceId) : this._style.activatePointerOn(ids);
+        !this._hasOnlyOneSelectedShape() ? ids.push(path.sourceId) : this._style.activatePointerOn(ids);
         this._style.displayPossibleNextElements(ids);
     }
 
     _nonDisplayPossibleNextPath(path) {
         const ids = [path.edgeId, path.targetId];
-        (this._hasNoSelectedShape() || this._hasTwoSelectedShapes()) ? ids.push(path.sourceId) : this._style.disablePointerOn(ids);
+        !this._hasOnlyOneSelectedShape() ? ids.push(path.sourceId) : this._style.disablePointerOn(ids);
         this._style.nonDisplayPossibleNextElements(ids);
     }
 
