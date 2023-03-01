@@ -1,24 +1,24 @@
 class Path {
-    _sourceId ;
-    _edgeId;
-    _targetId;
+    #sourceId ;
+    #edgeId;
+    #targetId;
 
     constructor(sourceId, edgeId, targetId) {
-        this._sourceId = sourceId;
-        this._edgeId = edgeId;
-        this._targetId = targetId;
+        this.#sourceId = sourceId;
+        this.#edgeId = edgeId;
+        this.#targetId = targetId;
     }
 
     get sourceId() {
-        return this._sourceId;
+        return this.#sourceId;
     }
 
     get edgeId() {
-        return this._edgeId;
+        return this.#edgeId;
     }
 
     get targetId() {
-        return this._targetId;
+        return this.#targetId;
     }
 }
 
