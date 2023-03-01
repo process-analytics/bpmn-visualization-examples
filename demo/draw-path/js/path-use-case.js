@@ -2,9 +2,9 @@ class PathUseCase extends UseCase {
 
     _state;
 
-    _bpmnElementIds;
-
     _steps;
+
+    _style;
 
     constructor(getDiagram) {
         super('path', getDiagram, true);
@@ -17,26 +17,47 @@ class PathUseCase extends UseCase {
         this._steps = new Steps();
     }
 
-    display() {
-        super.display();
+    /**
+     * @protected
+     */
+    _postLoadDiagram() {
+        const bpmnElementsRegistry = this._bpmnVisualization.bpmnElementsRegistry;
 
-        const shapes = this._getShapes();
-        const allEdges = this._getAllEdges();
-        this._bpmnElementIds = [...shapes, ...allEdges].map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
-        const endEventIds = shapes.filter(shape => shape.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END).map(endEvent => endEvent.bpmnSemantic.id);
+        this._style = new Style(bpmnElementsRegistry);
 
-        this._configureShapeHandlers(shapes, endEventIds);
-        this._configureEdgeHandlers(allEdges, endEventIds);
+        const shapesWithoutEndEvent = this._getActivitiesGatewaysEventsWithoutEndEvents();
+        const shapesOfEndEvent = bpmnElementsRegistry.getElementsByKinds(bpmnvisu.ShapeBpmnElementKind.EVENT_END);
+        const allShapes = [...shapesWithoutEndEvent, ...shapesOfEndEvent];
+
+        const allEdges = bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
+
+        const bpmnElementIdsOfEndEvent = this._getBpmnElementIds(shapesOfEndEvent);
+        const bpmnElementIdsWithoutEndEvent = this._getBpmnElementIds([...shapesWithoutEndEvent, ...allEdges]);
+
+        this._configureShapeHandlers(allShapes, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent);
+        this._configureEdgeHandlers(allEdges, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent);
 
         document.getElementById('btn-reset').onclick = () => {
-            this._reset();
-            this._disablePointerOn(endEventIds);
+            this._reset([...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent]);
+            this._style.disablePointerOn(bpmnElementIdsOfEndEvent);
         };
     }
 
-    _getShapes() {
+    /**
+     * @param bpmnElements must be an array
+     * @private
+     */
+    _getBpmnElementIds(bpmnElements) {
+        return bpmnElements.map(shapeOrEdge => shapeOrEdge.bpmnSemantic.id);
+    }
+
+    /**
+     * @private
+     */
+    _getActivitiesGatewaysEventsWithoutEndEvents() {
         return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(
             Object.values(bpmnvisu.ShapeBpmnElementKind).filter(kind =>
+                kind !== bpmnvisu.ShapeBpmnElementKind.EVENT_END &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.LANE &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.POOL &&
                 kind !== bpmnvisu.ShapeBpmnElementKind.GROUP &&
@@ -49,160 +70,150 @@ class PathUseCase extends UseCase {
         ) ;
     }
 
-    _getAllEdges() {
-        return this._bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
+    /**
+     * @private
+     */
+    _isEndEvent(item) {
+        return item.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END;
     }
 
-    _configureShapeHandlers(allShapes, endEventIds) {
+    /**
+     * @private
+     */
+    _configureShapeHandlers(allShapes, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
+        const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
+
         allShapes.forEach(item => {
             const currentId = item.bpmnSemantic.id;
+            const filterForPath = path => path.sourceId === this._state.firstSelectedShape && path.targetId === currentId;
 
             item.htmlElement.onclick = () => {
-                if (!this._isEndEvent(item) && this._state.firstSelectedShape && this._state.secondSelectedShape) {
-                    this._reset();
+                if (this._isEndEvent(item) && !this._hasOnlyOneSelectedShape()) {
+                    return;
                 }
 
-                if (!this._isEndEvent(item) && !this._state.firstSelectedShape) {
-                    this._disableAllShapesAndEdgesExcept([currentId]);
-                    this._highlight(currentId);
+                if (this._hasTwoSelectedShapes()) {
+                    this._reset(allBpmnElementsIds);
+                }
+
+                if (this._hasNoSelectedShape()) {
+                    this._style.disableAllShapesAndEdgesExcept(allBpmnElementsIds, [currentId]);
+                    this._style.highlight(currentId);
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
-                } else if (this._state.firstSelectedShape) {
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => {
-                        this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                        this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
+                } else { // Only one shape is selected
+                    doActionOnPath(filterForPath,(filteredPath) => {
+                        this._style.highlight([filteredPath.edgeId, filteredPath.targetId]);
+                        this._style.activatePointerOn(bpmnElementIdsWithoutEndEvent);
                         this._state.secondSelectedShape = currentId;
                         this._steps.goToStep3();
                     });
                 }
             };
             item.htmlElement.onmouseenter = () => {
-                if (!this._isEndEvent(item) && (!this._state.firstSelectedShape || (this._state.firstSelectedShape && this._state.secondSelectedShape))) {
-                    this._displayPossibleNextElements(currentId);
-                } else {
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                if (this._hasOnlyOneSelectedShape()) {
+                    doActionOnPath(filterForPath, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                } else if (!this._isEndEvent(item)) {
+                    this._style.displayPossibleNextElements(currentId);
                 }
             };
             item.htmlElement.onmouseleave = () => {
-                if (!this._isEndEvent(item) && (!this._state.firstSelectedShape || (this._state.firstSelectedShape && this._state.secondSelectedShape))) {
-                    this._nonDisplayPossibleNextElements(currentId);
-                } else {
-                    this._doActionBeforeSecondShapeSelection(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                if (this._hasOnlyOneSelectedShape()) {
+                    doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                } else if (!this._isEndEvent(item)) {
+                    this._style.nonDisplayPossibleNextElements(currentId);
                 }
             };
         });
-        this._disablePointerOn(endEventIds);
+
+        this._style.disablePointerOn(bpmnElementIdsOfEndEvent);
     }
 
-    _isEndEvent(item) {
-        return item.bpmnSemantic.kind === bpmnvisu.ShapeBpmnElementKind.EVENT_END;
-    }
+    /**
+     * @private
+     */
+    _configureEdgeHandlers(allEdges, bpmnElementIdsWithoutEndEvent, bpmnElementIdsOfEndEvent) {
+        const allBpmnElementsIds = [...bpmnElementIdsOfEndEvent, ...bpmnElementIdsWithoutEndEvent];
 
-    _configureEdgeHandlers(allEdges, endEventIds) {
         allEdges.forEach(item => {
             const currentId = item.bpmnSemantic.id;
+            const filterForPath = path => (this._hasOnlyOneSelectedShape() ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === currentId;
 
             item.htmlElement.onclick = () => {
-                if (this._state.firstSelectedShape && this._state.secondSelectedShape) {
-                    this._reset();
+                if (this._hasTwoSelectedShapes()) {
+                    this._reset(allBpmnElementsIds);
                 }
 
-                this._doActionOnEdge(currentId, (filteredPath) => {
-                    if (!this._state.firstSelectedShape) {
-                        this._disableAllShapesAndEdgesExcept([filteredPath.sourceId]);
-                        this._highlight(filteredPath.sourceId);
+                doActionOnPath(filterForPath, (filteredPath) => {
+                    if (this._hasNoSelectedShape()) {
+                        this._style.disableAllShapesAndEdgesExcept(allBpmnElementsIds, [filteredPath.sourceId]);
+                        this._style.highlight(filteredPath.sourceId);
                         this._state.firstSelectedShape = filteredPath.sourceId;
                     }
-                    this._highlight([filteredPath.edgeId, filteredPath.targetId]);
-                    this._activatePointerOn(this._bpmnElementIds.filter(id => !endEventIds.includes(id)));
+                    this._style.highlight([filteredPath.edgeId, filteredPath.targetId]);
+                    this._style.activatePointerOn(bpmnElementIdsWithoutEndEvent);
                     this._state.secondSelectedShape = filteredPath.targetId;
                     this._steps.goToStep3();
                 });
             };
             item.htmlElement.onmouseenter = () => {
-                this._doActionOnEdge(currentId, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                doActionOnPath(filterForPath,(filteredPath) => this._displayPossibleNextPath(filteredPath));
             };
             item.htmlElement.onmouseleave = () => {
-                this._doActionOnEdge(currentId, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
             };
         });
     }
 
-    _doActionBeforeSecondShapeSelection(possibleSecondShapeId, action) {
-        if (this._state.firstSelectedShape && !this._state.secondSelectedShape) {
-            const filteredPaths = paths.filter(path => path.sourceId === this._state.firstSelectedShape && path.targetId === possibleSecondShapeId);
-            if (filteredPaths.length > 0) {
-                action(filteredPaths[0]);
-            }
-        }
+    /**
+     * @private
+     */
+    _hasOnlyOneSelectedShape() {
+        return this._state.firstSelectedShape && !this._state.secondSelectedShape ;
     }
 
-    _doActionOnEdge(edgeId, action) {
-        if (!this._state.secondSelectedShape || (this._state.secondSelectedShape && this._state.firstSelectedShape)) {
-            const filteredPaths = paths.filter(path => ((!this._state.secondSelectedShape && this._state.firstSelectedShape) ? path.sourceId === this._state.firstSelectedShape : true) && path.edgeId === edgeId);
-            if (filteredPaths.length > 0) {
-                action(filteredPaths[0]);
-            }
-        }
+    /**
+     * @private
+     */
+    _hasTwoSelectedShapes() {
+        return this._state.firstSelectedShape && this._state.secondSelectedShape;
     }
 
-    _reset() {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(this._bpmnElementIds, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
+    /**
+     * @private
+     */
+    _hasNoSelectedShape() {
+        return !this._state.firstSelectedShape;
+    }
+
+    /**
+     * @param {string[]|string} ids
+     * @private
+     */
+    _reset(ids) {
+        this._style.reset(ids);
         this._state.firstSelectedShape = undefined;
         this._state.secondSelectedShape = undefined;
         this._steps.reset();
     }
 
+    /**
+     * @param {Path} path
+     * @private
+     */
     _displayPossibleNextPath(path) {
         const ids = [path.edgeId, path.targetId];
-        (!this._state.firstSelectedShape || (this._state.secondSelectedShape && this._state.firstSelectedShape)) ? ids.push(path.sourceId) : this._activatePointerOn(ids);
-        this._displayPossibleNextElements(ids);
+        !this._hasOnlyOneSelectedShape() ? ids.push(path.sourceId) : this._style.activatePointerOn(ids);
+        this._style.displayPossibleNextElements(ids);
     }
 
-    _displayPossibleNextElements(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids, 'possibleNext');
-    }
-
+    /**
+     * @param {Path} path
+     * @private
+     */
     _nonDisplayPossibleNextPath(path) {
         const ids = [path.edgeId, path.targetId];
-        (!this._state.firstSelectedShape || (this._state.secondSelectedShape && this._state.firstSelectedShape)) ? ids.push(path.sourceId) : this._disablePointerOn(ids);
-        this._nonDisplayPossibleNextElements(ids);
-    }
-
-    _nonDisplayPossibleNextElements(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(ids, 'possibleNext');
-    }
-
-    /**
-     * @param ids can be an array or a string
-     * @private
-     */
-    _highlight(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(ids, ['disableAll', 'possibleNext']);
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids, ['highlight', 'disablePointer']);
-    }
-
-    /**
-     * @param ids must be an array
-     * @private
-     */
-    _disableAllShapesAndEdgesExcept(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._bpmnElementIds.filter(shapeOrEdge => !ids.includes(shapeOrEdge)), ['disableAll', 'disablePointer']);
-    }
-
-    /**
-     * @param ids can be an array or a string
-     * @private
-     */
-    _disablePointerOn(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(ids, 'disablePointer');
-    }
-
-    /**
-     * @param ids can be an array or a string
-     * @private
-     */
-    _activatePointerOn(ids) {
-        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(ids, 'disablePointer');
+        !this._hasOnlyOneSelectedShape() ? ids.push(path.sourceId) : this._style.disablePointerOn(ids);
+        this._style.nonDisplayPossibleNextElements(ids);
     }
 }
