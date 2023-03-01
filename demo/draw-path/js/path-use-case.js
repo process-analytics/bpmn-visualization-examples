@@ -6,6 +6,8 @@ class PathUseCase extends UseCase {
 
     _style;
 
+    _pathManager;
+
     constructor(getDiagram) {
         super('path', getDiagram, true);
 
@@ -30,6 +32,7 @@ class PathUseCase extends UseCase {
         const allShapes = [...shapesWithoutEndEvent, ...shapesOfEndEvent];
 
         const allEdges = bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind));
+        this._pathManager = new PathManager(allEdges);
 
         const bpmnElementIdsOfEndEvent = this._getBpmnElementIds(shapesOfEndEvent);
         const bpmnElementIdsWithoutEndEvent = this._getBpmnElementIds([...shapesWithoutEndEvent, ...allEdges]);
@@ -102,7 +105,7 @@ class PathUseCase extends UseCase {
                     this._state.firstSelectedShape = currentId;
                     this._steps.goToStep2();
                 } else { // Only one shape is selected
-                    doActionOnPath(filterForPath,(filteredPath) => {
+                    this._pathManager.doActionOnPath(filterForPath,(filteredPath) => {
                         this._style.highlight([filteredPath.edgeId, filteredPath.targetId]);
                         this._style.activatePointerOn(bpmnElementIdsWithoutEndEvent);
                         this._state.secondSelectedShape = currentId;
@@ -112,14 +115,14 @@ class PathUseCase extends UseCase {
             };
             item.htmlElement.onmouseenter = () => {
                 if (this._hasOnlyOneSelectedShape()) {
-                    doActionOnPath(filterForPath, (filteredPath) => this._displayPossibleNextPath(filteredPath));
+                    this._pathManager.doActionOnPath(filterForPath, (filteredPath) => this._displayPossibleNextPath(filteredPath));
                 } else if (!this._isEndEvent(item)) {
                     this._style.displayPossibleNextElements(currentId);
                 }
             };
             item.htmlElement.onmouseleave = () => {
                 if (this._hasOnlyOneSelectedShape()) {
-                    doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                    this._pathManager.doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
                 } else if (!this._isEndEvent(item)) {
                     this._style.nonDisplayPossibleNextElements(currentId);
                 }
@@ -144,7 +147,7 @@ class PathUseCase extends UseCase {
                     this._reset(allBpmnElementsIds);
                 }
 
-                doActionOnPath(filterForPath, (filteredPath) => {
+                this._pathManager.doActionOnPath(filterForPath, (filteredPath) => {
                     if (this._hasNoSelectedShape()) {
                         this._style.disableAllShapesAndEdgesExcept(allBpmnElementsIds, [filteredPath.sourceId]);
                         this._style.highlight(filteredPath.sourceId);
@@ -157,10 +160,10 @@ class PathUseCase extends UseCase {
                 });
             };
             item.htmlElement.onmouseenter = () => {
-                doActionOnPath(filterForPath,(filteredPath) => this._displayPossibleNextPath(filteredPath));
+                this._pathManager.doActionOnPath(filterForPath,(filteredPath) => this._displayPossibleNextPath(filteredPath));
             };
             item.htmlElement.onmouseleave = () => {
-                doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
+                this._pathManager.doActionOnPath(filterForPath, (filteredPath) => this._nonDisplayPossibleNextPath(filteredPath));
             };
         });
     }
