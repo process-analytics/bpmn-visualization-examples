@@ -11,11 +11,22 @@ const bpmnVisualization = new BpmnVisualization({
 // load the BPMN diagram defined above
 bpmnVisualization.load(diagram);
 
-// highlight task
-bpmnVisualization.bpmnElementsRegistry.addCssClasses(
+const registry = bpmnVisualization.bpmnElementsRegistry;
+// Style elements with CSS
+registry.addCssClasses(
     "Activity_1",
     "bpmn-highlight"
 );
+
+// Style elements with the "Update Style" API
+registry.updateStyle(["EndEvent_1"], {
+    stroke: {color: "blue", width: 6},
+    fill: {color: "orange", opacity: 40},
+});
+registry.updateStyle(["Flow_2"], {
+    stroke: {color: "blue", width: 4},
+});
+
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector<HTMLElement>('footer')!;
