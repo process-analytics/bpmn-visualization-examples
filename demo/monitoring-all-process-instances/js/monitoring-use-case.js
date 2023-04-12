@@ -18,8 +18,8 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.hidePathLegend();
                 this.#executionData.displayOverlaysLegends();
                 this.#executionData.data.forEach((value, key) => {
-                    if (value.pathClass) {
-                        this._bpmnVisualization.bpmnElementsRegistry.removeCssClasses(key, value.pathClass);
+                    if (value.styleUpdate) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, buildResetStyleUpdateOptions());
                     }
 
                     if (value.overlay) {
@@ -32,10 +32,10 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.displayPathLegend();
                 this.#executionData.data.forEach((value, key) => {
                     this._bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(key);
-
-                    if (value.pathClass) {
-                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
+                    if (value.styleUpdate) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.styleUpdate);
                     }
+
                 });
                 break;
             case 'both':
@@ -43,8 +43,8 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.displayPathLegend();
                 this.#executionData.displayOverlaysLegends();
                 this.#executionData.data.forEach((value, key) => {
-                    if (value.pathClass) {
-                        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(key, value.pathClass);
+                    if (value.styleUpdate) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.styleUpdate);
                     }
 
                     if (value.overlay) {

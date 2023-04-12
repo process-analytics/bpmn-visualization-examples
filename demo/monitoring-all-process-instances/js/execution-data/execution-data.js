@@ -198,8 +198,43 @@ class ExecutionData {
             }
         };
         if (pathClass) {
-            data.pathClass = pathClass;
+            // data.pathClass = pathClass;
+            data.styleUpdate = buildStyleUpdateOptions(pathClass);
         }
         return data;
+    }
+}
+
+/**
+ * @type {{"path-lvl4": {color: string, width: number}, "path-lvl5": {color: string, width: number}, "path-lvl2": {color: string, width: number}, "path-lvl3": {color: string, width: number}, "path-lvl1": {color: string, width: number}}}
+ */
+const pathConfiguration = {
+    'path-lvl1': {color: '#e9e9e9', width: 2},
+    'path-lvl2': {color: '#bdbdbd', width: 4},
+    'path-lvl3': {color: '#a7a7a7', width: 6},
+    'path-lvl4': {color: '#7a7a7a', width: 8},
+    'path-lvl5': {color: 'Black', width: 10},
+};
+
+/**
+ *
+ * @param pathClass {string}
+ */
+function buildStyleUpdateOptions(pathClass) {
+    const config = pathConfiguration[pathClass];
+    return {
+        stroke: {
+            color: config.color,
+            width: config.width,
+        }
+    }
+}
+
+function buildResetStyleUpdateOptions() {
+    return {
+        stroke: {
+            color: 'default',
+            width: 'default',
+        }
     }
 }
