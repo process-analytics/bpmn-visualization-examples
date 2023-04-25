@@ -20,8 +20,7 @@ class ExecutionData {
         let legendTitles = this._buildLegendTitles();
         this.#shapeOverlayLegend = new Legend("shape-overlay-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
         this.#edgeOverlayLegend = new Legend("edge-overlay-legend", {colors: this._buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
-        this.#edgePathLegend = new Legend("edge-path-legend", {titles: legendTitles});
-        // this.#edgePathLegend = new Legend("edge-path-legend", {colors: buildPathLegendsColors(), titles: legendTitles});
+        this.#edgePathLegend = new Legend("edge-path-legend", {colors: buildPathLegendsColors(), titles: legendTitles});
     }
 
     /**
@@ -73,9 +72,9 @@ class ExecutionData {
 
     /**
      * Generic implementation
+     * @returns {Array<string>}
      */
     _buildLegendColors(styles) {
-        buildPathLegendsColors();
         return Array.from(styles.values()).map(value => value.style.fill.color);
     }
 
@@ -218,6 +217,9 @@ const pathConfiguration = {
     'path-lvl5': {color: 'Black', width: 10},
 };
 
+/**
+ * @returns {Array<string>}
+ */
 function buildPathLegendsColors() {
     return Object.values(pathConfiguration).map(o => o.color);
 }
