@@ -115,13 +115,18 @@ To update an example in a live IDE, follow these steps if you need to make signi
 
 1. Fork the current version of the example, named `<EXAMPLE_NAME>-current-version`.
 
-2. Rename the fork with the version of `bpmn-visualization` that it uses, like `<EXAMPLE_NAME>-v<BPMN_VISUALIZATION_VERSION>`. 
+2. Rename the fork with the version of `bpmn-visualization` that it uses, like `<EXAMPLE_NAME>-v<BPMN_VISUALIZATION_VERSION>`.
 
-3. Ensure that the fork is frozen.
+3. Modify the current version of the example.
 
-4. Modify the current version of the example.
+4. Ensure that the link to the current version of the example has not changed.
 
-5. Ensure that the modified example is frozen at the end, and that the link to the example has not changed.
+5. For Codesandbox, ensure that both the current and old versions of the example are frozen. This means that they cannot be edited or modified. 
+
+6. For Codepen, ensure that the current version of the example is pinned. The old version should not be pinned.
+
+
+
 
 ## Maintainers
 
