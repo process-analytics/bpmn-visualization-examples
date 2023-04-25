@@ -35,7 +35,6 @@ class MonitoringUseCase extends UseCase {
                     if (value.styleUpdate) {
                         this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.styleUpdate);
                     }
-
                 });
                 break;
             case 'both':

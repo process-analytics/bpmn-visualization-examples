@@ -199,7 +199,6 @@ class ExecutionData {
             }
         };
         if (pathClass) {
-            // data.pathClass = pathClass;
             data.styleUpdate = buildStyleUpdateOptions(pathClass);
         }
         return data;
