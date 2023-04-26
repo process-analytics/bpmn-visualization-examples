@@ -18,8 +18,8 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.hidePathLegend();
                 this.#executionData.displayOverlaysLegends();
                 this.#executionData.data.forEach((value, key) => {
-                    if (value.styleUpdate) {
-                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, buildResetStyleUpdateOptions());
+                    if (value.pathStyle) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, buildResetPathStyle());
                     }
 
                     if (value.overlay) {
@@ -32,8 +32,8 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.displayPathLegend();
                 this.#executionData.data.forEach((value, key) => {
                     this._bpmnVisualization.bpmnElementsRegistry.removeAllOverlays(key);
-                    if (value.styleUpdate) {
-                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.styleUpdate);
+                    if (value.pathStyle) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.pathStyle);
                     }
                 });
                 break;
@@ -42,8 +42,8 @@ class MonitoringUseCase extends UseCase {
                 this.#executionData.displayPathLegend();
                 this.#executionData.displayOverlaysLegends();
                 this.#executionData.data.forEach((value, key) => {
-                    if (value.styleUpdate) {
-                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.styleUpdate);
+                    if (value.pathStyle) {
+                        this._bpmnVisualization.bpmnElementsRegistry.updateStyle(key, value.pathStyle);
                     }
 
                     if (value.overlay) {

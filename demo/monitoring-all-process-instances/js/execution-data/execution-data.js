@@ -184,22 +184,22 @@ class ExecutionData {
     /**
      * Implementation required
      */
-    _buildData(index, overlayStyles, pathClass) {
+    _buildData(index, overlayStyles, pathName) {
         throw new Error('Not implemented');
     }
 
     /**
      * Generic implementation
      */
-    _internalBuildData(label, getOverlayStyles, pathClass) {
+    _internalBuildData(label, getOverlayStyles, pathName) {
         let data = {
             overlay: {
                 ...getOverlayStyles(),
                 label: String(label),
             }
         };
-        if (pathClass) {
-            data.styleUpdate = buildStyleUpdateOptions(pathClass);
+        if (pathName) {
+            data.pathStyle = buildPathStyle(pathName);
         }
         return data;
     }
@@ -225,10 +225,10 @@ function buildPathLegendsColors() {
 
 /**
  *
- * @param pathClass {string}
+ * @param pathName {string}
  */
-function buildStyleUpdateOptions(pathClass) {
-    const config = pathConfiguration[pathClass];
+function buildPathStyle(pathName) {
+    const config = pathConfiguration[pathName];
     return {
         stroke: {
             color: config.color,
@@ -237,7 +237,7 @@ function buildStyleUpdateOptions(pathClass) {
     }
 }
 
-function buildResetStyleUpdateOptions() {
+function buildResetPathStyle() {
     return {
         stroke: {
             color: 'default',
