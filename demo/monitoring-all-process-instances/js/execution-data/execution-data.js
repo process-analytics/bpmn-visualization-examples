@@ -20,7 +20,7 @@ class ExecutionData {
         let legendTitles = this._buildLegendTitles();
         this.#shapeOverlayLegend = new Legend("shape-overlay-legend", {colors: this._buildLegendColors(this._shapeOverlayStyles), titles: legendTitles});
         this.#edgeOverlayLegend = new Legend("edge-overlay-legend", {colors: this._buildLegendColors(this._edgeOverlayStyles), titles: legendTitles});
-        this.#edgePathLegend = new Legend("edge-path-legend", {titles: legendTitles});
+        this.#edgePathLegend = new Legend("edge-path-legend", {colors: buildPathLegendsColors(), titles: legendTitles});
     }
 
     /**
@@ -72,6 +72,7 @@ class ExecutionData {
 
     /**
      * Generic implementation
+     * @returns {Array<string>}
      */
     _buildLegendColors(styles) {
         return Array.from(styles.values()).map(value => value.style.fill.color);
@@ -183,23 +184,64 @@ class ExecutionData {
     /**
      * Implementation required
      */
-    _buildData(index, overlayStyles, pathClass) {
+    _buildData(index, overlayStyles, pathName) {
         throw new Error('Not implemented');
     }
 
     /**
      * Generic implementation
      */
-    _internalBuildData(label, getOverlayStyles, pathClass) {
+    _internalBuildData(label, getOverlayStyles, pathName) {
         let data = {
             overlay: {
                 ...getOverlayStyles(),
                 label: String(label),
             }
         };
-        if (pathClass) {
-            data.pathClass = pathClass;
+        if (pathName) {
+            data.pathStyle = buildPathStyle(pathName);
         }
         return data;
+    }
+}
+
+/**
+ * @type {{"path-lvl4": {color: string, width: number}, "path-lvl5": {color: string, width: number}, "path-lvl2": {color: string, width: number}, "path-lvl3": {color: string, width: number}, "path-lvl1": {color: string, width: number}}}
+ */
+const pathConfiguration = {
+    'path-lvl1': {color: '#e9e9e9', width: 2},
+    'path-lvl2': {color: '#bdbdbd', width: 4},
+    'path-lvl3': {color: '#a7a7a7', width: 6},
+    'path-lvl4': {color: '#7a7a7a', width: 8},
+    'path-lvl5': {color: 'Black', width: 10},
+};
+
+/**
+ * @returns {Array<string>}
+ */
+function buildPathLegendsColors() {
+    return Object.values(pathConfiguration).map(o => o.color);
+}
+
+/**
+ *
+ * @param pathName {string}
+ */
+function buildPathStyle(pathName) {
+    const config = pathConfiguration[pathName];
+    return {
+        stroke: {
+            color: config.color,
+            width: config.width,
+        }
+    }
+}
+
+function buildResetPathStyle() {
+    return {
+        stroke: {
+            color: 'default',
+            width: 'default',
+        }
     }
 }

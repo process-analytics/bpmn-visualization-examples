@@ -21,7 +21,6 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
-    <link rel="stylesheet" href="./css/path.css" type="text/css">
     <link rel="stylesheet" href="./css/legend.css" type="text/css">
     <script defer src="../../examples/static/js/link-to-sources.js"></script>
     <!-- load bpmn-visualization -->
@@ -139,11 +138,11 @@ limitations under the License.
                             <label>Path</label>
                             <chart scale-y-linear="0 250">
                                 <guide-y id="edge-path-legend-guide-y" ticks="0 50 100 150 200 250"></guide-y>
-                                <bar literal-length="250" style="background-color:var(--color-lvl1); width: 8px"></bar>
-                                <bar literal-length="200" style="background-color:var(--color-lvl2); width: 16px"></bar>
-                                <bar literal-length="150" style="background-color:var(--color-lvl3); width: 24px"></bar>
-                                <bar literal-length="100" style="background-color:var(--color-lvl4); width: 32px"></bar>
-                                <bar literal-length="50" style="background-color:var(--color-lvl5)"></bar>
+                                <bar id="edge-path-legend-250" literal-length="250" style="width: 8px"></bar>
+                                <bar id="edge-path-legend-200" literal-length="200" style="width: 16px"></bar>
+                                <bar id="edge-path-legend-150" literal-length="150" style="width: 24px"></bar>
+                                <bar id="edge-path-legend-100" literal-length="100" style="width: 32px"></bar>
+                                <bar id="edge-path-legend-50" literal-length="50"></bar>
                             </chart>
                         </div>
                     </div>
