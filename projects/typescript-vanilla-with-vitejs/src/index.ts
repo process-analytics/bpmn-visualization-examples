@@ -10,7 +10,6 @@ const bpmnVisualization = new BpmnVisualization({
 });
 // load the BPMN diagram defined above
 bpmnVisualization.load(diagram, { fit: { type: FitType.Center, margin: 10}});
-
 const registry = bpmnVisualization.bpmnElementsRegistry;
 
 // Style elements with CSS
