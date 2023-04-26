@@ -110,6 +110,23 @@ git push --force-with-lease 25-annotations_to_tasks
 
 At this point, you're ready to make your changes! Feel free to ask for help. Everyone is a beginner at first :smile_cat:
 
+### Update an Example in Live IDE
+To update an example in a live IDE, follow these steps if you need to make significant changes to the example (not just updating the `bpmn-visualization` version):
+
+1. Fork the current version of the example, named `<EXAMPLE_NAME>-current-version`.
+
+2. Rename the fork with the version of `bpmn-visualization` that it uses, like `<EXAMPLE_NAME>-v<BPMN_VISUALIZATION_VERSION>`.
+
+3. Modify the current version of the example.
+
+4. Ensure that the link to the current version of the example has not changed.
+
+5. For Codesandbox, ensure that both the current and old versions of the example are frozen. This means that they cannot be edited or modified. 
+
+6. For Codepen, ensure that the current version of the example is pinned. The old version should not be pinned.
+
+
+
 
 ## Maintainers
 
