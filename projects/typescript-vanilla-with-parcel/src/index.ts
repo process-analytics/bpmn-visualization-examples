@@ -19,18 +19,38 @@ footer.innerText = `${versionAsString} with ${dependenciesAsString} | direct usa
 
 
 // Load BPMN diagram
-// Try the "Center" type to fit the whole container and center the diagram
-bpmnVisualization.load(diagram, { fit: { type: FitType.None } });
+bpmnVisualization.load(diagram, { fit: { type: FitType.Center, margin: 10}});
+const registry = bpmnVisualization.bpmnElementsRegistry;
 
-// Add Overlay
+// Style elements with CSS
+registry.addCssClasses([
+    'Activity_1t65hvk', // Create Purchase Order Item
+    'Activity_00vbm9s', // Record Goods Receipts
+  ],
+  [
+    'bpmn-activity-success', // CSS class declared in the CSS resources
+    // "bpmn-activity-info" can be used instead for instance
+  ]);
+
+// Style elements with the "Update Style" API
+registry.updateStyle(['Gateway_1ezcj46', 'Activity_0yabbur', 'Event_07598zy'],
+  {
+    stroke: { color: 'blue', width: 6 },
+    fill: { color: 'orange', opacity: 40 },
+  });
+registry.updateStyle(['Flow_1kkicvr', 'Flow_12q12yb'],
+  {
+    stroke: { color: 'blue', width: 4 },
+  });
+
+// Add Overlays
 const overlayColor = "#d7a329";
 // Use the following bpmn element id to apply the overlay to another element
-// StartEvent_08hc3xj: start event
-// Activity_1potg3p: activity
-// Event_05akz22: end event
-bpmnVisualization.bpmnElementsRegistry.addOverlays("Event_05akz22", {
-  position: "top-right",
-  label: "OK!", // this is the only mandatory property
+// Activity_1u4jwkv:  Record Invoice Receipt
+// Activity_083jf01: Remove Payment Block
+registry.addOverlays("Activity_1u4jwkv", {
+  position: "top-center",
+  label: "OK",
   style: {
     font: {
       color: overlayColor,
@@ -44,9 +64,3 @@ bpmnVisualization.bpmnElementsRegistry.addOverlays("Event_05akz22", {
     }
   }
 });
-
-// Add style to BPMN Element
-bpmnVisualization.bpmnElementsRegistry.addCssClasses("Activity_1potg3p", [
-  "bpmn-activity-success" // CSS class declared in the CSS resources
-  // "bpmn-activity-info" can be used instead for instance
-]);

@@ -13,12 +13,12 @@
     "bpmn-visualization": "0.33.1"
   },
   "devDependencies": {
-    "@rollup/plugin-commonjs": "~24.0.1",
-    "@rollup/plugin-node-resolve": "~15.0.1",
-    "@rollup/plugin-terser": "~0.4.0",
-    "@rollup/plugin-typescript": "~11.0.0",
-    "rimraf": "~4.4.0",
-    "rollup": "~3.19.1",
+    "@rollup/plugin-commonjs": "~24.1.0",
+    "@rollup/plugin-node-resolve": "~15.0.2",
+    "@rollup/plugin-terser": "~0.4.1",
+    "@rollup/plugin-typescript": "~11.1.0",
+    "rimraf": "~5.0.0",
+    "rollup": "~3.21.0",
     "rollup-plugin-copy": "~3.4.0",
     "rollup-plugin-copy-watch": "~0.0.1",
     "rollup-plugin-livereload": "~2.0.5",
