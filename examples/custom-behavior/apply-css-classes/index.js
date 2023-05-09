@@ -131,7 +131,7 @@ function applyInitialStyles() {
 }
 
 function clearAllStyles() {
-  removeCssClass(styledElements, 'highlight-info', 'highlight-success', 'highlight-error', 'highlight-warning')
+  bpmnVisualization.bpmnElementsRegistry.removeAllCssClasses();
   clearHighlightPath();
 }
 
