@@ -10,7 +10,7 @@ class Style {
      * @param {string[] | string} ids
      */
     reset(ids) {
-        this.#bpmnElementsRegistry.removeCssClasses(ids, ['disableAll', 'possibleNext', 'highlight', 'disablePointer']);
+        this.#bpmnElementsRegistry.removeAllCssClasses();
     }
 
     /**
