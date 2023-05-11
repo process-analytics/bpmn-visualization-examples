@@ -28,8 +28,6 @@
             "scripts": [],
             "allowedCommonJsDependencies": [
               "fast-xml-parser",
-              "lodash.debounce",
-              "lodash.throttle",
               "mxgraph"
             ]
           },
