@@ -1,4 +1,10 @@
-const bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container' });
+const bpmnVisualization = new bpmnvisu.BpmnVisualization({
+  container: 'bpmn-container',
+  renderer: {
+    // use the colors defined in the miwg-test-suite diagrams when rendering
+    ignoreBpmnColors: false,
+  },
+});
 
 function log(message, ...optionalParams) {
   console.info('[DEMO] ' + message, ...optionalParams);

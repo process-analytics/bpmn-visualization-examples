@@ -9,7 +9,11 @@ class LibraryComparator {
     #bpmnVisualization;
 
     constructor(bpmnVisualizationContainerId, state) {
-        this.#bpmnVisualization = new bpmnvisu.BpmnVisualization({ container: bpmnVisualizationContainerId, navigation: { enabled: true } });
+        this.#bpmnVisualization = new bpmnvisu.BpmnVisualization({
+            container: bpmnVisualizationContainerId,
+            navigation: { enabled: true },
+            renderer: { ignoreBpmnColors: false },
+        });
         this._state = state;
     }
 
