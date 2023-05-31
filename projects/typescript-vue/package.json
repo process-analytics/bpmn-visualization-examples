@@ -1,0 +1,22 @@
+{
+  "name": "bpmn-visualization-ts-vue",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build --base ./",
+    "preview": "vite preview"
+  },
+  "dependencies": {
+    "bpmn-visualization": "0.35.0",
+    "spectre.css": "^0.5.9",
+    "vue": "^3.3.4"
+  },
+  "devDependencies": {
+    "@babel/types": "^7.22.4",
+    "@vitejs/plugin-vue": "^4.2.3",
+    "typescript": "~5.0.4",
+    "vite": "~4.3.9"
+  }
+}
