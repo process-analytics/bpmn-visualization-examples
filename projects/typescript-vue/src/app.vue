@@ -1,6 +1,8 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { BpmnElement, BpmnElementsRegistry, BpmnVisualization, FitType, OverlayPosition, ShapeBpmnElementKind } from 'bpmn-visualization';
+import { BpmnElement, BpmnElementsRegistry, BpmnVisualization, FitType, OverlayPosition, ShapeUtil } from 'bpmn-visualization';
+import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
+
 
 let vis: BpmnVisualization;
 let registry: BpmnElementsRegistry;
@@ -16,8 +18,6 @@ const overlayPosition = ref<OverlayPosition>('top-left');
 
 
 onMounted(async () => {
-    const res = await fetch('/pizza-collaboration.bpmn');
-    const pizzaDiagram = await res.text();
     vis = new BpmnVisualization({
         container: "bpmn-container",
         navigation: {
@@ -32,22 +32,12 @@ onMounted(async () => {
         fit: { type: FitType.Center, margin: 30 },
     });
     registry = vis.bpmnElementsRegistry;
-
-
     allFlowNodes.value = getAllFlowNodes();
     setupEventHandlers();
     loading.value = false;
 })
-function getAllFlowNodes() {
-    return registry.getElementsByKinds(
-        Object.values(ShapeBpmnElementKind).filter(kind =>
-            kind !== ShapeBpmnElementKind.LANE &&
-            kind !== ShapeBpmnElementKind.POOL &&
-            kind !== ShapeBpmnElementKind.CALL_ACTIVITY &&
-            kind !== ShapeBpmnElementKind.SUB_PROCESS &&
-            kind !== ShapeBpmnElementKind.GROUP &&
-            kind !== ShapeBpmnElementKind.TEXT_ANNOTATION)
-    );
+function getAllFlowNodes(): BpmnElement[] {
+    return registry.getElementsByKinds(ShapeUtil.flowNodeKinds());
 }
 function setupEventHandlers() {
     allFlowNodes.value.forEach(item => {
@@ -168,7 +158,7 @@ function changeDiagramm(event: Event): void {
                     <li><a href="https://process-analytics.github.io/bpmn-visualization-js/"
                             class="mr-2 btn btn-link">Docs</a></li>
                     <li><a href="https://process-analytics.github.io/bpmn-visualization-js/api/index.html"
-                            class="mr-2 btn btn-link">Api</a></li>
+                            class="mr-2 btn btn-link">API</a></li>
                 </ul>
             </div>
             <div class="dropdown mr-2 dropdown-right">
@@ -206,7 +196,7 @@ function changeDiagramm(event: Event): void {
         style="position: absolute; width: 100%; height: calc(100% - 58px); top: 58px; background: white;"></div>
     <div v-if="loadError" class="errorDisplay">
         <h1 class="h1 text-error">!</h1>
-        <span>{{loadError?.toString()}}</span>
+        <span>{{ loadError?.toString() }}</span>
     </div>
     <footer></footer>
 </template>
