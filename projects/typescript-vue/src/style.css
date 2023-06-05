@@ -1,0 +1,222 @@
+html,
+body {
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  margin: 0;
+}
+
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+
+#app {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0.4rem;
+  background: #303742;
+  color: #fff;
+  align-items: stretch;
+  display: flex !important;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+section {
+  align-items: center;
+  display: flex !important;
+  flex: 1 0 0;
+  margin-left: 0.4rem;
+  gap: 10px;
+}
+
+.title {
+  font-size: 1.4rem;
+  font-weight: 500;
+  margin-left: 0.4rem;
+}
+
+
+#bpmn-container {
+  width: 100%;
+  flex: 1;
+}
+
+.legendBox {
+  position: absolute;
+  right: 1rem;
+  top: 4rem;
+  font-size: 0.8rem;
+  font-weight: bold;
+
+  border-radius: 20px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  vertical-align: middle;
+  border: 0;
+  width: 8rem;
+  padding: 0.75rem;
+  background: white;
+}
+
+.legendNode {
+  display: flex;
+  justify-content: space-between;
+}
+
+.clickableIcon {
+  width: 18px;
+  margin: 0 10px;
+  fill: white;
+}
+
+.clickableIcon:hover {
+  transform: scale(1.2);
+  cursor: pointer;
+}
+
+/* Highlight Node */
+.highlightNode.bpmn-type-activity>rect:first-child,
+.highlightNode.bpmn-type-event>ellipse:first-child,
+.highlightNode.bpmn-type-gateway>path:first-child,
+.highlightNode.bpmn-type-flow>* {
+  cursor: pointer;
+  stroke: #c71585;
+  fill: #c7158515;
+}
+
+/* ICON */
+.highlightNode.bpmn-type-gateway> :not(:first-child),
+.highlightNode.bpmn-type-event>path,
+.highlightNode.bpmn-type-event>ellipse,
+.highlightNode.bpmn-type-event>rect {
+  stroke: #c71585;
+  cursor: pointer;
+}
+
+.highlightNode.bpmn-type-gateway>path:nth-child(2),
+.highlightNode.bpmn-type-flow>path:nth-child(3) {
+  fill: #c71585;
+}
+
+.highlightNode.bpmn-end-event>ellipse {
+  fill: #c71585;
+}
+
+/* Selected Node */
+/* SHAPE */
+.selectedNode.bpmn-type-activity>rect:first-child,
+.selectedNode.bpmn-type-event>ellipse:first-child,
+.selectedNode.bpmn-type-gateway>path:first-child,
+.selectedNode.bpmn-type-flow>* {
+  stroke: #14a9d5;
+  fill: #14a9d515;
+}
+
+/* ICON */
+.selectedNode.bpmn-type-gateway> :not(:first-child),
+.selectedNode.bpmn-type-event>path,
+.selectedNode.bpmn-type-event>ellipse,
+.selectedNode.bpmn-type-event>rect {
+  stroke: #14a9d5;
+}
+
+.selectedNode.bpmn-type-gateway>path:nth-child(2),
+.selectedNode.bpmn-type-flow>path:nth-child(3) {
+  fill: #14a9d5;
+}
+
+.selectedNode.bpmn-end-event>ellipse {
+  fill: #14a9d5;
+}
+
+.selectBox {
+  position: absolute;
+  right: 1rem;
+  top: 0.5rem;
+}
+
+.zoomBox {
+  position: absolute;
+  right: 1rem;
+  bottom: 0.5rem;
+
+  border-radius: 20px;
+  box-shadow: 0 0 3px 0 rgba(0, 0, 0, 0.15), 0 2px 2px 0 rgba(0, 0, 0, 0.2);
+  display: inline-block;
+  vertical-align: middle;
+  border: 0;
+}
+
+.zoomBox .sideButton {
+  position: relative;
+  background-color: #fff;
+  color: #333;
+  line-height: inherit;
+  text-align: center;
+  padding: 4px 6px;
+  font-size: 12px;
+  height: 25px;
+  border: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.zoomBox .sideButton svg {
+  height: 80%;
+}
+
+.zoomBox .sideButton:hover {
+  color: #14a9d5;
+  box-shadow: 0 0 3px #14a9d5;
+  z-index: 2;
+}
+
+.zoomBox .mainButton {
+  overflow: visible;
+  vertical-align: middle;
+  padding: 4px 6px;
+  font-size: 12px;
+  height: 25px;
+  background-color: #fff;
+  color: #333;
+  line-height: inherit;
+  position: relative;
+  float: left;
+  border: 0;
+  width: 30px;
+  cursor: pointer;
+}
+
+.zoomBox .mainButton:hover {
+  color: #333;
+  box-shadow: 0 0 3px #14a9d5;
+  z-index: 2;
+}
+
+.hidden {
+  display: none !important;
+}
+
+.errorDisplay {
+  position: absolute;
+  width: 100%;
+  height: calc(100% - 58px);
+  top: 58px;
+  background: white;
+  padding: 5%;
+  display: flex;
+  flex-flow: column;
+  place-items: center;
+}
