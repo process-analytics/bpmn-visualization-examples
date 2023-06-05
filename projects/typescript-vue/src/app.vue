@@ -77,7 +77,7 @@ function removeAllOverlays() {
         registry.removeAllOverlays(selectedElement.value)
     }
 }
-function changeDiagramm(event: Event): void {
+function changeDiagram(event: Event): void {
     loading.value = true;
     loadError.value = undefined;
     const file = (event.target as HTMLInputElement)?.files?.[0];
@@ -111,7 +111,7 @@ function changeDiagramm(event: Event): void {
         </section>
         <section>
             <div>
-                <input type="file" id="btn-open-file" @change="changeDiagramm" name="btn-open-file" class="hidden" />
+                <input type="file" id="btn-open-file" @change="changeDiagram" name="btn-open-file" class="hidden" />
                 <label for="btn-open-file" class="btn btn-primary has-icon-right"><span>Choose a local file </span><span
                         class="icon icon-upload"></span></label>
             </div>
