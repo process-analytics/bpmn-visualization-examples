@@ -47,6 +47,7 @@ jobs:
           - typescript-vanilla-with-parcel
           - typescript-vanilla-with-rollup
           - typescript-vanilla-with-vitejs
+          - typescript-vue
         bv-npm-package:
           - development
           - release

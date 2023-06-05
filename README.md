@@ -158,6 +158,7 @@ Show how to integrate `bpmn-visualization` in project, using various kind of fra
 - [TypeScript + Parcel](projects/typescript-vanilla-with-parcel/README.md) - integration in a vanilla TypeScript Parcel project
 - [TypeScript + Rollup](projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript Rollup project
 - [TypeScript + Vite](projects/typescript-vanilla-with-vitejs/README.md) - integration in a vanilla TypeScript Vite project
+- [TypeScript + Vue](projects/typescript-vue/README.md) - integration in a TypeScript Vue project
 
 Remember that some projects are also available in [live IDE](#live_ide).
 
