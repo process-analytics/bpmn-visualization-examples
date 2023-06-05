@@ -17,7 +17,6 @@ const nodeDropdown = ref<string>();
 const overlayText = ref<string>('');
 const overlayPosition = ref<OverlayPosition>('top-left');
 
-
 onMounted(async () => {
     vis = new BpmnVisualization({
         container: "bpmn-container",
@@ -37,6 +36,7 @@ onMounted(async () => {
     setupEventHandlers();
     loading.value = false;
 })
+
 function getAllFlowNodes(): BpmnElement[] {
     return registry.getElementsByKinds(ShapeUtil.flowNodeKinds().filter(kind => !isBpmnArtifact(kind)));
 }
@@ -58,6 +58,7 @@ function setupEventHandlers() {
         };
     });
 }
+
 function setSelectedElement(value?: string) {
     if (!value) {
         return;
@@ -69,16 +70,19 @@ function setSelectedElement(value?: string) {
     selectedElement.value = value;
     nodeDropdown.value = value;
 }
+
 function addOverlay() {
     if (selectedElement.value && overlayPosition.value) {
         registry.addOverlays(selectedElement.value, { position: overlayPosition.value, label: overlayText.value })
     }
 }
+
 function removeAllOverlays() {
     if (selectedElement.value) {
         registry.removeAllOverlays(selectedElement.value)
     }
 }
+
 function changeDiagram(event: Event): void {
     loading.value = true;
     loadError.value = undefined;
