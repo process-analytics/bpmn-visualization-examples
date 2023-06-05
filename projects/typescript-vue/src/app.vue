@@ -2,6 +2,7 @@
 import { onMounted, ref } from 'vue';
 import { BpmnElement, BpmnElementsRegistry, BpmnVisualization, FitType, OverlayPosition, ShapeUtil } from 'bpmn-visualization';
 import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
+import { isBpmnArtifact } from './bpmn-utils';
 
 
 let vis: BpmnVisualization;
@@ -37,8 +38,9 @@ onMounted(async () => {
     loading.value = false;
 })
 function getAllFlowNodes(): BpmnElement[] {
-    return registry.getElementsByKinds(ShapeUtil.flowNodeKinds());
+    return registry.getElementsByKinds(ShapeUtil.flowNodeKinds().filter(kind => !isBpmnArtifact(kind)));
 }
+
 function setupEventHandlers() {
     allFlowNodes.value.forEach(item => {
         const currentId = item.bpmnSemantic.id;
