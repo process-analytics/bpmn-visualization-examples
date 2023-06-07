@@ -183,5 +183,5 @@ jobs:
         if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
         uses: actions/upload-artifact@v3
         with:
-          name: all-typescript-projects-${{github.sha}}
+          name: bpmn-visualization-examples-projects-${{github.sha}}
           path: build
