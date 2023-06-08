@@ -25,20 +25,32 @@ Content:
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 ```
 
-- override default fill and stroke colors: update the `StyleConfigurator` method
+- override default fill and stroke colors: extend the lib class entry point
 ```javascript
-const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
-StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+class BpmnVisualizationCustomDefaultColors extends BpmnVisualizationCustomizedColors {
+  constructor(containerId) {
+    super({ container: containerId });
+    this.configureStyle();
+  }
+
+  configureStyle() {
+    const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+
+    const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+    defaultVertexStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+    defaultVertexStyle[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+
+    const defaultEdgeStyle = styleSheet.getDefaultEdgeStyle();
+    defaultEdgeStyle[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+  }
 }
+
+const bpmnVisualizationCustomDefaultColors = new BpmnVisualizationCustomDefaultColors('bpmn-container-custom-default-colors');
 ```
 
 - different fill and stroke colors for `event`, `gateway` and `task`: extend the lib class entry point
 ```javascript
 class BpmnVisualizationCustomColors extends BpmnVisualization {
-
     constructor(containerId) {
         super({ container: containerId });
         this.configureStyle();
@@ -69,7 +81,6 @@ const bpmnVisualizationCustomColors = new BpmnVisualizationCustomColors('bpmn-co
 - different fill and stroke colors for `events`: extend the lib class entry point
 ```javascript
 class BpmnVisualizationCustomEventColors extends BpmnVisualization {
-
     constructor(containerId) {
         super({ container: containerId });
         this.configureStyle();
@@ -94,7 +105,6 @@ const bpmnVisualizationEventCustomColors = new BpmnVisualizationCustomEventColor
 - specific font color for ` user task`: extend the lib class entry point
 ```javascript
 class BpmnVisualizationCustomColorsUserTask extends BpmnVisualization {
-
     constructor(containerId) {
         super({ container: containerId });
         this.configureStyle();
