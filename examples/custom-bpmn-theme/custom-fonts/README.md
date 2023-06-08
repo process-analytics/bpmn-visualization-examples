@@ -28,14 +28,6 @@ Content:
   StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 ```
 
-  - update the `StyleConfigurator` method
-```javascript
-StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
-}
-```
-
 - different fonts for `event`, `gateway` and `task`: extend the lib class entry point
 ```javascript
 class BpmnVisualizationCustomFonts extends BpmnVisualization {
