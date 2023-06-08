@@ -17,7 +17,9 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
 const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
+console.warn("### define code for 'custom default fill and stroke colors'")
 bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
+    console.warn('@@@Custom StyleConfigurator')
     originalConfigureCommonDefaultStyle(style);
     style[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
 }

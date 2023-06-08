@@ -22,10 +22,19 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default fill and stroke colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
+const originalConfigureDefaultVertexStyle = bpmnvisu.StyleConfigurator.prototype.configureDefaultVertexStyle;
+bpmnvisu.StyleConfigurator.prototype.configureDefaultVertexStyle = function() {
+    originalConfigureDefaultVertexStyle.apply(this);
+
+    const style = this.getStylesheet().getDefaultVertexStyle();
     style[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+}
+const originalConfigureDefaultEdgeStyle = bpmnvisu.StyleConfigurator.prototype.configureDefaultEdgeStyle;
+bpmnvisu.StyleConfigurator.prototype.configureDefaultEdgeStyle = function() {
+    originalConfigureDefaultEdgeStyle.apply(this);
+
+    const style = this.getStylesheet().getDefaultEdgeStyle();
     style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
 }
 
@@ -33,7 +42,8 @@ const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ con
 bpmnVisualizationCustomDefaultColor.load(bpmn);
 
 // restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+bpmnvisu.StyleConfigurator.prototype.configureDefaultVertexStyle= originalConfigureDefaultVertexStyle;
+bpmnvisu.StyleConfigurator.prototype.configureDefaultEdgeStyle= originalConfigureDefaultEdgeStyle;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
