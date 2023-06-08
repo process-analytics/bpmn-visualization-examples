@@ -20,6 +20,23 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default fill and stroke colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+const originalFillColor = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
+const originalStrokeColor = bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR;
+bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
+bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
+
+const bpmnVisualizationCustomDefaultColors = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
+bpmnVisualizationCustomDefaultColors.load(bpmn);
+
+// restore StyleDefault
+bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = originalFillColor;
+bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = originalStrokeColor;
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // shared config
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -33,28 +50,6 @@ class BpmnVisualizationCustomizedColors extends bpmnvisu.BpmnVisualization {
         // do nothing by default
     }
 }
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default fill and stroke colors
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const customDefaultStrokeColor = 'Orange';
-class BpmnVisualizationCustomDefaultColors extends BpmnVisualizationCustomizedColors {
-    configureStyle() {
-        const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
-
-        const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
-        defaultVertexStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
-        defaultVertexStyle[StyleIdentifiers.STYLE_STROKECOLOR] = customDefaultStrokeColor;
-
-        const defaultEdgeStyle = styleSheet.getDefaultEdgeStyle();
-        defaultEdgeStyle[StyleIdentifiers.STYLE_STROKECOLOR] = customDefaultStrokeColor;
-    }
-}
-
-const bpmnVisualizationCustomDefaultColors = new BpmnVisualizationCustomDefaultColors('bpmn-container-custom-default-colors');
-bpmnVisualizationCustomDefaultColors.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
