@@ -25,14 +25,10 @@ Content:
 StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
 ```
 
-- override default fill and stroke colors: update the `StyleConfigurator` method
+- override default fill and stroke colors: update the `StyleDefault` default values
 ```javascript
-const originalConfigureCommonDefaultStyle = StyleConfigurator.configureCommonDefaultStyle;
-StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
-}
+StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
+StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
 ```
 
 - different fill and stroke colors for `event`, `gateway` and `task`: extend the lib class entry point

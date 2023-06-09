@@ -15,25 +15,25 @@ bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'DeepPink';
 const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-font-color' });
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
 
-// restore StyleConstant defaults
+// restore StyleDefault
 bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default fill and stroke colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
-    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
-}
 
-const bpmnVisualizationCustomDefaultColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
-bpmnVisualizationCustomDefaultColor.load(bpmn);
+const originalFillColor = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
+const originalStrokeColor = bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR;
+bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
+bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
 
-// restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
+const bpmnVisualizationCustomDefaultColors = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
+bpmnVisualizationCustomDefaultColors.load(bpmn);
+
+// restore StyleDefault
+bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = originalFillColor;
+bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = originalStrokeColor;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

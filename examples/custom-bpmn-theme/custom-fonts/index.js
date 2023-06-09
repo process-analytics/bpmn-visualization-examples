@@ -16,19 +16,31 @@ const originalDefaultFontSize = bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
 bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
-const originalConfigureCommonDefaultStyle = bpmnvisu.StyleConfigurator.configureCommonDefaultStyle;
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = function (style) {
-    originalConfigureCommonDefaultStyle(style);
-    style[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+class BpmnVisualizationCustomDefaultFont extends bpmnvisu.BpmnVisualization {
+
+    constructor(containerId) {
+        super({ container: containerId });
+        this.configureStyle();
+    }
+
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+
+        const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+        defaultVertexStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+
+        const defaultEdgeStyle = styleSheet.getDefaultEdgeStyle();
+        defaultEdgeStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+    }
+
 }
 
-const bpmnVisualizationCustomDefaultFont = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-font' });
+const bpmnVisualizationCustomDefaultFont = new BpmnVisualizationCustomDefaultFont('bpmn-container-custom-default-font');
 bpmnVisualizationCustomDefaultFont.load(bpmn);
 
+// restore StyleDefault
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
 bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
-// restore StyleConfigurator defaults
-bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = originalConfigureCommonDefaultStyle;
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
@@ -59,4 +71,3 @@ class BpmnVisualizationCustomFonts extends bpmnvisu.BpmnVisualization {
 
 const bpmnVisualizationCustomFonts = new BpmnVisualizationCustomFonts('bpmn-container-custom-fonts');
 bpmnVisualizationCustomFonts.load(bpmn);
-
