@@ -1,0 +1,21 @@
+{
+  "name": "bpmn-visualization-lit-element-ts-vite",
+  "version": "0.0.0",
+  "private": true,
+  "license": "Apache-2.0",
+  "scripts": {
+    "start": "vite",
+    "build": "tsc && vite build --base ./",
+    "preview": "vite preview",
+    "prepare": "patch-package"
+  },
+  "dependencies": {
+    "lit": "~2.7.5",
+    "bpmn-visualization": "0.35.0"
+  },
+  "devDependencies": {
+    "patch-package": "~7.0.0",
+    "vite": "~4.3.9",
+    "typescript": "~4.1.3"
+  }
+}
