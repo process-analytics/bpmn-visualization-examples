@@ -50,8 +50,6 @@ class BpmnVisualizationCustomizedColors extends bpmnvisu.BpmnVisualization {
 
 class BpmnVisualizationCustomColorsUserTask extends BpmnVisualizationCustomizedColors {
     configureStyle() {
-        console.info('@@@called BpmnVisualizationCustomColorsUserTask!')
-
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
         const style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER];
         style[StyleIdentifiers.STYLE_FILLCOLOR] = '#adadec';
