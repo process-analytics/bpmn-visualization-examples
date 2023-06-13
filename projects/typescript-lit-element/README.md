@@ -18,7 +18,7 @@ bundle application with http://localhost:4173.
 ## Specific mxGraph patch to make it work 
 
 To workaround bug [#2738](https://github.com/process-analytics/bpmn-visualization-js/issues/2738) "[BUG] Failed to execute 'getComputedStyle' when using lit",
-mxGraph is patched using 
+`mxGraph` is patched using [patch-package](https://www.npmjs.com/package/patch-package) as the root cause of the bug is an issue in the `mxGraph` code.
 
 The patch has been created by modifying manually `node_modules/mxgraph/javascript/dist/build.js`
 and then running: `npx patch-package mxgraph`
