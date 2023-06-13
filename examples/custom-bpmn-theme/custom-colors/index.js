@@ -10,30 +10,22 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default font color
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-const originalDefaultFontColor = bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR;
 bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'DeepPink';
 const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-font-color' });
 bpmnVisualizationCustomDefaultFontColor.load(bpmn);
-
-// restore StyleDefault
-bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = originalDefaultFontColor;
+resetStyleDefault();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default fill and stroke colors
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
-const originalFillColor = bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR;
-const originalStrokeColor = bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR;
 bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
 bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
 
 const bpmnVisualizationCustomDefaultColors = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
 bpmnVisualizationCustomDefaultColors.load(bpmn);
-
-// restore StyleDefault
-bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = originalFillColor;
-bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = originalStrokeColor;
+resetStyleDefault();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////

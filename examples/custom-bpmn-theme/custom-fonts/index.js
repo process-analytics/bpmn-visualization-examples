@@ -10,9 +10,6 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default font
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-const originalDefaultFontFamily = bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY;
-const originalDefaultFontSize = bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
 bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
 bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
@@ -37,10 +34,7 @@ class BpmnVisualizationCustomDefaultFont extends bpmnvisu.BpmnVisualization {
 
 const bpmnVisualizationCustomDefaultFont = new BpmnVisualizationCustomDefaultFont('bpmn-container-custom-default-font');
 bpmnVisualizationCustomDefaultFont.load(bpmn);
-
-// restore StyleDefault
-bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = originalDefaultFontFamily;
-bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = originalDefaultFontSize;
+resetStyleDefault();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
