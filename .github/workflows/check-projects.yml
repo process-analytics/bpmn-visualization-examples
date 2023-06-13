@@ -44,6 +44,7 @@ jobs:
         project:
           - javascript-vanilla-with-webpack
           - typescript-angular
+          - typescript-lit-element
           - typescript-vanilla-with-parcel
           - typescript-vanilla-with-rollup
           - typescript-vanilla-with-vitejs
