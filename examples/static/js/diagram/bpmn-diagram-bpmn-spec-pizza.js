@@ -1,5 +1,3 @@
-
-
 // inspired from the BPMN specification example 'triso - Order Process for Pizza V4.bpmn'
 function pizzaDiagram() {
     return `<?xml version="1.0" encoding="UTF-8"?>
