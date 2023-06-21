@@ -88,7 +88,7 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
 
 ## Tutorials
 - [Quick start](tutorials/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [Getting started](tutorials/getting-started/README.md) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
+- [Getting started](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started#readme) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
 
 ## 🔭 Examples
 
