@@ -1,6 +1,7 @@
 class PredicatedLateUseCase extends UseCase {
     constructor(type) {
         super(type, () => pizzaDiagram(), true, {fit: {type: 'Center', margin: 20}});
+        this._dataExecutionManager = new PredicatedLateDataExecutionManager();
     }
 
     _postLoadDiagram() {
@@ -11,16 +12,17 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _reduceVisibilityOfAlreadyExecutedElements() {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._getExecutedElements(), 'state-already-executed');
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._dataExecutionManager.executedElements(), 'state-already-executed');
     }
 
     _registerInteractions() {
         // on hover, highlight the predicted path
-        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._getElementWithPrediction().bpmnId)[0]; // exist and only one
+        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.elementWithPrediction().bpmnId)[0]; // exist and only one
 
         const highlightPredictedPath = () => {
             this._toggleHighlightRunningElementsWithoutPrediction();
-            this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(this._getPredictedPath().ids, this._getPredictedPath().cssClasses);
+            let predictedPath = this._dataExecutionManager.predictedPath();
+            this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(predictedPath.ids, predictedPath.cssClasses);
         }
 
         elementTogglingPath.htmlElement.addEventListener('mouseenter', highlightPredictedPath);
@@ -28,29 +30,12 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _toggleHighlightRunningElementsWithoutPrediction() {
-        this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(this._getRunningElementsWithoutPrediction(), 'state-running');
+        this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(this._dataExecutionManager.runningElementsWithoutPrediction(), 'state-running');
     }
 
     _highlightRunningElementsWithPrediction() {
-        const elementWithPrediction = this._getElementWithPrediction();
+        const elementWithPrediction =  this._dataExecutionManager.elementWithPrediction();
         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(elementWithPrediction.bpmnId, elementWithPrediction.cssClasses);
-    }
-
-
-     _getExecutedElements() {
-        return predicatedLateAlreadyExecutedElements;
-    }
-
-    _getElementWithPrediction() {
-        return predicatedLateData.elementWithPrediction;
-    }
-
-    _getPredictedPath() {
-        return predicatedLateData.predictedPath;
-    }
-
-    _getRunningElementsWithoutPrediction() {
-        return [vendorWhereIsMyPizzaId, customerEvtBasedGwId];
     }
 }
 
@@ -58,17 +43,6 @@ class PredicatedLateUseCase extends UseCase {
 class PredictedOnTimeUseCase extends PredicatedLateUseCase {
     constructor(type) {
         super(type);
-    }
-
-    _getExecutedElements() {
-        return predictedOnTimeAlreadyExecutedElements;
-    }
-
-    _getElementWithPrediction() {
-        return predictedOnTimeData.elementWithPrediction;
-    }
-
-    _getPredictedPath() {
-        return predictedOnTimeData.predictedPath;
+        this._dataExecutionManager = new PredictedOnTimeDataExecutionManager();
     }
 }
