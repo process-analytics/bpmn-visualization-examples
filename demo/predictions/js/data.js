@@ -6,10 +6,9 @@ class DataExecutionManager {
 
     _vendorWhereIsMyPizzaId = '_6-674';
 
-
     private _runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
 
-    _alreadyExecutedElementsPredictedLate = [
+    _commonExecutedElements = [
         // customer
         '_6-61', // start event
         '_6-125', // sequence flow between 'start event' and 'select pizza'
@@ -32,11 +31,11 @@ class DataExecutionManager {
         return [];
     }
 
-    get elementWithPrediction() {
+    get runningElementWithPrediction() {
         return null;
     }
 
-    get predictedPath() {
+    get predictedPaths() {
         return null;
     }
 
@@ -47,12 +46,12 @@ class DataExecutionManager {
 
 class PredicatedLateDataExecutionManager extends DataExecutionManager {
 
-    private elementWithPrediction ={
+    private _runningElementWithPrediction = {
         bpmnId: this._vendorBakeThePizzaId,
         cssClasses: 'state-predicted-late',
     };
 
-    private predictedPath= {
+    private _predictedPaths = {
         ids: [
             // customer elements
             this._customerEvtBasedGwId,
@@ -71,27 +70,27 @@ class PredicatedLateDataExecutionManager extends DataExecutionManager {
     };
 
     get executedElements() {
-        return this._alreadyExecutedElementsPredictedLate;
+        return this._commonExecutedElements;
     }
 
-    get elementWithPrediction() {
-        return this.elementWithPrediction;
+    get runningElementWithPrediction() {
+        return this._runningElementWithPrediction;
     }
 
-    get predictedPath() {
-        return this.predictedPath;
+    get predictedPaths() {
+        return this._predictedPaths;
     }
 
 }
 
 class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
 
-    private elementWithPrediction =  {
+    private _runningElementWithPrediction = {
         bpmnId: '_6-514', // vendor 'Deliver the pizza'
         cssClasses: 'state-predicted-on-time',
     };
 
-    private predictedPath= {
+    private _predictedPaths = {
         ids: [
             // customer elements
             this._customerEvtBasedGwId,
@@ -108,22 +107,22 @@ class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
         cssClasses: 'path-predicted-on-time'
     };
 
-    private alreadyExecutedElements = [...this._alreadyExecutedElementsPredictedLate, ...[
+    private _executedElements = [...this._commonExecutedElements,
         // vendor
         this._vendorBakeThePizzaId,
         '_6-632', // sequence flow between 'Bake the pizza' and 'Deliver the pizza'
-    ]];
+    ];
 
     get executedElements() {
-        return this.alreadyExecutedElements;
+        return this._executedElements;
     }
 
-    get elementWithPrediction() {
-        return this.elementWithPrediction;
+    get runningElementWithPrediction() {
+        return this._runningElementWithPrediction;
     }
 
-    get predictedPath() {
-        return this.predictedPath;
+    get predictedPaths() {
+        return this._predictedPaths;
     }
 
 }

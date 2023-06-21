@@ -17,11 +17,11 @@ class PredicatedLateUseCase extends UseCase {
 
     _registerInteractions() {
         // on hover, highlight the predicted path
-        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.elementWithPrediction().bpmnId)[0]; // exist and only one
+        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.runningElementWithPrediction())[0]; // exist and only one
 
         const highlightPredictedPath = () => {
             this._toggleHighlightRunningElementsWithoutPrediction();
-            let predictedPath = this._dataExecutionManager.predictedPath();
+            let predictedPath = this._dataExecutionManager.predictedPaths();
             this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(predictedPath.ids, predictedPath.cssClasses);
         }
 
@@ -34,7 +34,7 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _highlightRunningElementsWithPrediction() {
-        const elementWithPrediction =  this._dataExecutionManager.elementWithPrediction();
+        const elementWithPrediction =  this._dataExecutionManager.runningElementWithPrediction();
         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(elementWithPrediction.bpmnId, elementWithPrediction.cssClasses);
     }
 }
