@@ -17,7 +17,7 @@ class PredicatedLateUseCase extends UseCase {
 
     _registerInteractions() {
         // on hover, highlight the predicted path
-        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.runningElementWithPrediction)[0]; // exist and only one
+        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.runningElementWithPrediction.bpmnId)[0]; // exist and only one
 
         const highlightPredictedPath = () => {
             this._toggleHighlightRunningElementsWithoutPrediction();
