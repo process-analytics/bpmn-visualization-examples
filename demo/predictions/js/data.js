@@ -6,7 +6,7 @@ class DataExecutionManager {
 
     _vendorWhereIsMyPizzaId = '_6-674';
 
-    private _runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
+    _runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
 
     _commonExecutedElements = [
         // customer
@@ -46,12 +46,12 @@ class DataExecutionManager {
 
 class PredicatedLateDataExecutionManager extends DataExecutionManager {
 
-    private _runningElementWithPrediction = {
+    _runningElementWithPrediction = {
         bpmnId: this._vendorBakeThePizzaId,
         cssClasses: 'state-predicted-late',
     };
 
-    private _predictedPaths = {
+    _predictedPaths = {
         ids: [
             // customer elements
             this._customerEvtBasedGwId,
@@ -85,12 +85,12 @@ class PredicatedLateDataExecutionManager extends DataExecutionManager {
 
 class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
 
-    private _runningElementWithPrediction = {
+    _runningElementWithPrediction = {
         bpmnId: '_6-514', // vendor 'Deliver the pizza'
         cssClasses: 'state-predicted-on-time',
     };
 
-    private _predictedPaths = {
+    _predictedPaths = {
         ids: [
             // customer elements
             this._customerEvtBasedGwId,
@@ -107,7 +107,7 @@ class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
         cssClasses: 'path-predicted-on-time'
     };
 
-    private _executedElements = [...this._commonExecutedElements,
+    _executedElements = [...this._commonExecutedElements,
         // vendor
         this._vendorBakeThePizzaId,
         '_6-632', // sequence flow between 'Bake the pizza' and 'Deliver the pizza'
