@@ -12,16 +12,16 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _reduceVisibilityOfAlreadyExecutedElements() {
-        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._dataExecutionManager.executedElements(), 'state-already-executed');
+        this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(this._dataExecutionManager.executedElements, 'state-already-executed');
     }
 
     _registerInteractions() {
         // on hover, highlight the predicted path
-        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.runningElementWithPrediction())[0]; // exist and only one
+        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(this._dataExecutionManager.runningElementWithPrediction)[0]; // exist and only one
 
         const highlightPredictedPath = () => {
             this._toggleHighlightRunningElementsWithoutPrediction();
-            let predictedPath = this._dataExecutionManager.predictedPaths();
+            let predictedPath = this._dataExecutionManager.predictedPaths;
             this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(predictedPath.ids, predictedPath.cssClasses);
         }
 
@@ -30,11 +30,11 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _toggleHighlightRunningElementsWithoutPrediction() {
-        this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(this._dataExecutionManager.runningElementsWithoutPrediction(), 'state-running');
+        this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(this._dataExecutionManager.runningElementsWithoutPrediction, 'state-running');
     }
 
     _highlightRunningElementsWithPrediction() {
-        const elementWithPrediction =  this._dataExecutionManager.runningElementWithPrediction();
+        const elementWithPrediction =  this._dataExecutionManager.runningElementWithPrediction;
         this._bpmnVisualization.bpmnElementsRegistry.addCssClasses(elementWithPrediction.bpmnId, elementWithPrediction.cssClasses);
     }
 }
