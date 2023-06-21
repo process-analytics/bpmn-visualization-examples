@@ -81,7 +81,7 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
   [repository](https://github.com/process-analytics/bpmn-visualization-js) of `bpmn-visualization` .
 - [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 - [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
-- [Demo for ICPM 2022](demo/icpm-2022/README.md) - show a Process Mining scenario (_Conformance_, _Compliance_ and _Happy path_)
+- [Demo for ICPM 2022](https://github.com/process-analytics/icpm-demo-2022#readme) - show a Process Mining scenario (_Conformance_, _Compliance_ and _Happy path_)
 - [Draw a path](demo/draw-path/README.md) - show how to draw a path
 - [Demo for Bonita Day 2023](https://github.com/process-analytics/bonita-day-demo-2023#readme) - monitor process and case progress, assign new actors to overdue tasks, view past activities, and track the live execution of a process.
 
