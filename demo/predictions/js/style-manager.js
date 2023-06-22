@@ -50,7 +50,7 @@ class PredicatedLateStyleManager extends StyleManager {
      * @param {string[] | string} ids
      */
     highlightRunningElementsWithPrediction(ids) {
-        this._bpmnElementsRegistry.bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-late');
+        this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-late');
     }
 }
 
@@ -72,6 +72,6 @@ class PredictedOnTimeStyleManager extends StyleManager {
      * @param {string[] | string} ids
      */
     highlightRunningElementsWithPrediction(ids) {
-        this._bpmnElementsRegistry.bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-on-time');
+        this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-on-time');
     }
 }
