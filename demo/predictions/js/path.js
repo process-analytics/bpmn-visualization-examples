@@ -1,15 +1,15 @@
 // From Bonita Day 2023 Demo
 class PathResolver {
-    private bpmnVisualization;
+    _bpmnVisualization;
 
     constructor(bpmnVisualization) {
-        this.bpmnVisualization = bpmnVisualization;
+        this._bpmnVisualization = bpmnVisualization;
     }
 
     getVisitedEdges(shapeIds) {
         const edgeIds = new Set<string>();
         for (const shapeId of shapeIds) {
-            const shapeElt = this.bpmnVisualization.bpmnElementsRegistry.getElementsByIds(shapeId)[0];
+            const shapeElt = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(shapeId)[0];
             if (!shapeElt) {
                 continue;
             }
@@ -18,7 +18,7 @@ class PathResolver {
             const incomingEdges = bpmnSemantic.incomingIds;
             const outgoingEdges = bpmnSemantic.outgoingIds;
             for (const edgeId of incomingEdges) {
-                const edgeElement = this.bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
+                const edgeElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
                 const sourceRef = edgeElement.bpmnSemantic.sourceRefId;
                 if (shapeIds.includes(sourceRef)) {
                     edgeIds.add(edgeId);
@@ -26,7 +26,7 @@ class PathResolver {
             }
 
             for (const edgeId of outgoingEdges) {
-                const edgeElement = this.bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
+                const edgeElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
                 const targetRef = edgeElement.bpmnSemantic.targetRefId;
                 if (shapeIds.includes(targetRef)) {
                     edgeIds.add(edgeId);
