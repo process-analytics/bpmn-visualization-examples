@@ -7,7 +7,7 @@ class PathResolver {
     }
 
     getVisitedEdges(shapeIds) {
-        const edgeIds = new Set<string>();
+        const edgeIds = new Set();
         for (const shapeId of shapeIds) {
             const shapeElt = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(shapeId)[0];
             if (!shapeElt) {
