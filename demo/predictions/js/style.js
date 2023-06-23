@@ -1,4 +1,4 @@
-class StyleManager {
+class Style {
 
     _bpmnElementsRegistry;
 
@@ -33,7 +33,7 @@ class StyleManager {
     }
 }
 
-class PredicatedLateStyleManager extends StyleManager {
+class PredicatedLateStyle extends Style {
 
     constructor(bpmnElementsRegistry) {
        super(bpmnElementsRegistry);
@@ -55,7 +55,7 @@ class PredicatedLateStyleManager extends StyleManager {
 }
 
 
-class PredictedOnTimeStyleManager extends StyleManager {
+class PredictedOnTimeStyle extends Style {
 
     constructor(bpmnElementsRegistry) {
         super(bpmnElementsRegistry);

@@ -1,6 +1,6 @@
 class PredicatedLateUseCase extends UseCase {
 
-    _styleManager;
+    _style;
     _executionData;
 
     constructor(type) {
@@ -11,14 +11,14 @@ class PredicatedLateUseCase extends UseCase {
     _postLoadDiagram() {
         this._initManager();
 
-        this._styleManager.reduceVisibilityOfExecutedElements(this._dataExecutionManager.executedElements);
-        this._styleManager.highlightRunningElementsWithPrediction(this._dataExecutionManager.runningElementWithPrediction);
-        this._styleManager.toggleHighlightRunningElementsWithoutPrediction(this._dataExecutionManager.runningElementsWithoutPrediction);
-        this._registerInteractions(this._dataExecutionManager.predictedPaths, this._dataExecutionManager.runningElementsWithoutPrediction, this._dataExecutionManager.runningElementWithPrediction);
+        this._style.reduceVisibilityOfExecutedElements(this._executionData.executedElements);
+        this._style.highlightRunningElementsWithPrediction(this._executionData.runningElementWithPrediction);
+        this._style.toggleHighlightRunningElementsWithoutPrediction(this._executionData.runningElementsWithoutPrediction);
+        this._registerInteractions(this._executionData.predictedPaths, this._executionData.runningElementsWithoutPrediction, this._executionData.runningElementWithPrediction);
     }
 
     _initManager() {
-        this._styleManager = new PredicatedLateStyleManager(this._bpmnVisualization.bpmnElementsRegistry);
+        this._style = new PredicatedLateStyle(this._bpmnVisualization.bpmnElementsRegistry);
     }
 
     _registerInteractions(predictedPath, runningElementsWithoutPrediction, runningElementWithPrediction) {
@@ -26,8 +26,8 @@ class PredicatedLateUseCase extends UseCase {
         const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(runningElementWithPrediction)[0]; // exist and only one
 
         const highlightPredictedPath = () => {
-            this._styleManager.toggleHighlightRunningElementsWithoutPrediction(runningElementsWithoutPrediction);
-            this._styleManager.toggleHighlightPredictedPath(predictedPath);
+            this._style.toggleHighlightRunningElementsWithoutPrediction(runningElementsWithoutPrediction);
+            this._style.toggleHighlightPredictedPath(predictedPath);
         }
 
         elementTogglingPath.htmlElement.addEventListener('mouseenter', highlightPredictedPath);
@@ -43,6 +43,6 @@ class PredictedOnTimeUseCase extends PredicatedLateUseCase {
     }
     
     _initManager() {
-        this._styleManager = new PredictedOnTimeStyleManager(this._bpmnVisualization.bpmnElementsRegistry);
+        this._style = new PredictedOnTimeStyle(this._bpmnVisualization.bpmnElementsRegistry);
     }
 }
