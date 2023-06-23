@@ -1,4 +1,4 @@
-class DataExecutionManager {
+class ExecutionData {
 
     _customerEvtBasedGwId = '_6-180';
 
@@ -6,7 +6,7 @@ class DataExecutionManager {
 
     _vendorWhereIsMyPizzaId = '_6-674';
 
-    _runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
+    #runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
 
     _commonExecutedElements = [
         // customer
@@ -40,11 +40,11 @@ class DataExecutionManager {
     }
 
     get runningElementsWithoutPrediction() {
-        return this._runningElementsWithoutPrediction;
+        return this.#runningElementsWithoutPrediction;
     }
 }
 
-class PredicatedLateDataExecutionManager extends DataExecutionManager {
+class PredicatedLateExecutionData extends ExecutionData {
 
     _runningElementWithPrediction = {
         bpmnId: this._vendorBakeThePizzaId,
@@ -83,7 +83,7 @@ class PredicatedLateDataExecutionManager extends DataExecutionManager {
 
 }
 
-class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
+class PredictedOnTimeExecutionData extends ExecutionData {
 
     _runningElementWithPrediction = {
         bpmnId: '_6-514', // vendor 'Deliver the pizza'
