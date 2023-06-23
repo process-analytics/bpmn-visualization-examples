@@ -21,7 +21,7 @@ class PredicatedLateUseCase extends UseCase {
 
         const highlightPredictedPath = () => {
             this._toggleHighlightRunningElementsWithoutPrediction();
-            let predictedPath = this._dataExecutionManager.predictedPaths;
+            const predictedPath = this._dataExecutionManager.predictedPaths;
             this._bpmnVisualization.bpmnElementsRegistry.toggleCssClasses(predictedPath.ids, predictedPath.cssClasses);
         }
 
