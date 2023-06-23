@@ -49,7 +49,7 @@ class ExecutionData {
     }
 }
 
-class PredicatedLateDataExecutionManager extends DataExecutionManager {
+class PredicatedLateExecutionData extends ExecutionData {
 
     constructor(pathResolver) {
         super(pathResolver)
@@ -68,7 +68,7 @@ class PredicatedLateDataExecutionManager extends DataExecutionManager {
     }
 }
 
-class PredictedOnTimeDataExecutionManager extends DataExecutionManager {
+class PredictedOnTimeExecutionData extends ExecutionData {
 
     constructor(pathResolver) {
         super(pathResolver)
