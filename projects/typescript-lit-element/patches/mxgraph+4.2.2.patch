@@ -1,8 +1,8 @@
 diff --git a/node_modules/mxgraph/javascript/dist/build.js b/node_modules/mxgraph/javascript/dist/build.js
-index 5dabbbf..86fb521 100644
+index 5dabbbf..89b644b 100644
 --- a/node_modules/mxgraph/javascript/dist/build.js
 +++ b/node_modules/mxgraph/javascript/dist/build.js
-@@ -2441,9 +2441,17 @@ var mxUtils =
+@@ -2441,9 +2441,13 @@ var mxUtils =
  		{
  			return function(element)
  			{
@@ -10,11 +10,7 @@ index 5dabbbf..86fb521 100644
 -					window.getComputedStyle(element, '') :
 -					null;
 +				// START Fix for https://github.com/process-analytics/bpmn-visualization-js/issues/2738
-+				if (!element || element.toString() === '[object ShadowRoot]') {
-+					return null;
-+				} else {
-+					return window.getComputedStyle(element, '');
-+				}
++				  return !element || element.toString() === '[object ShadowRoot]' ? null : window.getComputedStyle(element, '');
 +				// original code
 +				// return (element != null) ?
 +				//	window.getComputedStyle(element, '') :
