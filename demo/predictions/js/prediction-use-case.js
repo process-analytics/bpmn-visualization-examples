@@ -5,11 +5,10 @@ class PredicatedLateUseCase extends UseCase {
 
     constructor(type) {
         super(type, () => pizzaDiagram(), true, {fit: {type: 'Center', margin: 20}});
-        this._executionData = new PredicatedLateExecutionData();
     }
 
     _postLoadDiagram() {
-        this._initManager();
+        this._initManagers();
 
         this._style.reduceVisibilityOfExecutedElements(this._executionData.executedElements);
         this._style.highlightRunningElementsWithPrediction(this._executionData.runningElementWithPrediction);
@@ -17,8 +16,10 @@ class PredicatedLateUseCase extends UseCase {
         this._registerInteractions(this._executionData.predictedPaths, this._executionData.runningElementsWithoutPrediction, this._executionData.runningElementWithPrediction);
     }
 
-    _initManager() {
+    _initManagers() {
         this._style = new PredicatedLateStyle(this._bpmnVisualization.bpmnElementsRegistry);
+        const pathResolver = new PathResolver(this._bpmnVisualization);
+        this._executionData = new PredicatedLateExecutionData(pathResolver);
     }
 
     _registerInteractions(predictedPath, runningElementsWithoutPrediction, runningElementWithPrediction) {
@@ -37,12 +38,9 @@ class PredicatedLateUseCase extends UseCase {
 
 
 class PredictedOnTimeUseCase extends PredicatedLateUseCase {
-    constructor(type) {
-        super(type);
-        this._executionData = new PredictedOnTimeExecutionData();
-    }
-    
-    _initManager() {
+    _initManagers() {
         this._style = new PredictedOnTimeStyle(this._bpmnVisualization.bpmnElementsRegistry);
+        const pathResolver = new PathResolver(this._bpmnVisualization);
+        this._executionData = new PredictedOnTimeExecutionData(pathResolver);
     }
 }

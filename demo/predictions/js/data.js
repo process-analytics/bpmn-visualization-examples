@@ -6,101 +6,31 @@ class ExecutionData {
 
     _vendorWhereIsMyPizzaId = '_6-674';
 
+    _commonExecutedElements;
+
+    _executedElements;
+
+    _runningElementWithPrediction;
+
+    _predictedPaths;
+
     #runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
 
-    _commonExecutedElements = [
-        // customer
-        '_6-61', // start event
-        '_6-125', // sequence flow between 'start event' and 'select pizza'
-        '_6-74', // select a pizza
-        '_6-178', // sequence flow between 'select a pizza' and 'order a pizza'
-        '_6-127', // order a pizza
-        '_6-420', // sequence flow between 'order a pizza' and 'event-based gateway' (running element)
+    _pathResolver;
 
-        '_6-638', // message flow
+    constructor(pathResolver) {
+        this._pathResolver = pathResolver;
+        this._commonExecutedElements = pathResolver.getVisitedEdges([
+            // customer
+            '_6-61', // start event
+            '_6-74', // select a pizza
+            '_6-127', // order a pizza
 
-        // vendor
-        '_6-450', // order received
-        '_6-630', // sequence flow between 'order received' and 'parallel gateway'
-        '_6-652', // parallel gateway
-        '_6-693', // sequence flow between 'parallel gateway' and 'Bake the pizza'
-        '_6-691', // sequence flow between 'parallel gateway' and 'where is my pizza'
-    ];
-
-    get executedElements() {
-        return [];
+            // vendor
+            '_6-450', // order received
+            '_6-652', // parallel gateway
+        ]);
     }
-
-    get runningElementWithPrediction() {
-        return null;
-    }
-
-    get predictedPaths() {
-        return null;
-    }
-
-    get runningElementsWithoutPrediction() {
-        return this.#runningElementsWithoutPrediction;
-    }
-}
-
-class PredicatedLateExecutionData extends ExecutionData {
-
-    _runningElementWithPrediction = this._vendorBakeThePizzaId;
-
-    _predictedPaths = [
-        // customer elements
-        this._customerEvtBasedGwId,
-        '_6-424', // sequence flow between 'event-based gateway' (running element) and timer event
-        '_6-219', // timer event
-        '_6-426', // sequence flow between 'timer event' and 'Ask for the pizza'
-        '_6-236', // 'Ask for the pizza'
-        // message flow
-        '_6-642',
-        // vendor elements
-        this._vendorWhereIsMyPizzaId,
-        '_6-748', // sequence flow between 'where is my pizza' and 'Calm customer'
-        '_6-695', // 'Calm customer'
-    ];
-
-    get executedElements() {
-        return this._commonExecutedElements;
-    }
-
-    get runningElementWithPrediction() {
-        return this._runningElementWithPrediction;
-    }
-
-    get predictedPaths() {
-        return this._predictedPaths;
-    }
-
-}
-
-class PredictedOnTimeExecutionData extends ExecutionData {
-
-    // vendor 'Deliver the pizza'
-    _runningElementWithPrediction = '_6-514';
-
-    _predictedPaths = [
-        // customer elements
-        this._customerEvtBasedGwId,
-        '_6-422', // sequence flow between 'event-based gateway' (running element) and msg event
-        '_6-202', // msg event 'Pizza received'
-        '_6-428', // sequence flow between 'msg event' and 'Pay the pizza'
-        '_6-304', // 'Pay the pizza'
-        // message flow
-        '_6-640', // from vendor 'Deliver the pizza' to customer 'msg event'
-        // vendor elements
-        '_6-634', // sequence flow between 'Deliver the pizza' and 'Receive payment'
-        '_6-565', // 'Receive payment'
-    ];
-
-    _executedElements = [...this._commonExecutedElements,
-        // vendor
-        this._vendorBakeThePizzaId,
-        '_6-632', // sequence flow between 'Bake the pizza' and 'Deliver the pizza'
-    ];
 
     get executedElements() {
         return this._executedElements;
@@ -112,6 +42,47 @@ class PredictedOnTimeExecutionData extends ExecutionData {
 
     get predictedPaths() {
         return this._predictedPaths;
+    }
+
+    get runningElementsWithoutPrediction() {
+        return this.#runningElementsWithoutPrediction;
+    }
+}
+
+class PredicatedLateExecutionData extends ExecutionData {
+
+    constructor(pathResolver) {
+        super(pathResolver)
+
+        this._executedElements = this._commonExecutedElements;
+        this._runningElementWithPrediction = this._vendorBakeThePizzaId;
+        this._predictedPaths = pathResolver.getVisitedEdges([
+            // customer elements
+            this._customerEvtBasedGwId,
+            '_6-219', // timer event
+            '_6-236', // 'Ask for the pizza'
+            // vendor elements
+            this._vendorWhereIsMyPizzaId,
+            '_6-695', // 'Calm customer'
+        ]);
+    }
+}
+
+class PredictedOnTimeExecutionData extends ExecutionData {
+
+    constructor(pathResolver) {
+        super(pathResolver)
+
+        this._executedElements = pathResolver.getVisitedEdges([...this._commonExecutedElements, this._vendorBakeThePizzaId ]);
+        this._runningElementWithPrediction = '_6-514'; // vendor 'Deliver the pizza'
+        this._predictedPaths = pathResolver.getVisitedEdges([
+            // customer elements
+            this._customerEvtBasedGwId,
+            '_6-202', // msg event 'Pizza received'
+            '_6-304', // 'Pay the pizza'
+            // vendor elements
+            '_6-565', // 'Receive payment'
+        ]);
     }
 
 }
