@@ -20,15 +20,17 @@ We are using `Directions` and `StyleIdentifiers` here that store the constants s
 But you can also use the string value directly, for instance `style['fillColor']=...`.
 
 Content:
-- override default font color: update the `StyleDefault` default values
-```javascript
-StyleDefault.DEFAULT_FONT_COLOR = 'Cyan';
-```
-
-- override default fill and stroke colors: update the `StyleDefault` default values
-```javascript
-StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
-StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
+- override default font color or default fill and stroke colors: 
+```js
+configureStyle() {
+    const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+  // edge
+  styleSheet.getDefaultEdgeStyle()[StyleIdentifiers.STYLE_STROKECOLOR] = 'Gray';
+  // vertex
+  const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+  defaultVertexStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+  defaultVertexStyle[StyleIdentifiers.STYLE_STROKECOLOR] = 'Chartreuse';
+}
 ```
 
 - different fill and stroke colors for `event`, `gateway` and `task`: extend the lib class entry point

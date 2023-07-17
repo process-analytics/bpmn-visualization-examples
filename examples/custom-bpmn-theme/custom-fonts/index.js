@@ -10,8 +10,6 @@ bpmnVisualization.load(bpmn);
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // custom default font
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = '12';
-bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
 
 class BpmnVisualizationCustomDefaultFont extends bpmnvisu.BpmnVisualization {
 
@@ -22,19 +20,21 @@ class BpmnVisualizationCustomDefaultFont extends bpmnvisu.BpmnVisualization {
 
     configureStyle() {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
-
-        const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
-        defaultVertexStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
-
+        // edge
         const defaultEdgeStyle = styleSheet.getDefaultEdgeStyle();
+        defaultEdgeStyle[StyleIdentifiers.STYLE_FONTFAMILY] = 'Courier New,serif';
+        defaultEdgeStyle[StyleIdentifiers.STYLE_FONTSIZE] = 12;
         defaultEdgeStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+        // vertex
+        const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+        defaultVertexStyle[StyleIdentifiers.STYLE_FONTFAMILY] = 'Courier New,serif';
+        defaultVertexStyle[StyleIdentifiers.STYLE_FONTSIZE] = 12;
+        defaultVertexStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
     }
-
 }
 
 const bpmnVisualizationCustomDefaultFont = new BpmnVisualizationCustomDefaultFont('bpmn-container-custom-default-font');
 bpmnVisualizationCustomDefaultFont.load(bpmn);
-resetStyleDefault();
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
