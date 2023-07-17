@@ -1,3 +1,4 @@
+// From the Path Demo
 class Path {
     #sourceId ;
     #edgeId;
@@ -22,7 +23,6 @@ class Path {
     }
 }
 
-// From the Path Demo
 class PathResolver {
 
     #paths;
@@ -30,13 +30,6 @@ class PathResolver {
     constructor(bpmnVisualization) {
         this.#paths = this.#buildPaths(bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind)));
     }
-
-/*    doActionOnPath(filter, actionOnFilteredPath)  {
-        const filteredPaths = this.#paths.filter(path => filter(path));
-        if (filteredPaths.length > 0) {
-            actionOnFilteredPath(filteredPaths[0]);
-        }
-    }*/
 
     flatPaths(shapeIds) {
         return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) || shapeIds.includes(path.targetId)).map(path => path.edgeId)];
