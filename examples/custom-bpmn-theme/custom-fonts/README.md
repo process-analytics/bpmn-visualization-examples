@@ -22,10 +22,20 @@ But you can also use the string value directly, for instance `style['fontStyle']
 
 Content:
 - override default font: 
-  - update the `StyleDefault` default values
-```javascript
-  StyleDefault.DEFAULT_FONT_SIZE = '12';
-  StyleDefault.DEFAULT_FONT_FAMILY = 'Courier New,serif';
+```js
+configureStyle() {
+  const styleSheet = this.graph.getStylesheet(); // mxStylesheet
+  // edge
+  const defaultEdgeStyle = styleSheet.getDefaultEdgeStyle();
+  defaultEdgeStyle[StyleIdentifiers.STYLE_FONTFAMILY] = 'Courier New,serif';
+  defaultEdgeStyle[StyleIdentifiers.STYLE_FONTSIZE] = 12;
+  defaultEdgeStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+  // vertex
+  const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+  defaultVertexStyle[StyleIdentifiers.STYLE_FONTFAMILY] = 'Courier New,serif';
+  defaultVertexStyle[StyleIdentifiers.STYLE_FONTSIZE] = 12;
+  defaultVertexStyle[StyleIdentifiers.STYLE_FONTSTYLE] = FontStyle.FONT_ITALIC;
+}
 ```
 
 - different fonts for `event`, `gateway` and `task`: extend the lib class entry point

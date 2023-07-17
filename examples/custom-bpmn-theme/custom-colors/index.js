@@ -8,27 +8,6 @@ bpmnVisualization.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default font color
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-bpmnvisu.StyleDefault.DEFAULT_FONT_COLOR = 'DeepPink';
-const bpmnVisualizationCustomDefaultFontColor = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-font-color' });
-bpmnVisualizationCustomDefaultFontColor.load(bpmn);
-resetStyleDefault();
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-// custom default fill and stroke colors
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
-
-bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = 'LemonChiffon';
-bpmnvisu.StyleDefault.DEFAULT_STROKE_COLOR = 'Orange';
-
-const bpmnVisualizationCustomDefaultColors = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-default-colors' });
-bpmnVisualizationCustomDefaultColors.load(bpmn);
-resetStyleDefault();
-
-
-////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 // shared config
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -42,6 +21,45 @@ class BpmnVisualizationCustomizedColors extends bpmnvisu.BpmnVisualization {
         // do nothing by default
     }
 }
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default font color
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class BpmnVisualizationCustomDefaultFontColor extends BpmnVisualizationCustomizedColors {
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+        const defaultFontColor = 'DeepPink';
+        // edge
+        styleSheet.getDefaultEdgeStyle()[StyleIdentifiers.STYLE_FONTCOLOR] = defaultFontColor;
+        // vertex
+        styleSheet.getDefaultVertexStyle()[StyleIdentifiers.STYLE_FONTCOLOR] = defaultFontColor;
+    }
+}
+
+const bpmnVisualizationCustomDefaultFontColor = new BpmnVisualizationCustomDefaultFontColor('bpmn-container-custom-font-color');
+bpmnVisualizationCustomDefaultFontColor.load(bpmn);
+
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// custom default fill and stroke colors
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+class BpmnVisualizationCustomDefaultFillAndStrokeColors extends BpmnVisualizationCustomizedColors {
+    configureStyle() {
+        const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+        // edge
+        styleSheet.getDefaultEdgeStyle()[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+        // vertex
+        const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+        defaultVertexStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+        defaultVertexStyle[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+    }
+}
+
+const bpmnVisualizationCustomDefaultColors = new BpmnVisualizationCustomDefaultFillAndStrokeColors('bpmn-container-custom-default-colors');
+bpmnVisualizationCustomDefaultColors.load(bpmn);
 
 
 ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
