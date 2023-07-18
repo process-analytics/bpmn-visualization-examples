@@ -32,7 +32,7 @@ class PathResolver {
     }
 
     flatPaths(shapeIds) {
-        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) || shapeIds.includes(path.targetId)).map(path => path.edgeId)];
+        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId)).map(path => path.edgeId)];
     }
 
     #buildPaths(edges) {
