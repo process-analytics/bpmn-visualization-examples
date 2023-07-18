@@ -31,8 +31,18 @@ class PathResolver {
         this.#paths = this.#buildPaths(bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind)));
     }
 
-    flatPaths(shapeIds) {
-        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId)).map(path => path.edgeId)];
+    /**
+     * @param {string[]} shapeIds
+     */
+    flatPathsBetweenShapes(shapeIds) {
+        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) && shapeIds.includes(path.targetId)).map(path => path.edgeId)];
+    }
+
+    /**
+     * @param {string[]} shapeIds
+     */
+    flatPathsWithNextEdges(shapeIds) {
+        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) ).map(path => path.edgeId)];
     }
 
     #buildPaths(edges) {
