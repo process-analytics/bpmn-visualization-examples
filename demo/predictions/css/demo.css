@@ -9,6 +9,10 @@
     --stroke-path-predicted: 0.18rem;
 }
 
+/* ================================================================================================================== */
+/* ALREADY EXECUTED */
+/* ================================================================================================================== */
+
     /* parallel gateway icon */
 .bpmn-parallel-gateway.state-already-executed > path:nth-child(2),
     /* message flow arrow */
@@ -43,6 +47,7 @@
     filter: blur(1px);
 }
 
+
 /* ================================================================================================================== */
 /* INFO */
 /* ================================================================================================================== */
@@ -53,6 +58,19 @@
 /* envelope of the message event */
 .bpmn-event-def-message.state-running > rect {
     fill: var(--color-state-running);
+}
+
+/* gateway stroke and icon */
+.bpmn-type-gateway.state-running > *,
+/* event stroke and icon */
+.bpmn-type-event.state-running > * {
+    stroke: black;
+}
+
+/* labels (the selector applies to all div, not the only one that contains text, but this is ok.
+ Use important to override the color set inline in the style attribute of the label div */
+.bpmn-label.state-running > g div {
+    color: black !important;
 }
 
 /*apply shadow on hover*/
@@ -170,3 +188,4 @@
     color: var(--color-path-predicted-on-time) !important;
     font-weight: bold;
 }
+
