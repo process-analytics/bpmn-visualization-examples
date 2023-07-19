@@ -16,6 +16,14 @@ class Style {
     /**
      * @param {string[]} ids
      */
+    reduceVisibilityOfNonPredictedElements(ids) {
+        const styleColor = { color:'gray' };
+        this._bpmnElementsRegistry.updateStyle(ids, { font: styleColor, stroke: styleColor })
+    }
+
+    /**
+     * @param {string[]} ids
+     */
     toggleHighlightRunningElementsWithoutPrediction(ids) {
         this._bpmnElementsRegistry.toggleCssClasses(ids, 'state-running');
     }
