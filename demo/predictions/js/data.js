@@ -74,7 +74,7 @@ class PredicatedLateExecutionData extends ExecutionData {
             '_6-695', // 'Calm customer'
         ]);
 
-        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction];
+        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction, ...this._predictedPaths];
         this._nonPredictedElements = pathResolver.flatAllPaths().filter(id=> !allCustomizedElements.includes(id));
     }
 }
@@ -97,7 +97,7 @@ class PredictedOnTimeExecutionData extends ExecutionData {
             '_6-565', // 'Receive payment'
         ]);
 
-        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction];
+        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction, ...this._predictedPaths];
         this._nonPredictedElements = pathResolver.flatAllPaths().filter(id=> !allCustomizedElements.includes(id));
     }
 
