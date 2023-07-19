@@ -11,7 +11,6 @@ class PredicatedLateUseCase extends UseCase {
         this._initManagers();
 
         this._style.reduceVisibilityOfExecutedElements(this._executionData.executedElements);
-        this._style.reduceVisibilityOfNonPredictedElements(this._executionData.nonPredictedElements);
         this._style.highlightRunningElementsWithPrediction(this._executionData.runningElementWithPrediction);
         this._style.toggleHighlightRunningElementsWithoutPrediction(this._executionData.runningElementsWithoutPrediction);
         this._registerInteractions(this._executionData.predictedPaths, this._executionData.runningElementsWithoutPrediction, this._executionData.runningElementWithPrediction);
@@ -30,6 +29,7 @@ class PredicatedLateUseCase extends UseCase {
         const highlightPredictedPath = () => {
             this._style.toggleHighlightRunningElementsWithoutPrediction(runningElementsWithoutPrediction);
             this._style.toggleHighlightPredictedPath(predictedPath);
+            this._style.toggleReduceVisibilityOfNonPredictedElements(this._executionData.nonPredictedElements);
         }
 
         elementTogglingPath.htmlElement.addEventListener('mouseenter', highlightPredictedPath);

@@ -16,9 +16,8 @@ class Style {
     /**
      * @param {string[]} ids
      */
-    reduceVisibilityOfNonPredictedElements(ids) {
-        const styleColor = { color: '#636363' };
-        this._bpmnElementsRegistry.updateStyle(ids, { font: styleColor, stroke: styleColor })
+    toggleReduceVisibilityOfNonPredictedElements(ids) {
+        this._bpmnElementsRegistry.toggleCssClasses(ids, 'state-already-executed');
     }
 
     /**

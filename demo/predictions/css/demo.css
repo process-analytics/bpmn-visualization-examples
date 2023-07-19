@@ -33,10 +33,15 @@
     /* message event icon */
 .bpmn-event-def-message.state-already-executed > rect,
 .bpmn-event-def-message.state-already-executed > path,
-    /* event stroke */
-.bpmn-type-event.state-already-executed > ellipse {
+    /* event */
+.bpmn-type-event.state-already-executed > * {
     filter: blur(2px);
     stroke: var(--color-path-executed);
+}
+
+    /* end event center circle */
+.bpmn-type-event.state-already-executed > ellipse:nth-child(2) {
+    fill: var(--color-path-executed);
 }
 
     /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
@@ -58,19 +63,6 @@
 /* envelope of the message event */
 .bpmn-event-def-message.state-running > rect {
     fill: var(--color-state-running);
-}
-
-/* gateway stroke and icon */
-.bpmn-type-gateway.state-running > *,
-/* event stroke and icon */
-.bpmn-type-event.state-running > * {
-    stroke: black;
-}
-
-/* labels (the selector applies to all div, not the only one that contains text, but this is ok.
- Use important to override the color set inline in the style attribute of the label div */
-.bpmn-label.state-running > g div {
-    color: black !important;
 }
 
 /*apply shadow on hover*/
