@@ -1,43 +1,54 @@
-// From Bonita Day 2023 Demo
-class PathResolver {
-    _bpmnVisualization;
+// From the Path Demo
+class Path {
+    #sourceId ;
+    #edgeId;
+    #targetId;
 
-    constructor(bpmnVisualization) {
-        this._bpmnVisualization = bpmnVisualization;
+    constructor(sourceId, edgeId, targetId) {
+        this.#sourceId = sourceId;
+        this.#edgeId = edgeId;
+        this.#targetId = targetId;
     }
 
-    getVisitedEdges(shapeIds) {
-        const edgeIds = new Set();
-        for (const shapeId of shapeIds) {
-            const shapeElt = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(shapeId)[0];
-            if (!shapeElt) {
-                continue;
-            }
+    get sourceId() {
+        return this.#sourceId;
+    }
 
-            const bpmnSemantic = shapeElt.bpmnSemantic;
-            const incomingEdges = bpmnSemantic.incomingIds;
-            if (incomingEdges) {
-                for (const edgeId of incomingEdges) {
-                    const edgeElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
-                    const sourceRef = edgeElement.bpmnSemantic.sourceRefId;
-                    if (shapeIds.includes(sourceRef)) {
-                        edgeIds.add(edgeId);
-                    }
-                }
-            }
+    get edgeId() {
+        return this.#edgeId;
+    }
 
-            const outgoingEdges = bpmnSemantic.outgoingIds;
-            if (outgoingEdges) {
-                for (const edgeId of outgoingEdges) {
-                    const edgeElement = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(edgeId)[0];
-                    const targetRef = edgeElement.bpmnSemantic.targetRefId;
-                    if (shapeIds.includes(targetRef)) {
-                        edgeIds.add(edgeId);
-                    }
-                }
-            }
-        }
+    get targetId() {
+        return this.#targetId;
+    }
+}
 
-        return Array.from(edgeIds);
+class PathResolver {
+
+    #paths;
+
+    constructor(bpmnVisualization) {
+        this.#paths = this.#buildPaths(bpmnVisualization.bpmnElementsRegistry.getElementsByKinds(Object.values(bpmnvisu.FlowKind)));
+    }
+
+    /**
+     * @param {string[]} shapeIds
+     */
+    flatPathsBetweenShapes(shapeIds) {
+        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) && shapeIds.includes(path.targetId)).map(path => path.edgeId)];
+    }
+
+    /**
+     * @param {string[]} shapeIds
+     */
+    flatPathsWithNextEdges(shapeIds) {
+        return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) ).map(path => path.edgeId)];
+    }
+
+    #buildPaths(edges) {
+        return edges.map(edge => {
+            const bpmnSemantic = edge.bpmnSemantic;
+            return new Path(bpmnSemantic.sourceRefId, bpmnSemantic.id , bpmnSemantic.targetRefId);
+        });
     }
 }

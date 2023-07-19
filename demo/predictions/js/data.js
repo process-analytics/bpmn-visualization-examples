@@ -20,7 +20,8 @@ class ExecutionData {
 
     constructor(pathResolver) {
         this._pathResolver = pathResolver;
-        this._commonExecutedElements = pathResolver.getVisitedEdges([
+
+        this._commonExecutedElements = pathResolver.flatPathsWithNextEdges([
             // customer
             '_6-61', // start event
             '_6-74', // select a pizza
@@ -56,7 +57,8 @@ class PredicatedLateExecutionData extends ExecutionData {
 
         this._executedElements = this._commonExecutedElements;
         this._runningElementWithPrediction = this._vendorBakeThePizzaId;
-        this._predictedPaths = pathResolver.getVisitedEdges([
+
+        this._predictedPaths = pathResolver.flatPathsBetweenShapes([
             // customer elements
             this._customerEvtBasedGwId,
             '_6-219', // timer event
@@ -73,9 +75,11 @@ class PredictedOnTimeExecutionData extends ExecutionData {
     constructor(pathResolver) {
         super(pathResolver)
 
-        this._executedElements = pathResolver.getVisitedEdges([...this._commonExecutedElements, this._vendorBakeThePizzaId ]);
+        this._executedElements = [...this._commonExecutedElements, ...pathResolver.flatPathsWithNextEdges([this._vendorBakeThePizzaId])];
+
         this._runningElementWithPrediction = '_6-514'; // vendor 'Deliver the pizza'
-        this._predictedPaths = pathResolver.getVisitedEdges([
+
+        this._predictedPaths =  pathResolver.flatPathsBetweenShapes([
             // customer elements
             this._customerEvtBasedGwId,
             '_6-202', // msg event 'Pizza received'
