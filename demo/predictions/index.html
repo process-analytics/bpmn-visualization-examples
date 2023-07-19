@@ -21,6 +21,7 @@ limitations under the License.
     <link rel="stylesheet" href="../../examples/static/css/icons.min.css" type="text/css">
     <link rel="stylesheet" href="../../examples/static/css/main.css" type="text/css">
     <link rel="stylesheet" href="../static/css/style.css" type="text/css">
+    <link rel="stylesheet" href="./css/legend.css" type="text/css">
     <link rel="stylesheet" href="./css/demo.css" type="text/css">
     <script defer src="../../examples/static/js/link-to-sources.js"></script>
     <!-- load bpmn-visualization -->
@@ -89,7 +90,17 @@ limitations under the License.
                     <h4 id="late-title">Predicted Late</h4>
                     <h4 id="onTime-title" class="d-hide">Predicted on Time</h4>
                 </div>
-                <div class="columns">
+                <div class="columns" style="padding: 0 1rem">
+                    <div id="legend" class="column col-2 col-mx-auto state-predicted-late" style="margin: auto; padding-right: 0.7rem">
+                        <fieldset>
+                            <legend>Legend</legend>
+                            <ul class="legend">
+                                <li>Running items with prediction</li>
+                                <li>Running items without prediction</li>
+                                <li>Executed items</li>
+                            </ul>
+                        </fieldset>
+                    </div>
                     <div class="column col-10 col-mx-auto">
                         <div id="late-bpmn-container" class="col-12 bpmn-container"></div>
                         <div id="onTime-bpmn-container" class="col-12 bpmn-container d-hide"></div>

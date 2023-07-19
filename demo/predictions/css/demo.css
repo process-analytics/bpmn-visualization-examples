@@ -25,7 +25,7 @@
     /* message flow start marker */
 .bpmn-message-flow.state-already-executed > ellipse,
     /* message flow icon */
-.bpmn-message-flow-icon.state-already-executed > * ,
+.bpmn-message-flow-icon.state-already-executed > *,
     /* sequence/message flow line and arrow (end marker) */
 .bpmn-type-flow.state-already-executed > path,
     /* task */

@@ -7,6 +7,17 @@ class PredicatedLateUseCase extends UseCase {
         super(type, () => pizzaDiagram(), true, {fit: {type: 'Center', margin: 20}});
     }
 
+    _displayPanel() {
+        super._displayPanel();
+        this._switchLegend();
+    }
+
+    _switchLegend() {
+        const element = document.getElementById(`legend`);
+        element.classList.remove('state-predicted-on-time');
+        element.classList.add('state-predicted-late');
+    }
+
     _postLoadDiagram() {
         this._initManagers();
 
@@ -39,6 +50,12 @@ class PredicatedLateUseCase extends UseCase {
 
 
 class PredictedOnTimeUseCase extends PredicatedLateUseCase {
+    _switchLegend() {
+        const element = document.getElementById(`legend`);
+        element.classList.remove('state-predicted-late');
+        element.classList.add('state-predicted-on-time');
+    }
+
     _initManagers() {
         this._style = new PredictedOnTimeStyle(this._bpmnVisualization.bpmnElementsRegistry);
         const pathResolver = new PathResolver(this._bpmnVisualization);
