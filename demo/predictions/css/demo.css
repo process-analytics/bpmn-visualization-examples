@@ -35,7 +35,7 @@
 .bpmn-event-def-message.state-already-executed > path,
     /* event */
 .bpmn-type-event.state-already-executed > * {
-    filter: blur(2px);
+    filter: blur(0.125rem);
     stroke: var(--color-path-executed);
 }
 
@@ -49,7 +49,7 @@
 .bpmn-label.state-already-executed > g div {
     color: var(--color-path-executed) !important;
     /*or use opacity if we want to be able to read labels*/
-    filter: blur(1px);
+    filter: blur(0.0625rem);
 }
 
 
@@ -68,7 +68,7 @@
 /*apply shadow on hover*/
 .bpmn-type-event.state-running:hover,
 .bpmn-type-gateway.state-running:hover {
-    filter: drop-shadow(0 0 0.5em rgba(0, 0, 0));
+    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0));
 }
 
 
@@ -92,7 +92,7 @@
     }
     100% {
         fill-opacity: 90%;
-        filter: drop-shadow(0 0 0.75em rgba(0, 0, 0));
+        filter: drop-shadow(0 0 0.75rem rgba(0, 0, 0));
     }
 }
 
@@ -142,7 +142,7 @@
 
 /*apply shadow on hover*/
 .bpmn-type-task.state-predicted-on-time:hover {
-    filter: drop-shadow(0 0 0.5em rgba(0, 0, 0));
+    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0));
 }
 
 /* message flow start marker */
