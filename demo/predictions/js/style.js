@@ -38,6 +38,9 @@ class Style {
      */
     highlightRunningElementsWithPrediction(ids) {
     }
+
+    switchLegend() {
+    }
 }
 
 class PredicatedLateStyle extends Style {
@@ -58,6 +61,12 @@ class PredicatedLateStyle extends Style {
      */
     highlightRunningElementsWithPrediction(ids) {
         this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-late');
+    }
+
+    switchLegend() {
+        const element = document.getElementById(`legend`);
+        element.classList.remove('state-predicted-on-time');
+        element.classList.add('state-predicted-late');
     }
 }
 
@@ -80,5 +89,11 @@ class PredictedOnTimeStyle extends Style {
      */
     highlightRunningElementsWithPrediction(ids) {
         this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-on-time');
+    }
+
+    switchLegend() {
+        const element = document.getElementById(`legend`);
+        element.classList.remove('state-predicted-late');
+        element.classList.add('state-predicted-on-time');
     }
 }
