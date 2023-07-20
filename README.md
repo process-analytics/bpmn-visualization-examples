@@ -84,6 +84,7 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
 - [Demo for ICPM 2022](https://github.com/process-analytics/icpm-demo-2022#readme) - show a Process Mining scenario (_Conformance_, _Compliance_ and _Happy path_)
 - [Draw a path](demo/draw-path/README.md) - show how to draw a path
 - [Demo for Bonita Day 2023](https://github.com/process-analytics/bonita-day-demo-2023#readme) - monitor process and case progress, assign new actors to overdue tasks, view past activities, and track the live execution of a process.
+- [Prediction demo](demo/prediction/README.md) - show how to use `bpmn-visualization` to visualize prediction data.
 
 
 ## Tutorials
