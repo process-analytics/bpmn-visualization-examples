@@ -29,6 +29,7 @@ class PredicatedLateUseCase extends UseCase {
         const highlightPredictedPath = () => {
             this._style.toggleHighlightRunningElementsWithoutPrediction(runningElementsWithoutPrediction);
             this._style.toggleHighlightPredictedPath(predictedPath);
+            this._style.toggleReduceVisibilityOfNonPredictedElements(this._executionData.nonPredictedElements);
         }
 
         elementTogglingPath.htmlElement.addEventListener('mouseenter', highlightPredictedPath);

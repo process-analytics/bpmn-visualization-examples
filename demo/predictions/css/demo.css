@@ -9,6 +9,10 @@
     --stroke-path-predicted: 0.18rem;
 }
 
+/* ================================================================================================================== */
+/* ALREADY EXECUTED */
+/* ================================================================================================================== */
+
     /* parallel gateway icon */
 .bpmn-parallel-gateway.state-already-executed > path:nth-child(2),
     /* message flow arrow */
@@ -29,10 +33,15 @@
     /* message event icon */
 .bpmn-event-def-message.state-already-executed > rect,
 .bpmn-event-def-message.state-already-executed > path,
-    /* event stroke */
-.bpmn-type-event.state-already-executed > ellipse {
+    /* event */
+.bpmn-type-event.state-already-executed > * {
     filter: blur(2px);
     stroke: var(--color-path-executed);
+}
+
+    /* end event center circle */
+.bpmn-type-event.state-already-executed > ellipse:nth-child(2) {
+    fill: var(--color-path-executed);
 }
 
     /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
@@ -42,6 +51,7 @@
     /*or use opacity if we want to be able to read labels*/
     filter: blur(1px);
 }
+
 
 /* ================================================================================================================== */
 /* INFO */
@@ -170,3 +180,4 @@
     color: var(--color-path-predicted-on-time) !important;
     font-weight: bold;
 }
+

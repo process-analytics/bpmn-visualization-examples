@@ -45,6 +45,18 @@ class PathResolver {
         return [...shapeIds, ...this.#paths.filter(path => shapeIds.includes(path.sourceId) ).map(path => path.edgeId)];
     }
 
+    flatAllPaths(){
+        const flatPaths = new Set();
+
+        for (const path of this.#paths) {
+            flatPaths.add(path.edgeId);
+            flatPaths.add(path.sourceId);
+            flatPaths.add(path.targetId);
+        }
+
+        return Array.from(flatPaths);
+    }
+    
     #buildPaths(edges) {
         return edges.map(edge => {
             const bpmnSemantic = edge.bpmnSemantic;

@@ -10,11 +10,13 @@ class ExecutionData {
 
     _executedElements;
 
+    _nonPredictedElements;
+
     _runningElementWithPrediction;
 
     _predictedPaths;
 
-    #runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
+    _runningElementsWithoutPrediction = [this._vendorWhereIsMyPizzaId, this._customerEvtBasedGwId];
 
     _pathResolver;
 
@@ -41,12 +43,16 @@ class ExecutionData {
         return this._runningElementWithPrediction;
     }
 
+    get runningElementsWithoutPrediction() {
+        return this._runningElementsWithoutPrediction;
+    }
+
     get predictedPaths() {
         return this._predictedPaths;
     }
 
-    get runningElementsWithoutPrediction() {
-        return this.#runningElementsWithoutPrediction;
+    get nonPredictedElements() {
+        return this._nonPredictedElements;
     }
 }
 
@@ -67,6 +73,9 @@ class PredicatedLateExecutionData extends ExecutionData {
             this._vendorWhereIsMyPizzaId,
             '_6-695', // 'Calm customer'
         ]);
+
+        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction, ...this._predictedPaths];
+        this._nonPredictedElements = pathResolver.flatAllPaths().filter(id=> !allCustomizedElements.includes(id));
     }
 }
 
@@ -87,6 +96,9 @@ class PredictedOnTimeExecutionData extends ExecutionData {
             // vendor elements
             '_6-565', // 'Receive payment'
         ]);
+
+        const allCustomizedElements = [...this._executedElements, this._runningElementWithPrediction, ...this._predictedPaths];
+        this._nonPredictedElements = pathResolver.flatAllPaths().filter(id=> !allCustomizedElements.includes(id));
     }
 
 }

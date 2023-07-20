@@ -16,6 +16,13 @@ class Style {
     /**
      * @param {string[]} ids
      */
+    toggleReduceVisibilityOfNonPredictedElements(ids) {
+        this._bpmnElementsRegistry.toggleCssClasses(ids, 'state-already-executed');
+    }
+
+    /**
+     * @param {string[]} ids
+     */
     toggleHighlightRunningElementsWithoutPrediction(ids) {
         this._bpmnElementsRegistry.toggleCssClasses(ids, 'state-running');
     }
