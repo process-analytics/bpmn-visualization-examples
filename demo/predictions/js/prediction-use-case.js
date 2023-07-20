@@ -4,7 +4,7 @@ class PredicatedLateUseCase extends UseCase {
     _executionData;
 
     constructor(type) {
-        super(type, () => pizzaDiagram(), true, {fit: {type: 'Center', margin: 20}});
+        super(type, () => pizzaDiagram(), false, {fit: {type: 'Center', margin: 20}});
     }
 
     display(dataType) {
