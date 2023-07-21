@@ -91,6 +91,7 @@ class ExecutionData {
         return this._nonPredictedElements;
     }
 }
+
 class PredicatedLateExecutionData extends ExecutionData {
 
     constructor(pathResolver) {
