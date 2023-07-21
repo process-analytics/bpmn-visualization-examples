@@ -18,7 +18,7 @@ class PredicatedLateUseCase extends UseCase {
         this._style.reduceVisibilityOfExecutedElements(this._executionData.executedElements);
         this._style.highlightRunningElementWithPrediction(this._executionData.runningElementWithPrediction);
         this._style.toggleHighlightRunningElementsWithoutPrediction(this._executionData.runningElementsWithoutPrediction);
-        this._registerInteractions(this._executionData.predictedPaths, this._executionData.runningElementsWithoutPrediction, this._executionData.runningElementWithPrediction);
+        this._registerInteractions(this._executionData.runningElementWithPrediction.id, this._executionData.predictedPaths, this._executionData.runningElementsWithoutPrediction);
     }
 
     _initManagers() {
@@ -27,9 +27,9 @@ class PredicatedLateUseCase extends UseCase {
         this._executionData = new PredicatedLateExecutionData(pathResolver);
     }
 
-    _registerInteractions(predictedPath, runningElementsWithoutPrediction, runningElementWithPrediction) {
+    _registerInteractions(id, predictedPath, runningElementsWithoutPrediction, runningElementWithPrediction) {
         // on hover, highlight the predicted path
-        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(runningElementWithPrediction)[0]; // exist and only one
+        const elementTogglingPath = this._bpmnVisualization.bpmnElementsRegistry.getElementsByIds(id)[0]; // exist and only one
 
         const highlightPredictedPath = () => {
             this._style.toggleHighlightRunningElementsWithoutPrediction(runningElementsWithoutPrediction);
