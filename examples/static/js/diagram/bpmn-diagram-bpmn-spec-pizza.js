@@ -343,7 +343,7 @@ function pizzaDiagram() {
         <dc:Bounds x="791" y="668" width="83" height="68" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-638" bpmnElement="_6-638">
+      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-638" bpmnElement="_6-638" messageVisibleKind="initiating">
         <di:waypoint x="476" y="177" />
         <di:waypoint x="476" y="302" />
         <di:waypoint x="264" y="302" />
@@ -359,21 +359,21 @@ function pizzaDiagram() {
         <di:waypoint x="510" y="454" />
         <bpmndi:BPMNLabel />
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-646" bpmnElement="_6-646">
+      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-646" bpmnElement="_6-646" messageVisibleKind="initiating">
         <di:waypoint x="963" y="668" />
         <di:waypoint x="963" y="228" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="973" y="446" width="34" height="14" />
+          <dc:Bounds x="973" y="470" width="34" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-648" bpmnElement="_6-648">
+      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-648" bpmnElement="_6-648" messageVisibleKind="initiating">
         <di:waypoint x="924" y="228" />
         <di:waypoint x="924" y="668" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="883" y="446" width="34" height="14" />
+          <dc:Bounds x="883" y="470" width="34" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNEdge>
-      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-640" bpmnElement="_6-640">
+      <bpmndi:BPMNEdge id="Trisotech.Visio__6__6-640" bpmnElement="_6-640" messageVisibleKind="initiating">
         <di:waypoint x="833" y="668" />
         <di:waypoint x="833" y="210" />
         <bpmndi:BPMNLabel>

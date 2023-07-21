@@ -24,6 +24,8 @@
 
     /* message flow start marker */
 .bpmn-message-flow.state-already-executed > ellipse,
+    /* message flow icon */
+.bpmn-message-flow-icon.state-already-executed > * ,
     /* sequence/message flow line and arrow (end marker) */
 .bpmn-type-flow.state-already-executed > path,
     /* task */
@@ -150,6 +152,11 @@
     /* sequence flow arrow */
 .bpmn-sequence-flow.path-predicted-on-time > path:nth-child(3) {
     fill: var(--color-path-predicted-on-time);
+}
+
+/* message flow icon */
+.bpmn-message-flow-icon.path-predicted-on-time > * {
+    stroke: var(--color-path-predicted-on-time);
 }
 
 .bpmn-type-gateway.path-predicted-on-time > path:nth-child(1),
