@@ -46,7 +46,7 @@ class ExecutionData {
     _nonPredictedElements;
 
     /**
-     * format: {{id:string, startDate:string, predictedEnd:string, currentDelay: string }}
+     * format: {{id:string, startDate:string, predictedEnd:string, currentDelay: string, predictedDelay: string}}
      */
     _runningElementWithPrediction;
 
