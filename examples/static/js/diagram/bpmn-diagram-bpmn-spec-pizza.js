@@ -34,7 +34,7 @@ function pizzaDiagram() {
       <semantic:incoming>_6-748</semantic:incoming>
       <semantic:outgoing>_6-746</semantic:outgoing>
     </semantic:task>
-    <semantic:intermediateCatchEvent id="_6-674" name="„where is my pizza?“">
+    <semantic:intermediateCatchEvent id="_6-674" name="where is my pizza?“">
       <semantic:incoming>_6-691</semantic:incoming>
       <semantic:incoming>_6-746</semantic:incoming>
       <semantic:outgoing>_6-748</semantic:outgoing>
