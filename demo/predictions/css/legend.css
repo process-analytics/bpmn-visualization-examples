@@ -1,0 +1,47 @@
+fieldset {
+    border: 1px solid#ddd;
+    padding: 5px 12px;
+}
+
+legend {
+    font-size: 18px;
+    padding: 0 10px;
+    margin: auto;
+}
+
+.state-predicted-on-time .legend li:first-child::before {
+    background-color: var(--color-predicted-on-time);
+}
+
+.state-predicted-late .legend li:first-child::before {
+    background-color: var(--color-predicted-late);
+}
+
+.legend li:nth-child(2)::before {
+    background-color: var(--color-running);
+}
+.legend li:nth-child(3)::before {
+    background-color: var(--color-already-executed);
+}
+
+
+.legend li::before {
+    content: "";
+    display: inline-block;
+    vertical-align: middle;
+    margin-inline-end: .5rem;
+    border-width: 2px;
+    border-style: solid;
+    width: 1rem;
+    height: 1rem;
+    border-radius: 3px;
+    border-color: #000;
+}
+
+.legend li {
+    line-height: 1rem;
+}
+.legend {
+    list-style: none;
+    font-size: 0.8rem;
+}

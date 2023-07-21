@@ -1,12 +1,10 @@
 :root {
     --color-default-fill: white;
-    --color-path-executed: #aea3a3;
-    --color-path-predicted-late: orange;
-    --color-state-predicted-late: orange;
-    --color-path-predicted-on-time: #67d567;
-    --color-state-predicted-on-time: #a7f0a7;
-    --color-state-running: #9c9cef;
-    --stroke-path-predicted: 0.18rem;
+    --color-already-executed: #aea3a3;
+    --color-predicted-late: orange;
+    --color-predicted-on-time: #67d567;
+    --color-running: #9c9cef;
+    --stroke-predicted: 0.18rem;
 }
 
 /* ================================================================================================================== */
@@ -19,13 +17,13 @@
 .bpmn-message-flow.state-already-executed > path:nth-child(4),
     /* sequence flow arrow */
 .bpmn-sequence-flow.state-already-executed > path:nth-child(3) {
-    fill: var(--color-path-executed);
+    fill: var(--color-already-executed);
 }
 
     /* message flow start marker */
 .bpmn-message-flow.state-already-executed > ellipse,
     /* message flow icon */
-.bpmn-message-flow-icon.state-already-executed > * ,
+.bpmn-message-flow-icon.state-already-executed > *,
     /* sequence/message flow line and arrow (end marker) */
 .bpmn-type-flow.state-already-executed > path,
     /* task */
@@ -38,18 +36,18 @@
     /* event */
 .bpmn-type-event.state-already-executed > * {
     filter: blur(0.125rem);
-    stroke: var(--color-path-executed);
+    stroke: var(--color-already-executed);
 }
 
     /* end event center circle */
-.bpmn-type-event.state-already-executed > ellipse:nth-child(2) {
-    fill: var(--color-path-executed);
+.bpmn-type-event.already-executed > ellipse:nth-child(2) {
+    fill: var(--color-already-executed);
 }
 
     /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
      Use important to override the color set inline in the style attribute of the label div */
-.bpmn-label.state-already-executed > g div {
-    color: var(--color-path-executed) !important;
+.bpmn-label.already-executed > g div {
+    color: var(--color-already-executed) !important;
     /*or use opacity if we want to be able to read labels*/
     filter: blur(0.0625rem);
 }
@@ -64,7 +62,7 @@
 .bpmn-type-event.state-running > ellipse,
 /* envelope of the message event */
 .bpmn-event-def-message.state-running > rect {
-    fill: var(--color-state-running);
+    fill: var(--color-running);
 }
 
 /*apply shadow on hover*/
@@ -83,7 +81,7 @@
 
 /* task */
 .bpmn-task.state-predicted-late > rect {
-    fill: var(--color-state-predicted-late);
+    fill: var(--color-predicted-late);
     animation: pulse-animation 0.8s infinite alternate;
 }
 
@@ -102,7 +100,7 @@
 .bpmn-message-flow.path-predicted-late > ellipse,
     /* sequence flow arrow */
 .bpmn-sequence-flow.path-predicted-late > path:nth-child(3) {
-    fill: var(--color-path-predicted-late);
+    fill: var(--color-predicted-late);
 }
 
     /* sequence/message flow line and arrow (end marker) */
@@ -112,8 +110,8 @@
 .bpmn-type-gateway.path-predicted-late > path:nth-child(1),
 .bpmn-type-task.path-predicted-late > rect,
 .bpmn-type-event.path-predicted-late > ellipse {
-    stroke: var(--color-path-predicted-late);
-    stroke-width: var(--stroke-path-predicted);
+    stroke: var(--color-predicted-late);
+    stroke-width: var(--stroke-predicted);
 }
 
 .bpmn-type-gateway.path-predicted-late > path:nth-child(1),
@@ -123,14 +121,14 @@
 .bpmn-event-def-message.path-predicted-late > path,
 .bpmn-event-def-timer.path-predicted-late > path,
 .bpmn-type-event.path-predicted-late > ellipse {
-    stroke: var(--color-path-predicted-late);
+    stroke: var(--color-predicted-late);
     fill: var(--color-default-fill);
 }
 
 /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
  Use important to override the color set inline in the style attribute of the label div */
-.bpmn-label.path-predicted-late > g div {
-    color: var(--color-path-predicted-late) !important;
+.bpmn-label.predicted-late > g div {
+    color: var(--color-predicted-late) !important;
     font-weight: bold;
 }
 
@@ -139,7 +137,7 @@
 /* ================================================================================================================== */
 
 .bpmn-type-task.state-predicted-on-time > rect {
-    fill: var(--color-state-predicted-on-time);
+    fill: var(--color-predicted-on-time);
 }
 
 /*apply shadow on hover*/
@@ -151,12 +149,12 @@
 .bpmn-message-flow.path-predicted-on-time > ellipse,
     /* sequence flow arrow */
 .bpmn-sequence-flow.path-predicted-on-time > path:nth-child(3) {
-    fill: var(--color-path-predicted-on-time);
+    fill: var(--color-predicted-on-time);
 }
 
 /* message flow icon */
 .bpmn-message-flow-icon.path-predicted-on-time > * {
-    stroke: var(--color-path-predicted-on-time);
+    stroke: var(--color-predicted-on-time);
 }
 
 .bpmn-type-gateway.path-predicted-on-time > path:nth-child(1),
@@ -166,8 +164,8 @@
 .bpmn-message-flow.path-predicted-on-time > ellipse,
 .bpmn-type-task.path-predicted-on-time > rect,
 .bpmn-type-event.path-predicted-on-time > ellipse {
-    stroke: var(--color-path-predicted-on-time);
-    stroke-width: var(--stroke-path-predicted);
+    stroke: var(--color-predicted-on-time);
+    stroke-width: var(--stroke-predicted);
 }
 
 .bpmn-type-gateway.path-predicted-on-time > path:nth-child(1),
@@ -177,14 +175,14 @@
 .bpmn-event-def-message.path-predicted-on-time > path,
 .bpmn-event-def-timer.path-predicted-on-time > path,
 .bpmn-type-event.path-predicted-on-time > ellipse {
-    stroke: var(--color-path-predicted-on-time);
+    stroke: var(--color-predicted-on-time);
     fill: var(--color-default-fill);
 }
 
 /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
  Use important to override the color set inline in the style attribute of the label div */
 .bpmn-label.path-predicted-on-time > g div {
-    color: var(--color-path-predicted-on-time) !important;
+    color: var(--color-predicted-on-time) !important;
     font-weight: bold;
 }
 

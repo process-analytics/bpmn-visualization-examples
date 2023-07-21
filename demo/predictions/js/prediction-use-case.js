@@ -4,7 +4,12 @@ class PredicatedLateUseCase extends UseCase {
     _executionData;
 
     constructor(type) {
-        super(type, () => pizzaDiagram(), true, {fit: {type: 'Center', margin: 20}});
+        super(type, () => pizzaDiagram(), false, {fit: {type: 'Center', margin: 20}});
+    }
+
+    display(dataType) {
+        super.display(dataType);
+        this._style.switchLegend();
     }
 
     _postLoadDiagram() {
@@ -39,6 +44,7 @@ class PredicatedLateUseCase extends UseCase {
 
 
 class PredictedOnTimeUseCase extends PredicatedLateUseCase {
+
     _initManagers() {
         this._style = new PredictedOnTimeStyle(this._bpmnVisualization.bpmnElementsRegistry);
         const pathResolver = new PathResolver(this._bpmnVisualization);
