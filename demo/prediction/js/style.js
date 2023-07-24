@@ -1,15 +1,15 @@
 class Style {
 
     _bpmnElementsRegistry;
-    _bpmnContainerId;
+    _bpmnContainer;
 
-    constructor(bpmnElementsRegistry, bpmnContainerId) {
-        this._bpmnElementsRegistry = bpmnElementsRegistry;
-        this._bpmnContainerId = bpmnContainerId;
+    constructor(bpmnVisualization) {
+        this._bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
+        this._bpmnContainer = bpmnVisualization.graph.container;
 
         // tippy global configuration
         tippy.setDefaultProps({
-            appendTo: window.document.getElementById(this._bpmnContainerId).parentElement.parentElement,
+            appendTo: this._bpmnContainer.parentElement,
             allowHTML: true,
             ignoreAttributes: true,
             interactive: true,
@@ -82,8 +82,8 @@ class Style {
 
 class PredicatedLateStyle extends Style {
 
-    constructor(bpmnElementsRegistry, bpmnContainerId) {
-       super(bpmnElementsRegistry, bpmnContainerId);
+    constructor(bpmnVisualization) {
+       super(bpmnVisualization);
     }
 
     /**
@@ -111,8 +111,8 @@ class PredicatedLateStyle extends Style {
 
 class PredictedOnTimeStyle extends Style {
 
-    constructor(bpmnElementsRegistry, bpmnContainerId) {
-        super(bpmnElementsRegistry, bpmnContainerId);
+    constructor(bpmnVisualization) {
+        super(bpmnVisualization);
     }
 
     /**

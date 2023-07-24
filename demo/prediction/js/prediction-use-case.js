@@ -22,7 +22,7 @@ class PredicatedLateUseCase extends UseCase {
     }
 
     _initManagers() {
-        this._style = new PredicatedLateStyle(this._bpmnVisualization.bpmnElementsRegistry, `${this.type}-bpmn-container`);
+        this._style = new PredicatedLateStyle(this._bpmnVisualization);
         const pathResolver = new PathResolver(this._bpmnVisualization);
         this._executionData = new PredicatedLateExecutionData(pathResolver);
     }
@@ -46,7 +46,7 @@ class PredicatedLateUseCase extends UseCase {
 class PredictedOnTimeUseCase extends PredicatedLateUseCase {
 
     _initManagers() {
-        this._style = new PredictedOnTimeStyle(this._bpmnVisualization.bpmnElementsRegistry, `${this.type}-bpmn-container`);
+        this._style = new PredictedOnTimeStyle(this._bpmnVisualization);
         const pathResolver = new PathResolver(this._bpmnVisualization);
         this._executionData = new PredictedOnTimeExecutionData(pathResolver);
     }
