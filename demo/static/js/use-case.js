@@ -7,7 +7,12 @@ class UseCase {
     #getDiagram;
     #navigationEnabled;
     #loadOptions;
+
+    /**
+     * @type {BpmnVisualization}
+     */
     _bpmnVisualization;
+
     #alreadyLoad = false;
 
     constructor(type, getDiagram, navigationEnabled, loadOptions) {
