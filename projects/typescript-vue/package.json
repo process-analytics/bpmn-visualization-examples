@@ -1,6 +1,5 @@
 {
   "name": "bpmn-visualization-ts-vue",
-  "version": "0.0.0",
   "private": true,
   "license": "Apache-2.0",
   "scripts": {
@@ -9,6 +8,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@process-analytics/bv-experimental-add-ons": "0.2.0",
     "bpmn-visualization": "0.38.0",
     "spectre.css": "^0.5.9",
     "vue": "^3.3.4"
