@@ -127,7 +127,7 @@
 
 /* labels (the selector applies to all div, not the only one that contains text, but this is ok.
  Use important to override the color set inline in the style attribute of the label div */
-.bpmn-label.predicted-late > g div {
+.bpmn-label.path-predicted-late > g div {
     color: var(--color-predicted-late) !important;
     font-weight: bold;
 }

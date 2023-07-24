@@ -1,9 +1,22 @@
 class Style {
 
     _bpmnElementsRegistry;
+    _bpmnContainer;
 
-    constructor(bpmnElementsRegistry) {
-        this._bpmnElementsRegistry = bpmnElementsRegistry;
+    constructor(bpmnVisualization) {
+        this._bpmnElementsRegistry = bpmnVisualization.bpmnElementsRegistry;
+        this._bpmnContainer = bpmnVisualization.graph.container;
+
+        // tippy global configuration
+        tippy.setDefaultProps({
+            appendTo: this._bpmnContainer.parentElement,
+            allowHTML: true,
+            ignoreAttributes: true,
+            interactive: true,
+            sticky: 'reference',
+            arrow: true,
+            placement: 'left',
+        });
     }
 
     /**
@@ -34,19 +47,43 @@ class Style {
     }
 
     /**
-     * @param {string[] | string} ids
+     * @param {{id:string, startDate:string, predictedEnd:string, currentDelay: string, predictedDelay: string}} element
      */
-    highlightRunningElementsWithPrediction(ids) {
+    highlightRunningElementWithPrediction(element) {
+        this._addPopup(element);
     }
 
     switchLegend() {
+    }
+
+    _addPopup({ id, startDate, predictedEnd, currentDelay, predictedDelay }) {
+        this._bpmnElementsRegistry.addCssClasses(id, 'c-hand');
+
+        const isLate = predictedDelay !== 'N/A';
+
+        const htmlElement = this._bpmnElementsRegistry.getElementsByIds(id)[0].htmlElement;
+        tippy(htmlElement, {
+            content:
+                `<div class="bpmn-popover">
+                    <div style="text-align: center; font-weight: bold; font-size: larger">
+                        ${isLate ? 'Late 😣' : 'On time 🎉'}
+                    </div>
+                    <hr>
+                    <ul>
+                        <li>Start date: ${startDate}</li>
+                        <li>Predicted end: ${predictedEnd}</li>
+                         ${currentDelay !== 'N/A' ? `<li>Current delay: ${currentDelay}</li>` : ''}
+                         ${isLate ? `<li>Predicted delay: ${predictedDelay}</li>` : ''}
+                    </ul>
+                </div>`
+        });
     }
 }
 
 class PredicatedLateStyle extends Style {
 
-    constructor(bpmnElementsRegistry) {
-       super(bpmnElementsRegistry);
+    constructor(bpmnVisualization) {
+       super(bpmnVisualization);
     }
 
     /**
@@ -57,10 +94,11 @@ class PredicatedLateStyle extends Style {
     }
 
     /**
-     * @param {string[] | string} ids
+     * @param {{id:string, startDate:string, predictedEnd:string, currentDelay: string, predictedDelay: string}} element
      */
-    highlightRunningElementsWithPrediction(ids) {
-        this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-late');
+    highlightRunningElementWithPrediction(element) {
+        super.highlightRunningElementWithPrediction(element);
+        this._bpmnElementsRegistry.addCssClasses(element.id, 'state-predicted-late');
     }
 
     switchLegend() {
@@ -73,8 +111,8 @@ class PredicatedLateStyle extends Style {
 
 class PredictedOnTimeStyle extends Style {
 
-    constructor(bpmnElementsRegistry) {
-        super(bpmnElementsRegistry);
+    constructor(bpmnVisualization) {
+        super(bpmnVisualization);
     }
 
     /**
@@ -85,10 +123,11 @@ class PredictedOnTimeStyle extends Style {
     }
 
     /**
-     * @param {string[] | string} ids
+     * @param {{id:string, startDate:string, predictedEnd:string, currentDelay: string, predictedDelay: string}} element
      */
-    highlightRunningElementsWithPrediction(ids) {
-        this._bpmnElementsRegistry.addCssClasses(ids, 'state-predicted-on-time');
+    highlightRunningElementWithPrediction(element) {
+        super.highlightRunningElementWithPrediction(element);
+        this._bpmnElementsRegistry.addCssClasses(element.id, 'state-predicted-on-time');
     }
 
     switchLegend() {
