@@ -1,26 +1,24 @@
 /**
- * @param {string} duration format "2 days, 10 hours, 46 minutes"
+ * @param {string} duration format "10 hours, 46 minutes"
  * @returns {number} in milliseconds
  */
 const calculateTimeInMs = (duration) => {
-    const byMinute = 1000 * 60;
+    const byMinute = 1000;
     const byHour = byMinute * 60;
-    const byDay = byHour * 24;
 
-    const [days, hours, minutes] = duration.match(/\d+/g).map(Number);
-    return (days || 0) * byDay + (hours || 0) * byHour + (minutes || 0) * byMinute;
+    const [hours, minutes] = duration.match(/\d+/g).map(Number);
+    return (hours || 0) * byHour + (minutes || 0) * byMinute;
 };
 
 /**
- * @param {number} duration
- * @returns {string} as "2 days, 10 hours, 46 minutes"
+ * @param {number} durationInMilliseconds
+ * @returns {string} as "10 hours, 46 minutes"
  */
-const formatTimeToString = (duration) => {
-    const days = Math.floor(duration / (24 * 60 * 60 * 1000));
-    const hours = Math.floor((duration % (24 * 60 * 60 * 1000)) / (60 * 60 * 1000));
-    const minutes = Math.floor((duration % (60 * 60 * 1000)) / (60 * 1000));
+const formatTimeToString = (durationInMilliseconds) => {
+    const minutes = Math.floor(durationInMilliseconds / (60 * 1000));
+    const hours = Math.floor(minutes / 60);
 
-    return `${days} days, ${hours} hours, ${minutes} minutes`;
+    return `${hours ? hours + ' hours, ' : ''}${minutes % 60} minutes`;
 };
 
 /**
@@ -100,14 +98,14 @@ class PredicatedLateExecutionData extends ExecutionData {
         this._executedElements = this._commonExecutedElements;
 
         const currentTime = new Date().getTime();
-        const currentDelay = "2 days, 10 hours, 46 minutes";
+        const currentDelay = "16 minutes";
         const delayInMs = calculateTimeInMs(currentDelay);
-        const futurDelayInMs = calculateTimeInMs("5 days");
+        const futurDelayInMs = calculateTimeInMs("21 minutes");
 
         let date = new Date(currentTime + futurDelayInMs);
         this._runningElementWithPrediction = {
             id: this._vendorBakeThePizzaId,
-            startDate: formatDateToString(new Date(currentTime - 3 * 24 * 60 * 60 * 1000 - delayInMs)),
+            startDate: formatDateToString(new Date(currentTime - 5 * 60 * 1000 - delayInMs)),
             predictedEnd: formatDateToString(date),
             currentDelay,
             predictedDelay: formatTimeToString(futurDelayInMs + delayInMs)
@@ -139,7 +137,7 @@ class PredictedOnTimeExecutionData extends ExecutionData {
         this._runningElementWithPrediction = {
             id: '_6-514', // vendor 'Deliver the pizza'
             startDate: formatDateToString(currentDate),
-            predictedEnd: formatDateToString(new Date(currentDate.getTime() + 2 * 24 * 60 * 60 * 1000)),
+            predictedEnd: formatDateToString(new Date(currentDate.getTime() + 5 * 60 * 1000)),
             currentDelay: 'N/A',
             predictedDelay: 'N/A'
         };
