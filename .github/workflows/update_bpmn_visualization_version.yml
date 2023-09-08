@@ -26,6 +26,10 @@ jobs:
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
     steps:
+      - name: Get the checksum of the bpmn-visualization npm package
+        run: |
+          export PACKAGE_INTEGRITY=echo "$(npm view bpmn-visualization@${{ env.VERSION }} dist.integrity)"
+          echo "PACKAGE_INTEGRITY=$PACKAGE_INTEGRITY"
       - name: Get the bpmn-visualization npm package
         run: |
           curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-${{ env.VERSION }}.tgz -o bpmn-visualization.tgz
