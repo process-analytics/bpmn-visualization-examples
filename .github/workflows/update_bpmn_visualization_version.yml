@@ -54,9 +54,9 @@ jobs:
     steps:
       - name: Log output from previous job
         env:
-          IIFE-BUNDLE-INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
+          IIFE_BUNDLE_INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
         run: |
-          echo "IIFE-BUNDLE-INTEGRITY from previous job: $IIFE-BUNDLE-INTEGRITY"
+          echo "IIFE_BUNDLE_INTEGRITY from previous job: $IIFE_BUNDLE_INTEGRITY"
 
   update-version:
     runs-on: ubuntu-22.04
