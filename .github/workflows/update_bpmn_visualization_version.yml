@@ -25,6 +25,8 @@ jobs:
     runs-on: ubuntu-22.04
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
+    outputs:
+      integrity-value: ${{ steps.compute-integrity.outputs.value }}
     steps:
 #      - name: Get the checksum of the bpmn-visualization npm package
 #        run: |
@@ -39,9 +41,23 @@ jobs:
           tar -xvzf bpmn-visualization.tgz
           ls -lh
       - name: Compute IIFE bundle integrity
-        run: echo "sha384-$(cat ./package/dist/bpmn-visualization.min.js | openssl dgst -sha384 -binary | openssl base64 -A)"
-  # store in output
-# test output retrieval in another job
+        id: 'compute-integrity'
+        run: |
+          integrity="sha384-$(cat ./package/dist/bpmn-visualization.min.js | openssl dgst -sha384 -binary | openssl base64 -A)"
+          echo "integrity=$integrity"
+          echo "value=$integrity" >> "$GITHUB_OUTPUT"
+
+# TODO only to test output retrieval from another job - remove when validated
+  check-computed-integrity:
+    runs-on: ubuntu-22.04
+    needs: compute-iife-bundle-integrity
+    steps:
+      - name: Log output from previous job
+        env:
+          IIFE-BUNDLE-INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
+        run: |
+          echo "IIFE-BUNDLE-INTEGRITY from previous job: $IIFE-BUNDLE-INTEGRITY"
+
   update-version:
     runs-on: ubuntu-22.04
     needs: compute-iife-bundle-integrity
