@@ -28,11 +28,14 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - name: Get the bpmn-visualization npm package
-        run: curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-{{env.VERSION}}.tgz -o bpmn-visualization.tgz
-  # untar
-  # compute integrity
+        run: |
+          curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-{{env.VERSION}}.tgz -o bpmn-visualization.tgz
+          tar -xvzf bpmn-visualization.tgz
+          ll -lh
+      - name: Compute IIFE bundle integrity
+        run: echo "sha384-$(cat ./package/dist/bpmn-visualization.min.js | openssl dgst -sha384 -binary | openssl base64 -A)"
   # store in output
-
+# test output retrieval in another job
   update-version:
     runs-on: ubuntu-22.04
     needs: compute-iife-bundle-integrity
