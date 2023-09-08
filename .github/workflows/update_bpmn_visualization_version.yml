@@ -28,11 +28,12 @@ jobs:
     steps:
       - name: Get the checksum of the bpmn-visualization npm package
         run: |
-          export PACKAGE_INTEGRITY=echo "$(npm view bpmn-visualization@${{ env.VERSION }} dist.integrity)"
-          echo "PACKAGE_INTEGRITY=$PACKAGE_INTEGRITY"
+          export PACKAGE_CHECKSUM=$(npm view bpmn-visualization@${{ env.VERSION }} dist.integrity)
+          echo "PACKAGE_CHECKSUM=$PACKAGE_CHECKSUM"
       - name: Get the bpmn-visualization npm package
         run: |
           curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-${{ env.VERSION }}.tgz -o bpmn-visualization.tgz
+          echo "PACKAGE_CHECKSUM=$PACKAGE_CHECKSUM"
           tar -xvzf bpmn-visualization.tgz
           ls -lh
       - name: Compute IIFE bundle integrity
