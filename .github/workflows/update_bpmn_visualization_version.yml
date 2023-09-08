@@ -29,7 +29,7 @@ jobs:
       - uses: actions/checkout@v4
       - name: Get the bpmn-visualization npm package
         run: |
-          curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-{{env.VERSION}}.tgz -o bpmn-visualization.tgz
+          curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-${{ env.VERSION }}.tgz -o bpmn-visualization.tgz
           tar -xvzf bpmn-visualization.tgz
           ll -lh
       - name: Compute IIFE bundle integrity
