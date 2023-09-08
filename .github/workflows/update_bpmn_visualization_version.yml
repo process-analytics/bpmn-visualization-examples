@@ -54,18 +54,17 @@ jobs:
       - uses: actions/checkout@v4
       - name: Update bpmn-visualization version in all examples
         run: ./scripts/update-lib-version.bash ${{ env.VERSION }} ${{ env.IIFE_BUNDLE_INTEGRITY }}
-# TODO restore when tests have been completed
-#      - name: Delete old Load and Navigation demo
-#        run: rm -rf demo/load-and-navigation
-#      - name: Download Load and Navigation demo ${{ env.VERSION }}
-#        uses: dawidd6/action-download-artifact@v2
-#        with:
-#          github_token: ${{ secrets.GH_RELEASE_TOKEN }}
-#          repo: ${{ env.BUILD_DEMO_REPO }}
-#          workflow: ${{ env.BUILD_DEMO_WORKFLOW_ID }}
-#          workflow_conclusion: success
-#          name: ${{ env.ARTIFACT_NAME }}
-#          path: demo/load-and-navigation
+      - name: Delete old Load and Navigation demo
+        run: rm -rf demo/load-and-navigation
+      - name: Download Load and Navigation demo ${{ env.VERSION }}
+        uses: dawidd6/action-download-artifact@v2
+        with:
+          github_token: ${{ secrets.GH_RELEASE_TOKEN }}
+          repo: ${{ env.BUILD_DEMO_REPO }}
+          workflow: ${{ env.BUILD_DEMO_WORKFLOW_ID }}
+          workflow_conclusion: success
+          name: ${{ env.ARTIFACT_NAME }}
+          path: demo/load-and-navigation
       - name: Create Pull Request
         uses: peter-evans/create-pull-request@v5.0.2
         with:
