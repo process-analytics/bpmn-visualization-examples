@@ -36,12 +36,14 @@ function replaceVersion() {
 ############################################################
 # update all html files in the examples folder
 ############################################################
-if [ $# -ne 1 ]; then
-	echo "Mandatory parameter <new_version> missing."
+if [ $# -ne 2 ]; then
+	echo "At least one mandatory parameter is missing missing."
+	echo "Parameters order: <new_version> <integrity>"
 	exit 1
 fi
 NEW_VERSION=$1
-echo "Updating examples to make them use bpmn-visualization@$NEW_VERSION"
+INTEGRITY=$2
+echo "Updating examples to make them use bpmn-visualization@$NEW_VERSION with integrity: $INTEGRITY"
 
 SCRIPT_DIRECTORY="$( cd "$( dirname "${BASH_SOURCE[0]}" )" >/dev/null 2>&1 && pwd )"
 
