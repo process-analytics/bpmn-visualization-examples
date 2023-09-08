@@ -37,7 +37,7 @@ function replaceVersion() {
 # update all html files in the examples folder
 ############################################################
 if [ $# -ne 2 ]; then
-	echo "At least one mandatory parameter is missing missing."
+	echo "At least one mandatory parameter is missing."
 	echo "Parameters order: <new_version> <integrity>"
 	exit 1
 fi
