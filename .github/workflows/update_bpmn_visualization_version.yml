@@ -21,8 +21,23 @@ on:
         required: true
 
 jobs:
-  updateVersion:
+  compute-iife-bundle-integrity:
     runs-on: ubuntu-22.04
+    env:
+      VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Get the bpmn-visualization npm package
+        run: curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-{{env.VERSION}}.tgz -o bpmn-visualization.tgz
+  # untar
+  # compute integrity
+  # store in output
+
+  update-version:
+    runs-on: ubuntu-22.04
+    needs: compute-iife-bundle-integrity
+    ### TODO temp disable - remove
+    if: github.event_name == 'pull_request'
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
       ARTIFACT_NAME: ${{ github.event.client_payload.artifact_name || github.event.inputs.artifact_name }}
