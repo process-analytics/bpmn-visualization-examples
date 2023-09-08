@@ -21,17 +21,39 @@ on:
         required: true
 
 jobs:
-  updateVersion:
+  compute-iife-bundle-integrity:
     runs-on: ubuntu-22.04
+    env:
+      VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
+    outputs:
+      integrity-value: ${{ steps.compute-integrity.outputs.value }}
+    steps:
+      - name: Get the bpmn-visualization npm package
+        run: |
+          curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-${{ env.VERSION }}.tgz -o bpmn-visualization.tgz
+          PACKAGE_CHECKSUM=$(npm view bpmn-visualization@${{ env.VERSION }} dist.integrity)
+          echo "PACKAGE_CHECKSUM=$PACKAGE_CHECKSUM"
+          tar -xvzf bpmn-visualization.tgz
+      - name: Compute IIFE bundle integrity
+        id: 'compute-integrity'
+        run: |
+          integrity="sha384-$(cat ./package/dist/bpmn-visualization.min.js | openssl dgst -sha384 -binary | openssl base64 -A)"
+          echo "integrity=$integrity"
+          echo "value=$integrity" >> "$GITHUB_OUTPUT"
+
+  update-version:
+    runs-on: ubuntu-22.04
+    needs: compute-iife-bundle-integrity
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
       ARTIFACT_NAME: ${{ github.event.client_payload.artifact_name || github.event.inputs.artifact_name }}
       BUILD_DEMO_WORKFLOW_ID: ${{ github.event.client_payload.build_demo_workflow_id || github.event.inputs.build_demo_workflow_id }}
       BUILD_DEMO_REPO: ${{ github.event.client_payload.build_demo_repo || github.event.inputs.build_demo_repo }}
+      IIFE_BUNDLE_INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
     steps:
       - uses: actions/checkout@v4
       - name: Update bpmn-visualization version in all examples
-        run: ./scripts/update-lib-version.bash ${{ env.VERSION }}
+        run: ./scripts/update-lib-version.bash ${{ env.VERSION }} ${{ env.IIFE_BUNDLE_INTEGRITY }}
       - name: Delete old Load and Navigation demo
         run: rm -rf demo/load-and-navigation
       - name: Download Load and Navigation demo ${{ env.VERSION }}
