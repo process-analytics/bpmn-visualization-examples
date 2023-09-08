@@ -41,22 +41,9 @@ jobs:
           echo "integrity=$integrity"
           echo "value=$integrity" >> "$GITHUB_OUTPUT"
 
-# TODO only to test output retrieval from another job - remove when validated
-  check-computed-integrity:
-    runs-on: ubuntu-22.04
-    needs: compute-iife-bundle-integrity
-    steps:
-      - name: Log output from previous job
-        env:
-          IIFE_BUNDLE_INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
-        run: |
-          echo "IIFE_BUNDLE_INTEGRITY from previous job: $IIFE_BUNDLE_INTEGRITY"
-
   update-version:
     runs-on: ubuntu-22.04
     needs: compute-iife-bundle-integrity
-    ### TODO temp disable - remove
-    if: github.event_name == 'pull_request'
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
       ARTIFACT_NAME: ${{ github.event.client_payload.artifact_name || github.event.inputs.artifact_name }}
