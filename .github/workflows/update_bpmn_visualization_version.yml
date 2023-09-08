@@ -30,6 +30,7 @@ jobs:
         run: |
           export PACKAGE_CHECKSUM=$(npm view bpmn-visualization@${{ env.VERSION }} dist.integrity)
           echo "PACKAGE_CHECKSUM=$PACKAGE_CHECKSUM"
+          echo "PACKAGE_CHECKSUM=$PACKAGE_CHECKSUM" >> "$GITHUB_ENV"
       - name: Get the bpmn-visualization npm package
         run: |
           curl https://registry.npmjs.org/bpmn-visualization/-/bpmn-visualization-${{ env.VERSION }}.tgz -o bpmn-visualization.tgz
