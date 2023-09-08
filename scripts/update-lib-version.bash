@@ -7,8 +7,8 @@ function replaceVersion() {
   echo "Search for files in $(pwd)"
 
   rexep_npm="s/\"bpmn-visualization\": \".*\"/\"bpmn-visualization\": \"$NEW_VERSION\"/"
-  # lines to update contains substring like "bpmn-visualization@x.y.z"
-  rexep_others="s/\/bpmn-visualization@.*\/dist/\/bpmn-visualization@$NEW_VERSION\/dist/"
+  # lines to update contains substring like "bpmn-visualization@x.y.z/bpmn-visualization.min.js" integrity="xxxxx"
+  rexep_others="s/\/bpmn-visualization@.*\/dist\/bpmn-visualization.min.js\" integrity=\".*\"/\/bpmn-visualization@$NEW_VERSION\/dist\/bpmn-visualization.min.js\" integrity=\"$INTEGRITY\"/"
 
   if [[ "$OSTYPE" == "darwin"* ]]; then
     if [[ $directory == *demo ]]; then
