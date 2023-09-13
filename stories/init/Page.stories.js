@@ -2,7 +2,7 @@ import { within, userEvent } from '@storybook/testing-library';
 import { createPage } from './Page';
 
 export default {
-  title: 'Example/Page',
+  title: 'Init-Example/Page',
   render: () => createPage(),
   parameters: {
     // More on how to position stories at: https://storybook.js.org/docs/html/configure/story-layout

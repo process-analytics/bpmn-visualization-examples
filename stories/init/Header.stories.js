@@ -1,7 +1,7 @@
 import { createHeader } from './Header';
 
 export default {
-  title: 'Example/Header',
+  title: 'Init-Example/Header',
   // This component will have an automatically generated Autodocs entry: https://storybook.js.org/docs/html/writing-docs/autodocs
   tags: ['autodocs'],
   render: (args) => createHeader(args),
