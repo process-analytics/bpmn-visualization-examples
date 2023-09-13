@@ -1,0 +1,29 @@
+{
+  "name": "bpmn-visualization-examples",
+  "version": "1.0.0",
+  "description": "<h1 align=\"center\">Examples of the bpmn-visualization TypeScript library</h1> <br> <p align=\"center\">     <p align=\"center\">         <a href=\"https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/master/examples/index.html\">             <img src=\"examples_home.png\" alt=\"examples overview\">         </a>      </p>     <p align=\"center\">         <a href=\"CONTRIBUTING.md\">             <img alt=\"PRs Welcome\" src=\"https://img.shields.io/badge/PRs-welcome-ff69b4.svg?style=flat-square\">          </a>          <a href=\"https://github.com/process-analytics/.github/blob/main/CODE_OF_CONDUCT.md\">             <img alt=\"Contributor Covenant\" src=\"https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg\">          </a>          <a href=\"LICENSE\">             <img alt=\"License\" src=\"https://img.shields.io/github/license/process-analytics/bpmn-visualization-examples?color=blue\">          </a>      </p> </p>",
+  "main": "index.js",
+  "directories": {
+    "example": "examples"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "storybook": "storybook dev -p 6006",
+    "build-storybook": "storybook build"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@storybook/addon-essentials": "^7.4.1",
+    "@storybook/addon-interactions": "^7.4.1",
+    "@storybook/addon-links": "^7.4.1",
+    "@storybook/blocks": "^7.4.1",
+    "@storybook/html": "^7.4.1",
+    "@storybook/html-vite": "^7.4.1",
+    "@storybook/testing-library": "^0.2.0",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "storybook": "^7.4.1"
+  }
+}
