@@ -1,0 +1,44 @@
+name: Generate Stories Preview
+
+on:
+  pull_request:
+    # To manage 'surge-preview' action teardown, add default event types + closed event type
+    types: [opened, synchronize, reopened, closed]
+    branches:
+      - master
+    paths:
+      - '.github/workflows/generate-stories-preview.yml'
+      - 'stories/**/*'
+      - '.storybook/**/*'
+      - 'package.json'
+      - 'package-lock.json'
+      - '.nvmrc'
+
+permissions:
+  # surge-preview: PR comments
+  pull-requests: write
+
+jobs:
+  stories_preview:
+    runs-on: ubuntu-20.04
+    steps:
+      - uses: bonitasoft/actions/packages/surge-preview-tools@v2.2.0
+        id: surge-preview-tools
+        with:
+          surge-token: ${{ secrets.SURGE_TOKEN }}
+      - uses: actions/checkout@v3
+        if: github.event.action != 'closed'
+      - name: Build Setup
+        if: github.event.action != 'closed'
+        uses: ./.github/actions/build-setup
+      - name: Publish Stories preview
+        if: steps.surge-preview-tools.outputs.can-run-surge-command == 'true'
+        uses: afc163/surge-preview@v1
+        with:
+          surge_token: ${{ secrets.SURGE_TOKEN }}
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          dist: storybook-static
+          failOnError: true
+          teardown: 'true'
+          build: |
+            npm run build-storybook
