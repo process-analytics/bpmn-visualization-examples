@@ -1,0 +1,36 @@
+.status-fetching {
+  color: #5755d9;
+  font-style: italic;
+  padding: .4rem;
+}
+.relative {
+  position: relative;
+}
+.bpmn-container-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#bpmn-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 100px;
+}
+#fetch-status {
+  margin: 10px 0;
+}
+#load-status {
+  margin-bottom: 10px;
+}
+#dropdown-fetch-miwg li {
+  margin-top: 0;
+}
+#dropdown-fetch-miwg {
+  min-width: 125px;
+  max-height: 195px;
+}
+.hidden {
+  display: none !important;
+}
