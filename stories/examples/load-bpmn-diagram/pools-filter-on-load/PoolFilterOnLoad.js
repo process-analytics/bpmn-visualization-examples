@@ -6,11 +6,11 @@ import '../../static/css/main.css';
 
 import { getPoolsFilterDiagram } from '../../static/js/diagram/bpmn-diagram-pools-filter';
 
-import { BpmnVisualization } from 'bpmn-visualization';
+import {BpmnVisualization, FitType} from 'bpmn-visualization';
 
 function loadDiagram(bpmnVisualization, filteredPools) {
   bpmnVisualization.load(getPoolsFilterDiagram(), {
-    fit: {type: 'Center', margin: 20},
+    fit: {type: FitType.Center, margin: 20},
     modelFilter: {pools: filteredPools}
   });
 }

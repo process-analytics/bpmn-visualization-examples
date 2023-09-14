@@ -1,0 +1,63 @@
+#bpmn-container {
+  left: 60px;
+  right: 60px;
+  /*TODO find a way to ensure it takes the whole available height*/
+  /*height: 70%;*/
+  height: 600px;
+
+  margin-top: 2em;
+  border-style: solid;
+  border-color: #B0B0B0;
+  border-width: 1px;
+  /* this ensures that the part of the diagram outside of the container is not displayed. */
+  overflow: hidden;
+}
+
+:root {
+  --color-highlight: #2c623c;
+}
+
+.bpmn-type-activity.highlight-info > rect {
+  fill: blue !important;
+  fill-opacity: 30% !important;
+  stroke: blue;
+}
+.bpmn-type-activity.highlight-success > rect {
+  fill: green !important;
+  fill-opacity: 15% !important;
+  stroke: green;
+}
+.bpmn-type-activity.highlight-error > rect {
+  fill: red !important;
+  fill-opacity: 20% !important;
+  stroke: red;
+}
+.bpmn-type-activity.highlight-in-progress > rect {
+  fill: var(--color-highlight) !important;
+  fill-opacity: 40% !important;
+}
+.bpmn-type-gateway.highlight-warning > path:nth-child(1) {
+  fill: yellow !important;
+  fill-opacity: 30% !important;
+  stroke: orange;
+  stroke-width: 4px;
+}
+
+/* edge arrow */
+.bpmn-sequence-flow.highlight-path > path:nth-child(3) {
+  fill: var(--color-highlight);
+}
+/* edge arrow */
+.bpmn-sequence-flow.highlight-path > path:nth-child(3),
+  /* edge line */
+.bpmn-sequence-flow.highlight-path > path:nth-child(2),
+  /* activity */
+.bpmn-type-activity.highlight-path > rect,
+  /* gateway */
+.bpmn-type-gateway.highlight-path > path:nth-child(1),
+  /* event */
+.bpmn-type-event.highlight-path > ellipse {
+  filter: blur(1.5px); /* may not work on Safari */
+  stroke: var(--color-highlight);
+  stroke-width: 7px;
+}
