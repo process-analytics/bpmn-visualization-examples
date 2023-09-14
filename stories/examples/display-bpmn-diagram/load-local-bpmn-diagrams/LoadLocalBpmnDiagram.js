@@ -6,28 +6,6 @@ import '../../static/css/main.css';
 
 import { BpmnVisualization } from 'bpmn-visualization';
 
-const bpmnVisualization = new BpmnVisualization({ container: 'bpmn-container' });
-
-function handleFileSelect(evt) {
-  evt.stopPropagation();
-  evt.preventDefault();
-
-  const file = evt.target.files[0];
-  const reader = new FileReader();
-  reader.onload = () => {
-    try {
-      console.log(reader.result);
-      bpmnVisualization.load(reader.result);
-      document.getElementById('loading-info').classList.remove('hidden');
-      // TODO we probably don't need it, just select span child
-      document.getElementById('loaded-file-name').innerHTML = `<code>${file.name}</code>`;
-    } catch (error) {
-      console.error('Unable to load the BPMN diagram.', error);
-      window.alert(`Unable to load the BPMN diagram. \n\n${error.message}`);
-    }
-  };
-  reader.readAsText(file);
-}
 
 function createElementsInDOM() {
   const container = document.createElement('div');
@@ -55,6 +33,29 @@ function createElementsInDOM() {
 
 export const createLoadLocalBpmnDiagram = () => {
   const container = createElementsInDOM();
+
+  const bpmnVisualization = new BpmnVisualization({ container: container.querySelector('#bpmn-container') });
+
+  function handleFileSelect(evt) {
+    evt.stopPropagation();
+    evt.preventDefault();
+
+    const file = evt.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      try {
+        bpmnVisualization.load(reader.result);
+        document.getElementById('loading-info').classList.remove('hidden');
+        // TODO we probably don't need it, just select span child
+        document.getElementById('loaded-file-name').innerHTML = `<code>${file.name}</code>`;
+      } catch (error) {
+        console.error('Unable to load the BPMN diagram.', error);
+        window.alert(`Unable to load the BPMN diagram. \n\n${error.message}`);
+      }
+    };
+    reader.readAsText(file);
+  }
+
   container.querySelector('#btn-open-file').addEventListener('change', handleFileSelect, false);
   return container;
 };
