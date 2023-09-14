@@ -28,6 +28,7 @@
     "storybook": "^7.4.1"
   },
   "dependencies": {
+    "@storybook/addon-storysource": "^7.4.1",
     "bpmn-visualization": "^0.39.0"
   }
 }
