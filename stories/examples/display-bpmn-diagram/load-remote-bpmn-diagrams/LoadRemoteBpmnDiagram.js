@@ -6,19 +6,8 @@ import '../../static/css/main.css';
 
 import { BpmnVisualization } from 'bpmn-visualization';
 
-const bpmnVisualization = new  BpmnVisualization({
-  container: 'bpmn-container',
-  renderer: {
-    // use the colors defined in the miwg-test-suite diagrams when rendering
-    ignoreBpmnColors: false,
-  },
-});
-
 function log(message, ...optionalParams) {
   console.info('[DEMO] ' + message, ...optionalParams);
-}
-function loadBpmn(bpmn){
-  bpmnVisualization.load(bpmn);
 }
 
 // at least on chromium, performance.now() returns a lot of digits. We don't care to have such a precision here, so round to only keep milliseconds
@@ -81,13 +70,13 @@ function fetchBpmnContent(container, url) {
       });
 }
 
-function loadBpmnFromUrl(container, url) {
+function loadBpmnFromUrl(container, bpmnVisualization, url) {
   fetchBpmnContent(container, url)
       .then(bpmn => {
         const startTime = performance.now();
         try {
           log('Start loading Bpmn');
-          loadBpmn(bpmn);
+          bpmnVisualization.load(bpmn);
           log('Bpmn loaded from url <%s>', url);
           statusLoadOK(container, round(performance.now() - startTime));
         } catch (error) {
@@ -98,11 +87,11 @@ function loadBpmnFromUrl(container, url) {
   ;
 }
 
-function loadMiwgFile(container, fileName) {
+function loadMiwgFile(container, bpmnVisualization, fileName) {
   const file = fileName.startsWith('image-') ? `${fileName.substring('image-'.length)}.png` : `${fileName}.bpmn`;
   log('Ready to fetch MIWG file %s', file);
   const url = `https://raw.githubusercontent.com/bpmn-miwg/bpmn-miwg-test-suite/master/Reference/${file}`;
-  loadBpmnFromUrl(container, url);
+  loadBpmnFromUrl(container, bpmnVisualization, url);
 }
 
 const miwgFileNames = [
@@ -153,9 +142,17 @@ function createElementsInDOM() {
 export const createLoadRemoteBpmnDiagram = () => {
   const container = createElementsInDOM();
 
+  const bpmnVisualization = new  BpmnVisualization({
+    container: container.querySelector('#bpmn-container'),
+    renderer: {
+      // use the colors defined in the miwg-test-suite diagrams when rendering
+      ignoreBpmnColors: false,
+    },
+  });
+
   container.querySelector('#btn-fetch-miwg').onclick = function() {
     const fileName = miwgFileNames[Math.floor(Math.random() * miwgFileNames.length)];
-    loadMiwgFile(container, fileName);
+    loadMiwgFile(container, bpmnVisualization, fileName);
   };
 
   // Drop down list
@@ -169,7 +166,7 @@ export const createLoadRemoteBpmnDiagram = () => {
           e.preventDefault();
           // get li value
           const miwgFileName = anchor.parentElement.innerText;
-          loadMiwgFile(container, miwgFileName);
+          loadMiwgFile(container, bpmnVisualization, miwgFileName);
 
           container.querySelector('#dropdown-fetch-miwg').classList.add('hidden');
 
