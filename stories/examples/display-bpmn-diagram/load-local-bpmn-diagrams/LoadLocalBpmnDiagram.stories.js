@@ -1,7 +1,7 @@
 import { createLoadLocalBpmnDiagram } from "./LoadLocalBpmnDiagram";
 
 export default  {
-  title: 'Example/LoadBpmnDiagram',
+  title: 'Example/DisplayBpmnDiagram',
   tags: ['autodocs'],
 };
 
