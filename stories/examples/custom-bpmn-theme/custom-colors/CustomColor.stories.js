@@ -3,7 +3,7 @@ import { createDefaultColor} from "./DefaultColor";
 import { createCustomDefaultStrokeAndFillColor } from "./CustomDefaultStrokeAndFillColor";
 import {createCustomColorForUserTask} from "./CustomColorForUserTask";
 import {createCustomColorForBPMNEvents} from "./CustomColorForBPMNEvents";
-import {createCustomBPMNElementColor} from "./CustomBPMNElementColor";
+import {createCustomColorForBPMNKind} from "./CustomColorForBPMNKind";
 import {createCustomColorForBPMNKindAndSpecificElement} from "./CustomColorForBPMNKindAndSpecificElement";
 
 export default  {
@@ -32,8 +32,8 @@ export const CustomColorForBPMNEvents = {
 
   /* Define custom style depending on the kind of the Events.*/
 };
-export const CustomBPMNElementColor = {
-  render: () =>  createCustomBPMNElementColor(),
+export const CustomColorForBPMNKind = {
+  render: () =>  createCustomColorForBPMNKind(),
 
   /*  Define custom style for Events, Gateways, Pools and Tasks.<br>
       It applies to all types, for instance all kinds of Events have a custom style (start, catch, throw, boundary or end).*/

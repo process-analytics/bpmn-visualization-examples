@@ -5,9 +5,27 @@ import '../../static/css/icons.min.css';
 import '../../static/css/main.css';
 
 import { getCustomColorsBpmnDiagram } from '../../static/js/diagram/bpmn-diagrams';
+import { StyleIdentifiers } from "../../static/js/style-identifiers";
 
 import { BpmnVisualization } from 'bpmn-visualization';
 
+
+class BpmnVisualizationCustomizedColors extends BpmnVisualization {
+  constructor(containerId) {
+    super({ container: containerId });
+    this.configureStyle();
+  }
+
+  configureStyle() {
+    const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+    // edge
+    styleSheet.getDefaultEdgeStyle()[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+    // vertex
+    const defaultVertexStyle = styleSheet.getDefaultVertexStyle();
+    defaultVertexStyle[StyleIdentifiers.STYLE_FILLCOLOR] = 'LemonChiffon';
+    defaultVertexStyle[StyleIdentifiers.STYLE_STROKECOLOR] = 'Orange';
+  }
+}
 
 function createElementsInDOM() {
   const container = document.createElement('div');
@@ -19,7 +37,7 @@ function createElementsInDOM() {
 export const createCustomDefaultStrokeAndFillColor = () => {
   const container = createElementsInDOM();
 
-  const bpmnVisualization = new BpmnVisualization({ container });
+  const bpmnVisualization = new BpmnVisualizationCustomizedColors({ container });
   bpmnVisualization.load(getCustomColorsBpmnDiagram());
 
   return container;

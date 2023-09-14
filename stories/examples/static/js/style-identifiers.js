@@ -1,7 +1,7 @@
 // Define substitutes for mxGraph mxConstants as they are not available here.
 // Use the same property names as in mxConstants for easy substitution: see https://jgraph.github.io/mxgraph/docs/js-api/files/util/mxConstants-js.html#mxConstants
 
-const StyleIdentifiers = {
+export const StyleIdentifiers = {
   STYLE_FILLCOLOR: 'fillColor',
   STYLE_STROKECOLOR: 'strokeColor',
 
@@ -16,14 +16,14 @@ const StyleIdentifiers = {
   STYLE_SWIMLANE_FILLCOLOR: 'swimlaneFillColor',
 }
 
-const Directions = {
+export const Directions = {
   DIRECTION_EAST: 'east',
   DIRECTION_NORTH: 'north',
   DIRECTION_SOUTH: 'south',
   DIRECTION_WEST: 'west',
 }
 
-const FontStyle = {
+export const FontStyle = {
   FONT_BOLD: 1,
   FONT_ITALIC: 2,
 }

@@ -5,22 +5,39 @@ import '../../static/css/icons.min.css';
 import '../../static/css/main.css';
 
 import { getCustomColorsBpmnDiagram } from '../../static/js/diagram/bpmn-diagrams';
-// import * from '../../static/js/style-identifiers';
+import { StyleIdentifiers } from "../../static/js/style-identifiers";
 
 import { BpmnVisualization } from 'bpmn-visualization';
 
 
+
+class BpmnVisualizationCustomizedColors extends BpmnVisualization {
+  constructor(container) {
+    super({ container });
+    this.configureStyle();
+  }
+
+  configureStyle() {
+    const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+    const defaultFontColor = 'DeepPink';
+    // edge
+    styleSheet.getDefaultEdgeStyle()[StyleIdentifiers.STYLE_FONTCOLOR] = defaultFontColor;
+    // vertex
+    styleSheet.getDefaultVertexStyle()[StyleIdentifiers.STYLE_FONTCOLOR] = defaultFontColor;
+  }
+}
+
 function createElementsInDOM() {
-  const container = document.createElement('div');
-  container.id = "bpmn-container";
-  container.className = "col-12 mb-2";
+  const container = document.createElement('section');
+  container.classList.add(['col-12', 'mt-2', 'relative']);
+  container.innerHTML = `<div id="bpmn-container" class="mb-2"></div>`;
   return container;
 }
 
 export const createCustomDefaultFontColor = () => {
   const container = createElementsInDOM();
 
-  const bpmnVisualization = new BpmnVisualization({ container });
+  const bpmnVisualization = new BpmnVisualizationCustomizedColors({ container: container.querySelector('#bpmn-container') });
   bpmnVisualization.load(getCustomColorsBpmnDiagram());
 
   return container;

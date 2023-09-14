@@ -5,9 +5,24 @@ import '../../static/css/icons.min.css';
 import '../../static/css/main.css';
 
 import { getCustomColorsBpmnDiagram } from '../../static/js/diagram/bpmn-diagrams';
+import { StyleIdentifiers } from "../../static/js/style-identifiers";
 
-import { BpmnVisualization } from 'bpmn-visualization';
+import { BpmnVisualization, ShapeBpmnElementKind } from 'bpmn-visualization';
 
+
+class BpmnVisualizationCustomizedColors extends BpmnVisualization {
+  constructor(containerId) {
+    super({ container: containerId });
+    this.configureStyle();
+  }
+
+  configureStyle() {
+    const styleSheet = this.graph.getStylesheet(); // mxStylesheet parameter
+    const style = styleSheet.styles[ShapeBpmnElementKind.TASK_USER];
+    style[StyleIdentifiers.STYLE_FILLCOLOR] = '#adadec';
+    style[StyleIdentifiers.STYLE_STROKECOLOR] = 'DarkBlue';
+  }
+}
 
 function createElementsInDOM() {
   const container = document.createElement('div');
@@ -19,7 +34,7 @@ function createElementsInDOM() {
 export const createCustomColorForUserTask = () => {
   const container = createElementsInDOM();
 
-  const bpmnVisualization = new BpmnVisualization({ container });
+  const bpmnVisualization = new BpmnVisualizationCustomizedColors({ container });
   bpmnVisualization.load(getCustomColorsBpmnDiagram());
 
   return container;
