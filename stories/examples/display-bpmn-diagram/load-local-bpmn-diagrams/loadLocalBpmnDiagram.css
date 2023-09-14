@@ -1,0 +1,26 @@
+.relative {
+  position: relative;
+}
+.bpmn-container-absolute {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#bpmn-container {
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding-bottom: 100px;
+}
+#file-selector {
+  float: left;
+}
+#loading-info {
+  float: left;
+  padding-top: 0.5em;
+  margin-left: 1em;
+}
+.hidden {
+  display: none !important;
+}
