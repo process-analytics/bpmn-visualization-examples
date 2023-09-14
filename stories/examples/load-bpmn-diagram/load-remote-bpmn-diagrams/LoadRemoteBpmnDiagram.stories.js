@@ -1,7 +1,7 @@
 import { createLoadRemoteBpmnDiagram } from "./LoadRemoteBpmnDiagram";
 
 export default  {
-  title: 'Example/DisplayBpmnDiagram',
+  title: 'Example/Load',
   tags: ['autodocs'],
 };
 

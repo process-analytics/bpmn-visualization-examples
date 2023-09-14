@@ -1,7 +1,7 @@
 import { createPoolFilterOnLoad } from "./PoolFilterOnLoad";
 
 export default  {
-  title: 'Example/DisplayBpmnDiagram',
+  title: 'Example/Load',
   tags: ['autodocs'],
 };
 
