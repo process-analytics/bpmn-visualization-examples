@@ -23,12 +23,14 @@
     "@storybook/html-vite": "^7.4.1",
     "@storybook/jest": "^0.2.2",
     "@storybook/testing-library": "^0.2.0",
+    "@storybook/addon-actions": "^7.4.1",
+    "@storybook/addon-console": "^2.0.0",
+    "@storybook/addon-storysource": "^7.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "storybook": "^7.4.1"
   },
   "dependencies": {
-    "@storybook/addon-storysource": "^7.4.1",
     "bpmn-visualization": "^0.39.0"
   }
 }
