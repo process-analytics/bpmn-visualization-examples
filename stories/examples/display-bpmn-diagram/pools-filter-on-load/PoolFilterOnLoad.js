@@ -8,9 +8,7 @@ import { getPoolsFilterDiagram } from '../../static/js/diagram/bpmn-diagram-pool
 
 import { BpmnVisualization } from 'bpmn-visualization';
 
-const bpmnVisualization = new BpmnVisualization({container: 'bpmn-container'})
-
-function loadDiagram(filteredPools) {
+function loadDiagram(bpmnVisualization, filteredPools) {
   bpmnVisualization.load(getPoolsFilterDiagram(), {
     fit: {type: 'Center', margin: 20},
     modelFilter: {pools: filteredPools}
@@ -54,17 +52,19 @@ function createElementsInDOM() {
 export const createPoolFilterOnLoad = () => {
   const container = createElementsInDOM();
 
+  const bpmnVisualization = new BpmnVisualization({ container: container.querySelector('#bpmn-container'),})
+
   container.querySelector('#btn-reload').onclick = () => {
     const filteredPools = [];
-    container.querySelector('#pools-filter').forEach((checkbox) => {
+    container.querySelectorAll('[name="pools-filter"]').forEach((checkbox) => {
       if (checkbox.checked) {
         filteredPools.push({id: checkbox.value})
       }
     });
-    loadDiagram(filteredPools);
+    loadDiagram(bpmnVisualization,filteredPools);
   }
 
-  loadDiagram([]);
+  loadDiagram(bpmnVisualization,[]);
 
 
   return container;
