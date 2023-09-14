@@ -19,7 +19,7 @@ permissions:
   pull-requests: write
 
 jobs:
-  stories_preview:
+  story_prev:
     runs-on: ubuntu-20.04
     steps:
       - uses: bonitasoft/actions/packages/surge-preview-tools@v2.2.0
