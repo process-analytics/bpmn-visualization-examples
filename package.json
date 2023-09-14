@@ -21,6 +21,7 @@
     "@storybook/blocks": "^7.4.1",
     "@storybook/html": "^7.4.1",
     "@storybook/html-vite": "^7.4.1",
+    "@storybook/jest": "^0.2.2",
     "@storybook/testing-library": "^0.2.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
