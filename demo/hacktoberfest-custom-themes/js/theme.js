@@ -47,6 +47,48 @@ const fonts2022= {
     poolFontSize: 14,
 }
 
+// Colors are taken from the Figma official design (https://do.co/hacktoberbrand)
+const colors2023 = {
+    // Primary colors (background and font)
+    // Primary/Manga (kind of white)
+    primaryManga: {
+        "2.0" : '#EFEDEF',
+        "3.0" : '#C3BCC3',
+        "4.0" : '#655F67',
+    },
+    // Primary/Void (kind of black)
+    primaryVoid: '#0F0913',
+
+    // Secondary colors (in the Hacktoberfest logo)
+    // Secondary/Spark (kind of yellow)
+    secondaryBavarianGold: {
+        "1.0" : '#FFFBA4',
+        "2.0" : '#D2B863',
+        "3.0" : '#AD832D',
+        "4.0" : '#3D2E10',
+    },
+    // Secondary/Surf (kind of blue)
+    secondaryBavarianBlue: {
+        "1.0" : '#B2E3F0',
+        "2.0" : '#33B6D8',
+        "3.0" : '#14596B',
+        "4.0" : '#0C3640',
+    },
+    // Secondary/Psybeam (kind of red)
+    secondaryBavarianRed: {
+        "1.0" : '#F8BDB9',
+        "2.0" : '#EC4237',
+        "3.0" : '#A3180F',
+        "4.0" : '#460A07',
+    },
+};
+const fonts2023= {
+    family: 'JetBrains Mono, regular',
+    size: 9.5,
+    poolFamily: 'JetBrains Mono, medium',
+    poolSize: 14,
+}
+
 const themes = new Map();
 themes.set("2020",
     new Map([['dark', {
@@ -187,7 +229,6 @@ themes.set("2021",
         }
     }]]));
 
-
 themes.set("2022", new Map([
     ['dark', {
         default: {
@@ -272,5 +313,88 @@ themes.set("2022", new Map([
             gradientDirection: Directions.DIRECTION_NORTH,
             fontSize: fonts2022.poolFontSize,
         }
+    }]
+]));
+
+
+themes.set("2023", new Map([
+    ['dark', {
+        default: {
+            // keep this to make the gateway gradient work
+            fill: colors2023.primaryVoid,
+            stroke: colors2023.primaryManga["2.0"],
+            font: colors2023.primaryManga["2.0"],
+            fontFamily: fonts2023.family,
+            fontSize: fonts2023.size,
+        },
+        startEvent: {
+            fill: colors2023.secondaryBavarianBlue["1.0"],
+            stroke: colors2023.secondaryBavarianBlue["2.0"],
+            icon: colors2023.secondaryBavarianBlue["3.0"]
+        },
+        endEvent: {
+            fill: colors2023.secondaryBavarianBlue["1.0"],
+            stroke: colors2023.secondaryBavarianBlue["3.0"],
+        },
+        exclusiveGateway: {
+            fill: colors2023.secondaryBavarianRed["1.0"],
+            stroke: colors2023.secondaryBavarianRed["1.0"],
+            outsideIcon: colors2023.secondaryBavarianRed["4.0"],
+            insideIcon: colors2023.secondaryBavarianRed["2.0"],
+        },
+        userTask: {
+            fill: colors2023.primaryManga["4.0"],
+            icon: colors2023.primaryManga["2.0"],
+        },
+        callActivity: {
+            fill: colors2023.secondaryBavarianGold["1.0"],
+            stroke: colors2023.primaryManga["4.0"],
+            font: colors2023.secondaryBavarianGold["3.0"],
+            icon: colors2023.secondaryBavarianGold["4.0"],
+        },
+        pool: {
+            labelFill: colors2023.secondaryBavarianGold["2.0"],
+            swimlaneFill: colors2023.primaryVoid,
+            font: colors2023.secondaryBavarianGold["4.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        }
+    }],
+    ['light', {
+        default: {
+            fill: colors2023.primaryManga["2.0"],
+            stroke: colors2023.primaryVoid,
+            font: colors2023.primaryVoid,
+            fontFamily: fonts2023.family,
+            fontSize: fonts2023.size,
+        },
+        startEvent: {
+            stroke: colors2023.secondaryBavarianBlue["2.0"],
+            icon: colors2023.secondaryBavarianBlue["3.0"]
+        },
+        endEvent: {
+            fill: colors2023.secondaryBavarianBlue["2.0"],
+            stroke: colors2023.secondaryBavarianBlue["3.0"],
+            gradient: colors2023.secondaryBavarianBlue["1.0"],
+        },
+        exclusiveGateway: {
+            outsideIcon: colors2023.secondaryBavarianRed["3.0"],
+            insideIcon: colors2023.secondaryBavarianRed["1.0"]
+        },
+        userTask: {
+            fill: colors2023.secondaryBavarianGold["1.0"],
+            icon: colors2023.secondaryBavarianGold["4.0"]
+        },
+        callActivity: {
+            fill: colors2023.secondaryBavarianGold["3.0"],
+            font: colors2023.secondaryBavarianGold["1.0"],
+            icon: colors2023.secondaryBavarianGold["1.0"],
+        },
+        pool: {
+            labelFill: colors2023.secondaryBavarianGold["1.0"],
+            swimlaneFill: colors2023.primaryManga["2.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        },
     }]
 ]));
