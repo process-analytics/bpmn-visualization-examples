@@ -110,7 +110,7 @@
       <bpmndi:BPMNShape id="shape_exclusive_gateway_3" bpmnElement="exclusive_gateway_3" isMarkerVisible="true">
         <dc:Bounds x="1015" y="185" width="50" height="50" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="1058" y="166" width="63" height="27" />
+          <dc:Bounds x="1058" y="156" width="63" height="27" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_end_event" bpmnElement="end_event">
