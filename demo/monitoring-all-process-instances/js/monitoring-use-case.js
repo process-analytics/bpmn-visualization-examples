@@ -1,8 +1,10 @@
 class MonitoringUseCase extends UseCase {
     #executionData;
 
-    constructor(type, getDiagram, executionData) {
-        super(type, getDiagram, true);
+    constructor(getDiagram, executionData, title) {
+        document.querySelector(`[id*="monitoring-title"]`).textContent = title;
+        document.querySelector(`[id*="monitoring-bpmn-container"]`).textContent = undefined;
+        super('monitoring', getDiagram, true);
         this.#executionData = executionData;
     }
 
