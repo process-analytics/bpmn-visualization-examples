@@ -1,16 +1,18 @@
-function buildUseCase(type) {
-    switch (type) {
+function buildUseCase() {
+    const dataType = state.dataType;
+
+    switch (state.useCaseType) {
         case 'time':
-            return  new MonitoringUseCase(  getHardwareRetailerDiagram, new TimeExecutionData(), "Average run time");
+            return new MonitoringUseCase({ getDiagram: getHardwareRetailerDiagram, executionData: new TimeExecutionData(), dataType, title: "Average run time" });
         case 'frequency':
         default:
-            return new MonitoringUseCase(  getHardwareRetailerDiagram, new FrequencyExecutionData(), "Number of execution");
+            return new MonitoringUseCase({ getDiagram: getHardwareRetailerDiagram, executionData: new FrequencyExecutionData(), dataType, title: "Number of execution" });
     }
 }
 
 function changeUseCase() {
-    state.useCase = buildUseCase(state.useCaseType);
-    state.useCase.display(state.dataType);
+    state.useCase = buildUseCase();
+    state.useCase.display();
 }
 
 // Initialize the state and the radio buttons

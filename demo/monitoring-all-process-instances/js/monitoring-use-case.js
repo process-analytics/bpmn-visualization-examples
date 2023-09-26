@@ -1,20 +1,17 @@
 class MonitoringUseCase extends UseCase {
     #executionData;
+    #dataType;
 
-    constructor(getDiagram, executionData, title) {
+    constructor({ getDiagram, executionData, title, dataType }) {
         super({ getDiagram, navigationEnabled: true, title });
         this.#executionData = executionData;
-    }
-
-    display(dataType) {
         this.#executionData.updateLegends();
-        super.display(dataType);
-        this.displayData(dataType);
+        this.#dataType = dataType;
     }
 
-    displayData(dataType) {
-        console.info('Setting %s data', dataType);
-        switch (dataType) {
+    _postLoadDiagram() {
+        console.info('Setting %s data', this.#dataType);
+        switch (this.#dataType) {
             case 'overlays':
                 this.#executionData.hidePathLegend();
                 this.#executionData.displayOverlaysLegends();
@@ -52,6 +49,6 @@ class MonitoringUseCase extends UseCase {
                     }
                 });
         }
-        console.info('%s data set', dataType);
+        console.info('%s data set', this.#dataType);
     }
 }
