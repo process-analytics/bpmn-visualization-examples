@@ -2,13 +2,12 @@ class MonitoringUseCase extends UseCase {
     #executionData;
 
     constructor(getDiagram, executionData, title) {
-        document.querySelector(`[id*="monitoring-title"]`).textContent = title;
-        document.querySelector(`[id*="monitoring-bpmn-container"]`).textContent = undefined;
-        super('monitoring', getDiagram, true);
+        super({ getDiagram, navigationEnabled: true, title });
         this.#executionData = executionData;
     }
 
     display(dataType) {
+        this.#executionData.updateLegends();
         super.display(dataType);
         this.displayData(dataType);
     }
@@ -54,11 +53,5 @@ class MonitoringUseCase extends UseCase {
                 });
         }
         console.info('%s data set', dataType);
-    }
-
-
-    _displayPanel() {
-        super._displayPanel();
-        this.#executionData.updateLegends();
     }
 }

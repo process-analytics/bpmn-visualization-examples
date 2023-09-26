@@ -1,9 +1,11 @@
 class HacktoberfestUseCase extends UseCase {
 
     constructor(inputProjectName, title) {
-        document.querySelector(`[id*="hacktoberfest-title"]`).textContent = title;
-        document.querySelector(`[id*="hacktoberfest-bpmn-container"]`).textContent = undefined;
-        super('hacktoberfest', () => getHacktoberfestBpmnDiagram(inputProjectName), false);
+        super({
+            getDiagram: () => getHacktoberfestBpmnDiagram(inputProjectName),
+            navigationEnabled: false,
+            title
+        });
     }
 
     updateCellsLabel(projectName) {

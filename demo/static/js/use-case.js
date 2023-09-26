@@ -3,7 +3,6 @@ const defaultLoadOptions = {
 }
 
 class UseCase {
-    #type;
     #getDiagram;
     #navigationEnabled;
     #loadOptions;
@@ -13,17 +12,13 @@ class UseCase {
      */
     _bpmnVisualization;
 
-    #alreadyLoad = false;
-
-    constructor(type, getDiagram, navigationEnabled, loadOptions) {
-        this.#type = type;
+    constructor({ getDiagram, navigationEnabled, loadOptions, title }) {
         this.#getDiagram = getDiagram;
         this.#navigationEnabled = navigationEnabled;
         this.#loadOptions = {...defaultLoadOptions, ...loadOptions};
-    }
 
-    get type() {
-        return this.#type;
+        document.querySelector(`[id*="title"]`).textContent = title;
+        document.querySelector(`[id*="bpmn-container"]`).textContent = undefined;
     }
 
     /**
@@ -32,16 +27,11 @@ class UseCase {
      * @param {string} dataType
      */
     display(dataType) {
-        this._displayPanel();
-
-        if (!this.#alreadyLoad) {
-            this._bpmnVisualization = this._initBpmnVisualization({container: `${this.#type}-bpmn-container`, navigation: {enabled: this.#navigationEnabled}});
-            this._displayVersionInfoInFooter(); // This is called by each use case available in the page, but this is not an issue. All use the same bpmn-visualization version
-            this._preLoadDiagram();
-            this._bpmnVisualization.load(this.#getDiagram(), this.#loadOptions);
-            this._postLoadDiagram();
-            this.#alreadyLoad = true;
-        }
+        this._bpmnVisualization = this._initBpmnVisualization({container: 'bpmn-container', navigation: {enabled: this.#navigationEnabled}});
+        this._displayVersionInfoInFooter(); // This is called by each use case available in the page, but this is not an issue. All use the same bpmn-visualization version
+        this._preLoadDiagram();
+        this._bpmnVisualization.load(this.#getDiagram(), this.#loadOptions);
+        this._postLoadDiagram();
     }
 
     _displayVersionInfoInFooter() {
@@ -70,31 +60,4 @@ class UseCase {
      */
     _postLoadDiagram() {
     }
-
-    /**
-     * Generic implementation
-     */
-    _displayPanel() {
-        this._displayElementAndHideOthers("bpmn-container");
-        this._displayElementAndHideOthers("title");
-    }
-
-    /**
-     * Generic implementation
-     */
-    _displayElementAndHideOthers(subId) {
-        // Hide all corresponding HTML elements
-        const bpmnContainers = document.querySelectorAll(`[id*="${subId}"]`);
-        for (let i = 0; i < bpmnContainers.length; i++) {
-            bpmnContainers.item(i).classList.add('d-hide');
-        }
-
-        // Display corresponding HTML element
-        const element = document.getElementById(`${this.#type}-${subId}`);
-        if(element) {
-            element.classList.remove('d-hide');
-            console.info('%s displayed', `${this.#type}-${subId}`);
-        }
-    }
-
 }
