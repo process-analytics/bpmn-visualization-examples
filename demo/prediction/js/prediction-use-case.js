@@ -5,20 +5,16 @@ class PredicatedLateUseCase extends UseCase {
 
     constructor(title) {
         super({
-            getDiagram:()  => pizzaDiagram(),
+            getDiagram: pizzaDiagram,
             navigationEnabled: false,
-            loadOptions: {fit: {type: 'Center', margin: 20}},
+            loadOptions: { fit: {type: 'Center', margin: 20} },
             title
         });
     }
 
-    display(dataType) {
-        super.display(dataType);
-        this._style.switchLegend();
-    }
-
     _postLoadDiagram() {
         this._initManagers();
+        this._style.switchLegend();
 
         this._style.reduceVisibilityOfExecutedElements(this._executionData.executedElements);
         this._style.highlightRunningElementWithPrediction(this._executionData.runningElementWithPrediction);

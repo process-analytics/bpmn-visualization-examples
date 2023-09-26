@@ -1,17 +1,21 @@
-function buildUseCase(type, year, projectName) {
-    switch (type) {
+function buildUseCase() {
+    const year = state.themeYear;
+    const mode = state.useCaseType;
+    const projectName = state.projectName;
+
+    switch (mode) {
         case 'light':
-            return new ThemeUseCase( projectName, { year, mode: type }, `Light Hacktoberfest ${year} Theme`);
+            return new ThemeUseCase(projectName, { year, mode }, `Light Hacktoberfest ${year} Theme`);
         case 'dark':
-            return new ThemeUseCase( projectName, { year, mode: type }, `Dark Hacktoberfest ${year} Theme`);
+            return new ThemeUseCase(projectName, { year, mode }, `Dark Hacktoberfest ${year} Theme`);
         case 'default':
         default:
-            return new HacktoberfestUseCase(  projectName, `Default Theme`);
+            return new HacktoberfestUseCase(projectName, `Default Theme`);
     }
 }
 
 function changeUseCase() {
-    state.useCase = buildUseCase(state.useCaseType, state.themeYear, state.projectName);
+    state.useCase = buildUseCase();
     state.useCase.display();
 }
 
