@@ -61,9 +61,6 @@ function configureStyle(style, themeElement) {
     if (themeElement.stroke) {
         style[StyleIdentifiers.STYLE_STROKECOLOR] = themeElement.stroke;
     }
-
-    console.log(style);
-    console.log(themeElement);
 }
 
 class ThemeIconPainter extends bpmnvisu.IconPainter {
