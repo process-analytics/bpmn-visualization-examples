@@ -11,8 +11,8 @@ class ThemeUseCase extends HacktoberfestUseCase {
     #originalPoolLabelFillColor;
     #originalConfigureCommonDefaultStyle;
 
-    constructor(inputProjectName, themeState) {
-        super(inputProjectName);
+    constructor(inputProjectName, themeState, title) {
+        super(inputProjectName, title);
         this._theme = themes.get(themeState.year).get(themeState.mode);
     }
 

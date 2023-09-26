@@ -1,16 +1,12 @@
 function buildUseCase(type, year, projectName) {
-    const titleElement = document.querySelector(`[id*="hacktoberfest-title"]`);
     switch (type) {
         case 'light':
-            titleElement.textContent = `Light Hacktoberfest ${year} Theme`;
-            return new ThemeUseCase( projectName, { year, mode: type });
+            return new ThemeUseCase( projectName, { year, mode: type }, `Light Hacktoberfest ${year} Theme`);
         case 'dark':
-            titleElement.textContent = `Dark Hacktoberfest ${year} Theme`;
-            return new ThemeUseCase( projectName, { year, mode: type });
+            return new ThemeUseCase( projectName, { year, mode: type }, `Dark Hacktoberfest ${year} Theme`);
         case 'default':
         default:
-            titleElement.textContent = `Default Theme`;
-            return new HacktoberfestUseCase('default',  projectName);
+            return new HacktoberfestUseCase(  projectName, `Default Theme`);
     }
 }
 
