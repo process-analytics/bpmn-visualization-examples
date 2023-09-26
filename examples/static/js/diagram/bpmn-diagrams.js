@@ -1731,7 +1731,7 @@ function getHacktoberfestBpmnDiagram(projectName) {
   <bpmndi:BPMNDiagram id="BPMNDiagram_1">
     <bpmndi:BPMNPlane id="BPMNPlane_1" bpmnElement="collaboration_1">
       <bpmndi:BPMNShape id="shape_participant_1" bpmnElement="participant_1" isHorizontal="true">
-        <dc:Bounds x="160" y="60" width="935" height="420" />
+        <dc:Bounds x="160" y="60" width="940" height="420" />
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="shape_start_event" bpmnElement="start_event">
         <dc:Bounds x="232" y="192" width="36" height="36" />
