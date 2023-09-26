@@ -22,12 +22,10 @@ class UseCase {
     }
 
     /**
-     * Display the panel containing the bpmn container, and load the diagram if it is not already done.
-     *
-     * @param {string} dataType
+     * Initialize bpmn-visualization and load the diagram.
      */
-    display(dataType) {
-        this._bpmnVisualization = this._initBpmnVisualization({container: 'bpmn-container', navigation: {enabled: this.#navigationEnabled}});
+    display() {
+        this._bpmnVisualization = this._initBpmnVisualization({ container: 'bpmn-container', navigation: { enabled: this.#navigationEnabled } });
         this._displayVersionInfoInFooter(); // This is called by each use case available in the page, but this is not an issue. All use the same bpmn-visualization version
         this._preLoadDiagram();
         this._bpmnVisualization.load(this.#getDiagram(), this.#loadOptions);
