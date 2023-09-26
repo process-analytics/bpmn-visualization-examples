@@ -1,7 +1,7 @@
 class HacktoberfestUseCase extends UseCase {
 
-    constructor(type, inputProjectName) {
-        super(type, () => getHacktoberfestBpmnDiagram(inputProjectName), false);
+    constructor(inputProjectName) {
+        super('hacktoberfest', () => getHacktoberfestBpmnDiagram(inputProjectName), false);
     }
 
     updateCellsLabel(projectName) {
