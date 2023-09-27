@@ -253,7 +253,6 @@ themes.set("2022", new Map([
             stroke: colors2022.secondaryPsybeam,
         },
         exclusiveGateway: {
-            fill: colors2022.secondaryManga,
             gradient: colors2022.secondarySpark,
             gradientDirection: Directions.DIRECTION_EAST,
             insideIcon: colors2022.secondarySpark,
