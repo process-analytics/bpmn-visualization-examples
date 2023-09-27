@@ -11,9 +11,9 @@ class ThemeUseCase extends HacktoberfestUseCase {
     #originalPoolLabelFillColor;
     #originalConfigureCommonDefaultStyle;
 
-    constructor(type, inputProjectName, themeYear) {
-        super(`${themeYear}-${type}`, inputProjectName);
-        this._theme = themes.get(themeYear).get(type);
+    constructor(inputProjectName, themeState, title) {
+        super(inputProjectName, title);
+        this._theme = themes.get(themeState.year).get(themeState.mode);
     }
 
     _initBpmnVisualization(options) {
@@ -25,7 +25,7 @@ class ThemeUseCase extends HacktoberfestUseCase {
         bpmnvisu.StyleDefault.DEFAULT_FONT_FAMILY = this._theme.default.fontFamily ?? 'Inter, Helvetica, sans-serif';
         bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE = this._theme.default.fontSize ?? bpmnvisu.StyleDefault.DEFAULT_FONT_SIZE;
 
-        const bpmnVisualization = this._internalBuildBpmnVisualization(options);
+        const bpmnVisualization = new ThemeBpmnVisualization(options, this._theme);
         this._restoreDefaultTheme();
         return bpmnVisualization;
     }
@@ -54,32 +54,6 @@ class ThemeUseCase extends HacktoberfestUseCase {
         bpmnvisu.StyleDefault.DEFAULT_FILL_COLOR = this.#originalDefaultFillColor;
         bpmnvisu.StyleDefault.POOL_LABEL_FILL_COLOR = this.#originalPoolLabelFillColor;
         bpmnvisu.StyleConfigurator.configureCommonDefaultStyle = this.#originalConfigureCommonDefaultStyle;
-    }
-}
-
-class DarkUseCase extends ThemeUseCase {
-
-    constructor(inputProjectName, themeYear) {
-        super('dark', inputProjectName, themeYear);
-    }
-
-    _internalBuildBpmnVisualization(options) {
-        return new ThemeBpmnVisualization(options, this._theme);
-    }
-
-    _preLoadDiagram() {
-        bpmnvisu.IconPainterProvider.set(new ThemeIconPainter(this._theme));
-    }
-}
-
-class LightUseCase extends ThemeUseCase {
-
-    constructor(inputProjectName, themeYear) {
-        super('light', inputProjectName, themeYear);
-    }
-
-    _internalBuildBpmnVisualization(options) {
-        return new ThemeBpmnVisualization(options, this._theme);
     }
 
     _preLoadDiagram() {
