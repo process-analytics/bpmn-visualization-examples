@@ -3,8 +3,10 @@ class PredicatedLateUseCase extends UseCase {
     _style;
     _executionData;
 
-    constructor(type) {
-        super(type, () => pizzaDiagram(), false, {fit: {type: 'Center', margin: 20}});
+    constructor(title) {
+        document.querySelector(`[id*="prediction-title"]`).textContent = title;
+        document.querySelector(`[id*="prediction-bpmn-container"]`).textContent = undefined;
+        super('prediction', () => pizzaDiagram(), false, {fit: {type: 'Center', margin: 20}});
     }
 
     display(dataType) {
