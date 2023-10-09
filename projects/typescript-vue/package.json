@@ -10,13 +10,13 @@
   "dependencies": {
     "@process-analytics/bv-experimental-add-ons": "0.2.0",
     "bpmn-visualization": "0.41.0",
-    "spectre.css": "^0.5.9",
-    "vue": "^3.3.4"
+    "spectre.css": "~0.5.9",
+    "vue": "~3.3.4"
   },
   "devDependencies": {
-    "@babel/types": "^7.22.4",
-    "@vitejs/plugin-vue": "^4.2.3",
-    "typescript": "~5.0.4",
-    "vite": "~4.3.9"
+    "@babel/types": "~7.23.0",
+    "@vitejs/plugin-vue": "~4.4.0",
+    "typescript": "~5.2.2",
+    "vite": "~4.4.11"
   }
 }
