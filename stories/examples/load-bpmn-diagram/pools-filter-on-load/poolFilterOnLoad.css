@@ -1,0 +1,10 @@
+.bpmn-container {
+  /* use absolute values for height to ensure that the vertical diagram is not fully displayed when the page is opened. */
+  /* width is relative to the window size */
+  height: 600px;
+  border-style: solid;
+  border-color: #B0B0B0;
+  border-width: 1px;
+  /* This ensures that the parts of the diagram outside of the container are not displayed. */
+  overflow: hidden;
+}
