@@ -11,8 +11,8 @@ import { BpmnVisualization, ShapeUtil, ShapeBpmnElementKind } from 'bpmn-visuali
 
 
 class BpmnVisualizationCustomizedColors extends BpmnVisualization {
-  constructor(containerId) {
-    super({ container: containerId });
+  constructor(options) {
+    super(options);
     this.configureStyle();
   }
 

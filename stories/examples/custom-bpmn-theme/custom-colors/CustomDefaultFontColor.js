@@ -12,8 +12,8 @@ import { BpmnVisualization } from 'bpmn-visualization';
 
 
 class BpmnVisualizationCustomizedColors extends BpmnVisualization {
-  constructor(container) {
-    super({ container });
+  constructor(options) {
+    super(options);
     this.configureStyle();
   }
 
