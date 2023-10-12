@@ -9,8 +9,8 @@ class HacktoberfestUseCase extends UseCase {
     }
 
     _initBpmnVisualization(options) {
-        super._initBpmnVisualization();
         bpmnvisu.IconPainterProvider.set(new bpmnvisu.IconPainter());
+        return super._initBpmnVisualization(options);
     }
 
     updateCellsLabel(projectName) {
