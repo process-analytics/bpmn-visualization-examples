@@ -153,13 +153,14 @@ BPMN Info
 <hr>
 ${computeBpmnInfoForPopover(headerKeys, bpmnSemantic)}
 <br>
-${computeBpmnInfoForPopover(secondaryKeys, bpmnSemantic, true)}
+${computeBpmnInfoForPopover(secondaryKeys, bpmnSemantic, true, true)}
 </div>`;
 }
 
-function computeBpmnInfoForPopover(keys, bpmnSemantic, sort = false) {
+function computeBpmnInfoForPopover(keys, bpmnSemantic, sort = false, filterUndefinedValue = false) {
     return keys.map(key => getConvertedBpmnSemanticValue(key, bpmnSemantic))
       .sort((a, b) => sort ? a.key.localeCompare(b.key) : 0)
+      .filter(obj => filterUndefinedValue ? obj.value !== 'N/A' : true)
       .map(obj => `<b>${obj.key}</b>: ${obj.value}`)
       .join('<br>\n');
 }
