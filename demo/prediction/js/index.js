@@ -1,5 +1,5 @@
-function buildUseCase(type) {
-    switch (type) {
+function buildUseCase() {
+    switch (state.dataType) {
         case 'late':
             return new PredicatedLateUseCase('Predicted Late');
         case 'onTime':
@@ -9,8 +9,8 @@ function buildUseCase(type) {
 }
 
 function changeUseCase() {
-    state.useCase = buildUseCase(state.dataType);
-    state.useCase.display(state.dataType);
+    state.useCase = buildUseCase();
+    state.useCase.display();
 }
 
 const state = {

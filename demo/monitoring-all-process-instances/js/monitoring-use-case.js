@@ -1,21 +1,17 @@
 class MonitoringUseCase extends UseCase {
     #executionData;
+    #dataType;
 
-    constructor(getDiagram, executionData, title) {
-        document.querySelector(`[id*="monitoring-title"]`).textContent = title;
-        document.querySelector(`[id*="monitoring-bpmn-container"]`).textContent = undefined;
-        super('monitoring', getDiagram, true);
+    constructor({ getDiagram, executionData, title, dataType }) {
+        super({ getDiagram, navigationEnabled: true, title });
         this.#executionData = executionData;
+        this.#executionData.updateLegends();
+        this.#dataType = dataType;
     }
 
-    display(dataType) {
-        super.display(dataType);
-        this.displayData(dataType);
-    }
-
-    displayData(dataType) {
-        console.info('Setting %s data', dataType);
-        switch (dataType) {
+    _postLoadDiagram() {
+        console.info('Setting %s data', this.#dataType);
+        switch (this.#dataType) {
             case 'overlays':
                 this.#executionData.hidePathLegend();
                 this.#executionData.displayOverlaysLegends();
@@ -53,12 +49,6 @@ class MonitoringUseCase extends UseCase {
                     }
                 });
         }
-        console.info('%s data set', dataType);
-    }
-
-
-    _displayPanel() {
-        super._displayPanel();
-        this.#executionData.updateLegends();
+        console.info('%s data set', this.#dataType);
     }
 }

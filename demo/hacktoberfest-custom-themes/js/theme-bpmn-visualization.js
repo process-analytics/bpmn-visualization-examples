@@ -1,37 +1,39 @@
 class ThemeBpmnVisualization extends bpmnvisu.BpmnVisualization {
-    _theme;
 
     constructor(options, theme) {
         super(options);
-        this._theme = theme;
-        this._configureStyle();
+        this._configureStyle(theme);
     }
 
-    _configureStyle() {
+    _configureStyle(theme) {
         const styleSheet = this.graph.getStylesheet(); // mxStylesheet
 
+        theme.default.fontFamily ??= 'Inter, Helvetica, sans-serif';
+        configureStyle(styleSheet.getDefaultVertexStyle(), theme.default);
+        configureStyle(styleSheet.getDefaultEdgeStyle(), theme.default);
+
         // START EVENT
-        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START], this._theme.startEvent);
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_START], theme.startEvent);
 
         // END EVENT
-        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END], this._theme.endEvent);
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.EVENT_END], theme.endEvent);
 
         // USER TASK
-        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER], this._theme.userTask);
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.TASK_USER], theme.userTask);
 
         // EXCLUSIVE GATEWAY
-        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE], this._theme.exclusiveGateway);
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.GATEWAY_EXCLUSIVE], theme.exclusiveGateway);
 
         // CALL ACTIVITY
-        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY], this._theme.callActivity);
+        configureStyle(styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.CALL_ACTIVITY], theme.callActivity);
 
         // POOL
         const style = styleSheet.styles[bpmnvisu.ShapeBpmnElementKind.POOL];
-        const themePool = this._theme.pool;
+        const themePool = theme.pool;
+        themePool.fontSize ??= 16;
         configureStyle(style, themePool);
         style[StyleIdentifiers.STYLE_FILLCOLOR] = themePool.labelFill;
         style[StyleIdentifiers.STYLE_SWIMLANE_FILLCOLOR] = themePool.swimlaneFill;
-        style[StyleIdentifiers.STYLE_FONTSIZE] = themePool.fontSize ?? 16;
     }
 
 }
@@ -40,13 +42,22 @@ function configureStyle(style, themeElement) {
     if (themeElement.fill) {
         style[StyleIdentifiers.STYLE_FILLCOLOR] = themeElement.fill;
     }
+
     if (themeElement.font) {
         style[StyleIdentifiers.STYLE_FONTCOLOR] = themeElement.font;
     }
+    if (themeElement.fontFamily) {
+        style[StyleIdentifiers.STYLE_FONTFAMILY] = themeElement.fontFamily;
+    }
+    if (themeElement.fontSize) {
+        style[StyleIdentifiers.STYLE_FONTSIZE] = themeElement.fontSize;
+    }
+
     if (themeElement.gradient) {
         style[StyleIdentifiers.STYLE_GRADIENT_DIRECTION] = themeElement.gradientDirection ?? Directions.DIRECTION_WEST;
         style[StyleIdentifiers.STYLE_GRADIENTCOLOR] = themeElement.gradient;
     }
+
     if (themeElement.stroke) {
         style[StyleIdentifiers.STYLE_STROKECOLOR] = themeElement.stroke;
     }

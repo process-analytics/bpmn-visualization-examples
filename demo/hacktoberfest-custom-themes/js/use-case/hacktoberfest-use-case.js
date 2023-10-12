@@ -1,9 +1,16 @@
 class HacktoberfestUseCase extends UseCase {
 
     constructor(inputProjectName, title) {
-        document.querySelector(`[id*="hacktoberfest-title"]`).textContent = title;
-        document.querySelector(`[id*="hacktoberfest-bpmn-container"]`).textContent = undefined;
-        super('hacktoberfest', () => getHacktoberfestBpmnDiagram(inputProjectName), false);
+        super({
+            getDiagram: () => getHacktoberfestBpmnDiagram(inputProjectName),
+            navigationEnabled: false,
+            title
+        });
+    }
+
+    _initBpmnVisualization(options) {
+        bpmnvisu.IconPainterProvider.set(new bpmnvisu.IconPainter());
+        return super._initBpmnVisualization(options);
     }
 
     updateCellsLabel(projectName) {
@@ -17,13 +24,6 @@ class HacktoberfestUseCase extends UseCase {
     _updateCellLabel(cellId, value) {
         const cell = this._bpmnVisualization.graph.model.getCell(cellId);
         this._bpmnVisualization.graph.model.setValue(cell, value);
-    }
-
-    /**
-     * Generic implementation
-     */
-    _preLoadDiagram() {
-        bpmnvisu.IconPainterProvider.set(new bpmnvisu.IconPainter());
     }
 
 }
