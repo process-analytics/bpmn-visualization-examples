@@ -7,7 +7,7 @@ class PathUseCase extends UseCase {
     #pathManager;
 
     constructor(getDiagram) {
-        super('path', getDiagram, true);
+        super(  {getDiagram, navigationEnabled: true});
 
         this.#steps = new Steps();
     }

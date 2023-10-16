@@ -17,7 +17,9 @@ class UseCase {
         this.#navigationEnabled = navigationEnabled;
         this.#loadOptions = {...defaultLoadOptions, ...loadOptions};
 
-        document.querySelector(`[id*="title"]`).textContent = title;
+        if(title) {
+            document.querySelector(`[id*="title"]`).textContent = title;
+        }
         document.querySelector(`[id*="bpmn-container"]`).textContent = undefined;
     }
 
