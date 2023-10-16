@@ -11,7 +11,7 @@
   },
   "dependencies": {
     "lit": "~2.7.5",
-    "bpmn-visualization": "0.41.0"
+    "bpmn-visualization": "0.42.0"
   },
   "devDependencies": {
     "patch-package": "~8.0.0",
