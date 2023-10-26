@@ -65,7 +65,7 @@ jobs:
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
       - uses: actions/checkout@v4
       - name: Setup node
-        uses: actions/setup-node@v3
+        uses: actions/setup-node@v4
         with:
           node-version-file: '.nvmrc'
       - name: Install dependencies
