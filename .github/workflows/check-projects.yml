@@ -120,7 +120,7 @@ jobs:
           echo "projects_development=$(ls -xw0 build/development/)" >> $GITHUB_OUTPUT
           echo "projects_release=$(ls -xw0 build/release/)" >> $GITHUB_OUTPUT
       - name: Create the home page
-        uses: actions/github-script@v6
+        uses: actions/github-script@v7
         env:
           PR_NUMBER: ${{github.event.pull_request.number}}
           PR_URL: ${{github.server_url}}/${{github.repository}}/pull/${{github.event.pull_request.number}}
