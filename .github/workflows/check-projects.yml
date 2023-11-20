@@ -23,7 +23,7 @@ jobs:
         with:
           repository: 'process-analytics/bpmn-visualization-js'
           # to test a specific feature under development, uncomment the following line and use the related branch
-          # ref: 'specific_branch'
+          ref: 'fix/package.json_exports_types'
       - name: Build Setup
         uses: ./.github/actions/build-setup
       - name: Build npm package
