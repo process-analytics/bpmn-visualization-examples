@@ -42,14 +42,14 @@ jobs:
       fail-fast: false
       matrix:
         project:
-#          - javascript-vanilla-with-webpack
-#          - typescript-angular
-#          - typescript-lit-element
+          - javascript-vanilla-with-webpack
+          - typescript-angular
+          - typescript-lit-element
           - typescript-moduleResolution-bundler
-#          - typescript-vanilla-with-parcel
-#          - typescript-vanilla-with-rollup
-#          - typescript-vanilla-with-vitejs
-#          - typescript-vue
+          - typescript-vanilla-with-parcel
+          - typescript-vanilla-with-rollup
+          - typescript-vanilla-with-vitejs
+          - typescript-vue
         bv-npm-package:
           - development
           - release
