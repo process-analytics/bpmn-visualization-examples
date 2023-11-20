@@ -1,0 +1,13 @@
+{
+  "name": "ts-nextjs",
+  "private": true,
+  "scripts": {
+    "build": "tsc"
+  },
+  "dependencies": {
+    "bpmn-visualization": "0.42.0"
+  },
+  "devDependencies": {
+    "typescript": "5.2.2"
+  }
+}
