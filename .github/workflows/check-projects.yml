@@ -45,6 +45,7 @@ jobs:
           - javascript-vanilla-with-webpack
           - typescript-angular
           - typescript-lit-element
+          - typescript-moduleResolution-bundler
           - typescript-vanilla-with-parcel
           - typescript-vanilla-with-rollup
           - typescript-vanilla-with-vitejs
