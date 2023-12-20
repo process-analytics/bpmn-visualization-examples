@@ -29,7 +29,7 @@ jobs:
       - name: Build npm package
         run: npm pack
       - name: Upload npm package
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bpmn-visualization-npm-package
           path: bpmn-visualization-*.tgz
@@ -78,7 +78,7 @@ jobs:
         run: npm run build
       - name: Upload project archive
         if: github.event_name == 'pull_request'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: ${{matrix.project}}-${{matrix.bv-npm-package}}
           path: ${{github.workspace}}/projects/${{matrix.project}}/dist
@@ -182,7 +182,7 @@ jobs:
       # Fallback when it is not possible to deploy to surge.sh
       - name: Upload artifact (preview not deployed)
         if: steps.surge-preview-tools.outputs.can-run-surge-command == 'false'
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: bpmn-visualization-examples-projects-${{github.sha}}
           path: build
