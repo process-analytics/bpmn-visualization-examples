@@ -23,6 +23,6 @@ jobs:
             Examples for [bpmn-visualization@${{ env.VERSION }}](https://github.com/process-analytics/bpmn-visualization-js/releases/tag/${{ env.TAG }}).
             Live examples are available for [${{ env.VERSION }}](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/${{ env.TAG }}/examples/index.html).
           generateReleaseNotes: true
-          name: ${{ env.RELEASE_VERSION }}
+          name: ${{ env.VERSION }}
           tag: ${{ env.TAG }}
           token: ${{ secrets.GH_RELEASE_TOKEN }}
