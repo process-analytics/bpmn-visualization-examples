@@ -1,0 +1,28 @@
+name: Create GitHub release
+on:
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version in the x.y.z form'
+        required: true
+
+env:
+  VERSION: ${{ inputs.version }}
+  TAG: v${{ inputs.version }}
+
+jobs:
+  create_release:
+    runs-on: ubuntu-22.04
+    permissions:
+      contents: write # create the GH release
+    steps:
+      - name: Create release
+        uses: ncipollo/release-action@v1
+        with:
+          body: |
+            Examples for [bpmn-visualization@${{ env.VERSION }}](https://github.com/process-analytics/bpmn-visualization-js/releases/tag/${{ env.TAG }}).
+            Live examples are available for [${{ env.VERSION }}](https://cdn.statically.io/gh/process-analytics/bpmn-visualization-examples/${{ env.TAG }}/examples/index.html).
+          generateReleaseNotes: true
+          name: ${{ env.VERSION }}
+          tag: ${{ env.TAG }}
+          token: ${{ secrets.GH_RELEASE_TOKEN }}
