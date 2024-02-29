@@ -9,7 +9,7 @@
     "serve": "webpack serve"
   },
   "dependencies": {
-    "bpmn-visualization": "0.42.0"
+    "bpmn-visualization": "0.43.0"
   },
   "devDependencies": {
     "html-webpack-plugin": "~5.5.3",
