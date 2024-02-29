@@ -1,5 +1,6 @@
 name: Check projects
 on:
+  workflow_dispatch: # for manual run
   push:
     branches:
       - master
