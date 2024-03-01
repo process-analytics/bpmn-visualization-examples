@@ -1,4 +1,4 @@
-import { BpmnVisualization, FitType } from 'bpmn-visualization';
+import { BpmnVisualization, FitType, getVersion } from 'bpmn-visualization';
 // this is simple example of the BPMN diagram, loaded as string. Load support provided by Webpack.
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from './diagram.bpmn';
@@ -66,7 +66,7 @@ registry.addOverlays('Activity_083jf01',
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector("footer");
-const version = bpmnVisualization.getVersion();
+const version = getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
 footer.innerText = `${versionAsString} with ${dependenciesAsString}`;

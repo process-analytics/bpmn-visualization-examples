@@ -1,4 +1,4 @@
-import { mxgraph, BpmnVisualization, FitType } from "bpmn-visualization";
+import { mxgraph, BpmnVisualization, FitType, getVersion } from 'bpmn-visualization';
 // BPMN diagram content conveniently retrieved with parcel (as string)
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "bundle-text:./diagram.bpmn";
@@ -12,7 +12,7 @@ const bpmnVisualization = new BpmnVisualization({
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector("footer")!;
-const version = bpmnVisualization.getVersion();
+const version = getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
 footer.innerText = `${versionAsString} with ${dependenciesAsString} | direct usage of mxGraph@${mxgraph.mxClient.VERSION}`;
