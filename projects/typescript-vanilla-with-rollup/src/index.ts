@@ -13,7 +13,7 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-import {BpmnVisualization} from "bpmn-visualization";
+import { BpmnVisualization, getVersion } from 'bpmn-visualization';
 // this is simple example of the BPMN diagram, loaded as string. Load support provided by rollup-plugin-string.
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from "./diagram.bpmn";
@@ -82,7 +82,7 @@ registry.addOverlays('Activity_083jf01',
 
 // display the bpmn-visualization version in the footer
 const footer = document.querySelector<HTMLElement>("footer")!;
-const version = bpmnVisualization.getVersion();
+const version = getVersion();
 const versionAsString = `bpmn-visualization@${version.lib}`;
 const dependenciesAsString = [...version.dependencies].map(([name, version]) => `${name}@${version}`).join('/');
 footer.innerText = `${versionAsString} with ${dependenciesAsString}`;
