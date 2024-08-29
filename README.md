@@ -90,7 +90,8 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
 
 ## Tutorials
 - [Quick start](tutorials/quick-start/README.md) - the simplest way to integrate `bpmn-visualization` in an HTML page
-- [Getting started](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started#readme) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario
+- [Getting started](https://github.com/process-analytics/bpmn-visualization-tutorial-getting-started#readme) (October 2022) - a getting started tutorial to `bpmn-visualization` using an online monitoring scenario (with its [additional article](https://medium.com/@process-analytics/getting-started-with-bpmn-visualization-a54fbafae2df))
+- [All you need to know about styling BPMN elements](https://medium.com/@process-analytics/bpmn-visualization-all-you-need-to-know-about-styling-bpmn-elements-24289154c16c) (July 2023) - an article dealing specifically with BPMN element style management 
 
 ## 🔭 Examples
 
