@@ -17,7 +17,17 @@ The code calling `bpmn-visualization` to render the BPMN diagram is available in
 If you want to bundle the application, run `npm run build`.
 
 
-## WARNING about the Parcel configuration for old `bpmn-visualization` versions
+## WARNING about the Parcel configuration for some `bpmn-visualization` versions
+
+### 0.44.0 and newer
+
+Add an alias for es-toolkit
+
+TODO explain why. parcel uses the browser attribute (as for bpmn-visualization in the past)
+
+
+
+### 0.26.1 and older
 
 When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384 ](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
 
