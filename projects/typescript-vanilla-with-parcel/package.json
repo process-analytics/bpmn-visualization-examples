@@ -8,12 +8,16 @@
     "build": "tsc && parcel build --public-url ./ index.html"
   },
   "dependencies": {
-    "bpmn-visualization": "0.43.0"
+    "bpmn-visualization": "0.44.0"
   },
   "devDependencies": {
     "@parcel/core": "~2.10.0",
     "@parcel/transformer-inline-string": "~2.10.0",
+    "buffer": "^6.0.3",
     "parcel": "~2.10.0",
     "typescript": "~4.5.5"
+  },
+  "alias": {
+    "es-toolkit": "es-toolkit/dist/index.mjs"
   }
 }
