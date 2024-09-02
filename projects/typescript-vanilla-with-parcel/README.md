@@ -21,7 +21,7 @@ If you want to bundle the application, run `npm run build`.
 
 ### 0.44.0 and newer[](url)
 
-`bpmn-visualization` [0.44.0](https://github.com/process-analytics/bpmn-visualization-js/releases/tag/v0.44.0) starts depending on [es-toolkit](https://github.com/toss/es-toolkit) 1.16.0.
+`bpmn-visualization` [0.44.0](https://github.com/process-analytics/bpmn-visualization-js/releases/tag/v0.44.0) starts depending on [es-toolkit](https://github.com/toss/es-toolkit) (version 1.16.0).
 The package.json file of es-toolkit declares a `browser` attrbute ("./dist/browser.global.js"), so it is used by parcel as the entry point of the module. However, parcel encounters an error with this entry point.
 
 To workaround this problem, configure an alias in the package.json to use the same entry point as defined by the `module` attribute ("./dist/index.mjs").
