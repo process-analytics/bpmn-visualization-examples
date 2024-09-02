@@ -19,16 +19,18 @@ If you want to bundle the application, run `npm run build`.
 
 ## WARNING about the Parcel configuration for some `bpmn-visualization` versions
 
-### 0.44.0 and newer
+### 0.44.0 and newer[](url)
 
-Add an alias for es-toolkit
+`bpmn-visualization` [0.44.0](https://github.com/process-analytics/bpmn-visualization-js/releases/tag/v0.44.0) starts depending on [es-toolkit](https://github.com/toss/es-toolkit) 1.16.0.
+The package.json file of es-toolkit declares a `browser` attrbute ("./dist/browser.global.js"), so it is used by parcel as the entry point of the module. However, parcel encounters an error with this entry point.
 
-TODO explain why. parcel uses the browser attribute (as for bpmn-visualization in the past)
+To workaround this problem, configure an alias in the package.json to use the same entry point as defined by the `module` attribute ("./dist/index.mjs").
 
+See [PR 599](https://github.com/process-analytics/bpmn-visualization-examples/pull/599) for more details.
 
 
 ### 0.26.1 and older
 
-When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384 ](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
+When using bpmn-visualization@0.26.1 or older, a special configuration is required. This no more needed starting from version 0.26.2 (see [PR 384](https://github.com/process-analytics/bpmn-visualization-examples/pull/384) for more explanations).
 
 For old versions, configure an alias in the package.json: https://github.com/process-analytics/bpmn-visualization-examples/blob/v0.26.1/projects/typescript-vanilla-with-parcel/package.json#L18-L20
