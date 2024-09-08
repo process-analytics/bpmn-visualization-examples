@@ -19,17 +19,6 @@ export default defineConfig({
           // converts asset to a separate file and exports the URL address.
           type: 'asset/resource',
         },
-        // TMP - to investigate surge.sh issue
-        {
-          test: /\.txt$/,
-          // converts asset to a separate file and exports the URL address.
-          type: 'asset/resource',
-        },
-        // {
-        //   test: /\.xml$/,
-        //   // converts asset to a separate file and exports the URL address.
-        //   type: 'asset/resource',
-        // },
       ]);
     },
   },

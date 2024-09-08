@@ -4,12 +4,6 @@ import './index.css';
 import diagramUrl from './assets/diagram.bpmn.xml';
 import { BpmnVisualization, FitType, getVersion, mxgraph } from 'bpmn-visualization';
 
-// TMP - to investigate surge.sh issue
-console.log('diagramUrl:', diagramUrl);
-import diagramTxtUrl from './assets/diagram.bpmn.txt';
-console.log('diagramTxtUrl:', diagramTxtUrl);
-// end of TMP
-
 
 document.querySelector('#root')!.innerHTML = `
     <h1 class="title">bpmn-visualization TypeScript Integration with Rsbuild</h1>
