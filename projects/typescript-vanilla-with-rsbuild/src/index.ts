@@ -1,13 +1,13 @@
 import './index.css';
 // the URL support is provided by rsbuild, see rsbuild.config.ts
-import diagramUrl from './assets/diagram.bpmn';
+// use the xml extension, as surge.sh returns an "HTTP 410 (Gone)" error for the bpmn extension
+import diagramUrl from './assets/diagram.bpmn.xml';
 import { BpmnVisualization, FitType, getVersion, mxgraph } from 'bpmn-visualization';
 
 // TMP - to investigate surge.sh issue
+console.log('diagramUrl:', diagramUrl);
 import diagramTxtUrl from './assets/diagram.bpmn.txt';
-import diagramXmlUrl from './assets/diagram.bpmn.xml';
 console.log('diagramTxtUrl:', diagramTxtUrl);
-console.log('diagramTXmlUrl:', diagramXmlUrl);
 // end of TMP
 
 

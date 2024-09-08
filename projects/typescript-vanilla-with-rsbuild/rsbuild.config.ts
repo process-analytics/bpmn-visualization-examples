@@ -14,7 +14,8 @@ export default defineConfig({
     rspack(config, { addRules }) {
       addRules([
         {
-          test: /\.bpmn$/,
+          // for BPMN diagrams
+          test: /\.xml$/,
           // converts asset to a separate file and exports the URL address.
           type: 'asset/resource',
         },
@@ -24,11 +25,11 @@ export default defineConfig({
           // converts asset to a separate file and exports the URL address.
           type: 'asset/resource',
         },
-        {
-          test: /\.xml$/,
-          // converts asset to a separate file and exports the URL address.
-          type: 'asset/resource',
-        },
+        // {
+        //   test: /\.xml$/,
+        //   // converts asset to a separate file and exports the URL address.
+        //   type: 'asset/resource',
+        // },
       ]);
     },
   },
