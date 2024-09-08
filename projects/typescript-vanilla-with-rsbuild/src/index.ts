@@ -1,7 +1,7 @@
 import './index.css';
 // the URL support is provided by rsbuild, see rsbuild.config.ts
 // use the xml extension, as surge.sh returns an "HTTP 410 (Gone)" error for the bpmn extension
-import diagramUrl from './assets/diagram.bpmn.xml';
+import diagramUrl from './assets/EC-purchase-orders-collapsed.xml';
 import { BpmnVisualization, FitType, getVersion, mxgraph } from 'bpmn-visualization';
 
 
