@@ -5,7 +5,7 @@
   "license": "Apache-2.0",
   "module": "dist/index.esm.js",
   "scripts": {
-    "clean": "rimraf dist",
+    "clean": "del dist",
     "build": "tsc && rollup -c",
     "start": "rollup -cw --environment devMode:true"
   },
@@ -18,7 +18,7 @@
     "@rollup/plugin-terser": "~0.4.4",
     "@rollup/plugin-typescript": "~11.1.6",
     "@types/node": "14.11.11",
-    "rimraf": "~5.0.5",
+    "del-cli": "~5.1.0",
     "rollup": "~4.21.3",
     "rollup-plugin-copy": "~3.5.0",
     "rollup-plugin-copy-watch": "~0.0.1",
