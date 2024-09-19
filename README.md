@@ -162,6 +162,7 @@ Show how to integrate `bpmn-visualization` in project, using various kind of fra
 - [TypeScript + Lit Element](projects/typescript-lit-element/README.md) - integration in a TypeScript Lit-Element project
 - [TypeScript + Parcel](projects/typescript-vanilla-with-parcel/README.md) - integration in a vanilla TypeScript Parcel project
 - [TypeScript + Rollup](projects/typescript-vanilla-with-rollup/README.md) - integration in a vanilla TypeScript Rollup project
+- [TypeScript + Rsbuild](projects/typescript-vanilla-with-rsbuild/README.md) - integration in a vanilla TypeScript Rsbuild project
 - [TypeScript + Vite](projects/typescript-vanilla-with-vitejs/README.md) - integration in a vanilla TypeScript Vite project
 - [TypeScript + Vue](projects/typescript-vue/README.md) - integration in a TypeScript Vue project
 
