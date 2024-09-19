@@ -5,6 +5,7 @@ on:
     branches:
       - master
     paths:
+      - '.nvmrc'
       - '.github/workflows/check-projects.yml'
       - 'projects/**/*'
       - '!projects/**/*.md'
@@ -12,6 +13,7 @@ on:
     branches:
       - master
     paths:
+      - '.nvmrc'
       - '.github/workflows/check-projects.yml'
       - 'projects/**/*'
       - '!projects/**/*.md'
