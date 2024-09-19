@@ -1,0 +1,26 @@
+body {
+  font-family: Avenir, Helvetica, Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  color: #2c3e50;
+}
+footer {
+  position: absolute;
+  bottom: 1rem;
+  right: 1rem;
+  z-index: 1;
+}
+
+.title {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.bpmn-highlight.bpmn-task  > rect {
+  fill: pink;
+  fill-opacity: 30%;
+  stroke: coral;
+}
+.bpmn-highlight.bpmn-task >rect:hover {
+  fill-opacity: 70%;
+}
