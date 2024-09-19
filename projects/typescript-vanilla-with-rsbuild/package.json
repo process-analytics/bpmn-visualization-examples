@@ -11,7 +11,7 @@
     "bpmn-visualization": "0.44.0"
   },
   "devDependencies": {
-    "@rsbuild/core": "1.0.1",
+    "@rsbuild/core": "1.0.4",
     "typescript": "~5.5.4"
   }
 }
