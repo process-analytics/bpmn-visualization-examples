@@ -9,6 +9,7 @@
     "serve": "webpack serve"
   },
   "dependencies": {
+    "@process-analytics/bv-experimental-add-ons": "0.7.0",
     "bpmn-visualization": "0.44.0"
   },
   "devDependencies": {

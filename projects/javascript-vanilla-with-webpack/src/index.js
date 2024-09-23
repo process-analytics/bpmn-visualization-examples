@@ -1,7 +1,11 @@
 import { BpmnVisualization, FitType, getVersion } from 'bpmn-visualization';
+import { ShapeUtil } from '@process-analytics/bv-experimental-add-ons';
 // this is simple example of the BPMN diagram, loaded as string. Load support provided by Webpack.
 // for other load methods, see https://github.com/process-analytics/bpmn-visualization-examples
 import diagram from './diagram.bpmn';
+
+// TMP to validate that the bv-addons dependency does not break the build
+console.info('bv-addons ShapeUtil', ShapeUtil.isBpmnArtifact('kind'))
 
 // instantiate the BpmnVisualization, pass the container HTMLElement - present in index.html
 const bpmnVisualization = new BpmnVisualization({ container: 'bpmn-container' });
