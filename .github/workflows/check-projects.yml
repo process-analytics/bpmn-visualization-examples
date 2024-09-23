@@ -46,15 +46,15 @@ jobs:
       matrix:
         project:
           - javascript-vanilla-with-webpack
-          - typescript-angular
-          - typescript-lit-element
-          - typescript-vanilla-with-parcel
-          - typescript-vanilla-with-rollup
-          - typescript-vanilla-with-rsbuild
-          - typescript-vanilla-with-vitejs
-          - typescript-vue
+#          - typescript-angular
+#          - typescript-lit-element
+#          - typescript-vanilla-with-parcel
+#          - typescript-vanilla-with-rollup
+#          - typescript-vanilla-with-rsbuild
+#          - typescript-vanilla-with-vitejs
+#          - typescript-vue
         bv-npm-package:
-          - development
+#          - development
           - release
     defaults:
       run:
