@@ -77,7 +77,7 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
 
 ## 👁️‍🗨️ Demos
 
-- [Load and Navigation demo](demo/load-and-navigation/index.html) - shows several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
+- [Load and Navigation demo](demo/load-and-navigation/index.html) - show several features of `bpmn-visualization` at the same time. The sources of the demo are available in the
   [repository](https://github.com/process-analytics/bpmn-visualization-js) of `bpmn-visualization` .
 - [Hacktoberfest themes](demo/hacktoberfest-custom-themes/README.md) - special Hacktoberfest diagram with Hacktoberfest colors
 - [Monitoring of all process instances demo](demo/monitoring-all-process-instances/README.md) - show how to use `bpmn-visualization` to render the monitoring of all process instances for a defined process
@@ -85,7 +85,7 @@ especially when using `bpmn-visualization` prior version `0.27.0`.
 - [Draw a path](demo/draw-path/README.md) - show how to draw a path
 - [Demo for Bonita Day 2023](https://github.com/process-analytics/bonita-day-demo-2023#readme) - monitor process and case progress, assign new actors to overdue tasks, view past activities, and track the live execution of a process.
 - [Prediction demo](demo/prediction/README.md) - show how to use `bpmn-visualization` to visualize prediction data.
-- [New experimental features](https://github.com/process-analytics/bv-experimental-add-ons#readme) - Show the demos of the new experimental features for `bpmn-visualization` provided by `bv-experimental-add-ons`.
+- [Addons features](https://github.com/process-analytics/bpmn-visualization-addons#readme) - demo of addons for `bpmn-visualization` provided by `bpmn-visualization-addons`.
 
 
 ## Tutorials

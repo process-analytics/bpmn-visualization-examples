@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
 import { BpmnElement, BpmnElementsRegistry, BpmnVisualization, FitType, OverlayPosition } from 'bpmn-visualization';
-import { ShapeUtil } from '@process-analytics/bv-experimental-add-ons';
+import { ShapeUtil } from '@process-analytics/bpmn-visualization-addons';
 import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
 
 
