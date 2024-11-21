@@ -410,12 +410,12 @@ themes.set("Valve", new Map([
             fontSize: 10,
         },
         startEvent: {
-            fill:'#131212',
+            fill:'#c76018',
             stroke: '#c35d09',
             icon: '#c35d09',
         },
         endEvent: {
-            fill: '#ff3c00',
+            fill: '#e53e05',
             stroke: '#00eaff',
         },
         exclusiveGateway: {
@@ -425,8 +425,8 @@ themes.set("Valve", new Map([
             insideIcon: '#177dc6',
         },
         userTask: {
-            fill: 'rgb(209,87,15)',
-            icon: '#c23131'
+            fill: 'rgb(222,87,18)',
+            icon: '#464141'
         },
         callActivity: {
             fill: "White",
@@ -452,21 +452,21 @@ themes.set("Valve", new Map([
             fontSize: fonts2023.size,
         },
         startEvent: {
-            stroke: colors2023.secondaryBavarianBlue["2.0"],
+            stroke:'#c35d09',
             icon: colors2023.secondaryBavarianBlue["3.0"]
         },
         endEvent: {
-            fill: colors2023.secondaryBavarianBlue["2.0"],
-            stroke: colors2023.secondaryBavarianBlue["3.0"],
+            fill: '#036ae0',
+            stroke: '#036ae0',
             gradient: colors2023.secondaryBavarianBlue["1.0"],
         },
         exclusiveGateway: {
-            outsideIcon: colors2023.secondaryBavarianRed["3.0"],
-            insideIcon: colors2023.secondaryBavarianRed["1.0"]
+            outsideIcon: '#76050e',
+            insideIcon: '#a2613b',
         },
         userTask: {
-            fill: colors2023.secondaryBavarianGold["1.0"],
-            icon: colors2023.secondaryBavarianGold["4.0"]
+            fill: '#e85316',
+            icon: '#033a6c',
         },
         callActivity: {
             fill: colors2023.secondaryBavarianGold["3.0"],
@@ -474,7 +474,7 @@ themes.set("Valve", new Map([
             icon: colors2023.secondaryBavarianGold["1.0"],
         },
         pool: {
-            labelFill: colors2023.secondaryBavarianGold["1.0"],
+            labelFill: '#b50000',
             swimlaneFill: colors2023.primaryManga["2.0"],
             fontFamily: fonts2023.poolFamily,
             fontSize: fonts2023.poolSize,
