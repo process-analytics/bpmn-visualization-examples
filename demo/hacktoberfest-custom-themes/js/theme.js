@@ -397,3 +397,86 @@ themes.set("2023", new Map([
         },
     }]
 ]));
+
+
+themes.set("Valve", new Map([
+    ['dark', {
+        default: {
+            // keep this to make the gateway gradient work
+            fill: '#100c0c',
+            stroke: '#C3BCC3',
+            font: '#EFEDEF',
+            fontFamily: fonts2023.family,
+            fontSize: 10,
+        },
+        startEvent: {
+            fill:'#131212',
+            stroke: '#c35d09',
+            icon: '#c35d09',
+        },
+        endEvent: {
+            fill: '#166bbd',
+            stroke: '#16c7e4',
+        },
+        exclusiveGateway: {
+            fill: '#336e2e',
+            stroke: '#940a0a',
+            outsideIcon: '#0c7aa5',
+            insideIcon: '#177dc6',
+        },
+        userTask: {
+            fill: 'rgb(67,74,74)',
+            icon: '#c23131'
+        },
+        callActivity: {
+            fill: colors2023.secondaryBavarianGold["1.0"],
+            stroke: colors2023.primaryManga["4.0"],
+            font: colors2023.secondaryBavarianGold["3.0"],
+            icon: colors2023.secondaryBavarianGold["4.0"],
+        },
+        pool: {
+            labelFill: colors2023.secondaryBavarianGold["2.0"],
+            swimlaneFill: 'grey',
+            font: colors2023.secondaryBavarianGold["4.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        }
+    }],
+    ['light', {
+        default: {
+            fill: colors2023.primaryManga["2.0"],
+            stroke: colors2023.primaryVoid,
+            font: colors2023.primaryVoid,
+            fontFamily: fonts2023.family,
+            fontSize: fonts2023.size,
+        },
+        startEvent: {
+            stroke: colors2023.secondaryBavarianBlue["2.0"],
+            icon: colors2023.secondaryBavarianBlue["3.0"]
+        },
+        endEvent: {
+            fill: colors2023.secondaryBavarianBlue["2.0"],
+            stroke: colors2023.secondaryBavarianBlue["3.0"],
+            gradient: colors2023.secondaryBavarianBlue["1.0"],
+        },
+        exclusiveGateway: {
+            outsideIcon: colors2023.secondaryBavarianRed["3.0"],
+            insideIcon: colors2023.secondaryBavarianRed["1.0"]
+        },
+        userTask: {
+            fill: colors2023.secondaryBavarianGold["1.0"],
+            icon: colors2023.secondaryBavarianGold["4.0"]
+        },
+        callActivity: {
+            fill: colors2023.secondaryBavarianGold["3.0"],
+            font: colors2023.secondaryBavarianGold["1.0"],
+            icon: colors2023.secondaryBavarianGold["1.0"],
+        },
+        pool: {
+            labelFill: colors2023.secondaryBavarianGold["1.0"],
+            swimlaneFill: colors2023.primaryManga["2.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        },
+    }]
+]));
