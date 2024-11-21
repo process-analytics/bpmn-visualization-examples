@@ -415,28 +415,29 @@ themes.set("Valve", new Map([
             icon: '#c35d09',
         },
         endEvent: {
-            fill: '#166bbd',
-            stroke: '#16c7e4',
+            fill: '#ff3c00',
+            stroke: '#00eaff',
         },
         exclusiveGateway: {
-            fill: '#336e2e',
+            fill: '#cbd0d9',
             stroke: '#940a0a',
             outsideIcon: '#0c7aa5',
             insideIcon: '#177dc6',
         },
         userTask: {
-            fill: 'rgb(67,74,74)',
+            fill: 'rgb(209,87,15)',
             icon: '#c23131'
         },
         callActivity: {
-            fill: colors2023.secondaryBavarianGold["1.0"],
+            fill: "White",
             stroke: colors2023.primaryManga["4.0"],
-            font: colors2023.secondaryBavarianGold["3.0"],
+            font: '#000000',
             icon: colors2023.secondaryBavarianGold["4.0"],
         },
         pool: {
             labelFill: colors2023.secondaryBavarianGold["2.0"],
-            swimlaneFill: 'grey',
+            swimlaneFill:'#336eec',
+
             font: colors2023.secondaryBavarianGold["4.0"],
             fontFamily: fonts2023.poolFamily,
             fontSize: fonts2023.poolSize,
