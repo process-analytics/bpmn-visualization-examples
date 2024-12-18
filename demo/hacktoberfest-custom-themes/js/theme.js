@@ -397,3 +397,87 @@ themes.set("2023", new Map([
         },
     }]
 ]));
+
+
+themes.set("Valve", new Map([
+    ['dark', {
+        default: {
+            // keep this to make the gateway gradient work
+            fill: '#100c0c',
+            stroke: '#C3BCC3',
+            font: '#EFEDEF',
+            fontFamily: fonts2023.family,
+            fontSize: 10,
+        },
+        startEvent: {
+            fill:'#c76018',
+            stroke: '#c35d09',
+            icon: '#c35d09',
+        },
+        endEvent: {
+            fill: '#e53e05',
+            stroke: '#00eaff',
+        },
+        exclusiveGateway: {
+            fill: '#cbd0d9',
+            stroke: '#940a0a',
+            outsideIcon: '#0c7aa5',
+            insideIcon: '#177dc6',
+        },
+        userTask: {
+            fill: 'rgb(222,87,18)',
+            icon: '#464141'
+        },
+        callActivity: {
+            fill: "White",
+            stroke: colors2023.primaryManga["4.0"],
+            font: '#000000',
+            icon: colors2023.secondaryBavarianGold["4.0"],
+        },
+        pool: {
+            labelFill: colors2023.secondaryBavarianGold["2.0"],
+            swimlaneFill:'#336eec',
+
+            font: colors2023.secondaryBavarianGold["4.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        }
+    }],
+    ['light', {
+        default: {
+            fill: colors2023.primaryManga["2.0"],
+            stroke: colors2023.primaryVoid,
+            font: colors2023.primaryVoid,
+            fontFamily: fonts2023.family,
+            fontSize: fonts2023.size,
+        },
+        startEvent: {
+            stroke:'#c35d09',
+            icon: colors2023.secondaryBavarianBlue["3.0"]
+        },
+        endEvent: {
+            fill: '#036ae0',
+            stroke: '#036ae0',
+            gradient: colors2023.secondaryBavarianBlue["1.0"],
+        },
+        exclusiveGateway: {
+            outsideIcon: '#76050e',
+            insideIcon: '#a2613b',
+        },
+        userTask: {
+            fill: '#e85316',
+            icon: '#033a6c',
+        },
+        callActivity: {
+            fill: colors2023.secondaryBavarianGold["3.0"],
+            font: colors2023.secondaryBavarianGold["1.0"],
+            icon: colors2023.secondaryBavarianGold["1.0"],
+        },
+        pool: {
+            labelFill: '#b50000',
+            swimlaneFill: colors2023.primaryManga["2.0"],
+            fontFamily: fonts2023.poolFamily,
+            fontSize: fonts2023.poolSize,
+        },
+    }]
+]));
