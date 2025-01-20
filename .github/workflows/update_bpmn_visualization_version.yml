@@ -22,7 +22,7 @@ on:
 
 jobs:
   compute-iife-bundle-integrity:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}
     outputs:
@@ -42,7 +42,7 @@ jobs:
           echo "value=$integrity" >> "$GITHUB_OUTPUT"
 
   update-version:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: compute-iife-bundle-integrity
     env:
       VERSION: ${{ github.event.client_payload.version || github.event.inputs.version }}

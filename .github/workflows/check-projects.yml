@@ -20,7 +20,7 @@ on:
 
 jobs:
   build_bpmn-visualization_development_npm_package:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     steps:
       - uses: actions/checkout@v4
         with:
@@ -38,7 +38,7 @@ jobs:
           path: bpmn-visualization-*.tgz
 
   build_projects:
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: 'build_bpmn-visualization_development_npm_package'
     strategy:
       # don't cancel running jobs even if one fails
@@ -93,7 +93,7 @@ jobs:
   # See https://github.com/bonitasoft/actions/issues/101 for more details
   pr_preview:
     if: github.event_name == 'pull_request'
-    runs-on: ubuntu-22.04
+    runs-on: ubuntu-24.04
     needs: 'build_projects'
     permissions:
       pull-requests: write # surge-preview: PR comments
