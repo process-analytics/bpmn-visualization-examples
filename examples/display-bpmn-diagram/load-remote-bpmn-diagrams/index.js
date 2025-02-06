@@ -101,6 +101,7 @@ const miwgFileNames = [
   'B.1.0', 'B.2.0',
   'C.1.0', 'C.1.1', 'C.2.0', 'C.3.0', 'C.4.0',
   'C.5.0', 'C.6.0', 'C.7.0', 'C.8.0', 'C.8.1',
+  'C.9.0', 'C.9.1', 'C.9.2',
   // extra file to get fetch error
   'do-not-exist',
   // extra file to get load error
