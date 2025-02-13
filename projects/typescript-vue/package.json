@@ -9,7 +9,7 @@
   },
   "dependencies": {
     "@process-analytics/bpmn-visualization-addons": "0.8.0",
-    "bpmn-visualization": "0.45.0",
+    "bpmn-visualization": "0.45.1",
     "spectre.css": "~0.5.9",
     "vue": "~3.5.6"
   },
