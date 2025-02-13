@@ -8,7 +8,7 @@
     "preview": "rsbuild preview"
   },
   "dependencies": {
-    "bpmn-visualization": "0.45.0"
+    "bpmn-visualization": "0.45.1"
   },
   "devDependencies": {
     "@rsbuild/core": "1.0.5",
