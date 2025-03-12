@@ -27,7 +27,6 @@
             ],
             "scripts": [],
             "allowedCommonJsDependencies": [
-              "fast-xml-parser",
               "mxgraph"
             ]
           },
