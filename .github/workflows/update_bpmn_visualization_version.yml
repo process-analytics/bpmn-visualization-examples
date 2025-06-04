@@ -57,7 +57,7 @@ jobs:
       - name: Delete old Load and Navigation demo
         run: rm -rf demo/load-and-navigation
       - name: Download Load and Navigation demo ${{ env.VERSION }}
-        uses: dawidd6/action-download-artifact@v9
+        uses: dawidd6/action-download-artifact@v10
         with:
           github_token: ${{ secrets.GH_RELEASE_TOKEN }}
           repo: ${{ env.BUILD_DEMO_REPO }}
