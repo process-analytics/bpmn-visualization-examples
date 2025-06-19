@@ -38,6 +38,7 @@ onMounted(async () => {
 })
 
 function getAllFlowNodes(): BpmnElement[] {
+    // TODO when a new version of bpmn-visualization-addons is available, we could use ShapeUtil.isFlowNode instead
     return registry.getElementsByKinds(ShapeUtil.flowNodeKinds().filter(kind => !ShapeUtil.isBpmnArtifact(kind)));
 }
 
