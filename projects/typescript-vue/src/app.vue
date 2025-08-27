@@ -1,6 +1,13 @@
 <script setup lang="ts">
 import { onMounted, ref } from 'vue';
-import { BpmnElement, BpmnElementsRegistry, BpmnVisualization, FitType, OverlayPosition } from 'bpmn-visualization';
+import {
+  BpmnElement,
+  BpmnElementsRegistry,
+  BpmnVisualization, FitOptions,
+  FitType,
+  OverlayPosition,
+  ShapeBpmnElementKind,
+} from 'bpmn-visualization';
 import { ShapeUtil } from '@process-analytics/bpmn-visualization-addons';
 import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
 
@@ -17,6 +24,8 @@ const nodeDropdown = ref<string>();
 const overlayText = ref<string>('');
 const overlayPosition = ref<OverlayPosition>('top-left');
 
+const fitOptions: FitOptions = { type: FitType.Center, margin: 30 };
+
 onMounted(async () => {
     vis = new BpmnVisualization({
         container: "bpmn-container",
@@ -29,7 +38,7 @@ onMounted(async () => {
     });
     // load the BPMN diagram defined above
     vis.load(pizzaDiagram, {
-        fit: { type: FitType.Center, margin: 30 },
+        fit: fitOptions,
     });
     registry = vis.bpmnElementsRegistry;
     allFlowNodes.value = getAllFlowNodes();
@@ -38,22 +47,24 @@ onMounted(async () => {
 })
 
 function getAllFlowNodes(): BpmnElement[] {
-    return registry.getElementsByKinds(ShapeUtil.flowNodeKinds().filter(kind => !ShapeUtil.isBpmnArtifact(kind)));
+  // cannot use the bpmn-visualization ShapeUtil.flowNodeKinds() for now, as it includes artifacts
+    return registry.getElementsByKinds(Object.values(ShapeBpmnElementKind).filter(kind => ShapeUtil.isFlowNode(kind)));
 }
 
 function setupEventHandlers() {
     allFlowNodes.value.forEach(item => {
         const currentId = item.bpmnSemantic.id;
-        item.htmlElement.onclick = () => {
+      const htmlElement = item.htmlElement;
+      htmlElement.onclick = () => {
             setSelectedElement(currentId);
         };
-        item.htmlElement.onmouseenter = (ev) => {
+        htmlElement.onmouseenter = (ev) => {
             if (ev.buttons == 1) {
                 return;
             }
             registry.addCssClasses(currentId, 'highlightNode');
         };
-        item.htmlElement.onmouseleave = () => {
+        htmlElement.onmouseleave = () => {
             registry.removeCssClasses(currentId, 'highlightNode');
         };
     });
@@ -95,7 +106,7 @@ function changeDiagram(event: Event): void {
     reader.onload = () => {
         try {
             vis.load(reader.result?.toString() ?? '', {
-                fit: { type: FitType.Center, margin: 30 }
+                fit: fitOptions
             });
             allFlowNodes.value = getAllFlowNodes()
             setupEventHandlers();
@@ -188,7 +199,7 @@ function changeDiagram(event: Event): void {
                     d="M432 256c0 17.7-14.3 32-32 32L48 288c-17.7 0-32-14.3-32-32s14.3-32 32-32l352 0c17.7 0 32 14.3 32 32z" />
             </svg>
         </button>
-        <button class="mainButton" @click="vis.navigation.fit({ type: FitType.Center, margin: 30 })">
+        <button class="mainButton" @click="vis.navigation.fit(fitOptions)">
             <span class="fit">Fit</span>
         </button>
         <button class="sideButton" style="border-radius: 0 20px 20px 0; float: right" @click="vis.graph.zoomIn()">
