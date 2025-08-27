@@ -47,15 +47,15 @@ onMounted(async () => {
 })
 
 function getAllFlowNodes(): BpmnElement[] {
-  // cannot use the bpmn-visualization ShapeUtil.flowNodeKinds() for now, as it includes artifacts
+    // cannot use the bpmn-visualization ShapeUtil.flowNodeKinds() for now, as it includes artifacts
     return registry.getElementsByKinds(Object.values(ShapeBpmnElementKind).filter(kind => ShapeUtil.isFlowNode(kind)));
 }
 
 function setupEventHandlers() {
     allFlowNodes.value.forEach(item => {
         const currentId = item.bpmnSemantic.id;
-      const htmlElement = item.htmlElement;
-      htmlElement.onclick = () => {
+        const htmlElement = item.htmlElement;
+        htmlElement.onclick = () => {
             setSelectedElement(currentId);
         };
         htmlElement.onmouseenter = (ev) => {
