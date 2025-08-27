@@ -12,12 +12,12 @@
     "@process-analytics/bpmn-visualization-addons": "0.8.0",
     "bpmn-visualization": "0.46.0",
     "spectre.css": "~0.5.9",
-    "vue": "~3.5.17"
+    "vue": "~3.5.20"
   },
   "devDependencies": {
     "@babel/types": "~7.27.0",
     "@vitejs/plugin-vue": "~5.2.4",
-    "typescript": "~5.2.2",
+    "typescript": "~5.4.5",
     "vite": "~6.3.0"
   }
 }
