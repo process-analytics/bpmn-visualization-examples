@@ -3,14 +3,14 @@ import { onMounted, ref } from 'vue';
 import {
   BpmnElement,
   BpmnElementsRegistry,
-  BpmnVisualization, FitOptions,
+  BpmnVisualization,
+  FitOptions,
   FitType,
   OverlayPosition,
   ShapeBpmnElementKind,
 } from 'bpmn-visualization';
 import { ShapeUtil } from '@process-analytics/bpmn-visualization-addons';
 import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
-
 
 let vis: BpmnVisualization;
 let registry: BpmnElementsRegistry;
