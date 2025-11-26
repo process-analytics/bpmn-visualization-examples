@@ -51,7 +51,7 @@ jobs:
       BUILD_DEMO_REPO: ${{ github.event.client_payload.build_demo_repo || github.event.inputs.build_demo_repo }}
       IIFE_BUNDLE_INTEGRITY: ${{needs.compute-iife-bundle-integrity.outputs.integrity-value}}
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Update bpmn-visualization version in all examples
         run: ./scripts/update-lib-version.bash ${{ env.VERSION }} ${{ env.IIFE_BUNDLE_INTEGRITY }}
       - name: Delete old Load and Navigation demo
