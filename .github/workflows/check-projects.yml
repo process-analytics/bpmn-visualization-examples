@@ -22,7 +22,7 @@ jobs:
   build_bpmn-visualization_development_npm_package:
     runs-on: ubuntu-24.04
     steps:
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
         with:
           repository: 'process-analytics/bpmn-visualization-js'
           # to test a specific feature under development, uncomment the following line and use the related branch
@@ -67,7 +67,7 @@ jobs:
         with:
           name: bpmn-visualization-npm-package
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
-      - uses: actions/checkout@v5
+      - uses: actions/checkout@v6
       - name: Setup node
         uses: actions/setup-node@v6
         with:
