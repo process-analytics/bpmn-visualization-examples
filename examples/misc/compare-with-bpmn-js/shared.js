@@ -19,10 +19,12 @@ class LibraryComparator {
         const rendererOptions = this._state.bpmnJsCompatMode
             ? {
                 ignoreBpmnColors: false,
+                // TODO fix options name and value must be put to true
                 labelStyle: bpmnvisu.LabelStyleDefault.bpmnJs,
                 activityLabelBounds: bpmnvisu.ActivityLabelBoundsDefault.bpmnJs,
             }
             : {
+          // TODO ignore bpmn colors by default (require to update the tooltip too)
                 ignoreBpmnColors: false,
             };
 
