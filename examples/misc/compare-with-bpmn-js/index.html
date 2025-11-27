@@ -20,6 +20,7 @@ limitations under the License.
   <link rel="stylesheet" href="../../static/css/spectre.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/icons.min.css" type="text/css">
   <link rel="stylesheet" href="../../static/css/main.css" type="text/css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/tippy.js@6.3.1/themes/light-border.css" integrity="sha256-Fev9TKDfIZRihMeo+VloYBQ6vG1Pehn17SF0wQE1w/0=" crossorigin="anonymous">
   <style>
     .bpmn-container {
       /*top: 60px;*/
@@ -54,10 +55,50 @@ limitations under the License.
     #controls {
       padding-top: 0.5em;
     }
+
+    .info-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background-color: #5755d9;
+      color: white;
+      font-size: 11px;
+      font-weight: bold;
+      font-style: normal;
+      cursor: help;
+      margin-left: 4px;
+      vertical-align: middle;
+    }
+
+    .info-tooltip-content {
+      font-size: 13px;
+      text-align: left;
+    }
+    .info-tooltip-content ul {
+      margin: 8px 0 0 0;
+      padding-left: 20px;
+    }
+    .info-tooltip-content li {
+      margin-bottom: 4px;
+    }
+    .info-tooltip-content .note {
+      margin-top: 10px;
+      font-style: italic;
+      color: #666;
+    }
+
+    #group-compat-mode {
+      margin-top: 8px;
+    }
   </style>
+  <!-- Tooltip support -->
+  <script defer src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha256-whL0tQWoY1Ku1iskqPFvmZ+CHsvmRWx/PIoEvIeWh4I=" crossorigin="anonymous"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/tippy.js@6.3.7/dist/tippy-bundle.umd.min.js" integrity="sha256-Pw/nDrJszyj2iHoZLinTjdfvfC8HmnMwStQt3HvtN94=" crossorigin="anonymous"></script>
   <script defer src="../../static/js/link-to-sources.js"></script>
   <!-- load bpmn-js viewer distro (with pan and zoom) -->
-<!--  TODO bump version of bpmn-js-->
   <script defer src="https://cdn.jsdelivr.net/npm/bpmn-js@18.5.0/dist/bpmn-navigated-viewer.production.min.js" integrity="sha256-nDLkOcUTZVEN4Qx/ioNMSH+yYgYk3NUbWMMW4AVaorc=" crossorigin="anonymous"></script>
   <!-- load bpmn-visualization -->
   <script defer src="https://cdn.jsdelivr.net/npm/bpmn-visualization@0.48.0/dist/bpmn-visualization.min.js" integrity="sha384-NRsOkK0vzHys+YUCN4gyKP53VEnmFOttUAN1Gu2CYPyEhLmKD2C6hObYtBhwy9nB" crossorigin="anonymous"></script>
@@ -106,14 +147,21 @@ limitations under the License.
       </div>
 
       <div id="controls" class="col-6 float-left">
-        <div id="group-libs" class="col-9 float-left">
+        <div id="group-libs" class="col-12 float-left">
           <b>Library:</b>
           <label><input type="radio" name="bpmnLibrary" value="bpmn-visualization" checked> bpmn-visualization</label>
           <label><input type="radio" name="bpmnLibrary" value="bpmn-js"> bpmn-js</label>
+          <span style="margin-left: 20px;">
+            <label title="Ensure that the BPMN Diagram is fully displayed within the view"><input type="checkbox" id="fitView" name="fitView"> Fit view</label>
+          </span>
         </div>
 
-        <div id="btn-group-fit" class="col-3 float-left">
-          <label title="Ensure that the BPMN Diagram is fully displayed within the view"><input type="checkbox" id="fitView" name="fitView"> Fit view</label>
+        <div id="group-compat-mode" class="col-12 float-left">
+          <label>
+            <input type="checkbox" id="bpmnJsCompatMode" name="bpmnJsCompatMode">
+            bpmn-js compatible rendering
+          </label>
+          <i id="compat-info-icon" class="info-icon" aria-label="Information about compatibility mode">i</i>
         </div>
       </div>
     </div>

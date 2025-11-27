@@ -5,16 +5,46 @@ class LibraryComparator {
     _isOtherLibAlreadyLoaded = false;
     _otherLibIdentifier;
     _state;
+    #bpmnVisualizationContainerId;
 
     #bpmnVisualization;
 
     constructor(bpmnVisualizationContainerId, state) {
-        this.#bpmnVisualization = new bpmnvisu.BpmnVisualization({
-            container: bpmnVisualizationContainerId,
-            navigation: { enabled: true },
-            renderer: { ignoreBpmnColors: false },
-        });
+        this.#bpmnVisualizationContainerId = bpmnVisualizationContainerId;
         this._state = state;
+        this.#bpmnVisualization = this.#createBpmnVisualization();
+    }
+
+    #createBpmnVisualization() {
+        const rendererOptions = this._state.bpmnJsCompatMode
+            ? {
+                ignoreBpmnColors: false,
+                labelStyle: bpmnvisu.LabelStyleDefault.bpmnJs,
+                activityLabelBounds: bpmnvisu.ActivityLabelBoundsDefault.bpmnJs,
+            }
+            : {
+                ignoreBpmnColors: false,
+            };
+
+        return new bpmnvisu.BpmnVisualization({
+            container: this.#bpmnVisualizationContainerId,
+            navigation: { enabled: true },
+            renderer: rendererOptions,
+        });
+    }
+
+    recreateBpmnVisualization() {
+        this._logBpmnVisualization('Disposing current instance');
+        this.#bpmnVisualization.dispose();
+
+        this._logBpmnVisualization(`Creating new instance with bpmnJsCompatMode: ${this._state.bpmnJsCompatMode}`);
+        this.#bpmnVisualization = this.#createBpmnVisualization();
+        this.#isBpmnVisualizationAlreadyLoaded = false;
+
+        if (this.#loadedBpmnXmlContent) {
+            this._logBpmnVisualization('Reloading previously loaded diagram');
+            this._performLoadBpmn(this.#loadedBpmnXmlContent, this.#loadedResourceName);
+        }
     }
 
     loadNewBpmn(xml, resourceName) {
@@ -140,6 +170,43 @@ class UIController {
         this.#bpmnLibraryRadioButtons = document.getElementsByName('bpmnLibrary');
         this._configureBpmnLibraryRadioButtons();
         this._configureFitViewButton();
+        this._configureCompatModeCheckbox();
+        this._configureInfoTooltip();
+    }
+
+    _configureCompatModeCheckbox() {
+        const compatModeElt = document.getElementById('bpmnJsCompatMode');
+
+        this._state.bpmnJsCompatMode = compatModeElt.checked;
+        logMain(`Initial bpmnJsCompatMode: ${this._state.bpmnJsCompatMode}`);
+
+        compatModeElt.addEventListener('change', event => {
+            this._state.bpmnJsCompatMode = event.target.checked;
+            logMain(`bpmnJsCompatMode changed to: ${this._state.bpmnJsCompatMode}`);
+            this.#libraryComparator.recreateBpmnVisualization();
+        });
+    }
+
+    _configureInfoTooltip() {
+        const infoIconElt = document.getElementById('compat-info-icon');
+        if (infoIconElt && typeof tippy !== 'undefined') {
+            tippy(infoIconElt, {
+                content: `<div class="info-tooltip-content">
+                    <strong>bpmn-js compatible rendering</strong>
+                    <ul>
+                        <li><b>Label style:</b> uses bpmn-js defaults</li>
+                        <li><b>Activity label bounds:</b> from BPMN DI</li>
+                        <li><b>BPMN colors:</b> rendered from XML</li>
+                    </ul>
+                    <div class="note">The diagram will be reloaded when toggled.</div>
+                </div>`,
+                allowHTML: true,
+                theme: 'light-border',
+                placement: 'bottom',
+                interactive: true,
+                maxWidth: 320,
+            });
+        }
     }
 
     _configureFitViewButton() {
