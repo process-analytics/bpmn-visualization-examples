@@ -140,7 +140,7 @@ function getComparisonDiagram() {
         <di:waypoint x="340" y="120" />
       </bpmndi:BPMNEdge>
       <bpmndi:BPMNShape id="group_1_di" bpmnElement="group_1">
-        <dc:Bounds x="220" y="60" width="660" height="320" />
+        <dc:Bounds x="215" y="60" width="680" height="320" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="515" y="67" width="83" height="14" />
         </bpmndi:BPMNLabel>
