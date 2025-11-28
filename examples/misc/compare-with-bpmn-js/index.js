@@ -24,7 +24,7 @@ function getComparisonDiagram() {
       <bpmn:incoming>flow_no</bpmn:incoming>
       <bpmn:outgoing>flow_4</bpmn:outgoing>
     </bpmn:userTask>
-    <bpmn:serviceTask id="task_ship" name="Ship order to customer address">
+    <bpmn:serviceTask id="task_ship" name="Ship order to customer address (wrong position in diagram)">
       <bpmn:incoming>flow_3</bpmn:incoming>
       <bpmn:outgoing>flow_5</bpmn:outgoing>
     </bpmn:serviceTask>
@@ -76,13 +76,13 @@ function getComparisonDiagram() {
       <bpmndi:BPMNShape id="task_reject_di" bpmnElement="task_reject" bioc:stroke="#E53935" bioc:fill="#FFCDD2" color:background-color="#FFCDD2" color:border-color="#E53935">
         <dc:Bounds x="500" y="290" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="505" y="295" width="90" height="40" />
+          <dc:Bounds x="205" y="395" width="90" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="task_ship_di" bpmnElement="task_ship" bioc:stroke="#43A047" bioc:fill="#C8E6C9" color:background-color="#C8E6C9" color:border-color="#43A047">
         <dc:Bounds x="660" y="170" width="100" height="80" />
         <bpmndi:BPMNLabel>
-          <dc:Bounds x="665" y="175" width="90" height="40" />
+          <dc:Bounds x="695" y="195" width="90" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="end_success_di" bpmnElement="end_success">
