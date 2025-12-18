@@ -63,7 +63,7 @@ jobs:
       - name: Download the bpmn-visualization development npm package
         if: ${{ matrix.bv-npm-package == 'development' }}
         id: 'download'
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           name: bpmn-visualization-npm-package
           path: ${{github.workspace}}/../bpmn-visualization-npm-package
@@ -99,7 +99,7 @@ jobs:
       pull-requests: write # surge-preview: PR comments
     steps:
       - name: Download all artifacts
-        uses: actions/download-artifact@v6
+        uses: actions/download-artifact@v7
         with:
           path: tmp
       - name: Display structure of downloaded files
