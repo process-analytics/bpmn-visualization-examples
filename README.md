@@ -187,6 +187,6 @@ Copyright &copy; 2020-present, Bonitasoft S.A.
 
 ## ⚡ Powered by
 
-[![statically.io logo](https://statically.io/icons/icon-96x96.png "statically.io")](https://statically.io)
+[![statically.io logo](https://statically.io/images/branding/statically-logo-dark.svg "statically.io")](https://statically.io)
 
 **[statically.io](https://statically.io)** (<kbd>demo</kbd> and <kbd>examples</kbd> live environments)
