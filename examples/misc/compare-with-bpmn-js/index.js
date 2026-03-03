@@ -1,5 +1,8 @@
 // the rest of the code is in shared.js (shared with the kie-editors-standalone comparison example)
 
+// TODO consider query parameter to enable bpmn-js compatibility mode
+
+// TODO in the diagram, add other elements like artifacts not supported by bpmn-visu, black box pool (horizontal and vertical), message flows
 function getComparisonDiagram() {
   return `<?xml version="1.0" encoding="UTF-8"?>
 <bpmn:definitions xmlns:bpmn="http://www.omg.org/spec/BPMN/20100524/MODEL" xmlns:bpmndi="http://www.omg.org/spec/BPMN/20100524/DI" xmlns:dc="http://www.omg.org/spec/DD/20100524/DC" xmlns:di="http://www.omg.org/spec/DD/20100524/DI" xmlns:bioc="http://bpmn.io/schema/bpmn/biocolor/1.0" xmlns:color="http://www.omg.org/spec/BPMN/non-normative/color/1.0" id="Definitions_comparison" targetNamespace="http://bpmn.io/schema/bpmn">

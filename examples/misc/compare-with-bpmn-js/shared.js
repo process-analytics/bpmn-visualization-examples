@@ -1,5 +1,3 @@
-// TODO consider query parameter to enable bpmn-js compatibility mode
-
 class LibraryComparator {
     #loadedBpmnXmlContent = null;
     #loadedResourceName;
