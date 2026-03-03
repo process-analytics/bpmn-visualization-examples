@@ -70,10 +70,10 @@ function getComparisonDiagram() {
           <dc:Bounds x="389" y="161" width="62" height="14" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="task_process_di" bpmnElement="task_process" bioc:stroke="#43A047" bioc:fill="#C8E6C9" color:background-color="#C8E6C9" color:border-color="#43A047">
+      <bpmndi:BPMNShape id="task_process_di" bpmnElement="task_process" color:background-color="#C8E6C9" color:border-color="#43A047">
         <dc:Bounds x="500" y="170" width="100" height="80" />
       </bpmndi:BPMNShape>
-      <bpmndi:BPMNShape id="task_reject_di" bpmnElement="task_reject" bioc:stroke="#E53935" bioc:fill="#FFCDD2" color:background-color="#FFCDD2" color:border-color="#E53935">
+      <bpmndi:BPMNShape id="task_reject_di" bpmnElement="task_reject" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <dc:Bounds x="500" y="290" width="100" height="80" />
         <bpmndi:BPMNLabel>
           <dc:Bounds x="205" y="395" width="90" height="40" />
