@@ -166,8 +166,10 @@ class BpmnJSLibraryComparator extends LibraryComparator {
   _setZoomLevelOtherLib() {
     const canvas = this.#bpmnJsViewer.get('canvas');
     if (this._state.fitView) {
+      // 'auto' to zoom into mid
       canvas.zoom('fit-viewport', 'auto');
     } else {
+      // pass null to ensure the position of the diagram is taken from the BPMN xml
       canvas.zoom(1, null);
     }
     this._logOtherLib(`Zoom level set, fitView ${this._state.fitView}`);
