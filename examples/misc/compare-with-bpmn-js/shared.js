@@ -1,3 +1,5 @@
+// TODO consider query parameter to enable bpmn-js compatibility mode
+
 class LibraryComparator {
     #loadedBpmnXmlContent = null;
     #loadedResourceName;
@@ -194,11 +196,11 @@ class UIController {
         if (infoIconElt && typeof tippy !== 'undefined') {
             tippy(infoIconElt, {
                 content: `<div class="info-tooltip-content">
-                    <strong>bpmn-js compatible rendering</strong>
+                    <strong>bpmn-js compatible rendering</strong>  (ignore or consider settings in the BPMN diagram):
                     <ul>
-                        <li><b>Label style:</b> uses bpmn-js defaults</li>
-                        <li><b>Activity label bounds:</b> from BPMN DI</li>
-                        <li><b>BPMN colors:</b> rendered from XML</li>
+                        <li>Ignore <b>Label style</b></li>
+                        <li>Ignore <b>Activity label bounds</b></li>
+                        <li>Consider <b>BPMN colors</b> (bpmn-js assign font color even if none is defined when an element has colors)</li>
                     </ul>
                     <div class="note">The diagram will be reloaded when toggled.</div>
                 </div>`,
