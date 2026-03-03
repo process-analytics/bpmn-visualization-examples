@@ -114,7 +114,7 @@ class LibraryComparator {
 
     _computeBpmnVisualizationFitOptions() {
         const fitType = this._state.fitView ? bpmnvisu.FitType.Center: bpmnvisu.FitType.None;
-        return { type: fitType, margin: 10 };
+        return { type: fitType, margin: 40 };
     }
 
     async _loadWithOtherLib(xml, resourceName) {
