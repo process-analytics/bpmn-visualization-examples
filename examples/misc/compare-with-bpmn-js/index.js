@@ -60,7 +60,7 @@ function getComparisonDiagram() {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="task_review_di" bpmnElement="task_review" bioc:stroke="#1E88E5" bioc:fill="#BBDEFB" color:background-color="#BBDEFB" color:border-color="#1E88E5">
         <dc:Bounds x="240" y="170" width="100" height="80" />
-        <bpmndi:BPMNLabel>
+        <bpmndi:BPMNLabel color:color="#FF6600">
           <dc:Bounds x="245" y="175" width="90" height="40" />
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
@@ -72,7 +72,7 @@ function getComparisonDiagram() {
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="task_process_di" bpmnElement="task_process" color:background-color="#C8E6C9" color:border-color="#43A047">
         <dc:Bounds x="500" y="170" width="100" height="80" />
-        <bpmndi:BPMNLabel color:color="#FF6600"/>
+        <bpmndi:BPMNLabel labelStyle="custom_BPMNLabelStyle" color:color="#FF6600"/>
       </bpmndi:BPMNShape>
       <bpmndi:BPMNShape id="task_reject_di" bpmnElement="task_reject" bioc:stroke="#E53935" bioc:fill="#FFCDD2">
         <dc:Bounds x="500" y="290" width="100" height="80" />
@@ -147,6 +147,9 @@ function getComparisonDiagram() {
         </bpmndi:BPMNLabel>
       </bpmndi:BPMNShape>
     </bpmndi:BPMNPlane>
+    <bpmndi:BPMNLabelStyle id="custom_BPMNLabelStyle">
+      <dc:Font name="Times" size="12" isBold="true" isItalic="true" isUnderline="false" isStrikeThrough="false" />
+    </bpmndi:BPMNLabelStyle>
   </bpmndi:BPMNDiagram>
 </bpmn:definitions>`;
 }
