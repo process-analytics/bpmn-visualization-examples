@@ -33,7 +33,10 @@ class CustomIconPainter extends bpmnvisu.IconPainter {
     };
 }
 
-bpmnvisu.IconPainterProvider.set(new CustomIconPainter());
-
-const bpmnVisualizationCustomerUserTask = new bpmnvisu.BpmnVisualization({ container: 'bpmn-container-custom-user-task' });
+const bpmnVisualizationCustomerUserTask = new bpmnvisu.BpmnVisualization({
+    container: 'bpmn-container-custom-user-task',
+    renderer: {
+        iconPainter: new CustomIconPainter()
+    }
+});
 bpmnVisualizationCustomerUserTask.load(bpmn);

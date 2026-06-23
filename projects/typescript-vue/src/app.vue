@@ -8,8 +8,8 @@ import {
   FitType,
   OverlayPosition,
   ShapeBpmnElementKind,
+  ShapeUtil,
 } from 'bpmn-visualization';
-import { ShapeUtil } from '@process-analytics/bpmn-visualization-addons';
 import pizzaDiagram from "./pizza-collaboration.bpmn?raw"
 
 let vis: BpmnVisualization;
@@ -47,7 +47,6 @@ onMounted(async () => {
 })
 
 function getAllFlowNodes(): BpmnElement[] {
-    // cannot use the bpmn-visualization ShapeUtil.flowNodeKinds() for now, as it includes artifacts
     return registry.getElementsByKinds(Object.values(ShapeBpmnElementKind).filter(kind => ShapeUtil.isFlowNode(kind)));
 }
 
