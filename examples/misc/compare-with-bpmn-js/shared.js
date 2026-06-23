@@ -176,6 +176,7 @@ class UIController {
         this._configureInfoTooltip();
     }
 
+    // TODO not shared with kie examples, so should not be there but in a dedicated implem for the bpmn-js comparison example
     _configureCompatModeCheckbox() {
         const compatModeElt = document.getElementById('bpmnJsCompatMode');
 
@@ -194,7 +195,7 @@ class UIController {
         if (infoIconElt && typeof tippy !== 'undefined') {
             tippy(infoIconElt, {
                 content: `<div class="info-tooltip-content">
-                    <strong>bpmn-js compatible rendering</strong>  (ignore or consider settings in the BPMN diagram):
+                    <strong>bpmn-js compatible rendering</strong>  (use renderer options to ignore or consider settings in the BPMN diagram):
                     <ul>
                         <li>Ignore <b>Label style</b></li>
                         <li>Ignore <b>Activity label bounds</b></li>
