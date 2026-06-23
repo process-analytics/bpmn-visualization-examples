@@ -30,7 +30,12 @@ class CustomIconPainter extends IconPainter {
 ```
 See the [development documentation](https://github.com/process-analytics/bpmn-visualization-js/blob/master/docs/contributors/bpmn-support-how-to.md) for more details.
 
-- Override the default `IconPainter`:
+- Pass the custom `IconPainter` to the `BpmnVisualization` instance through the `renderer.iconPainter` option:
 ```javascript
-IconPainterProvider.set(new CustomIconPainter());
+const bpmnVisualization = new BpmnVisualization({
+    container: 'bpmn-container-custom-user-task',
+    renderer: {
+        iconPainter: new CustomIconPainter()
+    }
+});
 ```
