@@ -9,7 +9,9 @@ class HacktoberfestUseCase extends UseCase {
     }
 
     _initBpmnVisualization(options) {
-        bpmnvisu.IconPainterProvider.set(new bpmnvisu.IconPainter());
+        options.renderer = {
+            iconPainter: new bpmnvisu.IconPainter()
+        };
         return super._initBpmnVisualization(options);
     }
 

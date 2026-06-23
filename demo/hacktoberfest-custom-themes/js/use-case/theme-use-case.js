@@ -8,8 +8,9 @@ class ThemeUseCase extends HacktoberfestUseCase {
     }
 
     _initBpmnVisualization(options) {
-        const bpmnVisualization = new ThemeBpmnVisualization(options, this._theme);
-        bpmnvisu.IconPainterProvider.set(new ThemeIconPainter(this._theme));
-        return bpmnVisualization;
+        options.renderer = {
+            iconPainter: new ThemeIconPainter(this._theme)
+        };
+        return new ThemeBpmnVisualization(options, this._theme);
     }
 }
