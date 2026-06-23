@@ -19,8 +19,8 @@ class LibraryComparator {
         const rendererOptions = this._state.bpmnJsCompatMode
             ? {
                 ignoreBpmnColors: false,
-                ignoreBpmnLabelStyles: true,
-                ignoreBpmnTaskLabelBounds: true,
+                ignoreLabelStyles: true,
+                ignoreTaskLabelBounds: true,
             // TODO choose the right option
                 // ignoreBpmnActivityLabelBounds: true,
             }
