@@ -26,7 +26,9 @@ img.logo {
     max-height: 40px;
 }
 div.card {
-    min-height: 430px;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
 }
 .mt-40 {
     margin-top: 4rem;
